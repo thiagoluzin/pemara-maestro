@@ -1,0 +1,142 @@
+[
+  {
+    "path": "E:\\Pemara\\AGENTS.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\AGENTS.md",
+    "sha256_before": "a08f92586a9cfc888c7aaf1c78f3f5746a030fde4f8d13e164bf30eada8d8b38",
+    "sha256_after": "30dc95b9e6e190e323831ae07aafbb83ea5e98628fd623733d7b0cf7ffad77be",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\dlss5_finishing.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\services\\studio\\dlss5_finishing.py",
+    "sha256_before": "1b251d5246d839a92b246f2a0c9d1b7766b6fbf6e8611405cd7bb93e697ed2bc",
+    "sha256_after": "a4e0ff8c57ad9387e9c43eef24ec363aec7f30c042a21f23a4c2a52a9abe1d85",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\main.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\services\\studio\\main.py",
+    "sha256_before": "10523f0fdbf180795c9f2e710a05cf47d7c6eabeff79968218188cea41970e39",
+    "sha256_after": "78cf42b1f61b41b824b2026f4a6c98d958e862f97e0b18f3cc5406776b3a9a24",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\h3_workflow.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\services\\studio\\h3_workflow.py",
+    "sha256_before": "809c673eec42bd1f929cd3724a52f33adff948208e14f3973c84f812b90a2fc2",
+    "sha256_after": "f597b0b39fc945affdc2e7f88e34a72a102060e57f2aad5e9f5842cbce867b73",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\comfy_extensions\\pemara_dlss5_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\ferramentas\\comfy_extensions\\pemara_dlss5_required\\__init__.py",
+    "sha256_before": "ff0e01f99ae6beefa7a3c8ca08be35e94e5515eb491f4b2fbc86b740200246e0",
+    "sha256_after": "1396736db0d75f0105f83f9b17286b4c204427229e01360708cd2c6b419b5a99",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-video-production-lead\\SKILL.md",
+    "sha256_before": "d960677985340c4dc791f010a66934070aac6b638cf8013d20797dd97c942f83",
+    "sha256_after": "9282f505aba6947d97786a6cef93c721f3269a345e2a9cf1ff3d429dccb14479",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-cinematography-director\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-cinematography-director\\SKILL.md",
+    "sha256_before": "e2e049a4196d7bd403a89aba1e49b88f671c90c49e95eb6843523188bbdd1b01",
+    "sha256_after": "9d65762cfa75b3ae683b445f6e368f7bd68d9c12528aad12340dcb87ed4f9a5e",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-film-editor\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-film-editor\\SKILL.md",
+    "sha256_before": "a09ca07b821225772ad5c2b30c3bfa34930eb9799124c4bd0ad8a4263ed48d9b",
+    "sha256_after": "ed655175ed40d39008c698c48c86251ff69490629c6445bee8bbdd57ea469fe7",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-live-action-continuity\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-live-action-continuity\\SKILL.md",
+    "sha256_before": "8d6c4160339d054288366b69a9d74a6ae6f8247c9aff271b45e15a9bf9ddfe5a",
+    "sha256_after": "1fc8f3d876a818a91f44d35081a9883d038cd5597e891c8dbf9bc12a87865aa8",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-live-action-kinetic-supervisor\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-live-action-kinetic-supervisor\\SKILL.md",
+    "sha256_before": "ed18114fd9aeb3bde632f40674d48c88be28124920c446beb3fa0bced1b23e1b",
+    "sha256_after": "4b60e1b73f7781c9714ee6bb59bae197433b12db28a03d218f4acf491734656b",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-live-action-qc\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-live-action-qc\\SKILL.md",
+    "sha256_before": "4ddfdd6e87bb29576e0ee93f6d156fb65bedbf0341e8bc1b5f9f5b838cb82d72",
+    "sha256_after": "9784da4a51f05751a59698d25ceb5f6eae63772e2aa0bddeec0a36e0b746633a",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-cinematic-take-director\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-cinematic-take-director\\SKILL.md",
+    "sha256_before": "5f3afd2c64e2b231f86c9a71ec6a33e68385df79dfe946c1fb3bb8d21e57caf0",
+    "sha256_after": "b9d765421b47fa20d5485077959a90c7e2210bc4c4f054bb58edcf2e07bbcfcc",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\references\\production-quality-contract.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-video-production-lead\\references\\production-quality-contract.md",
+    "sha256_before": "7e8b7c288f639c8730712522dfeac9bebd932a1646d5965ef6ec4039534ee903",
+    "sha256_after": "f8707e9cbe263296e560b487e6630bbf2b3d51e7e706dc13293e79ac09fbbd06",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\references\\review-and-repair.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-video-production-lead\\references\\review-and-repair.md",
+    "sha256_before": "a47170187cfba9bdbcea6b6231a5390884b807e2e0cdfa5f0633366cb9c4012b",
+    "sha256_after": "a9df38d5fc16e26f172e3d7629d14f30ffe338cb58d56b015e548c8ea6cf68cd",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\video_projects.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\services\\studio\\video_projects.py",
+    "sha256_before": "5b46fab53cfd5eb54711b9ffbaadc2aaee07fb4372a25bfd8e31ade12b8fd641",
+    "sha256_after": "9a6a93aae34ea4c3e366e5f2e57366ff34939562a6276871fb125e2208ddcf42",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\project_assembly.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\maestro\\pemara\\services\\studio\\project_assembly.py",
+    "sha256_before": "f1983b3f0d61ab5187a8fdabe9f155c2cab153564f01b4c1535281b26a8bc1b3",
+    "sha256_after": "149ca078f8931ee7ef6873c0a11eb00b4a9b69ae81410e2ca19ad0a5ce097581",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\image-production\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\image-production\\SKILL.md",
+    "sha256_before": "3452bf37a350334aae77622522fec32e7798e16b8bffe725a1233450444f23fd",
+    "sha256_after": "dab494978d02d54f913ce34198651518e6e7607d95fda893fc924e84832fd926",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-motion-director\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-video-motion-director\\SKILL.md",
+    "sha256_before": "705a72a7b992c4d7a1167a166fb227f1ad2fd98dc046cebdbf966aaf7d25dd9b",
+    "sha256_after": "ae9ef4c332e9a70b899f5ca14c1a173e20a65852bce76633d33e9c366fee0365",
+    "changed": true
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-motion-director\\references\\motion-quality-gates.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\.agents\\skills\\pemara-video-motion-director\\references\\motion-quality-gates.md",
+    "sha256_before": "ec04e06ce0713ff0a93a6bfb6555f1b541c3e62cfb3e7f696285fafd924e3078",
+    "sha256_after": "b98e4ca77d2d3faf05ed9c2120798d34ca4268656401c68139d782ffca7bd870",
+    "changed": true
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\custom_nodes\\pemara_dlss5_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\camera_actor_protection_20261009\\before\\runtime_D\\ComfyUI-v0.36.0-pemara\\custom_nodes\\pemara_dlss5_required\\__init__.py",
+    "sha256_before": "ff0e01f99ae6beefa7a3c8ca08be35e94e5515eb491f4b2fbc86b740200246e0",
+    "sha256_after": "1396736db0d75f0105f83f9b17286b4c204427229e01360708cd2c6b419b5a99",
+    "changed": true
+  }
+]

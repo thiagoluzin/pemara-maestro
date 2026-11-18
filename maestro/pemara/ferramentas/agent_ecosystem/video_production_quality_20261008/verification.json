@@ -1,0 +1,111 @@
+{
+  "ok": true,
+  "errors": [],
+  "scope": "Local agent/skill instructions, routing and H3 catalogue/stage metadata",
+  "media_generated": false,
+  "gpu_jobs_submitted": false,
+  "backend_metadata_changed": true,
+  "generation_runtime_functions_unchanged": true,
+  "studio_restarted": false,
+  "human_artistic_approval_inferred": false,
+  "backup_files_verified": 34,
+  "existing_files_changed": 25,
+  "new_files": 17,
+  "changed_skill_validation": [
+    {
+      "skill": "ai-video-intro-pipeline",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "creative-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-cinematic-take-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-cinematography-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-ecosystem-orchestrator",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-film-editor",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-live-action-combat-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-live-action-continuity",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-live-action-kinetic-supervisor",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-live-action-qc",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-live-action-showrunner",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-messenger-turbo",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-performance-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-video-motion-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-video-production-lead",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "pemara-voice-performance-director",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    {
+      "skill": "video-production",
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    }
+  ],
+  "inventory_total": 50,
+  "inventory_invalid": [],
+  "registry": {
+    "schema_version": 1,
+    "aliases": 32,
+    "specialized_profiles": 13,
+    "dispatcher": "E:\\Pemara\\.agents\\profiles\\agents-turbo.md",
+    "errors": [],
+    "ok": true
+  }
+}

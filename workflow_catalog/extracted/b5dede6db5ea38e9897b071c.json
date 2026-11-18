@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Crushing early doom metal, deeply downtuned fuzz guitars, heavy tritone-laced new riff, enormous bass, swinging drums, raw haunted male baritone. 76 BPM, C sharp minor. slow massive syncopated riff with air between attacks, then a swinging double-time doom break. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nBlack smoke rises in a crooked line\nThe spire hisses, drawing the light in\nWe kneel on the gravel, we kneel on the rust\nCounting the houses that the pit has dusted\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Verse]\nThe priest pours a bucket of golden oil\nWatches the pavement begin to boil\nHe says the hunger is holy and deep\nIt feeds on the living while we’re asleep\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Bridge]\nThe ground groans a low and heavy sound\nThe spire cracks with a thunderous thud\nIt takes the altar, it takes the bell\nSwallows the town where the shadows dwell\n\n[Solo]\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Outro]\nJust the smoke and the silence now\nThe well is full, and the dark is here\nWe are gone",
+      "abc": "",
+      "seed": 202610166004,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166004,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/05_tar_cathedral_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

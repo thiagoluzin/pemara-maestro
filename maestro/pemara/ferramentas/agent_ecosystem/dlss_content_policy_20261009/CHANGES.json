@@ -1,0 +1,197 @@
+[
+  {
+    "path": "E:\\Pemara\\AGENTS.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\0\\AGENTS.md",
+    "sha256_before": "30dc95b9e6e190e323831ae07aafbb83ea5e98628fd623733d7b0cf7ffad77be",
+    "sha256_after": "ac437ffaabb89a7954b68f6c060b5364f114d752dbf36f63998bcd9359e5d906"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\dlss5_finishing.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\1\\dlss5_finishing.py",
+    "sha256_before": "a4e0ff8c57ad9387e9c43eef24ec363aec7f30c042a21f23a4c2a52a9abe1d85",
+    "sha256_after": "59636f7e0f820ae920eab9a1a60beb573260fe691c6dbb6ee107fc988ef93856"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\actor_protection.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\2\\actor_protection.py",
+    "sha256_before": "62f80392305545d7fa1baf7e299efbac9d15657ac0ed2e45aaf6704da471cad3",
+    "sha256_after": "4c2593c4ead6c354d4f5a79500d221be816e2015b4df04e04ff261359e9fc15a"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\main.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\3\\main.py",
+    "sha256_before": "78cf42b1f61b41b824b2026f4a6c98d958e862f97e0b18f3cc5406776b3a9a24",
+    "sha256_after": "6d0248c8dc0e3919f7537909400ab85c4afe47809a5ac9c13c171e4853c5a30b"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\upscaling_required.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\4\\upscaling_required.py",
+    "sha256_before": "41188c7dc13b6b0edf9eab7e5f8fddc96992cc045fdad0e9a3f1a2dbcc3fce1e",
+    "sha256_after": "ab89ee6b3f9e0d9b6d2a449cb9689ee5f751aec1e391eae849aa0e821f769367"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\video_projects.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\5\\video_projects.py",
+    "sha256_before": "9a6a93aae34ea4c3e366e5f2e57366ff34939562a6276871fb125e2208ddcf42",
+    "sha256_after": "177e7d622b632c00cd7f06e2941d85f16c1b6fd3f93dcffbb2a6dbbfed2d65ce"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\h3_workflow.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\6\\h3_workflow.py",
+    "sha256_before": "f597b0b39fc945affdc2e7f88e34a72a102060e57f2aad5e9f5842cbce867b73",
+    "sha256_after": "138181d73fa4503513bd348d19020b8dbeff5890c9cd9e7ad24b4d910a897c78"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_dlss5_finishing.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\8\\test_dlss5_finishing.py",
+    "sha256_before": "535b9f010268a61f8c71479e41d44afb8c873584247026e2f0c8e9aebbcc9e67",
+    "sha256_after": "fab2faa19f7e4d6bb821782ff29c119e32061a738180eff2e05428e649af678a"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\comfy_extensions\\pemara_dlss5_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\10\\__init__.py",
+    "sha256_before": "1396736db0d75f0105f83f9b17286b4c204427229e01360708cd2c6b419b5a99",
+    "sha256_after": "5c9c5a9b144efb41d16a07f8961cf14295397e0f76968fd8b04d917323186d05"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\comfy_extensions\\pemara_upscaling_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\11\\__init__.py",
+    "sha256_before": "6cf73452c39f4f81e8c326bb28af72a076cb3736f273ae1acf91954c389a2f01",
+    "sha256_after": "ad913df7bf4277b5e5060866149a657df92d85da89264f04e3a1db7e503894f4"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\custom_nodes\\pemara_dlss5_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\12\\__init__.py",
+    "sha256_before": "1396736db0d75f0105f83f9b17286b4c204427229e01360708cd2c6b419b5a99",
+    "sha256_after": "5c9c5a9b144efb41d16a07f8961cf14295397e0f76968fd8b04d917323186d05"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\custom_nodes\\pemara_upscaling_required\\__init__.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\13\\__init__.py",
+    "sha256_before": "6cf73452c39f4f81e8c326bb28af72a076cb3736f273ae1acf91954c389a2f01",
+    "sha256_after": "ad913df7bf4277b5e5060866149a657df92d85da89264f04e3a1db7e503894f4"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\tools\\postprocess_required_upscale.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\14\\postprocess_required_upscale.py",
+    "sha256_before": "e868bea341f3a0a5b55e19d8cfee39d506ee8316466a08a37eca4d394538182b",
+    "sha256_after": "dd3587a2797978b1244dadba1fcc87299179e91bbc9d9257bfdad92bf85f0665"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\upscaling_obrigatorio\\dlss5_actor_protected_anchor.template.api.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\15\\dlss5_actor_protected_anchor.template.api.json",
+    "sha256_before": "7dffed7881070ba466098b357092c943c44f38971ddee5784ee874dab2f778f8",
+    "sha256_after": "ff6163780685b7a7c97313c2590bab5a7f3774b4d10be074702d1075f112d654"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1080p.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\16\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1080p.json",
+    "sha256_before": "fa4adaea000c89ab103066ebbc8d3e279d30647c4a23e3bb46f69421b8280cf4",
+    "sha256_after": "4c62953cbec4e5e490085d718c831bdd5e0f0687e8396565a529e24018802443"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1080p_vertical.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\17\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1080p_vertical.json",
+    "sha256_before": "b6b948a909e6a2653d5c8aebb73bfd0fb62696d52b82320f09a70754a5ec0099",
+    "sha256_after": "263335a3305e9cf15d80064366c5f07a9e933192e347dd1b1ada01c1bc53dfc5"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1440p.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\18\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1440p.json",
+    "sha256_before": "33ac0e6f6fc406153e22d2ea13409055fbeb1e3a3a4332a691a13eaf82730f60",
+    "sha256_after": "c9ec2b28cbca628c5497e557da2a9fa3883289a6f88b6faf8749a0a6501bc8a6"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1440p_vertical.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\19\\seedvr2_3b_rife_exact60_dlss5_foley_v1_1440p_vertical.json",
+    "sha256_before": "601c93ae8a99c987c3485a540b504556b8e7490e9ae678e9b41af1fea19fd120",
+    "sha256_after": "85da68fec1ddcd28e710f6ff22afa6913c6ccf4de6cbfdb0005b13c22112bab2"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_4k.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\20\\seedvr2_3b_rife_exact60_dlss5_foley_v1_4k.json",
+    "sha256_before": "1fde45f97c473545b34823b1a5a706992890bfb6150dde12cdbb8a1b7709daf2",
+    "sha256_after": "974d2992045aa231d4d75d21e007018358bd0674dfd0becf2d717090f5c05e9b"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\upscale_profiles\\seedvr2_3b_rife_exact60_dlss5_foley_v1_4k_vertical.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\21\\seedvr2_3b_rife_exact60_dlss5_foley_v1_4k_vertical.json",
+    "sha256_before": "e0fb798484410b67d92ca3cf1ad0a3f245f448a2b0f542a66c1cdcb302e95e1e",
+    "sha256_after": "9a860a34fee03bc41db0785dbc02a7f76a1734b14d158d79465a9621b7af5ac4"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\22\\SKILL.md",
+    "sha256_before": "9282f505aba6947d97786a6cef93c721f3269a345e2a9cf1ff3d429dccb14479",
+    "sha256_after": "67b85d26d6eed1c565dac83b07fb611b76de0df0a51b1dc4e5b781c88d3dd5b8"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\image-production\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\29\\SKILL.md",
+    "sha256_before": "dab494978d02d54f913ce34198651518e6e7607d95fda893fc924e84832fd926",
+    "sha256_after": "c6885420e85f79c4844479101553d5c19eb321beaccf94f6e4e091c8fc37a769"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\video-production\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\30\\SKILL.md",
+    "sha256_before": "83e04d6f3bf7f461ffe285b63e5dc131ae6e57966ad2501cce1c6101cd5ac932",
+    "sha256_after": "6c3612a7e1d2afaf0cdeb9d2520817a40636e582d6ef674057d3eb5505115931"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-live-action-showrunner\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\31\\SKILL.md",
+    "sha256_before": "8079e9c7b419c03b8288803ba60a5971fd651d7db0c1d9845cb1e33f6bfa0f38",
+    "sha256_after": "ac260df5dc5f46aba83185c94c785634d8194a3195bb244e1e6923159defcb48"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\references\\camera-evidence-and-actor-protection.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\33\\camera-evidence-and-actor-protection.md",
+    "sha256_before": "3d6f8722b70e035a5ef6f637a34c7f7cdb45f5d9253c47691145a2d50c5a6e8c",
+    "sha256_after": "65edf921250d563a45ded5b9fb4ac49b57df4fc7f68edfc25d99067deaf3558e"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\app\\index.html",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\extra_0.html",
+    "sha256_before": "20086ab2898f2b051d89b6a5b7d38c40efcb56190f8ff068888102f5e50aad97",
+    "sha256_after": "cb96debf34fcde9ae891673a79900d05aa61c5b4e3ae8aa9288370d5b9b44c18"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\app\\assets\\maestro.js",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\extra_1.js",
+    "sha256_before": "b65c8d88b6d9c7243d5140d9f8deea2b7286b70e30981edcae91d9ad91ad3cdb",
+    "sha256_after": "bf1fb08e56a75b051a3159d71ad5947e0c198ed72b8227c57e8b087b6c98fc9b"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\templates\\project_manifest.template.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\extra_2.json",
+    "sha256_before": "65ced81e991584228e2510ae9b0ae51b8d94437a435f6cb5c0bcad481b51fb69",
+    "sha256_after": "ab113cfecb325c77b21804a0745231bf4640470cf6f2a9bb92f5144b76ef9572"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\live_action_workflows.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\extra_live_action_workflows.py\\live_action_workflows.py",
+    "sha256_before": "061634cd8324cfe55a2f3c55b3cde9ebbb6a9617b222b9fac3c68218aeeb7418",
+    "sha256_after": "7b119005df2e7b4190f792c950ad6652ebc34db6bc4a1b18d89bfb6646538b25"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_live_action_workflows.py",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\dlss_content_policy_20261009\\before\\extra_test_live_action_workflows.py\\test_live_action_workflows.py",
+    "sha256_before": "9679b3b3c4ed2831586e1a613161a90037d13a8c435fe93fd5bed05ac3bc1e02",
+    "sha256_after": "be5d67fa48698303329f94a3e29b4666d42c35943819515c7e67643c63ee8718"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\dlss5_content_policy.py",
+    "sha256_after": "49eda841b5f073989b564ff1f0e03ec7be4146f498b1a235ae7ed8f199650860",
+    "new": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_dlss5_content_policy.py",
+    "sha256_after": "ec0b82dfde333198e3e5f998640a5b540160798ccd4b4e352cfec5a0b12053d5",
+    "new": true
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_dlss5_workflow_routing.py",
+    "sha256_after": "d0dbc6f14a192a805d4ec4db270c217ebd0c92ef252d9f0c0c50eb4347a96b29",
+    "new": true
+  }
+]

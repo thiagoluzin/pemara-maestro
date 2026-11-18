@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OC Maker — Portal Sprunki</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d0d1a;color:#f0f0f8;height:100vh;display:grid;grid-template-rows:52px 1fr;overflow:hidden}
+
+/* topbar */
+.topbar{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 20px;gap:14px}
+.topbar a{color:rgba(255,255,255,.4);text-decoration:none;font-size:13px}.topbar a:hover{color:#fff}
+.topbar h1{font-size:16px;font-weight:600;color:#ff8fab;flex:1}
+.badge{font-size:10px;background:rgba(255,107,160,.15);color:#ff8fab;padding:3px 9px;border-radius:20px}
+
+/* layout 3 colunas */
+.layout{display:grid;grid-template-columns:220px 1fr 240px;height:100%;overflow:hidden}
+
+/* sidebar esquerda */
+.sl{border-right:1px solid rgba(255,255,255,.06);overflow-y:auto;padding:10px 8px;display:flex;flex-direction:column;gap:2px}
+.cat{margin-top:10px}
+.cat-label{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.28);padding:6px 6px 4px}
+.opts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 2px}
+.opt{border-radius:8px;background:rgba(255,255,255,.05);border:2px solid transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;transition:all .15s;min-height:56px;position:relative}
+.opt:hover{background:rgba(255,107,160,.12);border-color:rgba(255,107,160,.35)}
+.opt.active{border-color:#ff8fab;background:rgba(255,107,160,.18)}
+.opt-icon{font-size:20px;line-height:1}
+.opt-label{font-size:8px;color:rgba(255,255,255,.45);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.opt.active .opt-label{color:#ff8fab}
+
+/* sprite real carregado */
+.opt img{width:48px;height:48px;object-fit:contain}
+
+/* canvas central */
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+.canvas-wrap{position:relative;border-radius:16px;overflow:hidden;background:
+  linear-gradient(45deg,rgba(255,255,255,.025) 25%,transparent 25%),
+  linear-gradient(-45deg,rgba(255,255,255,.025) 25%,transparent 25%),
+  linear-gradient(45deg,transparent 75%,rgba(255,255,255,.025) 75%),
+  linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.025) 75%);
+  background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
+  border:1px solid rgba(255,255,255,.08)}
+#cv{display:block}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:filter .15s,transform .1s}
+.btn:hover{filter:brightness(1.15)}.btn:active{transform:scale(.97)}
+.btn-rand{background:rgba(255,255,255,.1);color:rgba(255,255,255,.75)}
+.btn-clear{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)}
+.btn-exp{background:linear-gradient(135deg,#14b8a6,#0e7490);color:#fff}
+.btn-ai{background:linear-gradient(135deg,#8b5cf6,#5b21b6);color:#fff}
+
+/* sidebar direita */
+.sr{border-left:1px solid rgba(255,255,255,.06);overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:16px}
+.sec-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:6px}
+/* color swatches */
+.color-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s}
+.swatch:hover{transform:scale(1.2)}.swatch.active{border-color:#fff;transform:scale(1.15)}
+.color-custom{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.35)}
+.color-custom input[type=color]{width:28px;height:28px;border:none;background:none;cursor:pointer;border-radius:50%;padding:0}
+
+/* prompt preview */
+.prompt-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;font-size:10px;color:rgba(255,255,255,.35);line-height:1.6;max-height:90px;overflow-y:auto;word-break:break-word}
+
+/* overlay geração */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center}
+.overlay.on{display:flex}
+.gen-card{background:#15152a;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:280px}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,107,160,.2);border-top-color:#ff8fab;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pbar{width:100%;height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,#ff6b9d,#c084fc);border-radius:3px;transition:width .3s;width:0}
+.res-img{max-width:260px;max-height:260px;border-radius:12px;object-fit:contain}
+.res-actions{display:flex;gap:8px}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="/">← Portal</a>
+  <h1>✨ OC Maker</h1>
+  <span class="badge">Compositor de Partes</span>
+</nav>
+
+<div class="layout">
+
+<!-- ── Sidebar esquerda ── -->
+<aside class="sl">
+
+  <div class="cat">
+    <div class="cat-label">Corpo Base</div>
+    <div class="opts-grid" id="g-body"></div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-label">Olhos</div>
+    <div class="opts-grid" id="g-eyes"></div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-label">Boca</div>
+    <div class="opts-grid" id="g-mouth"></div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-label">Chapéu / Topo</div>
+    <div class="opts-grid" id="g-hat"></div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-label">Acessório</div>
+    <div class="opts-grid" id="g-acc"></div>
+  </div>
+
+</aside>
+
+<!-- ── Canvas ── -->
+<main class="center">
+  <div class="canvas-wrap">
+    <canvas id="cv" width="380" height="480"></canvas>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;text-align:center;">
+    💡 Dica: Clique e arraste qualquer parte diretamente no canvas para ajustar a sua posição livremente!
+  </div>
+  <div class="actions" style="margin-top: 6px;">
+    <button class="btn btn-rand" onclick="randomize()">🎲 Aleatório</button>
+    <button class="btn btn-clear" onclick="resetAll()">🗑 Limpar</button>
+    <button class="btn btn-exp" onclick="exportPNG()">⬇ PNG</button>
+    <button class="btn btn-ai" onclick="genAI()">✨ Gerar com IA</button>
+  </div>
+</main>
+
+<!-- ── Sidebar direita ── -->
+<aside class="sr">
+
+  <div>
+    <div class="sec-label">Controles Extras (Canvas)</div>
+    <div style="display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px;margin-bottom:12px">
+      <label style="display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.8);cursor:pointer">
+        <input type="checkbox" id="chk-link-eyes" checked onchange="toggleLinkEyes(this.checked)" style="accent-color:#ff8fab;width:15px;height:15px;cursor:pointer">
+        <span>Mover olhos juntos</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.8);cursor:pointer">
+        <input type="checkbox" id="chk-cut-body" onchange="toggleCutBody(this.checked)" style="accent-color:#ff8fab;width:15px;height:15px;cursor:pointer">
+        <span>✂️ Cortar Corpo ao Meio</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.8);cursor:pointer">
+        <input type="checkbox" id="chk-sep-ears" onchange="toggleSepEars(this.checked)" style="accent-color:#ff8fab;width:15px;height:15px;cursor:pointer">
+        <span>Separar orelhas do corpo</span>
+      </label>
+      <label id="lbl-link-ears" style="display:none;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.8);cursor:pointer;padding-left:15px">
+        <input type="checkbox" id="chk-link-ears" checked onchange="toggleLinkEars(this.checked)" style="accent-color:#ff8fab;width:15px;height:15px;cursor:pointer">
+        <span>Mover orelhas juntas</span>
+      </label>
+    </div>
+  </div>
+ 
+  <div>
+    <div class="sec-label">Inspirar-se em Referência</div>
+    <select id="ref-select" onchange="setReference(this.value)" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px;color:#fff;font-size:12px;outline:none;cursor:pointer;transition:all .15s">
+      <option value="none">Nenhum (Padrão)</option>
+    </select>
+    <div id="ref-preview-container" style="display:none;margin-top:10px;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px">
+      <img id="ref-preview-img" src="" style="width:48px;height:48px;object-fit:contain;background:rgba(0,0,0,.2);border-radius:6px;border:1px solid rgba(255,255,255,.08)" alt="">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:#ff8fab" id="ref-preview-name">Nome</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.45)">Personagem de Referência</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-label">Cor principal</div>
+    <div class="color-row" id="swatches"></div>
+    <div class="color-custom">
+      <input type="color" id="cpick" value="#c084fc" oninput="setColor(this.value)">
+      <span>Personalizada</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-label">Cor secundária (detalhes)</div>
+    <div class="color-row" id="swatches2"></div>
+  </div>
+
+  <div>
+    <div class="sec-label">Prompt gerado</div>
+    <div class="prompt-box" id="pbox">Configure as opções ao lado...</div>
+  </div>
+
+</aside>
+</div>
+
+<!-- overlay -->
+<div class="overlay" id="overlay">
+  <div class="gen-card">
+    <div class="spinner" id="spin"></div>
+    <div style="font-size:14px;font-weight:600" id="gen-txt">Enviando para RTX 5080...</div>
+    <div class="pbar"><div class="pfill" id="pfill"></div></div>
+    <img class="res-img" id="res-img" style="display:none" alt="">
+    <div class="res-actions" id="res-act" style="display:none">
+      <button class="btn btn-exp" onclick="dlResult()">⬇ Baixar</button>
+      <button class="btn btn-clear" onclick="closeOverlay()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  CANVAS & ESTADO
+// ════════════════════════════════════════════════════════
+const cv  = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+
+const S = {
+  body:      'classic',
+  eyes:      'droopy',
+  mouth:     'smile',
+  hat:       'none',
+  acc:       'none',
+  reference: 'none',      // personagem de referência
+  color1:    '#c084fc',   // cor principal
+  color2:    '#9333ea',   // cor secundária / detalhes
+  realParts: { body:null, eyes:null, mouth:null, hat:null, acc:null },
+  linkEyes:  true,
+  cutBody:   false,
+  sepEars:   false,
+  linkEars:  true,
+  offsets: {
+    body: {x: 0, y: 0},
+    body_bottom: {x: 0, y: 0},
+    eyes: {x: 0, y: 0},
+    eyes_L: {x: 0, y: 0},
+    eyes_R: {x: 0, y: 0},
+    ears_L: {x: 0, y: 0},
+    ears_R: {x: 0, y: 0},
+    mouth: {x: 0, y: 0},
+    hat: {x: 0, y: 0},
+    acc: {x: 0, y: 0}
+  }
+};
+
+S.selectedPart = null;
+
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let activePart = null;
+
+function getPartBox(cat) {
+  const CX = cv.width / 2;
+  const dims = getBodyDims(S.body);
+  if (!dims) return null;
+  
+  if (cat === 'body') {
+    if (S.cutBody) {
+      return { x1: CX - 85, y1: 230, w: 170, h: 110 };
+    } else {
+      return { x1: CX - 85, y1: 230, w: 170, h: 230 };
+    }
+  }
+  if (cat === 'body_bottom') {
+    if (!S.cutBody) return null;
+    return { x1: CX - 85, y1: 340, w: 170, h: 120 };
+  }
+  if (cat === 'mouth') {
+    return { x1: CX - 60, y1: 185, w: 120, h: 60 };
+  }
+  if (cat === 'eyes_L') {
+    return { x1: CX - 75, y1: 120, w: 75, h: 85 };
+  }
+  if (cat === 'eyes_R') {
+    return { x1: CX, y1: 120, w: 75, h: 85 };
+  }
+  if (cat === 'hat') {
+    if (S.hat === 'none') return null;
+    return { x1: CX - 85, y1: 30, w: 170, h: 100 };
+  }
+  if (cat === 'acc') {
+    if (S.acc === 'none') return null;
+    return { x1: CX + 30, y1: 200, w: 140, h: 220 };
+  }
+  if (cat === 'ears_L') {
+    if (!S.sepEars) return null;
+    const earSize = S.body === 'bear' ? 28 : (S.body === 'round' ? 22 : 18);
+    const earY = S.body === 'bear' ? (dims.hcy - dims.hr * 0.5) : (dims.hcy + 10);
+    const ex = S.body === 'bear' ? (CX - dims.hr * 0.8) : (CX - dims.hr);
+    const rx = S.body === 'bear' ? earSize : earSize * 0.7;
+    const ry = earSize;
+    return { x1: ex - rx - 5, y1: earY - ry - 5, w: rx * 2 + 10, h: ry * 2 + 10 };
+  }
+  if (cat === 'ears_R') {
+    if (!S.sepEars) return null;
+    const earSize = S.body === 'bear' ? 28 : (S.body === 'round' ? 22 : 18);
+    const earY = S.body === 'bear' ? (dims.hcy - dims.hr * 0.5) : (dims.hcy + 10);
+    const ex = S.body === 'bear' ? (CX + dims.hr * 0.8) : (CX + dims.hr);
+    const rx = S.body === 'bear' ? earSize : earSize * 0.7;
+    const ry = earSize;
+    return { x1: ex - rx - 5, y1: earY - ry - 5, w: rx * 2 + 10, h: ry * 2 + 10 };
+  }
+  return null;
+}
+
+function getPartAt(x, y) {
+  const order = ['acc', 'hat', 'eyes_L', 'eyes_R', 'mouth', 'ears_L', 'ears_R', 'body_bottom', 'body'];
+  for (const cat of order) {
+    const box = getPartBox(cat);
+    if (box) {
+      const ox = S.offsets[cat].x;
+      const oy = S.offsets[cat].y;
+      if (x >= box.x1 + ox && x <= box.x1 + ox + box.w &&
+          y >= box.y1 + oy && y <= box.y1 + oy + box.h) {
+        return cat;
+      }
+    }
+  }
+  return null;
+}
+
+let initialOffsets = {};
+
+cv.addEventListener('mousedown', (e) => {
+  const rect = cv.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+  
+  const clickedPart = getPartAt(mouseX, mouseY);
+  if (clickedPart) {
+    isDragging = true;
+    activePart = clickedPart;
+    S.selectedPart = clickedPart;
+    startX = mouseX;
+    startY = mouseY;
+    initialOffsets = {};
+    for (const k of Object.keys(S.offsets)) {
+      initialOffsets[k] = { x: S.offsets[k].x, y: S.offsets[k].y };
+    }
+    drawSprunki();
+  } else {
+    S.selectedPart = null;
+    drawSprunki();
+  }
+});
+
+cv.addEventListener('mousemove', (e) => {
+  const rect = cv.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+  
+  if (isDragging && activePart) {
+    const dx = mouseX - startX;
+    const dy = mouseY - startY;
+    
+    if ((activePart === 'eyes_L' || activePart === 'eyes_R') && S.linkEyes) {
+      S.offsets.eyes_L.x = initialOffsets.eyes_L.x + dx;
+      S.offsets.eyes_L.y = initialOffsets.eyes_L.y + dy;
+      S.offsets.eyes_R.x = initialOffsets.eyes_R.x + dx;
+      S.offsets.eyes_R.y = initialOffsets.eyes_R.y + dy;
+    } else if ((activePart === 'ears_L' || activePart === 'ears_R') && S.linkEars) {
+      S.offsets.ears_L.x = initialOffsets.ears_L.x + dx;
+      S.offsets.ears_L.y = initialOffsets.ears_L.y + dy;
+      S.offsets.ears_R.x = initialOffsets.ears_R.x + dx;
+      S.offsets.ears_R.y = initialOffsets.ears_R.y + dy;
+    } else if (activePart === 'body' && !S.cutBody) {
+      S.offsets.body.x = initialOffsets.body.x + dx;
+      S.offsets.body.y = initialOffsets.body.y + dy;
+      S.offsets.body_bottom.x = initialOffsets.body_bottom.x + dx;
+      S.offsets.body_bottom.y = initialOffsets.body_bottom.y + dy;
+    } else {
+      S.offsets[activePart].x = initialOffsets[activePart].x + dx;
+      S.offsets[activePart].y = initialOffsets[activePart].y + dy;
+    }
+    drawSprunki();
+  } else {
+    const hoveredPart = getPartAt(mouseX, mouseY);
+    cv.style.cursor = hoveredPart ? 'move' : 'default';
+  }
+});
+
+const stopDrag = () => {
+  if (isDragging) {
+    isDragging = false;
+    activePart = null;
+  }
+};
+cv.addEventListener('mouseup', stopDrag);
+cv.addEventListener('mouseleave', stopDrag);
+
+const REFS_LIST = {
+  "ACID": "ACID.png",
+  "Scary ACID": "Scary ACID.png",
+  "Animus": "Animus.png",
+  "Black": "Black.png",
+  "Bluemon": "Bluemon.png",
+  "Brud": "Brud.png",
+  "Chockle": "Chockle.png",
+  "Clukr": "Clukr.png",
+  "Coka": "Coka.png",
+  "Cooka": "Cooka.png",
+  "Cookie": "Cookie.png",
+  "Crocus": "Crocus.png",
+  "Deto": "Deto.png",
+  "Dozer": "Dozer.png",
+  "Durple": "Durple.png",
+  "Elestial": "Elestial.png",
+  "Fanta2": "Fanta2.png",
+  "Fun Bot": "Fun Bot.png",
+  "Garnold": "Garnold.png",
+  "Gatoman": "Gatoman.png",
+  "Glix": "Glix.png",
+  "Goldy": "Goldy.png",
+  "Gray": "Gray.png",
+  "Greenmon": "Greenmon.png",
+  "Gummo": "Gummo.png",
+  "Horson": "Horson.png",
+  "Jevin": "Jevin.png",
+  "Klato": "Klato.png",
+  "Lemon John": "Lemon John.png",
+  "Mayie": "Mayie.png",
+  "Medio": "Medio.png",
+  "Mr Fun Computer": "Mr Fun Computer.png",
+  "Mr Sun": "Mr Sun.png",
+  "Mr Tree": "Mr Tree.png",
+  "Oren": "Oren.png",
+  "Oreoy": "Oreoy.png",
+  "PAXO": "PAXO.png",
+  "Pencie": "Pencie.png",
+  "Peppie": "Peppie.png",
+  "Pinki": "Pinki.png",
+  "Polo": "Polo.png",
+  "Purplemon": "Purplemon.png",
+  "Raddy": "Raddy.png",
+  "Redmon": "Redmon.png",
+  "Scary Simon": "Scary Simon.png"
+};
+
+let partsIndex = null;
+
+async function loadPartsIndex() {
+  try {
+    const resp = await fetch('/static/icons/parts_index.json');
+    partsIndex = await resp.json();
+    
+    // Populate DEFS categories with Scratch items
+    const catMapping = {
+      body: 'body',
+      eyes: 'eyes',
+      mouth: 'mouth',
+      hat: 'hat',
+      acc: 'accessory'
+    };
+    
+    for (const [defCat, jsonCat] of Object.entries(catMapping)) {
+      const items = partsIndex[jsonCat] || [];
+      items.forEach(item => {
+        const exists = DEFS[defCat].some(d => d.key === item.id);
+        if (!exists) {
+          DEFS[defCat].push({
+            key: item.id,
+            label: `${item.name} (${item.game})`,
+            icon: '🎨',
+            isScratch: true,
+            thumb: item.thumb.replace(/\\/g, '/'),
+            file: item.file.replace(/\\/g, '/'),
+            src_file: item.src_file ? item.src_file.replace(/\\/g, '/') : null,
+            crop_zone: item.crop_zone
+          });
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Erro ao carregar parts_index.json:", err);
+  }
+}
+
+function getCropZone(cat) {
+  const key = (cat === 'ears_L' || cat === 'ears_R') ? S.body : S[cat];
+  const defCat = (cat === 'ears_L' || cat === 'ears_R') ? 'body' : cat;
+  const defItem = DEFS[defCat]?.find(d => d.key === key);
+  
+  if (defItem && defItem.isScratch) {
+    if (defItem.crop_zone && cat !== 'ears_L' && cat !== 'ears_R') {
+      return defItem.crop_zone;
+    }
+    if (partsIndex && partsIndex[cat]) {
+      const earItem = partsIndex[cat].find(item => item.id === key);
+      if (earItem && earItem.crop_zone) {
+        return earItem.crop_zone;
+      }
+    }
+  }
+  
+  if (defItem && (defItem.isRef || defItem.isRef === undefined) && partsIndex && partsIndex.reference_crop_zones) {
+    const refZones = partsIndex.reference_crop_zones[key];
+    if (refZones) {
+      const indexCat = cat === 'acc' ? 'accessory' : cat;
+      const zone = refZones[indexCat];
+      if (zone) {
+        return zone;
+      }
+    }
+  }
+  
+  const staticZones = {
+    hat:       { x0: 0.00, x1: 1.00, y0: 0.00, y1: 0.22 },
+    eyes:      { x0: 0.00, x1: 1.00, y0: 0.18, y1: 0.50 },
+    body:      { x0: 0.00, x1: 1.00, y0: 0.30, y1: 1.00 },
+    mouth:     { x0: 0.00, x1: 1.00, y0: 0.52, y1: 0.78 },
+    accessory: { x0: 0.00, x1: 1.00, y0: 0.55, y1: 1.00 },
+    acc:       { x0: 0.00, x1: 1.00, y0: 0.55, y1: 1.00 },
+    ears_L:    { x0: 0.00, x1: 0.25, y0: 0.18, y1: 0.55 },
+    ears_R:    { x0: 0.75, x1: 1.00, y0: 0.18, y1: 0.55 }
+  };
+  return staticZones[cat] || { x0: 0, x1: 1, y0: 0, y1: 1 };
+}
+
+function initDefsWithReferences() {
+  Object.keys(REFS_LIST).forEach(name => {
+    const key = name;
+    const label = name;
+    
+    DEFS.body.push({ key, label, icon: '🖼', isRef: true });
+    DEFS.eyes.push({ key, label, icon: '🖼', isRef: true });
+    DEFS.mouth.push({ key, label, icon: '🖼', isRef: true });
+    DEFS.hat.push({ key, label, icon: '🖼', isRef: true });
+    DEFS.acc.push({ key, label, icon: '🖼', isRef: true });
+  });
+}
+
+function getThumbStyle(cat, filename) {
+  let top = '0';
+  let scale = '1.3';
+  if (cat === 'hat')       { top = '5%'; scale = '1.8'; }
+  if (cat === 'eyes')      { top = '-25%'; scale = '2.2'; }
+  if (cat === 'mouth')     { top = '-50%'; scale = '2.2'; }
+  if (cat === 'body')      { top = '-20%'; scale = '1.1'; }
+  if (cat === 'acc')       { top = '-40%'; scale = '1.3'; }
+  return `position:absolute;width:100%;height:auto;left:0;top:${top};transform:scale(${scale});transform-origin:center top;`;
+}
+
+function buildReferenceSelect() {
+  const sel = document.getElementById('ref-select');
+  if (!sel || sel.children.length > 1) return;
+  Object.keys(REFS_LIST).forEach(k => {
+    const opt = document.createElement('option');
+    opt.value = k;
+    opt.textContent = k;
+    sel.appendChild(opt);
+  });
+}
+
+function setReference(val) {
+  S.reference = val;
+  const container = document.getElementById('ref-preview-container');
+  const img = document.getElementById('ref-preview-img');
+  const name = document.getElementById('ref-preview-name');
+  
+  if (val === 'none') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'flex';
+    img.src = '/static/referencias/' + REFS_LIST[val];
+    name.textContent = val;
+  }
+  refreshAll();
+}
+
+// ════════════════════════════════════════════════════════
+//  DEFINIÇÕES DAS OPÇÕES
+// ════════════════════════════════════════════════════════
+const DEFS = {
+  body: [
+    { key:'classic',   icon:'🫧', label:'Clássico'  },
+    { key:'tall',      icon:'🏛', label:'Alto'       },
+    { key:'round',     icon:'⭕', label:'Redondo'    },
+    { key:'wide',      icon:'🪣', label:'Largo'      },
+    { key:'slim',      icon:'🥒', label:'Fino'       },
+    { key:'bear',      icon:'🐻', label:'Urso'       },
+  ],
+  eyes: [
+    { key:'droopy',   icon:'😑', label:'Pesados'   },
+    { key:'wide',     icon:'👁',  label:'Arregalado'},
+    { key:'angry',    icon:'😠', label:'Bravo'     },
+    { key:'happy',    icon:'😄', label:'Feliz'     },
+    { key:'glowing',  icon:'✨', label:'Brilho'    },
+    { key:'sleepy',   icon:'😪', label:'Sonolento' },
+    { key:'star',     icon:'⭐', label:'Estrela'   },
+    { key:'cyclops',  icon:'🔭', label:'Ciclope'   },
+    { key:'robot',    icon:'🤖', label:'Robô'      },
+  ],
+  mouth: [
+    { key:'smile',    icon:'🙂', label:'Sorriso'  },
+    { key:'open',     icon:'😮', label:'Aberta'   },
+    { key:'frown',    icon:'🙁', label:'Triste'   },
+    { key:'grin',     icon:'😬', label:'Grin'     },
+    { key:'flat',     icon:'😐', label:'Reto'     },
+    { key:'shocked',  icon:'😲', label:'Chocado'  },
+    { key:'tongue',   icon:'😛', label:'Língua'   },
+  ],
+  hat: [
+    { key:'none',      icon:'✕',  label:'Nenhum'   },
+    { key:'crown',     icon:'👑', label:'Coroa'    },
+    { key:'spikes',    icon:'🌵', label:'Espinhos' },
+    { key:'antenna',   icon:'📡', label:'Antena'   },
+    { key:'headphones',icon:'🎧', label:'Fone'     },
+    { key:'bow',       icon:'🎀', label:'Laço'     },
+    { key:'halo',      icon:'😇', label:'Halo'     },
+    { key:'horns',     icon:'😈', label:'Chifres'  },
+    { key:'witch',     icon:'🧙', label:'Bruxa'    },
+    { key:'disc',      icon:'🛸', label:'Disco'    },
+  ],
+  acc: [
+    { key:'none',       icon:'✕',  label:'Nenhum'    },
+    { key:'mic',        icon:'🎤', label:'Microfone' },
+    { key:'guitar',     icon:'🎸', label:'Guitarra'  },
+    { key:'wand',       icon:'🪄', label:'Varinha'   },
+    { key:'headphones', icon:'🎧', label:'Fone mão'  },
+    { key:'flower',     icon:'🌸', label:'Flor'      },
+    { key:'trophy',     icon:'🏆', label:'Troféu'    },
+  ],
+};
+
+const COLORS1 = [
+  '#c084fc','#ff8fab','#60d5fa','#86efac','#fbbf24',
+  '#f87171','#fb923c','#a78bfa','#34d399','#e879f9',
+  '#f8fafc','#1e293b',
+];
+const COLORS2 = [
+  '#9333ea','#db2777','#0ea5e9','#16a34a','#d97706',
+  '#dc2626','#ea580c','#7c3aed','#059669','#a21caf',
+  '#94a3b8','#0f172a',
+];
+
+// ════════════════════════════════════════════════════════
+//  RENDER SIDEBAR
+// ════════════════════════════════════════════════════════
+function buildSidebar() {
+  const MAP = {body:'g-body',eyes:'g-eyes',mouth:'g-mouth',hat:'g-hat',acc:'g-acc'};
+  for (const [cat, gridId] of Object.entries(MAP)) {
+    const grid = document.getElementById(gridId);
+    grid.innerHTML = '';
+    DEFS[cat].forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'opt' + (S[cat] === d.key ? ' active' : '');
+      if (d.isRef) {
+        const filename = REFS_LIST[d.key];
+        el.innerHTML = `
+          <div style="width:36px;height:36px;overflow:hidden;position:relative;border-radius:6px;background:rgba(0,0,0,0.2);margin-bottom:3px">
+            <img src="/static/referencias/${filename}" style="${getThumbStyle(cat, filename)}">
+          </div>
+          <span class="opt-label" style="font-size:7px;line-height:1.1;white-space:normal;max-height:16px;overflow:hidden">${d.label}</span>
+        `;
+      } else if (d.isScratch) {
+        el.innerHTML = `
+          <div style="width:36px;height:36px;overflow:hidden;position:relative;border-radius:6px;background:rgba(0,0,0,0.2);margin-bottom:3px">
+            <img src="/static/${d.thumb}" style="width:100%;height:100%;object-fit:contain;">
+          </div>
+          <span class="opt-label" style="font-size:7px;line-height:1.1;white-space:normal;max-height:16px;overflow:hidden">${d.label}</span>
+        `;
+      } else {
+        el.innerHTML = `<span class="opt-icon">${d.icon}</span><span class="opt-label">${d.label}</span>`;
+      }
+      el.onclick = () => { S[cat] = d.key; refreshAll(); };
+      grid.appendChild(el);
+    });
+  }
+}
+
+function buildSwatches() {
+  const sw1 = document.getElementById('swatches');
+  const sw2 = document.getElementById('swatches2');
+  sw1.innerHTML = ''; sw2.innerHTML = '';
+  COLORS1.forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'swatch' + (S.color1 === c ? ' active' : '');
+    el.style.background = c;
+    el.onclick = () => { S.color1 = c; document.getElementById('cpick').value = c; refreshAll(); };
+    sw1.appendChild(el);
+  });
+  COLORS2.forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'swatch' + (S.color2 === c ? ' active' : '');
+    el.style.background = c;
+    el.onclick = () => { S.color2 = c; refreshAll(); };
+    sw2.appendChild(el);
+  });
+}
+
+function setColor(v) { S.color1 = v; refreshAll(); }
+
+function refreshAll() {
+  buildReferenceSelect();
+  buildSidebar();
+  buildSwatches();
+  drawSprunki();
+  updatePrompt();
+}
+
+// ════════════════════════════════════════════════════════
+//  DESENHO DO SPRUNKI — anatomia correta
+// ════════════════════════════════════════════════════════
+
+// Paleta derivada das cores selecionadas
+function shade(hex, amount) {
+  const n = parseInt(hex.replace('#',''),16);
+  const r = Math.min(255,Math.max(0,((n>>16)&0xff)+amount));
+  const g = Math.min(255,Math.max(0,((n>>8)&0xff)+amount));
+  const b = Math.min(255,Math.max(0,(n&0xff)+amount));
+  return `rgb(${r},${g},${b})`;
+}
+
+const imgCache = {};
+function getLoadedImage(url, callback) {
+  if (imgCache[url]) {
+    if (imgCache[url].loaded) {
+      callback(imgCache[url].img);
+    } else {
+      imgCache[url].callbacks.push(callback);
+    }
+    return;
+  }
+  const img = new Image();
+  imgCache[url] = { img, loaded: false, callbacks: [callback] };
+  img.onload = () => {
+    imgCache[url].loaded = true;
+    imgCache[url].callbacks.forEach(cb => cb(img));
+    imgCache[url].callbacks = [];
+  };
+  img.onerror = () => {
+    console.error("Erro ao carregar imagem: " + url);
+    imgCache[url].loaded = true;
+    imgCache[url].callbacks.forEach(cb => cb(null));
+    imgCache[url].callbacks = [];
+  };
+  img.src = url;
+}
+
+async function drawSprunki() {
+  ctx.clearRect(0,0,cv.width,cv.height);
+
+  const CX = cv.width / 2;
+  const dims = getBodyDims(S.body);
+
+  const imagesToLoad = {};
+  const categories = ['body', 'mouth', 'eyes', 'hat', 'acc'];
+  categories.forEach(cat => {
+    const key = S[cat];
+    const defItem = DEFS[cat].find(d => d.key === key);
+    if (defItem) {
+      if (defItem.isScratch) {
+        const path = defItem.src_file || ('static/' + defItem.file);
+        imagesToLoad[cat] = path.startsWith('/') ? path : '/' + path;
+      } else if (defItem.isRef || REFS_LIST[key]) {
+        imagesToLoad[cat] = '/static/referencias/' + REFS_LIST[key];
+      }
+    }
+  });
+
+  // Carrega orelhas (ears_L e ears_R) se for custom/Scratch ou Referência
+  const bodyKey = S.body;
+  const bodyDef = DEFS.body.find(d => d.key === bodyKey);
+  if (bodyDef) {
+    if (bodyDef.isScratch) {
+      if (partsIndex) {
+        if (partsIndex.ears_L) {
+          const earLItem = partsIndex.ears_L.find(item => item.id === bodyKey);
+          if (earLItem) {
+            const path = earLItem.src_file || ('static/' + earLItem.file);
+            imagesToLoad['ears_L'] = path.startsWith('/') ? path : '/' + path;
+          }
+        }
+        if (partsIndex.ears_R) {
+          const earRItem = partsIndex.ears_R.find(item => item.id === bodyKey);
+          if (earRItem) {
+            const path = earRItem.src_file || ('static/' + earRItem.file);
+            imagesToLoad['ears_R'] = path.startsWith('/') ? path : '/' + path;
+          }
+        }
+      }
+    } else if (bodyDef.isRef || REFS_LIST[bodyKey]) {
+      imagesToLoad['ears_L'] = '/static/referencias/' + REFS_LIST[bodyKey];
+      imagesToLoad['ears_R'] = '/static/referencias/' + REFS_LIST[bodyKey];
+    }
+  }
+
+  const loadImage = (url) => new Promise((resolve) => {
+    getLoadedImage(url, resolve);
+  });
+
+  const loadedImages = {};
+  const promises = Object.entries(imagesToLoad).map(async ([cat, url]) => {
+    loadedImages[cat] = await loadImage(url);
+  });
+
+  await Promise.all(promises);
+
+  // --- 1. CORPO ---
+  const bodyWidth = loadedImages['body'] ? 160 : dims.bodW;
+  const cutWidth = bodyWidth;
+  const drawEntireBody = () => {
+    if (loadedImages['body']) {
+      const img = loadedImages['body'];
+      const crop = getCropZone('body');
+      const sx = img.naturalWidth * crop.x0;
+      const sy = img.naturalHeight * crop.y0;
+      const sw = img.naturalWidth * (crop.x1 - crop.x0);
+      const sh = img.naturalHeight * (crop.y1 - crop.y0);
+      ctx.drawImage(img, sx, sy, sw, sh, CX - 80, 230, 160, 220);
+      drawHead(CX, dims);
+      drawEars(CX, dims, loadedImages);
+    } else {
+      ctx.save();
+      ctx.shadowColor = S.color1 + '55';
+      ctx.shadowBlur  = 40;
+      ctx.shadowOffsetY = 8;
+      drawBody(CX, dims);
+      ctx.restore();
+      drawHead(CX, dims);
+      drawEars(CX, dims, loadedImages);
+    }
+  };
+
+  if (S.cutBody) {
+    // Pass 1: Upper body (y < 340)
+    ctx.save();
+    ctx.translate(S.offsets.body.x, S.offsets.body.y);
+    ctx.beginPath();
+    ctx.rect(0, 0, cv.width, 340);
+    ctx.clip();
+    drawEntireBody();
+    
+    // Draw red cut line
+    ctx.beginPath();
+    ctx.moveTo(CX - cutWidth / 2 - 5, 340);
+    ctx.lineTo(CX + cutWidth / 2 + 5, 340);
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+    ctx.restore();
+
+    // Pass 2: Lower body (y >= 340)
+    ctx.save();
+    ctx.translate(S.offsets.body_bottom.x, S.offsets.body_bottom.y);
+    ctx.beginPath();
+    ctx.rect(0, 340, cv.width, cv.height - 340);
+    ctx.clip();
+    drawEntireBody();
+    
+    // Draw red cut line
+    ctx.beginPath();
+    ctx.moveTo(CX - cutWidth / 2 - 5, 340);
+    ctx.lineTo(CX + cutWidth / 2 + 5, 340);
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+    ctx.restore();
+  } else {
+    ctx.save();
+    ctx.translate(S.offsets.body.x, S.offsets.body.y);
+    drawEntireBody();
+    ctx.restore();
+  }
+
+  // --- 2. BOCA ---
+  ctx.save();
+  if (S.offsets && S.offsets.mouth) {
+    ctx.translate(S.offsets.mouth.x, S.offsets.mouth.y);
+  }
+  if (loadedImages['mouth']) {
+    const img = loadedImages['mouth'];
+    const crop = getCropZone('mouth');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    ctx.drawImage(img, sx, sy, sw, sh, CX - 60, 185, 120, 55);
+  } else {
+    drawMouth(CX, dims);
+  }
+  ctx.restore();
+
+  // --- 3. OLHOS ---
+  // Left eye
+  ctx.save();
+  ctx.translate(S.offsets.eyes_L.x, S.offsets.eyes_L.y);
+  if (loadedImages['eyes']) {
+    const img = loadedImages['eyes'];
+    const crop = getCropZone('eyes');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    ctx.drawImage(img, sx, sy, sw / 2, sh, CX - 75, 120, 75, 85);
+  } else {
+    drawSingleEye(CX, dims, true);
+  }
+  ctx.restore();
+
+  // Right eye
+  ctx.save();
+  ctx.translate(S.offsets.eyes_R.x, S.offsets.eyes_R.y);
+  if (loadedImages['eyes']) {
+    const img = loadedImages['eyes'];
+    const crop = getCropZone('eyes');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    ctx.drawImage(img, sx + sw / 2, sy, sw / 2, sh, CX, 120, 75, 85);
+  } else {
+    drawSingleEye(CX, dims, false);
+  }
+  ctx.restore();
+
+  // --- 4. CHAPÉU ---
+  ctx.save();
+  if (S.offsets && S.offsets.hat) {
+    ctx.translate(S.offsets.hat.x, S.offsets.hat.y);
+  }
+  if (loadedImages['hat']) {
+    const img = loadedImages['hat'];
+    const crop = getCropZone('hat');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    ctx.drawImage(img, sx, sy, sw, sh, CX - 85, 30, 170, 100);
+  } else {
+    drawHat(CX, dims);
+  }
+  ctx.restore();
+
+  // --- 5. ACESSÓRIO ---
+  ctx.save();
+  if (S.offsets && S.offsets.acc) {
+    ctx.translate(S.offsets.acc.x, S.offsets.acc.y);
+  }
+  if (loadedImages['acc']) {
+    const img = loadedImages['acc'];
+    const crop = getCropZone('acc');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    ctx.drawImage(img, sx, sy, sw, sh, CX + 40, 200, 130, 220);
+  } else {
+    drawAcc(CX, dims);
+  }
+  ctx.restore();
+
+  // Desenha caixa delimitadora pontilhada na parte selecionada
+  if (S.selectedPart) {
+    let box = null;
+    let label = '';
+    let ox = 0, oy = 0;
+    
+    if ((S.selectedPart === 'eyes_L' || S.selectedPart === 'eyes_R') && S.linkEyes) {
+      box = { x1: CX - 75, y1: 120, w: 150, h: 85 };
+      label = 'Olhos';
+      ox = S.offsets.eyes_L.x;
+      oy = S.offsets.eyes_L.y;
+    } else if ((S.selectedPart === 'ears_L' || S.selectedPart === 'ears_R') && S.linkEars) {
+      const dims = getBodyDims(S.body);
+      const earSize = S.body === 'bear' ? 28 : (S.body === 'round' ? 22 : 18);
+      const earY = S.body === 'bear' ? (dims.hcy - dims.hr * 0.5) : (dims.hcy + 10);
+      const exL = S.body === 'bear' ? (CX - dims.hr * 0.8) : (CX - dims.hr);
+      const exR = S.body === 'bear' ? (CX + dims.hr * 0.8) : (CX + dims.hr);
+      const rx = S.body === 'bear' ? earSize : earSize * 0.7;
+      const ry = earSize;
+      box = { x1: exL - rx - 5, y1: earY - ry - 5, w: (exR + rx + 5) - (exL - rx - 5), h: ry * 2 + 10 };
+      label = 'Orelhas';
+      ox = S.offsets.ears_L.x;
+      oy = S.offsets.ears_L.y;
+    } else {
+      box = getPartBox(S.selectedPart);
+      if (box) {
+        ox = S.offsets[S.selectedPart].x;
+        oy = S.offsets[S.selectedPart].y;
+        label = S.selectedPart === 'body' ? (S.cutBody ? 'Corpo (Superior)' : 'Corpo') :
+                S.selectedPart === 'body_bottom' ? 'Corpo (Inferior)' :
+                S.selectedPart === 'eyes_L' ? 'Olho Esquerdo' :
+                S.selectedPart === 'eyes_R' ? 'Olho Direito' :
+                S.selectedPart === 'ears_L' ? 'Orelha Esquerda' :
+                S.selectedPart === 'ears_R' ? 'Orelha Direita' :
+                S.selectedPart === 'mouth' ? 'Boca' :
+                S.selectedPart === 'hat' ? 'Chapéu' :
+                S.selectedPart === 'acc' ? 'Acessório' : S.selectedPart;
+      }
+    }
+    
+    if (box) {
+      ctx.save();
+      ctx.strokeStyle = '#ff8fab';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 4]);
+      ctx.shadowColor = 'rgba(255, 143, 171, 0.4)';
+      ctx.shadowBlur = 8;
+      
+      const x = box.x1 + ox;
+      const y = box.y1 + oy;
+      ctx.strokeRect(x, y, box.w, box.h);
+      
+      ctx.fillStyle = '#ff8fab';
+      ctx.fillRect(x - 4, y - 4, 8, 8);
+      ctx.fillRect(x + box.w - 4, y - 4, 8, 8);
+      ctx.fillRect(x - 4, y + box.h - 4, 8, 8);
+      ctx.fillRect(x + box.w - 4, y + box.h - 4, 8, 8);
+      
+      ctx.fillStyle = 'rgba(21, 21, 42, 0.85)';
+      ctx.strokeStyle = 'rgba(255, 143, 171, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([]);
+      const labelW = ctx.measureText(label).width + 12;
+      roundRect(ctx, x, y - 22, labelW, 18, 4);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#ff8fab';
+      ctx.font = '10px sans-serif';
+      ctx.fillText(label, x + 6, y - 9);
+      ctx.restore();
+    }
+  }
+}
+
+function getBodyDims(bodyType) {
+  const base = {
+    // cabeça
+    hcx: 190, hcy: 185, hr: 85,
+    // corpo
+    bodY: 255, bodW: 80, bodH: 140, bodRx: 18,
+    // olhos: [esq, dir] relativo ao centro da cabeça
+    eyeOff: 32, eyeY: 175, eyeRx: 22, eyeRy: 25,
+    // boca
+    mouthY: 215,
+    // pescoço
+    neckW: 42, neckH: 22,
+  };
+
+  if (bodyType === 'tall')  { base.bodH=180; base.bodW=68; base.hcy=170; }
+  if (bodyType === 'round') { base.hr=100; base.bodW=100; base.bodH=100; base.hcy=195; base.eyeY=185; base.mouthY=225; base.bodY=270; base.eyeOff=36; }
+  if (bodyType === 'wide')  { base.bodW=120; base.bodH=110; base.hr=88; }
+  if (bodyType === 'slim')  { base.bodW=55; base.bodH=160; base.hr=72; base.hcy=170; base.eyeOff=26; base.eyeRx=18; base.eyeRy=20; }
+  if (bodyType === 'bear')  { base.hr=90; base.bodW=95; base.bodH=130; }
+
+  return base;
+}
+
+function drawBody(CX, d) {
+  const bx = CX - d.bodW/2;
+  const by = d.bodY;
+
+  // Pescoço
+  const neckX = CX - d.neckW/2;
+  ctx.beginPath();
+  ctx.rect(neckX, d.hcy + d.hr - 12, d.neckW, d.neckH + 12);
+  ctx.fillStyle = S.color1;
+  ctx.fill();
+
+  // Corpo principal
+  ctx.beginPath();
+  roundRect(ctx, bx, by, d.bodW, d.bodH, d.bodRx);
+  ctx.fillStyle = S.color1;
+  ctx.fill();
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  // Brilho no corpo
+  ctx.beginPath();
+  roundRect(ctx, bx + 8, by + 10, 16, 40, 8);
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  ctx.fill();
+}
+
+function drawHead(CX, d) {
+  ctx.beginPath();
+  ctx.ellipse(CX, d.hcy, d.hr, d.hr * 0.95, 0, 0, Math.PI * 2);
+  ctx.fillStyle = S.color1;
+  ctx.fill();
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  // Brilho no rosto
+  ctx.beginPath();
+  ctx.ellipse(CX - d.hr * 0.35, d.hcy - d.hr * 0.3, d.hr * 0.18, d.hr * 0.12, -0.4, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(255,255,255,0.20)';
+  ctx.fill();
+}
+
+function drawEars(CX, d, loadedImages) {
+  const earSize = S.body === 'bear' ? 28 : (S.body === 'round' ? 22 : 18);
+  const earY    = d.hcy - d.hr * 0.5;
+
+  // Left Ear
+  ctx.save();
+  if (S.sepEars) {
+    ctx.translate(S.offsets.ears_L.x, S.offsets.ears_L.y);
+  }
+  if (loadedImages['ears_L']) {
+    const img = loadedImages['ears_L'];
+    const crop = getCropZone('ears_L');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    const ex = S.body === 'bear' ? (CX - d.hr * 0.8) : (CX - d.hr);
+    const ey = S.body === 'bear' ? earY : (d.hcy + 10);
+    const rx = S.body === 'bear' ? earSize : earSize * 0.7;
+    const ry = earSize;
+    ctx.drawImage(img, sx, sy, sw, sh, ex - rx, ey - ry, rx * 2, ry * 2);
+  } else {
+    if (S.body === 'bear') {
+      let ex = CX - d.hr * 0.8;
+      let ey = earY;
+      ctx.beginPath();
+      ctx.arc(ex, ey, earSize, 0, Math.PI * 2);
+      ctx.fillStyle = S.color1; ctx.fill();
+      ctx.strokeStyle = '#111'; ctx.lineWidth = 4; ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(ex, ey, earSize * 0.55, 0, Math.PI * 2);
+      ctx.fillStyle = shade(S.color1, -30); ctx.fill();
+    } else {
+      let ex = CX - d.hr;
+      let ey = d.hcy + 10;
+      ctx.beginPath();
+      ctx.ellipse(ex, ey, earSize * 0.7, earSize, 0, 0, Math.PI * 2);
+      ctx.fillStyle = S.color1; ctx.fill();
+      ctx.strokeStyle = '#111'; ctx.lineWidth = 4; ctx.stroke();
+    }
+  }
+  ctx.restore();
+
+  // Right Ear
+  ctx.save();
+  if (S.sepEars) {
+    ctx.translate(S.offsets.ears_R.x, S.offsets.ears_R.y);
+  }
+  if (loadedImages['ears_R']) {
+    const img = loadedImages['ears_R'];
+    const crop = getCropZone('ears_R');
+    const sx = img.naturalWidth * crop.x0;
+    const sy = img.naturalHeight * crop.y0;
+    const sw = img.naturalWidth * (crop.x1 - crop.x0);
+    const sh = img.naturalHeight * (crop.y1 - crop.y0);
+    const ex = S.body === 'bear' ? (CX + d.hr * 0.8) : (CX + d.hr);
+    const ey = S.body === 'bear' ? earY : (d.hcy + 10);
+    const rx = S.body === 'bear' ? earSize : earSize * 0.7;
+    const ry = earSize;
+    ctx.drawImage(img, sx, sy, sw, sh, ex - rx, ey - ry, rx * 2, ry * 2);
+  } else {
+    if (S.body === 'bear') {
+      let ex = CX + d.hr * 0.8;
+      let ey = earY;
+      ctx.beginPath();
+      ctx.arc(ex, ey, earSize, 0, Math.PI * 2);
+      ctx.fillStyle = S.color1; ctx.fill();
+      ctx.strokeStyle = '#111'; ctx.lineWidth = 4; ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(ex, ey, earSize * 0.55, 0, Math.PI * 2);
+      ctx.fillStyle = shade(S.color1, -30); ctx.fill();
+    } else {
+      let ex = CX + d.hr;
+      let ey = d.hcy + 10;
+      ctx.beginPath();
+      ctx.ellipse(ex, ey, earSize * 0.7, earSize, 0, 0, Math.PI * 2);
+      ctx.fillStyle = S.color1; ctx.fill();
+      ctx.strokeStyle = '#111'; ctx.lineWidth = 4; ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+function drawSingleEye(CX, d, isLeft) {
+  if (S.eyes === 'cyclops') {
+    if (!isLeft) return;
+  }
+  const ex = S.eyes === 'cyclops' ? CX : (isLeft ? CX - d.eyeOff : CX + d.eyeOff);
+  const ey = d.eyeY;
+  const rx = S.eyes === 'cyclops' ? d.eyeRx * 1.6 : d.eyeRx;
+  const ry = S.eyes === 'cyclops' ? d.eyeRy * 1.3 : d.eyeRy;
+
+  // Blanco do olho
+  ctx.beginPath();
+  ctx.ellipse(ex, ey, rx, ry, 0, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff'; ctx.fill();
+  ctx.strokeStyle = '#111'; ctx.lineWidth = 3.5; ctx.stroke();
+
+  // Pupila
+  const pupR = rx * 0.45;
+  const pColor = S.eyes === 'glowing' ? S.color2
+               : S.eyes === 'robot'   ? '#00ff88'
+               : '#111';
+  ctx.beginPath();
+  ctx.arc(ex + rx * 0.08, ey + ry * 0.05, pupR, 0, Math.PI * 2);
+  ctx.fillStyle = pColor; ctx.fill();
+
+  if (S.eyes === 'glowing') {
+    ctx.save();
+    ctx.shadowColor = S.color2; ctx.shadowBlur = 18;
+    ctx.beginPath(); ctx.arc(ex, ey, pupR, 0, Math.PI * 2);
+    ctx.fillStyle = S.color2 + '80'; ctx.fill();
+    ctx.restore();
+  }
+
+  // Brilho no olho
+  ctx.beginPath();
+  ctx.arc(ex - rx * 0.28, ey - ry * 0.28, pupR * 0.45, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff'; ctx.fill();
+
+  // Pálpebra pesada (droopy / sleepy)
+  if (S.eyes === 'droopy' || S.eyes === 'sleepy') {
+    const cover = S.eyes === 'sleepy' ? 0.62 : 0.42;
+    ctx.beginPath();
+    ctx.ellipse(ex, ey - ry * (1 - cover), rx + 1, ry * cover + 2, 0, Math.PI, 0);
+    ctx.fillStyle = S.color1; ctx.fill();
+    ctx.strokeStyle = '#111'; ctx.lineWidth = 3; ctx.stroke();
+  }
+
+  // Olho feliz (arco)
+  if (S.eyes === 'happy') {
+    ctx.beginPath();
+    ctx.ellipse(ex, ey, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff'; ctx.fill();
+    ctx.strokeStyle = '#111'; ctx.lineWidth = 3.5; ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(ex, ey + ry * 0.3, rx * 0.9, ry * 0.75, 0, Math.PI, 0);
+    ctx.fillStyle = S.color1; ctx.fill();
+    ctx.strokeStyle = '#111'; ctx.lineWidth = 2.5; ctx.stroke();
+  }
+
+  // Bravo: sobrancelha
+  if (S.eyes === 'angry') {
+    ctx.beginPath();
+    const dir = ex < CX ? 1 : -1;
+    ctx.moveTo(ex - rx, ey - ry - 3);
+    ctx.lineTo(ex + rx, ey - ry - 10 * dir - 3);
+    ctx.strokeStyle = '#111'; ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.stroke();
+  }
+
+  // Estrela
+  if (S.eyes === 'star') {
+    ctx.save();
+    ctx.translate(ex, ey);
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const a  = (i * 4 * Math.PI / 5) - Math.PI / 2;
+      const a2 = ((i * 4 + 2) * Math.PI / 5) - Math.PI / 2;
+      const [x1,y1] = [Math.cos(a)*pupR*1.4, Math.sin(a)*pupR*1.4];
+      const [x2,y2] = [Math.cos(a2)*pupR*0.55, Math.sin(a2)*pupR*0.55];
+      i === 0 ? ctx.moveTo(x1,y1) : ctx.lineTo(x1,y1);
+      ctx.lineTo(x2,y2);
+    }
+    ctx.closePath(); ctx.fillStyle = '#f59e0b'; ctx.fill();
+    ctx.restore();
+  }
+
+  // Robô: scan line
+  if (S.eyes === 'robot') {
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(ex, ey, rx, ry, 0, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.fillStyle = '#001a0a';
+    ctx.fillRect(ex - rx, ey - ry, rx * 2, ry * 2);
+    for (let i = 0; i < 4; i++) {
+      ctx.fillStyle = 'rgba(0,255,136,0.35)';
+      ctx.fillRect(ex - rx, ey - ry + i * ry * 0.55, rx * 2, ry * 0.22);
+    }
+    ctx.restore();
+  }
+}
+
+function drawMouth(CX, d) {
+  const my = d.mouthY;
+  ctx.save();
+  ctx.strokeStyle = '#111'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+
+  switch (S.mouth) {
+    case 'smile':
+      ctx.beginPath(); ctx.arc(CX, my - 8, 28, 0.1*Math.PI, 0.9*Math.PI); ctx.stroke();
+      break;
+    case 'open':
+      ctx.beginPath(); ctx.ellipse(CX, my, 22, 16, 0, 0, Math.PI*2);
+      ctx.fillStyle = '#111'; ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.fillRect(CX-16, my-16, 32, 9);
+      break;
+    case 'frown':
+      ctx.beginPath(); ctx.arc(CX, my+16, 28, 1.1*Math.PI, 1.9*Math.PI); ctx.stroke();
+      break;
+    case 'grin':
+      ctx.beginPath(); ctx.arc(CX, my-8, 34, 0.05*Math.PI, 0.95*Math.PI); ctx.stroke();
+      ctx.fillStyle='#fff'; ctx.fillRect(CX-24,my-5,48,7);
+      ctx.strokeStyle='#111'; ctx.lineWidth=1.5; ctx.strokeRect(CX-24,my-5,48,7);
+      break;
+    case 'flat':
+      ctx.beginPath(); ctx.moveTo(CX-22, my); ctx.lineTo(CX+22, my); ctx.stroke();
+      break;
+    case 'shocked':
+      ctx.beginPath(); ctx.ellipse(CX, my, 16, 20, 0, 0, Math.PI*2);
+      ctx.fillStyle='#111'; ctx.fill(); ctx.stroke();
+      break;
+    case 'tongue':
+      ctx.beginPath(); ctx.arc(CX, my-8, 28, 0.1*Math.PI, 0.9*Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(CX, my+8, 10, 13, 0, 0, Math.PI*2);
+      ctx.fillStyle='#f472b6'; ctx.fill(); ctx.strokeStyle='#111'; ctx.lineWidth=2.5; ctx.stroke();
+      break;
+  }
+  ctx.restore();
+}
+
+function drawHat(CX, d) {
+  const hy = d.hcy - d.hr;  // topo da cabeça
+  ctx.save();
+  ctx.fillStyle = S.color2;
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = 4;
+
+  switch (S.hat) {
+    case 'none': break;
+
+    case 'crown':
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillRect(CX-42, hy-20, 84, 22);
+      [[CX-32,hy-20],[CX,hy-38],[CX+32,hy-20]].forEach(([x,y],i)=>{
+        ctx.beginPath(); ctx.moveTo(x-14,hy-20); ctx.lineTo(x,y-14); ctx.lineTo(x+14,hy-20);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      });
+      ctx.fillStyle='#ef4444';
+      [[CX-32,hy-10],[CX,hy-30],[CX+32,hy-10]].forEach(([x,y])=>{
+        ctx.beginPath(); ctx.arc(x,y,5,0,Math.PI*2); ctx.fill();
+      });
+      ctx.strokeRect(CX-42, hy-20, 84, 22);
+      break;
+
+    case 'spikes':
+      ctx.fillStyle = S.color2;
+      for(let i=-2;i<=2;i++){
+        ctx.beginPath();
+        ctx.moveTo(CX+i*20-10,hy-2);
+        ctx.lineTo(CX+i*20,hy-32-Math.abs(i)*6);
+        ctx.lineTo(CX+i*20+10,hy-2);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      }
+      break;
+
+    case 'antenna':
+      ctx.strokeStyle='#111'; ctx.lineWidth=4;
+      [[-22,0],[22,0]].forEach(([ox])=>{
+        ctx.beginPath(); ctx.moveTo(CX+ox,hy); ctx.lineTo(CX+ox,hy-38); ctx.stroke();
+        ctx.beginPath(); ctx.arc(CX+ox,hy-44,10,0,Math.PI*2);
+        ctx.fillStyle=S.color2; ctx.fill(); ctx.strokeStyle='#111'; ctx.lineWidth=3.5; ctx.stroke();
+      });
+      break;
+
+    case 'headphones':
+      ctx.strokeStyle='#111'; ctx.lineWidth=6; ctx.lineCap='round';
+      ctx.beginPath(); ctx.arc(CX, d.hcy-d.hr*0.6, d.hr*0.95, Math.PI,0); ctx.stroke();
+      [[-d.hr*0.95,d.hcy-d.hr*0.6],[d.hr*0.95,d.hcy-d.hr*0.6]].forEach(([ox,oy])=>{
+        ctx.beginPath(); ctx.ellipse(CX+ox,oy,14,20,0,0,Math.PI*2);
+        ctx.fillStyle='#374151'; ctx.fill(); ctx.strokeStyle='#111'; ctx.lineWidth=3; ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(CX+ox,oy,8,12,0,0,Math.PI*2);
+        ctx.fillStyle=S.color2; ctx.fill();
+      });
+      break;
+
+    case 'bow':
+      ctx.fillStyle='#ff8fab';
+      [[-26,0],[8,0]].forEach(([ox],i)=>{
+        ctx.beginPath();
+        ctx.ellipse(CX+ox,hy-16,20,13,i===0?-0.3:0.3,0,Math.PI*2);
+        ctx.fill(); ctx.stroke();
+      });
+      ctx.beginPath(); ctx.arc(CX-9,hy-16,8,0,Math.PI*2);
+      ctx.fill(); ctx.stroke();
+      break;
+
+    case 'halo':
+      ctx.save();
+      ctx.shadowColor='#f59e0b'; ctx.shadowBlur=20;
+      ctx.strokeStyle='#f59e0b'; ctx.lineWidth=6;
+      ctx.beginPath(); ctx.ellipse(CX,hy-10,52,13,0,0,Math.PI*2); ctx.stroke();
+      ctx.restore();
+      break;
+
+    case 'horns':
+      ctx.fillStyle='#dc2626';
+      [[-38,0],[38,0]].forEach(([ox],i)=>{
+        ctx.beginPath();
+        ctx.moveTo(CX+ox-12,hy);
+        ctx.lineTo(CX+ox+(i===0?-10:10),hy-36);
+        ctx.lineTo(CX+ox+12,hy);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      });
+      break;
+
+    case 'witch':
+      ctx.fillStyle='#1e1b4b';
+      ctx.beginPath(); ctx.ellipse(CX,hy,58,14,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(CX-32,hy); ctx.lineTo(CX,hy-65); ctx.lineTo(CX+32,hy);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      break;
+
+    case 'disc':
+      ctx.fillStyle='#94a3b8';
+      ctx.beginPath(); ctx.ellipse(CX,hy,70,16,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(CX,hy-4,36,10,0,0,Math.PI*2);
+      ctx.fillStyle='#cbd5e1'; ctx.fill(); ctx.stroke();
+      break;
+  }
+  ctx.restore();
+}
+
+function drawAcc(CX, d) {
+  const ax = CX + d.hr * 0.95 + 10;
+  const ay = d.hcy + 20;
+  if (S.acc === 'none') return;
+  ctx.save();
+
+  switch (S.acc) {
+    case 'mic':
+      ctx.fillStyle='#9ca3af'; ctx.strokeStyle='#111'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.ellipse(ax,ay-20,9,13,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle='#9ca3af'; ctx.lineWidth=3; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(ax,ay-7); ctx.lineTo(ax,ay+14); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ax-12,ay+14); ctx.lineTo(ax+12,ay+14); ctx.stroke();
+      break;
+
+    case 'guitar':
+      ctx.fillStyle='#92400e'; ctx.strokeStyle='#111'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.ellipse(ax,ay+12,13,17,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(ax+2,ay-14,9,11,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle='#92400e'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(ax+2,ay-25); ctx.lineTo(ax+2,ay-46); ctx.stroke();
+      break;
+
+    case 'wand':
+      ctx.strokeStyle='#7c3aed'; ctx.lineWidth=4; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(ax-12,ay+22); ctx.lineTo(ax+10,ay-22); ctx.stroke();
+      ctx.save(); ctx.translate(ax+10,ay-22);
+      ctx.beginPath();
+      for(let i=0;i<5;i++){
+        const a=(i*4*Math.PI/5)-Math.PI/2, a2=((i*4+2)*Math.PI/5)-Math.PI/2;
+        i===0?ctx.moveTo(Math.cos(a)*12,Math.sin(a)*12):ctx.lineTo(Math.cos(a)*12,Math.sin(a)*12);
+        ctx.lineTo(Math.cos(a2)*5,Math.sin(a2)*5);
+      }
+      ctx.closePath();
+      ctx.shadowColor='#f59e0b'; ctx.shadowBlur=14;
+      ctx.fillStyle='#f59e0b'; ctx.fill();
+      ctx.restore();
+      break;
+
+    case 'headphones':
+      ctx.fillStyle='#374151'; ctx.strokeStyle='#111'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.ellipse(ax,ay,12,18,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(ax,ay,7,11,0,0,Math.PI*2);
+      ctx.fillStyle=S.color2; ctx.fill();
+      break;
+
+    case 'flower':
+      for(let i=0;i<6;i++){
+        ctx.save(); ctx.translate(ax,ay); ctx.rotate(i*Math.PI/3);
+        ctx.beginPath(); ctx.ellipse(0,-13,7,13,0,0,Math.PI*2);
+        ctx.fillStyle='#f9a8d4'; ctx.fill();
+        ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.stroke();
+        ctx.restore();
+      }
+      ctx.beginPath(); ctx.arc(ax,ay,9,0,Math.PI*2);
+      ctx.fillStyle='#fbbf24'; ctx.fill();
+      ctx.strokeStyle='#111'; ctx.lineWidth=2.5; ctx.stroke();
+      break;
+
+    case 'trophy':
+      ctx.fillStyle='#f59e0b'; ctx.strokeStyle='#111'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.ellipse(ax,ay-16,14,18,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.fillRect(ax-5,ay+2,10,12);
+      ctx.fillRect(ax-14,ay+14,28,6);
+      ctx.stroke();
+      break;
+  }
+  ctx.restore();
+}
+
+// Helper: roundRect compatível
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.arcTo(x+w,y,x+w,y+r,r);
+  ctx.lineTo(x+w,y+h-r);
+  ctx.arcTo(x+w,y+h,x+w-r,y+h,r);
+  ctx.lineTo(x+r,y+h);
+  ctx.arcTo(x,y+h,x,y+h-r,r);
+  ctx.lineTo(x,y+r);
+  ctx.arcTo(x,y,x+r,y,r);
+  ctx.closePath();
+}
+
+// ════════════════════════════════════════════════════════
+//  AÇÕES
+// ════════════════════════════════════════════════════════
+function randomize() {
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)].key;
+  S.body  = pick(DEFS.body);
+  S.eyes  = pick(DEFS.eyes);
+  S.mouth = pick(DEFS.mouth);
+  S.hat   = pick(DEFS.hat);
+  S.acc   = pick(DEFS.acc);
+  S.color1 = COLORS1[Math.floor(Math.random()*COLORS1.length)];
+  S.color2 = COLORS2[Math.floor(Math.random()*COLORS2.length)];
+  refreshAll();
+}
+
+function toggleLinkEyes(checked) {
+  S.linkEyes = checked;
+  if (checked) {
+    S.offsets.eyes_R.x = S.offsets.eyes_L.x;
+    S.offsets.eyes_R.y = S.offsets.eyes_L.y;
+  }
+  refreshAll();
+}
+
+function toggleCutBody(checked) {
+  S.cutBody = checked;
+  if (!checked) {
+    S.offsets.body_bottom.x = S.offsets.body.x;
+    S.offsets.body_bottom.y = S.offsets.body.y;
+  }
+  refreshAll();
+}
+
+function toggleSepEars(checked) {
+  S.sepEars = checked;
+  const lblLink = document.getElementById('lbl-link-ears');
+  if (lblLink) {
+    lblLink.style.display = checked ? 'flex' : 'none';
+  }
+  if (!checked) {
+    S.offsets.ears_L.x = 0; S.offsets.ears_L.y = 0;
+    S.offsets.ears_R.x = 0; S.offsets.ears_R.y = 0;
+  }
+  refreshAll();
+}
+
+function toggleLinkEars(checked) {
+  S.linkEars = checked;
+  if (checked) {
+    S.offsets.ears_R.x = S.offsets.ears_L.x;
+    S.offsets.ears_R.y = S.offsets.ears_L.y;
+  }
+  refreshAll();
+}
+
+function resetAll() {
+  S.body='classic'; S.eyes='droopy'; S.mouth='smile'; S.hat='none'; S.acc='none'; S.reference='none';
+  S.color1='#c084fc'; S.color2='#9333ea';
+  S.selectedPart = null;
+  S.linkEyes = true;
+  S.cutBody = false;
+  S.sepEars = false;
+  S.linkEars = true;
+  S.offsets = {
+    body: {x: 0, y: 0},
+    body_bottom: {x: 0, y: 0},
+    eyes: {x: 0, y: 0},
+    eyes_L: {x: 0, y: 0},
+    eyes_R: {x: 0, y: 0},
+    ears_L: {x: 0, y: 0},
+    ears_R: {x: 0, y: 0},
+    mouth: {x: 0, y: 0},
+    hat: {x: 0, y: 0},
+    acc: {x: 0, y: 0}
+  };
+  const chkLink = document.getElementById('chk-link-eyes');
+  if (chkLink) chkLink.checked = true;
+  const chkCut = document.getElementById('chk-cut-body');
+  if (chkCut) chkCut.checked = false;
+  const chkSep = document.getElementById('chk-sep-ears');
+  if (chkSep) chkSep.checked = false;
+  const chkLinkEars = document.getElementById('chk-link-ears');
+  if (chkLinkEars) chkLinkEars.checked = true;
+  const lblLinkEars = document.getElementById('lbl-link-ears');
+  if (lblLinkEars) lblLinkEars.style.display = 'none';
+  document.getElementById('ref-select').value = 'none';
+  document.getElementById('ref-preview-container').style.display = 'none';
+  refreshAll();
+}
+
+function exportPNG() {
+  const a = document.createElement('a');
+  a.download = `sprunki_oc_${Date.now()}.png`;
+  a.href = cv.toDataURL('image/png');
+  a.click();
+}
+
+function updatePrompt() {
+  const bodyL  = REFS_LIST[S.body] ? `corpo do personagem ${S.body}` : `corpo ${DEFS.body.find(d=>d.key===S.body)?.label||S.body}`;
+  const eyeL   = REFS_LIST[S.eyes] ? `olhos do personagem ${S.eyes}` : `olhos ${DEFS.eyes.find(d=>d.key===S.eyes)?.label||S.eyes}`;
+  const mouthL = REFS_LIST[S.mouth] ? `boca do personagem ${S.mouth}` : `boca ${DEFS.mouth.find(d=>d.key===S.mouth)?.label||S.mouth}`;
+  const hatL   = REFS_LIST[S.hat] ? `acessório de cabeça do personagem ${S.hat}` : `${DEFS.hat.find(d=>d.key===S.hat)?.label||S.hat}`;
+  const accL   = REFS_LIST[S.acc] ? `item do personagem ${S.acc}` : `segurando ${DEFS.acc.find(d=>d.key===S.acc)?.label||S.acc}`;
+
+  let promptStr = `sprunki_char, ${bodyL}, cor principal ${S.color1}, ${eyeL}, ${mouthL}`;
+  
+  if (S.reference !== 'none') {
+    promptStr += `, inspirado em ${S.reference}`;
+  }
+  if (S.hat !== 'none') {
+    promptStr += `, ${hatL}`;
+  }
+  if (S.acc !== 'none') {
+    promptStr += `, ${accL}`;
+  }
+  promptStr += `, high quality sprite`;
+  
+  document.getElementById('pbox').textContent = promptStr;
+}
+
+// ════════════════════════════════════════════════════════
+//  GERAÇÃO COM IA
+// ════════════════════════════════════════════════════════
+async function genAI() {
+  document.getElementById('overlay').classList.add('on');
+  document.getElementById('spin').style.display='block';
+  document.getElementById('res-img').style.display='none';
+  document.getElementById('res-act').style.display='none';
+  document.getElementById('gen-txt').textContent='Enviando para RTX 5080...';
+  document.getElementById('pfill').style.width='0%';
+
+  const colorName = c => {
+    const h = parseInt(c.replace('#',''),16);
+    const r=(h>>16)&255,g=(h>>8)&255,b=h&255;
+    const max=Math.max(r,g,b),min=Math.min(r,g,b),delta=max-min;
+    const hue = delta===0?0:max===r?((g-b)/delta%6)*60:max===g?((b-r)/delta+2)*60:((r-g)/delta+4)*60;
+    if(max<50) return 'black'; if(min>200) return 'white'; if(delta<30) return 'gray';
+    if(hue<30||hue>=330) return 'red'; if(hue<60) return 'orange'; if(hue<90) return 'yellow';
+    if(hue<150) return 'green'; if(hue<200) return 'cyan'; if(hue<260) return 'blue';
+    if(hue<290) return 'purple'; return 'pink';
+  };
+
+  const getCharVal = (cat) => {
+    const key = S[cat];
+    if (REFS_LIST[key]) return key;
+    const defItem = DEFS[cat].find(d => d.key === key);
+    if (defItem && defItem.isScratch) return defItem.label;
+    return 'none';
+  };
+
+  const payload = {
+    body_color: colorName(S.color1),
+    eyes: REFS_LIST[S.eyes] ? 'normal' : (DEFS.eyes.find(d=>d.key===S.eyes)?.isScratch ? 'normal' : S.eyes),
+    mouth: REFS_LIST[S.mouth] ? 'smile' : (DEFS.mouth.find(d=>d.key===S.mouth)?.isScratch ? 'smile' : S.mouth),
+    hat: REFS_LIST[S.hat] ? 'none' : (DEFS.hat.find(d=>d.key===S.hat)?.isScratch ? 'none' : S.hat),
+    accessory: REFS_LIST[S.acc] ? 'none' : (DEFS.acc.find(d=>d.key===S.acc)?.isScratch ? 'none' : S.acc),
+    theme: 'default',
+    reference_character: S.reference,
+    body_character: getCharVal('body'),
+    eyes_character: getCharVal('eyes'),
+    mouth_character: getCharVal('mouth'),
+    hat_character: getCharVal('hat'),
+    accessory_character: getCharVal('acc'),
+    extra_desc: `corpo ${REFS_LIST[S.body] ? S.body : DEFS.body.find(d=>d.key===S.body)?.label||S.body}, cor secundária ${colorName(S.color2)}`,
+    image_ref: cv.toDataURL('image/png')
+  };
+
+  try {
+    const r = await fetch('/api/generate_oc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const d = await r.json();
+    if(d.status==='error') throw new Error(d.message);
+    pollGen(d.prompt_id);
+  } catch(e) {
+    document.getElementById('gen-txt').textContent='Erro: '+e.message;
+    document.getElementById('spin').style.display='none';
+  }
+}
+
+function pollGen(id) {
+  const iv = setInterval(async()=>{
+    const r = await fetch(`/api/status/${id}`);
+    const d = await r.json();
+    document.getElementById('pfill').style.width=(d.progress||0)+'%';
+    if(d.status==='queued')     document.getElementById('gen-txt').textContent='Na fila...';
+    if(d.status==='generating') document.getElementById('gen-txt').textContent=`Gerando... ${d.progress||0}%`;
+    if(d.status==='done'){
+      clearInterval(iv);
+      document.getElementById('spin').style.display='none';
+      document.getElementById('gen-txt').textContent='✓ Pronto!';
+      document.getElementById('pfill').style.width='100%';
+      const img=document.getElementById('res-img');
+      img.src=d.output; img.style.display='block';
+      document.getElementById('res-act').style.display='flex';
+    }
+    if(d.status==='error'){
+      clearInterval(iv);
+      document.getElementById('gen-txt').textContent='Erro: '+(d.error||'?');
+      document.getElementById('spin').style.display='none';
+    }
+  },1000);
+}
+
+function dlResult(){
+  const img=document.getElementById('res-img');
+  if(!img.src)return;
+  const a=document.createElement('a');
+  a.href=img.src; a.download=`sprunki_ai_${Date.now()}.png`; a.click();
+}
+function closeOverlay(){document.getElementById('overlay').classList.remove('on')}
+
+// ── Init
+async function init() {
+  initDefsWithReferences();
+  await loadPartsIndex();
+  refreshAll();
+}
+init();
+</script>
+</body>
+</html>

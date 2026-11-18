@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Black Sabbath-inspired, Crushing early doom metal, deeply downtuned fuzz guitars, heavy tritone-laced new riff, enormous bass, swinging drums, raw haunted male baritone. 76 BPM, C sharp minor. slow massive syncopated riff with air between attacks, then a swinging double-time doom break. Early doom metal, downtuned fuzz, raw baritone, swinging 7/8 and 4/4 feel, heavy bass, tri-tone harmony.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro Verse 1 0-75s; Chorus Verse 2 75-180s; Bridge Double 180-240s; Final Outro 240-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=76, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nBlack smoke rises in a crooked line\nThe spire hisses, drawing the light in\nWe kneel on the gravel, we kneel on the rust\nCounting the houses that the pit has dusted\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Verse]\nThe priest pours a bucket of golden oil\nWatches the pavement begin to boil\nHe says the hunger is holy and deep\nIt feeds on the living while we’re asleep\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Bridge]\nThe ground groans a low and heavy sound\nThe spire cracks with a thunderous thud\nIt takes the altar, it takes the bell\nSwallows the town where the shadows dwell\n\n[Solo]\n\n[Chorus]\nTar Cathedral, drink the sky\nSwallow the wall, let the roof fall by\nEvery prayer is a hole in the ground\nWe build it up, and it pulls it down\n\n[Outro]\nJust the smoke and the silence now\nThe well is full, and the dark is here\nWe are gone",
+      "seed": 202610161004,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

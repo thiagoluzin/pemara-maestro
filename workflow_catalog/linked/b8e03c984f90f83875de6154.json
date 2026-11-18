@@ -1,0 +1,313 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "fasth3_omniref_8step_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 8,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_fasth3_omni_20261022/continuum_15s/L10_v2",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "omni_image_1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_locke_approved_2aa5a3486b.png"
+    }
+  },
+  "omni_image_2": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_ultros_approved_f4683db130.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "Live action period fantasy film photographed on a real wooden opera-house maintenance gantry. One real actor Locke from reference image 1 and one practical purple octopus creature Ultros from reference image 2. Preserve exactly the approved clothes and creature proportions. The reference video defines the physical set and fixed wide camera: wooden stairs left, Locke left, Ultros right, grey cylindrical counterweight lying horizontally in its central wooden cradle, seated audience far below right. Matte old wood, ordinary dark hemp ropes, steady warm tungsten work lamps with constant exposure. A single uninterrupted fifteen-second wide shot at normal speed. At the start Locke stands beside the horizontal weight. Over the first five seconds he plants both boots and presses the wooden brace firmly into its slot with his hands. Ultros slowly lifts one heavy thick arm away from the cylinder and holds its tip directly above the adjacent short wooden support. Over the next five seconds that arm visibly descends and physically strikes the short support once. Only after the arm makes contact does the wood split and the adjacent floorboard tilt a little. During the final five seconds Locke grips the solid side railing with one hand and shifts a boot onto the intact stair landing, regaining a secure stance. Ultros rests its striking arm on the boards. The cylinder stays horizontal and motionless in the cradle throughout. Everything remains in the same wide shot. The action consists only of practical body movement, bending wood and grounded contact. Quiet native sound: one boot step, strained breathing, one dull arm impact, wood creak, quiet audience ambience. No dialogue or score.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 22103111,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "ffvi_L10_15s_omni_single_v2",
+      "reference_size": "Max Identity",
+      "project_id": "ffvi_opera_fasth3_omni_liveaction_20261022",
+      "video_reference_size": "Match Output",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "reference_image_1": [
+        "omni_image_1",
+        0
+      ],
+      "reference_image_2": [
+        "omni_image_2",
+        0
+      ],
+      "reference_video_1": [
+        "approved_video",
+        0
+      ]
+    }
+  },
+  "approved_video": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_fasth3_omni_liveaction_20261022\\pilot\\review\\T21_sem_DLSS_video.mp4",
+      "force_rate": 24,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 192,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  }
+}

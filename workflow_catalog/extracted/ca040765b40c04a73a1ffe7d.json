@@ -1,0 +1,31 @@
+{
+  "load": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_P27v2_draco_stage_before_dlss5.png"
+    },
+    "is_changed": [
+      "3e63aaa72188c2628a8c191158c948bf29d2a89277f689000e150d1a02bf3b54"
+    ]
+  },
+  "save": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "load",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/anchors/P27v2_draco_stage"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

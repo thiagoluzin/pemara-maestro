@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "asset_type": "hyperframes_composition_smoke_render",
+  "status": "READY_PENDING_HUMAN_QC",
+  "generated_at": "2026-08-09T18:40:43-03:00",
+  "engine": {
+    "name": "HyperFrames",
+    "version": "0.7.103",
+    "package": "hyperframes",
+    "license": "Apache-2.0",
+    "package_lock_sha256": "1BE677D8EC1B35CA8A695F16CE8E14B54F18F7D313BBA41DF1B83F1269A60F11"
+  },
+  "source": {
+    "composition": "../index.html",
+    "composition_sha256": "A5BD953177A6308D84304E0EF3D09A57A3842B822048F10C5D2244B565A58A23",
+    "brand_asset": "../assets/brand/pemara-tech-logo.png",
+    "brand_asset_sha256": "E4127211F8541D1FBF9CE36ABE66F8D72A6B98D19EFA34A1B0E8F37CCA234CC1"
+  },
+  "render": {
+    "file": "maestro-hyperframes-pilot.mp4",
+    "sha256": "F9BA139E40F0EA1C677199D763B6854688D53F02ED44A186C411305180C5F468",
+    "bytes": 1068776,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration_seconds": 6.0,
+    "frames": 180,
+    "audio": false,
+    "browser_gpu": false,
+    "workers": 1,
+    "quality": "high"
+  },
+  "validation": {
+    "lint": "PASS_0_ERRORS_0_WARNINGS",
+    "runtime": "PASS",
+    "layout": "PASS",
+    "contrast": "PASS_22_OF_22",
+    "full_decode": "PASS",
+    "npm_audit_production": "PASS_0_VULNERABILITIES",
+    "contact_sheet": "../qc/maestro-hyperframes-pilot-contact.png",
+    "contact_sheet_sha256": "C56F1A35AC8901604C8B4A2EBAF1168C9719BED2E3CD22A47A2AB1F60A71F5C5"
+  },
+  "approval": {
+    "human_required": true,
+    "human_status": "PENDING",
+    "auto_approved": false
+  }
+}

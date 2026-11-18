@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-10-08T11:54:06.1944594-03:00",
+  "backendTestsPassed": 127,
+  "pythonCompilePassed": true,
+  "boundedPlanCorrectionAttempts": 2,
+  "instrumentsVocabularyClosed": true,
+  "numericLimitsExplicit": true,
+  "declaredTracksRequiredOnRepair": true,
+  "backupDirectory": "E:\\Pemara\\maestro\\pemara\\backups\\music_qwen_instruments_fix_20261008",
+  "isolatedTextTestsBeforeFinalRevision": "failed_and_preserved",
+  "liveValidationEvidence": {
+    "job_id": "186bcc842466435885e0eec1930dac8e",
+    "status": "done",
+    "message": "Concluido.",
+    "error": null,
+    "prompt_id": "ba557dd6-034d-4dc2-be5a-65a96daa2604",
+    "started_at": 1791470893.3294063
+  },
+  "liveOwnerRequestPassedQwenGate": true,
+  "audioDeliveryConfirmed": true,
+  "artisticApproval": false,
+  "files": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_qwen.py",
+      "sha256": "0a991e5795c0dd399aa763c87da2535690f03c1096760e93b14ac782d5edfe10",
+      "lastWriteTime": "2026-10-08T11:47:57.2521416-03:00"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_writer.py",
+      "sha256": "11a1ae95ea074afdfa945315042c83b6bcfe6bfa87ac441fcecbf579b31faf17",
+      "lastWriteTime": "2026-10-08T11:47:57.2521416-03:00"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_writer_contract.py",
+      "sha256": "ef3b8ac95c8127d580a20c1a1bd8d388e66329ddceeead0d54b5a80a6ccc17b0",
+      "lastWriteTime": "2026-10-08T11:47:57.2531463-03:00"
+    }
+  ]
+}

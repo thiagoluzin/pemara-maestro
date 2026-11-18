@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "pemara-live-action-events@1",
+  "eventTypes": [
+    {
+      "type": "LIVE_ACTION_STORY_APPROVED",
+      "authority": ["owner"],
+      "from": ["DRAFT"],
+      "to": "STORY_APPROVED"
+    },
+    {
+      "type": "LIVE_ACTION_ANCHORS_LOCKED",
+      "authority": ["owner"],
+      "from": ["STORY_APPROVED"],
+      "to": "ANCHORS_LOCKED"
+    },
+    {
+      "type": "LIVE_ACTION_PREFLIGHT_PASSED",
+      "authority": ["technical"],
+      "from": ["ANCHORS_LOCKED"],
+      "to": "PREFLIGHT_PASSED",
+      "set": {
+        "renderAuthorized": false,
+        "assemblyAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_RENDER_AUTHORIZED",
+      "authority": ["owner"],
+      "from": ["PREFLIGHT_PASSED"],
+      "to": "RENDER_AUTHORIZED",
+      "set": {
+        "renderAuthorized": true,
+        "assemblyAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_CANDIDATE_REGISTERED",
+      "authority": ["technical"],
+      "from": ["RENDER_AUTHORIZED"],
+      "to": "CANDIDATE_READY",
+      "set": {
+        "assemblyAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_CAUSAL_MOTION_GATE_PASSED",
+      "authority": ["technical"],
+      "from": ["CANDIDATE_READY"],
+      "to": "CAUSAL_MOTION_QC_PASSED",
+      "requires": [
+        "the complete MP4 was reviewed densely across time",
+        "defender displacement starts only after visible contact or declared evasion",
+        "every grounded translation has a visible step, pivot, skid, roll or drag",
+        "every airborne arc has visible propulsion or post-contact launch and a landing",
+        "evidence path and SHA-256 are recorded"
+      ],
+      "set": {
+        "assemblyAllowed": false,
+        "promotionAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_TECHNICAL_QC_PASSED",
+      "authority": ["technical"],
+      "from": ["CANDIDATE_READY", "CAUSAL_MOTION_QC_PASSED"],
+      "to": "TECHNICAL_QC_PASSED",
+      "set": {
+        "assemblyAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_TECHNICAL_CANDIDATE_REJECTED",
+      "authority": ["technical"],
+      "from": ["RENDER_AUTHORIZED", "CANDIDATE_READY", "TECHNICAL_QC_PASSED"],
+      "to": "TECHNICAL_REPLACEMENT_REQUIRED",
+      "requires": [
+        "objective QC evidence identifies a same-take defect",
+        "original candidate is hash-bound and preserved",
+        "owner authorization explicitly permits same-scope technical replacement"
+      ],
+      "set": {
+        "assemblyAllowed": false,
+        "promotionAllowed": false,
+        "sameScopeReplacementAuthorized": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_INTERMEDIATE_GUIDE_CONFLICT_PROVEN",
+      "authority": ["technical"],
+      "from": ["TECHNICAL_REPLACEMENT_REQUIRED"],
+      "to": "TECHNICAL_REPLACEMENT_REQUIRED",
+      "requires": [
+        "two independent same-take candidates are hash-bound, technically rejected and preserved",
+        "both candidates reproduce the same defect around exact intermediate-guide injection",
+        "the immutable intermediate anchor remains preserved and unchanged",
+        "start and end anchors, engine, identity, geography and story scope remain unchanged"
+      ],
+      "set": {
+        "assemblyAllowed": false,
+        "promotionAllowed": false,
+        "intermediateAnchorPreserved": true,
+        "exactIntermediateGuideInjectionAllowed": false,
+        "startEndOnlyCorrectionAllowed": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_TECHNICAL_REPLACEMENT_ADMITTED",
+      "authority": ["technical"],
+      "from": ["TECHNICAL_REPLACEMENT_REQUIRED"],
+      "to": "RENDER_AUTHORIZED",
+      "requires": [
+        "corrected same-take prompt addendum is recorded",
+        "anchor hashes and model policy are unchanged",
+        "fresh GPU admission passed"
+      ],
+      "set": {
+        "renderAuthorized": true,
+        "assemblyAllowed": false,
+        "promotionAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_OWNER_VISUAL_APPROVED",
+      "authority": ["owner"],
+      "from": ["TECHNICAL_QC_PASSED"],
+      "to": "OWNER_VISUAL_APPROVED",
+      "set": {
+        "assemblyAllowed": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_OWNER_TECHNICAL_FINISH_AUTHORIZED",
+      "authority": ["owner"],
+      "from": ["TECHNICAL_QC_PASSED"],
+      "to": "TECHNICAL_FINISH_AUTHORIZED",
+      "set": {
+        "assemblyAllowed": true,
+        "promotionAllowed": false,
+        "humanReviewRequired": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_TECHNICAL_PICTURE_CANDIDATE_LOCKED",
+      "authority": ["technical"],
+      "from": ["TECHNICAL_FINISH_AUTHORIZED"],
+      "to": "PICTURE_CANDIDATE_LOCKED",
+      "set": {
+        "assemblyAllowed": false,
+        "promotionAllowed": false,
+        "humanReviewRequired": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_CONNECTORS_APPROVED",
+      "authority": ["owner"],
+      "from": ["OWNER_VISUAL_APPROVED"],
+      "to": "CONNECTORS_APPROVED"
+    },
+    {
+      "type": "LIVE_ACTION_PICTURE_LOCKED",
+      "authority": ["owner"],
+      "from": ["CONNECTORS_APPROVED"],
+      "to": "PICTURE_LOCKED"
+    },
+    {
+      "type": "LIVE_ACTION_FINISH_CANDIDATE_REGISTERED",
+      "authority": ["technical"],
+      "from": ["PICTURE_LOCKED", "PICTURE_CANDIDATE_LOCKED"],
+      "to": "FINISH_CANDIDATE_READY",
+      "set": {
+        "assemblyAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_OWNER_MASTER_APPROVED",
+      "authority": ["owner"],
+      "from": ["FINISH_CANDIDATE_READY"],
+      "to": "OWNER_MASTER_APPROVED",
+      "set": {
+        "assemblyAllowed": true,
+        "promotionAllowed": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_CANDIDATE_REJECTED",
+      "authority": ["owner"],
+      "from": [
+        "CANDIDATE_READY",
+        "TECHNICAL_QC_PASSED",
+        "OWNER_VISUAL_APPROVED",
+        "FINISH_CANDIDATE_READY"
+      ],
+      "to": "REPLACEMENT_REQUIRED",
+      "set": {
+        "renderAuthorized": false,
+        "assemblyAllowed": false,
+        "promotionAllowed": false,
+        "sameScopeReplacementAuthorized": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_OWNER_ROUTE_REJECTED",
+      "authority": ["owner"],
+      "from": [
+        "CANDIDATE_READY",
+        "TECHNICAL_QC_PASSED",
+        "OWNER_VISUAL_APPROVED",
+        "PICTURE_CANDIDATE_LOCKED",
+        "FINISH_CANDIDATE_READY"
+      ],
+      "to": "ROUTE_REPLACEMENT_REQUIRED",
+      "requires": [
+        "the rejected audiovisual artifact is path and hash bound",
+        "route-level artistic failures are recorded",
+        "the rejected route remains preserved and blocked from assembly or promotion"
+      ],
+      "set": {
+        "renderAuthorized": false,
+        "assemblyAllowed": false,
+        "promotionAllowed": false,
+        "sameScopeReplacementAuthorized": true,
+        "rejectedRoutePreserved": true
+      }
+    },
+    {
+      "type": "LIVE_ACTION_SIGNATURE_COMBAT_PLAN_REGISTERED",
+      "authority": ["technical"],
+      "from": ["ROUTE_REPLACEMENT_REQUIRED"],
+      "to": "COMBAT_PLAN_PENDING_OWNER_REVIEW",
+      "requires": [
+        "same replacement scope as the owner rejection",
+        "combat plan is path and hash bound",
+        "render remains unauthorized"
+      ],
+      "set": {
+        "renderAuthorized": false,
+        "assemblyAllowed": false,
+        "promotionAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_SIGNATURE_COMBAT_PLAN_APPROVED",
+      "authority": ["owner"],
+      "from": ["COMBAT_PLAN_PENDING_OWNER_REVIEW"],
+      "to": "STORY_APPROVED",
+      "set": {
+        "renderAuthorized": false,
+        "assemblyAllowed": false,
+        "promotionAllowed": false
+      }
+    },
+    {
+      "type": "LIVE_ACTION_REPLACEMENT_ADMITTED",
+      "authority": ["technical"],
+      "from": ["REPLACEMENT_REQUIRED"],
+      "to": "RENDER_AUTHORIZED",
+      "requires": [
+        "same replacement scope recorded by the owner rejection",
+        "corrected contract preflight passed",
+        "fresh queue and VRAM admission passed"
+      ],
+      "set": {
+        "renderAuthorized": true,
+        "assemblyAllowed": false,
+        "promotionAllowed": false
+      }
+    }
+  ]
+}

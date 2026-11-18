@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "seedvr2_3b_rife_exact60_no_nr_v2_1440p",
+  "pipeline_version": "seedvr2_3b_rife_exact60_no_nr_v2",
+  "required": true,
+  "target": {
+    "width": 2560,
+    "height": 1440,
+    "fps": 60,
+    "geometry": "contain_then_pad_no_crop",
+    "depth": "8-bit SDR"
+  },
+  "stages": [
+    "SeedVR2 3B",
+    "Practical-RIFE 4.25 exact60",
+    "original audio stream copy"
+  ],
+  "seedvr2": {
+    "model": "seedvr2_3b_int8_convrot.safetensors",
+    "vae": "seedvr2_ema_vae_fp16.safetensors",
+    "seed": 20261006,
+    "steps": 1,
+    "cfg": 1.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "color_correction": "lab",
+    "temporal_chunk_frames": 17,
+    "latent_overlap": 1,
+    "vae_tile": 512,
+    "vae_overlap": 128,
+    "vae_temporal_size": 16,
+    "vae_temporal_overlap": 4
+  },
+  "rife": {
+    "version": "4.25",
+    "model_sha256": "6615790efd627772917205db291f51cd392528a157ecbb2ecaeec3bff8eb6de2",
+    "timestamps": "j/60",
+    "cut_threshold_mean_rgb": 0.35,
+    "endpoint": "clamp_last_frame"
+  },
+  "dlss5": {
+    "allowed_on_video": false,
+    "scope": "anchors_only"
+  },
+  "audio": {
+    "policy": "preserve_existing_stream_copy",
+    "absent": "remain_silent",
+    "new_foley_generation": false
+  },
+  "encode": {
+    "codec": "h264_nvenc",
+    "preset": "p7",
+    "cq": 15,
+    "pix_fmt": "yuv420p"
+  },
+  "fallback_allowed": false,
+  "owner_review_required": true,
+  "quality_reference": {
+    "project_id": "re1_tratamento_comparativos_20261006",
+    "take_id": "SEED3B_RIFE60_DLSS5",
+    "sha256": "1ce127593045a5d5c8c3932f94535bb778f3c1199819df1fe0a7e1749b17dfef"
+  },
+  "visual_qualification": "requires_review_of_new_artifact"
+}

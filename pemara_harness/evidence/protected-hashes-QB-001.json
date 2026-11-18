@@ -1,0 +1,14 @@
+{
+  "contract": "qwen-builder-v1",
+  "capturedAt": "2026-08-21T15:58:07.533Z",
+  "files": {
+    "RULES.md": "8f8160b4c366ef481fa6e2afafc39055a898dbeecc0e6ffbd7334c1f8dc19e89",
+    "SPEC.md": "1a4388db052ca74ecd453554b623b84a8149e493d6ea74a935ed2b524a0fedc1",
+    "test/builder-contract.test.mjs": "96d340782d9ac01039614f21e006721210d6c2851f56610aa4a092501a925cdc",
+    "tasks/contracts/qwen-builder-v1.md": "e94e8da7cc6949bec4b745025df7fbe800261e4ccaaaa8496f9d5455d0483ee8",
+    "scripts/check-protected.mjs": "8e9e48cbfeb93b7a59a8f4cc71fb281b8de3b8be7a76802d66b0c348a34dd91f",
+    "src/builder-contract.mjs": "948b32a646a3a8f4d8230e7582abe2f53cb6df79b0ef236d8f49225d76b4371a",
+    "dsh/plugin.mjs": "8e224c6d238128d4af0cdd9119b1c4cd9fe7b2721b17716939f61493cdfdf45e",
+    "test/doctor.test.mjs": "dd614efc7e01d363c5709e52b3bd79005063a5e5e5588821ce4c5dce5a87fd5b"
+  }
+}

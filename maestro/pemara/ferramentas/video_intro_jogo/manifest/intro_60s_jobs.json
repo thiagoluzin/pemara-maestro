@@ -1,0 +1,98 @@
+{
+  "project": "Ritmos da Revolta - Intro 60s",
+  "priority": "video_generator_top_priority",
+  "target": {
+    "duration_seconds": 60,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "format": "mp4"
+  },
+  "rules": [
+    "environmental intro only",
+    "no characters",
+    "no humans",
+    "no bodies",
+    "no faces",
+    "no humanoid silhouettes",
+    "no invented text",
+    "only final title may contain text"
+  ],
+  "models": {
+    "fast_iteration": "LTXV-13B-0.9.8-distilled-Q5_K_M.gguf",
+    "best_text_to_video": [
+      "wan2.2_t2v_high_noise_14B_Q5_K_M.gguf",
+      "wan2.2_t2v_low_noise_14B_Q5_K_M.gguf"
+    ],
+    "best_image_to_video": [
+      "Wan2.2-I2V-A14B-HighNoise-Q5_K_M.gguf",
+      "Wan2.2-I2V-A14B-LowNoise-Q5_K_M.gguf"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "01_pulso",
+      "start": "00:00",
+      "duration_seconds": 5,
+      "base_image": "assets_referencia/backgrounds/abertura/1.png",
+      "prompt": "Tela preta quase total, textura sutil de fita VHS e CRT, uma unica nota musical dourada em pixel art surge no centro como um coracao. Ela pulsa duas vezes, solta poeira dourada microscopica e ilumina por um instante cabos no chao. Camera fixa, misterio, pressagio, pixel art HD, 2.5D, preto profundo, dourado fraco, roxo quase invisivel. Sem personagens, sem texto."
+    },
+    {
+      "id": "02_cidade_ritmo",
+      "start": "00:05",
+      "duration_seconds": 8,
+      "base_image": "assets_referencia/backgrounds/abertura/1.png",
+      "prompt": "Rua urbana noturna em pixel art HD, instrumentos musicais abandonados mas ainda vivos, amplificadores acesos, caixas de som, cabos no chao, postes de luz ambra, predios de tijolo e concreto, neons sem texto com simbolos de notas musicais. Notas douradas sobem como particulas. Pan lento para frente com parallax em camadas. Sem personagens, sem silhuetas, sem humanos, sem texto."
+    },
+    {
+      "id": "03_estudio_maestro",
+      "start": "00:13",
+      "duration_seconds": 8,
+      "base_image": "assets_referencia/backgrounds/abertura/2.png",
+      "prompt": "Interior de estudio musical vazio, piano vertical de madeira escura com tampa aberta, tres velas em cima do piano, duas cadeiras pequenas vazias, partituras no chao com linhas abstratas sem texto, espuma acustica rasgada, cabos pendurados, poeira no ar. Luz quente contra sombras azuladas. Camera avanca lentamente ate o piano. Sem pessoas, sem sombras humanas, sem rostos."
+    },
+    {
+      "id": "04_chapeu",
+      "start": "00:21",
+      "duration_seconds": 7,
+      "base_image": "assets_referencia/backgrounds/abertura/3.png",
+      "prompt": "Espaco vazio de concreto rachado, cinza dessaturado, horizonte baixo e fundo preto. No centro, um chapeu preto simples no chao cercado por brilho roxo fraco. A cor do mundo e sugada pelas bordas do frame em particulas pequenas. Camera baixa no nivel do chao, aproximacao lenta. Apenas chapeu e vazio, sem criatura, sem olho, sem corpo, sem mao, sem rosto."
+    },
+    {
+      "id": "05_tenebra",
+      "start": "00:28",
+      "duration_seconds": 8,
+      "base_image": "assets_referencia/backgrounds/abertura/4.png",
+      "prompt": "O mesmo chapeu preto flutua pouco acima do chao. Energia roxa intensa sai dele em oito direcoes rachando o concreto. Fragmentos pretos giram em orbita. Acima do chapeu uma coroa abstrata de espinhos se forma no ar, sem cabeca, sem corpo e sem rosto. Rachaduras brilham em roxo e branco frio. Zoom lento com leve tremor CRT."
+    },
+    {
+      "id": "06_onda_silencio",
+      "start": "00:36",
+      "duration_seconds": 8,
+      "base_image": "assets_referencia/backgrounds/abertura/5.png",
+      "prompt": "Rua musical dividida em duas metades: esquerda viva com ambra, rosa neon, amplificadores acesos e notas douradas; direita cinza apagada, instrumentos quebrados, postes caidos e neon morto. Uma parede vertical de energia roxa avanca da esquerda para a direita apagando cor e som. Camera lateral com parallax lento. Nenhum personagem, nenhum corpo, nenhum texto."
+    },
+    {
+      "id": "07_cidade_calada",
+      "start": "00:44",
+      "duration_seconds": 7,
+      "base_image": "assets_referencia/backgrounds/abertura/6.png",
+      "prompt": "Rua vazia depois da onda. Guitarra quebrada, cabos no chao, amplificadores apagados, vidro partido, neons sem luz, nota musical rachada como grafite abstrato sem letras, ceu cinza roxo, unica janela ambra fraca ao fundo. Poeira sobe lentamente e cabos tremem de leve. Triste, silencioso, urbano. Sem pessoas, sem monstros, sem silhuetas."
+    },
+    {
+      "id": "08_resposta",
+      "start": "00:51",
+      "duration_seconds": 6,
+      "base_image": "",
+      "prompt": "Montagem ambiental de rua, estudio, fabrica e torre com parallax lento. Seis reflexos coloridos cruzam o ambiente sem formar corpos: laranja, dourado, rosa magenta, amarelo corrente, ciano e verde mecanico. Reflexos em pocas, vidros quebrados, cabos e metal como sinais abstratos de resposta ao silencio. Nao mostrar herois, corpo, rosto, olhos, silhueta ou arma empunhada."
+    },
+    {
+      "id": "09_titulo",
+      "start": "00:57",
+      "duration_seconds": 3,
+      "base_image": "assets_referencia/backgrounds/abertura/7.png",
+      "prompt": "Vista de baixo para cima de cidade corrompida, predios de concreto e tijolo convergem para o centro, ceu roxo escuro, fissuras douradas nas paredes, pequenas notas musicais douradas sobem das rachaduras. Titulo unico RITMOS DA REVOLTA no centro, letras brancas com contorno preto e brilho dourado eletrico. Nenhum outro texto. Tremor CRT leve, flash dourado controlado, corte seco."
+    }
+  ]
+}
+

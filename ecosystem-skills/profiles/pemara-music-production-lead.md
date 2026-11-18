@@ -1,0 +1,13 @@
+---
+name: pemara-music-production-lead
+description: "Perfil de compatibilidade da skill pemara-music-production-lead; fonte operacional canônica única."
+---
+
+# pemara-music-production-lead — Agent Turbo alias
+
+<!-- AGENTS_TURBO_ALIAS_V1 -->
+
+1. Leia integralmente `E:/Pemara/.agents/skills/pemara-music-production-lead/SKILL.md` antes de atuar.
+2. As instruções e referências condicionais vivem na skill; não mantenha uma segunda cópia neste perfil.
+3. Preserve o projeto, a stack, o escopo e as aprovações exatas do proprietário.
+4. O perfil não cria subagentes, gera mídia ou publica por si só.

@@ -1,0 +1,289 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "h3_memory_native",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A single continuous ten-second cinematic LIVE-ACTION martial-arts fight at fast normal fighting speed. EXACTLY the same two adult human actors as Picture 1: masked Scorpion in yellow and black LEFT, masked Sub-Zero in blue and black RIGHT. Same faces, human proportions, black hoods, wet cloth costumes, boots, sunlight and ruined stone courtyard. Medium-wide side view keeps both full bodies and feet visible; restrained tracking follows their actual retreat. Serious, focused fighters aggressively trying to hit each other.\n\nThe incoming ice-coated blue punch in Picture 1 MISSES as Scorpion turns his head and shoulders outside its path. That blue fist immediately whips back to Sub-Zero's cheek. In the SAME movement Scorpion pushes off his rear boot, twists his hips and snaps a short RIGHT hook into Sub-Zero's exposed ribs, then whips his fist back instantly. The blue torso folds at contact, his pelvis turns away and a catching step absorbs the force. His body keeps recoiling after the yellow fist has already separated.\n\nDuring that recoil Sub-Zero snaps a quick icy LEFT jab which Scorpion evades by slipping his head. Sub-Zero immediately follows with a compact RIGHT straight that LANDS on Scorpion's upper chest. The blue fist bounces away instantly; Scorpion's shoulder and trunk recoil and his rear boot catches his weight. While that blue fist is returning, Scorpion rotates back with a quick LEFT body hook. Sub-Zero turns with the glancing hit and fires a short RIGHT body hook in response, his cold knuckles striking the yellow ribs and springing straight back. Scorpion's ribs fold after contact, he takes a short catching step and keeps his eyes on the blue fighter.\n\nScorpion drives forward again with one fast LEFT front kick into Sub-Zero's abdomen. The yellow knee folds IMMEDIATELY after impact and his boot plants as the blue torso is still recoiling. Sub-Zero takes two urgent catching steps backward. Scorpion follows those steps with a sharp fiery RIGHT straight to the upper chest; his fist snaps home before the blue shoulders have finished recoiling. Sub-Zero plants and whips a compact RIGHT low kick into the outside of Scorpion's forward thigh. The yellow knee yields AFTER that contact and his other boot catches his weight. The blue leg folds and lands immediately. As it lands Scorpion fires a short LEFT hook toward the ribs, Sub-Zero twists away and comes back with an icy RIGHT body punch. Scorpion rolls his torso outside its line and steps in to counter as the shot ends.\n\nEvery attack accelerates, makes a crisp glancing or body contact, then IMMEDIATELY RETRACTS. The next attack starts while the receiver is still catching balance. Defense uses head slips, shoulder turns, ducks and steps rather than hands meeting hands. Their arms stay separate between attacks. They never lock arms or push fists against a held forearm. Feet push off, pivot and land under weight; impacts visibly move shoulders, ribs, hips and center of mass. Neither actor waits for the other's pose or resets to an opening stance.\n\nKeep BOTH POWERS attached to moving strikes: Scorpion's own fists have tight ORANGE FLAME during acceleration, which disperses immediately on retraction; Sub-Zero's own forearms and knuckles retain the BLUE-WHITE ICE visible in Picture 1, with tiny ice chips shedding after a strike. Fire and ice remain with their owners. Short steam wisps follow contact with wet cloth and disperse while the bodies continue moving. The effects are small enough that actual contact and body recoil remain visible. The ice never immobilizes either fighter. Keep the original two actors and the existing wet floor; no new weapons, floor traps, slipping, comic acting, third people, slow motion, cuts, flashes or artificial camera shake.\n\noverall_soundscape: Fast sharp contacts and heavier body-hit thuds synchronized to visible strikes, urgent catching footfalls, cloth snaps and quiet courtyard wind. Short fire swishes during yellow attacks, brittle ice ticks after blue contacts, brief steam wisps. No speech, grunts, laughter or music.\n\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "T03 R2 — body hits and evasions; remove all hand-to-hand defense contacts"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611082204
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T03_H3_MASTER_R2/native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T03_start_from_approved_R4_f242.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "anchor_master_pad": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "target_width": 1344,
+      "target_height": 768,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "h3_memory_native": {
+    "class_type": "H3MemoryOptimization",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "fused_qkv": "auto",
+      "mlp_memory": "auto",
+      "chunk_rows": 4096,
+      "preserve_precision": true,
+      "precision_mode": "Preserve native",
+      "qkv_streaming_mode": "Auto",
+      "embedding_memory_mode": "Auto",
+      "kitchen_v_memory_mode": "Standard"
+    }
+  }
+}

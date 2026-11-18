@@ -1,0 +1,5 @@
+{
+  "1": {"class_type": "VAELoader", "inputs": {"vae_name": "minimax_h3_video_vae_fp16.safetensors"}},
+  "2": {"class_type": "VAELoader", "inputs": {"vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"}},
+  "3": {"class_type": "PemaraH3VAECompare", "inputs": {"baseline": ["1", 0], "candidate": ["2", 0], "width": 1088, "height": 608, "frames": 73}}
+}

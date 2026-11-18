@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audio Analysis"
+  short_description: "Ler e medir áudio em Python (librosa/soundfile/numpy/pyloudnorm"
+  default_prompt: "Use $audio-analysis para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

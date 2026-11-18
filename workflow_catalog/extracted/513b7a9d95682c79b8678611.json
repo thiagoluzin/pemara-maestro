@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Raw heavy blues doom, thick fuzzy guitar riffs, gnarly prominent bass, swinging acoustic drums, gritty urgent male voice, loud saturated amplifier tone. 104 BPM, D minor. a crooked blues riff with a displaced final accent; bass-led middle break, snarling guitar solo. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nDust settles on the iron gate,\nRust crawls up the rusted plate.\nThe soil swells, the silence cracks,\nBlack petals blooming from the backs\nOf graves we paid to keep them deep.\nThey drink the poison, plant the creep.\n\n[Chorus]\nBone Orchard blooming in the night,\nRoots twist tight in the town's own sight.\nEvery lie we buried sprouts,\nIn the soil, the rot erupts.\n\n[Verse]\nThe mayor walks with hollow eyes,\nChoking smoke beneath the skies.\nHis shadow stretches, long and thin,\nPulling him beneath the skin\nOf the earth that used to hold\nThe truth he sold to buy his gold.\n\n[Chorus]\nBone Orchard blooming in the night,\nRoots twist tight in the town's own sight.\nEvery lie we buried sprouts,\nIn the soil, the rot erupts.\n\n[Bridge]\nBass hums low, the ground begins to shake.\nThe flowers open for the sake\nOf something hungry, something old,\nWaiting for the story's told.\n\n[Solo]\n\n[Chorus]\nBone Orchard blooming in the night,\nRoots twist tight in the town's own sight.\nEvery lie we buried sprouts,\nIn the soil, the rot erupts.\n\n[Chorus]\nBone Orchard blooming in the night,\nRoots twist tight in the town's own sight.\nEvery lie we buried sprouts,\nIn the soil, the rot erupts.\n\n[Outro]\nThe roots grip down, the town is swallowed whole.\nBone Orchard blooms in the silent soul.",
+      "abc": "",
+      "seed": 202610166005,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166005,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/06_bone_orchard_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

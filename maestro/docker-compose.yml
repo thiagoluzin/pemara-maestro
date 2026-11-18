@@ -1,0 +1,11 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: maestro-cloudflared
+    restart: "no"
+    profiles: ["legacy-manual-only"]
+    volumes:
+      - ./.cloudflared:/home/nonroot/.cloudflared
+    command: tunnel --config /home/nonroot/.cloudflared/config.yml run maestro-tunnel
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

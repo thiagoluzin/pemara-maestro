@@ -1,0 +1,14 @@
+{
+  "engine": "triposg",
+  "promptId": "c1f75d35-e750-42a5-960d-905cd31f9bc1",
+  "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\triposg\\c1f75d35_000.glb",
+  "bytes": 24570252,
+  "sha256": "4d9a2eb99639e7b9702ba08d6ba3577ac24809e03476ebf46247f5acd2374d99",
+  "vertices": 682479,
+  "faces": 1364976,
+  "watertight": false,
+  "technicalInferencePassed": true,
+  "textured": false,
+  "printReady": false,
+  "artisticApproval": false
+}

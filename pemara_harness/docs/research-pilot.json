@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "public-research-pilot-20261102",
+  "topic": "TypeSafe System One: pesquisa pública e verificação contextual de afirmações",
+  "publicOnly": true,
+  "allowedDomains": ["docs.typesafe.ai"],
+  "urls": ["https://docs.typesafe.ai/concepts/system-one.md"],
+  "query": "TypeSafe System One typed answers probabilities Jev",
+  "maxSources": 2,
+  "threshold": 0.9,
+  "model": "jev-latest",
+  "claims": [
+    {
+      "id": "C1",
+      "text": "TypeSafe System One models return structured answers and probabilities that application code can use."
+    },
+    {
+      "id": "C2",
+      "text": "A high model confidence guarantees that the complete application workflow is factually correct."
+    },
+    {
+      "id": "C3",
+      "text": "A TypeSafe judgment of support automatically authorizes publishing a video."
+    },
+    {
+      "id": "C4",
+      "text": "The documentation promises every answer is guaranteed correct.",
+      "sourceUrl": "https://docs.typesafe.ai/concepts/system-one.md",
+      "quote": "Every answer is 100% guaranteed to be factually correct."
+    }
+  ]
+}

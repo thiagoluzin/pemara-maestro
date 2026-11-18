@@ -1,0 +1,14 @@
+voice_id: narrador_cinema_01
+engine: chatterbox_ptbr
+language: pt-br
+reference_audio: voices/narrador_cinema_01/reference.wav
+consent_record: voices/narrador_cinema_01/consent.txt
+style:
+  gender_presentation: male
+  perceived_age: 40-55
+  pace: medium
+  energy: 0.68
+  emotion: warm_cinematic
+  exaggeration: 0.56
+  cfg_weight: 0.45
+targets: {lufs: -16, sample_rate: 48000, channels: 1}

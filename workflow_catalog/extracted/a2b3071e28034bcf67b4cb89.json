@@ -1,0 +1,168 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux3-image-klein-int8-convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+      "type": "flux3",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "A live-action cinematic photograph, full body and full prop, of the YOUNG adult Dante from Devil May Cry 3 playing Nevan in the ruined opera house. <obj_1> is the full person, and <obj_2> is the COMPLETE instrument, including all projecting blades and the short neck tip. Keep both entirely within their assigned boxes, with visible stage surrounding the person and instrument. The actor stands several steps back from camera, not close to the lens.\nUse the first reference <ref_image_0> for the original performer, red coat and complete weapon silhouette, the second <ref_image_1> for the original young face and white hair, and the third <ref_image_2> for the original coat construction, hand placement and weapon details. Re-create these game designs as photographed real skin, leather and prop metal. Do not copy polygon surfaces or game shading.\n<obj_1>: one clean-shaven adult man in his early twenties, youthful firm angular jaw, straight nose, focused light eyes beneath a messy silver-white fringe, straight closed mouth and a confident defiant expression. Match the youthful facial proportions of the face reference. Clean fair skin with subtle natural texture, no makeup, freckles, deep age lines, facial hair, leathery weathered face or excessive grime. Messy layered white hair falls to the jaw. A lean athletic demon hunter standing with a grounded wide stance and loose ready shoulders, looking forward; no smiling, pouting or seductive posing. The original DMC3 long heavy red leather coat with tall standing collar, angular lapels, segmented shoulders, brown harness panels, metallic buckles and vertical fasteners. Rolled sleeves, broad brown horizontal chest strap, bare chest, dark trousers, black combat boots and fingerless gloves. Both boots and the whole head are in frame.\n<obj_2>: exactly one Nevan, held horizontally at the hips, broad face toward camera. Copy the distinctive original purple-blue asymmetric GUITAR form from the visual references: three separate overlapping flat tapered blade plates project to frame-left and lower-left, with silver edges and small teardrop openings along the upper plate; central compact electric string bed; a SHORT thick twisted organic neck to frame-right, ending in a small spear-shaped headpiece. The entire weapon, from leftmost pointed blade to rightmost pointed neck-tip, fits inside its box. Its total length is approximately the actor's full standing height, NOT bigger than the picture width. Preserve the large blade body and short neck proportions. His right hand rests on the central strings; his left wraps the short neck. Distinct fingers and readable contacts. No ring, hoop, giant circular hole, crescent scythe, skeletal ribcage or conventional long guitar fretboard. Fine dim purple electrical threads only on the strings, without hiding the shape.\nDeep purple theatre curtains, carved stone pillars and practical warm stage lights. Balanced cinematic side light, believable skin, worn leather and metal, natural shadows and a dark quiet background. Preserve clear empty space around all weapon tips, around the hair and beneath the boots. One live-action scene, no other person, audience, microphone, writing, logo, graphic frames, borders or diagrams. [{\"id\": \"obj_1\", \"bbox\": [115, 204, 917, 796], \"desc\": \"Full-body young Dante, entire hair and both boots, red DMC3 coat\"}, {\"id\": \"obj_2\", \"bbox\": [479, 93, 708, 907], \"desc\": \"The entire original Nevan guitar including every left blade tip and right arrowhead, no cropping\"}]"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R03_DMC3_complete_performer_weapon.png"
+    },
+    "is_changed": [
+      "942e978ba45b6e841acf8800323de0181ae9055c38eace0ef95a6239e581e672"
+    ]
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R01_DMC3_Dante_original_face.png"
+    },
+    "is_changed": [
+      "1b7c50c8e92047a8812308300f9dffb054b2c8acfd616fd38bfd3e30f21ce5f0"
+    ]
+  },
+  "8": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R00_DMC3_Dante_Nevan_original.png"
+    },
+    "is_changed": [
+      "433741c6f1f81af82e21d273ac00128f7f14bf5a7d7eee16216c3aac4ccc4072"
+    ]
+  },
+  "9": {
+    "class_type": "ReferenceMultiLatent",
+    "inputs": {
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "resolution": "keep resolution",
+      "images.image0": [
+        "6",
+        0
+      ],
+      "images.image1": [
+        "7",
+        0
+      ],
+      "images.image2": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 864,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ],
+      "latent_image": [
+        "10",
+        0
+      ],
+      "seed": 3110202605,
+      "steps": 16,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_20261102/anchors/A04_dante_nevan_flux3_layout_04"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

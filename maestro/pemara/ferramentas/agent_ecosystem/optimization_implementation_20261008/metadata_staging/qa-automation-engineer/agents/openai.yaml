@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qa Automation Engineer"
+  short_description: "Specialist in test automation infrastructure and E2E testing"
+  default_prompt: "Use $qa-automation-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

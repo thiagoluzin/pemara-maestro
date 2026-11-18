@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Exact same visual style, hand-drawn 16-bit arcade aesthetics, color palette and rock textures as the reference image (Serra da Mantiqueira colonial quarry). Generate a 2D side-scrolling run-and-gun platformer continuous ground road asset. Side view cross-section of a perfectly flat, level, horizontal walking road spanning the entire width: Packed reddish terracotta dirt and gravel mountain trail, perfectly flat and level across the entire scene, passing in front of the mountain scenery. The walking surface is 100% horizontal, straight and flat across the entire image at a fixed floor height, with no blocking boulders or obstacles on the road. Beneath the road: solid layers of earth, bedrock and gravel foundations extending down. Pure flat clear background above the road, authentic 16-bit HD arcade game asset, Sunset Riders style.",
+      "negative_prompt": "desert, saloon, cacti, western town, modern asphalt, cars, modern buildings, steep ramps, broken road, holes in floor, floating objects, blurry, 3d render, watermark, text",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 20265002,
+      "steps": 22,
+      "cfg": 3.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/ground_hd_20265002"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/ref_serra_mantiqueira.png"
+    },
+    "is_changed": [
+      "0efcf220b911850ad4f0bda2787c8ade43bcf0dcc99170816e2ffb385a9779e7"
+    ]
+  }
+}

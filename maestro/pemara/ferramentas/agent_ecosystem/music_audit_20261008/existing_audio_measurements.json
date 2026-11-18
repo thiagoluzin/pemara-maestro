@@ -1,0 +1,70 @@
+[
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_63240317f2a2_00001.flac",
+    "sha256": "edebd99caf3d719d4bc3f0b0953f439aa3bce400c6f8a6b7489670a399bb48fb",
+    "metrics": {
+      "sampleRate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "durationSeconds": 332.28,
+      "samplePeakDbfs": 0.0,
+      "clippingSampleCount": 36,
+      "integratedLufs": -12.0,
+      "truePeakDbfs": 0.4,
+      "full_decode_passed": true
+    },
+    "listened_by_agent": false,
+    "musical_quality_verdict": "NOT_ASSESSED_BY_LISTENING"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_1d113ca939d8_00001.flac",
+    "sha256": "7b48980cb823a286dc70b2aaf5b90cd0fb377e9f59f838a749c336e2a3793363",
+    "metrics": {
+      "sampleRate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "durationSeconds": 198.04,
+      "samplePeakDbfs": 0.0,
+      "clippingSampleCount": 61,
+      "integratedLufs": -12.6,
+      "truePeakDbfs": 0.7,
+      "full_decode_passed": true
+    },
+    "listened_by_agent": false,
+    "musical_quality_verdict": "NOT_ASSESSED_BY_LISTENING"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_809933f7b866_00001.flac",
+    "sha256": "1e554454aa129502bddc0030b22870ae2e5a6d174aa2dfc6a51b278960c293c8",
+    "metrics": {
+      "sampleRate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "durationSeconds": 297.16,
+      "samplePeakDbfs": -0.32,
+      "clippingSampleCount": 0,
+      "integratedLufs": -12.8,
+      "truePeakDbfs": -0.0,
+      "full_decode_passed": true
+    },
+    "listened_by_agent": false,
+    "musical_quality_verdict": "NOT_ASSESSED_BY_LISTENING"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\outputs\\steel_legacy_20_yue2_20261007\\01_signal_beyond_the_storm\\01_signal_beyond_the_storm.mp3",
+    "sha256": "0f8e3de76c1506f9634a457f4604a2e9c52d9a338beda6363c2ae597e1eb74f9",
+    "metrics": {
+      "sampleRate": 48000,
+      "channels": 2,
+      "subtype": "MPEG_LAYER_III",
+      "durationSeconds": 344.72,
+      "samplePeakDbfs": -4.736,
+      "clippingSampleCount": 0,
+      "integratedLufs": -18.3,
+      "truePeakDbfs": -4.7,
+      "full_decode_passed": true
+    },
+    "listened_by_agent": false,
+    "musical_quality_verdict": "NOT_ASSESSED_BY_LISTENING"
+  }
+]

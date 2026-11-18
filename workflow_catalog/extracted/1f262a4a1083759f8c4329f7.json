@@ -1,0 +1,280 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Enraizado_Lateral_20261029_east.png"
+    },
+    "is_changed": [
+      "1c60953ae90f48904d6ff5c368f9bb4b584693f9d8fc5f9e3e87c8e8c9770505"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 512,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "Pixel art whole-body animation of this exact nonhuman Enraizado, dry brown coffee roots and cracked bark, hollow head with small amber fissures, asymmetric root branches unchanged. Static charcoal background. Fixed orthographic camera, full body including feet and fingers stays inside the canvas, constant body scale and ground line. Facing screen RIGHT at all times. ONE defeat: root legs buckle, body falls forward RIGHT and collapses into a recognizable inert heap of roots on the ground. Hold the fallen heap motionless in the final third. Whole body stays inside frame, no vanishing or standing up."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "camera movement, zoom, panning, changing design, changing size, multiple characters, cropped body, cropped limbs, teleporting, sliding, photorealism, 3d, text, watermark, blur, duplicate limbs, blood, spinning repeatedly"
+    }
+  },
+  "16": {
+    "class_type": "PainterI2V",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "start_image": [
+        "12",
+        0
+      ],
+      "width": 512,
+      "height": 768,
+      "length": 45,
+      "batch_size": 1,
+      "motion_amplitude": 1.15
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 29102030,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 29102030,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_Enraizado_Lateral_20261029/death_east/video",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "filename_prefix": "ATD_Enraizado_Lateral_20261029/death_east/frame"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

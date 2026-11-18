@@ -1,0 +1,350 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "encode": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is the approved SAME adult photographed human actor in his INITIAL NORMAL form: BLACK asymmetric spiky hair, dark eyebrow hairs and ordinary natural eyes. Picture2 is the approved FINAL SSJ BLUE form of that same man: upright blue hair, matching eyebrow hairs and translucent external blue flame energy. Both references are COMPLETE HEAD-TO-TOE photographs. Preserve the exact human face width, nose, ordinary jaw/chin, age, skin pores, scratches, athletic build, damaged orange woven gi/navy undershirt, blue sash/wraps/boots and rocky island. The two timed full-body guides define the actual initial and final physical composition, not inserts of photographs.\n\nThe eyes remain ordinary human anatomical eyes throughout: clearly dark pupils, textured iris tissue, white sclera, natural eyelids and small corneal reflections. Before activation keep the initial dark iris material; after activation use subtle blue iris pigment surrounding the same dark pupil. Under effort the eyelids narrow naturally and the face keeps its actual bone structure. Blue power is a translucent flame around the OUTSIDE of the whole body and reflects softly on physical materials. Hair and external energy carry the strong blue color; the eyes retain normal photographic iris/pupil contrast.\n\nintegrated_multimodal_description: [Shot 1] ONE continuous physical260-frame,10.8333-second cinematic photoreal LIVE-ACTION WIDE FULL-BODY shot at normal speed. The camera remains at the same full-body distance, body scale and focal perspective from first to last frame. Complete hair, both hands, torso, both knees, BOTH BOOTS and ground beneath BOTH soles remain inside the image with generous margins throughout. Maintain the same island, horizon, water/mesas and stable daylight. At most a slight parallel lateral operator drift returns smoothly to the supplied final composition. Film the whole body's causal action continuously: knees/pelvis, shoulders, elbows and fists articulate; hair and sash lag with inertia. Keep one actor grounded on the same rock patch. No approach, zoom, face closeup, shot change, inserted portrait, dissolve, flash hiding the transformation, flight, sliding feet or attack.\n\nFrom0..1.4s start exactly as Picture1, normal BLACK hair and restrained ordinary skin light, then bend both knees, lower pelvis, incline chest slightly and draw fists upward from the hips toward lower chest. From1.4..2.9s continue loading through hips/knees and draw elbows back while preparing the single existing yell. At about2.9167s the original strong yell begins: open the mouth with a normal human jaw and lips, matching that real effort. From2.9..4.8s extend knees, lift torso and pull elbows backward/down as the connected existing locks rise into Picture2's upright Blue silhouette; blue pigment passes naturally from roots along those strands and the external blue flame grows around the same actor. Eyebrow hairs remain present; iris color changes as natural tissue. From4.8..6.8s complete that same body rise and single transformation while continuing the original yell. Preserve actual facial anatomy and persistent costume damage. No other hair-color stage or repeated transformation.\n\nFrom6.8..8.2s let the lips close naturally with the existing release/breath, soften knees slightly and absorb pressure through hips/shoulders. From8.2..10.8333s recover to the EXACT FINAL photograph's alert full-body readiness: torso upright at the approved front-right angle, both arms lowered naturally, fists beside hips/thighs, both boots planted. Do not demand a high guard incompatible with this final guide. Finish the arm lowering and weight recovery physically while hair/sash retain inertia; remain in the same wide frame to the absolute final frame. Preserve the finished short Blue hair, eyebrow hairs, normal eye material and translucent blue external aura. No frozen body between the two endpoints or empty repeated fist pumping.\n\noverall_soundscape: Use the complete fixed original10.8333s PCM input directly, with its single approved human yell about2.9167..6.7667s and original breath/transformation effects. Timing, speed, pitch and gain remain unchanged. The delivered soundtrack is that whole existing waveform, not H3-generated audio or audio VAE reconstruction. No words, new voice, dialogue, singing, music, choir, score or instruments.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 260,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "normal_photo",
+        0
+      ],
+      "ref_images.ref_image_1": [
+        "blue_photo",
+        0
+      ]
+    }
+  },
+  "first": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "normal_photo",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "last": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "blue_photo",
+        0
+      ],
+      "frame_idx": 259
+    }
+  },
+  "audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ_Blue_P01_pilot_full_exact.wav"
+    }
+  },
+  "fixed_audio": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "last",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 301030303
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "fixed_audio",
+        0
+      ]
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "encode",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "save_latent": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/pilot03_blue_endpoints_v01/video"
+    }
+  },
+  "video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video",
+        0
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/pilot03_blue_endpoints_v01/Goku_SSJ_Blue_P03_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "normal_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A00_goku_normal_black_APPROVED.png"
+    }
+  },
+  "blue_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj_blue_DLSS5_v01.png"
+    }
+  },
+  "save_audio_latent": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate",
+        1
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/pilot03_blue_endpoints_v01/audio_sampled_INTERNAL_NOT_DELIVERY"
+    }
+  }
+}

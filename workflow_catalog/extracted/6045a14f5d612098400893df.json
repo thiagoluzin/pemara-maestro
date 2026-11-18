@@ -1,0 +1,111 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "10": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux"
+    }
+  },
+  "11": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "sprunki_char, official Incredibox music game character sprite, slender humanoid body shape, long thin neck, slender torso, thin black legs, flat 2d color design, clean black vector outlines, solid clean flat light gray background, standing front-facing, expressive cartoon eyes, iconic music game character art style, solid green colored body, happy crescent-shaped squinting eyes, simple cartoon style, simple friendly curved cartoon smile, flat color design, wearing shiny silver princess tiara, flat vector design, holding small flat cartoon sword, neon circuits, holographic, futuristic, glowing edges, high quality illustration, clean outlines, flat vector design, high quality illustration, game ready sprite",
+      "clip": [
+        "10",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "realistic, photograph, 3d render, pill-shaped body, egg shape, chubby fat body, short stub arms, transparent grid background, checkerboard background, text, watermark, blurry, extra limbs, deformed, nsfw, ugly, low quality, shadow, multiple characters, realistic human face",
+      "clip": [
+        "10",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "FluxGuidance",
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "12",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 1779416774,
+      "steps": 25,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "11",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ],
+      "filename_prefix": "sprunki_"
+    }
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Helena_Walk_Expansion_20261024/nw_revision2/A.png"
+    },
+    "is_changed": [
+      "2a057d530bfbef504440ce0eb63207fe3e49ca66bf71a6d29738a44e413a355a"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 512,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "13": {
+    "class_type": "GetImageSize",
+    "inputs": {
+      "image": [
+        "12",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "Pixel art full-body 2D game sprite animation. SAME adult Helena Duarte, brown low bun, beige rolled-sleeve collared shirt, blue jeans with ordinary seams and back pockets, brown leather lace-up ankle boots with physical heel-counter stitching and layered outsole, ONE brown satchel at ANATOMICAL LEFT HIP, strap from anatomical RIGHT shoulder across back. Rear-left three-quarter NORTHWEST view walking toward upper-left, fixed high camera40–45 degrees and constant scale, pelvis centered. Entire body drawn coherently in every frame, head hands bag and both boots inside margins, no cutouts or mirroring. Uniform charcoal background, no cast shadows or floor lines. Exactly ONE HALF of a natural alternating in-place walk, moving continuously from the supplied start contact pose to the supplied OPPOSITE end contact pose. Both legs belong continuously to their original hips, bag stays on left and above upper thigh. Keep natural modest lateral spacing of legs, never tightrope or crossed feet; both complete boots remain visible beside rather than behind the other calf at passage. The supporting foot has real weight, a flat sole and slight loaded knee; its SAME ordinary heel-counter leather seam and heel/sole corner remain crisp and readable through successive frames. During planted stance the material boot point travels DOWN AND RIGHT in canvas, at about45 degrees, opposite the NW locomotion; no sideways heel wiggle and no skating. Preserve the same boot stitching and physical sole corner, not just a moving silhouette extreme. Heel contact, flat sole, transfer of weight, heel rises with forefoot still planted, toe-off, then clear swing with airborne boot clearance. Do not lift a supporting front foot before weight transfers; do not slide both feet together. Natural opposite arm swing and small body bob. No pause, no jump, no reverse, no repeated whole cycle in this half. START: right anatomical leg from farther hip is forward and planted, left bag-side leg trails. First part keeps the right heel and sole loaded and clearly visible while it recedes down-right; left foot lifts, passes separately and advances toward upper-left. Then right heel rises with toe still on ground, left heel comes down, and weight transfers onto left flat boot by END pose B. END: left bag-side leg leads, right trails, right arm forward and left arm back. Do not merely morph in place between anchors; execute a real walking half-step."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "turning, changing view, camera orbit, pan, zoom, sideways gait inconsistent with heading, wrong ground-contact direction, skating, frozen leg, marching one leg, both legs moving together, fused feet, extra limbs, cropped body, bag swapping hip, duplicate satchel, different person, changing age or clothes, pasted face, whole-body mirror, cutout rig, 3D, photorealism, blur, text, watermark, floor line, cast shadow, changing physical boot seam, untraceable heel, disappearing boot, crossed legs, tightrope walk, leading foot tucked upward, bag hiding knee, both landmarks simultaneously occluded, artificial markers, drawn axes"
+    }
+  },
+  "16": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "start_image": [
+        "12",
+        0
+      ],
+      "width": [
+        "13",
+        0
+      ],
+      "height": [
+        "13",
+        1
+      ],
+      "length": 17,
+      "batch_size": 1,
+      "end_image": [
+        "25",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 2410202801,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 2410202801,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "Helena_Walk_Expansion_20261024/nw_revision2/A_to_B/half",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "filename_prefix": "Helena_Walk_Expansion_20261024/nw_revision2/A_to_B/frame"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "24": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Helena_Walk_Expansion_20261024/nw_revision2/B.png"
+    },
+    "is_changed": [
+      "b272872907281f3463ebfafdac1b4685bee77f1fa33f269434eff14e8c481594"
+    ]
+  },
+  "25": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "24",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 512,
+      "height": 768,
+      "crop": "disabled"
+    }
+  }
+}

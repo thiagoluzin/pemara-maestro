@@ -1,0 +1,374 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "encode": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is the sole full-body photographic identity reference of the approved SAME actor in completed SSJ BLUE: short upright blue hair, matching existing brows, physical skin/cloth and external translucent blue aura. Same damaged orange/navy costume, sash/wraps/boots and island. The full-body timed guides at0 and26 come from the approved moving pilot; the actual cut-entry pose is frame26. The last full-body guide defines the same Blue readiness. Face and eye material match these photographs; the energy remains external.\n\nintegrated_multimodal_description: [Shot 1] ONE continuous photoreal LIVE-ACTION WIDE HEAD-TO-TOE shot at normal speed. The entire photographed actor keeps the same height, scale and distance within a locked tripod frame. Complete hair silhouette, both hands, torso, both knees, BOTH BOOTS and ground beneath the soles remain visible with margins for EVERY frame. Same rocky coastal patch, water and distant mesas, stable horizon, daylight and existing damage. Body action stays inside this whole-body composition; muscles, knees, pelvis, shoulders, elbows, wrists, hair and sash respond physically. No camera travel, zoom, closeup, portrait insert, cut, dissolve, flash, extra actor, flight, sliding feet or new attack. Face and material match the approved photograph.\n\nThis physical226-frame shot includes26 frames of moving pre-entry context, excluded from the final edit. Carry the small incoming grounded weight/arm settling from its first pose to the cut-entry guide at26. From the actual entry onward, the transformation and yell are already COMPLETE. During the next3 seconds shift weight deliberately through knees/hips while turning chest slightly toward the same unseen opponent; raise the right forearm into a low alert guard and allow the other elbow to counterbalance. During the following3 seconds complete the pressure recovery, making one controlled torso/hip adjustment and gradually lowering the raised forearm back toward the waist. Through the remaining seconds arrive physically at the actual final complete-body guide, upright with both fists near hips and both boots planted. Breath, small shoulder movement and hair/sash inertia remain present into the ending. Keep completed BLUE hair and the approved translucent external BLUE aura throughout. No another transformation, yell, repeated power pumping, static-image tail, face shot, new attack, gold/red/black reversion or repaired costume. The26-frame generated head is not repeated in the edit.\n\noverall_soundscape: Original recovery breath/effects on their unchanged full30 clock, including actual earlier recovery context in the guide. No new yell, voice, words, singing, dialogue, choir, instruments or music. The complete unchanged original30s waveform is used at review assembly.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 226,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "blue_photo",
+        0
+      ]
+    }
+  },
+  "first": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "first_pose",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "last": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "cut_entry",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "entry_pose",
+        0
+      ],
+      "frame_idx": 225
+    }
+  },
+  "audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_Blue_SUFFIX_v01_preroll26_exact.wav"
+    }
+  },
+  "fixed_audio": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "last",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 301030802
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "fixed_audio",
+        0
+      ]
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "encode",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "save_latent": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/full30_suffix_v01/video"
+    }
+  },
+  "video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video",
+        0
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/full30_suffix_v01/Goku_SSJ_Blue_suffix_native226",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "blue_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj_blue_DLSS5_v01.png"
+    }
+  },
+  "entry_pose": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "Goku_Blue_P04_native_frame259_POSE_ONLY.png"
+    }
+  },
+  "first_pose": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "Goku_Blue_P04_native_frame234_POSE_ONLY.png"
+    }
+  },
+  "cut_entry": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "entry_pose",
+        0
+      ],
+      "frame_idx": 26
+    }
+  },
+  "save_audio_latent": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate",
+        1
+      ],
+      "filename_prefix": "goku_ssj_blue_20261030/full30_suffix_v01/audio_INTERNAL_NOT_DELIVERY"
+    }
+  }
+}

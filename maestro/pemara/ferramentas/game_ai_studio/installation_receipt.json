@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "runtimeRoot": "D:/PemaraRuntimes/maestro-game-ai",
+  "components": {
+    "prerequisites": {
+      "status": "Blender 5.2.1, Ubuntu 24.04 e ambientes de imagem, 3D e rigging instalados",
+      "requiredPaths": [
+        "C:/Program Files/Blender Foundation/Blender 5.2/blender.exe"
+      ]
+    },
+    "comfyui": {
+      "status": "Conector MaestroGame3D ativo na fila 8188; inferência isolada no ambiente 3D, sem substituir o runtime H3",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/apps/ComfyUI/main.py",
+        "D:/PemaraRuntimes/maestro-game-ai/envs/three-d/Scripts/python.exe"
+      ]
+    },
+    "comfyui-3d": {
+      "status": "TRELLIS e Pixal3D testados com GLB e Blender; rotas ativas no Maestro",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/apps/ComfyUI-Trellis2/nodes.py",
+        "D:/PemaraRuntimes/maestro-game-ai/apps/ComfyUI/models/facebook/dinov3-vitl16-pretrain-lvd1689m/maestro-weights-verified.json"
+      ]
+    },
+    "qwen": {
+      "status": "Modelos Image e Edit existentes reutilizados; workflow Image validado ao vivo via MCP",
+      "requiredPaths": [
+        "E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors",
+        "E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors"
+      ]
+    },
+    "flux2-klein": {
+      "status": "Pesos verificados; geração real 512 x 512 passou em 17 segundos; disponível após ativação das novas rotas",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/envs/images/Scripts/python.exe",
+        "D:\\PemaraRuntimes\\maestro-game-ai\\models\\black-forest-labs--FLUX.2-klein-4B\\maestro-runtime-verified.json"
+      ]
+    },
+    "z-image": {
+      "status": "Base e Turbo com pesos verificados e geração real 512 x 512 aprovada tecnicamente; ativação das rotas pendente",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/models/Tongyi-MAI--Z-Image/maestro-runtime-verified.json",
+        "D:/PemaraRuntimes/maestro-game-ai/models/Tongyi-MAI--Z-Image-Turbo/maestro-runtime-verified.json"
+      ]
+    },
+    "skintokens": {
+      "status": "Rigging GPU testado: GLB com 2 meshes, 1 armature e 49 bones; aviso upstream de metadata BPy registrado",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/logs/skintokens-runtime.json"
+      ]
+    },
+    "asset-studio": {
+      "status": "Fonte instalada; typecheck e build aprovados. Processamento GLB integrado ao Maestro",
+      "requiredPaths": [
+        "D:/PemaraRuntimes/maestro-game-ai/apps/asset-studio/out/main/index.js"
+      ]
+    },
+    "zico-blender-bridge": {
+      "status": "Instalado e habilitado como Maestro Pemara; LODs, collider e exportação testados no Blender",
+      "requiredPaths": [
+        "C:/Users/admin_remoto/AppData/Roaming/Blender Foundation/Blender/5.2/scripts/addons/maestro_asset_bridge/__init__.py"
+      ]
+    }
+  },
+  "updatedAt": "2026-09-13T10:00:34.4309363-03:00",
+  "sourceZipSha256": "BE7167EBDA9344B312CC1DD0F5569D88B88C8427AD7C8402D821E7B5A921C4FA",
+  "activationStatus": "active_on_studio_8029_revision_2",
+  "validation": {
+    "unitTestsPassed": 34,
+    "nativeAssetApiPassed": true,
+    "authenticatedUiVerified": false,
+    "artisticApproval": false,
+    "gpuTests": [
+      "flux2-klein",
+      "z-image",
+      "z-image-turbo",
+      "skintokens",
+      "trellis2",
+      "pixal3d"
+    ],
+    "logsRoot": "D:/PemaraRuntimes/maestro-game-ai/logs",
+    "threeDReceipts": [
+      "D:/PemaraRuntimes/maestro-game-ai/logs/trellis2-runtime.json",
+      "D:/PemaraRuntimes/maestro-game-ai/logs/pixal3d-runtime.json"
+    ],
+    "liveRoutesVerified": 7,
+    "activationEvidence": "E:/Pemara/maestro/pemara/dados/logs/maestro_native_activation_verified.json"
+  },
+  "optionalComponentsNotInstalled": [
+    "hidream-o1",
+    "trellis2-wsl-alternative",
+    "pixal3d-wsl-alternative",
+    "unirig",
+    "assetforge",
+    "armorpaint-source"
+  ]
+}

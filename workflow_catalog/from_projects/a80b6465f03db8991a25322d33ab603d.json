@@ -1,0 +1,204 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060101
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_bilateral_pika_native_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "18": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "One uninterrupted HORIZONTAL 16:9 cinematic LIVE ACTION shot, about fifteen seconds. Dante and Vergil from Devil May Cry 3 fight with Rebellion and Yamato on the rain-soaked Temen-ni-gru rooftop. Begin from the exact supplied first frame and move immediately out of its low sword guards. This is physical bilateral sword combat with three clearly readable blade clashes, not a pose or a sword dance.\n\nIDENTITY AND PROP CONTINUITY: Keep exactly the two adult human actors, faces, hair, proportions, wet costumes and weapons from the first frame. VERGIL starts on SCREEN LEFT: swept-back white hair, long embroidered royal-blue coat, dark waistcoat, boots. His RIGHT hand owns the single slender curved Yamato katana. His LEFT hand holds the EMPTY black scabbard safely beside his left hip throughout, away from the crossing blades. DANTE starts on SCREEN RIGHT: shaggy white fringe, youthful angular clean-shaven face, lean muscular build, open wet worn red leather coat, brown chest harness, black gloves, dark trousers and boots. His RIGHT hand owns the single heavy broad Rebellion with its skull guard. His free left hand counterbalances outside the blade paths. Each weapon remains the same rigid solid object and the same length, silhouette and material from every angle. The brothers keep their own sides of the fight, faces, costumes and weapons. Exactly two actors. Same wet stone pattern, gothic parapet and distant spire; consistent cold storm backlight and diagonal rain.\n\nACTING: Dante presses forward boldly with force and committed footwork. Vergil watches the incoming shoulder and blade, responds economically and takes the initiative after the first defense. Each man attacks AND defends; neither waits passively. Eyes follow the opponent rather than the lens. Maintain human effort, breathing and recovery without exaggerated grimacing.\n\n00:00-00:02: From the starting low guards, Dante closes the gap with two grounded driving steps and raises Rebellion into a committed diagonal cut. Vergil reads the advance, bends his supporting knee and raises Yamato into an angled intercept. Camera advances diagonally and starts tracking sideways, keeping both whole bodies and sword tips visible.\n00:02-00:05: FIRST DISTINCT CONTACT: Dante's diagonal Rebellion cut meets the SIDE of Vergil's angled Yamato blade in visible empty space BETWEEN the two torsos. The rigid steel blades arrest and redirect one another rather than passing through. Vergil yields one grounded step and guides the heavy blade outward. Dante's wrist, shoulder and torso follow the deflected momentum; his next planted foot catches his mass. Coats trail and water splashes only after the actual steps. The camera tracks laterally and eases its acceleration across the collision so both blades and both hands remain clear.\n00:05-00:09: Vergil uses that opening for one compact horizontal Yamato counter-cut toward Dante's guard. Dante pivots on a planted boot and brings Rebellion across to intercept. SECOND DISTINCT STEEL CONTACT redirects the katana safely away from his body; Dante takes one recovery step after the shock. Vergil's left hand keeps the empty sheath beside his own left hip. A short low camera arc reveals the changed angle while maintaining the same side of the action axis. No body or coat is pierced.\n00:09-00:12: Dante regains balance, drives through his rear boot and attacks with one strong descending Rebellion cut. THIRD CONTACT: Vergil intercepts obliquely with Yamato, knees and shoulder receiving the load after the blades meet. Brief blade bind, steel scrapes and tension through both bodies; the blades do not bend, merge or pass through. Camera approaches to a medium two-shot that includes both grips and the whole blade intersection, with faces still visible. The impact comes from the moving bodies, not a flash or camera shake.\n00:12-00:15: Vergil rotates his blade angle to divert pressure and breaks the bind. Both separate with real recovery steps, regain balanced guards and continue measuring each other. Boots displace water and brake against the stone. Camera pulls back and rises slightly to reveal both full bodies and the new distance. Keep the final interval alive with breathing, foot adjustments, cloth, rain and camera motion. Do not freeze or start a new attack at the last instant.\n\nPHYSICAL READABILITY: Force begins with planted feet, travels through hips and shoulders into the blade. Anticipation, impulse, steel contact, deflection, displacement and recovery are visible. Defensive preparation may precede a blow; involuntary recoil must follow actual contact. Every translation has a step or pivot. Preserve collision separation of arms, torsos, cloth, scabbard and blades. Rebellion is heavier and broader; Yamato is compact and precise, not an indestructible immobile wall. Maintain steel rigidity, human joint limits and grip ownership through occlusions. Rain, hair and heavy leather lag behind bodily acceleration. Tiny brief friction sparks only at a real visible steel contact if present, never a luminous explosion.\n\nCAMERA: High-energy physical dolly movement with genuine rooftop parallax: diagonal push, lateral tracking, short low arc, approach during the bind, then pullback and gentle rise. The camera accelerates and decelerates like an operated rig. Frame the moving combatants, leave clearance for blade tips and feet, keep the contact area readable. Remain on the original side of the action axis. One continuous shot at normal speed, no edit, teleporting camera, full orbit, slow motion, random zoom, whip-pan across an impact, strobing, blackout or explosion hiding contact.\n\nNATIVE SYNCHRONIZED SOUND AND SCORE: Generate the full audiovisual soundtrack together with this shot. Continuous close rain and rooftop storm ambience. Realistic dry ringing steel attacks precisely at the THREE VISIBLE blade collisions; short metallic decay and a gritty scrape ONLY during the final blade bind. Audible boots hitting and displacing puddles at their actual footfalls, wet leather movement, swishes from the moving blades and restrained breath of exertion. Foreground impacts follow image contacts, never random clangs. Underneath, ORIGINAL INSTRUMENTAL HEAVY METAL backing: aggressive low distorted guitar riff, bass and driving acoustic drums, energetic around 145 BPM, present throughout but quieter than the sword clashes and close Foley. Let the final bind and release carry a strong musical accent, then sustain the riff to the end. No singing, speech, crowd, applause, copied game recording, narration or disconnected sound effects. Retain both the metal music and the detailed synchronized action sounds in the native generated audio.\n\nExclude: extra people, weapon swapping, duplicate blades, disappearing sheath, flexible or growing swords, extra limbs, face changes, body penetration, blades intersecting without deflection, skating feet, uncaused recoil, flying or teleportation, repeated spins, decorative powers, neon beams, blood, text, subtitles, logos, still-image hold.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "first_frame": [
+        "18",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

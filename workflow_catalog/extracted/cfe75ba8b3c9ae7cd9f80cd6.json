@@ -1,0 +1,56 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/phase1_zone1_sky_source.png"
+    },
+    "is_changed": [
+      "18ec92e603915d790a0066a0c861168766214f3d5e53342531635f1f98966b44"
+    ]
+  },
+  "2": {
+    "class_type": "DownloadAndLoadSAM2Model",
+    "inputs": {
+      "model": "sam2.1_hiera_base_plus.safetensors",
+      "segmentor": "single_image",
+      "device": "cuda",
+      "precision": "fp16"
+    }
+  },
+  "3": {
+    "class_type": "Sam2Segmentation",
+    "inputs": {
+      "sam2_model": [
+        "2",
+        0
+      ],
+      "image": [
+        "1",
+        0
+      ],
+      "keep_model_loaded": false,
+      "coordinates_positive": "[{\"x\":700,\"y\":40},{\"x\":950,\"y\":100},{\"x\":1250,\"y\":40},{\"x\":1500,\"y\":130}]",
+      "coordinates_negative": "[{\"x\":900,\"y\":280},{\"x\":1100,\"y\":310},{\"x\":1450,\"y\":220},{\"x\":100,\"y\":150},{\"x\":1840,\"y\":130},{\"x\":400,\"y\":520},{\"x\":900,\"y\":850}]",
+      "individual_objects": false
+    }
+  },
+  "4": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_sam2/zone1_sky_mask"
+    }
+  }
+}

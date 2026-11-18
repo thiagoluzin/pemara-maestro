@@ -1,0 +1,261 @@
+{
+  "contract": "pemara.qwen-music-production.v1",
+  "recordedAt": "2026-10-08T13:50:05.535485+00:00",
+  "backendTestsPassed": 115,
+  "interfaceTestsPassed": 6,
+  "syntaxChecksPassed": true,
+  "realQwenCreationValidated": true,
+  "realQwenReinstrumentValidated": true,
+  "realSongGenerated": false,
+  "artisticApproval": false,
+  "pilot": {
+    "song": "Admirável Gado Novo",
+    "targetStyle": "heavy metal",
+    "status": "WAITING_OWNER_SOURCE_FROM_OTHER_PC",
+    "sourcePath": null
+  },
+  "pendingQualification": [
+    "real_pilot_listening",
+    "Demucs_on_pilot",
+    "RoFormer_MSST_challengers",
+    "ACE_lego_complete",
+    "captured_amp_and_metal_articulations"
+  ],
+  "baselineScope": "18 production/UI/test files plus API-test backup; duration-choice fixture lacks initial baseline",
+  "evidence": {
+    "deployment_verification.json": {
+      "exists": true,
+      "sha256": "51ea183fce5416ba8c610be599a1a0ffa4c4e697114c0b0060f50ba125749f35"
+    },
+    "guitar_qualification.json": {
+      "exists": true,
+      "sha256": "2326d93854b2f4ccab08dbbc1018c46b97dbd9518a810fb3d906206519a99a5d"
+    },
+    "score_roundtrip_verification.json": {
+      "exists": true,
+      "sha256": "43db3b3304e9c8663960e334e9217a8684980cad29fa0a7b3eb645ddf64e55e3"
+    },
+    "qwen_live_creation_plan.json": {
+      "exists": true,
+      "sha256": "d534169950a6e7caa3380db72093f7517d3efd418f99146ed21b1d841ea82068"
+    },
+    "qwen_live_reinstrument_plan.json": {
+      "exists": true,
+      "sha256": "6c43dcd2b9c54a91bb4ebecec7e7d104c62fc866d30f641e0486f6d0379c8e89"
+    },
+    "mcp_workflow_validation.json": {
+      "exists": true,
+      "sha256": "60f057a9ad8da69025fac7235b10e7f9d0e4b17050e0641a5d4afba14a299f88"
+    }
+  },
+  "files": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\main.py",
+      "beforeSha256": "595f307b123ed4279fce51e444ad3a4369578843c57c86b1f118e83fbeef8052",
+      "afterSha256": "d7f10f956b249105a1892436a963b6625df7dca0675c620e1a38b10114a69c35",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\main.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_writer.py",
+      "beforeSha256": "4f963ee422d5ef87fa5d36cfb76aa54252f19d141e8113f2411e069d30fa7038",
+      "afterSha256": "ee6b9857e2574748969b7e91e993f6778e6346a6bcbe77abdcd9c0de0f719f75",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_writer.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_creation.py",
+      "beforeSha256": "8aaaf983028a758afa0e33e19e14078d12f1b2a233a94c69fef38e3b318d4787",
+      "afterSha256": "509f81d9d68abcb16b1c914d8d634a7bf0ebe8d47eacc204004b331f71efd611",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_creation.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_ai_audio.py",
+      "beforeSha256": "065e3147bcb11616f3ce46553d300a74b52fe253eea52a9d06e445b4ced3c0bc",
+      "afterSha256": "4fa982679734ece1deaf825bd87e2636893625d82c9f91722c178b3c5b757f6e",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_ai_audio.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_ai_production.py",
+      "beforeSha256": "aa0270a9c4b8efa71b3c332d42e81d615fb89eeaa3e1444b6018d76240cfb381",
+      "afterSha256": "5817aeef9c51e98cebb21109db88021b35b0b4190a5a56163ddc9a8034b6e608",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_ai_production.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_orchestrator.py",
+      "beforeSha256": "3f45be62b19f338cb43767f570cbe08950c40034adbea8ce6129926aeb7b63cc",
+      "afterSha256": "3f45be62b19f338cb43767f570cbe08950c40034adbea8ce6129926aeb7b63cc",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_orchestrator.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_score_first.py",
+      "beforeSha256": "6aeff496fdf545dffad91f0f41aea573873e421c8ddd96052213b1d630805c73",
+      "afterSha256": "393c895e30f23caa78c61d979490158fe92cb87f6b6034ff5e84c2da8f113b1c",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_score_first.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_performance_mix.py",
+      "beforeSha256": "9c4d30033b69a90665aa34ef522ab48ff810003b00814730c23c6cef32d731c7",
+      "afterSha256": "ed18ef055e9bfe43737d0a7dc01ba2a4b6ca0bfa69ec627f99d162a7715063fa",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_performance_mix.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_reinstrument.py",
+      "beforeSha256": "a9c9edc02cef468fa39364cfd1fdb53a0ed3590849d6f2cfe2055340a9d1c1ab",
+      "afterSha256": "279a67cd05c1dd577583c0a3147add0eeec6ee1c24513d66b5af4a23fd8fed2d",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\music_reinstrument.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\audio_download.py",
+      "beforeSha256": "5e887e67ea51e8732e9e292a37e4f01c43cef0cf1122a80ed09ad10763a91d13",
+      "afterSha256": "5e887e67ea51e8732e9e292a37e4f01c43cef0cf1122a80ed09ad10763a91d13",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\audio_download.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_ai_production.py",
+      "beforeSha256": "aa430e691fffe3ba140a5c966bbaaf072cf42738ddd7eca2d29119732faa1790",
+      "afterSha256": "aa430e691fffe3ba140a5c966bbaaf072cf42738ddd7eca2d29119732faa1790",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\test_music_ai_production.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_creation.py",
+      "beforeSha256": "6904d93bf116d68c1a962ad1a96eb19d6d09504946b6c81af725130f5f3dd87f",
+      "afterSha256": "2d54157b1979f87db4a2a45dc26ae0a847a243b27c640b5d867a2e083a7f061a",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\test_music_creation.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_score_first.py",
+      "beforeSha256": "27f0757fb49f04e1fc347ea96d5950fffdd23fb27aa0cb4245de94a2fb6ee4c5",
+      "afterSha256": "e0591b9ee7a0d178e866d9622a9f9965d5aea2a4b001b597c5408207d640f4ba",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\test_music_score_first.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_simple.py",
+      "beforeSha256": "6774013ff1eed4d748d9694e082b1a8be2a9e53bdbf639e86cf796bd12065fde",
+      "afterSha256": "4b582f1b76db779b331eb9702a958b109784d0a8357eddefa99878cf2ac818b4",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\test_music_simple.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_performance_mix.py",
+      "beforeSha256": "282e40bdcc6726520aa65e2f7d524240f85e8bf367a5b452e980ee6321bfbf5f",
+      "afterSha256": "282e40bdcc6726520aa65e2f7d524240f85e8bf367a5b452e980ee6321bfbf5f",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\services\\studio\\test_music_performance_mix.py"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\app\\assets\\maestro.js",
+      "beforeSha256": "fd2763d2c6e7937264ff831d21d0be2220577aeb8485f978e8bf18a5dd880c12",
+      "afterSha256": "b65c8d88b6d9c7243d5140d9f8deea2b7286b70e30981edcae91d9ad91ad3cdb",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\app\\assets\\maestro.js"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\app\\assets\\music-reinstrument.js",
+      "beforeSha256": "b1de81b900ae8cdc4182852c03dc774bd32bcc7adb65e04f9672f0b9410ee3eb",
+      "afterSha256": "9f00769b74971a6f609970d1eb4e2aa4cc155055e589d59d5d1af3389f1de762",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\app\\assets\\music-reinstrument.js"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\app\\index.html",
+      "beforeSha256": "a0a4ae9a32a52ab0cd848623ae6702a3fa5b33279044d3ae4a957a70e1eb55af",
+      "afterSha256": "20086ab2898f2b051d89b6a5b7d38c40efcb56190f8ff068888102f5e50aad97",
+      "backupPath": "E:\\Pemara\\maestro\\pemara\\backups\\music_production_qwen_20261008\\app\\index.html"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_qwen.py",
+      "afterSha256": "4cb5f4aa4260b48f2b2422d9df327adf2bc223a14f83e07bae3f1b8d201c9496",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_delivery.py",
+      "afterSha256": "980458427f56ef89350d43956f17caebdc5bdaf92c6a599a03c7bd125c89834c",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_listening.py",
+      "afterSha256": "4568944cee766e613ef6ce601c3299cbe6b993bbd4501ab9617e1f9c7b836da9",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\music_vocals.py",
+      "afterSha256": "3f84996e19d34de45d59b5fd9b95075718215414423bf3805600cd2705db591e",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_qwen.py",
+      "afterSha256": "fd1dd9e9df590bb77981484760fda38e50f8fb3c6c99ebcbb4d8b96469c1fbc8",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_quality_gates.py",
+      "afterSha256": "131ff98da68caba5497d4cb857ebc1afccab13b8497711f9dd625add1363c646",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_delivery.py",
+      "afterSha256": "7ede21c0b73298a93c11325c93cc572a11f51e82e0410519100834966e50d32d",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_listening.py",
+      "afterSha256": "398e0a0b2acf15f60343d44128953a74cefa62af00d14482c60a6cd8c4297cb0",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_vocals.py",
+      "afterSha256": "ec35f7ab4e1b755773cfc5cb422f1bf03224affe24553050324df73d90c717be",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_ai_api.py",
+      "afterSha256": "6eae875c31d9ea0628f5e8fc55d1238eafed6bd3da3e9fd57786b9129492ea5b",
+      "backupAvailable": true
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_music_duration_choice.py",
+      "afterSha256": "090c677c46db6f55e83caea87b1878ccb01a4f564536847e23284f6974cbc8eb",
+      "backupAvailable": false
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\SKILL.md",
+      "afterSha256": "b199d758681f56bdbf340f76a6abf8ce1b4eefb30e2cdf12f747d9ddb76c2ac2",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\agents\\openai.yaml",
+      "afterSha256": "c70d6372d57df73365d187f4ee2103e32d1e5fb479256377ec41e8c1ac606272",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\music-production-contract.md",
+      "afterSha256": "d601d0a1750beecde6068349917fcfff34132ab630cac42a779f9d6c226195a6",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\SKILL.md",
+      "afterSha256": "1d5faa7cc04715e3048dfb7c549013fda08c49e362ebb7b697c292bcbfc37223",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\agents\\openai.yaml",
+      "afterSha256": "d500ea1a603fd9a3eb57e81bf89a995316645a21b9c8aae7dd3814bc73a55c4e",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\SKILL.md",
+      "afterSha256": "96b5d9a44631178a4407f82a3cdb864cc122797572bf6ae60a5e3c7ba1606c9f",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\agents\\openai.yaml",
+      "afterSha256": "8dfead07a0b4f4c0037ff04f2190c81912a4bec406318057a5af0157cfe4812e",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\SKILL.md",
+      "afterSha256": "b1440a9d577a107d5fd3e22fd29e7a7b07a5f394047c59d6f58fb3a190f12bbf",
+      "createdInThisImplementation": true
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\agents\\openai.yaml",
+      "afterSha256": "9aad1b660ae5184486dc3010dd5d54c939d5ebc38aa01e69fe4b869eada17bfb",
+      "createdInThisImplementation": true
+    }
+  ]
+}

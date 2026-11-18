@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "pemara-minimax-h3-live-action@1",
+  "enginePolicy": "minimax_h3_only_no_fallback",
+  "workflowFiles": [
+    "identity-performance.workflow.json",
+    "physical-action.workflow.json",
+    "signature-combat.workflow.json",
+    "continuous-bilateral-combat-8s.workflow.json",
+    "continuous-bilateral-start-chain-8s.workflow.json",
+    "moving-connector.workflow.json"
+  ],
+  "eventsFile": "events.json",
+  "qualityProfiles": {
+    "h3_production": {
+      "label": "H3 Production",
+      "width": 1088,
+      "height": 608,
+      "verticalWidth": 608,
+      "verticalHeight": 1088,
+      "steps": 10,
+      "fps": 24,
+      "purpose": "default quality-speed middle ground"
+    },
+    "h3_hero": {
+      "label": "H3 Hero",
+      "width": 1344,
+      "height": 768,
+      "verticalWidth": 768,
+      "verticalHeight": 1344,
+      "steps": 14,
+      "fps": 24,
+      "purpose": "close-ups and high identity risk"
+    },
+    "h3_master": {
+      "label": "H3 Master",
+      "width": 1344,
+      "height": 768,
+      "verticalWidth": 768,
+      "verticalHeight": 1344,
+      "steps": 20,
+      "fps": 24,
+      "purpose": "critical iconic beat after contract lock"
+    },
+    "h3_approved_action_720p8s": {
+      "label": "H3 Approved Action 720p 8s",
+      "width": 1280,
+      "height": 720,
+      "verticalWidth": 720,
+      "verticalHeight": 1280,
+      "steps": 20,
+      "fps": 24,
+      "purpose": "owner-proven Vejito R6 geometry for uninterrupted reciprocal combat"
+    }
+  },
+  "liveActionMaterialContract": {
+    "target": "photographed live action with believable human anatomy",
+    "skin": "natural pores, subsurface variation and restrained makeup",
+    "hair": "individual strands, weight, inertia and contact",
+    "wardrobe": "real fabric, leather or metal with seams, wear and gravity",
+    "lighting": "motivated set lighting with coherent contact shadows",
+    "effects": "physically integrated light, smoke, debris and environmental consequence",
+    "forbidden": [
+      "anime or cel shading",
+      "game render or plastic CGI skin",
+      "beauty-filter wax face",
+      "costume that reads as clean cosplay",
+      "extra people, limbs or identity blending",
+      "generated text or watermark"
+    ]
+  },
+  "finishingOrder": [
+    "picture_lock",
+    "rife_exact60_candidate",
+    "lanczos_nvenc_candidate",
+    "dlss5_background_only_actor_protected_candidate",
+    "original_audio_stream_copy",
+    "technical_qc_and_human_listening",
+    "separate_owner_review"
+  ],
+  "globalGates": {
+    "preflightIsRenderAuthorization": false,
+    "technicalQcIsOwnerApproval": false,
+    "approvedArtifactsImmutable": true,
+    "freshGpuAdmissionBeforeEveryQueue": true,
+    "sourceTakeMustPassBeforeRifeOrUpscale": true
+  },
+  "finishingContract": "services/studio/upscaling_required.py"
+}

@@ -1,0 +1,12 @@
+{
+  "started_at": "2026-11-11T17:39:41.137929+00:00",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "fp16_accumulation": false,
+  "max_abs_error_fp16_matmul": 0.0009665489196777344,
+  "finite": true,
+  "seconds": 0.375,
+  "peak_vram_bytes": 109051904,
+  "result": "PASS"
+}

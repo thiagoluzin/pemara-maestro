@@ -1,0 +1,26 @@
+{
+  "changed_main_functions": [
+    "_normalize_generative_job_spec",
+    "_run_audio_generative",
+    "generative_status"
+  ],
+  "focused_tests": {
+    "total": 57,
+    "passed": 57
+  },
+  "javascript_behavior_cases": 6,
+  "full_music_tests": {
+    "total": 136,
+    "passed": 134,
+    "failures": 2,
+    "cause": "MERT model unavailable in reinstrumentation readiness"
+  },
+  "mcp_direct_workflow_valid": true,
+  "media_generated": false,
+  "runtime_activation": "BLOCKED_ADMINISTRATIVE_RESTART",
+  "automatic_approval_rejection": "Supervisor relaunch through existing administrative task; blocked by policy; command not executed",
+  "own_failed_restart_flag_archived": true,
+  "authenticated_browser_review": "PENDING_LOGIN",
+  "changed_or_new_files": 21,
+  "rollback_verified": true
+}

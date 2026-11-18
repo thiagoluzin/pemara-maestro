@@ -1,0 +1,344 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P18_pixaroma_master20_v8_actor_Ralse",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P18v6_joint_cast_APPROVED.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P18_native15_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "actor_audio",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "first_pose",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23101810
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "stage_lock",
+        0
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "incoming": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P18v6_joint_cast_APPROVED.png"
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "One continuous live-action opera performance with the exact camera, stage, three identities and costumes from <Picture 1>. Fixed physical camera. Neutral-white stage key and natural skin. Animate only the bearded RALSE at the RIGHT of the exact approved reference, with his exact face, RED woven tunic, GOLD breastplate, BURGUNDY cape and black boots. Preserve all colors throughout. He is SILENT throughout this entire interval. The conditioning track is intentionally silent for him; never sing, speak or mouth the other actors lines. Give him a motivated guarded reaction: turn head and gaze from the existing rightward look toward Maria and Draco at left, a small supported stance adjustment, hand relaxes beside his still-sheathed sword, restrain a forward response and settle into a living listening posture. Eyes, breath, cloth and weight continue to respond through the end, not a held photograph. Stay inside his right floor area without crossing or drawing a sword. The other two actors are fixed staging context for this isolated performance. No additional person, reflected person, body copy, freeze, orange tunic, pink face, flicker, blur or ghost. Keep the existing blue stone parapet, moon backdrop, red curtain and scene geometry fixed; no additional people or new scenery. The final soundtrack is the unchanged original recording; the actor-specific track is a generation guide only.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "ref_image_size": "match",
+      "ref_images.ref_image_1": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "first_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "incoming",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "region": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P18v8_Ralse_generation_region.png"
+    }
+  },
+  "stage_lock": {
+    "class_type": "PemaraH3StageLockedLatent",
+    "inputs": {
+      "latent": [
+        "audio_sync",
+        1
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "stage_image": [
+        "anchor",
+        0
+      ],
+      "actor_region": [
+        "region",
+        0
+      ]
+    }
+  },
+  "actor_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P18v8_Ralse_conditioning_only.wav"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+- id: agent-default-model
+  config:
+    provider: pemara-mock
+    model: pemara-mock
+
+- insert:
+    - id: pemara-ledger-mock
+      name: 'file:///E:/Pemara/pemara_harness/test/fixtures/dsh-ledger-mock.ts'

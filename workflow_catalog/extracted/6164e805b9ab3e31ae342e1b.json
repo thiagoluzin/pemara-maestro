@@ -1,0 +1,128 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and mechanical, driven by rapid galloping double bass drums and palm-muted chugging riffs. The mood is tense and visceral. Features a high-pitched, raspy male vocal delivery with sharp, percussive enunciation. Includes a mid-song guitar harmonized solo section and intense tempo shifts to mirror the original's dynamic structure.",
+      "lyrics": "[Intro]\n(Heavy guitar riff, rapid double bass)\n\n[Verse]\nSombras rastejando pelo chão frio\nCorações de pedra, silêncio do rio\nA nuvem negra engole o sol\nO cheiro de ferro, a cor de metal\n\nEles caminham em linha, sem rosto\nUm exército de vidro, um destino posto\nA engrenagem gira, o dente mói\nO medo que cresce, o suor que cai\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Verse]\nSangue na areia, osso no chão\nA maré subindo, a lua de mármore e sol\nA sombra da torre toca seu rosto\nO fôlego quebra, o espírito posto\n\nOlhos vazios, pupilas de aço\nO ritmo é o chicote, o silêncio é o laço\nA batida acelera, o tempo despenca\nA luz que se apaga, a escuridão avança\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Bridge]\n(Guitar Solo, high pitch, harmonized)\nTens! Tens! Tens! Tens!\nO fio puxa! O fio corta!\nTens! Tens! Tens! Tens!\nA carne se abre! O sangue escorre!\n\n[Verse]\nA torre de concreto, o céu de chumbo\nO eco do martelo, o som do trombone\nA multidão grita, mas ninguém ouve\nA corrente aperta, a dor que se prova\n\nA engrenagem para, o ar fica denso\nO coração falha, o fim é o mesmo\nA máscara cai, o rosto se parte\nA luz final, o último aparte\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Outro]\n(Heavy riff, fast tempo)\nRei das Antenas!\nRei das Antenas!\nRei das Antenas!\n(Fade out with rapid double bass)",
+      "abc": [
+        "8",
+        0
+      ],
+      "seed": 4001253514,
+      "mode": "full",
+      "max_duration": 180.0,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 4001253514,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_4f3ded9afd87",
+      "format": "flac"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and mechanical, driven by rapid galloping double bass drums and palm-muted chugging riffs. The mood is tense and visceral. Features a high-pitched, raspy male vocal delivery with sharp, percussive enunciation. Includes a mid-song guitar harmonized solo section and intense tempo shifts to mirror the original's dynamic structure.\nShort complete song, target duration 180 seconds. Start singing immediately; no long instrumental intro. Prioritize the verse and chorus.",
+      "lyrics": "[Intro]\n(Heavy guitar riff, rapid double bass)\n\n[Verse]\nSombras rastejando pelo chão frio\nCorações de pedra, silêncio do rio\nA nuvem negra engole o sol\nO cheiro de ferro, a cor de metal\n\nEles caminham em linha, sem rosto\nUm exército de vidro, um destino posto\nA engrenagem gira, o dente mói\nO medo que cresce, o suor que cai\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Verse]\nSangue na areia, osso no chão\nA maré subindo, a lua de mármore e sol\nA sombra da torre toca seu rosto\nO fôlego quebra, o espírito posto\n\nOlhos vazios, pupilas de aço\nO ritmo é o chicote, o silêncio é o laço\nA batida acelera, o tempo despenca\nA luz que se apaga, a escuridão avança\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Bridge]\n(Guitar Solo, high pitch, harmonized)\nTens! Tens! Tens! Tens!\nO fio puxa! O fio corta!\nTens! Tens! Tens! Tens!\nA carne se abre! O sangue escorre!\n\n[Verse]\nA torre de concreto, o céu de chumbo\nO eco do martelo, o som do trombone\nA multidão grita, mas ninguém ouve\nA corrente aperta, a dor que se prova\n\nA engrenagem para, o ar fica denso\nO coração falha, o fim é o mesmo\nA máscara cai, o rosto se parte\nA luz final, o último aparte\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor é o preço, o suor é o rio\nRei das Antenas! Corta a carne!\nA máquina avança, a alma se arrepende\n\n[Outro]\n(Heavy riff, fast tempo)\nRei das Antenas!\nRei das Antenas!\nRei das Antenas!\n(Fade out with rapid double bass)",
+      "seed": 4001253514,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

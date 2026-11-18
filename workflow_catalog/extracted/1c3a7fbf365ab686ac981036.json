@@ -1,0 +1,163 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit Lisa on the RIGHT of image 1 into a different pose. Chris on the left stays exactly as in image 1.\nLisa BENDS BOTH ELBOWS and lifts her TWO TRAPPED WRISTS TO HER UPPER CHEST, in front of her face, preparing a forceful downward sweep. The entire heavy wooden wrist stock rises with her forearms: its lower edge is now at chest height, NOT at her waist or knees. Her shoulders rotate forward, spine pitches left toward Chris, right foot steps left toward him, knees bend with weight loading the front foot. This is the clear anticipation of a grounded attack, not the swing itself. Head still watches Chris. BOTH WRISTS remain inserted through the TWO occupied holes of the same stock; fingers project through front and remain free. She NEVER grips or carries the bar with her fingers. Chain hangs from the lifted stock in a natural curve; ankle chain remains attached to planted feet.\nKeep exactly the approved imposing Lisa body, mask, hair, costume, two occupied wrist holes, actor identity and cabin. Chris keeps the same actor, crouched diagonal stance and SINGLE shotgun physically held in his hands. No roll, dropped shotgun, shot or impact yet. Full-body lateral cinematic live-action 16:9 photograph, same light and camera. Do not reuse Lisa's unchanged arms-down waist-height starting pose. Other references lock only Chris identity and wardrobe; do not copy their pose or attic. No gore, extra people, new weapon, text or collage.\n",
+      "negative_prompt": "illustration, painting, anime, cartoon, cel shading, video game render, plastic CGI, wax skin, generic different soldier, duplicated characters, missing mask, wrong clothing, tentacles, blood, gore, extra limbs, disembodied hands, floating chain, duplicate guns, blurred face, subtitles, letters, watermark, collage, different room, wide-angle distortion, holding plank, fingers gripping wood, empty wrist holes, detached restraint",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "22",
+        0
+      ],
+      "images.image_3": [
+        "23",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 1010260203,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_cabana_20261010/LA02_QWEN_V03"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_LA02_REFINE_V03.png"
+    },
+    "is_changed": [
+      "385fc052261a7dcac5eb1874e38baa485f5f509706dec2174902eb2cce8df127"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "22": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_YAWN_A13.png"
+    },
+    "is_changed": [
+      "539c2d392ec246057e5e33f91117e1538de3b4349767979f47b4194fb1446dcc"
+    ]
+  },
+  "23": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_FACE_A01.png"
+    },
+    "is_changed": [
+      "2c116eac8cde6939a54514e8d7fc6e0845d619e834d4f3960ab2891d451246ed"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

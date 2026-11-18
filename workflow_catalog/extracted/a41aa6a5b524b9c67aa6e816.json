@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Fast aggressive melodic heavy metal, tightly picked original guitar riff, punchy thick bass, energetic real drums, defiant rough-edged male high voice. 164 BPM, F sharp minor. a fast pedal-point guitar riff punctuated by dissonant jabs; a sharp shouted-sung chorus. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nGrease on the gears, steam in the air,\nFeeding the beast with a collective prayer.\nThey sell us the dark, we buy it in bulk,\nChoking on smoke, drinking from the cup.\nThe machine hums low, it eats the weak,\nWhile we dance on the edge of the concrete peak.\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Verse]\nFound the blueprints in the rusted drain,\nA simple joke to break the chain.\nHe opened his mouth, let a giggle burst,\nScreaming laughter tearing the engine apart.\nThe pistons jammed, the pistons died,\nThe panic engine couldn't hide.\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Bridge]\nSilence falls, the smoke clears up,\nThe giant clock hits a sudden stop.\nNo more fear to keep it running,\nThe city breathes, the lesson is coming.\n\n[Solo]\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Outro]\nGears grind down, final crash,\nThe panic engine is ash.",
+      "abc": "",
+      "seed": 202610166010,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166010,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/11_panic_engine_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

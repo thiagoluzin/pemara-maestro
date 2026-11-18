@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Symphonic heavy metal with a galloping, rhythmic drive similar to classic power metal. The arrangement features driving double-bass drums, galloping sixteenth-note guitar riffs, and lush orchestral strings. The mood is dramatic, gothic, and epic. Vocals alternate between a soaring, operatic female lead and harsh, low male growls. The production is polished with wide reverb on the highs and tight, punchy low-end.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\n(Male Growl)\nDust upon the velvet seat\nSilence in the hollow heart\nShadows dancing on the wall\nWaiting for the dawn to start\n\n(Female Soprano)\nThe clock strikes twelve, the candles die\nA whisper slips beneath the eye\nI wear the mask of porcelain\nHiding the sorrow, hiding the pain\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nScreaming!\n\n[Verse]\n(Male Growl)\nBones of kings in the crypt below\nEchoes of a war long ago\nThe orchestra plays its final tune\nUnder a moon of silver ruin\n\n(Female Soprano)\nYour cold hand touches my cheek\nA promise that we cannot break\nThe music swells, the strings will tear\nThe veil of night, the morning air\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nForever!\n\n[Bridge]\n(Female Soprano)\nFly, my wings of broken glass\nShatter the mirror, let the past\nUnravel, unravel\n\n(Male Growl)\nUnravel!\n\n(Guitar Solo)\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nRelease!\n\n[Outro]\n(Female Soprano)\nMarble tears... on the floor...\nSilence... once more...\n\n(Orchestral Hit)",
+      "abc": "X:1\nT:\nM:2/4\nL:1/32\nQ:1/4=90\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% intro\nV: Vocal\nz12\"D#m\"z4|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nZ|d2A2d2e2f2A2e2A2|g2A2f2A2e2A2f4|d2A2d2e2f4e4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nc8A8|d2A2d2e2f4e2A2|g2A2f2A2e2A2f4|d2A2d2e2f4e4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nc8A8|d2A2d2e2f4e4|g4f4e4f4|d2A2d2e2f4e4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\"B\"z16|\"B\"z16|\"G#m\"z16|\nV: Ins\nc8A8|d2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\ne8A8|d2A2d2e2f4e4|g4f4e4f4|d2A2d2e2f4e4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\"B\"z16|\"B\"z16|\"G#m\"z16|\nV: Ins\nc8A8|d2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|\nV: Vocal\n\"C#\"z8\"A#\"z8|\nV: Ins\ne8A8|\n% verse\nV: Vocal\n\"D#m\"d8a8|\"D#m\"a12f4|\"C#\"e8c4d4|\"D#m\"d8z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8a8|\"D#m\"a12f4|\"C#\"g8b4a4|\"F#\"a8z8|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d'8a8|\"B\"c'12b2a2|\"C#\"g8e4f4|\"D#m\"f8z8|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d8a8|\"C#\"g12e4|\"A#m\"e8c4d4|\"D#m\"d16-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8z8|\"D#m\"z16|\"D#m\"z12A4|\"D#m\"d8a8|\nV: Ins\nz12e4|d4z2d2z4d4|d4z2d2z8|Z|\nV: Vocal\n\"D#m\"a12f4|\"C#\"e8c4d4|\"D#m\"d8z4A4|\"D#m\"d8a8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"a12f4|\"C#\"g8b4a4|\"F#\"a12z4|\"B\"d'8a4a4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"c'12b2a2|\"C#\"g8e4f4|\"D#m\"f8z8|\"B\"d6e6f4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"g8f8|\"A#m\"e6f6g4|\"A#m\"a12z4|\nV: Ins\nZ3|\n% chorus\nV: Vocal\n\"D#m\"d12a4|\"F#\"a4f4g4a4|\"C#\"g8z4e2f2|\"G#\"g4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d6d2d4a4|\"F#\"a4f4g4a4|\"C#\"g8z4e4|\"A#m\"e4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"e12f4-|\"B\"f16-|\"B\"f12z4|\"C#\"c'16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d'16-|\"D#m\"d'16|\"D#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nZ2|d2A2d2e2f4e4|c8A8|\nV: Vocal\n\"B\"z16|\"B\"z16|\"G#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nd2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|e8A8|\n% verse\nV: Vocal\n\"D#m\"D8A8|\"D#m\"A8G4F4|\"C#\"E8C4D4|\"D#m\"D8z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"D8A8|\"D#m\"A12F4|\"C#\"G6A6B4|\"F#\"A8z4A4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d6A6A4|\"B\"c12B2A2|\"C#\"G8E4F4|\"D#m\"F8z8|\nV: Ins\nZ4|\nV: Vocal\n\"B\"D6E6F4|\"C#\"G12F4|\"A#m\"E8C8|\"D#m\"C4D12-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"D4z8d4|\"D#m\"d8a8|\"D#m\"a6g6f4|\"C#\"e16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z12d4|\"D#m\"d8a8|\"D#m\"a12f4|\"C#\"g8b4a4|\nV: Ins\nZ4|\nV: Vocal\n\"F#\"a8z4a4|\"B\"d'4a4a8|\"B\"c'12b2a2|\"C#\"g8e4f4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f8z4c4|\"B\"d8a8|\"C#\"g12f4|\"A#m\"e8c4d4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d16-|\"D#m\"d16|\nV: Ins\nZ2|\n% chorus\nV: Vocal\n\"D#m\"d12a4|\"F#\"a4f4g4a4|\"C#\"g8z4e2f2|\"G#\"g4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d6d2d4a4|\"F#\"a4f4g4a4|\"C#\"g8z4e4|\"A#m\"e4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"e12f4-|\"B\"f16-|\"B\"f12z4|\"C#\"z12c'4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"c'4d'2d'2z8|\"D#m\"z16|\"D#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nz8f4e4|g4f4e4f4|d2A2d2e2f4e4|c8A8|\nV: Vocal\n\"B\"z16|\"B\"z16|\"G#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nd2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|e8A8|\n% bridge\nV: Vocal\n\"D#m\"a16|\"D#m\"z4a4a4f4|\"C#\"g8e8|\"D#m\"f2e2d8z4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d6e6f4|\"B\"g8f8|\"C#\"e8c4d4|\"D#m\"d8z4d4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d6a8-a2-|\"B\"a12-a2z2|\"C#\"g16-|\"C#\"g8z4c'4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"c'6d'2d'2z6|\"D#m\"z16|\"D#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nz12e4|g4f4e4f4|d4d2e2f4e4|c8A8|\nV: Vocal\n\"B\"z16|\"B\"z16|\"C#\"z16|\"C#\"z12c'4|\nV: Ins\nd2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|e8z8|\nV: Vocal\nc'6d'2d'2z6|Z|\nV: Ins\nZ|z8A8|\n% interlude\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"C#\"z16|\"D#m\"z16|\nV: Ins\nd12a4|a12f4|e4f2e2c4d4|d16|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"C#\"z16|\"F#\"z16|\nV: Ins\nd12a4|a12f4|g8b8|a16|\nV: Vocal\n\"B\"z16|\"B\"z16|\"C#\"z16|\"D#m\"z16|\nV: Ins\nd'8a8|c'12b2a2|g8e8|f16|\nV: Vocal\n\"B\"z16|\"B\"z16|\"A#\"z16|\"A#\"z16|\nV: Ins\nd6e6f4|g8f8|e4f2e2f2e2g2e2|a2e2a2e2b2e2b2e2|\nV: Vocal\n\"D#m\"z16|\"F#\"z16|\"C#\"z16|\"G#m\"z16|\nV: Ins\nd12a4|a4f4g4a4|g12e2f2|g4f4e4c4|\nV: Vocal\n\"D#m\"z16|\"F#\"z16|\"C#\"z16|\"A#m\"z16|\nV: Ins\nd12a4|a4f4g4a4|g12e2f2|g4f4e4c4|\nV: Vocal\n\"B\"z16|\"B\"z16|\"B\"z16|\"C#\"z16|\nV: Ins\ne12f4-|f16-|f12z4|e16|\n% chorus\nV: Vocal\n\"D#m\"d12a4|\"F#\"a4f4g4a4|\"C#\"g8z4e2f2|\"G#m\"g4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d6d2d4a4|\"F#\"a4f4g4a4|\"C#\"g8z4e4|\"A#m\"e4f4e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"e12f4-|\"B\"f16-|\"B\"f12z4|\"C#\"z12c'4|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"d'16-|\"D#m\"d'16|\"D#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nZ2|d2A2d2e2f4e4|c8A8|\nV: Vocal\n\"B\"z16|\"B\"z16|\"G#m\"z16|\"C#\"z8\"A#m\"z8|\nV: Ins\nd2B2d2e2f4e4|g4f4e4f4|d2B2d2e2f4g4|e8A8|\n% outro\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"C#\"z16|\"D#m\"z16|\nV: Ins\nd12a4|a12f4|e8c4d4|d16|\nV: Vocal\n\"D#m\"d8a8|\"D#m\"a16|\"C#\"g8e8|\"D#m\"f2e2d8z4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d8a8-|\"B\"a16|\"C#\"g16-|\"C#\"g8e8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f4e12-|\"D#m\"e16-|\"D#m\"e16-|\"D#m\"e16-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"e4z12|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nz4d2e2f4e4|g4f4e4f4|d2A2d2e2f4e4|c8A8|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nd16-|d16|Z|",
+      "seed": 1467442894,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 1467442894,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_809933f7b866",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

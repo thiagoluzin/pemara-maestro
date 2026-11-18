@@ -1,0 +1,14 @@
+{
+  "engine": "hunyuan3d_2_1",
+  "promptId": "2ffb9981-ac1a-40b6-a5d0-79a0da068fee",
+  "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\hunyuan3d_2_1\\2ffb9981_000.glb",
+  "bytes": 6343988,
+  "sha256": "6b7593ba097bf608334d47bfa24dcf5a62ccc3b97969ce2dbec4b89a9979d931",
+  "vertices": 176200,
+  "faces": 352400,
+  "watertight": false,
+  "technicalInferencePassed": true,
+  "textured": false,
+  "printReady": false,
+  "artisticApproval": false
+}

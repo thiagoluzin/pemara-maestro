@@ -1,0 +1,191 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060105
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_contact_repair_visual_8s_v05",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "18": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "19": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "K_V03_frame191.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "Eight-second uninterrupted HORIZONTAL cinematic LIVE ACTION of a close, forceful sword clash between Dante and Vergil in heavy rain. Use the exact supplied first and last images. Exact faces, bodies, white hair, wet red and blue leather costumes, gothic rooftop and rigid swords. Blue Vergil LEFT owns slender Yamato katana in RIGHT hand and empty black sheath at LEFT hip; red Dante RIGHT owns broad skull-guard Rebellion in RIGHT hand. Same weapon ownership and real materials throughout.\n\nTHIS IS TWO CLOSE INTERCEPTIONS AND A SUSTAINED STEEL BIND, not a flurry of swinging. Only TWO attacking cuts, both blocked by actual blade collisions. Keep the brothers facing each other within blade reach throughout the exchange. No turning away or decorative weapon circles.\n\nFrom the starting low guards, Dante drives forward with two planted steps. Vergil braces his feet and brings Yamato INTO the path of Rebellion. At about 1.2 seconds Dante's short diagonal cut HITS the middle of Vergil's angled katana in the open gap between their chests. The steel edges STOP AGAINST ONE ANOTHER, pushing the defender's wrist and shoulder back. They must visibly touch at the SAME point in space. Remain in close contact for a moment, then Vergil presses and slides along Rebellion to redirect its point. Dante takes a grounded recovery step. Both arms and shoulders show resistance while the blades scrape and slide against one another.\n\nVergil now separates the blades only by a small gap and immediately makes ONE short counter-cut. Dante raises and angles the broad Rebellion directly ACROSS Yamato's actual incoming path. At about 4.8 seconds their steel edges HIT firmly again in front of both torsos. Visible contact checks the counter-cut; both wrists receive load, bent knees absorb the impulse, and the blades deflect a little. Neither sword continues through the other or sails past at a different depth. No long overhead preparation, flourish or extra air slash.\n\nFrom this second collision they keep the blades ENGAGED and drive closer together through real planted steps, pressing steel against steel. Reach the exact crossed X, close body spacing, original grips and medium viewpoint of the final supplied image by the end of the eighth second. Both brothers face and watch each other. Pressure in shoulders, flexed knees, breath, slight grinding steel movement and rain continue through the last frame. Do not introduce a new strike, hold a frozen photograph, lower swords or step back at the end.\n\nCamera tracks gently sideways during the two contacts, on the original side of the axis, with BOTH hands and the small collision area clear in the same image plane. Then dollies forward with their closing pressure into the exact final-frame viewpoint. No flash, spark cloud, shake, cut, orbit or blurred whip hides contact. Natural normal-speed human motion with rigid steel, planted feet, trailing wet coats and splashes from actual steps. The visible action is steel physically obstructing steel with force, reaction and redirection. No parallel sword dance, sweeping at empty space, spin, weapon swap, blade bending, phasing through steel/body/clothes, extra actor/limb, magic, text, logo or slow motion.",
+      "width": 1536,
+      "height": 864,
+      "length": 192,
+      "first_frame": [
+        "18",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "6": {
+    "class_type": "ETN_LoadMaskBase64",
+    "inputs": {
+      "mask": "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"
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "Refine the supplied walking pose sketch into the SAME detailed hand drawn anime pixel art as the reference image. Full body woman, side profile facing RIGHT. Preserve the exact positions of both knees, boots and swinging forearms from the pose sketch. Paint richly shaded dark teal denim trousers, natural sewn seams, cloth folds and creases around bent knees, detailed brown leather ankle boots, matching reference craftsmanship and linework. Draw slender natural forearms and carefully detailed relaxed hands in the exact guide positions. Maintain two distinct legs, same limb thickness and lengths as guide, natural anatomy. Original ochre jacket, face, hair, shirt and asymmetric brown bag unchanged. Flat uniform light gray background. No objects, no text, no extra legs, no 3D."
+    }
+  },
+  "8": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "4",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "latent": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "9",
+        0
+      ]
+    }
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "200": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "201": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "301": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "200",
+        0
+      ],
+      "image2": [
+        "201",
+        0
+      ]
+    }
+  },
+  "202": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "302": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "301",
+        0
+      ],
+      "image2": [
+        "202",
+        0
+      ]
+    }
+  },
+  "203": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "303": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "302",
+        0
+      ],
+      "image2": [
+        "203",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "303",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "mask": [
+        "6",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": 23102602,
+      "steps": 16,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ],
+      "denoise": 0.32
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaWalk/Ciclo16v2_direita_00"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

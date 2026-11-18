@@ -1,0 +1,338 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P14_pixaroma_master20_v6_native15",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P01_celes_approved.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P14_v6_native15_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "first_pose",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23101401
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "stage_lock",
+        0
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "incoming": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P14_P13_approved_endpoint.png"
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "One continuous LIVE ACTION fifteen-second opera stage shot. Exactly one adult Celes/Maria as <Picture 1>: same face, blonde ponytail and blue bow, natural beige skin, ivory satin gown with blue trim. Continue the EXACT approved P13 incoming pose, existing bouquet in her hands. Same fixed WIDE audience camera, same body scale and stage depth, blue battlements, moon backdrop and right curtain. Original instrumental recording unchanged. Natural quiet resting lips: no invented speech or silent singing.\nONE SHORT IRREVERSIBLE ACTION, NO RESTART: 0-4 seconds, her eyes find the space below the balcony toward screen left, then she transfers her weight and takes one short supported step toward it. Her hips translate a little left at constant depth and the heavy skirt follows. 4-8 seconds, her right hand alone retains the existing stems and slowly lowers and extends that SAME bouquet away from her skirt over the near edge. Her left hand separates, relaxed and visibly empty near her waist; do not lean down or reach to brace against the foreground stones. 8-11 seconds, she opens her right fingers ONCE and the WHOLE bouquet visibly detaches and falls under gravity. Follow a continuous descending path until the foreground naturally occludes it below the ledge. No flower fade, teleport, floating bouquet or passing through masonry. 11-15 seconds, the release is over and BOTH HANDS stay EMPTY. Her eyes track the fall, the empty right arm withdraws slowly and relaxes while she recovers her supported upright stance. Continue natural body and fabric recovery to the end. Do not perform a second release or a long departure; departure belongs to the next take.\nThe photo defines the identity and INITIAL bouquet, not a bouquet to recreate after the release. Flowers cannot reappear in either hand after the fall. Two anatomical hands and arms only. No grasping an invisible bouquet. Keep body and gown behind the same existing foreground stones, which retain their shape and position. No sliding or scale change, second woman, translucent face or body, pose dissolve, reset to the photograph, camera move, cut, fade, text or new background traffic. Soft neutral white light on skin and ivory gown, blue only in the set and trim; no pink or magenta wash, flash, flicker, waxy skin or CGI anatomy. Native speed and the full source-audio interval, no added voice, music or Foley.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "ref_image_size": "match",
+      "ref_images.ref_image_1": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "first_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "incoming",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "region": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P14_fullheight_actor_region.png"
+    }
+  },
+  "stage_lock": {
+    "class_type": "PemaraH3StageLockedLatent",
+    "inputs": {
+      "latent": [
+        "audio_sync",
+        1
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "stage_image": [
+        "incoming",
+        0
+      ],
+      "actor_region": [
+        "region",
+        0
+      ]
+    }
+  }
+}

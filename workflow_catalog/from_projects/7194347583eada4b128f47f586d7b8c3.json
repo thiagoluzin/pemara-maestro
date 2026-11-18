@@ -1,0 +1,377 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "20": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "16",
+        0
+      ],
+      "conditioning": [
+        "17",
+        0
+      ]
+    }
+  },
+  "21": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "16",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "22": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "23": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110701
+    }
+  },
+  "24": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "23",
+        0
+      ],
+      "guider": [
+        "20",
+        0
+      ],
+      "sampler": [
+        "22",
+        0
+      ],
+      "sigmas": [
+        "21",
+        0
+      ],
+      "latent_image": [
+        "17",
+        1
+      ]
+    }
+  },
+  "25": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "24",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "27": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "25",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "28": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "27",
+        0
+      ],
+      "filename_prefix": "pemara_combat_v1/pilot/pemara_combat_engine",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "90": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  },
+  "17": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "prompt": "r34l1sm\nScene: A boxing ring with ropes and a blue canvas in a small indoor gym.\nCharacters: Two original adult male boxers. Fighter A starts left in a red sleeveless top, white shorts with red panels and red gloves. Fighter B starts right in a black sleeveless top, black shorts with red side stripes and dark gloves. Keep each identity, clothing and relative geography consistent. Use supplied labeled reference images when present.\nCamera: One continuous wide low ringside shot. Keep both full bodies and the native reference framing visible.\nStyle: Photorealistic live-action cinema.\nChoreography: Follow the reference boxing exchange at its original speed: both adults begin in guard; A steps forward with a straight punch, B slips and responds, both reset their distance, then close into a brief clinch. Keep action ownership and each visible support step. This is a boxing exchange, not a knockdown or a supernatural hit.\nMechanics: show preparation, a grounded weight shift, acceleration toward the declared target, contact or a motivated defense, displacement following the attack direction, and recovery of balance. Do not react to an impact before contact. Do not add more attacks than requested. Follow the supplied movement control when present; preserve support, distance and action ownership. No cuts through contact, hidden hits, fused limbs, teleportation or unmotivated speed changes. \nAudio: Silent output; no dialogue or narration.\nInstruction boundary: Scene, Camera, Choreography and Mechanics are direction, never spoken words. No captions, subtitles or text overlays.",
+      "width": 864,
+      "height": 480,
+      "length": 124,
+      "audio_vae": [
+        "4",
+        0
+      ],
+      "ref_image_size": "match"
+    },
+    "_meta": {
+      "title": "PERSONAGENS / DIREÇÃO — H3",
+      "pemara_combat": {
+        "version": "1.0",
+        "preset": "diagnostico",
+        "control": "pose",
+        "seed": 2026110701,
+        "steps": 20,
+        "attention_policy": "native_diagnostic",
+        "content_kind": "live_action",
+        "face_refine": false,
+        "turbo": false,
+        "physical_simulation_claim": false,
+        "owner_approval": "PENDING",
+        "test_scope": "known boxing reference technical calibration; not single-punch acceptance"
+      }
+    }
+  },
+  "100": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "reference_277ef18d86c8dea8.mp4"
+    }
+  },
+  "101": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": [
+        "100",
+        0
+      ]
+    }
+  },
+  "102": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "rt_detr_v4-x-hgnet_fp16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "103": {
+    "class_type": "RTDETR_detect",
+    "inputs": {
+      "model": [
+        "102",
+        0
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "threshold": 0.4,
+      "class_name": "person",
+      "max_detections": 8
+    }
+  },
+  "111": {
+    "class_type": "PemaraCombatSelectFighterBoxes",
+    "inputs": {
+      "bboxes": [
+        "103",
+        0
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "minimum_area_fraction": 0.025
+    }
+  },
+  "104": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sdpose_wholebody_fp16.safetensors"
+    }
+  },
+  "105": {
+    "class_type": "SDPoseKeypointExtractor",
+    "inputs": {
+      "model": [
+        "104",
+        0
+      ],
+      "vae": [
+        "104",
+        2
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "bboxes": [
+        "111",
+        0
+      ],
+      "batch_size": 4
+    }
+  },
+  "106": {
+    "class_type": "SDPoseDrawKeypoints",
+    "inputs": {
+      "keypoints": [
+        "105",
+        0
+      ],
+      "draw_body": true,
+      "draw_hands": true,
+      "draw_face": true,
+      "draw_feet": true,
+      "stick_width": 3,
+      "face_point_size": 2,
+      "score_threshold": 0.3,
+      "draw_head": true
+    }
+  },
+  "107": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "106",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "108": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "107",
+        0
+      ],
+      "filename_prefix": "pemara_combat_v1/pilot/pemara_combat_engine_pose",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "109": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "105",
+        0
+      ]
+    }
+  },
+  "110": {
+    "class_type": "SavePoseKpsAsJsonFile",
+    "inputs": {
+      "pose_kps": [
+        "105",
+        0
+      ],
+      "filename_prefix": "pemara_combat_v1/pilot/pemara_combat_engine_pose_keypoints"
+    }
+  },
+  "112": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "111",
+        1
+      ]
+    }
+  },
+  "15": {
+    "class_type": "ModelPatchLoader",
+    "inputs": {
+      "name": "minimax_h3_fun_controlnet_union_pruned_int8_convrot.safetensors"
+    }
+  },
+  "16": {
+    "class_type": "MiniMaxH3FunControlNetApply",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "model_patch": [
+        "15",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "strength": 1.0,
+      "start_percent": 0.0,
+      "end_percent": 1.0,
+      "control_video": [
+        "106",
+        0
+      ]
+    }
+  }
+}

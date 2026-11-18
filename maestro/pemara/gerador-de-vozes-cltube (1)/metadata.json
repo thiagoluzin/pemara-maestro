@@ -1,0 +1,6 @@
+{
+  "name": "Gerador de vozes CLTube",
+  "description": "Um aplicativo da web que converte texto em narrações de áudio de alta qualidade usando a API Gemini. Os usuários podem inserir texto, escolher entre várias vozes, gerar o áudio, ouvi-lo e baixá-lo como um arquivo WAV.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

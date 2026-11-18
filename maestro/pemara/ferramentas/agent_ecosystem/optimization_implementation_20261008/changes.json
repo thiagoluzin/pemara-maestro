@@ -1,0 +1,800 @@
+{
+  "E:/Pemara/.agents/skills/pemara-messenger-turbo/references/operating-contract.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "31a6110c4e0cdda3f32772aaf86de2f4e3382136a8e8587f69c517a394a3e021",
+    "after_bytes": 2835
+  },
+  "E:/Pemara/.agents/skills/code-archaeologist/SKILL.md": {
+    "before_sha256": "a256af576cfafee81a7e619194ed5362ba930787b929b7c035f59a6e8233c40e",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/code-archaeologist/SKILL.md",
+    "before_bytes": 7850,
+    "after_sha256": "42ca2416dfdba832c08a44eedb3aa7b45653475f9b5721b0d0909a908f3a1b14",
+    "after_bytes": 3785
+  },
+  "E:/Pemara/.agents/skills/debugger/SKILL.md": {
+    "before_sha256": "37ce989d7a44be7351e7b0e90912df94263fa049ad53205078d0239e49fe57e4",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/debugger/SKILL.md",
+    "before_bytes": 12528,
+    "after_sha256": "26aa8ddb03c96ad3487ce84ae58ceb55cbbfab08b0b7e4f9645ea5d682b50d44",
+    "after_bytes": 1786
+  },
+  "E:/Pemara/.agents/skills/performance-optimizer/SKILL.md": {
+    "before_sha256": "36630b2dc8ee99cdcfca7dde851071902581a9c5f4fd000af24fb579a7171624",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/performance-optimizer/SKILL.md",
+    "before_bytes": 8616,
+    "after_sha256": "1b642621ce127b67a058a77a467b1553e71c80a8bf6559d90b65b895cf5d54a8",
+    "after_bytes": 1522
+  },
+  "E:/Pemara/.agents/skills/project-planner/SKILL.md": {
+    "before_sha256": "f80374e8229c0280d4e9a1e7ff4b302d33947a5e2458ff86e59e5dc99ef489c7",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/project-planner/SKILL.md",
+    "before_bytes": 17135,
+    "after_sha256": "e23840254669db365b273644a51f0ae4ab03d767fd45c8c27baea55be629c3ee",
+    "after_bytes": 3372
+  },
+  "E:/Pemara/.agents/skills/qa-automation-engineer/SKILL.md": {
+    "before_sha256": "8f17982c3e9303d566f3388796f89e843dd6dd5cf58e607f71e49e3387fa280a",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/qa-automation-engineer/SKILL.md",
+    "before_bytes": 7721,
+    "after_sha256": "c2ddcecc97a3a90037c28667a7967007931ac581a6d1d19c1b57eb027a8d2a88",
+    "after_bytes": 3659
+  },
+  "E:/Pemara/.agents/skills/test-engineer/SKILL.md": {
+    "before_sha256": "cf9881a25526509fbe1d289a5284a3e8dbf3e87b7f1390ec7069f786441187b0",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/test-engineer/SKILL.md",
+    "before_bytes": 7727,
+    "after_sha256": "322eb57c5e35cc4243c736c9b0d2d52c5c59b2e2ee877f310d7ad5f717f76980",
+    "after_bytes": 3610
+  },
+  "E:/Pemara/.agents/profiles/ai-video-intro-pipeline.md": {
+    "before_sha256": "a1343b222d190ec7fafd292dfead6b48c46ac2975c1bbc7ebc9d1a6b8e7835b9",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/ai-video-intro-pipeline.md",
+    "before_bytes": 8410,
+    "after_sha256": "4a747d80ceadb060f4ae93629435be0c07b09be3730764a03bc0d797997fc2ba",
+    "after_bytes": 592
+  },
+  "E:/Pemara/.agents/profiles/image-production.md": {
+    "before_sha256": "5499b0dff29215423b26b6b53c72c4efd6ae7609a7f9bac61319d7c69028aecd",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/image-production.md",
+    "before_bytes": 7324,
+    "after_sha256": "acd0fee7b3a04fbf19fad5ed5374d760eda0d977b934d2c3136a456839104910",
+    "after_bytes": 564
+  },
+  "E:/Pemara/.agents/profiles/creative-director.md": {
+    "before_sha256": "e2a240171da9b92b6210d2e021ae1ec0edfa9462ce5b6bf84dadd296d4875921",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/creative-director.md",
+    "before_bytes": 8376,
+    "after_sha256": "c5c0bfc3ca657d8f49c51d320a7bec418349b989c15f50c6946b67722dc0609c",
+    "after_bytes": 568
+  },
+  "E:/Pemara/.agents/profiles/hero-sprite-scaling.md": {
+    "before_sha256": "b29e92323a97737aacf177a61770544c60276f7fc9b7d4e193f147604b3d4717",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/hero-sprite-scaling.md",
+    "before_bytes": 9698,
+    "after_sha256": "a9c5fa2a8d6d5a567e3f2b268a5e40d4cf8f6a59572d1f49f782dd54657c00c2",
+    "after_bytes": 576
+  },
+  "E:/Pemara/.agents/profiles/phaser-platformer-architect.md": {
+    "before_sha256": "89e48d543fe192f0379b14bb6666906831f4c6f250c60190ca462eb3ad343beb",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/phaser-platformer-architect.md",
+    "before_bytes": 25498,
+    "after_sha256": "6bf95b3832cfceafe15731c26b9f10b0f1291d1e93996f8af7df68f406203b02",
+    "after_bytes": 608
+  },
+  "E:/Pemara/.agents/skills/pemara-messenger-turbo/references/turbo_registry.json": {
+    "before_sha256": "482e8ed575b9432784c4844e06c7920820b368dc3b0df6a9133bd7031f98318f",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-messenger-turbo/references/turbo_registry.json",
+    "before_bytes": 1706,
+    "after_sha256": "df10abaff14b59aa80ad91787cf941ca502d335f0efe23234c658c94568e3165",
+    "after_bytes": 1706
+  },
+  "E:/Pemara/.agents/skills/pemara-messenger-turbo/SKILL.md": {
+    "before_sha256": "9b9ba395b25a7b4ecc98ef6504af75752c2221af490f528bd6a1346f73250291",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-messenger-turbo/SKILL.md",
+    "before_bytes": 4178,
+    "after_sha256": "6f2b6c7c8a36cf69a25a1134d0b93f1229a51f01419c3e2aa6b1da227e5aa0d1",
+    "after_bytes": 3219
+  },
+  "E:/Pemara/.agents/skills/pemara-ecosystem-orchestrator/references/maestro-evidence.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "05e7d09c6b8095326e71cdc30659a64d68a84d75d7acb7fc10f9d30f6ba8b5d6",
+    "after_bytes": 1481
+  },
+  "E:/Pemara/.agents/skills/pemara-ecosystem-orchestrator/SKILL.md": {
+    "before_sha256": "36f8e062600714b8fd3f04252cee6bcbaf206ff951b1ee1b0ddfcd67334cc5dd",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-ecosystem-orchestrator/SKILL.md",
+    "before_bytes": 7809,
+    "after_sha256": "2bf7ff88d20b13e02d9709559a3e5bcd1a8d6853fafd75e7f9ea50018596b35c",
+    "after_bytes": 3367
+  },
+  "E:/Pemara/.agents/skills/pemara-messenger-turbo/references/routing-map.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "8eaafcec00c4e693023b99be5d0c0b17c1ce7809f00a553b5c861e84ab91684a",
+    "after_bytes": 5326
+  },
+  "E:/Pemara/.agents/skills/project-planner/references/specification.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "f817a3a8bfc9609b7c636c7e524ea92dd0cab0af7fe2e905c64fd758d5ddfdcd",
+    "after_bytes": 1941
+  },
+  "E:/Pemara/.agents/skills/project-planner/references/task-breakdown.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "3531efad5aade33db5a901da51fcd2b77d4091bc17a0591cbc18ad54631a8681",
+    "after_bytes": 2173
+  },
+  "E:/Pemara/.agents/skills/spec-driven-development/SKILL.md": {
+    "before_sha256": "af5b873414a8b45b96b0d30d5297400f55eb3a56425161a088e470c14260a1e5",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/spec-driven-development/SKILL.md",
+    "before_bytes": 8527,
+    "after_sha256": "7be7361c5622e82340883721e5e1b0865fb6d3823f12280cc0cb71931c942fbd",
+    "after_bytes": 681
+  },
+  "E:/Pemara/.agents/skills/planning-and-task-breakdown/SKILL.md": {
+    "before_sha256": "d87ff6bb23aa791f78a504d784e903bb13602975923f884af5d13d5b66b1651a",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/planning-and-task-breakdown/SKILL.md",
+    "before_bytes": 7632,
+    "after_sha256": "febc581e306bf7bbcb0b8edb6cf84e1b3e19ba1cee219d1fcfbe72d0840294a7",
+    "after_bytes": 688
+  },
+  "E:/Pemara/.agents/skills/debugger/references/investigation.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "1c02c56627101c7434e9a1cb820823d7886bca3117aa8151c4f5237d54e152e0",
+    "after_bytes": 2968
+  },
+  "E:/Pemara/.agents/skills/debugger/references/recovery.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "d86258e372bc7deafcd9f4d537a35cff0c7bfb96ad80a773956c17eebec60a20",
+    "after_bytes": 2282
+  },
+  "E:/Pemara/.agents/skills/debugging-and-error-recovery/SKILL.md": {
+    "before_sha256": "927ad6917fa2891827351cfa3470cd715423faaa5c5f27fe74534d9324c35eea",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/debugging-and-error-recovery/SKILL.md",
+    "before_bytes": 10603,
+    "after_sha256": "b470eb57f8481955e301c167e048376804672680df8020c9b630a6b9850e3a5a",
+    "after_bytes": 618
+  },
+  "E:/Pemara/.agents/skills/performance-optimizer/references/web-and-data-recipes.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "0910f439ae1f0a92d5217417d25e26a41a60258b89079abd74b2a2a4eeefc6cd",
+    "after_bytes": 4889
+  },
+  "E:/Pemara/.agents/skills/performance-optimizer/references/measurement.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "f73a68ba4112daf6c08d13e192f385b9f42b12be13ec012090c3cb82e1f0c587",
+    "after_bytes": 1644
+  },
+  "E:/Pemara/.agents/skills/performance-optimization/SKILL.md": {
+    "before_sha256": "c56f6059fed0b77c50c946e38275f04c8b297657f3742d5782ee564514ecc4dc",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/performance-optimization/SKILL.md",
+    "before_bytes": 11658,
+    "after_sha256": "eec64b6e228f51f311f8d43de8d0957eeb5bd8b50308771c7feeb9f68baf817e",
+    "after_bytes": 574
+  },
+  "E:/Pemara/.agents/skills/web-frontend-vanilla/references/patterns.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "1befc50ccda0b5595354ca8bfd65879979eb6ba25b9608cedac3a1d826221639",
+    "after_bytes": 3153
+  },
+  "E:/Pemara/.agents/skills/vanilla-web-patterns/SKILL.md": {
+    "before_sha256": "37943737e6e3facb9de3e65a4b1ade2e49a64980ab27ef21b0c49755c718d3b9",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/vanilla-web-patterns/SKILL.md",
+    "before_bytes": 3597,
+    "after_sha256": "112bc3d2995cfbc3f6d62cc84a29e7b8ffcd281561aeceb46bf4e06612c1ba3d",
+    "after_bytes": 486
+  },
+  "E:/Pemara/.agents/skills/web-frontend-vanilla/SKILL.md": {
+    "before_sha256": "9cea0b39e5fd2d0eaf97f85b3db4dac80d0444d08f2ca7636f379609784260fe",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/web-frontend-vanilla/SKILL.md",
+    "before_bytes": 5877,
+    "after_sha256": "86765631819d4b3d0843a9d4fa4728411a2188f13dcea53ac316899379f57e02",
+    "after_bytes": 4417
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-01.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "cee6753af72b01165798e46475e45e753e576669ca3ca0f4b947b854293142ab",
+    "after_bytes": 2115
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-02.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "4889815423c9b6bd4c9063568d88eea034152e48a26edc7e9ec82609c5c77e20",
+    "after_bytes": 1637
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-03.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "76e15a648fd7bc4c6e71c201c7162f43fff75fea92a2b695fef5aaba040c8a11",
+    "after_bytes": 2844
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-04.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "a461024c0002e0458c2e0f43d270e1b37676b635568c38845e2ae502de10e17e",
+    "after_bytes": 3703
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-05.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "7c900fb33b5647bd8050c86754f003525924cf610bd74494511463ecb79d5db0",
+    "after_bytes": 1566
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-06.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "e5b5b1a881728ab5a7313d07400e05c5c369051c4e74098b9a309060354ac863",
+    "after_bytes": 1924
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-07.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "f086c6133fef3e51c35db2344970b5515ec5d327c5d3580b01d9e7d8a3ba603f",
+    "after_bytes": 977
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-08.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "6b34feab6e6bcbd7bb517719f800c481902bb775eab54d1eac7b307259a0d243",
+    "after_bytes": 1061
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-09.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "847862366c7a5007d5d1484ab5834c9ac742a9ede46bb0060894a83b98980b80",
+    "after_bytes": 918
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-10.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "245639b103e47b06378a1e67f6c975a330f981ebcf5613f827fc806537e05613",
+    "after_bytes": 738
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-11.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "e237a001144b57786e9345d481fbb48feaa5e9fc44f527030c21696f980c31a6",
+    "after_bytes": 2439
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-12.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "3f4505b74e974f35dcbbe99abc0f7103d3eccd2883f53d1f27279c832ce9f3ee",
+    "after_bytes": 3548
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/references/topic-13.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "e0f570b52b7f92bcc8ff64fdb8b6157ec3c6d1db09b9b083e71f53b90f7065ee",
+    "after_bytes": 1669
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/SKILL.md": {
+    "before_sha256": "2f9d3353c3262cd09a9ba81aabee400b88cbc9242706710e810ae672db6d62df",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/phaser-platformer-architect/SKILL.md",
+    "before_bytes": 26781,
+    "after_sha256": "fa9bee70c1de517d71dd325acc3280d21622951675dfa2ce7780fc24c214cd6f",
+    "after_bytes": 3633
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-01.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "6927303611673d1edeb41ec8bb623e699a9762255542665e6720f07bffe619c0",
+    "after_bytes": 1124
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-02.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "22f70d9eb943f76880a7f7fed657dd778078ef166eb52a67f89d85c3708a26c0",
+    "after_bytes": 920
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-03.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "19ca681bece0f47e8759b2abd5b324d085e5057f4e579dfe435e3fe366781ede",
+    "after_bytes": 733
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-04.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "79f4cbb7f7aaf60a9704e41ab642677b9198a2dc389536fe304747d05476bfea",
+    "after_bytes": 1312
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-05.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "54160d41e6e2056b8e23757939d568c7bdc5e53f55f96be3029121995e3ad775",
+    "after_bytes": 959
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-06.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "0a6fae26dcde095a9677783dbfc3fe33658b5441379d41be6f0270c944ca118a",
+    "after_bytes": 1493
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-07.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "0c9121b93a764d1de770299e4f9c06c028e09e1bfb8aea4f5bf34ca41084a904",
+    "after_bytes": 795
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-08.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "a30b39ceede584d777897c475282d3c239a89a54aebf83e7bf37007fc389f5d5",
+    "after_bytes": 946
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-09.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "97e33c97057a5ed8faaeadd3d1d47b907a8868de540b04cd8aa79665ca86062c",
+    "after_bytes": 939
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-10.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "f897a7b9f0d93399373972b0ae7950409891d1588271b86be72dd3783cc53bf3",
+    "after_bytes": 669
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-11.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "23294406bfe589f34df6cf5f40329b2cbfcbd3e113a1c92ab0a6558569461d01",
+    "after_bytes": 895
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/references/topic-12.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "fd176afaca5344d8f131ba24604c724f90a9886fb1ea6182db4d20f35773b191",
+    "after_bytes": 1061
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/SKILL.md": {
+    "before_sha256": "9c25f3f8c958d843c9d369c07edcd5c78a24e0fa2ed0b809f3bd0a9821584488",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/phaser-16bit-platformer/SKILL.md",
+    "before_bytes": 10118,
+    "after_sha256": "f4d29241d4c187b63de9cc279996447a5a051ffbe629033951d6fca33e74ad77",
+    "after_bytes": 2541
+  },
+  "E:/Pemara/.agents/profiles/phaser-16bit-platformer.md": {
+    "before_sha256": "f8ece01b855a56e09079f0cbfd44e74075239085299f35f6ea83d54b06d69760",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/phaser-16bit-platformer.md",
+    "before_bytes": 10120,
+    "after_sha256": "2c5b0f7cc751d60d51f3720aa23e78fd2b39fb14d1eb3aad4214cf35b1f135fd",
+    "after_bytes": 954
+  },
+  "E:/Pemara/.agents/profiles/agents-turbo.md": {
+    "before_sha256": "b8fae76585116b317a50b17f449e2fcfa7d28aa9ee29ebc2e6ed0ff34659e88e",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/profiles/agents-turbo.md",
+    "before_bytes": 2449,
+    "after_sha256": "20d248fe0b306e33b4711a3530ce4028fdfc96de92c54d3bde8835774a1cd2fb",
+    "after_bytes": 2485
+  },
+  "E:/Pemara/maestro/pemara/ferramentas/video_global_engine/workflows/minimax_h3_live_action/manifest.json": {
+    "before_sha256": "3991c948a6afc33132e64593d5040b2148a0f593595b15148c6b11b90425a197",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/maestro/pemara/ferramentas/video_global_engine/workflows/minimax_h3_live_action/manifest.json",
+    "before_bytes": 2758,
+    "after_sha256": "e2d495b0bb1e835c46144290b041aad9c7ffaa3560663bfb5436b780ecc6ec13",
+    "after_bytes": 2805
+  },
+  "E:/Pemara/.agents/skills/pemara-live-action-combat-director/agents/openai.yaml": {
+    "before_sha256": "c4f6bcdea977b986b3f11386e2b7489b703898ca17fa3fc425275724aca9c64b",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-live-action-combat-director/agents/openai.yaml",
+    "before_bytes": 321,
+    "after_sha256": "20ba70753856c0ab08f3904f76f7bf04d56ee3aa79ef99addbcf97cb3501401e",
+    "after_bytes": 370
+  },
+  "E:/Pemara/.agents/skills/pemara-live-action-combat-director/SKILL.md": {
+    "before_sha256": "85d590607aa62d7dd6f5a416f1d5e903836f1b9011731534da3db333313e6e54",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-live-action-combat-director/SKILL.md",
+    "before_bytes": 8088,
+    "after_sha256": "c9d00dc94df5cf8a4fe4b64439f7ab88606891a8f78e056c235f3765487d21d9",
+    "after_bytes": 8690
+  },
+  "E:/Pemara/.agents/skills/pemara-live-action-showrunner/SKILL.md": {
+    "before_sha256": "868cb4be954c61947316d90a2d53a7e8e9cf98d18d348a7bed402270f0ae8b02",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-live-action-showrunner/SKILL.md",
+    "before_bytes": 7497,
+    "after_sha256": "8079e9c7b419c03b8288803ba60a5971fd651d7db0c1d9845cb1e33f6bfa0f38",
+    "after_bytes": 7898
+  },
+  "E:/Pemara/.agents/skills/saas-pentest-hardening/SKILL.md": {
+    "before_sha256": "17999453b80c107fd1039e25262e32b51bdd783173344f923adb1400cc2c0edb",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/saas-pentest-hardening/SKILL.md",
+    "before_bytes": 5521,
+    "after_sha256": "6585eec87f463a93ea8b09c9f41683b3940e5f4571a14fe9211c930828ed77ad",
+    "after_bytes": 6760
+  },
+  "E:/Pemara/PEMARA_PROJECT_MAP.md": {
+    "before_sha256": "502b13a5826df771df84a0d222e76f4377c3c15043336f203a321070e078bfd1",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/PEMARA_PROJECT_MAP.md",
+    "before_bytes": 5930,
+    "after_sha256": "8a442e65850ddd8b69ee63c85a6c25e85f7fefd4ffcc2b365da9a9b04f724ee4",
+    "after_bytes": 1213
+  },
+  "E:/Pemara/.agents/skills/pemara-ecosystem-orchestrator/references/pemara-skill-map.md": {
+    "before_sha256": "881c905880ef538f2931af8e9367c727eaa3c03a82c892999763b55500602f88",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-ecosystem-orchestrator/references/pemara-skill-map.md",
+    "before_bytes": 3976,
+    "after_sha256": "c417eca9477dcc368154d3a2096fa4864970d5337c6a08c5e47f35bbe31016d7",
+    "after_bytes": 758
+  },
+  "E:/Pemara/.agents/README_PEMARA_ECOSYSTEM.md": {
+    "before_sha256": "e99d11301f3614f37f5c6087a8149db858a4509d36e86e0a62d5d969efa4c1e3",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/README_PEMARA_ECOSYSTEM.md",
+    "before_bytes": 5755,
+    "after_sha256": "81527273a342ff77d2a4694652cb17c37b0c532d81070b8d48edbb7d8f902f8d",
+    "after_bytes": 1152
+  },
+  "E:/Pemara/.agents/skills/ai-video-intro-pipeline/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "1fba29e1eecea7c107434bb8998f2e32b77d44b39ce532f1bb6bf098a86f6157",
+    "after_bytes": 284
+  },
+  "E:/Pemara/.agents/skills/animation-engineer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "2a12df130d70de42390ca23c44fb7ffc2b18a0948be03c54860735b4ac83e404",
+    "after_bytes": 268
+  },
+  "E:/Pemara/.agents/skills/audio-analysis/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "e169ae0718a0dd9f2de72d3d2a5a0df53e1ee0f1a9fe5056287f64a7d7a67a48",
+    "after_bytes": 269
+  },
+  "E:/Pemara/.agents/skills/automation-engineer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "9497ef949f028efd1b4d9b17ec6bacdd19c28628a0abee78658f95492416a0b5",
+    "after_bytes": 278
+  },
+  "E:/Pemara/.agents/skills/balance-tuner/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "dbbf85a727defca9e1faac22de55810a2b6d5a9ec60835f379d237286a8ef010",
+    "after_bytes": 264
+  },
+  "E:/Pemara/.agents/skills/beatemup-combat-designer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "5369aa6986a18c8bec55da6f5c1cc94482d450b20041e6bcf7e256024ea3a337",
+    "after_bytes": 283
+  },
+  "E:/Pemara/.agents/skills/claude-context-audit/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "9652179c34d0caa3d908658e9017d74dab9e9081c33bbe39b34ed3ca098f5f47",
+    "after_bytes": 273
+  },
+  "E:/Pemara/.agents/skills/code-archaeologist/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "1f161b12acee90c9b59371c528fca6575991a01f6f63f5625ddcdf01d9255119",
+    "after_bytes": 266
+  },
+  "E:/Pemara/.agents/skills/creative-director/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "4b4a344ebbd12f3bd9b85dd418772bfd467dff723744836cede6368d292bd42a",
+    "after_bytes": 259
+  },
+  "E:/Pemara/.agents/skills/debugger/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "805d22a199ece3c83fcaf7826edc055528cbbd832f26b49b72c4ff218fb18cde",
+    "after_bytes": 249
+  },
+  "E:/Pemara/.agents/skills/debugging-and-error-recovery/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "8efa95a6c55e3b4c7779ff026f2c30ef693f726a7a26b1789922124f825b5a17",
+    "after_bytes": 298
+  },
+  "E:/Pemara/.agents/skills/demo-release-engineer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "20aaf09f94e39cb6ef58553ec182e499676666adac9445dc3af842aea3408df6",
+    "after_bytes": 282
+  },
+  "E:/Pemara/.agents/skills/game-audio-designer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "045c54c4ed099cabcd7e1ba581101d361b29ee6fa68409eca0093aa1a3dc8f9f",
+    "after_bytes": 280
+  },
+  "E:/Pemara/.agents/skills/game-audio-reactive/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "a156e463f5048da43dd971696d7e0c912ddc958949f667bb1c84e27d0c6cdf02",
+    "after_bytes": 278
+  },
+  "E:/Pemara/.agents/skills/game-build-flow/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "825c4b787b250d99cffe5667b58196c164e0a0eee40cfad143d0eec9803c808c",
+    "after_bytes": 262
+  },
+  "E:/Pemara/.agents/skills/game-developer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "8cdb6499347b8c95c861d31b02f2a1889b915244f2c77a0b331a7ecbfaaddc21",
+    "after_bytes": 265
+  },
+  "E:/Pemara/.agents/skills/gamepad-input-specialist/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "55c4e059241886c1510b74e1ffaa5bbb8f1dad9ede4dc9f9ab8c54f4eda8de50",
+    "after_bytes": 290
+  },
+  "E:/Pemara/.agents/skills/hero-sprite-scaling/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "b3a6d6c397bd9e371244088117234fbcae55161d9fd2d656f4239b48b6c68323",
+    "after_bytes": 276
+  },
+  "E:/Pemara/.agents/skills/image-production/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "d876890ec8d52a4d10eb0c7bd211672e2c4ee0753a013322d8ed21d7f2b79df2",
+    "after_bytes": 281
+  },
+  "E:/Pemara/.agents/skills/level-designer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "9d6f7a78035d4395b216c300b6ed5393a2c9f2468eae648e95c7648e0fcf97b9",
+    "after_bytes": 265
+  },
+  "E:/Pemara/.agents/skills/modern-pixel-art-hd/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "a45d678a1c68c0288468f39f196f716785ab3513ec50d3910b19444dc9b5cf71",
+    "after_bytes": 278
+  },
+  "E:/Pemara/.agents/skills/pack-doctor/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "fc19be7844df9638def552c09ad86e9e76cfdb6af80767d60079e652d91bcbe7",
+    "after_bytes": 252
+  },
+  "E:/Pemara/.agents/skills/performance-optimization/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "b0142e6162e526bc0177ef1bd56096cde694c2b769c0bbea3acaf7bda266bf12",
+    "after_bytes": 286
+  },
+  "E:/Pemara/.agents/skills/performance-optimizer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "b4b88af880ee1430188006d600ecf31bd7531757439341583ddc7abd4ba29712",
+    "after_bytes": 276
+  },
+  "E:/Pemara/.agents/skills/phaser-16bit-platformer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "8c738a980fa61849993f65eaf0ee72f4fbc092af0c51699c03bef629f43ec523",
+    "after_bytes": 285
+  },
+  "E:/Pemara/.agents/skills/phaser-animation-turbo/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "179c1881ff9c96da03ab245c8852f7113a34924f8f17fff9c1c1821f51977f05",
+    "after_bytes": 278
+  },
+  "E:/Pemara/.agents/skills/phaser-platformer-architect/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "06709d0755f764f28fb16dd32d9162fa0ff9bbc00f77305559f858728c821094",
+    "after_bytes": 288
+  },
+  "E:/Pemara/.agents/skills/planning-and-task-breakdown/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "cb6c6be1b417eed4df81651dc6ee87c0f1379dbe87dc31bd3b9e2c5f0417564a",
+    "after_bytes": 291
+  },
+  "E:/Pemara/.agents/skills/project-planner/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "68f227156f5a4016222dffc4f96fe3b59047f0d1a36389863c3897148ae1941f",
+    "after_bytes": 265
+  },
+  "E:/Pemara/.agents/skills/qa-automation-engineer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "993dbe5d8ad6e04d42d96bd35c427a74d70571243ada093e008815f7aae6836e",
+    "after_bytes": 281
+  },
+  "E:/Pemara/.agents/skills/spec-driven-development/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "caea0d66a217e05852fdcdedfe77c479fc5cf537005f50f29c49c3112b570a76",
+    "after_bytes": 282
+  },
+  "E:/Pemara/.agents/skills/sprite-animation/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "186b598b68a430666ec666ca07f20f31c5a070f72f42e72f783f758b89e3c2a4",
+    "after_bytes": 271
+  },
+  "E:/Pemara/.agents/skills/sprite-image-reading/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "ac7968677b9594dabb3430f0231c87ccce3fbac6ff406894721149e97811a112",
+    "after_bytes": 282
+  },
+  "E:/Pemara/.agents/skills/test-engineer/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "ee5395e0660d2551c87bd92fe890e4979770b1f8f785979f3848d7acb2a90122",
+    "after_bytes": 246
+  },
+  "E:/Pemara/.agents/skills/vanilla-web-patterns/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "56a2e568ee0de1cfcccb54e0d984f1a90113a17db71f61ab6ae89059c3f76513",
+    "after_bytes": 263
+  },
+  "E:/Pemara/.agents/skills/video-production/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "db807c8f58ca82df1b44ee7659769eff82e82c5c8ad35bf0806ee9976f639ff7",
+    "after_bytes": 269
+  },
+  "E:/Pemara/.agents/skills/web-frontend-vanilla/agents/openai.yaml": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "d3b3db04ccb0ba7e1f38af750dbb9a59d0035858641d8f2315ab81bfa2c08ef4",
+    "after_bytes": 280
+  },
+  "E:/Pemara/.agents/skills/audio-analysis/SKILL.md": {
+    "before_sha256": "e7cee57e2863efa51b4a72d617fb2ceec11598dcb4e7009252df23877f0bd77b",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/audio-analysis/SKILL.md",
+    "before_bytes": 3220,
+    "after_sha256": "71e919ca62ff4e037286364bb4b17370682ea7185b9478c3fc6d71fe213252b0",
+    "after_bytes": 3877
+  },
+  "E:/Pemara/.agents/skills/pemara-online-security-guardian/SKILL.md": {
+    "before_sha256": "875b8d879546f0be59188b4335d3d435f49fbdbcfe2c707212743e634fc9d4f5",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-online-security-guardian/SKILL.md",
+    "before_bytes": 5043,
+    "after_sha256": "cdfa583fe1e42a75273c5413b3d31aa984d023cb73d85b56806f2194d1ad51a6",
+    "after_bytes": 5602
+  },
+  "E:/Pemara/.agents/profiles/pemara-music-arranger.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "b610aa5f1c46d8cf1f73de51b38ace74b10919288815de39d387ad4cf412e8b0",
+    "after_bytes": 584
+  },
+  "E:/Pemara/.agents/profiles/pemara-music-listening-qc.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "a266f18327557b62fe0e38e59682892f6a8127390244c88fd68b0d3a9b4516a3",
+    "after_bytes": 600
+  },
+  "E:/Pemara/.agents/profiles/pemara-music-mix-engineer.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "06564b9723bb5d00470f5236c5a27d7e5a10505bbc22a86cd71f2ef51297744a",
+    "after_bytes": 600
+  },
+  "E:/Pemara/.agents/profiles/pemara-music-production-lead.md": {
+    "before_sha256": null,
+    "backup": null,
+    "before_bytes": 0,
+    "after_sha256": "acab10b7ee9bffcf89404ecbb9f6e999ebc050d7e0eb56da05e4e7ceb6646f16",
+    "after_bytes": 612
+  },
+  "E:/Pemara/.agents/skills/pemara-cinematic-take-director/SKILL.md": {
+    "before_sha256": "3e6d69c77930352d83b754be12fbfa63473bb98e1b87a72e3ac6587e756c0977",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-cinematic-take-director/SKILL.md",
+    "before_bytes": 9477,
+    "after_sha256": "5f3afd2c64e2b231f86c9a71ec6a33e68385df79dfe946c1fb3bb8d21e57caf0",
+    "after_bytes": 10239
+  },
+  "E:/Pemara/.agents/skills/pemara-ecosystem-orchestrator/agents/openai.yaml": {
+    "before_sha256": "25d54aa769a2239141640dad7913d87071d4dc8ba9a8c9c36bec367982e2d327",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/.agents/skills/pemara-ecosystem-orchestrator/agents/openai.yaml",
+    "before_bytes": 254,
+    "after_sha256": "f14d6901c43daed5409a35fc03e8447daf2d6dba5eecc080d42086980b96f87a",
+    "after_bytes": 290
+  },
+  "C:/Users/admin_remoto/.agents/skills/hyperframes/SKILL.md": {
+    "before_sha256": "a277e9e46b3b5b8619639a353a4af3f46f8ae4f2e622ba802d5af730d135f410",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/user_agents/hyperframes/SKILL.md",
+    "before_bytes": 21061,
+    "after_sha256": "0228a4cc2c5989c43d1bbfc95c8ee2d5277ede2987b0770b9965fc21944ced37",
+    "after_bytes": 21255
+  },
+  "E:/Pemara/maestro/pemara/services/studio/test_live_action_workflows.py": {
+    "before_sha256": "90e0cec7813932ccb97693dc9b9e81d50c32ee20a6a8909382f83c1e39b4832a",
+    "backup": "E:/Pemara/maestro/pemara/ferramentas/agent_ecosystem/optimization_implementation_20261008/source_before/pemara/maestro/pemara/services/studio/test_live_action_workflows.py",
+    "before_bytes": 39829,
+    "after_sha256": "9679b3b3c4ed2831586e1a613161a90037d13a8c435fe93fd5bed05ac3bc1e02",
+    "after_bytes": 40048
+  }
+}

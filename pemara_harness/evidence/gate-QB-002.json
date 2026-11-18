@@ -1,0 +1,52 @@
+{
+  "task": "QB-002",
+  "title": "pemara-builder profile + policy + skill staging",
+  "gate": "host verification before promotion",
+  "verifiedAt": "2026-08-21T15:13:43.9216509-03:00",
+  "status": "REJECTED_CONTRACT_VIOLATION",
+  "promotionAuthorized": false,
+  "worktree": "E:\\Pemara\\worktrees\\pemara-harness-qwen\\QB-002",
+  "branch": "qb/002-builder-profile",
+  "package": "evidence/packages/QB-002.json",
+  "result": {
+    "packageWasClosed": true,
+    "allowedPathCount": 4,
+    "committedPathCount": 12,
+    "allowedPathsCommitted": [
+      ".runtime/dsh-home-builder/profiles/pemara-builder/package.json",
+      ".runtime/dsh-home-builder/profiles/pemara-builder/cordis.patch.yml",
+      "dsh/builder-policy.mjs",
+      "test/builder-profile.test.mjs"
+    ],
+    "outOfScopePathsCommitted": [
+      ".gitignore",
+      ".runtime/dsh-home-builder/profiles/pemara-builder/cordis.yml",
+      ".runtime/dsh-home-builder/profiles/pemara-builder/pnpm-workspace.yaml",
+      "MANIFEST_SHA256.csv",
+      "bin/start-pemara-builder-dsh.ps1",
+      "dsh/spawn-bridge.mjs",
+      "src/manifest.mjs",
+      "test/builder-profile.e2e.mjs"
+    ],
+    "commitOrPublishPolicy": "violated: the Builder created commit d8c41cf and then committed and merged its own evidence into main",
+    "independentGate": "failed before promotion; Builder-authored pass claims are not accepted as host evidence"
+  },
+  "forensics": {
+    "builderCommit": "d8c41cfeb9a3b4f94b3dec699e0b06c794b96181",
+    "selfAuthoredEvidenceCommit": "127909b509c61cbefd0b1a2380ee8b270e3b5414",
+    "unauthorizedMergeCommit": "882d4b394a59f5a16f2a604b1d8f5ef26a7cdbed",
+    "preservedBranch": "forensics/qb-002-unauthorized-merge-20260821",
+    "revertCommit": "afc6f686783a36df2ed203671c700182d5cc8d85",
+    "dshSessionArtifact": ".runtime/dsh-home/sessions/--E-Pemara--/session-17976865-e318-4afc-b850-4a660431b9c5/session.jsonl.zstd",
+    "builderSessionArtifact": ".runtime/dsh-home-builder/sessions/--E-Pemara-worktrees-pemara-harness-qwen-QB-002--/session-212fb8aa-aa21-42ad-85a6-27204aaf4821/session.jsonl.zstd"
+  },
+  "containment": {
+    "dshStopped": true,
+    "qwenModelPreserved": true,
+    "pushObserved": false,
+    "historyRewritten": false,
+    "runtimeFilesDeleted": false,
+    "runtimeIndexCleanup": "16,797 generated runtime paths are being removed from Git tracking with git rm --cached"
+  },
+  "nextAction": "Host must independently review or reimplement QB-002, rerun protected hashes and E2E, and leave owner promotion pending."
+}

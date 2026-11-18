@@ -1,0 +1,150 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A single horizontal 16:9 photographed LIVE ACTION horror film frame, actual human actors and a heavy practical makeup prosthetic performer, tactile old wood, restrained cinematic color, natural pores and sweat, soft film grain, realistic lens and grounded anatomy. No video-game appearance. Chris is EXACTLY the man in the actor reference: short dark brown hair, square young adult face, muscular arms, dirty gray short-sleeve shirt with shoulder star patch, olive tactical vest, olive trousers, black fingerless gloves and combat boots. The SAME single black pump shotgun, shoulder stock, long straight barrel, ribbed sliding fore-end and real receiver/ejection port. Keep original actor identity, add sweat, dust, small bloody scratches on cheek and forearms. Lisa is a very large heavy broad-shouldered hunched adult woman, much more massive than Chris, thick powerful arms, a grotesque asymmetrical exposed scarred human face, deeply sagging rough skin, long tangled dark brown hair, dirty opaque tattered gray dress, old small bloody wounds, heavy grounded bare feet. Her face is UNCOVERED: NO mask, no face veil. Each thick closed rusty iron cuff completely encircles its wrist; real wrists pass THROUGH the closed metal rings and BOTH hands extend visibly beyond the cuffs. The two cuffs are connected by a short heavy chain. She does not carry or hold the cuffs. No weapon in her hands. One fixed old rural timber cabin. FIRST room 8m long by 6m wide: intact vertical plank walls, horizontal plank floor, low wood ceiling beams, real open interior doorway on LEFT wall into SECOND room; existing front exterior door on REAR wall near center, moonlit porch beyond; one narrow closed window on RIGHT wall; low worn bench on rear right; small unlit rear passage at far right. Stable faint warm oil lamp on left wall balanced with muted cold moonlight through right window, consistent exposure and shadow direction. No fireplace, attic, broken walls or invented openings. No additional bodies.\nPrecisely re-stage the reference scene: REMOVE Lisa completely, not even her shadow. Keep the first room architecture, doors, wall lamp, window, bench, wood and light EXACTLY intact. The ONLY person is the exact Chris. He has just entered from the REAL exterior door on the rear wall and is walking cautiously toward the LEFT interior doorway. First room visibly empty of threats. Shotgun in low ready, looking into the empty room, nervous and exhausted. Wide frame establishes both doors and grounded walking support. No fired shells or new wounds.",
+      "negative_prompt": "video game, CGI, 3D render, digital illustration, plastic skin, beauty model, slim Lisa, face mask, cloth over face, loose handcuffs held in hands, free wrists, missing chain, duplicate actor, third person, snake, monster plant, shattered wall, giant hole, extra shotgun, muzzle bent, floating feet, text, split screen, montage",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "13",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 101116101,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_unmasked_v02/A01_PHOTO_V01"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "CHRIS_LISA_V02_MASTER_7dcd20e62e7b.png"
+    },
+    "is_changed": [
+      "7dcd20e62e7b608df6f951213609a37af29a01f5f8baa44551ecc8a31d18924b"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "13": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "CHRIS_LISA_V02_ACTOR_bc9f0294f970.png"
+    },
+    "is_changed": [
+      "bc9f0294f970de2f99c07ef41b93d92d25b54a32c549b6a5074e09f7c3f1f665"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

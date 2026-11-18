@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Stomping extremely heavy groove metal, huge dry snare and kick, thick downtuned distorted guitars, tight bass, snarling forceful low male voice, savage blues-inflected guitar solo. 112 BPM, D minor. an enormous staggered low riff with deliberate silences; dominant bass, crushing chorus and threatening half-time bridge. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nDust on the velvet, cold on the stone\nI took the weight that no man has known\nThe ledger’s thick with the names of the dead\nEvery year I rule is a promise unpaid\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Verse]\nThe jewels are eyes of the servants below\nWatching me from the hall, watching me go\nI wear their patience, I wear their pain\nA king made of rust and a crown of rain\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Bridge]\nHold the silence, let the riff drop deep\nThe hammer falls, while the kings sleep\nOne final strike on the iron gate\nThe debt is collected, the soul is late\n\n[Solo]\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Outro]\nThe debt is paid\nThe stone stays cold\nNo more gold",
+      "abc": "",
+      "seed": 202610166018,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166018,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/19_crown_of_debts_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

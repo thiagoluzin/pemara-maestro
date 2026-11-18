@@ -1,0 +1,218 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Use the input image as the absolute visual reference and preserve it faithfully. Do not redesign, replace, reinterpret, restyle, or regenerate any person, face, clothing, object, text, stadium element, turnstile, security guard, or background. Maintain 100% identity consistency with the original image: * Same Corinthians fan * Same face, beard, hair, headband, facial proportions, body shape, clothing, scarf, colors, and accessories * Same security guard * Same face, body shape, uniform, cap, hand position, proportions, and expression * Same turnstile, fingerprint reader, screen, stadium entrance, signs, lighting, and overall composition Do not create new people in the foreground. Do not swap faces. Do not change facial features. Do not change body proportions. Do not change clothes. Do not alter the black-and-white fan outfit. Do not change the security guard. Do not change camera angle. Do not change the art style. Do not change the environment. Do not morph characters between frames. Animate only the actions already implied by the source image. ACTION: The Corinthians fan slowly leans toward the biometric reader and places his index finger firmly on the fingerprint scanner. The scanner lights up red. Immediately after the fingerprint is detected, the turnstile screen flashes a strong red warning and clearly displays: “ACESSO NEGADO” The turnstile remains physically locked and does not rotate. The fan tries to push forward slightly, realizes that the turnstile is blocked, then recoils in frustration and disbelief. His expression becomes more desperate and embarrassed: eyes widen slightly, mouth reacts, eyebrows move, small natural head movement, subtle breathing. The security guard remains in exactly the same position and preserves his original identity. After the access denial, the guard makes a small, natural stopping gesture with his raised hand, reinforcing that the fan cannot enter. The guard may make a very subtle negative head movement, but must remain serious and visually identical to the reference. The fan looks briefly at the screen and then toward the guard, clearly understanding that he has been denied entry. ANIMATION STYLE: Natural, smooth, controlled animation. Small realistic body movements. Subtle breathing. Natural blinking. Minor cloth movement. Very limited secondary motion. No exaggerated deformation. CAMERA: Keep the original framing. No scene cuts. No camera angle change. No zoom that changes character proportions. Only an extremely subtle cinematic push-in is allowed, maximum 2–3%. IMPORTANT TEMPORAL CONSISTENCY: Every frame must look like the exact same characters from the source image. Face identity must remain locked from first frame to last frame. Preserve: facial geometry, eye shape, nose, mouth, beard, hair, skin tone, body proportions, clothing design, accessories, and character scale. The final frame must still clearly match the original image. NEGATIVE CONSTRAINTS: No face replacement. No face drift. No identity drift. No new character. No duplicated character. No body morphing. No clothing changes. No disappearing objects. No extra fingers. No malformed hands. No changing text. No random letters. No redesign of the turnstile. No different stadium. No different security guard. No different fan. No transformation of the illustration style. No sudden camera movement. No excessive motion. No lip-sync. No dialogue. The main visual gag must be extremely clear: the Corinthians fan places his finger on the biometric reader → the reader turns red → “ACESSO NEGADO” appears → the turnstile stays locked → the security guard prevents him from entering.\n\noverall_soundscape: Physical ambience and visible action sounds remain synchronized with the target video timeline.\n\nnon_diegetic_music: N/A",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 12,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 6873192375577508782
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/ChatGPT_Image_16_de_set__de_2026__23_19_48_4ec9ba7610.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "creative_os_video_latent_12": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va_video_latent"
+    }
+  }
+}

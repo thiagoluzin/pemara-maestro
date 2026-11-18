@@ -1,0 +1,209 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_ref2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060102
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_bilateral_pika_native_v02",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "30": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "HORIZONTAL 16:9 cinematic live-action movie footage. A fast, forceful, continuous FIFTEEN-SECOND sword fight between Dante and Vergil from Devil May Cry 3 on the gothic tower rooftop in pouring rain. Use the supplied reference for the EXACT TWO ACTORS, CLOTHES, SOLID WEAPONS and rooftop architecture. Animate a new continuous fight, not a moving photograph. Both fighters must travel with grounded footwork and exchange initiative. Exactly THREE brief distinct metal blade collisions followed immediately by deflection, separation and recovery. No prolonged crossed-sword pose.\n\nThe red-coated man DANTE starts on the RIGHT, driving LEFT toward Vergil. Preserve his reference face, shaggy white hair, lean athletic adult body, open wet red leather coat, harness, gloves, trousers and boots. Rebellion is the ONE broad thick steel sword with skull guard in his RIGHT hand throughout; free left hand counterbalances outside blade paths. The blue-coated man VERGIL starts on the LEFT facing Dante. Preserve his reference face, swept-back white hair, long embroidered wet royal-blue coat and dark waistcoat. Yamato is the ONE slender rigid slightly curved katana in his RIGHT hand throughout. His LEFT hand continues to own the EMPTY black sheath near his left hip. No extra blade, no disappearing sheath, no swapping actors or weapons. Rain and heavy wet fabric remain physical and consistent.\n\nDante bursts forward from his low guard with two clear running steps. He drives a strong diagonal Rebellion cut toward Vergil's raised defense. Vergil plants and intercepts with the angled SIDE of Yamato in the clear space between them. FIRST steel contact around the third second: blades collide, stop and redirect, Vergil yields one step, Dante's committed shoulders follow the outward deflection and his planted boot catches his mass. They immediately pull the blades apart and keep moving; do not hold the crossing.\n\nVergil now steps diagonally forward with a compact horizontal Yamato counter-cut. Dante pivots and recovers Rebellion to intercept across his own front. SECOND brief steel contact around the seventh second, with a sharp visible rebound. Dante is driven one grounded step back and regains his balance. Both continue tracking one another with eyes and moving feet, blue coat and red coat trailing actual movement. The empty sheath stays safely beside Vergil's left hip.\n\nDante immediately drives back in with one powerful descending Rebellion strike. Vergil plants a bent supporting leg and angles Yamato across its path. THIRD hard steel collision around the eleventh second: both shoulders and knees absorb the load AFTER the blades touch; the broad blade is redirected, and the blades scrape briefly as they disengage. No sustained bind. They break apart with two real retreating recovery steps and regain their own guards, remaining active until the last frame. Red stays on the right side of the confrontation, blue on the left. No stabbing, blood, body penetration, jumping, spinning or magical powers in this shot.\n\nPHYSICS FIRST: committed foot drive, hip and shoulder transfer, rigid blade trajectory, contact in free space, visible blade deflection, bodily displacement, balance recovery. The two swords must physically meet and change trajectory at each collision. Never pass through one another, torso, hands, coats or sheath. No flexible blades, rubber joints, weapon stretching, foot skating or uncaused recoil. Reaction to impact follows contact. Steps displace puddles; wet leather and hair lag behind turns. The heavy Rebellion moves with more mass than the compact katana. Tiny friction sparks only at actual steel contact, no flash to hide action.\n\nLARGE MOTIVATED CAMERA TRAVEL: one real moving wide camera follows the traveling fight. Begin a rapid diagonal dolly IN toward the closing gap. Track LATERALLY alongside the first exchange, with strong parallax between the near carved column, fighters and distant spire. During the counter, move in a short LOW ARC, then RISE toward chest height as Dante returns. DOLLY BACK during separation, revealing both whole bodies and the displaced distance. Keep the SAME side of the action axis, left blue and right red readable. Frame with enough air for both sword tips, both heads and both boots throughout. Move the camera through space, not just zoom or shake. The motion must be obvious but smoothly operated. Never whip-pan or cut across a blade collision. One uninterrupted normal-speed shot with continuous rain and fabric movement, no frozen holds or slow motion.\n\nNATIVE SOUNDTRACK, BOTH SOUND EFFECTS AND MUSIC: Hear ORIGINAL INSTRUMENTAL HEAVY METAL throughout: clearly audible aggressive low distorted guitar riff, bass and driving drums at an energetic pace, underneath the combat. No singing or speech. Over that backing, foreground synchronized STEEL CLANGS exactly at the THREE visible blade impacts, fast metallic ringing tails, brief final metal scrape, blade swishes, planted boots splashing puddles, wet leather and exertion breaths. Continuous rain around them. Each clang comes from an actual image collision and does not precede it. Keep the guitar/drums audible, but the three sword contacts louder and clearer than the backing music. Generate music and action Foley natively with the video, no copied game recording. Maintain sound through the final recovery.\n\nKeep natural human skin, detailed wet hair, heavy soaked leather, rigid reflective steel, cold storm illumination and consistent rooftop geometry. Exactly two fighters, three purposeful blade clashes, clear bodily reaction and substantial moving camera. No text, subtitles, logos, extra limbs, duplicates, pose repetition, long sword lock, camera-static image or final freeze.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "audio_vae": [
+        "7",
+        0
+      ],
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "30",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_entry_attempt03.png"
+    },
+    "is_changed": [
+      "bf0430b9d61bbbb91acfc0b47b66fc7205f5aab2636f8c84c615275337eab851"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "cloud_sephiroth_rebirth_duel_20261007/A01_entry_dlss5"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

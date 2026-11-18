@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A single isolated Brazilian colonial arcade game character sprite, single chestnut brown horse with dark mane, leather colonial saddle, empty saddle NO RIDER, galloping right in side profile, gait phase 3: hind legs pushing front knees tucked. Crisp detailed hand painted 2D HD game illustration, consistent warm brown ochre lighting. Entire subject inside image with generous margin on all edges. Pure flat saturated magenta #ff00ff background, no ground, no shadow, no scenery, no text, no other characters.",
+      "negative_prompt": "extra limbs, multiple people, multiple horses, white background, scenery, cropped feet, text, watermark, pixel art, photorealistic, 3d render",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202693016,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_20260930/horse_gallop_3"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/phase1_barto_ref.png"
+    },
+    "is_changed": [
+      "9d8fceae1b5e7a7801d0c5b85f3aaad4bceb290e7144779218d690ffadfd32c2"
+    ]
+  }
+}

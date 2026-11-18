@@ -1,0 +1,159 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit Chris on the LEFT of image 1 into a NEW pose: he has realized that the second shot did not stop Lisa and is starting to flee through the OPEN DOOR ON THE LEFT.\nTURN Chris's head, shoulders, pelvis and leading boot toward the LEFT doorway, AWAY FROM LISA. Show him in a three-quarter BACK/profile view, with a portion of the BACK of his olive vest now visible. His nose and eyes point toward the forest on the LEFT, not to Lisa on the right or down at his gun. His left boot pivots to point diagonally toward the threshold, right boot still braces on the interior floor. He is still inside, a step away from the threshold. Chris carries the SAME black pump shotgun across his torso in BOTH black fingerless gloves, barrel angled down toward the left exit, away from Lisa. No new gun or third shot. Same actor, face profile, short hair, vest, gray sleeves, pants and holster; do not replace him.\nLisa on the right remains threatening and continues toward him without pain, falling or recoil. Preserve her same imposing crouched shape, mask, gray dress, chains and both wrists trapped THROUGH the two occupied holes of the same wooden stock, fingers free. Keep the existing tiny dark scuff on her upper-chest cloth and add ONE tiny dark speck immediately beside it, two pea-sized specks total, no big patch, blood or exposed skin. Preserve all cabin geometry, lighting and camera. Image 2 is a cropped reference of the same original black pump shotgun only. One real cinematic live-action 16:9 photograph; no arrows, text, collage or extra cast.\n",
+      "negative_prompt": "illustration, painting, anime, cartoon, cel shading, video game render, plastic CGI, wax skin, generic different soldier, duplicated characters, missing mask, wrong clothing, tentacles, blood, gore, extra limbs, disembodied hands, floating chain, duplicate guns, blurred face, subtitles, letters, watermark, collage, different room, wide-angle distortion, holding plank, fingers gripping wood, empty wrist holes, detached restraint",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "25",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 1010260604,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_cabana_20261010/LA06_QWEN_V04"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_LA06_REFINE_V04.png"
+    },
+    "is_changed": [
+      "a779a5350107f2cafca6c8e325f59774aa2f2a95330a7db0834c606f0a24a081"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "23": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_FACE_A01.png"
+    },
+    "is_changed": [
+      "2c116eac8cde6939a54514e8d7fc6e0845d619e834d4f3960ab2891d451246ed"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "25": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_SHOTGUN_A13.png"
+    },
+    "is_changed": [
+      "650a69378cf49a2fa130f35e838315d94b8750fde47c7764fc7c1969ca12153d"
+    ]
+  }
+}

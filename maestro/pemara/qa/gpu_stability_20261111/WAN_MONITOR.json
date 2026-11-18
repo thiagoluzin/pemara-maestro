@@ -1,0 +1,270 @@
+{
+  "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+  "started_utc": "2026-11-11T17:40:35.786895+00:00",
+  "samples": [
+    {
+      "utc": "2026-11-11T17:40:35.827967+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 50, 60.40, 9286, 6",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:40:45.878930+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 49, 60.92, 14274, 6",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:40:55.913416+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 70, 499.92, 21090, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:05.950621+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 73, 500.27, 21154, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:15.993055+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 74, 499.87, 21252, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:26.037366+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 76, 499.87, 21282, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:36.074653+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 78, 496.29, 21346, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:46.114166+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 489.36, 21345, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:41:56.160503+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 482.26, 21409, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:06.206938+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 479.38, 21476, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:16.244155+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 77, 474.40, 21480, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:26.288338+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 476.87, 21596, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:36.347425+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 475.03, 21597, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:46.617967+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 474.67, 21597, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:42:56.665063+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 479.29, 21596, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:06.702879+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 474.62, 21597, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:16.746075+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 59, 70.17, 6101, 4",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:26.790363+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 57, 67.16, 11538, 6",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:36.836737+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 74, 499.98, 20946, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:46.871672+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 78, 499.10, 20947, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:43:56.906435+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 78, 484.64, 20946, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:06.977106+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 477.07, 21010, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:17.023418+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 472.26, 21042, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:27.095102+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 82, 486.80, 21075, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:37.167405+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 468.91, 21139, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:47.213587+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 486.61, 21139, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:44:57.276176+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 474.21, 21171, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:07.319806+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 470.56, 21171, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:17.387446+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 78, 469.37, 21203, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:27.453585+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 80, 470.46, 21203, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:37.488614+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 466.18, 21267, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:47.570655+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 81, 468.83, 21267, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:45:57.613763+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 79, 467.95, 21267, 100",
+      "stderr": ""
+    },
+    {
+      "utc": "2026-11-11T17:46:07.670670+00:00",
+      "nvidia_smi_exit": 0,
+      "gpu": "NVIDIA GeForce RTX 5090, 62, 62.24, 15669, 0",
+      "stderr": ""
+    }
+  ],
+  "result": "completed",
+  "history_status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+          "timestamp": 1794418796131
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+          "timestamp": 1794418796280
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+          "timestamp": 1794419165114
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "22": {
+      "text": [
+        "{\"version\": \"dlss5_anchors_only_20261022_v2\", \"selection\": \"explicit_workflow_or_source_contract\", \"live_action\": \"full_frame_required\", \"mixed\": \"full_frame_required\", \"animation\": \"full_frame_required\", \"anchors\": \"full_frame_required\", \"video_dlss5_allowed\": false, \"videos\": \"forbidden_by_owner\", \"scope\": \"anchors_only\", \"actor_masks_required\": false, \"automatic_masks\": false, \"unknown\": \"blocked_before_render\", \"automatic_visual_classification\": false, \"historical_media_auto_migration\": false, \"content_kind\": \"animation\", \"stage\": \"final\", \"requested_stage\": \"native_preview\"}"
+      ]
+    },
+    "30": {
+      "gifs": [
+        {
+          "filename": "native_00001.mkv",
+          "subfolder": "ATD_Rossi_Sem_Krita_20261111\\death_west_v04",
+          "type": "output",
+          "format": "video/ffv1-mkv",
+          "frame_rate": 16.0,
+          "workflow": "native_00001.png",
+          "fullpath": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\ATD_Rossi_Sem_Krita_20261111\\death_west_v04\\native_00001.mkv",
+          "finishing_policy": {
+            "dlss5_applied": false,
+            "policy": "dlss5_anchors_only_20261011_v1"
+          },
+          "metadata": {
+            "kind": "video",
+            "width": 896,
+            "height": 768,
+            "duration": 4.063,
+            "fps": 16.0
+          }
+        }
+      ]
+    }
+  }
+}

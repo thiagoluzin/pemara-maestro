@@ -1,0 +1,24 @@
+.ip-panel[hidden], .ip-panel [hidden] { display: none !important; }
+.ip-panel { min-width: 0; scroll-margin-top: 80px; }
+.ip-panel summary { cursor: pointer; padding: .65rem 0; }
+.ip-panel summary strong { margin-right: .8rem; }
+.ip-panel .ip-content { display: grid; gap: .75rem; padding-top: .5rem; }
+.ip-panel p, .ip-hint { font-size: .88rem; line-height: 1.55; color: var(--muted, #b8c2d1); }
+.ip-panel details details { border-top: 1px solid rgba(140, 164, 196, .22); padding: .4rem 0; }
+.ip-badge { display: inline-block; border: 1px solid rgba(100, 180, 220, .5); padding: .18rem .6rem; border-radius: 1rem; font-size: .78rem; }
+.ip-panel label { display: grid; gap: .4rem; min-width: 0; font-size: .88rem; }
+.ip-panel input, .ip-panel select, .ip-panel textarea, #film-distribution-mode { box-sizing: border-box; width: 100%; min-width: 0; border: 1px solid rgba(140,164,196,.35); border-radius: .55rem; padding: .65rem; color: inherit; background: var(--input-bg, #151e2c); font: inherit; }
+.ip-panel textarea { resize: vertical; }
+.ip-panel fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.ip-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; padding: .65rem 0; }
+.ip-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: .6rem; padding: .4rem 0; }
+.ip-toolbar label { flex: 1 1 190px; }
+.ip-panel .btn.ghost { background: transparent; color: #e8edf5; border: 1px solid rgba(140,164,196,.35); }
+.ip-panel .ip-message { padding: .55rem .75rem; border-left: 3px solid #77bedd; min-height: 1.6em; }
+.ip-panel .ip-message[data-error="true"] { border-color: #f4ac8d; color: #ffd3bd; }
+.ip-checklist { padding-left: 1.25rem; font-size: .84rem; line-height: 1.6; }
+.ip-records { padding: 0; list-style: none; display: grid; gap: .7rem; }
+.ip-records li { padding: .75rem; border: 1px solid rgba(140,164,196,.25); border-radius: .6rem; overflow-wrap: anywhere; }
+.ip-records p { margin: .35rem 0; }
+.ip-records a { display: inline-block; margin: .3rem .8rem .3rem 0; color: #9edbff; }
+@media (max-width: 700px) { .ip-grid { grid-template-columns: minmax(0, 1fr); } .ip-badge { margin-top: .4rem; } }

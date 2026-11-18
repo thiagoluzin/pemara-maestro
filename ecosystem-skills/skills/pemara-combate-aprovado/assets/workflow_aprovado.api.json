@@ -1,0 +1,308 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous ten-second live-action martial-arts exchange between the EXACT two adult human actors in the opening image. Preserve their faces, hair, proportions, orange-and-blue Goku initially LEFT, navy-white-ochre armored Vegeta initially RIGHT, practical costume textures and warm rocky canyon. Vegeta's brown tail stays wrapped at his waist. Keep the same medium-wide three-quarter side camera and both full bodies and boots visible; restrained tracking follows their retreat.\n\nThey are already fighting when the shot begins. FAST, COMPACT COMBINATIONS at real fighting speed, with immediate counters. The next attacker commits while the previous attacking hand is returning. Both read the opponent and react instantly, keeping eyes engaged. A punch accelerates out, touches, and whips straight back in a fraction of a second. A kick snaps out, its knee immediately folds back, and the boot lands. The receiver keeps recoiling AFTER the striking limb has separated. Short connected actions, not individual poses.\n\nOpening combination: Vegeta snaps the opening RIGHT straight into Goku's LEFT forearm block, instantly withdraws it and fires a short LEFT hook into the upper abdomen. Goku folds briefly and takes a catching step; during Vegeta's retraction Goku immediately answers with a quick LEFT jab toward the guard. Vegeta advances after his punches, Goku counters during his forced recovery. This whole opening exchange takes only about two seconds.\n\nContinue without a pause: Goku drives a RIGHT cross at Vegeta's cheek/upper guard, recoils the fist and immediately snaps a LEFT front kick into the armored torso. Vegeta is driven bodily backward and takes two distinct hurried catching steps. Goku retracts and lands the kicking boot immediately, then follows the retreat. During that pursuit Vegeta catches his weight, plants and pivots the LEFT support boot and whips his RIGHT shin into the OUTSIDE of Goku's forward thigh. He retracts and lands at once. Goku's knee yields, his pelvis shifts sideways and the other boot catches his weight. The punches, front kick, pursuit and low counter-kick flow through the middle of the shot.\n\nClosing combination: Vegeta immediately adds a short LEFT straight into Goku's recovering high guard. Goku parries and counters with a quick RIGHT straight. Vegeta recoils, takes a short catching step and immediately returns a RIGHT straight toward Goku's cheek/guard. Goku's head, shoulders and hips are knocked back after contact and a forced step catches him as Vegeta follows. End during the pursuit and recovery, still active.\n\nNine distinct quick strikes in ten seconds. Punches transfer weight through the hips; stronger body hits force catching steps, blocked jabs cause smaller recoils. Recovery itself flows into the next defense or counter. No stopping to consider the next move, no idle bouncing, no automatic return to the opening pose. Never leave a fist pressed against a face, forearm or torso; never balance with a kicking leg held against the opponent. No rigid sliding feet, floating boots or drunken swaying. Preserve real skin, cloth, hair and armor detail. No cuts, orbiting, camera shake, flashes, powers, transformations, blood, extra people or text.\n\noverall_soundscape: Quick synchronized impacts, distinct footfalls, cloth and light canyon wind. No speech, vocalizations, grunts or music.\n\nnon_diegetic_music: None.",
+      "width": 1536,
+      "height": 864,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "TEST05 — faster continuous combinations, same approved first frame"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611082204
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/TEST05/TEST05_full_native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/TEST05/TEST05_ritmo_continuo_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "load": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_P18v6_three_cast_candidate_before_dlss5.png"
+    },
+    "is_changed": [
+      "31d4d0809f9a01ed1f195cc0723c7f1029abe619470145151579a9b975465b3e"
+    ]
+  },
+  "save": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "load",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/anchors/P18v6_three_cast"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

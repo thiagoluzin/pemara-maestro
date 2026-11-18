@@ -1,0 +1,78 @@
+{
+  "engine_id": "hunyuan_video_15",
+  "gpu_generation_tested": true,
+  "repo": "Comfy-Org/HunyuanVideo_1.5_repackaged",
+  "assets": [
+    {
+      "path": "D:/PemaraRuntimes/ComfyUI-v0.40.0-pemara/models/diffusion_models/hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+      "filename": "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+      "folder": "diffusion_models",
+      "expected_bytes": 16653368128,
+      "sha256": "96883b154e4231e6106515bdef53a091085d5821518c387eb28609fde77e4bf1",
+      "verified_sha256": "96883b154e4231e6106515bdef53a091085d5821518c387eb28609fde77e4bf1",
+      "verified_mtime_ns": 1794319302882920400
+    },
+    {
+      "path": "D:/PemaraRuntimes/ComfyUI-v0.40.0-pemara/models/vae/hunyuanvideo15_vae_fp16.safetensors",
+      "filename": "hunyuanvideo15_vae_fp16.safetensors",
+      "folder": "vae",
+      "expected_bytes": 2521292758,
+      "sha256": "e7c3091949c27e2d55ae6d5df917b99dadfebbf308e5a50d0ade0d16c90297ae",
+      "verified_sha256": "e7c3091949c27e2d55ae6d5df917b99dadfebbf308e5a50d0ade0d16c90297ae",
+      "verified_mtime_ns": 1794319179782967100
+    },
+    {
+      "path": "D:/PemaraRuntimes/ComfyUI-v0.40.0-pemara/models/text_encoders/byt5_small_glyphxl_fp16.safetensors",
+      "filename": "byt5_small_glyphxl_fp16.safetensors",
+      "folder": "text_encoders",
+      "expected_bytes": 438643184,
+      "sha256": "516910bb4c9b225370290e40585d1b0e6c8cd3583690f7eec2f7fb593990fb48",
+      "verified_sha256": "516910bb4c9b225370290e40585d1b0e6c8cd3583690f7eec2f7fb593990fb48",
+      "verified_mtime_ns": 1794319246681949400
+    },
+    {
+      "path": "E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4",
+      "folder": "text_encoders",
+      "expected_bytes": 9384670680,
+      "filename": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "verified_sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4",
+      "verified_mtime_ns": 1782565847448869000
+    },
+    {
+      "path": "E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models/clip_vision/sigclip_vision_patch14_384.safetensors",
+      "sha256": "1fee501deabac72f0ed17610307d7131e3e9d1e838d0363aa3c2b97a6e03fb33",
+      "folder": "clip_vision",
+      "expected_bytes": 856505640,
+      "filename": "sigclip_vision_patch14_384.safetensors",
+      "verified_sha256": "1fee501deabac72f0ed17610307d7131e3e9d1e838d0363aa3c2b97a6e03fb33",
+      "verified_mtime_ns": 1783368057346792800
+    }
+  ],
+  "authorized_at": "2026-11-10",
+  "revision": "1405a2b738c29b890cf6d03fc038d8d3e92eeed7",
+  "mcp_workflow_valid": true,
+  "mcp_validation_receipt": "E:/Pemara/work/hunyuan15_install_20261110/mcp_validation.json",
+  "download_ids": [
+    "3c4fa6f2db14",
+    "47d03e8c0766",
+    "6abda63a769c"
+  ],
+  "local_install_complete": true,
+  "local_verified_at": "2026-11-10T11:04:07-0300",
+  "gpu_generation_evidence": {
+    "prompt_id": "357108ff-eebf-4a3f-ba35-7622e716e28f",
+    "status": "completed",
+    "width": 1280,
+    "height": 720,
+    "frames": 193,
+    "steps": 50,
+    "total_seconds": 1289,
+    "sampling_seconds": 1233.2066666,
+    "source_sha256": "b6588512791a628286b55cc45eee6b7b917314e51ee6af6291afc787da68ba35",
+    "human_approved": false
+  },
+  "owner_status": "REMOVED_BY_OWNER",
+  "generation_enabled": false,
+  "retired_at": "2026-11-15"
+}

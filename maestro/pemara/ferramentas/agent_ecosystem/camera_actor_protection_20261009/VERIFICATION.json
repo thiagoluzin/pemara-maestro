@@ -1,0 +1,16 @@
+{
+  "unit_and_integration_tests": {
+    "passed": 136,
+    "failed": 0
+  },
+  "skills_validated": 9,
+  "backups_verified": 20,
+  "runtime_node_confirmed": "PemaraSaveActorProtectedImage",
+  "runtime_copy_matches_canonical": true,
+  "real_actor_selective_NR_visual_qualification": "PENDING",
+  "automatic_segmentation": false,
+  "new_scene_generation": false,
+  "V15_hash_unchanged": true,
+  "backend_activation": "next normal startup; no studio listener found on 9000/9001",
+  "mcp_restart_final_pid": 84788
+}

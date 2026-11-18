@@ -1,0 +1,14 @@
+{
+  "engine": "trellis2",
+  "promptId": "67e51052-fefb-418d-b581-8c3bd28bd75f",
+  "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\trellis2\\67e51052_000.glb",
+  "bytes": 60211632,
+  "sha256": "a0a3ab7b2f4d4fa22fe039993347fb7c4a62038e2de9c2128c836266b2b5383f",
+  "vertices": 1632191,
+  "faces": 3385380,
+  "watertight": false,
+  "technicalInferencePassed": true,
+  "textured": false,
+  "printReady": false,
+  "artisticApproval": false
+}

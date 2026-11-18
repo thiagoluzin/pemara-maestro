@@ -1,0 +1,33 @@
+{
+  "scene": "frame-01-intro",
+  "duration_s": 3,
+  "duration": 3,
+  "rules": [
+    "waterfall-entry",
+    "ambient-glow-bloom"
+  ],
+  "exit": {
+    "vector": "stationary 0 px/s",
+    "still_moving": false
+  },
+  "entry": {
+    "vector": "down 214 px/s",
+    "from_rest": false
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-01-intro-logo",
+      "bySec": 0.5
+    },
+    {
+      "kind": "before",
+      "a": "#frame-01-intro-logo",
+      "b": "#frame-01-intro-proof"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#frame-01-intro-logo"
+    }
+  ]
+}

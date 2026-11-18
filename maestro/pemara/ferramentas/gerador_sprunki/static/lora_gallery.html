@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria do Dataset LoRA — Portal Sprunki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: #080813;
+    color: #f0f0f8;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
+  }
+
+  /* Fundo sutil gradiente */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Header */
+  header {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  header a:hover {
+    color: #f59e0b;
+  }
+
+  header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f59e0b, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stats-badge {
+    font-size: 12px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  /* Main Layout */
+  main {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  .gallery-info {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .gallery-info p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    max-width: 600px;
+    margin: 8px auto 0;
+    line-height: 1.6;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .img-container {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #111122;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .card:hover .img-container img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* Tag Badges */
+  .tags-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-height: 80px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .tags-box::-webkit-scrollbar {
+    width: 4px;
+  }
+  .tags-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .tag-badge {
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: nowrap;
+  }
+
+  /* Stars Rating */
+  .rating-row {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+  }
+
+  .rating-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    font-size: 18px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.15);
+    transition: color 0.15s, transform 0.1s;
+  }
+
+  .star:hover {
+    transform: scale(1.2);
+  }
+
+  .star.active {
+    color: #f59e0b;
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.4));
+  }
+
+  /* Lightbox zoom */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox-content {
+    max-width: 800px;
+    width: 100%;
+    background: #111122;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .lightbox-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .lightbox-img-wrap {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #000;
+  }
+
+  .lightbox-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .lightbox-details {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .lightbox-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 12px;
+  }
+
+  .lightbox-tags-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .lightbox-tags {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 14px;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  footer {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/">← Voltar ao Portal</a>
+  <h1>🖼️ LoRA Dataset Gallery</h1>
+  <div class="stats-badge" id="stats-badge">Amostras: --</div>
+</header>
+
+<main>
+  <div class="gallery-info">
+    <p>Visualize as 50 imagens geradas dinamicamente para o dataset de treinamento do LoRA do Kohya SS. Avalie cada amostra atribuindo uma nota de 1 a 5 estrelas.</p>
+  </div>
+  
+  <div class="grid" id="gallery-grid">
+    <!-- Cards will load dynamically -->
+  </div>
+</main>
+
+<!-- Lightbox Zoom -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <div class="lightbox-details">
+      <div class="lightbox-title" id="lightbox-title">Nome da Imagem</div>
+      <div>
+        <div class="lightbox-tags-title">Tags do Dataset (.txt)</div>
+        <div class="lightbox-tags" id="lightbox-tags">Captions...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Pemara Tech © 2026 — Treinamento LoRA Sprunki
+</footer>
+
+<script>
+  let samples = [];
+
+  async function loadSamples() {
+    try {
+      const resp = await fetch('/api/lora_samples');
+      samples = await resp.json();
+      
+      document.getElementById('stats-badge').textContent = `Amostras: ${samples.length}`;
+      renderGrid();
+    } catch (err) {
+      console.error("Erro ao carregar amostras:", err);
+      document.getElementById('gallery-grid').innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; color: #ef4444; padding: 40px;">
+          ❌ Erro ao conectar ao servidor para carregar amostras. Certifique-se de que o servidor Flask está rodando.
+        </div>
+      `;
+    }
+  }
+
+  function renderStars(container, sample) {
+    container.replaceChildren();
+    container.dataset.name = sample.name;
+    [1, 2, 3, 4, 5].forEach(value => {
+      const star = document.createElement('span');
+      star.className = `star${sample.rating >= value ? ' active' : ''}`;
+      star.textContent = '★';
+      star.addEventListener('click', () => rate(sample.name, value));
+      container.appendChild(star);
+    });
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById('gallery-grid');
+    grid.replaceChildren();
+
+    samples.forEach(rawSample => {
+      const sample = {
+        name: String(rawSample.name || '').slice(0, 180),
+        tags: String(rawSample.tags || '').slice(0, 4000),
+        image_url: String(rawSample.image_url || ''),
+        rating: Math.max(0, Math.min(5, Number(rawSample.rating) || 0)),
+      };
+      let imageUrl;
+      try {
+        const parsed = new URL(sample.image_url, window.location.origin);
+        if (parsed.origin !== window.location.origin || !parsed.pathname.startsWith('/lora_dataset/')) return;
+        imageUrl = parsed.href;
+      } catch (_error) {
+        return;
+      }
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'img-container';
+      imageContainer.addEventListener('click', () => openLightbox(imageUrl, sample.name, sample.tags));
+      const image = document.createElement('img');
+      image.src = imageUrl;
+      image.alt = sample.name;
+      image.loading = 'lazy';
+      imageContainer.appendChild(image);
+
+      const content = document.createElement('div');
+      content.className = 'card-content';
+      const header = document.createElement('div');
+      header.className = 'card-header';
+      const title = document.createElement('span');
+      title.className = 'card-title';
+      title.textContent = sample.name.replace(/\.jpe?g$/i, '');
+      header.appendChild(title);
+
+      const tagsBox = document.createElement('div');
+      tagsBox.className = 'tags-box';
+      const tags = sample.tags ? sample.tags.split(',').slice(0, 50) : ['Sem tags'];
+      tags.forEach(tagText => {
+        const badge = document.createElement('span');
+        badge.className = 'tag-badge';
+        badge.textContent = tagText.trim().slice(0, 160);
+        tagsBox.appendChild(badge);
+      });
+
+      const ratingRow = document.createElement('div');
+      ratingRow.className = 'rating-row';
+      const ratingLabel = document.createElement('span');
+      ratingLabel.className = 'rating-label';
+      ratingLabel.textContent = 'Avaliação';
+      const stars = document.createElement('div');
+      stars.className = 'stars';
+      renderStars(stars, sample);
+      ratingRow.append(ratingLabel, stars);
+
+      content.append(header, tagsBox, ratingRow);
+      card.append(imageContainer, content);
+      grid.appendChild(card);
+    });
+  }
+
+  async function rate(name, value) {
+    // Update local state
+    const sample = samples.find(s => s.name === name);
+    if (sample) {
+      sample.rating = value;
+    }
+    
+    // Rerender stars for this card
+    const starsContainer = Array.from(document.querySelectorAll('.stars'))
+      .find(element => element.dataset.name === name);
+    if (starsContainer) {
+      renderStars(starsContainer, sample || { name, rating: value });
+    }
+    
+    // Save to server
+    try {
+      await fetch('/api/save_rating', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, rating: value })
+      });
+    } catch (err) {
+      console.error("Erro ao salvar avaliação:", err);
+    }
+  }
+
+  function openLightbox(url, name, tags) {
+    document.getElementById('lightbox-img').src = url;
+    document.getElementById('lightbox-title').textContent = name.replace('.jpg', '');
+    document.getElementById('lightbox-tags').textContent = tags;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox(e) {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Init
+  loadSamples();
+</script>
+</body>
+</html>

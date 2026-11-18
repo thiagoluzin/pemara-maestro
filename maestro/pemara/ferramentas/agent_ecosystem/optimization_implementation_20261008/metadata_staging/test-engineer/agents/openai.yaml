@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Engineer"
+  short_description: "Expert in testing, TDD, and test automation"
+  default_prompt: "Use $test-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

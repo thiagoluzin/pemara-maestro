@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Ozzy Osbourne-inspired, Fast aggressive melodic heavy metal, tightly picked original guitar riff, punchy thick bass, energetic real drums, defiant rough-edged male high voice. 164 BPM, F sharp minor. a fast pedal-point guitar riff punctuated by dissonant jabs; a sharp shouted-sung chorus. Fast aggressive melodic heavy metal, Ozzy Osbourne influence, F# minor, riff-led, punchy drums and bass, no piano or ac. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Verse 1 0-80s; Chorus & Verse 80-180s; Bridge & Solo 180-250s; Final Chorus & 250-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=164, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nGrease on the gears, steam in the air,\nFeeding the beast with a collective prayer.\nThey sell us the dark, we buy it in bulk,\nChoking on smoke, drinking from the cup.\nThe machine hums low, it eats the weak,\nWhile we dance on the edge of the concrete peak.\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Verse]\nFound the blueprints in the rusted drain,\nA simple joke to break the chain.\nHe opened his mouth, let a giggle burst,\nScreaming laughter tearing the engine apart.\nThe pistons jammed, the pistons died,\nThe panic engine couldn't hide.\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Bridge]\nSilence falls, the smoke clears up,\nThe giant clock hits a sudden stop.\nNo more fear to keep it running,\nThe city breathes, the lesson is coming.\n\n[Solo]\n\n[Chorus]\nPanic engine, turning the wheel!\nFear is the fuel, terror is real!\nLaugh at the noise and the gears will stall!\nBreak the machine, we stand up tall!\n\n[Outro]\nGears grind down, final crash,\nThe panic engine is ash.",
+      "seed": 202610161010,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

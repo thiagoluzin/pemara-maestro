@@ -1,0 +1,70 @@
+{
+  "1": {
+    "class_type": "SongGeneration_Loader",
+    "inputs": {
+      "infer_model": "large_model_v2.pt",
+      "gguf": "none",
+      "version": "v2",
+      "use_flash_attn": false,
+      "offload_audiolm": true
+    }
+  },
+  "2": {
+    "class_type": "SongGeneration_Stage1",
+    "inputs": {
+      "vae": "autoencoder_music_1320k.ckpt",
+      "seperate_model": "ckpt\\model_septoken\\model_2.safetensors",
+      "prompt_pt": "new_prompt.pt",
+      "auto_prompt_audio_type": "Soundtrack",
+      "model_1rvq": "ckpt\\model_1rvq\\model_2_fixed.safetensors",
+      "demucs_pt": "none",
+      "lyric": "[intro-short] ; [inst-medium] ; [inst-medium] ; [bridge-short] ; [inst-medium] ; [break-short] ; [inst-medium] ; [outro-short]"
+    }
+  },
+  "3": {
+    "class_type": "SongGeneration_Stage2",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "cfg": [
+        "1",
+        1
+      ],
+      "cond": [
+        "2",
+        0
+      ],
+      "gen_type": "bgm",
+      "description": "soundtrack, cinematic martial arts battle, dark orchestral, relentless organic war drums, taiko, frame drums, low string ostinato, dissonant brass, bowed metal, chains, sub bass impacts, human rhythmic variation, escalating tension, brief dramatic stop before final climax, dry brutal ending, instrumental, no choir, no vocals, no synth lead, the bpm is 136",
+      "duration_seconds": 60,
+      "cfg_coef": 1.8,
+      "temp": 0.8,
+      "top_k": 50,
+      "top_p": 0.0,
+      "record_tokens": true,
+      "record_window": 50
+    }
+  },
+  "4": {
+    "class_type": "SongGeneration_Sampler",
+    "inputs": {
+      "cond": [
+        "3",
+        0
+      ],
+      "save_separate": false
+    }
+  },
+  "5": {
+    "class_type": "SaveAudio",
+    "inputs": {
+      "audio": [
+        "4",
+        0
+      ],
+      "filename_prefix": "mortal_kombat_irmaos/candidate_60s_b_raw"
+    }
+  }
+}

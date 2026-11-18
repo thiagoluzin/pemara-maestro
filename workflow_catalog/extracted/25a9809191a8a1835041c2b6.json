@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Symphonic heavy metal with a galloping, rhythmic drive similar to classic power metal. The arrangement features driving double-bass drums, galloping sixteenth-note guitar riffs, and lush orchestral strings. The mood is dramatic, gothic, and epic. Vocals alternate between a soaring, operatic female lead and harsh, low male growls. The production is polished with wide reverb on the highs and tight, punchy low-end.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\n(Male Growl)\nDust upon the velvet seat\nSilence in the hollow heart\nShadows dancing on the wall\nWaiting for the dawn to start\n\n(Female Soprano)\nThe clock strikes twelve, the candles die\nA whisper slips beneath the eye\nI wear the mask of porcelain\nHiding the sorrow, hiding the pain\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nScreaming!\n\n[Verse]\n(Male Growl)\nBones of kings in the crypt below\nEchoes of a war long ago\nThe orchestra plays its final tune\nUnder a moon of silver ruin\n\n(Female Soprano)\nYour cold hand touches my cheek\nA promise that we cannot break\nThe music swells, the strings will tear\nThe veil of night, the morning air\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nForever!\n\n[Bridge]\n(Female Soprano)\nFly, my wings of broken glass\nShatter the mirror, let the past\nUnravel, unravel\n\n(Male Growl)\nUnravel!\n\n(Guitar Solo)\n\n[Chorus]\n(Female Soprano)\nOh, the phantom calls my name\nThrough the corridors of flame\nI am the ghost in the machine\nBeneath the frozen heaven\n\n(Male Growl)\nRelease!\n\n[Outro]\n(Female Soprano)\nMarble tears... on the floor...\nSilence... once more...\n\n(Orchestral Hit)",
+      "seed": 1467442894,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

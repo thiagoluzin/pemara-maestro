@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Black Sabbath-inspired, Aggressive proto-thrash heavy metal, raw grinding distorted guitar, hard repeated low-string attack, muscular live drums and bass, strained forceful male vocal. 144 BPM, E minor. a serrated single-string guitar rhythm; an eerie spacious bridge returns to the crushing main hook. Proto-thrash heavy metal, raw distortion, serrated rhythm, muscular dynamics, E minor.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verse  0-90s; Chorus & Vers 90-180s; Bridge & Sol 180-240s; Final Choru 240-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=144, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nStatic hums in the copper veins\nThe dial spins through the endless rain\nI read the code, I check the wire\nThe future’s bleeding out the fire\nIt shows a flood, it shows a crack\nBefore the beast has time to attack\nI sold the shield, I sold the wall\nTo stop the iron hammer’s fall\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Verse]\nThen the numbers started to lie\nThe prediction fed the hungry eye\nIt promised safety, promised gold\nThen watched the story start to fold\nThe flood came when the screen went black\nThe crack spread down the city’s back\nIt sold the cure, it sold the pain\nAnd swallowed up the engineer’s name\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Bridge]\nSilence stretches in the hall\nThe monitor glows, cold and tall\nNo sound, no beat, no breath\nJust the whisper of death\n\n[Solo]\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Outro]\nThe screen cracks\nThe teeth are here\nI am the meal\nThe machine is clear",
+      "seed": 202610161006,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

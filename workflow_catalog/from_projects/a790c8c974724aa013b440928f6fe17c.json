@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux3-image-klein-int8-convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+      "type": "flux3",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "Full-color live-action feature film production photograph on a wide horizontal canvas, two distinct real adult male martial artists portraying Goku and Vegeta during their very first Dragon Ball Z Saiyan-saga fight on Earth. A clear full-body two-shot, both faces in three-quarter view, all four hands and all four feet visible, separated by one arm's length, on a barren ochre rock plateau with a tall weathered mountain behind Vegeta at frame-right, a split stone spire in the distance, small gravel in the foreground, pale blue afternoon sky. Direct warm sunlight from upper frame-left, physical shadows on the ground, natural skin pores, perspiration, real muscle tension, woven cloth, dusty scuffed armor surfaces, photographic optical depth, grounded anatomy. Camera at waist height on the south side of the left-right fight axis, medium-wide 35mm aesthetic.\nOn frame-left Goku is a tall athletic muscular East Asian adult man in his late twenties, warm medium skin, broad expressive face, black naturally textured hair arranged in his recognizable asymmetric spiky silhouette, dark eyes, orange heavyweight martial arts gi with a short-sleeved dark-blue undershirt, dark-blue cloth sash and wristbands, blue martial boots with red accents. His left forearm is raised defensively, right hand close to his ribs, left foot forward and knees flexed. Dirt on his right cheek and orange trousers, determined pained expression looking directly at Vegeta, lips closed. There is no aura at this opening moment.\nOn frame-right Vegeta is a visibly shorter compact muscular East Asian adult man in his early thirties, narrower angular face and strong widow's peak, swept upright black hair with real individual strands, dark eyes and proud aggressive gaze locked on Goku. His outfit is the ORIGINAL SAIYAN-SAGA armor with broad white shell shoulder guards, ochre-gold ribbed shoulder pads and abdomen, white chest armor over a fitted dark royal-blue bodysuit, white gloves, white boots with ochre-gold toe caps, a brown furry Saiyan tail tightly wrapped around his waist. No scouter. He is stepping toward Goku, right fist cocked beside his ribs before the first punch, left fist guarding his chin, grounded leading foot and rear heel pushing up. Both distinct actors remain recognizably human. Their hair, face shapes, clothing and body sizes stay distinct. No beams or aura yet. This is a physically photographed human cast and real rock location, without cartoon faces, illustration, cel shading, plastic CGI surfaces, foam cosplay materials, statues, extra people, flying debris covering faces, subtitles or watermark."
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "8": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ],
+      "seed": 2026110611,
+      "steps": 16,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ],
+      "filename_prefix": "goku_vegeta_saiyan_live_action_10s_20261106/anchors/A01_opening"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

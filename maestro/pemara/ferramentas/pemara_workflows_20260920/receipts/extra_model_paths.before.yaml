@@ -1,0 +1,35 @@
+pemara_active:
+    base_path: E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models
+    checkpoints: checkpoints
+    clip: clip
+    clip_vision: clip_vision
+    configs: configs
+    controlnet: controlnet
+    diffusers: diffusers
+    diffusion_models: |
+        diffusion_models
+        unet
+    embeddings: embeddings
+    gligen: gligen
+    hypernetworks: hypernetworks
+    latent_upscale_models: latent_upscale_models
+    loras: loras
+    model_patches: model_patches
+    style_models: style_models
+    text_encoders: text_encoders
+    upscale_models: upscale_models
+    vae: vae
+    vae_approx: vae_approx
+
+pemara_offloaded:
+    base_path: D:/PemaraModels/offloaded/ComfyUI
+    checkpoints: checkpoints
+    controlnet: controlnet
+    diffusion_models: |
+        diffusion_models
+        unet
+    latent_upscale_models: latent_upscale_models
+    loras: loras
+    model_patches: model_patches
+    text_encoders: text_encoders
+    vae: vae

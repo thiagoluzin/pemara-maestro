@@ -1,0 +1,25 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_dante_cerberus_builtin_native.png"
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "dmc3_cerberus_20261102/anchors/A01_dante_cerberus_builtin_01"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "pemara_h3_native_source_0312_20261013",
+  "flow_version": "0.3.12",
+  "node": "H3NativeSourceContinuationHandoff",
+  "settings": {
+    "source_mode": "scale",
+    "source_scale": 0.7,
+    "source_width": 864,
+    "source_height": 640,
+    "handoff_coordinate": 0.35,
+    "handoff_selection": "fixed",
+    "guidance_mode": "direction+temporal",
+    "direction_weight": 0.25,
+    "acceleration_weight": 0.25,
+    "consistency_weight": 0.25,
+    "low_frequency_cutoff": 0.25,
+    "temporal_weight": 0.2,
+    "audio_guided_overlap_mode": "sampler_mask_exact_timestep",
+    "audio_guided_overlap_ticks": 16,
+    "uniform_source_detail_transport": true,
+    "source_prefix_projection": "native_source_carry",
+    "capture_boundary_witness": false
+  },
+  "provider": {
+    "model_name": "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+    "device": "cuda",
+    "precision": "bf16",
+    "offload_after_upscale": false
+  },
+  "sequence_contract": "Use same patched MODEL from initial chunk through every continuation. Missing or mismatched native source context blocks; never reconstruct silently. External historical states are not native-source carry.",
+  "historical_graphs": "preserved",
+  "render_qualification": "PENDING_NEW_MEDIA",
+  "finishing": "Preserve the active content-kind finishing contract, original source and human approval.",
+  "activation": "Only when VDN-H3 is explicitly connected on the sampled MODEL path; ordinary single clips retain base H3 with Sage + Spectrum."
+}

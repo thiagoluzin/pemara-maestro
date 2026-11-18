@@ -1,0 +1,22 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {"file": "Goku_SSJ2_30s_MOVIMENTO_v04_REVISAO.mp4"}
+  },
+  "2": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": ["1", 0],
+      "width": 1080,
+      "height": 1920,
+      "filename_prefix": "goku_ssj2_20261029/full_motion_v04_fhd60/Goku_SSJ2_30s_FHD_60FPS_v04",
+      "content_kind": "live_action",
+      "expected_sha256": "22d46b348cbc60c525aa016e3e577dca5e52c9c4e05866e9ab2128012471eb57",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {"content_kind": "live_action", "stage": "final"}
+  }
+}

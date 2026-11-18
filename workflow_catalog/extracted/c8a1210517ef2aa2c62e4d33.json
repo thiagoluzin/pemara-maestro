@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Same character as the reference image, identical outlaw boss outfit, red poncho, long wild black hair, leather hat, proportions and pixel art style, single full-body game sprite in this pose: firing downward: shooting gun directly downward, bright flash, bullet sparks on the floor, solid flat magenta background, 16-bit SNES era pixel art, clean pixel clusters, limited palette, dark outline, dithering shading, side-scroller arcade game sprite, full body, Brazilian colonial sertao, dusk palette of ochre, teal shadows and ember orange, solid flat magenta background, no anti-aliasing, no 3d render, no blur",
+      "negative_prompt": "text, watermark, blurry, soft edges, anti-aliasing, gradients, photorealistic, 3d render, extra limbs, multiple characters, cropped body, detailed background scenery",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 896,
+      "height": 1088,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 20260925311,
+      "steps": 28,
+      "cfg": 3.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1/cabeleira_20260925311"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/boss_cabeleira_ref.png"
+    },
+    "is_changed": [
+      "3aea0f9770ed216bc34fb98e5d729205dbab7f5c3ea32a469cca9309f9e75973"
+    ]
+  }
+}

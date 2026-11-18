@@ -1,0 +1,110 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit reference 1 into one game sprite. Remove ONLY the rider. The exact SAME chestnut horse with dark mane and colonial leather saddle is standing still in RIGHT SIDE PROFILE, all four hooves grounded, neck vertical, no human. Entire horse including legs and empty saddle. EXACT SAME colors, face, clothing and hand painted drawing style as reference. Neutral daylight, warm natural brown leather, cream shirt, neutral olive trousers, natural skin. Full body with generous margins. Isolated on perfectly FLAT SATURATED CYAN #00ffff background. No blue lighting, no magenta lighting, no recoloring the subject, no shadows, no ground, no text.",
+      "negative_prompt": "pink subject, purple subject, blue clothes, color cast, chibi, cartoon oversized head, scenery, missing saddle, rider, cropped body, gradient, shadow, ground, text",
+      "resolution": 1024,
+      "images.image_1": [
+        "20",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202698002,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_color_corrected/horse_idle"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/fixed_mount_reference.png"
+    },
+    "is_changed": [
+      "eeb3c7ed3c2a7ccff2e4320f65b3c3ef4aba937d8bb24ef5f383a2a8fa12a79f"
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and mechanical, driven by rapid galloping double bass drums and palm-muted chugging riffs. The mood is tense and visceral. Features a high-pitched, raspy male vocal delivery with sharp, percussive enunciation. Includes a mid-song guitar harmonized solo section and intense tempo shifts to mirror the original's dynamic structure.\nComplete song, target duration 180 seconds maximum. Compose the entire ABC arrangement within 172 seconds, including a short outro and a resolved final cadence. Reserve the last 8 seconds for the final chord decay and silence. Finish all sung words before the outro. No endless loop, unfinished solo, or long fade-out. Write explicit measures, no repeat signs; keep intro and interludes brief.",
+      "lyrics": "[Intro]\n(Heavy guitar riff, rapid double bass)\n\n[Verse]\nSombras rastejando pelo ch\u00e3o frio\nCora\u00e7\u00f5es de pedra, sil\u00eancio do rio\nA nuvem negra engole o sol\nO cheiro de ferro, a cor de metal\n\nEles caminham em linha, sem rosto\nUm ex\u00e9rcito de vidro, um destino posto\nA engrenagem gira, o dente m\u00f3i\nO medo que cresce, o suor que cai\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Verse]\nSangue na areia, osso no ch\u00e3o\nA mar\u00e9 subindo, a lua de m\u00e1rmore e sol\nA sombra da torre toca seu rosto\nO f\u00f4lego quebra, o esp\u00edrito posto\n\nOlhos vazios, pupilas de a\u00e7o\nO ritmo \u00e9 o chicote, o sil\u00eancio \u00e9 o la\u00e7o\nA batida acelera, o tempo despenca\nA luz que se apaga, a escurid\u00e3o avan\u00e7a\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Bridge]\n(Guitar Solo, high pitch, harmonized)\nTens! Tens! Tens! Tens!\nO fio puxa! O fio corta!\nTens! Tens! Tens! Tens!\nA carne se abre! O sangue escorre!\n\n[Verse]\nA torre de concreto, o c\u00e9u de chumbo\nO eco do martelo, o som do trombone\nA multid\u00e3o grita, mas ningu\u00e9m ouve\nA corrente aperta, a dor que se prova\n\nA engrenagem para, o ar fica denso\nO cora\u00e7\u00e3o falha, o fim \u00e9 o mesmo\nA m\u00e1scara cai, o rosto se parte\nA luz final, o \u00faltimo aparte\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Outro]\n(Heavy riff, fast tempo)\nRei das Antenas!\nRei das Antenas!\nRei das Antenas!\n(Fade out with rapid double bass)",
+      "abc": "X:1\nT:\nM:4/4\nL:1/16\nQ:1/4=190\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% verse\nV: Vocal\n\"D#m\"d4d4d4c2d2-|\"D#m\"d2d4f4f2f4|\"D#m\"f6d6z4|\"D#m\"z16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d4d4c2d2-|\"D#m\"d2d2d2f4f2f4|\"D#m\"f6d6z4|\"D#m\"z12z2A2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d4d4c4|\"D#m\"c2c2c4c6A2|\"D#m\"A2A2A4A4A2A2|\"D#m\"A2A2G4F8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2d4d2d2c4|\"D#m\"d4d4z4f4|\"D#m\"f6d6z4|\"D#m\"z12c2c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2d2c2d4d4|\"D#m\"z4f2f2f4f4|\"D#m\"f6d6z4|\"D#m\"z12z2c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2d2c2d4d4|\"D#m\"z4f4f4f4|\"D#m\"f8z8|\"D#m\"z12z2c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4d4|\"D#m\"z4f2f2f4f4|\"D#m\"f16-|\"D#m\"f16|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8f8|\"C#\"e8z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z4f2f2|\"F#\"f8g4f4|\"C#\"e8z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8g4f4|\"C#\"e4c4z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4d4|\"D#m\"z12f4|\"F#\"f4f4g4f4|\"C#\"e6c8z2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d16|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nZ|D,2D,D,D,2D,D,F,2E,2=E,4|D,2D,D,D,2D,D,D,2D,D,D,2D,D,|F2E2=E2D2^^G2^G2F4|\n% verse\nV: Vocal\n\"D#m\"D2D2C4D4D4|\"D#m\"F2F2F4F4z4|\"D#m\"z16|\"D#m\"z12z2C2|\nV: Ins\nZ2|D,2D,2D,2D,2F,4E,4|D,2D,2D,2D,2G,4F,2z2|\nV: Vocal\n\"D#m\"D2D2C4D4C4|\"D#m\"D2D2C4D2F2F4|\"D#m\"F4z12|\"D#m\"z12z2C2|\nV: Ins\nZ2|z4D2D2F4E4|D,2D,2D,2D,2G4F2z2|\nV: Vocal\n\"D#m\"D2D2C4D4C4|\"D#m\"D2D2C4D4C4|\"D#m\"D2D2C4D4C4|\"D#m\"D2D2C4D4C4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4c2c2|\"D#m\"d2d2c4d4c4|\"D#m\"d2d2c4d4c4|\"D#m\"d2d2c4d4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4c4|\"D#m\"z16|\"D#m\"z16|\"D#m\"z12d2c2|\nV: Ins\nZ|D,2D,2D,2D,2G4F4|D,2D,2D,2D,2F4E4|D,2D,2D,2D,2g4z4|\nV: Vocal\n\"D#m\"d2d2c4d4c4|\"D#m\"d2d2c4d4c4|\"D#m\"d2d2c4d4c4|\"D#m\"d2d2c4d4c4|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8g4f4|\"C#\"e8z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z4f2f2|\"F#\"f8g4f4|\"C#\"e8z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8g4f4|\"C#\"e4c4z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4d4|\"D#m\"z12f4|\"F#\"f4f4g4f4|\"C#\"e6c8z2|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"d16-|\"D#m\"d8z8|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nZ|z8D,2D,2D,2D,2|D,2D,2D,2D,2D,2D,2D,2D,2|F,2E,2=E,2D,2^^G,2^G,2F,4|\n% verse\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nD2D2D2D2F4E4|D2D2D2D2G4F4|D2D2D2D2F4E4|D2D2D2D2G4F4|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nD2D2D2D2F4E4|D2D2D2D2G4F4|D2D2D2D2F4E4|D2D2D2D2g4f4|\n% chorus\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8g4f4|\"C#\"e8z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z4f2f2|\"F#\"f8g4f4|\"C#\"e8z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8d4c4|\"D#m\"d4d4z8|\"F#\"f8g4f4|\"C#\"e4c4z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2c4d4d4|\"D#m\"z12f4|\"F#\"f4f4g4f4|\"C#\"e6c8z2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d16-|\"D#m\"d16-|\"F#\"d16|\"C#\"f8e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"e6d8-d2-|\"D#m\"d16-|\"F#\"d6z8z2|\"C#\"f8e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"e6d8-d2-|\"D#m\"d16-|\"F#\"d6z8z2|\"C#\"f8e4c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"e6d8-d2-|\"D#m\"d16-|\"F#\"d16-|\"C#\"d6z8z2|\nV: Ins\nZ3|z8c2z2c4|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|Z|\nV: Ins\nD,2D,2D,2D,2F4E4|D,2D,2D,2D,2G4F4|Z|",
+      "seed": 240005,
+      "mode": "full",
+      "max_duration": 180,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 240005,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Rei_das_Antenas_encerramento_teste",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

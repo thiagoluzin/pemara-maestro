@@ -1,0 +1,121 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS02_native.png"
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS02_DLSS5"
+    }
+  },
+  "3": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS03_native.png"
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS03_DLSS5"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS04_native.png"
+    }
+  },
+  "6": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS04_DLSS5"
+    }
+  },
+  "7": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS05_native.png"
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS05_DLSS5"
+    }
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS06_native.png"
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS06_DLSS5"
+    }
+  },
+  "11": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS07A_native.png"
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS07A_DLSS5"
+    }
+  },
+  "13": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "SS07B_native.png"
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/SS07B_DLSS5"
+    }
+  },
+  "900": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

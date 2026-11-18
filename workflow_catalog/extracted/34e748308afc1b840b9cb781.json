@@ -1,0 +1,44 @@
+{
+  "1": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "10": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_3.png"
+    },
+    "is_changed": [
+      "e0dc5529913b04f53049b4b0da2f5c82e04b25508e5b6ec38d75e2486fddb5d8"
+    ]
+  },
+  "11": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "10",
+        0
+      ],
+      "alpha": [
+        "10",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "cards_20261011/3_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

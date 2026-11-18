@@ -1,0 +1,246 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] An original expressive stylized 3D cartoon Brazilian street-news comedy, matching the rounded appealing animation language of a peaceful gamers protest. Original fictional ADULT humans, rounded faces, matte colorful fabric, grounded feet, coherent five-finger hands, readable independent gestures. Warm afternoon light from screen-left and soft storefront shade. Outside one fictional unbranded brick electronics storefront on a Brazilian city square. No live action, real person, politician, weapons, violence, smoke, fire, logos, price tags, watermarks, subtitles or music. No written brand names; YouTube is mentioned ONLY in the approved spoken joke, no logo or interface shown.\nVertical768x1344. One continuous eye-level medium-wide interview, reporter screen-left, interviewee screen-right, clear large faces and visible hands. A tiny physical sideways dolly gives natural foreground/midground/background parallax while keeping framing stable. No zoom, cut, spin or handheld shake. The camera serves the microphone handoff and reaction.\nEXACTLY TWO large rectangular warm-ivory completely BLANK signboards face the camera, one upper-left and one upper-right. Wide landscape boards fill the upper quarter, approximately x45..355 and x410..720, top120 bottom350. Both entire boards and all four corners stay inside the frame with generous outer margins, horizontally level, tiny slow sway. All heads stay BELOW the boards with an actual visible gap; no face, hair, hand or prop overlaps either clean paper interior. Two background adults grip only the wooden sticks below the boards. No extra boards. No generated text, letters, numbers, symbols or pseudowriting on any surface. These two blank surfaces are reserved for LARGE exact typography inserted as deterministic graphic layers after generation. Keep their clean fronts unobstructed throughout the clip.\nOnly the indicated adult speaks at each moment. Clear natural native Brazilian Portuguese, normal conversational cadence, original fictional voices with no imitation or cloning, no extra words or overlapping mouths. Listeners look toward the speaker and keep mouths closed. Crowd stays quiet under interview lines and reacts only AFTER the punchline. No anticipatory laughing. Feet stay planted with natural weight shifts; movement continues through the last frame without a frozen ending.\nSECOND independent interview at the same peaceful fictional protest, a different adult pair, NOT a transformation of the first. Reporter: fictional adult Brazilian man with light-brown skin, short black hair, plain blue utility vest over beige shirt and dark trousers, holding ONE plain black microphone. Interviewee: fictional adult Brazilian Black woman with short natural curly hair, round black glasses, plain coral hoodie and blue jeans. Her hands are empty throughout. She uses one free open palm to acknowledge her PC's lack of RAM, then one wry pointing gesture to underline that the bank remembers installments. No actual bank logo, document, banknote, payment terminal, written invoice or financial offer.\nComic objective: turn memory into the contrast between a forgetful low-RAM PC and an unforgiving bill collector, with a dry knowing delivery. Reporter listens before reacting. Nobody laughs before the last word parcela.\n0.0-3.4s: Reporter turns toward her and asks exactly <d>[Portuguese] E a memória? Tá faltando?</d>. He brings microphone toward her only after his question. She listens, then raises one eyebrow.\n3.4-5.3s: Woman answers matter-of-factly exactly <d>[Portuguese] No PC, sim.</d>. She gestures once with an open palm near waist and pauses briefly. Reporter remains attentive and silent.\n5.3-9.5s: Woman continues with dry indignation exactly <d>[Portuguese] Mas o banco não esquece uma parcela!</d>. Stress não esquece and parcela. She makes ONE small emphatic index-finger gesture beside her chest, never across her face or the microphone, and ends with a resigned half-smile.\n9.5-11.6s: Reporter recognizes the joke, glances at her raised finger then gives ONE amused grin; background crowd laughs once. She turns her eyes toward camera with a knowing shrug. The two blank boards slowly rise without leaving frame or overlapping heads.\n11.6-15.083s: Crowd and interviewee end with one exact chant <d>[Portuguese] Mais FPS! Menos boleto!</d>. Reporter angles microphone slightly toward the group. All syllables finish by14.6s; retain natural board sway, hand lowering and grounded recovery to final frame. No extra line, repeated chant, fast board shaking or freeze.\noverall_soundscape: Clear original adult male reporter and original adult female answer in Brazilian Portuguese, deliberate short pause after No PC sim, one short late crowd laugh, final intelligible group chant. Soft street and cardboard sounds only, no music, extra words or real-person voice imitation.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110302
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/rebeliao_gamer_ep03_roda_no_youtube_vertical_30s_20261103/take02_v01_blank_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  }
+}

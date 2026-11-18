@@ -1,0 +1,31 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pemara_trellis_glb_smoke_20261013.png"
+    },
+    "is_changed": [
+      "7bfe0c693185d8fff2fc64a44769d7a17b81cd31618279a9fe49e07775489dd0"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "pemara_glb_fix_2d/cube"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

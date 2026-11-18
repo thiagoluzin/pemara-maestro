@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "80s American Thrash Metal, aggressive and raw. Heavy distorted guitars, pounding drums, punchy bass. Raspy, shouted vocal performance. Dark, energetic, and chaotic groove.. Producer style: 80s Thrash Metal. Roles: drums: Punchy double-bass and aggressive snare; bass: Driving melodic lines, heavy distortion; guitar: Fast palm-muting riffs and soaring solos. Form: Intro 0-15s energy 0.7 lead drums; Verse 1 15-55s energy 0.8 lead vocals; Pre-Chorus 1 55-70s energy 0.9 lead vocals; Chorus 1 70-95s energy 1 lead vocals; Verse 2 95-135s energy 0.85 lead vocals; Pre-Chorus 2 135-150s energy 0.9 lead vocals; Chorus 2 150-175s energy 1 lead vocals; Bridge 175-195s energy 0.95 lead vocals; Solo 195-235s energy 1 lead guitar; Chorus 3 235-260s energy 1 lead vocals; Outro 260-300s energy 0.6 lead vocals. Complete ending.\nComplete song, target duration 292 seconds maximum. Compose the entire ABC arrangement within 284 seconds, including a short outro and a resolved final cadence. Reserve the last 8 seconds for the final chord decay and silence. Finish all sung words before the outro. No endless loop, unfinished solo, or long fade-out. Write explicit measures, no repeat signs; keep intro and interludes brief.. Qwen producer tempo 160 BPM. Planned form: Intro 0-15s energy 0.7 lead drums; Verse 1 15-55s energy 0.8 lead vocals; Pre-Chorus 1 55-70s energy 0.9 lead vocals; Chorus 1 70-95s energy 1 lead vocals; Verse 2 95-135s energy 0.85 lead vocals; Pre-Chorus 2 135-150s energy 0.9 lead vocals; Chorus 2 150-175s energy 1 lead vocals; Bridge 175-195s energy 0.95 lead vocals; Solo 195-235s energy 1 lead guitar; Chorus 3 235-260s energy 1 lead vocals; Outro 260-300s energy 0.6 lead vocals. Finish all singing before the final decay.",
+      "lyrics": "[Verse]\nO asfalto fuma sob o sol de chumbo\nA cidade grita com o bico aberto\nEngrenagens mordem o meu crânio\nE o sangue escorre, frio e lento\n\n[Pre-Chorus]\nSem fé, sem lei, só a dor\nA corrente quebra com um rumor\n\n[Chorus]\nTempestade de ferro!\nLadrando no escuro!\nTempestade de ferro!\nDevorando o futuro!\n\n[Verse]\nFogo no olho do engenheiro\nA máquina tropeça, o chão treme\nO motor cospe óleo e raios\nE o meu grito não tem nome\n\n[Pre-Chorus]\nSem fé, sem lei, só a dor\nA corrente quebra com um rumor\n\n[Chorus]\nTempestade de ferro!\nLadrando no escuro!\nTempestade de ferro!\nDevorando o futuro!\n\n[Bridge]\nCorra! Corra antes que o aço morda!\nCorra! O relógio já está torto!\n\n[Guitar Solo]\n\n[Chorus]\nTempestade de ferro!\nLadrando no escuro!\nTempestade de ferro!\nDevorando o futuro!\n\n[Outro]\nFerro... ferro...\nSilêncio de aço.",
+      "seed": 191362959,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

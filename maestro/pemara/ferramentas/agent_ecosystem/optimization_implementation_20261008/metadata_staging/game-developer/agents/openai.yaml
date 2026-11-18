@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Developer"
+  short_description: "Multi-platform game development generalist (PC, Web, Mobile, VR/"
+  default_prompt: "Use $game-developer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

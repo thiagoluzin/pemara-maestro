@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P20_pixaroma_master20_v1_normal_unmasked",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P20_P19_approved_endpoint.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P20_native15_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23102001
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Live-action cinematic opera, a continuous fifteen-second shot starting in the EXACT supplied outgoing pose. Draco is the young clean-shaven curly dark-haired man on the LEFT, wearing the same NAVY BLUE cape, BLUE brocade tunic and trousers, SILVER breastplate and brown boots. Maria played by Celes is the blonde woman in the CENTRE with blue ponytail bow, IVORY satin gown and BLUE sash/trim, both hands EMPTY. Ralse is the bearded man on the RIGHT in RED tunic, GOLD breastplate, BURGUNDY cape and black boots, sword sheathed. Preserve these exact three adult actors, faces, costume colours/materials, proportions and body scale throughout. Same blue parapet, moon backdrop and right red curtain; neutral-white stage light on natural beige skin. One stationary audience camera sees the shared stage; the three actors move naturally within that real space.\nAt the start Maria faces Ralse with her empty hand near her upper bodice, Ralse's free palm is finishing its low gesture, and Draco stands at left listening. Continue these poses without resetting to the original standing portrait. The original male reply now belongs to Draco (S1), the young clean-shaven man on the LEFT in BLUE and SILVER. From the opening through about10.6s Draco ALONE visibly sings his long defiant male response on the supplied recording. His eyes find Ralse first, his head and shoulders turn toward him, he draws breath and opens his jaw to articulate the actual original phrase. From0-3s Draco transfers weight onto the supporting leg and takes ONE short deliberate step toward the middle, keeping clear of Maria; the torso moves with the hips and the heavy blue cape trails then settles. His free EMPTY palm opens low toward Ralse to refuse his demand, without touching another person or the parapet. Maria keeps her lips at rest and listens, turning her eyes from Ralse toward Draco after his entrance. Ralse closes his lips and lowers the previous gesture as he listens to Draco's answer, the other hand remaining near his sheathed sword.\nFrom3-7s Draco continues the same long original male phrase, his open palm drawing inward toward his own silver breastplate in a restrained personal vow, without penetrating the armour. Maria makes a small supported half-step BACK on the same platform, clearing space between the men; her gown follows her hips with a delayed cloth swing and then settles. She watches the exchange with her own EMPTY hand remaining near her bodice, not grasping a rose or prop. Ralse straightens his spine and fixes Draco with his gaze, his lips resting while Draco sings. The three bodies remain separated, behind the existing foreground stones.\nFrom7-10.6s Draco completes his response and lets his free hand descend below his waist. His face and breathing remain alive, with a firm settled stance. Maria looks between the men, attentive and silent. Ralse's gaze hardens and his chest expands for his own entry. Do not make Maria perform any male vowel or line.\nAt about10.6s Ralse (S2), the bearded adult male baritone on the RIGHT in RED and GOLD, takes over the visible singing for his short original challenge through about12.3s. His jaw opens with the attack of the recorded phrase and his free hand opens toward Draco in a decisive challenge. Draco (S1) listens with closed lips, his gaze held on Ralse. Maria remains silent with resting lips; after Ralse's entrance her shoulders tighten and her head turns toward him. Both swords remain completely SHEATHED, physically attached to their owners' belts.\nFrom about12.3s to15.08s the supplied orchestra continues without a new sung phrase. Ralse closes his lips and lowers his challenging palm; Draco squares his shoulders toward him and settles his supporting leg. Each man's hand comes naturally to rest near his own sword hilt, keeping the blades sheathed. Maria completes her backward weight transfer and lets her free EMPTY hand lower slightly, leaving the men room to face each other. Maintain visible breathing, hand recovery and cloth settling through the final moving frame, no frozen tail or return to opening pose. This is the challenge and preparation, not a blade draw, strike or contact. Exactly three distinct actors, no extras or duplicate limbs.\n\noverall_soundscape: Preserve the supplied original English Pixel Remaster recording, exact timing, gain and orchestra. Draco (S1), the man LEFT in BLUE, owns the long male reply at the opening through about10.6s. Ralse (S2), the bearded man RIGHT in RED, owns the short male challenge about10.6-12.3s. Maria remains silent throughout this entire interval. Perform only the supplied words, with resting lips over the final orchestra. No invented dialogue, replacement vocals, new music or Foley.\n\nnon_diegetic_music: N/A; the existing recorded orchestra belongs to the staged opera performance.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  }
+}

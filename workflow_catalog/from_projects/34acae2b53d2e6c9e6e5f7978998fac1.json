@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611090902
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP09_PIKA_20261108/T01_blank_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] An original expressive 3D CG animated Brazilian street-news comedy at a peaceful adult gamers protest. One uninterrupted static eye-level medium-wide portrait shot,768x1344. Reporter screen-left and gamer screen-right, expressive faces and visible hands, solid grounded bodies. Small crowd of original fictional adults behind them in a warm Brazilian square, soft afternoon sunlight from screen-left, colorful matte clothing and coherent contact shadows. An unbranded plain red-brick storefront stands behind the crowd. No existing franchise character or real person. No fire, violence, weapons, real store name or numerical price claim.\nExactly TWO enormous pale ivory rectangular BLANK paper protest signs face the camera high above all heads. Left board is entirely between x28and356, right board between x412and740, both between y190and450. Each paper rectangle is about300pixels wide and240pixels high, fully visible with all four corners and a generous air gap above every head. Both signs are front-facing and stay nearly stationary. Separate adult supporters hold the wooden poles below the paper. No head, hand, hair, microphone or prop touches or occludes either paper surface. Thin straight dark navy borders. Paper has absolutely no letters, numbers, drawings or symbols. Exactly two boards, no extra signs. No text anywhere else: storefront awning is a plain dark navy band, microphone is unlettered, computer and clothing unbranded. Exact enormous typography will be added in postproduction. No subtitles or captions.\n\nAn original fictional adult woman reporter, short straight chestnut bob, plain green blazer and dark trousers, screen-left, holds one black microphone in her right hand. An original fictional adult man gamer, short black hair, trimmed dark beard, plain royal-blue hoodie, screen-right. These are new anthology interview characters, not recurring identities from previous episodes. A compact unbranded desktop computer tower rests securely on a broad solid table below y900. The tower is a plain black box with a dark glass side panel and no letters. It stays planted on the table throughout. The gamer points at its side panel with his right index finger only; no lifting, disassembly or cable handling.\nThe reporter wants to discover why he brought the tower. She looks at it and then asks him, genuinely curious. He looks at the tower and then at her, proudly presenting his absurd rent solution with straight-faced comic conviction. On aluguel he opens his empty left palm once as if expecting payment. She processes the joke and suppresses a laugh only after the last word. He silently turns back and taps the computer side panel once, then gives her a tiny conspiratorial smile. She lowers the microphone to her waist. No crowd speech in this take.\nThe reporter(S1) speaks in a clear natural Brazilian Portuguese adult female voice, from0.3to4seconds: <d>[Portuguese] Por que você trouxe seu computador pro protesto?</d> She then closes her lips and holds the microphone below the gamer's mouth. The gamer(S2), a calm clear medium-low native Brazilian male voice, answers in ONE fluent conversational turn from4.7to10.8seconds: <d>[Portuguese] Com o preço desse SSD, comecei a cobrar aluguel dos arquivos!</d> Pronounce SSD naturally in Brazilian Portuguese as the three letter names, esse esse dê. Do not pronounce this pronunciation instruction or add any explanation. Give aluguel dos arquivos the ironic stress. At11seconds all verbal speech ends. The reporter lowers the microphone. From11to15seconds the gamer silently taps the tower side panel once, looks back at the reporter and raises one eyebrow. The reporter gives one brief nonverbal chuckle; the crowd only smiles silently. Every mouth stays closed after the exchange except the brief nonverbal chuckle. No third line.\nMaintain the same static shot throughout15seconds, with clear listening, one dominant hand gesture per speaker and natural recovery. No camera cut, zoom, orbit or frame freeze. Adult supporters move subtly and independently, not synchronized swaying. Keep all four corners of both BLANK paper boards inside frame, all paper clearly separated from hair. Only dialogue inside the specified tags may be spoken, exactly once, with no invented words, repeated lines or overlaps. No music, narration, subtitles, logos or watermarks.\n\noverall_soundscape: Quiet outdoor Brazilian street ambience and a gentle breeze beneath intelligible native on-screen Brazilian Portuguese dialogue. No verbal words except the specified dialogue tags. Brief nonverbal chuckle only after the punchline.\n\nnon_diegetic_music: N/A\n",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,677 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "full_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_Ultra_Instinto_P01_pilot_full_exact.wav"
+    }
+  },
+  "encode_1": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is ONLY the original same adult man in his NORMAL BLACK-haired form, same damaged orange gi over torn navy undershirt, navy sash/wraps/boots with yellow/red details, and same rocky island. The timed first full-body guide fixes this initial normal state. The timed FINAL full-body guide at frame140 is the exact approved silver-haired ULTRA INSTINCT appearance, not a portrait insert. Keep his original facial bone structure, age, body and real photographic materials throughout one continuous transformation. Only hair/eyebrow pigment, silver-grey irises with visible dark pupils and external white-blue aura change; the clothes and scratches remain.\n\nintegrated_multimodal_description: [Shot 1] One locked-off tripod WIDE HEAD-TO-TOE cinematic live-action composition. Retain the perspective and human scale of the approved full-body photographs throughout. Complete tallest hair, both hands, torso, both knees, BOTH BOOTS and the ground beneath both soles stay visible with margin in EVERY frame, including the final frame. Same rock patch, water, mesas, horizon, sky and daylight directions. No approach, zoom, closeup, face insert, cut, dissolve or camera shake. Whole-body action is readable through knee/pelvis loading, torso rise, shoulder/elbow articulation and later breathing/weight recovery. Real skin, real woven cloth, real individual hair strands, same adult actor and persistent costume damage. No illustration, anime, cel shading, plastic CGI, beauty retouching, extra actor, attack, flight or sliding feet.\n\nThis FIRST microtake is141frames/24fps=5.875s within one10.8333s pilot. From0..1.0s lower the pelvis through both knees and draw clenched fists slightly inward; hair remains BLACK. From1.0..2.0s load legs/hips, incline chest slightly and draw elbows back. At the original strong yell near2.0s extend the knees and raise the torso while pulling elbows down/back. From2.0..4.5s the SAME connected hair locks lift and progressively change from black to silver-white in the approved short wind-swept silhouette; translucent white-blue ki with faint violet edges builds around the body, casting a restrained cool rimlight on existing cloth and skin. Do not turn the hair blue, gold or red. The effort is physical through legs, abdomen and shoulders; mouth follows the actual sustained original yell. From4.5s to the last frame finish the same body rise, lower the arms toward the hips and follow the final vocal release near5.85s into the relaxed closed-mouth final guide. Arrive full-body upright with fists low, both boots grounded and complete silver hair visible. No second power stage, no new yell, no static body beneath animated particles.\n\noverall_soundscape: Original approved scream, breath and transformation effects, no music. Exact full30 PCM samples346667..693334 fix the clock: strong yell near pilot2.0..5.85s, existing breath/release afterward. Keep original speed, pitch, gain and duration. The final output uses the WHOLE original pilot waveform directly, never sampled or VAE-reconstructed sound. No words, dialogue, new voice, singing, score, choir or instruments.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 141,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "normal_photo",
+        0
+      ]
+    }
+  },
+  "first_frame_only": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode_1",
+        0
+      ],
+      "latent": [
+        "encode_1",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "normal_photo",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "guide_audio_1": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_Ultra_Instinto_P01_window01_exact.wav"
+    }
+  },
+  "fixed_audio_1": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "final_ultra_1",
+        0
+      ],
+      "latent": [
+        "encode_1",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "guide_audio_1",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "continue_1": {
+    "class_type": "MiniMaxH3FiniteLatentContinuation",
+    "inputs": {
+      "positive": [
+        "fixed_audio_1",
+        0
+      ],
+      "target_latent": [
+        "encode_1",
+        1
+      ],
+      "iteration": 0,
+      "overlap_frames": 22,
+      "continue_audio_latent": true,
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ]
+    }
+  },
+  "noise_1": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 301030802
+    }
+  },
+  "guider_1": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "continue_1",
+        3
+      ],
+      "conditioning": [
+        "continue_1",
+        0
+      ]
+    }
+  },
+  "sample_1": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise_1",
+        0
+      ],
+      "guider": [
+        "guider_1",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "continue_1",
+        1
+      ]
+    }
+  },
+  "separate_1": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample_1",
+        0
+      ]
+    }
+  },
+  "save_video_latent_1": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window1_video"
+    }
+  },
+  "save_audio_latent_1": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        1
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window1_audio"
+    }
+  },
+  "decode_1": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "window_video_1": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode_1",
+        0
+      ],
+      "audio": [
+        "guide_audio_1",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_window_1": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "window_video_1",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window1",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "finalize_1": {
+    "class_type": "MiniMaxH3FiniteSegmentFinalize",
+    "inputs": {
+      "sampled_latent": [
+        "sample_1",
+        0
+      ],
+      "images": [
+        "decode_1",
+        0
+      ],
+      "audio": [
+        "guide_audio_1",
+        0
+      ],
+      "iteration": 0,
+      "overlap_frames": 22,
+      "trim_audio_head": false
+    }
+  },
+  "encode_2": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is ONLY the same approved adult actor in his completed SILVER-HAIRED ULTRA INSTINCT form, same natural human face, original torn orange/navy woven clothes, navy sash/wraps/boots and island. Silver-white hair and silver-grey irises have natural dark pupils. External white-blue aura has faint violet edges and remains transparent. The timed final full-body guide at frame140 fixes the completed look and ending scale. Continue the actual newly generated window1 AV state, never a previous project's video or latents.\n\nintegrated_multimodal_description: [Shot 1] One locked-off tripod WIDE HEAD-TO-TOE cinematic live-action composition. Retain the perspective and human scale of the approved full-body photographs throughout. Complete tallest hair, both hands, torso, both knees, BOTH BOOTS and the ground beneath both soles stay visible with margin in EVERY frame, including the final frame. Same rock patch, water, mesas, horizon, sky and daylight directions. No approach, zoom, closeup, face insert, cut, dissolve or camera shake. Whole-body action is readable through knee/pelvis loading, torso rise, shoulder/elbow articulation and later breathing/weight recovery. Real skin, real woven cloth, real individual hair strands, same adult actor and persistent costume damage. No illustration, anime, cel shading, plastic CGI, beauty retouching, extra actor, attack, flight or sliding feet.\n\nThis SECOND microtake starts at pilot4.9583s and inherits22frames/0.9167s from its own window1. During that overlap finish the SAME rising torso, arm lowering and last fraction of the original yell; do not replay the transformation. Fromlocal0.9167..2.2s follow the vocal release and existing breath/effects into a small knee/shoulder recovery. Let the focused face become composed and calm, mouth naturally closed after the scream, eyes alert toward the same unseen direction camera-right. From2.2..4.0s make one small grounded weight adjustment through hips/chest, keeping both fists low; hair, sash and aura respond independently with lag. From4.0..5.875s settle naturally into the exact approved upright silver-haired full-body readiness, both hands by hips/thighs, both boots planted. Body breathing, fabric and hair continue moving into the ending. Keep the SAME WIDE tripod scale through the last frame. No high guard, attack, new yell, pose reset, state reversion or repeated power-up.\n\noverall_soundscape: Original approved scream, breath and transformation effects, no music. Exact full30 PCM samples346667..693334 fix the clock: strong yell near pilot2.0..5.85s, existing breath/release afterward. Keep original speed, pitch, gain and duration. The final output uses the WHOLE original pilot waveform directly, never sampled or VAE-reconstructed sound. No words, dialogue, new voice, singing, score, choir or instruments.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 141,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "ultra_photo",
+        0
+      ]
+    }
+  },
+  "guide_audio_2": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_Ultra_Instinto_P01_window02_exact.wav"
+    }
+  },
+  "fixed_audio_2": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "final_ultra_2",
+        0
+      ],
+      "latent": [
+        "encode_2",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "guide_audio_2",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "continue_2": {
+    "class_type": "MiniMaxH3FiniteLatentContinuation",
+    "inputs": {
+      "positive": [
+        "fixed_audio_2",
+        0
+      ],
+      "target_latent": [
+        "encode_2",
+        1
+      ],
+      "iteration": 1,
+      "overlap_frames": 22,
+      "continue_audio_latent": true,
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "previous_latent": [
+        "sample_1",
+        0
+      ]
+    }
+  },
+  "noise_2": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 301030803
+    }
+  },
+  "guider_2": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "continue_2",
+        3
+      ],
+      "conditioning": [
+        "continue_2",
+        0
+      ]
+    }
+  },
+  "sample_2": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise_2",
+        0
+      ],
+      "guider": [
+        "guider_2",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "continue_2",
+        1
+      ]
+    }
+  },
+  "separate_2": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample_2",
+        0
+      ]
+    }
+  },
+  "save_video_latent_2": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window2_video"
+    }
+  },
+  "save_audio_latent_2": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        1
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window2_audio"
+    }
+  },
+  "decode_2": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "window_video_2": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode_2",
+        0
+      ],
+      "audio": [
+        "guide_audio_2",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_window_2": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "window_video_2",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/window2",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "finalize_2": {
+    "class_type": "MiniMaxH3FiniteSegmentFinalize",
+    "inputs": {
+      "sampled_latent": [
+        "sample_2",
+        0
+      ],
+      "images": [
+        "decode_2",
+        0
+      ],
+      "audio": [
+        "guide_audio_2",
+        0
+      ],
+      "iteration": 1,
+      "overlap_frames": 22,
+      "trim_audio_head": false
+    }
+  },
+  "join_images_2": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "finalize_1",
+        1
+      ],
+      "image2": [
+        "finalize_2",
+        1
+      ]
+    }
+  },
+  "pilot_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "join_images_2",
+        0
+      ],
+      "audio": [
+        "full_audio",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_pilot": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "pilot_video",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/pilot01_ultra_bounded_windows_v01/Goku_Ultra_Instinto_P01_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "normal_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A00_goku_normal_black_APPROVED.png"
+    }
+  },
+  "ultra_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ultra_instinct_DLSS5_v01.png"
+    }
+  },
+  "final_ultra_1": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first_frame_only",
+        0
+      ],
+      "latent": [
+        "encode_1",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "ultra_photo",
+        0
+      ],
+      "frame_idx": 140
+    }
+  },
+  "final_ultra_2": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode_2",
+        0
+      ],
+      "latent": [
+        "encode_2",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "ultra_photo",
+        0
+      ],
+      "frame_idx": 140
+    }
+  }
+}

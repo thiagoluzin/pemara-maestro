@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Engineer"
+  short_description: "Testes unitários, de componentes e de integração"
+  default_prompt: "Use $test-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

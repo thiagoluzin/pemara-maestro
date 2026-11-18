@@ -1,0 +1,94 @@
+{
+  "schema_version": "2.0",
+  "updated_at": "2026-11-15",
+  "selection_required": true,
+  "default_engine_id": null,
+  "fallback_allowed": false,
+  "production_engines": [
+    {
+      "engine_id": "minimax_h3",
+      "label": "MiniMax H3",
+      "generation_profiles": [
+        "minimax_h3_fl2va_int8_720p24",
+        "minimax_h3_fl2va_int8_vertical_720x1280p24"
+      ],
+      "model": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "fallback": "forbidden",
+      "status_source": "/api/generative/video-engines/minimax_h3/readiness"
+    }
+  ],
+  "ltx25_compatibility_assets": {
+    "classification": "LTX25_COMPATIBILITY_ASSET",
+    "policy": "Only the five exact IC-LoRAs consumed by official LTX 2.5 workflows are allowed; no LTX 2.3 engine or checkpoint is allowed.",
+    "assets": [
+      {
+        "id": "deblur",
+        "file": "ltx-2.3-22b-ic-lora-deblur-0.9.safetensors",
+        "consumer": "LTX-2.5_V2V_ICLoRA_Single_Stage_Distilled.json",
+        "required": false
+      },
+      {
+        "id": "in_outpainting",
+        "file": "ltx-2.3-22b-ic-lora-in-outpainting-0.9.safetensors",
+        "consumer": "LTX-2.5_ICLoRA_Inpaint_Two_Stage_Distilled.json and LTX-2.5_ICLoRA_Outpaint_Two_Stage_Distilled.json",
+        "required": false
+      },
+      {
+        "id": "ingredients",
+        "file": "ltx-2.3-22b-ic-lora-ingredients-0.9.safetensors",
+        "consumer": "LTX-2.5_ICLoRA_Ingredients_Single_Stage_Distilled.json",
+        "required": false
+      },
+      {
+        "id": "motion_track",
+        "file": "ltx-2.3-22b-ic-lora-motion-track-control-ref0.5.safetensors",
+        "consumer": "LTX-2.5_ICLoRA_Motion_Track_Distilled.json",
+        "required": false
+      },
+      {
+        "id": "union_control",
+        "file": "ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+        "consumer": "LTX-2.5_ICLoRA_Union_Control_Distilled.json",
+        "required": false
+      }
+    ]
+  },
+  "gates": [
+    "image_anchor",
+    "generation"
+  ],
+  "anchor_approval": {
+    "authority": "owner",
+    "external_analysis_required": false,
+    "external_analysis_enabled": false,
+    "preserve_approved_reference": true,
+    "technical_qc_and_video_review_required": true
+  },
+  "retired_model_families": {
+    "retired_at": "2026-11-15",
+    "reason": "Remocao solicitada pelo proprietario",
+    "families": [
+      "LLaDA Image Base/Turbo",
+      "Z-Image Base/Turbo",
+      "Flux (todos)",
+      "HunyuanVideo 1.5"
+    ],
+    "fallback_allowed": false
+  },
+  "retired_engines": [
+    {
+      "engine_id": "hunyuan_video_15",
+      "label": "HunyuanVideo 1.5",
+      "model": "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+      "modes": [
+        "i2v"
+      ],
+      "native_audio": false,
+      "status_source": "/api/generative/video-engines/hunyuan_video_15/readiness",
+      "fallback": "forbidden",
+      "status": "REMOVED_BY_OWNER",
+      "enabled": false
+    }
+  ]
+}

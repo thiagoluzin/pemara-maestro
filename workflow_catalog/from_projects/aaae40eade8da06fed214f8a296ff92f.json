@@ -1,0 +1,78 @@
+{
+  "status": "PREFLIGHT_ONLY_PENDING_MCP_VALIDATION_AND_REAL_EXECUTION",
+  "experimental": true,
+  "standard_builder_admission": false,
+  "not_promoted_to_Maestro_generator": true,
+  "scope": "Same authorized15s T02 repair and same Pika family; original approved inputs only. No changes to global runtime, sampler, weights or production validators.",
+  "method": "Pika Flex Ref2VA canonical image retention plus approved initial guide at frame0",
+  "actual_runtime_source": "D:/PemaraRuntimes/ComfyUI-v0.40.0-pemara/comfy_extras/nodes_minimax_h3.py",
+  "runtime_observation": "AddGuide supports an initial image on H3 AV latent; current model_base and PackedLayout accept refs and keyframes in one payload. This establishes code capability only, not Pika training compatibility or artistic qualification.",
+  "risk": "Ref2VA+keyframe combination is not yet qualified with Pika weights. Validate exact schema via MCP before one isolated real pilot. Do not claim production support or quality before execution/review.",
+  "baseline_pika_validator": {
+    "ok": true,
+    "variant": "pika_flex_v1",
+    "steps": 6,
+    "spectrum_enabled": false,
+    "mode": "REF2VA"
+  },
+  "added_node": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "8",
+        0
+      ],
+      "latent": [
+        "8",
+        1
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "image": [
+        "31",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "workflow": {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dmc3_nevan_pika_flex_full_horizontal_20261102\\workflows\\T02_ref2va_initial_qualification_v03.api.json",
+    "sha256": "3b7cd60003e2ee31e51cc59907ee82db1477b274fc3ff3ee7ea3c8ec5f28bb8f"
+  },
+  "canonical_reference": {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dmc3_nevan_pika_flex_full_horizontal_20261102\\anchors\\A05_dante_nevan_builtin_DLSS5.png",
+    "sha256": "3d03a9269988c1fe3bd04ce0e7f7fda6fc072a1558529e7b58b4dcd0c9539020"
+  },
+  "approved_initial_frame": {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dmc3_nevan_pika_flex_full_horizontal_20261102\\keyframes\\K01_T01_v01_frame361_motion_proposal.png",
+    "sha256": "b73d40932053087196cd27dd04fc932e8e3bf7486fe8af9ee1bebbd29450bcff"
+  },
+  "approved_initial_receipt": {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dmc3_nevan_pika_flex_full_horizontal_20261102\\receipts\\owner_T01_K01_approval_20261103.json",
+    "sha256": "d38a6056525907b82fe4bf77c5eaf19af47f4b3a293039212e5a4c227c6c688e"
+  },
+  "six_lcm_steps": true,
+  "sage_and_four_head_guard": true,
+  "spectrum": false,
+  "spectrum_exception": "Existing owner-authorized Pika experiment unchanged",
+  "frames": 362,
+  "fps": 24,
+  "canvas": [
+    1536,
+    864
+  ],
+  "content_kind": "live_action",
+  "native_audio": true,
+  "video_dlss5": false,
+  "rejected_media_used": false,
+  "global_files_modified": false,
+  "success_criteria": [
+    "Exact incoming state retained without hold",
+    "Original A05 Nevan body/neck/apertures/hardware retained",
+    "Natural outside prop travel and causal kneeling finish",
+    "Native sound available and join remains separately reviewed"
+  ],
+  "failure_action": "Preserve failed sources, stop automatic conditioning experiments; no silent engine switch or selecting failed sources."
+}

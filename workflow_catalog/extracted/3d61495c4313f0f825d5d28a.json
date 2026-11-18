@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Metallica-inspired, Complex aggressive progressive thrash metal, sharp downpicked guitar riffs, strong audible bass, angular accented live drums, biting male baritone, intricate lead guitar solo. 186 BPM, E minor. asymmetric-feeling riff accents within explicit 4/4, melodic middle section, mounting riff variations and a decisive final chord. Metallica-style progressive thrash, E minor, aggressive riff-led, complex drums, baritone vocals.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Verse 1 0-75s; Chorus 1 75-150s; Verse 2 Bridge 150-225s; Solo Ending 225-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=186, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nAsh falls like grey snow on the stone\nThe order signed, the ink is drawn\nBurn the ledger, burn the name\nLeave no trace of where we came\nMy hands are shaking, the match is lit\nBut the pages hide a bitter wit\nI fold the truth in wax and wire\nAnd seal it for the coming fire\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Verse]\nThe dial spins, the frequency climbs\nCarving words out of the chimes\nThey watch me burn, they think it's done\nBut the signal runs, the signal runs\nEvery scar is a coded line\nEvery tear is a design\nI am the ghost in the machine\nScreaming what they cannot see\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Bridge]\nNow the tower hums a low decree\nThe last transmitter, wild and free\nOne more breath before the cut\nThe history of us, the history of us\n\n[Solo]\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Outro]\nThe screen goes black\nThe truth remains\nIn the final chord\nIt chains",
+      "seed": 202610161019,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

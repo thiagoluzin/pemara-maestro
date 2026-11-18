@@ -1,0 +1,23 @@
+{
+  "time_utc": "2026-11-11T18:49:56.410215+00:00",
+  "reason": "Third GPU loss despite disabling dynamic VRAM and asynchronous offload. Matching RTX5090/WAN regression report identifies CUDA graphs as a trigger in another environment; local cause still unproven.",
+  "source": "https://github.com/Comfy-Org/ComfyUI/issues/14714",
+  "source_observation_date": "2026-10-23",
+  "change": "disable CUDA graph subfeature, preserve numerical backend/models/compiler otherwise",
+  "files": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\tools\\comfy_lifecycle.py",
+      "backup": "E:\\Pemara\\maestro\\pemara\\qa\\gpu_stability_20261111\\comfy_lifecycle.py.before_disable_cuda_graphs",
+      "sha256_before": "d4a4c414da67649599fdaa4a2e35025b2679f43c93735a6b9f36cb9eaa51c2e2",
+      "sha256_after": "d01e6e96aef0d3aa81e0b7b7c00278fa0c114d50ca94f3e17cae19ea719b670f"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\AppData\\Local\\comfy-cli\\config.ini",
+      "backup": "E:\\Pemara\\maestro\\pemara\\qa\\gpu_stability_20261111\\config.ini.before_disable_cuda_graphs",
+      "sha256_before": "5e63e4953c43f7e02c2cf1b4570b3a28945220a9b7d6d4bc9d2df45ad0c26971",
+      "sha256_after": "baa990a1a956d25ffb7bdb645fdce10e35c586ebc196460cbf369327cc1d8eed"
+    }
+  ],
+  "test_status": "pending reboot and isolated original workload",
+  "permanent_fix_proven": false
+}

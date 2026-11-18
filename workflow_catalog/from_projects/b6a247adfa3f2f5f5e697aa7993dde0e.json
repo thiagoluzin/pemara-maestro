@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611070811
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP08_PIKA_20261107/T01_blank_v02",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] Original expressive 3D CG animated Brazilian street-news satire at a peaceful adult gamers protest. One uninterrupted static eye-level medium-wide portrait shot,768x1344. The reporter stands screen-left, the gamer screen-right, grounded feet and visible hands. They stand in front of an unbranded red-brick electronics storefront in a Brazilian square, with a small peaceful crowd of fictional adults behind them. Warm afternoon sunlight comes from screen-left, with coherent soft shadows and matte colorful clothes. No real person, trademark, price claim about an identifiable shop, weapons, fire or violence.\nExactly TWO enormous pale ivory rectangular BLANK protest placards face the camera above the speakers. Each board is approximately300pixels wide and230pixels tall. Left board lies fully between x28and356; right board fully between x412and740. Both boards lie between y190and430. The complete flat paper surface and all FOUR corners remain visible with clear margins from every image edge throughout. The boards stay above every head with a visible air gap; no hair, hand, face or microphone crosses the paper. Two different adults behind the speakers hold only the wooden poles below the boards. Nearly still paper with slight independent sway, straight thin navy borders. No additional signs. Paper remains blank: no letters, numbers, symbols or fake text. Storefront and microphone are also unlettered. Exact large typography is composited later. No subtitles, logos, watermarks or screen graphics.\n\nThe reporter is a fictional adult woman with short curly black hair, a teal jacket and dark trousers, screen-left, with one black microphone in her right hand. The gamer is a fictional adult man with short brown hair, round dark glasses and plain red hoodie, screen-right. This is an original adult cartoon cast, no existing fictional franchise or real person. A small unbranded open laptop rests securely on a solid waist-high table in front of the gamer, entirely below y850. Its screen is dark and unlettered; the laptop remains planted on the table. The gamer keeps his left palm under the laptop edge without lifting it, with his right hand free for one gesture. No cables or extra props.\nThe reporter looks at the gamer with curiosity, asks her single question, and moves the microphone under his mouth. He gives his entire two-sentence response in one continuous turn, with a short ironic pause between sentences, first looking at her and then opening his empty right palm once. She listens with closed lips. Immediately after the last syllable of his reply, he closes his lips completely, lowers his gaze to the laptop and keeps his mouth shut. The reporter visibly pulls the microphone down to her waist, well away from both mouths. The final physical beat is the gamer silently pressing the laptop keyboard once with his right index finger, waiting, and shaking his head at the dark unresponsive screen. The reporter and silent supporters smile at this visible failure. Every mouth stays shut during this final action except a brief nonverbal chuckle by the reporter. No supporter talks. Both blank paper boards remain still and clearly visible above every head.\nSound and performance are synchronized. Exactly TWO speech turns by TWO adult speakers in clear natural Brazilian Portuguese. The reporter(S1) asks at0.5to3seconds: <d>[Portuguese] Por que você veio à manifestação?</d> She then closes her mouth. The gamer(S2) delivers this ONE fluent answer at3.8to9.8seconds, in a single conversational turn with a short comic pause between its two sentences: <d>[Portuguese] Meu PC ficou sem memória. Eu fiquei sem dinheiro tentando resolver!</d> This is the complete verbal exchange. At10seconds the microphone is lowered and all speech ends. From10to15seconds only the quiet street ambience, one soft keyboard click and a brief nonverbal chuckle are heard. Do not improvise a third line or repeat part of the response. The gamer concentrates on the laptop with closed lips throughout the final five seconds. All Portuguese verbal words occur only inside the two dialogue tags.\nKeep the same static shot throughout15seconds. Only the explicitly indicated speech turns occur, each once, with no invented words, repeated phrases, overlap or extra questions. Bodies and clothes stay alive through the final frame, without a freeze or synchronized robotic swaying. The complete flat paper surfaces remain blank and visible above all hair with all four corners in frame. No extra signs or facade lettering.\n\noverall_soundscape: Quiet outdoor street ambience and gentle breeze beneath clear native on-screen Portuguese speech. A brief natural chuckle follows the punchline. No verbal words except the dialogue tags above.\n\nnon_diegetic_music: N/A\n",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

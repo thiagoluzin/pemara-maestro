@@ -1,0 +1,121 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Single full body 2D game sprite in this pose: horse ridden by the adult human man from reference image 1, realistic adult face, brown moustache and short beard, natural peach skin, dark brown eyes, NOT Bart Simpson, NOT yellow skin, NOT a cartoon, rider naturally seated in saddle wearing identical navy coat crimson cuffs charcoal trousers brown round leather hat and crossed bandoliers, firing one pistol horizontally RIGHT, horse side profile facing RIGHT, galloping stride 2, front legs planted rear legs pass under. Match exactly reference 1 painting style, realistic adult anatomical proportions, high definition hand-painted arcade illustration, NOT chibi NOT caricature NOT pixel art. Pure flat saturated magenta background with no gradient, no ground and no shadow. Entire subject contained with margin.",
+      "negative_prompt": "Simpsons, Bart Simpson, yellow skin, yellow face, cartoon, chibi, cartoon big head, red pants, brown hair, missing hat, short jacket, white background, cropped limbs, multiple people, typography, extra limbs, background scenery, shadow",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ],
+        "image_2": [
+          "21",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202694001,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_corrected/mount_gallop_2"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/correct_barto.png"
+    },
+    "is_changed": [
+      "9d8fceae1b5e7a7801d0c5b85f3aaad4bceb290e7144779218d690ffadfd32c2"
+    ]
+  },
+  "21": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/correct_horse.png"
+    },
+    "is_changed": [
+      "8040d1547c4ea68142a65b47b249bfbaae88cd8a5661f5b4122072d89ce28fe6"
+    ]
+  }
+}

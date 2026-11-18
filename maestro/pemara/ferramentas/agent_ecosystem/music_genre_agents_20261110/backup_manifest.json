@@ -1,0 +1,57 @@
+[
+  {
+    "path": "E:\\Pemara\\AGENTS.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\AGENTS.md",
+    "sha256": "220464f3cbd0382a4b30cbd73f7d99db7591c141c8f7b86e0dbc82319d62692b"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-messenger-turbo\\references\\turbo_registry.json",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-messenger-turbo\\references\\turbo_registry.json",
+    "sha256": "f152fb28b5e2942ce5c40ec2dffeec0fc4b46844df440bf925d9966dfc1c2e3f"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-messenger-turbo\\references\\routing-map.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-messenger-turbo\\references\\routing-map.md",
+    "sha256": "bea1670f3e6104c6436b98d3dc7c5c9e171c51123e7614d69948c5623e595d77"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-ecosystem-orchestrator\\scripts\\skill_inventory.ps1",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-ecosystem-orchestrator\\scripts\\skill_inventory.ps1",
+    "sha256": "0c438e6d4c7283bfdeec1655bd6bbf762231635eb9821943cd22947a8025868c"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-production-lead\\SKILL.md",
+    "sha256": "e38a937188ba1e54d0d43ebcf8f681fe5030b05eaaa5d67f800267d7a1ee2a69"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-songwriter\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-songwriter\\SKILL.md",
+    "sha256": "00ded8b7e539cd340a7ef99c17ca8027e0c3d8b81adb023e8af60d9392806b3a"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-arranger\\SKILL.md",
+    "sha256": "c8ce23ce8d0897a7703254b1de15e061143c3bf163c6438ffb6b5299bf109e78"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-mix-engineer\\SKILL.md",
+    "sha256": "032ae0260067db42d88169191ff23de0594adb25fc74b163865b8f2e81fe9dcb"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\SKILL.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-listening-qc\\SKILL.md",
+    "sha256": "33ab4af0429744e2962c0fe3927279736882a39eec85bda25b9c1d9711890c8a"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\creation-workflow.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-production-lead\\references\\creation-workflow.md",
+    "sha256": "9ac847225225cb79cc9ceff919fcf14abc6096feb59b73a224b515ed17b85277"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\music-production-contract.md",
+    "backup": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_genre_agents_20261110\\before\\.agents\\skills\\pemara-music-production-lead\\references\\music-production-contract.md",
+    "sha256": "99b302ef44017e23999d784add87ca72ec54f813a7ac50f48cbea1a969640081"
+  }
+]

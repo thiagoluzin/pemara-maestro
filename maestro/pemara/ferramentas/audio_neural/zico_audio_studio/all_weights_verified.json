@@ -1,0 +1,114 @@
+[
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\synchformer_state_dict.pth",
+    "bytes": 950058171,
+    "sha256": "8aff082f2df5c3bc52759db0c865c7ee772ae6400b860d1b7e90413f2defb67c"
+  },
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\v1-44.pth",
+    "bytes": 1221942998,
+    "sha256": "ab6cc15dc31947675f75c950c41f4dcfd0d6d1817555ac871f809ec388e4651a"
+  },
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\weights\\mmaudio_large_44k_v2.pth",
+    "bytes": 4122474715,
+    "sha256": "a6bf693424fbd4ce0244fff8c412347714d5ac586e28dbeffadfa0f2b647af74"
+  },
+  {
+    "repo": "apple/DFN5B-CLIP-ViT-H-14-384",
+    "revision": "01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\clip\\open_clip_config.json",
+    "bytes": 735,
+    "sha256": "e043bd1129b97d3afc77eef2e8bfda940af588dabf2cbaacc21e956345402f67"
+  },
+  {
+    "repo": "apple/DFN5B-CLIP-ViT-H-14-384",
+    "revision": "01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\clip\\open_clip_pytorch_model.bin",
+    "bytes": 3947081637,
+    "sha256": "c07a17b547d461c60a3cce5062b26bf8545b13de602c4c59d8490361eb716033"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\LICENSE.md",
+    "bytes": 10360,
+    "sha256": "aa7d9206e9d710590987a3636934f643529c00cd490323594e6206aaa0c32d80"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\README.md",
+    "bytes": 5117,
+    "sha256": "3c2d78af0f3991ef6047272d4df18f204b4340e1e5fcc975d0e720d4312c4b29"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\chat_template.jinja",
+    "bytes": 4116,
+    "sha256": "87a2728cb8dc9fe424d624542f6060ec05a1d285ebbec578bb078900e33396b5"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\codec.pth",
+    "bytes": 1871099728,
+    "sha256": "74fc41c5a7151c6f350af8bd7e5d6e3accfcc7f3dfbfac23afd35af07052bb2f"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\config.json",
+    "bytes": 1863,
+    "sha256": "261b519a2a9576710fc8533a77297fae007f0e7b3aa28a217f8352b7f32fe993"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\model-00001-of-00002.safetensors",
+    "bytes": 4986872984,
+    "sha256": "c4218e8ac93be83b35eee30b4f94cb2e9b5ecff40f3e21611438d2f4f8804aad"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\model-00002-of-00002.safetensors",
+    "bytes": 4136876104,
+    "sha256": "76738d23465deaac431433232c0762908cc99a6eddc3d49f67307d92680827be"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\model.safetensors.index.json",
+    "bytes": 32686,
+    "sha256": "c8cb9974d3d17663a95dba1d6c3ea531fc42d377c0dff946f3a01a0ec48d45a3"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\special_tokens_map.json",
+    "bytes": 101864,
+    "sha256": "c2ff18fde6e43b7408435bc8ed079af74531befba549358a97cbc59ce606bc6b"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\tokenizer.json",
+    "bytes": 12217872,
+    "sha256": "f24e08099d45a8adf3f52f5f0b03276e433bb9d689bb15fcbcc48ce58744588b"
+  },
+  {
+    "repo": "fishaudio/s2-pro",
+    "revision": "1de9996b6be38b745688de084d87a5633f714e4e",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\checkpoints\\s2-pro\\tokenizer_config.json",
+    "bytes": 860832,
+    "sha256": "b8d149343ae425b0da67e6708686aceb51be7815d9792f265fc12ff04d5e9856"
+  }
+]

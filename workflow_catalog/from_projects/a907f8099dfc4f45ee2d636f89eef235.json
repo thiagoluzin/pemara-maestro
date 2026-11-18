@@ -1,0 +1,316 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T07_KAMEHAMEHA/T07_full_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "takeT07_take_t07_anchor_eaa66394618c.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T07_KAMEHAMEHA/T07_Kamehameha_Kaioken_collision_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "assemble",
+        1
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "integrated_multimodal_description: [Shot 1] One continuous TEN-SECOND cinematic LIVE-ACTION shot, beginning exactly from the supplied approved Goku preparation image. Goku is on the canyon floor facing RIGHT, knees bent, both boots bearing weight, both hands cupped around the existing blue-white Kamehameha core beside his RIGHT REAR HIP. The existing translucent CRIMSON Kaioken surrounds him. His distant enemy Vegeta is established OFFSCREEN to the RIGHT, up the canyon. Keep the same warm dry daylight, layered rocky cliffs, dusty ochre earth and screen axis. Persistent <Picture 1> fixes the ORIGINAL Goku actor, the man on its LEFT; only Goku is visible in this shot. Do not bring its second fighter into the foreground or reset Goku to the reference's boxing pose.\n\nIDENTITY: the SAME real adult East Asian Goku actor, original angular youthful human face and natural features, shaggy asymmetrical BLACK hair and bangs, orange heavy-cotton gi with the original small Turtle insignia, intact navy undershirt, navy sash and wristbands, dark boots with subtle red detail. Preserve skin pores, sweat, existing dust/scuffs and fabric texture. No new actor, blond hair, Super Saiyan transformation, purple energy on Goku, blood, new costume damage, extra people or plastic/cartoon rendering. His Kaioken is RED; his Kamehameha is BLUE-WHITE; Vegeta's incoming Galick Gun is VIOLET. These three remain distinct.\n\n0-3 seconds: From the exact approved preparation pose, Goku immediately tightens his cupped hands at belt/hip height, draws his elbows back a little and compresses his knees. The compact blue-white core grows brighter and denser between BOTH palms. His eyes lock RIGHT and slightly upward on the offscreen threat, jaw tight with effort. His crimson Kaioken flares higher, lifting his black hair strands and tugging his loose cotton and sash. Grit is blown away from his planted boots AFTER the energy rises. Keep his face and fingers readable; natural human anatomy, no hands beside his head, prayer pose or forearms merging.\n\n3-4.5 seconds: A huge VIOLET Galick Gun front arrives from the far UPPER-RIGHT of the canyon, traveling diagonally LEFTWARD toward Goku. Its heavy rolling plasma body extends back out of frame toward OFFSCREEN Vegeta. Goku sees that approaching threat and decisively pivots his pelvis/torso toward it, pressing the rear boot hard into the earth. The blue core remains at his cupped hands during this loading; no unrelated orb in midair.\n\n4.5-7 seconds: Goku drives the SAME TWO cupped palms FORWARD together from his right hip toward RIGHT and slightly upward. One clean hip-to-forward KAMEHAMEHA thrust, opening fingers with elbows extending naturally, shoulders and torso following the legs. A massive BLUE-WHITE energy wave erupts DIRECTLY from BOTH palms. It is a dense physical-looking column with a white-hot core, thick blue plasma sheath and rolling turbulent edges, at least torso-width as it expands downrange, never a thin laser, water spray or small flashlight. The beam stays continuously attached to his two palms. The recoil forces his shoulders back and compresses his bent legs while his boots grip the ground; he resists through his body mass rather than floating or sliding. A sharp wave of dust pushes backward from his grounded stance. Crimson Kaioken continues around his body independently of the blue beam. Do not detach hands, change his face or turn him into a red silhouette.\n\n7-10 seconds: The camera smoothly PULLS BACK and tracks a little RIGHT to show the canyon gap and both opposed energy fronts. Keep Goku at the LEFT, still braced with both palms feeding his BLUE-WHITE wave toward the RIGHT. Vegeta remains OFFSCREEN beyond the RIGHT edge; his huge VIOLET Galick Gun travels LEFTWARD into the opposing wave. Show the TWO dense heads approaching through the open space several body lengths away from Goku, separated before impact. At the END they physically MEET for the FIRST TIME in the mid-right canyon gap: blue from the left against violet from the right, compressed white-hot contact point, visible folded turbulent edges and one outward pressure pulse throwing dust/pebbles away beneath the meeting point. The light briefly illuminates the same cliffs; retain visible colored beam bodies on both sides, not a full-screen white flash. End immediately on this FIRST CONTACT. No winning beam, beam struggle resolution, attack striking a person, city destruction, followup, Great Ape, Spirit Bomb or aftermath.\n\nCAMERA: one uninterrupted shot in real time. Start from the exact approved full-body three-quarter view. An economical physical sideways move through the opening charge reveals the loaded legs and both hands; keep the launch visible from boots through palms. Widen as the beams travel so Goku's face/upper body, beam origin and the two approaching heads remain readable. Maintain RIGHTWARD Goku attack direction and LEFTWARD incoming violet direction, no axis flip, orbit, cut or camera shake concealing the mechanics. Foreground gravel, Goku and far cliffs give coherent depth. No slow motion, frozen tail, early static pose hold or retiming. Strong wind, moving sash, energy turbulence, grit and the braced human body continue until the end.\n\noverall_soundscape: Canyon air and tense cloth/boot-grit under a deep rising energy rumble; electrical crackle synchronized to the growing charge. A forceful low launch concussion accompanies the two-palm blue wave, opposing heavy rushing plasma approaches, and one powerful short impact pulse hits at the first meeting. SOUND EFFECTS ONLY: no words, speech, voices, yelling, grunts, screams, singing or music.\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 10.0,
+      "width": 1536,
+      "height": 864,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611090007,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "DB_T07_KAMEHAMEHA_COLLISION_20261108",
+      "reference_size": "Match Output",
+      "project_id": "DB_T07_KAMEHAMEHA_COLLISION_20261108",
+      "video_reference_size": "Efficient - 0.4 MP",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "reference_image_1": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  }
+}

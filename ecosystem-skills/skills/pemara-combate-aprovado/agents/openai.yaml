@@ -1,0 +1,4 @@
+interface:
+  display_name: "Combate aprovado — H3"
+  short_description: "Reutiliza o combate aprovado e continua com identidade"
+  default_prompt: "Use $pemara-combate-aprovado para criar ou continuar uma luta com a base aprovada no Maestro."

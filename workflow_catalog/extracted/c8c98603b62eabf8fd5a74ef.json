@@ -1,0 +1,53 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "goku_base_native.png"
+    },
+    "is_changed": [
+      "02893e965bd2169895775a6f12521ebfbf7089bf412b0c6180db064bd0f67112"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "goku_ssj_20261027/A01_base"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "3": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "goku_ssj_native.png"
+    },
+    "is_changed": [
+      "6dfaf7874ea203350c843ee23e85bf734d729ad9a46e2d1608fa908278e9787f"
+    ]
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "goku_ssj_20261027/A02_ssj"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "5": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

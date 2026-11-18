@@ -1,0 +1,172 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "5": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "6": {
+    "class_type": "ETN_LoadMaskBase64",
+    "inputs": {
+      "mask": ""
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "Clean up this exact 4 by 4 sprite animation sheet, sixteen complete full body drawings of the SAME anime pixel art heroine walking, side profile facing RIGHT. Keep all sixteen positions and silhouettes exactly. Refine the plain legs and forearms in each cell with the same fine dark outlines, hand drawn pixel shading and texture as the original reference. Every pair of trousers has the SAME dark teal denim color and SAME seams. Every boot is the SAME medium brown leather lace-up ankle boot design with the SAME black sole and matching size in all sixteen cells. Natural denim folds at each bent knee, detailed natural relaxed fingers. Preserve the pose of each individual leg and arm exactly, including the backwards-trailing near leg in the third row. All heads hair jackets shirts and shoulder bags remain identical to input. Uniform pale gray background between figures. No new figures, no extra feet, no borders, no labels, no 3D."
+    }
+  },
+  "8": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "4",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "latent": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "9",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "mask": [
+        "6",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": 23102610,
+      "steps": 16,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ],
+      "denoise": 0.38
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaWalk/Atlas4_direita"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "lanczos_nvenc_rife_exact60_dlss5_full_frame_v2_1440p",
+  "pipeline_version": "lanczos_nvenc_rife_exact60_dlss5_full_frame_v2",
+  "required": true,
+  "target": {
+    "width": 2560,
+    "height": 1440,
+    "fps": 60,
+    "geometry": "contain_then_pad_no_crop",
+    "depth": "8-bit SDR"
+  },
+  "stages": [
+    "Practical-RIFE 4.25 exact60 at source resolution",
+    "Lanczos contain/pad + H.264 NVENC",
+    "DLSS 5 Natural full frame including actors and creatures",
+    "original audio stream copy"
+  ],
+  "rife": {
+    "version": "4.25",
+    "model_sha256": "6615790efd627772917205db291f51cd392528a157ecbb2ecaeec3bff8eb6de2",
+    "timestamps": "j/60",
+    "cut_threshold_mean_rgb": 0.35,
+    "endpoint": "clamp_last_frame"
+  },
+  "dlss5": {
+    "profile": "dlss5_required_full_frame_20261010_v1",
+    "parameters": {
+      "style": 1,
+      "intensity": 1.0,
+      "local_structure": 1.0,
+      "local_tone": 0,
+      "skin": 1.0,
+      "detail": 1.0,
+      "color": 0,
+      "auto_mask": false,
+      "scale": 1
+    },
+    "content_policy": {
+      "version": "dlss5_full_frame_required_20261010_v1",
+      "selection": "explicit_workflow_or_source_contract",
+      "live_action": "full_frame_required",
+      "mixed": "full_frame_required",
+      "animation": "full_frame_required",
+      "anchors": "full_frame_required",
+      "actor_masks_required": false,
+      "automatic_masks": false,
+      "unknown": "blocked_before_render",
+      "automatic_visual_classification": false,
+      "historical_media_auto_migration": false
+    }
+  },
+  "audio": {
+    "policy": "preserve_existing_stream_copy",
+    "absent": "remain_silent",
+    "new_foley_generation": false
+  },
+  "encode": {
+    "codec": "h264_nvenc",
+    "preset": "p7",
+    "cq": 15,
+    "pix_fmt": "yuv420p"
+  },
+  "fallback_allowed": false,
+  "owner_review_required": true,
+  "visual_qualification": "requires_review_of_new_artifact",
+  "content_kind": "live_action",
+  "policy_version": "upscaling_by_content_full_frame_20261010_v2",
+  "spatial_upscaling": {
+    "filter": "lanczos",
+    "neural_restoration": false
+  },
+  "actor_protection": {
+    "required": false,
+    "reviewed_mask_per_final_frame": false
+  },
+  "dlss5_coverage_percent": 100
+}

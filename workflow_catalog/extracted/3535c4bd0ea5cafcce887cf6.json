@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A 2D side-scrolling platformer foreground ground road asset, matching the exact visual style, colors, ink linework, and textures of the reference image (17th century Bandit Fortress Arena). A perfectly straight, flat, level horizontal fortified courtyard road spanning the entire width: sturdy colonial stone flagstones and paved courtyard surface, perfectly level combat arena ground across the entire image. Below the paving: stone foundation masonry and solid bedrock extending to the bottom. Clear sky above the road. Empty environment, no people, no characters, no human figures, clean game asset.",
+      "negative_prompt": "character, person, human, boy, man, woman, runner, player, sprite, figure, crowd, desert, saloon, cacti, modern, asphalt, car, steep ramp, slanted road, broken bridge, hole, 3d render, photorealistic, blurry, watermark, text",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 20266005,
+      "steps": 24,
+      "cfg": 3.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/ground_v2_20266005"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/ref_zone5_clean.png"
+    },
+    "is_changed": [
+      "9aae0bc59f07b062c313a08d4bff68c66c1fda9ac12223a2f3176c3469d783f9"
+    ]
+  }
+}

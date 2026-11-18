@@ -1,0 +1,237 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 10.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 10.08-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] Use a imagem de referência como fonte principal e obrigatória de identidade visual. Preserve com máxima fidelidade os 5 personagens de blocos numéricos infantis mostrados na referência. Não recriar, não redesenhar, não substituir, não estilizar demais e não alterar a identidade dos personagens. Manter exatamente: a quantidade de personagens: 5 a ordem em cena as cores de cada personagem o formato dos blocos o número de blocos de cada um os rostos os olhos as bocas os braços e pernas os números visíveis os acessórios e características marcantes a proporção entre eles o estilo visual infantil educativo Os personagens devem permanecer claramente os mesmos da imagem de referência, sem ganhar aparência genérica e sem virar personagens novos. O cenário deve continuar sendo uma brinquedoteca/quarto infantil acolhedor, com visual suave, limpo, colorido e reconfortante, sem excesso de informação visual. A câmera deve ficar estável, em enquadramento horizontal 16:9, com os 5 personagens visíveis ao mesmo tempo, de frente para a câmera. O objetivo do vídeo é acalmar Pedro, uma criança autista de 7 anos, dizendo que o brinquedo dele vai chegar. O clima precisa ser: acolhedor calmo seguro carinhoso gentil infantil Movimentos permitidos: apenas movimentos suaves e mínimos, como: piscar respirar levemente mexer a boca sincronizada com a fala pequenos acenos movimentos leves das mãos inclinação suave da cabeça Não fazer movimentos exagerados. Não trocar pose drasticamente. Não cortar personagens. Não mudar o cenário. Não trocar a posição dos personagens. A fala deve ser carinhosa, calma e tranquilizadora, com pausas suaves. Texto/fala do vídeo: “Oi, Pedro! A gente sabe que você está muito ansioso pelo seu brinquedo. Fique tranquilo, tá bem? O seu brinquedo vai chegar. Enquanto isso, vamos respirar juntos: um... dois... três... Muito bem! Pedro, calma no coração, porque logo o brinquedo chega e vai ser muito divertido!” O resultado final deve parecer uma continuação natural da imagem de referência, com preservação máxima de identidade.\n\noverall_soundscape: Physical ambience and visible action sounds remain synchronized with the target video timeline.\n\nnon_diegetic_music: N/A",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "20",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "20",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 8,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 7333840144015963689
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/ChatGPT_Image_21_de_set__de_2026__17_29_27__1__ccff6ac2f7.png"
+    }
+  },
+  "19": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/ChatGPT_Image_21_de_set__de_2026__17_29_27__2__7c500e2c7d.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "creative_os_video_latent_12": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va_video_latent"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Repose Lisa on the RIGHT of image 1. She has just recovered from the FIRST shotgun impact and is driving toward Chris more angrily. Make her pose visibly DIFFERENT from the starting photograph.\nLisa flexes both elbows, lifts the SAME wooden wrist stock to her CHEST, lowers into a forward crouch with knees bent, and steps her leading bare foot LEFT toward Chris. Her back and mask pitch toward him and her shoulders push forward. Her torso is upright enough to recover its balance after a small hit, not thrown or falling. BOTH wrists remain trapped THROUGH the TWO occupied holes, hands projecting forward with fingers loose, never gripping the wood. The stock must move with her arms. Keep her exact hunched strong creature mass, mask, hair, dress and chains.\nHer clothing is the SAME opaque dirty GRAY dress everywhere, including chest. No pale breast patch, bare chest, large spot or new tear. Add only ONE tiny dark dusty speck, the size of a pea, on the upper-chest fabric below the mask; it marks the first impact without blood or exposed injury. The dress must otherwise remain unchanged.\nChris keeps the EXACT black pump shotgun aiming pose of image 1, both black fingerless gloves, same actor and outfit. Shift only his rear foot a small step back toward the left doorway. This is AFTER one shot, not a firing moment: no flash, casing or new projectile. Preserve cabin, camera, two characters, clear floor route and light. Real practical cinematic live-action 16:9 photograph. References 2/3 supply Chris identity only; 4 supplies shotgun. No text, collage or extra objects.\n",
+      "negative_prompt": "illustration, painting, anime, cartoon, cel shading, video game render, plastic CGI, wax skin, generic different soldier, duplicated characters, missing mask, wrong clothing, tentacles, blood, gore, extra limbs, disembodied hands, floating chain, duplicate guns, blurred face, subtitles, letters, watermark, collage, different room, wide-angle distortion, holding plank, fingers gripping wood, empty wrist holes, detached restraint",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "22",
+        0
+      ],
+      "images.image_3": [
+        "23",
+        0
+      ],
+      "images.image_4": [
+        "25",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 1010260504,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_cabana_20261010/LA05_QWEN_V04"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_LA05_REFINE_V04.png"
+    },
+    "is_changed": [
+      "b3de5d3a041b03a019a1a07656998798080da68c8e9e77b1c7022c63dd13c7ab"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "22": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_YAWN_A13.png"
+    },
+    "is_changed": [
+      "539c2d392ec246057e5e33f91117e1538de3b4349767979f47b4194fb1446dcc"
+    ]
+  },
+  "23": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_FACE_A01.png"
+    },
+    "is_changed": [
+      "2c116eac8cde6939a54514e8d7fc6e0845d619e834d4f3960ab2891d451246ed"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "25": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_SHOTGUN_A13.png"
+    },
+    "is_changed": [
+      "650a69378cf49a2fa130f35e838315d94b8750fde47c7764fc7c1969ca12153d"
+    ]
+  }
+}

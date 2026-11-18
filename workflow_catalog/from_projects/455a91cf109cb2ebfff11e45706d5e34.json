@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux3-image-klein-int8-convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+      "type": "flux3",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "A color photograph from a big-budget live-action martial arts film: two REAL adult human actors as Saiyan-saga Goku and Vegeta on a dusty ochre rocky plateau under a pale blue afternoon sky. Wide full-body two-shot at waist height, physical natural afternoon sunlight from upper-left, a tall eroded mountain behind Vegeta on the right and a thin split spire in the distance. Foreground gravel, real cast shadows, visibly textured skin with pores, sweat, dirt, individual hair strands, real fabric weave and scuffs. Both faces and every hand and foot stay visible. Exactly two human men, serious film performances, no illustration or rendered plastic.\nThe man on the LEFT is Goku, taller, muscular East Asian adult with a broad handsome face, dark eyes, black asymmetric spiky hair. Orange heavy cotton gi and short-sleeved navy-blue undershirt, navy wristbands and tied cloth belt, navy boots with red seams. A small white circular patch with black turtle-school calligraphy is sewn to his left chest. He has a dusty cheek, flexed knees and an active defensive guard, looking at Vegeta, lips shut. Black hair and no aura. The man on the RIGHT is Vegeta, shorter compact muscular East Asian adult, angular face, pointed widow's peak, upright swept-back black hair, stern narrow dark eyes. His ORIGINAL FIRST-EARTH-INVASION SAIYAN ARMOR is unmistakable: a LARGE rigid WHITE CHEST BREASTPLATE across the whole upper torso, a GOLD horizontally ribbed abdominal plate below it, TWO HUGE SHOULDER PAULDRONS spreading SIDEWAYS beyond his shoulders with white outer shells and GOLD ribbed surfaces, and white-edged GOLD ribbed armored HIP GUARD PANELS protecting both hips. Full dark royal-blue fabric bodysuit visible only at arms and legs between armor pieces. White leather gloves, white leather boots with GOLD TOE CAPS. A narrow brown fur belt forms a closed ring around his waist between chest armor and hip panels, its ends completely concealed behind the hip panels. The space beside his hips is empty, with no projecting fur or loose appendages. No scouter. His right fist is drawn back beside his ribs, left fist up beside his chin, leading foot planted toward Goku and rear heel lifting in the instant before he punches. Two distinct human faces, distinct adult builds, fully practical fitted armor built of hard scuffed ceramic-like shells and dense gold ribbing, not a modern tactical suit. Keep the enormous classic shoulder guards and rigid full chest plate visible. Grounded human anatomy and realistic cloth folds. No beams, energy, extra characters, text overlays or watermark."
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "8": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 1536,
+      "height": 864,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ],
+      "seed": 2026110612,
+      "steps": 16,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ],
+      "filename_prefix": "goku_vegeta_saiyan_live_action_10s_20261106/anchors/A03_saiyan_16x9"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

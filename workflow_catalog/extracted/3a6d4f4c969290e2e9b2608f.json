@@ -1,0 +1,24 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A02_recovery_attempt01.png"
+    },
+    "is_changed": [
+      "d09ecdfb7576ec399f33e057a16e60939bc86ba8a1bb1c97b09b65b242f8bcf7"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "cloud_sephiroth_rebirth_duel_20261007/A02_recovery_dlss5"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

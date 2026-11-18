@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "runtimeId": "pemara-original-music-20261016",
+  "purpose": "original_music_creation",
+  "localOnly": true,
+  "generator": {
+    "cli": "ace_create_cli.py",
+    "source": "sources/ACE-Step-1.5-20261005",
+    "models": "models/ace_step"
+  },
+  "retiredFeatures": [
+    "reinstrumentation",
+    "ace_cover",
+    "muq_cover_ranking"
+  ],
+  "humanReviewRequired": true,
+  "autoApprove": false,
+  "preserveHistoricalMedia": true
+}

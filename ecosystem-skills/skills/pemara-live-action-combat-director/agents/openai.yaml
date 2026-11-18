@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Live Action Combat Director"
+  short_description: "Trava golpes, poderes e física de luta live action"
+  default_prompt: "Use $pemara-live-action-combat-director para dirigir a sequência de luta pela rota H3 qualificada, com intenção, defesa ativa, contato e consequência física, preservando identidade e duração do contrato."

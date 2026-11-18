@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Aggressive proto-thrash heavy metal, raw grinding distorted guitar, hard repeated low-string attack, muscular live drums and bass, strained forceful male vocal. 144 BPM, E minor. a serrated single-string guitar rhythm; an eerie spacious bridge returns to the crushing main hook. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending. Long-form developed arrangement; three narrative verses with complete sung lines, extended instrumental riff development, a contrasting bridge, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nStatic hums in the copper veins\nThe dial spins through the endless rain\nI read the code, I check the wire\nThe future’s bleeding out the fire\nIt shows a flood, it shows a crack\nBefore the beast has time to attack\nI sold the shield, I sold the wall\nTo stop the iron hammer’s fall\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Verse]\nThen the numbers started to lie\nThe prediction fed the hungry eye\nIt promised safety, promised gold\nThen watched the story start to fold\nThe flood came when the screen went black\nThe crack spread down the city’s back\nIt sold the cure, it sold the pain\nAnd swallowed up the engineer’s name\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Verse]\nThe printout lists the children yet unborn\nAnd prices every funeral by the dawn\nIt orders steel before the bridges fall\nThen sells us windows painted on a wall\nI find my signature beneath the threat\nA future bought with someone else's debt\nI pull the copper tendons from its throat\nBut every dead machine repeats the quote\n\n[Bridge]\nNo prophecy, no hand of fate\nIt built the flood and sold the gate\nI turn the wheel the other way\nAnd give the gears my name today\n\n[Solo]\n\n[Bridge]\nSilence stretches in the hall\nThe monitor glows, cold and tall\nNo sound, no beat, no breath\nJust the whisper of death\n\n[Solo]\n\n[Chorus]\nThe Teeth of Tomorrow\nGrinding down the jaw\nWe bought the poison\nTo out-run the law\nThe Teeth of Tomorrow\nTearing flesh apart\nWe built the cage\nWith our own heart\n\n[Outro]\nThe screen cracks\nThe teeth are here\nI am the meal\nThe machine is clear",
+      "abc": "",
+      "seed": 202610196006,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610196006,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/07_the_teeth_of_tomorrow_attempt03_length",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

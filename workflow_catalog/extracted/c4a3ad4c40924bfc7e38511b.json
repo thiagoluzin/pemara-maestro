@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Brutal Brazilian groove thrash, heavily downtuned guitars, syncopated palm-muted riffs, aggressive barked male English vocals, huge toms, tight dry heavy drums. 116 BPM, D minor. a percussive four-hit guitar motif; bass and tom responses; short commanding shouted refrain. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nIron links, cold steel breath\nChains that hold, now cut the death\nStone by stone, the wall exhales\nGrey dust hangs in stagnant halls\nWe pull the weight, we drag the rust\nTurn the shackles into dust\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Verse]\nEyes of wire, watching deep\nNow they blink in shattered sleep\nHands that bled, now hands that tear\nStrip the city of its stare\nThe watchtower falls in two\nHollow light lets shadows through\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Verse]\nThe last brick falls with a sickening thud\nThe eye in the sky cracks, then is mud\nBut the dust doesn’t settle down\nIt crawls into the lungs of the town\nWe breathe in the grey, we choke on the light\nEvery free breath turns to bitter night\nThe chains are gone, the wall is flat\nBut the city is choking on the trap\nWe tore the beast to make us free\nNow we’re buried in the debris\nThe rebellion breathes, but cannot speak\nThe silence is the only weak\n\n[Bridge]\nOne stone loose, the others groan\nWeight of years, finally gone\nThe last link snaps, the floor gives way\nWe stand tall in the dust of day\n\n[Solo]\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Outro]\nThe wall is down\nThe city is found\nChains are gone\nWe are not strong",
+      "abc": "",
+      "seed": 202610166013,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166013,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/14_concrete_rebellion_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

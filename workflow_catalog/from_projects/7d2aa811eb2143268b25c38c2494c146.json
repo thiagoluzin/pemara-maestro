@@ -1,0 +1,297 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference picture aligns with the target video: Picture 1 anchors the photographed actor's exact identity, wardrobe and geography at 0.00 seconds. This is one continuous live-action shot, not a montage.\n\nintegrated_multimodal_description: [Shot 1] The exact approved adult synthetic human Goku in golden-haired Super Saiyan 1 form. Same realistic face, pores, natural golden eyebrows, turquoise irises with dark pupils, ordinary human teeth, same orange torn gi over navy undershirt, blue sash, wrist wraps and boots. Same body proportions, scratches, dirt and tears. Same rocky island, teal water on the left, low rock on the right and distant mesas under the green overcast sky. Both boots stay planted with weight and contact shadows. The camera holds the approved head-to-toe composition with very small physical operator movement. Keep real skin, fine hair strands, woven fabric and consistent light throughout.\nFrom 0.0 to 1.2 seconds he deliberately takes one deep diaphragmatic breath, shoulders rise then lower, gaze fixed off-camera right. From 1.2 to 2.0 seconds he slightly flexes his knees and braces his abdomen, closes both eyelids and clenches his fists. From 2.0 to 5.0 seconds he releases one forceful sustained nonverbal human exertion roar, opening his mouth only within natural human anatomical limits, chin lifting only slightly; his jaw, neck and facial proportions stay unchanged. Do not stretch his mouth into a huge oval or lengthen his face. His abdomen and chest drive the effort while the planted legs bear the load. Both eyelids remain fully closed during the strongest effort. Already-golden hair gradually lifts into more upright separated SSJ2 spikes, front locks sweep up leaving one forward golden forelock. Golden aura compresses and surges, with a few thin irregular blue-white electric arcs appearing outside the shoulders and legs from about 3 seconds and increasing through 5 seconds. Arcs never cover the face or hands. Small gravel trembles then lifts and dust is pushed outwards by the energy; do not hide the change in a white flash. From 5.0 to 6.58 seconds, the roar releases naturally into one exhale, chin lowers and mouth closes. Eyes reopen gently with ordinary dark pupils, never emissive. He remains recognizably the same human, fully SSJ2, with breathing, loose cloth, fine hair and intermittent electrical aura still moving. No cut, no reset to the initial pose, no new figure, no halo, no text. This is a cinematic fan continuation, not a new actor design.\n\noverall_soundscape: Start with close realistic adult male inhalation and subdued outdoor wind. From 2.0 to 5.0 seconds, a dominant close, deep, chest-resonant ADULT MALE NONVERBAL EXERTION ROAR on one supported breath. Start with a brief rough low onset, grow organically into a powerful open-throated AAH roar, give the final portion stronger human effort and slight natural grain, then release into breath. Strong voice in front of the energy sound, no thin distant cry, no cute squeal, no robotic buzzing, no monster voice, no actor imitation, no words or spoken dialogue. The vocal timing follows the visible breathing and mouth. Background only: low nonmusical pressure rumble, brief dry electrical snaps synchronized with the new arcs, small stone rattles and cloth. Keep effects lower than the voice. No music, no melodic drone, no soundtrack, no singing, no choir, no percussion, no instrumental sting. Do not replace a human yell with an explosion.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 158,
+      "first_frame": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "22",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810281
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 768,
+      "height": 1344,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/pilot01_natural_roar",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "21": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "22": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "image": [
+        "21",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  }
+}

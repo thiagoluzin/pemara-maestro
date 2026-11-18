@@ -1,0 +1,39 @@
+{
+  "id": "pemara_combat_test05_hunyuan15_trial_v1",
+  "status": "UNQUALIFIED_NOT_OWNER_APPROVED",
+  "source_recipe_id": "pemara_combat_test05_approved_v1",
+  "source_workflow_sha256": "8f43f0a5bba26ff59482b2a41ad145244aab526e225b4dfa4a9f3d64751992a2",
+  "source_approved_video_sha256": "c2d529c43dc62e5db2716096603bcf978a709eabf0f54f59faf1a2eacbd5a9cc",
+  "source_prompt_sha256": "d6333b10cde1e7070c52a1d095fdd608eb47153407030b67cd2103acf80a102c",
+  "engine": "hunyuan_video_15",
+  "content_kind": "live_action",
+  "workflow": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\scorpion_subzero_hunyuan_classic_20261110\\workflows\\T01_hunyuan_v08_TEST05_clone_25.api.json",
+  "workflow_sha256": "9be4f41e838362a5c6a6f6c07ea7b19a798833c182264fe0278e36a034385868",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "frames": 241,
+  "steps": 25,
+  "guidance": 6,
+  "shift": 7,
+  "seed": 202611082204,
+  "anchor_sha256": "54c6af10adcf93b69ad12bdfbb4cc72d96ae07e5dec037cd63145c8237cd5c80",
+  "reused_direction": [
+    "ten-second continuous bilateral exchange",
+    "nine requested quick strikes",
+    "counter during previous retraction",
+    "receiver continues recoiling after limb separates",
+    "catching steps and pursuit",
+    "no powers or held contacts"
+  ],
+  "adaptations": [
+    "approved project actors, costumes and courtyard",
+    "Hunyuan 4n+1=241 frames and 720p",
+    "Euler/simple shift7 CFG6; 25-step trial",
+    "safe Sage2 + native SOL; no EasyCache",
+    "H3-specific Spectrum/four-group nodes not transplanted",
+    "silent Hunyuan source; no new soundtrack"
+  ],
+  "artistic_approval_transferred": false,
+  "auto_render": false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "pemara.qwen-music-production.v1",
+  "mode": "reinstrument",
+  "plan": {
+    "duration_seconds": 6,
+    "bpm": 120,
+    "style": "Traditional heavy metal with clear vocal preservation",
+    "sections": [
+      {
+        "name": "verse",
+        "start": 0,
+        "end": 3,
+        "energy": 0.4,
+        "lead": "none",
+        "instruments": [
+          "guitar",
+          "bass",
+          "drums"
+        ]
+      },
+      {
+        "name": "chorus",
+        "start": 3,
+        "end": 6,
+        "energy": 0.8,
+        "lead": "none",
+        "instruments": [
+          "guitar",
+          "bass",
+          "drums"
+        ]
+      }
+    ],
+    "tracks": {
+      "guitar": {
+        "gainDb": -6,
+        "density": 0.8,
+        "velocityScale": 1.0,
+        "role": "Rhythmic power chords supporting the harmony without masking the vocal"
+      },
+      "bass": {
+        "gainDb": -4,
+        "density": 0.9,
+        "velocityScale": 1.1,
+        "role": "Driving eighth-note patterns anchoring the root notes and adding low-end weight"
+      },
+      "drums": {
+        "gainDb": -3,
+        "density": 1.0,
+        "velocityScale": 1.2,
+        "role": "Punchy kick and snare with controlled cymbals to drive the rhythm and dynamics"
+      }
+    }
+  },
+  "sourceSha256": "0a77f9a2cfb7ced6e84d4f0bd8a14cad011feb98ee97ad5dd3fddfe5fff40242",
+  "identityMutationAllowed": false,
+  "sectionEvidence": "proposed_pending_review",
+  "bpmEvidence": "proposed_not_measured",
+  "writer_model": "qwen3.8-27b-uncensored-yarn-524k:latest",
+  "writer_vram_bytes": 19321229145,
+  "writer_unloaded": true
+}

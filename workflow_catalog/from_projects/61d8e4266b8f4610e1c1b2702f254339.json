@@ -1,0 +1,289 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "h3_memory_native",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous ten-second cinematic LIVE-ACTION supernatural finishing move, forceful and decisive. EXACTLY the same two adult stunt actors and human builds as Picture1. Yellow/black Scorpion LEFT, blue/black Sub-Zero RIGHT, identical practical cloth costumes, wet boots, black hoods, sunlit ruined courtyard, doorway, columns and ice/water patches. Start immediately from Picture1: Sub-Zero is already GROGGY, bent forward, knees soft and both hands hanging low. Keep that damaged balance. No fresh raised guard, opening stand-off or extra punch exchange.\n\nScorpion acts AT ONCE. His RIGHT hand snaps up, grips his own yellow face mask and attached black hood and forcefully pulls the head cloth UP AND OFF in ONE crisp connected movement. The cloth clears his head, revealing the classic supernatural BARE SKULL instead of his human face: natural human head scale, realistic pale warm ivory bone, dark hollow eye sockets, articulated bony jaw and teeth, on the SAME muscular yellow-and-black human body and neck. No toy skull, bright glowing eyes, flesh peeling or blood. The yellow mask and black hood stay together in his RIGHT hand at his hip afterward; they do not vanish or reattach. Blue retains HIS OWN blue mask and black hood.\n\nScorpion turns the exposed skull toward the bent blue opponent, braces his rear boot, drives his chest forward with a sharp inhalation and opens his jaw wide. Without a ceremonial pause he EXPLODES ONE FORCEFUL ORANGE FIRE BREATH FROM INSIDE THE OPEN SKULL MOUTH. The blast crosses the real gap and strikes the blue upper torso. Keep the mouth-origin connection plainly visible. The fire is photographed as a turbulent practical flame jet: an irregular bright yellow-white core, rolling orange tongues, ragged flickering edges, little sparks, hot-air distortion and darker trailing smoke. It expands and curls on impact, never a smooth solid cone, rigid triangle or laser beam. The sudden fire casts LOCAL flickering orange light across the two wet costumes, the jaw and stones without replacing the courtyard sunlight.\n\nSub-Zero reacts only AFTER the fire strikes him. His upper torso JOLTS backward violently, shoulders wrench away and arms fling up instinctively from their hanging position. Forearm ice cracks into a burst of steam. He attempts ONE urgent catching step to stay upright, but his weakened knees buckle under the force. The flame wraps around his BLUE-CLOTHED SILHOUETTE; his weight drops and he crashes sideways/backward onto the courtyard stones, shoulder and hip landing with visible mass. This fall is a sudden failed attempt to survive the blast, not a slow theatrical lean or voluntary sitting. Keep the recognizable blue costume and full body silhouette through the rolling fire. No exposed organs, severed parts, blood or burned-face close-up.\n\nScorpion closes his jaw, stopping the mouth jet. Residual flames billow around the fallen blue costume and throw moving light and smoke across the stones; they diminish instead of freezing into an effect card. Scorpion straightens with skull still exposed, steady grounded feet and the removed mask/hood visibly held at his right hip. He looks down at the fallen opponent while his chest settles from the breath. Blue remains fallen and clothed, with no resurrection. End on moving flame/smoke/cloth and ongoing physical settling, no static victory freeze or dance.\n\nCAMERA begins at Picture1's exact viewpoint and immediately makes a brisk short same-axis dolly toward Scorpion's head during the mask removal. Read the hand actually clearing the skull in a photographic three-quarter profile; keep blue's slumped shoulders visible on the right. As the jaw opens, sweep a short lateral track and retreat just enough to show the skull mouth, the complete connected fire path and the blue receiver TOGETHER. Follow the blue blast reaction downward and back, widening to include the weighted landing and both fighters. Yellow remains LEFT, blue RIGHT; courtyard columns move in parallax. One unbroken shot at normal real-time speed, no orbit, axis flip, slow motion, artificial shake, cuts, new people, weapons, chain, dialogue or music. Preserve skin and cloth realism and the original sunlight; only the directed skull/fire are supernatural.\n\noverall_soundscape: An immediate sharp cloth yank and head-cloth rustle, a short forceful intake of breath, one powerful close fire ROAR from the skull mouth, turbulent flame crackle, an abrupt ice fracture and steam hiss, one scrambling bootstep and a heavy shoulder/hip body impact on stone. Fire fades into hot crackles and courtyard wind. No speech, grunts, laughter or music.\n\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "T07 R2 — immediate mask yank, skull reveal, turbulent fire blast and weighted collapse"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611082204
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T07_H3_MASTER_R2/native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T07_R2_start_from_approved_T06_R2_f167.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "anchor_master_pad": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "target_width": 1344,
+      "target_height": 768,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "h3_memory_native": {
+    "class_type": "H3MemoryOptimization",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "fused_qkv": "auto",
+      "mlp_memory": "auto",
+      "chunk_rows": 4096,
+      "preserve_precision": true,
+      "precision_mode": "Preserve native",
+      "qkv_streaming_mode": "Auto",
+      "embedding_memory_mode": "Auto",
+      "kitchen_v_memory_mode": "Standard"
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "categoria": "PLACA DE VÍDEO",
+  "duracao": 84.0,
+  "produtos": [
+    {
+      "id": 139,
+      "linha_sheets": 140,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PALIT",
+      "soquete": "NAN",
+      "nome": "PLACA DE VIDEO PALIT GEFORCE RTX 5080 GAMING PRO 16GB",
+      "nome_limpo": "PLACA DE VIDEO PALIT GEFORCE RTX 5080 GAMING PRO 16GB",
+      "valor": 12500.0,
+      "valor_formatado": "R$ 12.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/139_foto_original_f7e204ea6528.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.palit.com/palit/vgapro.php?id=5395&lang=en",
+      "criado_em": "2026-05-18 16:31:09.974219",
+      "atualizado_em": "2026-09-22 13:30:07.282999",
+      "ids": [
+        139
+      ]
+    },
+    {
+      "id": 367,
+      "linha_sheets": 368,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "ASROCK",
+      "soquete": "",
+      "nome": "ASROCK RADEON RX 9070 XT CHALLENGER 16GB",
+      "nome_limpo": "ASROCK RADEON RX 9070 XT CHALLENGER 16GB",
+      "valor": 5500.0,
+      "valor_formatado": "R$ 5.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/367_asrock_rx9070xt_challenger16_original.png",
+      "url_card": null,
+      "link_oficial": "https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%209070%20XT%20Challenger%2016GB/",
+      "criado_em": "2026-09-14 23:18:43.782055",
+      "atualizado_em": "2026-09-20 23:39:31.056064",
+      "ids": [
+        367
+      ]
+    },
+    {
+      "id": 375,
+      "linha_sheets": 376,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PALIT",
+      "soquete": "",
+      "nome": "PALIT GEFORCE RTX 5070 INFINITY 3 12GB (BRANCA)",
+      "nome_limpo": "PALIT GEFORCE RTX 5070 INFINITY 3 12GB (BRANCA)",
+      "valor": 5500.0,
+      "valor_formatado": "R$ 5.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": null,
+      "url_card": null,
+      "link_oficial": "",
+      "criado_em": "2026-09-19 13:01:02.430708",
+      "atualizado_em": "2026-09-22 13:25:06.926738",
+      "ids": [
+        375
+      ]
+    },
+    {
+      "id": 140,
+      "linha_sheets": 141,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PALIT",
+      "soquete": "NAN",
+      "nome": "PLACA DE VIDEO PALIT GEFORCE RTX 5070 INFINITY 3 OC 12GB",
+      "nome_limpo": "PLACA DE VIDEO PALIT GEFORCE RTX 5070 INFINITY 3 OC 12GB",
+      "valor": 5500.0,
+      "valor_formatado": "R$ 5.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/140_foto_original_1b82ac6ae72c.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.palit.com/palit/vgapro.php?id=5465&lang=en",
+      "criado_em": "2026-05-18 16:31:09.974219",
+      "atualizado_em": "2026-09-22 13:31:24.093277",
+      "ids": [
+        140
+      ]
+    },
+    {
+      "id": 123,
+      "linha_sheets": 124,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "ASROCK",
+      "soquete": "NAN",
+      "nome": "RX 9070 16GB CHALLENGER (LACRADA)",
+      "nome_limpo": "RX 9070 16GB CHALLENGER (LACRADA)",
+      "valor": 5000.0,
+      "valor_formatado": "5.000,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/123_foto_original_73f555fbe3ac.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%209070%20Challenger%2016GB/",
+      "criado_em": "2026-05-18 16:31:09.969045",
+      "atualizado_em": "2026-07-26 10:38:41",
+      "ids": [
+        123
+      ]
+    },
+    {
+      "id": 360,
+      "linha_sheets": 361,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "ASUS",
+      "soquete": "",
+      "nome": "PLACA DE VIDEO ASUS DUAL OC RX 9060XT 16GB",
+      "nome_limpo": "PLACA DE VIDEO ASUS DUAL OC RX 9060XT 16GB",
+      "valor": 3500.0,
+      "valor_formatado": "R$ 3.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/360_foto_original_eb852860cefe.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.asus.com/br/motherboards-components/graphics-cards/dual/dual-rx9060xt-16g/",
+      "criado_em": "2026-09-08 11:02:35.326429",
+      "atualizado_em": "2026-09-21 18:26:28.391631",
+      "ids": [
+        360
+      ]
+    },
+    {
+      "id": 345,
+      "linha_sheets": 346,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "POWERCOLOR",
+      "soquete": "",
+      "nome": "POWERCOLOR RX 6900 XT RED DEVIL ULTIMATE 16GB (SEMINOVA REVISADA)",
+      "nome_limpo": "POWERCOLOR RX 6900 XT RED DEVIL ULTIMATE 16GB (SEMINOVA REVISADA)",
+      "valor": 3500.0,
+      "valor_formatado": "R$ 3.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/345_foto_original_bd66c86d35bd.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.powercolor.com/product-detail172.htm",
+      "criado_em": "2026-09-04 22:30:56.251832",
+      "atualizado_em": "2026-09-07T11:43:35.146417+00:00",
+      "ids": [
+        345
+      ]
+    },
+    {
+      "id": 361,
+      "linha_sheets": 362,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "INNO3D",
+      "soquete": "",
+      "nome": "RTX 5060 TI TWIN X2 8GB",
+      "nome_limpo": "RTX 5060 TI TWIN X2 8GB",
+      "valor": 3200.0,
+      "valor_formatado": "R$ 3.200,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/361_inno3d_rtx5060ti_twinx2_8gb_original.png",
+      "url_card": null,
+      "link_oficial": "https://inno3d.com/product/inno3d-geforce-rtx-5060-ti-8gb-twin-x2",
+      "criado_em": "2026-09-09 10:43:43.345197",
+      "atualizado_em": "2026-09-20 23:39:30.944408",
+      "ids": [
+        361
+      ]
+    },
+    {
+      "id": 381,
+      "linha_sheets": 382,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PCYES",
+      "soquete": "",
+      "nome": "PLACA DE VIDEO RTX 5060 8GB PCYES",
+      "nome_limpo": "RTX 5060 8GB",
+      "valor": 2800.0,
+      "valor_formatado": "R$ 2.800,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/381_pcyes5060_pauta.png",
+      "url_card": null,
+      "link_oficial": "https://www.pcyes.com.br/gpu-nvidia-geforce-rtx-5060-8gb-gddr7-128bits-dual-fan-pvrtx5060b2f128",
+      "criado_em": "2026-09-21 21:07:51.189334",
+      "atualizado_em": "2026-09-22 10:51:37.441548",
+      "ficha": {
+        "Memória de vídeo": "8 GB GDDR7",
+        "Barramento de memória": "128 bits",
+        "Interface": "PCI Express 5.0",
+        "Conexões de vídeo": "3 DisplayPort e 1 HDMI",
+        "Alimentação": "1 conector de 8 pinos",
+        "Refrigeração": "Duas ventoinhas"
+      },
+      "ids": [
+        381
+      ]
+    },
+    {
+      "id": 129,
+      "linha_sheets": 130,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "STAR",
+      "soquete": "NAN",
+      "nome": "RTX 3080M 8GB (LACRADA)",
+      "nome_limpo": "RTX 3080M 8GB (LACRADA)",
+      "valor": 2700.0,
+      "valor_formatado": "2.700,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/129_foto_original_4fd336ff3910.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.visaovip.com/prod/vga-nvidia/placa-de-video-star-8gb-geforce-rtx3080-gddr6x-star-gtx3080m/52262/",
+      "criado_em": "2026-05-18 16:31:09.971122",
+      "atualizado_em": "2026-07-30 03:32:11",
+      "ids": [
+        129
+      ]
+    },
+    {
+      "id": 379,
+      "linha_sheets": 380,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PCYES",
+      "soquete": "",
+      "nome": "PLACA DE VIDEO RTX 4060 8GB PCYES",
+      "nome_limpo": "RTX 4060 8GB",
+      "valor": 2500.0,
+      "valor_formatado": "R$ 2.500,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": null,
+      "url_card": null,
+      "link_oficial": "",
+      "criado_em": "2026-09-21 19:10:43.127805",
+      "atualizado_em": "2026-09-22 13:29:24.889399",
+      "ids": [
+        379
+      ]
+    },
+    {
+      "id": 374,
+      "linha_sheets": 375,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "ZOTAC",
+      "soquete": "",
+      "nome": "ZOTAC RTX 3070TI TRINITY 8GB (SEMINOVA)",
+      "nome_limpo": "ZOTAC RTX 3070 TRINITY 8GB (SEMINOVA)",
+      "valor": 2200.0,
+      "valor_formatado": "R$ 2.200,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/374_zotac_pdf_3.jpeg",
+      "url_card": null,
+      "link_oficial": "https://www.zotac.com/download/mediadrivers/External/GraphicsCard/3070Ti/Brochure/ZT-A30710D-10P-brochure.pdf",
+      "criado_em": "2026-09-17 10:36:21.575444",
+      "atualizado_em": "2026-09-22 10:48:54.654450",
+      "ficha": {
+        "Memória de vídeo": "8 GB GDDR6X",
+        "Barramento de memória": "256 bits",
+        "Conexões de vídeo": "3 DisplayPort 1.4a e 1 HDMI 2.1",
+        "Alimentação": "2 conectores de 8 pinos",
+        "Fonte recomendada": "750 W",
+        "Comprimento": "317,6 mm"
+      },
+      "ids": [
+        374
+      ]
+    },
+    {
+      "id": 347,
+      "linha_sheets": 348,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "PNY",
+      "soquete": "",
+      "nome": "PNY RTX 3070 8GB (SEMINOVA REVISADA)",
+      "nome_limpo": "PNY RTX 3070 8GB (SEMINOVA REVISADA)",
+      "valor": 1800.0,
+      "valor_formatado": "R$ 1.800,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": null,
+      "url_card": null,
+      "link_oficial": "",
+      "criado_em": "2026-09-04 22:32:46.276803",
+      "atualizado_em": "2026-09-04 22:32:46.276803",
+      "ids": [
+        347
+      ]
+    },
+    {
+      "id": 127,
+      "linha_sheets": 128,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "GALAX",
+      "soquete": "NAN",
+      "nome": "RTX 3050 6GB (LACRADA)",
+      "nome_limpo": "RTX 3050 6GB (LACRADA)",
+      "valor": 1350.0,
+      "valor_formatado": "R$ 1.350,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/127_foto_original_39cbe8ae2eb9.jpg",
+      "url_card": null,
+      "link_oficial": "https://galax.com/pt/product/geforce-rtx-3050-6gb-ex-dvi/",
+      "criado_em": "2026-05-18 16:31:09.970605",
+      "atualizado_em": "2026-07-26 10:42:37",
+      "ids": [
+        127
+      ]
+    },
+    {
+      "id": 328,
+      "linha_sheets": 329,
+      "tipo": "PLACA DE VÍDEO",
+      "fabricante": "VINIK",
+      "soquete": "",
+      "nome": "PLACA DE VÍDEO VINIK GEFORCE G210 LOW PROFILE, 1GB DDR3, GPUVK2101GBLP0H2",
+      "nome_limpo": "PLACA DE VÍDEO VINIK GEFORCE G210 LOW PROFILE, 1GB DDR3, GPUVK2101GBLP0H2",
+      "valor": 170.0,
+      "valor_formatado": "R$ 170,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/328_foto_original_08e7deab9cb1.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.kabum.com.br/produto/947242/vga-geforce-1gb-g210-vinik-ddr3-64-bits-vga-dvi-hdmi-low-profile-single-fan-gpuvk2101gblp0h2",
+      "criado_em": "2026-08-05 00:05:53.572630",
+      "atualizado_em": "2026-09-17 10:34:00.127971",
+      "ids": [
+        328,
+        371
+      ]
+    }
+  ]
+}

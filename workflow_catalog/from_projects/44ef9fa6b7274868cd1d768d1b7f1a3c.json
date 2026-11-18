@@ -1,0 +1,366 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 is the literal photograph of the human actor at the start and through the pre-effort state. Picture 2 is the same photographed man at the controlled end. The AUDIO GUIDE is an already approved fixed recording for this exact shot and duration. Preserve the photographed actor and follow the recording.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted live-action photographic full-body view of the exact same adult man from the reference images, on the same rocky island. Preserve his real cheekbones, ordinary eyebrow thickness, human eye sockets, natural neck thickness, jaw dimensions, ears, small facial scratches, pores and all body proportions. Same actual orange torn woven gi over navy cloth, blue sash, wraps and boots, every existing tear and stain; same water on left, rock on right, distant mesas, overcast sky and photographic skin/fabric response. The golden hair stays individual fine hair strands. The actor does not acquire a drawn face or solid hair sculpture. Stable full-body perspective; no inserted closeups, cuts or camera scale changes.\n0.0–1.45 seconds: one ordinary inhalation and quiet bracing, same natural face and stance as Picture 1, shoulders ease down and fists firm. 1.45–5.35 seconds: follow the forceful adult human exertion recording with CONTAINED FACIAL PERFORMANCE. His lips part moderately, jaw lowers a little with normal human facial anatomy, cheeks keep their original width, eyebrow muscles stay soft and almost unchanged, neck does not lengthen and chin does not lift. His eyes narrow slightly while retaining the approved eye socket and brow shape; no tightly scrunched closed-eye grimace, no clenched sculpted brow ridges, no enormous vertical mouth cavity. The power of the approved sound comes from abdominal support, grounded legs, subtle shoulder tension and the recording itself, not distortion of the actor's face. His already golden hair gradually lifts into the more upright arrangement of Picture 2. Only a few thin blue-white arcs appear in the air outside the body. Warm energy remains translucent haze with moving dust, so rocks and the actor remain visible through it; no solid gold flame lobes. 5.35–5.9 seconds: the effort releases following the recording, the lips and jaw return toward the original controlled human expression. 5.9–6.58 seconds: reach the exact face and damaged clothing of Picture 2, breathing naturally with sparse electrical arcs and fine moving hair, dust and cloth. Both boots remain in contact with the same rock. No healing, extra character, halo, text or glowing eyeballs.\n\noverall_soundscape: Use the exact fixed AUDIO GUIDE, including its breath, forceful human nonverbal exertion and electrical/energy effects at their existing times. Do not produce another voice, new words or a different performance. The final video uses this exact approved recording, not a resynthesized replacement. No music, song, melody, instruments, choir, singing or score.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 158,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "approved_audio_guide",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810285
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 768,
+      "height": 1344,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "approved_audio",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/pilot03_fixed_audio_contained_face",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "19": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A02_goku_ssj2_DLSS5_v01.png"
+    }
+  },
+  "21": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "22": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "image": [
+        "21",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "approved_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ2_TESTE_GRITO_P01.wav"
+    }
+  },
+  "identity_before_effort": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "22",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "frame_idx": 34
+    }
+  },
+  "identity_after_effort": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity_before_effort",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "19",
+        0
+      ],
+      "frame_idx": 141
+    }
+  },
+  "approved_audio_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity_after_effort",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "approved_audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  }
+}

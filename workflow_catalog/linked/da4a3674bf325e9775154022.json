@@ -1,0 +1,8 @@
+{
+  "1": {
+    "class_type": "PemaraFFVICleanBackground",
+    "inputs": {
+      "mask_manifest": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\ffvi_opera_fasth3_omni_20261022\\repair_masks\\T08_8e08e12e\\manifest.json"
+    }
+  }
+}

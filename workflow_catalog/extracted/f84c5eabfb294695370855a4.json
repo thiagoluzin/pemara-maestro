@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Heavy metal, speed metal, aggressive distorted electric guitars, sharp palm-muted low-string riffs, hard live drums, double-kick accents, loud bass guitar, fierce belted male English vocals, raw dry guitar amplifiers, urgent, 175 BPM, E minor. Extended guitar solo and decisive heavy ending. Complete five-minute song, 280-330 seconds.",
+      "lyrics": "[Verse]\nDust on the helm, rust on the blade,\nWe march where the crows have already made their trade.\nThe standard is torn, the colors are grey,\nBut the trumpet still screams at the end of the day.\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Verse]\nThree centuries passed in the silent dark,\nYet the order comes down from the frozen mark.\nNo breath in the lungs, no pulse in the chest,\nBut the decree is cut on the iron test.\nWho is the king? Who holds the line?\nThe rot in the seat makes the victory blind.\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Bridge]\nHe fell in the year of the burning oak,\nBut the law does not die, it is thick as smoke.\nWe bow to the dust, we bow to the stone,\nUntil the weight of the empire breaks us down.\n\n[Solo]\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Outro]\nThe last sword is buried in the blackened earth,\nThe dead emperor keeps his ancient worth.\nWe sleep in the dirt, the crown stays still,\nWaiting for the next to climb the hill.",
+      "abc": "",
+      "seed": 202610169992,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610169992,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/01_ashen_legion_attempt03_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

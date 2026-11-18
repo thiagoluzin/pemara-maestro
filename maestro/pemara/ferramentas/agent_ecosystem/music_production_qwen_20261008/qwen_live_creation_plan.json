@@ -1,0 +1,84 @@
+{
+  "title": "Ember Pulse",
+  "caption": "Heavy Metal Instrumental, dark and intense, driving riff, distorted electric guitar, punchy bass, double kick drums, dynamic build from quiet verse to explosive chorus, sharp ending.. Producer style: Heavy Metal, Dark, Energetic. Roles: guitar: Main riff and lead; bass: Groove foundation; drums: Rhythm and dynamics. Form: Intro 0-4s energy 0.3 lead none; Verse 4-14s energy 0.4 lead guitar; Chorus 14-27s energy 0.9 lead guitar; Outro 27-30s energy 0.2 lead none. Complete ending.",
+  "lyrics": "",
+  "vocal_language": "none",
+  "instrumental": true,
+  "production_plan": {
+    "duration_seconds": 30,
+    "bpm": 140,
+    "style": "Heavy Metal, Dark, Energetic",
+    "sections": [
+      {
+        "name": "Intro",
+        "start": 0,
+        "end": 4,
+        "energy": 0.3,
+        "lead": "none",
+        "instruments": [
+          "drums",
+          "bass"
+        ]
+      },
+      {
+        "name": "Verse",
+        "start": 4,
+        "end": 14,
+        "energy": 0.4,
+        "lead": "guitar",
+        "instruments": [
+          "guitar",
+          "bass",
+          "drums"
+        ]
+      },
+      {
+        "name": "Chorus",
+        "start": 14,
+        "end": 27,
+        "energy": 0.9,
+        "lead": "guitar",
+        "instruments": [
+          "guitar",
+          "bass",
+          "drums"
+        ]
+      },
+      {
+        "name": "Outro",
+        "start": 27,
+        "end": 30,
+        "energy": 0.2,
+        "lead": "none",
+        "instruments": [
+          "drums",
+          "bass"
+        ]
+      }
+    ],
+    "tracks": {
+      "guitar": {
+        "gainDb": 0,
+        "density": 0.9,
+        "velocityScale": 1.1,
+        "role": "Main riff and lead"
+      },
+      "bass": {
+        "gainDb": -3,
+        "density": 0.8,
+        "velocityScale": 1.0,
+        "role": "Groove foundation"
+      },
+      "drums": {
+        "gainDb": -2,
+        "density": 1.0,
+        "velocityScale": 1.2,
+        "role": "Rhythm and dynamics"
+      }
+    }
+  },
+  "duration_seconds": 30,
+  "writer_model": "qwen3.8-27b-uncensored-yarn-524k:latest",
+  "writer_vram_bytes": 19321229145,
+  "writer_unloaded": true
+}

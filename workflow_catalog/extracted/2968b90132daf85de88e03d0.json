@@ -1,0 +1,31 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pemara_trellis_mesh_preview_20261013.png"
+    },
+    "is_changed": [
+      "76193b304e2f3f59c39d3ea0643786fbddc743d885c26ea97c4a2bb501af2567"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "pemara_glb_fix_2d/mesh_preview"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

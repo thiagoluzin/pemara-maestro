@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Hard-driving 1980s heavy metal, cutting heavily distorted guitars, intricate neoclassical riff, roaring articulate male rock voice, explosive drum fills, furious melodic guitar solo. 154 BPM, E minor. an angular high-register guitar answer over a low chug; explosive double-time chorus. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending. Long-form developed arrangement with three narrative verses, two instrumental guitar solos, changing riffs and a heavy final resolution; maintain sustained heavy energy.",
+      "lyrics": "[Verse]\nNeon bleeds on the cobblestone\nShadows lengthen, the city is stone\nWe built a throne from a broken spine\nAnd named it holy, named it divine\nThe blade hangs heavy above my head\nA living god for the dead\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Verse]\nHis hands are shaking, the sweat is cold\nThe story of us is getting old\nOne click of the jaw, one snap of the chain\nThe false god bleeds out in the rain\nI watched the fear turn to hate\nBefore the lever fell late\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Verse]\nThe executioner opens his hand\nAnd lets the rope fall into the sand\nThe balcony trembles under their feet\nA thousand windows face the street\nThe saint pulls nails from his painted palm\nAnd begs the mob to keep him calm\nHis borrowed halo rolls down the stair\nA circle of tin with nothing there\n\n[Bridge]\nBeneath the hood, the hangman smiles\nHe wore that face for forty miles\nHe has no orders left to obey\nThe scaffold becomes a stage today\n\n[Solo]\n\n[Bridge]\nThe rope is cut, the wheel is free\nThe crowd screams for my liberty\nBut the silence is the loudest sound\nWhen the king of fear hits the ground\n\n[Solo]\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Outro]\nThe lever snaps.\nThe city wakes.\nNo more saints.\nJust the stakes.",
+      "abc": "",
+      "seed": 202610196008,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610196008,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/09_saint_of_the_guillotine_attempt03_length",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Precise edit to an ACTUAL LIVE-ACTION film photograph, retain all photographic materials and natural actor skin, optical light/shadow/film grain and camera. REMOVE the EXISTING man Barry completely and leave that floor area empty. ONLY ONE woman Jill remains. No man, human reflection or second Jill. The SAME Jill woman stays at exactly the same airborne height, pose, facial expression and body coordinates as image1. Both boots clearly remain off the floor; her empty hands still grip the single external waist vine loop, continuous to ceiling. No other change to woman. Keep the exact giant red ceiling-attached botanical monster, same TWO charred patches lower left/right on its bulb, same tangled roots and green/red leaves. Keep enormous high timber ceiling, stone floor, rear-left doorway, rear fireplace, cold-lit right window, same perspective and lighting. Keep the SAME one compact black drum grenade launcher supported on far-left floor, original stock/drum/pistol grip/barrel proportions and orientation. No gun in hands. No other people, extra weapons, text, illustration, game rendering or smooth plastic skin. This is actor-removal/pose reblocking, not recoloring or changing the room.",
+      "negative_prompt": "CGI, 3d render, video game, illustration, plastic skin, duplicate woman, man, Barry, extra weapon, floating prop, text, collage",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 10108607,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "jill_plant42_photoreal_20261010/A07_PHOTO_V02"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "PLANT42_PHOTOREAL_A08_V02_3ce8158069f7.png"
+    },
+    "is_changed": [
+      "3ce8158069f79374e6eef6b53919802a7e185732d22b5408a4d5b860c725fa7c"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

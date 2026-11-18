@@ -1,0 +1,56 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "helena_motion_ref_mixkit4855_5c4e4de1edf3.mp4"
+    },
+    "is_changed": [
+      1792793059.5315652
+    ]
+  },
+  "2": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "DWPreprocessor",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "detect_hand": "disable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 512,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "scale_stick_for_xinsr_cn": "disable"
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaRedo6/RealMotion_v20/pose"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "99": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

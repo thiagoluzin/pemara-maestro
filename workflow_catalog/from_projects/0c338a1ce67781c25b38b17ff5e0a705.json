@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611070802
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP08_PIKA_20261107/T02_blank_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] Original expressive 3D CG animated Brazilian street-news satire at a peaceful adult gamers protest. One uninterrupted static eye-level medium-wide portrait shot,768x1344. The reporter stands screen-left, the gamer screen-right, grounded feet and visible hands. They stand in front of an unbranded red-brick electronics storefront in a Brazilian square, with a small peaceful crowd of fictional adults behind them. Warm afternoon sunlight comes from screen-left, with coherent soft shadows and matte colorful clothes. No real person, trademark, price claim about an identifiable shop, weapons, fire or violence.\nExactly TWO enormous pale ivory rectangular BLANK protest placards face the camera above the speakers. Each board is approximately300pixels wide and230pixels tall. Left board lies fully between x28and356; right board fully between x412and740. Both boards lie between y190and430. The complete flat paper surface and all FOUR corners remain visible with clear margins from every image edge throughout. The boards stay above every head with a visible air gap; no hair, hand, face or microphone crosses the paper. Two different adults behind the speakers hold only the wooden poles below the boards. Nearly still paper with slight independent sway, straight thin navy borders. No additional signs. Paper remains blank: no letters, numbers, symbols or fake text. Storefront and microphone are also unlettered. Exact large typography is composited later. No subtitles, logos, watermarks or screen graphics.\n\nA DIFFERENT original fictional adult interview pair in the same animated protest style. Reporter screen-left: adult bald man with short dark beard, plain burnt-orange jacket and beige trousers, holding a single black microphone in his left hand. Gamer screen-right: adult Black woman with tied-back braids and plain yellow hoodie. In her right hand at waist level she holds one small dark green rectangular RAM memory stick by its short edges. It is a rigid narrow circuit board with black chips and gold contacts, no letters or logos, never a phone. She keeps it below her chest, far below the two large blank paper signs. No canonical character or real person.\nThe reporter asks for her practical solution and only then offers the microphone below her mouth. She glances at the RAM stick as if it were expensive jewelry, then looks at him and gives her concise answer. Her free left palm opens once on reclamação; the stick stays securely held by the right hand and is never passed to anyone. He listens silently and smiles after her punchline. The adult crowd cheers only after her reply and chants the indicated final slogan once. During the chant both interviewees close their mouths, turn their eyes toward the crowd and recover naturally. Paper boards remain almost still above all heads.\nThe adult reporter has a clear conversational native Brazilian Portuguese male voice(S1), the gamer a clear native Brazilian Portuguese female voice with restrained comic timing(S2), and the adult supporters a unified Brazilian Portuguese group voice(S3). At0.3to3.5seconds the reporter asks once: <d>[Portuguese] E como você faz pra usar o computador?</d> He closes his lips. At4to8.5seconds the gamer answers once in one fluent turn: <d>[Portuguese] Fecho uma aba do navegador e abro outra reclamação!</d> She then closes her lips. Only after her final word and a short reaction, at10.8to13.8seconds, adult supporters chant together exactly once: <d>[Portuguese] Mais memória, menos boleto!</d> The reporter and gamer remain silent throughout this group chant. All verbal words finish by14seconds, followed by natural bodily recovery through the final frame.\nKeep the same static shot throughout15seconds. Only the explicitly indicated speech turns occur, each once, with no invented words, repeated phrases, overlap or extra questions. Bodies and clothes stay alive through the final frame, without a freeze or synchronized robotic swaying. The complete flat paper surfaces remain blank and visible above all hair with all four corners in frame. No extra signs or facade lettering.\n\noverall_soundscape: Quiet outdoor street ambience and gentle breeze beneath clear native on-screen Portuguese speech. A brief natural chuckle follows the punchline. No verbal words except the dialogue tags above.\n\nnon_diegetic_music: N/A\n",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

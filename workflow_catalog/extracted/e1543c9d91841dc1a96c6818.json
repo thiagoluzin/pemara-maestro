@@ -1,0 +1,60 @@
+{
+  "1": {
+    "class_type": "VHS_LoadImagesPath",
+    "inputs": {
+      "directory": "E:\\a terra rejeita\\TerraDevolveGodot\\art_source\\Helena_Referencia_Exata_20261101\\references\\helena__walk__revolver_lowered__west__v01",
+      "image_load_cap": 0,
+      "skip_first_images": 0,
+      "select_every_nth": 1
+    },
+    "is_changed": [
+      "1b141d32972bb5dcb611cd1e0f328dbdf16f25500242c98c5aa8fd02b611ad3b"
+    ]
+  },
+  "2": {
+    "class_type": "DWPreprocessor",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "detect_hand": "enable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 768,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "scale_stick_for_xinsr_cn": "disable"
+    }
+  },
+  "3": {
+    "class_type": "SavePoseKpsAsJsonFile",
+    "inputs": {
+      "pose_kps": [
+        "2",
+        1
+      ],
+      "filename_prefix": "ATD_ExactRef_20261101/walk_approved_pose"
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "2",
+        0
+      ],
+      "filename_prefix": "ATD_ExactRef_20261101/walk_approved_pose/guide"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "5": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

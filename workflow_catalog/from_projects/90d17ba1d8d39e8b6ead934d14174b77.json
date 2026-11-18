@@ -1,0 +1,191 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060104
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_contact_repair_visual_8s_v04",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "18": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "19": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "K_V03_frame191.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "HORIZONTAL 16:9 cinematic LIVE ACTION. Exactly EIGHT SECONDS of a precise physical sword duel, from the supplied START image to the supplied END image. The blue-coated adult VERGIL stays on the LEFT and owns the slender rigid Yamato katana in his RIGHT hand and the empty black sheath safely at his LEFT hip. The red-coated adult DANTE stays RIGHT and owns the broad rigid skull-guard Rebellion in his RIGHT hand, using his free hand to counterbalance or reinforce his own grip. Preserve the exact two faces, white hairstyles, adult body proportions, wet leather costumes, weapons and gothic rain-soaked rooftop from the images. The last image is ONLY the arrival state, reached by the final actual blade collision at the END of the eight seconds, not a pose to assume early.\n\nCHOREOGRAPHY: THREE DELIBERATE BLADE-TO-BLADE CONTACTS. Stay within effective sword distance. Both blades move into ONE SHARED CONTACT LOCATION in the open space halfway between their torsos and visibly HIT one another. The defending blade must move into the ATTACKING BLADE'S TRAJECTORY. It cannot remain parked beside the defender while the other sword passes through open air. The two rigid steel edges meet at their middle sections, arrest one another, then deflect or rebound. Show contact rather than merely a crossing projected from different depths. No body is cut.\n\nFIRST EXCHANGE, opening to about 2.5 seconds: Dante takes one driving planted step and cuts diagonally downward toward Vergil's upper guard. Vergil bends his knee and raises Yamato diagonally ACROSS THE PATH of the descending Rebellion. They strike at the SAME point IN BETWEEN the two bodies around 1.2 seconds. The broad blade visibly STOPS against the katana, both wrists/arms receive the load AFTER contact and Vergil yields a planted half-step. Maintain actual blade pressure briefly as he guides Rebellion outward; let the two distinct blades SCRAPE along one another before separating. Dante's torso follows his redirected momentum and catches his balance with his next boot, water splashing outward.\n\nSECOND EXCHANGE, about 2.5 to 5.8 seconds: From that deflection, Vergil makes ONE compact horizontal counter-cut into Dante's raised interception. Dante's Rebellion moves forward into the Yamato's actual arc and the steel MIDDLE SECTIONS collide clearly around 4.8 seconds, at the center between them. Each fighter receives the mechanical reaction; the swords visibly check and rebound a little rather than cutting through or continuing unchanged. The center of mass shifts, knees absorb load and both use real pivots to stay balanced. Separate only far enough to prepare the final strike. No extra flourish, air slash, blade spin or repeated overhead swing fills this interval.\n\nFINAL EXCHANGE, about 5.8 to 8 seconds: Dante loads his rear foot and shoulders for ONE final descending Rebellion cut; Vergil steps into a braced angled interception. At about 7.6 seconds the SAME TWO STEEL BLADES PHYSICALLY COLLIDE again, stop and settle under pressure into the exact crossed X, close body spacing, grips and camera viewpoint of the supplied END frame. Dante is close in the right foreground, Vergil is behind/left as in that image, both legs braced. Keep each hilt, hand and blade on its correct owner. Their faces orient toward each other and the loaded X remains between chests, below the faces. Last frames continue real pressure, breath, rain and forward camera momentum into the reference arrival; no freeze, sudden rearrangement or dissolve.\n\nPHYSICS: foot support -> hip/shoulder drive -> rigid blade arc -> actual collision -> steel deflection and bodily reaction -> recovery. The two blades must meet in the SAME THREE-DIMENSIONAL SPACE and obstruct each other's path, never just pass at different depths. Forceful but controlled human mechanics, both opponents active. Every translation has a step or planted pivot, without skating. Steel remains rigid and the original length. Hands stay on their own grips; blade edges never pass through the other sword, skin, cloth or scabbard. Hair and soaked coats follow acceleration after the body. The visual proof of impact is a stopped/redirected blade and a loaded body, not a bright flash. Keep the small contact zone visible, without sparks or flare masking it.\n\nCAMERA: One continuous operated wide two-shot during the first two exchanges, with a short grounded lateral tracking move that shows both grips, the full blade contact area and planted feet. Remain on the same side of the action axis, blue left and red right. Favor readable steel collisions over orbiting. In the last exchange dolly forward into the exact view and active movement shown by the END frame, so the same forward camera approach can continue beyond it. Same distant tower, carved left column and wet parapet with consistent parallax. No cut, whip-pan, zoom pulse, lighting flash or slow motion at the contacts. Natural live-action skin, metal, rain and heavy leather. Exactly two actors and their two swords plus one empty sheath; no duplicated limbs/props, magic, blood, text or logos.",
+      "width": 1536,
+      "height": 864,
+      "length": 192,
+      "first_frame": [
+        "18",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  }
+}

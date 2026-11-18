@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sprite Animation"
+  short_description: "Animação de sprites em Phaser e os princípios de animação aplica"
+  default_prompt: "Use $sprite-animation para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

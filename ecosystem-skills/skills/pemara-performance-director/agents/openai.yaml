@@ -1,0 +1,4 @@
+interface:
+  display_name: "Atuação e performance Pemara"
+  short_description: "Dirija intenção, gestos, reação e peso dos personagens"
+  default_prompt: "Use $pemara-performance-director para melhorar esta produção de vídeo com decisões concretas e evidências."

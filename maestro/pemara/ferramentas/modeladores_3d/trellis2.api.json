@@ -1,0 +1,1 @@
+{"1": {"class_type": "LoadImage", "inputs": {"image": "modeladores_3d_official_sample.png"}}, "2": {"class_type": "MaestroGame3D", "inputs": {"image": ["1", 0], "engine": "trellis2", "seed": 43}}}

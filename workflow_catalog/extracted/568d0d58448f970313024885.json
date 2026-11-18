@@ -1,0 +1,306 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Condition_fb4cc15f89cb304003cb4693.png"
+    },
+    "is_changed": [
+      "fb4cc15f89cb304003cb46935d106949ad58d649df84cea549af02c5060f4b65"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 896,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "The EXACT SAME adult woman Helena from the complete body reference, same mature oval face, nose, jaw, eyes, brown low bun, beige rolled sleeve collared shirt, blue jeans, brown worn boots and brown crossbody satchel on her ANATOMICAL LEFT hip. Preserve her exact head size, body proportions, age, outfit and detailed hand-painted pixel-art shading. No redesign or beautification. One coherent whole-body 2D drawing each moment, never a cutout puppet. Fixed orthographic camera and uniform charcoal background. Whole head, both hands, boots and all equipment always visible with generous margins. Same location, scale and ground baseline. Same complete Helena, ONE Boito stays secured on her back sling. Her RIGHT thumb and index ALREADY PINCH the actual small BRASS KEY at the lock, after its quarter turn. Complete ONLY its retrieval and deposit: pull the SAME tiny key straight OUT of the existing lock, keep its bow firmly pinched, flex that elbow to bring the held key DIRECTLY to her actual anatomical LEFT hip satchel. Open the existing flap with her left hand if needed, put the key down INTO that bag and release it only INSIDE the bag. Then both hands relax. There is NO throw, hand flick, dropping, waving, offering or second key; the key cannot fly away, fall to floor, vanish in air, remain in lock or duplicate. It travels attached to her pinching fingers until it enters the bag. Fixed plate and camera stay completely still; exact original mature face, bun, shirt, jeans, boots, left satchel and original gun; small natural torso movement and planted boots, same full-body framing."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "different woman, changed face, teenager, anime, 3d, photograph, different clothes, loose hair, ponytail, jacket, missing bag, duplicate bag, mirrored bag, missing boots, extra limbs, extra hands, extra fingers, body cutout, cropped feet, cropped head, cropped weapon, morphing weapon, stretching, shrinking, zoom, camera movement, text, watermark, blur, ghosting, thrown key, flying key, dropped key, fading key, key left in lock, second gun, empty finger pantomime"
+    }
+  },
+  "16": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "width": 896,
+      "height": 864,
+      "length": 33,
+      "batch_size": 1,
+      "start_image": [
+        "12",
+        0
+      ],
+      "end_image": [
+        "23",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 2810650001,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 2810650001,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_Unified_Helena_run01/key_boito_west_withdraw_into_satchel_v3",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Condition_bfb2db398c3df408338cd923.png"
+    },
+    "is_changed": [
+      "bfb2db398c3df408338cd923b68aad48b29fe4c3e0f5d3f6c2391adba54af498"
+    ]
+  },
+  "24": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_Unified_Helena_run01/native_next/key_boito_west_withdraw_into_satchel_v3",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

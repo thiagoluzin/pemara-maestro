@@ -1,0 +1,26 @@
+{
+  "schema": "pemara.score-first.inspect.v1",
+  "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first\\partitura_candidata.mid",
+  "sourceSha256": "0fa1944a51b3e4b4577b4925d10292e3c670b96d91906d4629c9c758b1ed29fd",
+  "midiType": 0,
+  "ticksPerBeat": 480,
+  "noteCount": 4,
+  "trackCount": 1,
+  "tracks": [
+    {
+      "sourceTrack": 0,
+      "sourceName": "Original technical guitar fixture for Maestro roundtrip validation",
+      "channel": 0,
+      "program": 27,
+      "drums": false,
+      "noteCount": 4,
+      "pitchMin": 40,
+      "pitchMax": 64,
+      "medianPitch": 49.5
+    }
+  ],
+  "timingIssues": [],
+  "technicalPass": true,
+  "scoreReviewRequired": true,
+  "orchestrationAllowed": false
+}

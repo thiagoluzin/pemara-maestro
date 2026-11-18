@@ -1,0 +1,256 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Continue the already-playing young Dante from the EXACT moving endpoint photograph. This is the NEXT eight seconds of the SAME live-action Nevan solo, not the beginning of another show. Same youthful angular face, white fringe, red worn leather coat with tall collar and brown chest harness, dark trousers and boots, same purple-blue Nevan and same opera stage. Begin with his raised gaze, small confident grin, both feet in the inherited stance, right hand already over the strings and left hand on the short neck. Preserve the exact instrument outline, broad flat wing/blade plates and small upper apertures, compact central string bed and SHORT twisted neck with pointed headpiece. No new frets, ring, long neck, scythe transformation, extra hand or additional person. The original GPT photograph remains the identity standard; this start frame supplies only the actual pose and camera state.\n\nCAMERA IS THE MAIN NEW DIRECTION: make a substantial, smooth physical camera ARC of roughly thirty-five degrees toward Dante's RIGHT/strumming-hand side, staying in the FRONT hemisphere of the stage. This is visibly more dynamic than the previous restrained dolly. The camera actually travels laterally along a curved track; it does not merely rotate, zoom or slide a flat background. Start from the inherited low full-body position and carry the motion into a modest rise toward waist height and a small forward move. The near carved pillar changes position against the distant balcony, the guitar's front and side planes turn coherently and the stage floor perspective changes. The purpose is to reveal the strumming hand working against the bladed body, then include Dante's confident response. No axis reversal, teleport, hidden cut, rapid spin, whip-pan, shake, 360-degree orbit or background wipe. Preserve continuous camera mass and an even cinematic pace.\n\nAt the start, show his complete body and the ENTIRE weapon with room for the blade tips. By the last seconds the camera may gradually arrive at a closer head-to-mid-shin composition, but BOTH hands, face and the COMPLETE Nevan remain clearly inside the vertical frame throughout. Do not approach so close that the blade tips or spear-shaped headpiece leave the image. No extreme close-up; the instrument's silhouette and contact are more important than a bigger face. Maintain believable photographed skin and leather through the new angle.\n\n0.00–2.30 seconds: Continue the ongoing riff immediately, with no silent lead-in, initial tuning gesture, return to the old first pose or repeated discovery. Dante looks into the hall with the inherited confident expression and shifts his weight through his knees. His right wrist makes readable alternating strokes over the string bed; his left fingers make short deliberate changes along the same compact neck. The camera begins its curved lateral travel and rises smoothly, revealing the first clear change in perspective. Hair and coat tails respond independently to torso movement.\n2.30–5.60 seconds: He leans into a punchier syncopated guitar phrase, bends one knee and raises the neck only a little, rotating the ENTIRE rigid instrument as one object while its broad body remains supported against his hips. The left hand keeps ownership of the neck and the right keeps ownership of the strings. He briefly looks toward his picking hand then lifts his gaze back toward the room, enjoying the performance. Small violet electrical accents answer the played notes and light the nearby glove edges, without hiding fingers or changing the weapon geometry. The camera completes most of its thirty-five-degree arc and its modest height change; the front of the string bed stays readable.\n5.60–8.00 seconds: He returns the instrument to a comfortable across-the-hips playing angle and launches one higher lead response with several coherent wrist strokes, shoulders and head giving a restrained rhythmic accent. This is the same evolving performance, not a loop. The camera adds the last small forward component as it finishes the curved track, retaining his face and the whole bladed prop with margin. End in active playing, with fingers, breathing, hair and coat still moving, not a held pose or final show-ending chord. Keep the same stage geography and motivated warm lamps; no new doorway, set, crowd, weapon, costume or power stage.\n\noverall_soundscape: A continuous diegetic distorted heavy-metal guitar phrase is already underway on the first frame, then becomes a punchier rhythmic passage and one short higher lead response. Notes follow visible string strokes and left-hand changes; no return to the isolated test note, no new intro, silence, crowd, drummer, backing band, speech, singing, narration or voice. Maintain the same reverberant empty opera room, subtle leather/boot movement and sparse electric crackle. Preserve this take's own native synchronized H3 soundtrack.\n\nnon_diegetic_music: N/A.\n\n[FIXED CHARACTER IDENTITY]\ndante: Exactly one young adult male Dante, same GPT-approved angular face and proportions, fair skin, clean-shaven, shaggy silver-white fringe, same natural eye material.; Same open long crimson leather DMC3 coat, raised collar, structured shoulders, brown harness webbing/strap and metal buckles, dark trousers, fingerless gloves and boots.; Exactly one Nevan guitar: broad flat violet-blue asymmetric bladed body with three unequal wing/blade tips, small upper teardrop apertures, compact string bed, short thick twisted neck and spear-shaped headpiece.; Right hand owns the string-bed strumming; left hand owns the short neck. Preserve five fingers per hand and physical contact; instrument never grows a conventional fretboard, circular hoop or extended scythe.; Same photographed opera stage, pillars, violet curtains and warm practical lights. No additional actor, enemy, audience, microphone, dialogue, singing, logo or text.; Real skin, hair strands, weighted leather and prop metal. No game shading, animation, plastic face, costume redesign, new damage, wetness or color transformation.\nPersistent state: {\"entry\": {\"damage\": [\"Existing worn leather and stage wear visible in approved image; no new injury.\"], \"dirt\": 1, \"wetness\": 0}, \"exit\": {\"damage\": [\"Existing worn leather and stage wear visible in approved image; no new injury.\"], \"dirt\": 1, \"wetness\": 0}}",
+      "width": 768,
+      "height": 1344,
+      "length": 192,
+      "first_frame": [
+        "approved_start",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611020502
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_20261102/video/T02_Nevan_camera_arc_native_v01",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "approved_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/T01_frame191_APPROVED_MOVING_ENDPOINT.png"
+    }
+  }
+}

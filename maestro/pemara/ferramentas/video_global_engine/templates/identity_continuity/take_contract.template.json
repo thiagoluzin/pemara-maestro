@@ -1,0 +1,32 @@
+{
+  "identityContinuityRequired": true,
+  "identityContinuity": {
+    "bible": {
+      "path": "character_bible.json",
+      "sha256": ""
+    },
+    "firstTake": true,
+    "states": {
+      "character_1": {
+        "entry": {
+          "dirt": 0,
+          "wetness": 0,
+          "damage": []
+        },
+        "exit": {
+          "dirt": 0,
+          "wetness": 0,
+          "damage": []
+        },
+        "physicalChangeReason": ""
+      }
+    },
+    "anchorReview": {
+      "status": "PENDING",
+      "reviewer": "",
+      "notes": "",
+      "bibleSha256": "",
+      "artifacts": []
+    }
+  }
+}

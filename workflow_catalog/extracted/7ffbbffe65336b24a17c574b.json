@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Dramatic British heavy metal, heavy distorted twin guitars, active galloping bass, strong male tenor, urgent drums, dark harmonic turns. 162 BPM, A minor. a stark three-note bell-like motif becomes a violent guitar riff; climax with harmonized leads. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nThe iron throat screams its hollow song\nEach clang of bronze pulls the dawn along\nA minute gone, a shadow stretched\nThe village waits for the light to be fetched\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Verse]\nKeeper's hands bleed on the frozen rope\nCounting seconds as the world stops\nThe keeper climbs through the freezing air\nTo silence the monster that is always there\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Bridge]\nHammer strikes the resonant ring\nThe future shatters, the silence clings\nOne last toll, one last breath held tight\nThe sun is gone, swallowed by the night\n\n[Solo]\n(Twin guitars harmonize in violent A minor scales)\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Outro]\nSilence remains, the sky is dead\nThe keeper falls, the world is fled",
+      "abc": "",
+      "seed": 202610166003,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166003,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/04_the_bell_that_eats_the_sky_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

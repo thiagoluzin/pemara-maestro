@@ -1,0 +1,59 @@
+{
+  "sourceZip": "C:\\Users\\admin_remoto\\Downloads\\ZICO_AUDIO_STUDIO_1.0_WINDOWS_RTX5090_FINAL.zip",
+  "schemaVersion": 1,
+  "sourceSha256": "E20111B52AFC76F5B49B595423A9E38DF0AAD51F17AE4F80B069B1544C3D7120",
+  "engines": [
+    {
+      "id": "chatterbox",
+      "status": "Ambiente existente reutilizado; 0.1.7",
+      "label": "Chatterbox PT-BR",
+      "python": "E:\\Pemara\\maestro\\pemara\\ferramentas\\chatterbox\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "id": "qwen3_tts",
+      "status": "Ambiente existente reutilizado; 0.1.1",
+      "label": "Qwen3-TTS",
+      "python": "C:\\PemaraAI\\qwen3-tts\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "id": "ace_step",
+      "status": "Pipeline existente do Maestro preservado",
+      "label": "ACE-Step 1.5"
+    },
+    {
+      "id": "fish_speech",
+      "status": "Teste de geração GPU passou: WAV 44,1 kHz; qualidade da voz aguarda avaliação",
+      "label": "Fish Speech",
+      "python": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\fish\\repo\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "id": "mmaudio",
+      "status": "Teste de geração GPU passou com vídeo sintético; efeitos aguardam avaliação artística",
+      "label": "MMAudio",
+      "python": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "id": "ffmpeg",
+      "status": "Validado com teste CPU; WAV 48 kHz/24-bit",
+      "label": "FFmpeg — mix/master"
+    }
+  ],
+  "validation": {
+    "testsPassed": 24,
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "architecture": "sm_120",
+    "gpuInferenceTested": false,
+    "fishSource": "befe4001745417f8c42131739d862b8a6fdbd15a",
+    "mmaudioSource": "974010a026c731054592d8f777218bd9d85a6c24",
+    "inferenceTests": {
+      "fish_speech": "D:\\PemaraRuntimes\\maestro-game-ai\\logs\\smoke-fish-2ebe7b1b\\receipt.json",
+      "mmaudio": "D:\\PemaraRuntimes\\maestro-game-ai\\logs\\smoke-mmaudio-333461c5\\receipt.json"
+    }
+  },
+  "activation": {
+    "initialAudioRouter": "active_on_8029",
+    "expandedNativeRoutes": "active_on_8029_revision_2",
+    "reason": "Windows elevation accepted; Studio restarted and live routes verified on 2026-09-13"
+  }
+}

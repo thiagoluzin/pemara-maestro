@@ -1,0 +1,129 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Create a clean studio catalog photograph of ONE nonfunctional decorative videogame prop replica of the Resident Evil 2 REMAKE 2019 Lightning Hawk with its LONG black upper barrel and the red dot sight. Reference image 1 is the authoritative exterior silhouette, black long upper, silver lower frame, brown wooden grip borders with black textured K-shaped inset. Ignore and REMOVE the detached short silver upper shown below it. Reference image 2 is the exact compact tubular black red-dot optic to depict attached on top of the long upper rail. Show the entire assembled prop in a left side profile, barrel pointing left, grip downward, level axis. Preserve the unusually long black upper silhouette and two-tone materials. Center the object with comfortable white margins, plain pure white background, soft even product lighting, sharp details, no pedestal, no hands, no loose components, no captions, no dimensions, no diagram. Static exterior display prop only.",
+      "negative_prompt": "collage, multiple objects, spare barrel, hands, cropped object, short barrel, rifle scope",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "11",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 230923,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "lightning_hawk_re2/pilot"
+    }
+  },
+  "9": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "lh_official_profile.jpg"
+    },
+    "is_changed": [
+      "66a9e6e13a975521c59a7827cdaf157718a1d8d8d04abd92a5ac2e0e90f1132c"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 1024,
+      "crop": "disabled"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "lh_game_sight.png"
+    },
+    "is_changed": [
+      "cbe3190186b1eb8d179f0611ef83d9103f72dccee941bd22103a9469d0eb131f"
+    ]
+  }
+}

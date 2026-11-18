@@ -1,0 +1,7 @@
+{
+  "checked_at": "2026-11-11T14:46:52.2282681-03:00",
+  "boot": "2026-11-11T14:31:58.5000000-03:00",
+  "nvidia_display_whea_errors_since_boot": 0,
+  "gpu_query": "NVIDIA GeForce RTX 5090, 616.64, 51, 1813 MiB, 0 %\r\n",
+  "events": []
+}

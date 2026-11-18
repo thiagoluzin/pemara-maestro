@@ -1,0 +1,336 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "endpoint": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "Goku_God_P03_native_last_kinetic.png"
+    }
+  },
+  "encode": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is the sole canonical identity reference: the SAME photographed adult human Goku in his completed Super Saiyan God state. SHORT CRIMSON asymmetric swept hair and forehead bangs; natural red eyebrow hairs present, ordinary anatomical eyes with dark pupils and deep red irises. Exact face/jaw/nose/pores/build, persistent scratches/dirt and torn orange woven gi over navy shirt, blue sash/wraps/boots. Same rocky island and landmarks. The actual first and last guide frames are the approved movie's same full-body God guard, defining camera distance, pose, ground contacts and RED FLAME aura at the beginning and end of this shot.\n\nintegrated_multimodal_description: [Shot 1] Continue immediately from that inherited whole-body guard, one uninterrupted photoreal LIVE-ACTION WIDE HEAD-TO-TOE shot at normal speed, lasting9.4167s. Constant camera distance, body scale and focal perspective. Complete hair, both hands, knees, BOTH BOOTS and ground under both soles remain inside the frame with generous margins throughout. Same camera side/axis, teal water behind/left and mesas, continuous daylight/materials. Only a very shallow lateral operator drift at constant radius is allowed, returning smoothly to the actual final guide perspective. The same boots remain planted on the same rock patch.\n\nThe single transformation is already COMPLETE and the existing yell has ended. First0..3s: continue the incoming guard, absorb the remaining pressure through visible knee flexion and pelvis shift, with a small chest counter-rotation and elbows adjusting within guard. From3..6s: recover the hips/chest forward over the grounded legs; lower the rear forearm modestly toward the lower chest while keeping the forward hand ready and looking toward the same unseen opponent off-camera right. From6..9.4167s: settle the weight adjustment and bring the rear forearm back into the original purposeful guard, arriving at the actual final guide's grounded full-body stance. Hair/sash respond independently with inertia. These are real asymmetric knee, hip, torso and arm changes, not a still portrait, repeated fist pumping or a second power-up.\n\nThe divine aura is a translucent RED FLAME around this already-red-haired man for the entire shot. Its shape and bright core remain red/orange like BOTH actual guide frames; it continues red through recovery and the final frame. Red energy softly lights cloth and rocks, preserving natural skin. No blue or cyan aura, blue lightning halo, circular energy ring, power-color change, gold reversion, new transformation, extra yell or attack. The blue sash/boots remain physical clothing, distinct from the red aura. No camera approach, zoom, face insert, closeup, cut, dissolve, pose reset, enlarged jaw, glowing white eyes, anime, illustration or plastic skin. No extra cast, flight, costume change, cleaned scratches or new damage.\n\noverall_soundscape: Fixed original approved recovery breath/effects at unchanged clock, pitch, gain and speed. Original full30 samples664000..960000 supply the delivered9.25s ending; the extra native tail is preserved separately. The source has no new yell, words, voice, dialogue, singing, music, score, choir or instruments. Final30 uses the full original waveform directly.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 226,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "god_photo",
+        0
+      ]
+    }
+  },
+  "first": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "endpoint",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "last": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "endpoint",
+        0
+      ],
+      "frame_idx": -1
+    }
+  },
+  "audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_God_suffix_v03_exact_with_native_tail.wav"
+    }
+  },
+  "fixed_audio": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "last",
+        0
+      ],
+      "latent": [
+        "encode",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 291030940
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "fixed_audio",
+        0
+      ]
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "encode",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "save_latent": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "filename_prefix": "goku_ssj_deus_20261029/suffix_endpoints_v03/video"
+    }
+  },
+  "video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "audio": [
+        "audio",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video",
+        0
+      ],
+      "filename_prefix": "goku_ssj_deus_20261029/suffix_endpoints_v03/Goku_God_suffix_RED_native226",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "god_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj_deus_DLSS5_v01.png"
+    }
+  }
+}

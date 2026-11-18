@@ -1,0 +1,4 @@
+interface:
+  display_name: "Planning and Task Breakdown"
+  short_description: "Entrada de decomposição da família project-planner quando"
+  default_prompt: "Use $planning-and-task-breakdown para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

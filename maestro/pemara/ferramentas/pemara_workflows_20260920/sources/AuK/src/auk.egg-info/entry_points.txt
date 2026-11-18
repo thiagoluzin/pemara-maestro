@@ -1,0 +1,3 @@
+[console_scripts]
+auk-gradio = auk.infer.infer_gradio:main
+auk-infer = auk.infer.infer_cli:main

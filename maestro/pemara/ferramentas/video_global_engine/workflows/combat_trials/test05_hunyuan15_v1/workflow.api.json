@@ -1,0 +1,277 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "clip_name2": "byt5_small_glyphxl_fp16.safetensors",
+      "type": "hunyuan_video_15",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "A continuous ten-second live-action martial-arts exchange between the EXACT two adult human actors in the opening image. Preserve their faces, masks, proportions, yellow-and-black fighter initially LEFT, blue-and-black fighter initially RIGHT, practical cloth costume textures and the stone courtyard. Preserve the exact waist accessories from the opening image. Keep the same medium-wide side camera and both full bodies and boots visible; restrained tracking follows their retreat.\n\nThey are already fighting when the shot begins. FAST, COMPACT COMBINATIONS at real fighting speed, with immediate counters. The next attacker commits while the previous attacking hand is returning. Both read the opponent and react instantly, keeping eyes engaged. A punch accelerates out, touches, and whips straight back in a fraction of a second. A kick snaps out, its knee immediately folds back, and the boot lands. The receiver keeps recoiling AFTER the striking limb has separated. Short connected actions, not individual poses.\n\nOpening combination: the blue fighter snaps the opening RIGHT straight into the yellow fighter's LEFT forearm block, instantly withdraws it and fires a short LEFT hook into the upper abdomen. the yellow fighter folds briefly and takes a catching step; during the blue fighter's retraction the yellow fighter immediately answers with a quick LEFT jab toward the guard. the blue fighter advances after his punches, the yellow fighter counters during his forced recovery. This whole opening exchange takes only about two seconds.\n\nContinue without a pause: the yellow fighter drives a RIGHT cross at the blue fighter's cheek/upper guard, recoils the fist and immediately snaps a LEFT front kick into the torso. the blue fighter is driven bodily backward and takes two distinct hurried catching steps. the yellow fighter retracts and lands the kicking boot immediately, then follows the retreat. During that pursuit the blue fighter catches his weight, plants and pivots the LEFT support boot and whips his RIGHT shin into the OUTSIDE of the yellow fighter's forward thigh. He retracts and lands at once. the yellow fighter's knee yields, his pelvis shifts sideways and the other boot catches his weight. The punches, front kick, pursuit and low counter-kick flow through the middle of the shot.\n\nClosing combination: the blue fighter immediately adds a short LEFT straight into the yellow fighter's recovering high guard. the yellow fighter parries and counters with a quick RIGHT straight. the blue fighter recoils, takes a short catching step and immediately returns a RIGHT straight toward the yellow fighter's cheek/guard. the yellow fighter's head, shoulders and hips are knocked back after contact and a forced step catches him as the blue fighter follows. End during the pursuit and recovery, still active.\n\nNine distinct quick strikes in ten seconds. Punches transfer weight through the hips; stronger body hits force catching steps, blocked jabs cause smaller recoils. Recovery itself flows into the next defense or counter. No stopping to consider the next move, no idle bouncing, no automatic return to the opening pose. Never leave a fist pressed against a face, forearm or torso; never balance with a kicking leg held against the opponent. No rigid sliding feet, floating boots or drunken swaying. Preserve real skin, cloth, hair and costume detail. No cuts, orbiting, camera shake, flashes, powers, transformations, blood, extra people or text.",
+      "clip": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cartoon, animation, video game render, plastic skin, extra people, extra limbs, duplicate hands, fused bodies, identity change, costume change, floating feet, causeless falling, slow motion, freeze, static ending, cut, teleport, morph, text, watermark, sword, katana, long blade, scabbard, new weapons, double exposure, ghost limbs, translucent bodies, duplicated contours, glowing streaks, aura, jumping, spinning, posing, waiting",
+      "clip": [
+        "2",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "hunyuanvideo15_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "scorpion_subzero_hunyuan_classic_20261110/A01_APPROVED_54c6af10adcf.png"
+    }
+  },
+  "7": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "7",
+        0
+      ],
+      "image": [
+        "20",
+        0
+      ],
+      "crop": "center"
+    }
+  },
+  "9": {
+    "class_type": "HunyuanVideo15ImageToVideo",
+    "inputs": {
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "width": 1280,
+      "height": 720,
+      "length": 241,
+      "batch_size": 1,
+      "start_image": [
+        "20",
+        0
+      ],
+      "clip_vision_output": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "hunyuan_safe_acceleration",
+        0
+      ],
+      "shift": 7.0
+    }
+  },
+  "11": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 25,
+      "denoise": 1.0
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 63478192
+    }
+  },
+  "13": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler",
+      "noise_seed": 202611082204
+    }
+  },
+  "14": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "hunyuan_sol_attention",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ],
+      "cfg": 6.0
+    }
+  },
+  "15": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "14",
+        0
+      ],
+      "sampler": [
+        "13",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "9",
+        2
+      ]
+    }
+  },
+  "16": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 4096,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "fps": 24.0
+    }
+  },
+  "18": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "17",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v08_TEST05_clone_25",
+      "format": "mp4",
+      "codec": "h264",
+      "format.codec": "h264"
+    }
+  },
+  "19": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v08_TEST05_clone_25"
+    }
+  },
+  "hunyuan_content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "20": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "target_width": 1280,
+      "target_height": 720,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "hunyuan_safe_acceleration": {
+    "class_type": "PemaraHunyuan15SafeAcceleration",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "sage_mode": "fp8_fp32_accum",
+      "disable_dynamic_vram": true,
+      "metrics_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v08_TEST05_clone_25"
+    }
+  },
+  "hunyuan_sol_attention": {
+    "class_type": "BlockSparseAttention",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "selection": "sol-attn",
+      "selection.tau": 1.0,
+      "start_percent": 0.1,
+      "end_percent": 0.9,
+      "dense_blocks": "0-1,52-53",
+      "min_tokens": 12288,
+      "extra_tokens": 256,
+      "sink_conditioning": "off",
+      "verbose": true
+    }
+  }
+}

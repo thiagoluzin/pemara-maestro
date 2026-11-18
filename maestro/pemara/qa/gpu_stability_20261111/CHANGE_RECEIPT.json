@@ -1,0 +1,40 @@
+{
+  "changed_at": "2026-11-11T17:38:32.214239+00:00",
+  "owner_request": "Reseta e corrigi isso segunda vez ja em pouco tempo",
+  "files": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\tools\\comfy_lifecycle.py",
+      "backup": "E:\\Pemara\\maestro\\pemara\\qa\\gpu_stability_20261111\\comfy_lifecycle.py.before",
+      "sha256_before": "a3636a0a3b4c622e6265c657c24a4977adf8256def79c31c2f31cc1fa4401b1e",
+      "sha256_after": "d4a4c414da67649599fdaa4a2e35025b2679f43c93735a6b9f36cb9eaa51c2e2"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\AppData\\Local\\comfy-cli\\config.ini",
+      "backup": "E:\\Pemara\\maestro\\pemara\\qa\\gpu_stability_20261111\\config.ini.before",
+      "sha256_before": "ed5f756e1f58fce434e8be4756a47039e94caac2372f14bd9cc6bcf736fbc474",
+      "sha256_after": "bdf0e7b94b453d6f7b638cbc7a9059ae79be1d321c280c689de1dae65dbb4512"
+    }
+  ],
+  "purpose": "Conservative stability mitigation after two GPU-lost incidents, not a proven hardware or driver root-cause fix",
+  "changes": [
+    "remove fast fp16_accumulation",
+    "disable dynamic vram loading",
+    "disable async weight offload",
+    "reserve 4GB VRAM for OS"
+  ],
+  "unchanged": [
+    "driver packages",
+    "CUDA/PyTorch packages",
+    "model weights",
+    "media sources",
+    "TDR registry",
+    "power limit"
+  ],
+  "validation_pending": [
+    "restart empty server",
+    "verify exact live flags",
+    "bounded CUDA test",
+    "one isolated Wan workflow",
+    "system event comparison"
+  ]
+}

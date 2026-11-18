@@ -1,0 +1,261 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 30.67-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single uninterrupted cinematic live-action shot based on Leon A first Licker discovery in Resident Evil 2 (1998). The same youthful adult male officer Leon Kennedy from the first and last reference images keeps exactly the same face, chestnut curtain-parted hair, cobalt blue short-sleeved RPD uniform, padded vest, blue elbow protectors and black fingerless gloves. The narrow first-floor west corridor keeps its gray-green plaster, dark teal lower walls, wood-framed windows and failing fluorescent tubes. 0-9 seconds: camera slowly tracks backwards ahead of Leon as he takes cautious quiet steps, pistol down, gaze searching; 9-16 seconds: he slows and stops on hearing a wet scratching sound above, notices a falling saliva drop, brow tightens, eyes and chin gradually lift; 16-24 seconds: camera gently tilts upward and widens, revealing an eyeless skinless red muscular Licker gripping the ceiling with four limbs, exposed brain, ivory sickle claws, long wet tongue; 24-30.67 seconds: Leon raises the same handgun in a controlled two-handed stance, recoils one half-step, takes a sharp breath and watches the creature while its tongue sways and its claws shift against plaster. The endpoint matches the last reference frame. Anatomically credible separated human and quadruped, grounded weight, tactile costume and moist organic material, subtle film grain, readable facial detail, practical low-key lighting. The encounter remains unresolved; his pistol never fires. The camera motion continues gently without an editorial cut.\n\noverall_soundscape: Native synchronized stereo sound: measured boot steps with corridor reverberation, soft uniform movement, failing fluorescent hum, faint rain beyond windows, wet claw scraping from ceiling, isolated saliva drip, Leon breathing and a brief startled inhale, Licker throat rasp and moist tongue movement. Sparse silence between noises creates tension. No narration or spoken dialogue.\n\nnon_diegetic_music: N/A",
+      "width": 1344,
+      "height": 768,
+      "length": 736,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "20",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "20",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 19980121
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "pemara_face_refine_15",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "RE2_LEON_FIRST_LICKER/T01_master_native_audio_face_refine_attempt01",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "re2_leon_licker_start_candidate_v1.png"
+    }
+  },
+  "19": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "re2_leon_licker_end_candidate_v1.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_face_refine_15": {
+    "class_type": "PemaraH3FaceRefine",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "source_prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 30.67-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] A single uninterrupted cinematic live-action shot based on Leon A first Licker discovery in Resident Evil 2 (1998). The same youthful adult male officer Leon Kennedy from the first and last reference images keeps exactly the same face, chestnut curtain-parted hair, cobalt blue short-sleeved RPD uniform, padded vest, blue elbow protectors and black fingerless gloves. The narrow first-floor west corridor keeps its gray-green plaster, dark teal lower walls, wood-framed windows and failing fluorescent tubes. 0-9 seconds: camera slowly tracks backwards ahead of Leon as he takes cautious quiet steps, pistol down, gaze searching; 9-16 seconds: he slows and stops on hearing a wet scratching sound above, notices a falling saliva drop, brow tightens, eyes and chin gradually lift; 16-24 seconds: camera gently tilts upward and widens, revealing an eyeless skinless red muscular Licker gripping the ceiling with four limbs, exposed brain, ivory sickle claws, long wet tongue; 24-30.67 seconds: Leon raises the same handgun in a controlled two-handed stance, recoils one half-step, takes a sharp breath and watches the creature while its tongue sways and its claws shift against plaster. The endpoint matches the last reference frame. Anatomically credible separated human and quadruped, grounded weight, tactile costume and moist organic material, subtle film grain, readable facial detail, practical low-key lighting. The encounter remains unresolved; his pistol never fires. The camera motion continues gently without an editorial cut.\n\noverall_soundscape: Native synchronized stereo sound: measured boot steps with corridor reverberation, soft uniform movement, failing fluorescent hum, faint rain beyond windows, wet claw scraping from ceiling, isolated saliva drip, Leon breathing and a brief startled inhale, Licker throat rasp and moist tongue movement. Sparse silence between noises creates tension. No narration or spoken dialogue.\n\nnon_diegetic_music: N/A",
+      "fps": 24.0,
+      "seed": 19980121,
+      "filename_prefix": "RE2_LEON_FIRST_LICKER/T01_master_native_audio_face_refine_attempt01",
+      "enabled": true,
+      "steps": 12,
+      "denoise": 0.45,
+      "canvas_size": 512,
+      "detector": "human",
+      "confidence": 0.5,
+      "audio": [
+        "18",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "PEMARA — Face Refine automático (original preservado)"
+    }
+  }
+}

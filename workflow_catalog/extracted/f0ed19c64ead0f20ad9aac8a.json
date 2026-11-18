@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive, distorted electric guitars, double bass drums, fast tempo, harsh male vocals, technical riffs\nShort complete song, target duration 30 seconds. Start singing immediately; no long instrumental intro. Prioritize the verse and chorus.",
+      "lyrics": "[Verse]\nBlade of steel, cutting deep\nMachines wake while the city sleeps\nChains of gold, binding hands\nBuilding empires on shifting sands\n\n[Chorus]\nGrip the wire, pull the thread\nDead men dancing in their heads\nMaster of the iron song\nWhere the rhythm and the blood belong",
+      "seed": 4074365682,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+*.pyd
+*.obj
+*.lib
+*.exp
+*.pdb
+*.ilk
+.eggs/
+
+# Logs and local notes
+*.log
+build.log
+build_repack.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.vs/
+*.swp
+*~
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Env
+.venv/
+venv/
+.env
+
+# Local test / evaluation artifacts
+/test
+evaluate/
+*.pkl
+*.mp4
+bench_qk_int8_pv_fp8_cuda_head96.py
+*test.py
+*unmask.py

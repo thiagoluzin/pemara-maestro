@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Iron Maiden-inspired, Dramatic British heavy metal, heavy distorted twin guitars, active galloping bass, strong male tenor, urgent drums, dark harmonic turns. 162 BPM, A minor. a stark three-note bell-like motif becomes a violent guitar riff; climax with harmonized leads. Iron Maiden style British heavy metal, galloping bass, twin lead guitars, male tenor, dark and urgent, A minor.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro Riff 0-18s; Verse 1 18-68s; Chorus 1 68-108s; Verse 2 108-160s; Chorus 2 160-200s; Bridge & Solo 200-250s; Final Chorus & Outro 250-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=162, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nThe iron throat screams its hollow song\nEach clang of bronze pulls the dawn along\nA minute gone, a shadow stretched\nThe village waits for the light to be fetched\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Verse]\nKeeper's hands bleed on the frozen rope\nCounting seconds as the world stops\nThe keeper climbs through the freezing air\nTo silence the monster that is always there\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Bridge]\nHammer strikes the resonant ring\nThe future shatters, the silence clings\nOne last toll, one last breath held tight\nThe sun is gone, swallowed by the night\n\n[Solo]\n(Twin guitars harmonize in violent A minor scales)\n\n[Chorus]\nThe bell eats the sky, it swallows the sun\nEvery toll is the race that's run\nBreak the bronze, cut the tongue\nOr the morning ends where the dusk has begun\n\n[Outro]\nSilence remains, the sky is dead\nThe keeper falls, the world is fled",
+      "seed": 202610161003,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

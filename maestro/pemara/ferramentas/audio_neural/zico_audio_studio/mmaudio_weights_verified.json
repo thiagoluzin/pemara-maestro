@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\synchformer_state_dict.pth",
+    "bytes": 950058171,
+    "sha256": "8aff082f2df5c3bc52759db0c865c7ee772ae6400b860d1b7e90413f2defb67c"
+  },
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\v1-44.pth",
+    "bytes": 1221942998,
+    "sha256": "ab6cc15dc31947675f75c950c41f4dcfd0d6d1817555ac871f809ec388e4651a"
+  },
+  {
+    "repo": "hkchengrex/MMAudio",
+    "revision": "eb13a1a98fdbec91753775c57b074ccdfc60587c",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\weights\\mmaudio_large_44k_v2.pth",
+    "bytes": 4122474715,
+    "sha256": "a6bf693424fbd4ce0244fff8c412347714d5ac586e28dbeffadfa0f2b647af74"
+  },
+  {
+    "repo": "apple/DFN5B-CLIP-ViT-H-14-384",
+    "revision": "01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\clip\\open_clip_config.json",
+    "bytes": 735,
+    "sha256": "e043bd1129b97d3afc77eef2e8bfda940af588dabf2cbaacc21e956345402f67"
+  },
+  {
+    "repo": "apple/DFN5B-CLIP-ViT-H-14-384",
+    "revision": "01b771ed0d1395ca5ffdd279897d665ebe00dfd2",
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\clip\\open_clip_pytorch_model.bin",
+    "bytes": 3947081637,
+    "sha256": "c07a17b547d461c60a3cce5062b26bf8545b13de602c4c59d8490361eb716033"
+  }
+]

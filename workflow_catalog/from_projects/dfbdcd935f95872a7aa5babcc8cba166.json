@@ -1,0 +1,573 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P08_pixaroma_master20_v1_vocal_entry",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 10.0,
+      "overlap_seconds": 1.5
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P01_celes_approved.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P08_pixaroma_celes_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "overlap_pose",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23100801
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "stage_lock",
+        0
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "incoming": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_P07_approved_endpoint.png"
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "One uninterrupted LIVE ACTION opera shot, continuous from the exact approved incoming frame, SAME LOCKED WIDE audience camera and stage. <Picture 1> fixes canonical Celes/Maria: same real adult blonde woman, ponytail with blue bow, natural beige skin, ivory physical satin gown with blue trim, same red roses held LOW at waist height by BOTH hands. Start in the incoming slight audience-left three-quarter stance, gaze toward the absent beloved beyond audience-left, relaxed resting lips. Do not reset to a portrait, look into camera or repeat the previous downward glance sequence.\nGLOBAL TIMING FOR THE ENTIRE15.083-SECOND SHOT, not a new action in each Pixaroma window: this exact supplied English recording has a brief INSTRUMENTAL lead-in followed by the recorded female sung entry around1.5seconds. During0-1.4seconds she quietly listens with lips softly together and jaw at rest, taking a subtle nasal/chest breath; absolutely no silently mouthed lyrics, vowel cycles, speech or singing before the actual voice. The approved quiet motion frames at24-28 (1.0-1.167seconds) explicitly maintain that resting mouth.\nFrom the actual supplied singer's entry near1.5seconds through the recorded phrase ending around13.3-13.9seconds, Maria SINGS ONLY the existing English performance. Coordinate visible jaw, lips, vowels, consonant closures, breath and phrase releases with the supplied recording rather than pumping her mouth at an arbitrary rhythm. No invented words, humming, replacement voice, new aria or Portuguese singing. Timing comes from the real locked audio, not from an appearance image.\nHer immediate objective is to thank the absent beloved and let him see that his tenderness has reached her. During the first sung thought around1.5-4.2seconds, her alert eyes soften and the brow releases slightly while the chest opens on the voiced breath; no big grin. During4.2-9.5seconds the continuing address reaches toward the audience-left horizon through a small head inclination and firmer outward gaze. During9.5-13.9seconds she sustains the same intimate gratitude, using measured breath support and subtle cheek/eye response. Keep her attention outward instead of nodding repeatedly or lowering to the flowers again. As the real recorded phrase releases, around13.3-15seconds, her jaw relaxes and lips return naturally to rest, shoulders settle without a bow or finale smile. The performance remains alive for the next musical interval.\nBoth real hands keep contact around the SAME stems throughout. Right hand supports them, left fingers rest beside it, forearms close to the body; only tiny natural grip adjustments. No hand release, offering gesture, duplicate fingers, extra hand, translucent forearm or floating bouquet. Flowers stay low at waist level and never lift to the mouth. Shared five-frame approved singing pose guide atglobal119-123 constrains contact and actor scale in BOTH overlap windows; it is physical motion control, not a different soundtrack or proof of current phonemes. Final relaxed approved guide361 fixes scale and recovery.\nFeet stay planted behind the same original foreground stones. Preserve body proportions and full-length WIDE distance: crown near y100, waist sash near y360, stone foreground near y690 in1344x768. No approach, zoom, independent actor enlargement, sliding, walking, deep lean, turn around or added partner. Weighted satin and hair respond subtly to breathing. Exactly ONE woman and one bouquet remain visible; no shadow, silhouette, hand, traffic or object enters the backdrop or curtain.\nSame painted blue moonlit background, unchanged battlement edges and red velvet curtain on SCREEN RIGHT, same camera axis and perspective. Steady neutral soft white illumination on beige skin and ivory dress; blue stays in backdrop and trim. No magenta or pink wash, flash, exposure pulse, flicker, glowing skin or plastic CGI anatomy. No camera move, edit, dissolve, fade, crop, text or subtitles. Preserve the supplied original recording, stereo, volume, speed and duration; no new voice, music or Foley.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "ref_image_size": "match",
+      "ref_images.ref_image_1": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "first_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "incoming",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "region": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_actor_generation_region.png"
+    }
+  },
+  "stage_lock": {
+    "class_type": "PemaraH3StageLockedLatent",
+    "inputs": {
+      "latent": [
+        "audio_sync",
+        1
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "stage_image": [
+        "incoming",
+        0
+      ],
+      "actor_region": [
+        "region",
+        0
+      ]
+    }
+  },
+  "end_pose_image": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_P07_approved_endpoint.png"
+    }
+  },
+  "end_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "pre_voice_pose",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "end_pose_image",
+        0
+      ],
+      "frame_idx": 361
+    }
+  },
+  "overlap_image_0": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_overlap_P04_0168.png"
+    }
+  },
+  "overlap_image_1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_overlap_P04_0169.png"
+    }
+  },
+  "overlap_image_2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_overlap_P04_0170.png"
+    }
+  },
+  "overlap_image_3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_overlap_P04_0171.png"
+    }
+  },
+  "overlap_image_4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_overlap_P04_0172.png"
+    }
+  },
+  "overlap_batch_1": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_image_0",
+        0
+      ],
+      "image2": [
+        "overlap_image_1",
+        0
+      ]
+    }
+  },
+  "overlap_batch_2": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_1",
+        0
+      ],
+      "image2": [
+        "overlap_image_2",
+        0
+      ]
+    }
+  },
+  "overlap_batch_3": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_2",
+        0
+      ],
+      "image2": [
+        "overlap_image_3",
+        0
+      ]
+    }
+  },
+  "overlap_batch_4": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_3",
+        0
+      ],
+      "image2": [
+        "overlap_image_4",
+        0
+      ]
+    }
+  },
+  "overlap_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "end_pose",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "overlap_batch_4",
+        0
+      ],
+      "frame_idx": 119
+    }
+  },
+  "quiet_image_0": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_quiet_P07_0357.png"
+    }
+  },
+  "quiet_image_1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_quiet_P07_0358.png"
+    }
+  },
+  "quiet_batch_1": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "quiet_image_0",
+        0
+      ],
+      "image2": [
+        "quiet_image_1",
+        0
+      ]
+    }
+  },
+  "quiet_image_2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_quiet_P07_0359.png"
+    }
+  },
+  "quiet_batch_2": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "quiet_batch_1",
+        0
+      ],
+      "image2": [
+        "quiet_image_2",
+        0
+      ]
+    }
+  },
+  "quiet_image_3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_quiet_P07_0360.png"
+    }
+  },
+  "quiet_batch_3": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "quiet_batch_2",
+        0
+      ],
+      "image2": [
+        "quiet_image_3",
+        0
+      ]
+    }
+  },
+  "quiet_image_4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P08_quiet_P07_0361.png"
+    }
+  },
+  "quiet_batch_4": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "quiet_batch_3",
+        0
+      ],
+      "image2": [
+        "quiet_image_4",
+        0
+      ]
+    }
+  },
+  "pre_voice_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first_pose",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "quiet_batch_4",
+        0
+      ],
+      "frame_idx": 24
+    }
+  }
+}

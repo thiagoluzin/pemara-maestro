@@ -1,0 +1,4 @@
+interface:
+  display_name: "Produção de vídeo Pemara"
+  short_description: "Planeje cenas e coordene a qualidade da produção"
+  default_prompt: "Use $pemara-video-production-lead para melhorar esta produção de vídeo com decisões concretas e evidências."

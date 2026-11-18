@@ -1,0 +1,4 @@
+interface:
+  display_name: "Level Designer"
+  short_description: "Especialista em level design (escola John Romero) — ritmo,"
+  default_prompt: "Use $level-designer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

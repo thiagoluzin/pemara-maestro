@@ -1,0 +1,24 @@
+C:\Users\admin_remoto\AppData\Roaming\Python\Python311\site-packages\torch\cuda\__init__.py:64: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[PATCH] torchvision.transforms.functional_tensor injetado OK
+............F.......................................................................F...................................................
+======================================================================
+FAIL: test_stem_producer_v2_is_available_and_forces_one_controlled_candidate (test_music_ai_api.MusicAiApiTests.test_stem_producer_v2_is_available_and_forces_one_controlled_candidate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Pemara\maestro\pemara\services\studio\test_music_ai_api.py", line 87, in test_stem_producer_v2_is_available_and_forces_one_controlled_candidate
+    self.assertTrue(status.json()["engines"]["stem_producer_v2"]["configured"])
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_runtime_is_local_cpu_and_requires_human_review (test_music_reinstrument.MusicReinstrumentTests.test_runtime_is_local_cpu_and_requires_human_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Pemara\maestro\pemara\services\studio\test_music_reinstrument.py", line 27, in test_runtime_is_local_cpu_and_requires_human_review
+    self.assertTrue(status["configured"], status)
+AssertionError: False is not true : {'ok': True, 'configured': False, 'localOnly': True, 'device': 'cpu', 'gpuRequired': False, 'humanReviewRequired': True, 'autoApprove': False, 'maxDurationSeconds': 720, 'supportedExtensions': ['.aac', '.flac', '.m4a', '.mp3', '.ogg', '.opus', '.wav'], 'supportedInstruments': ['piano', 'violin', 'cello', 'guitar', 'bass', 'drums'], 'presets': {'symphonic_heavy_metal': {'label': 'Heavy metal sinfonico', 'defaultInstruments': ['piano', 'violin', 'cello', 'guitar', 'bass', 'drums'], 'description': 'Piano, violino, cello, guitarra distorcida, baixo e bateria metal.'}, 'traditional_heavy_metal': {'label': 'Heavy metal tradicional', 'defaultInstruments': ['piano', 'violin', 'cello', 'guitar', 'bass', 'drums'], 'description': 'Guitarra, baixo e bateria de metal tradicional com piano e cordas claramente separados.'}, 'chamber_metal': {'label': 'Metal de camara', 'defaultInstruments': ['piano', 'violin', 'cello', 'guitar', 'bass'], 'description': 'Cordas e piano em primeiro plano, com guitarra e baixo controlados.'}, 'piano_strings': {'label': 'Piano e cordas', 'defaultInstruments': ['piano', 'violin', 'cello'], 'description': 'Reinstrumentacao de camara sem bateria nem guitarra.'}}, 'orchestration': {'engine': 'Pemara Maestro de Identidade v4', 'neuralListener': 'MERT-v1-95M local CPU', 'promptMaxChars': 1500, 'stemMixing': True, 'independentStemQc': True, 'productionGate': True, 'identityGate': True, 'legacyEngine': 'Pemara Local Orchestrator v1'}, 'checks': {'ffmpeg': True, 'ffprobe': True, 'demucs': True, 'demucsCompat': True, 'demucsModel': True, 'basicPitch': True, 'fluidSynth': True, 'soundfont': True, 'hqSoundfont': True, 'stemCritic': True, 'identityCritic': True, 'scoreProducer': True, 'mertModel': False, 'mertRuntime': True}, 'needs': ['mertModel'], 'versions': {'demucs': '4.0.1', 'basicPitch': '0.4.0', 'fluidSynth': '2.4.7', 'soundfont': 'MuseScore MS Basic', 'legacySoundfont': 'GeneralUser GS 2.0.3', 'mert': None}, 'message': 'Pipeline local incompleto: mertModel.'}
+
+----------------------------------------------------------------------
+Ran 136 tests in 2.690s
+
+FAILED (failures=2)

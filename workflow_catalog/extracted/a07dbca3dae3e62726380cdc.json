@@ -1,0 +1,102 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Unified_run01_identity_east.png"
+    },
+    "is_changed": [
+      "17a461cc52e0848c81da56fbc82b304d940983556b92887ef09396942029856d"
+    ]
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Unified_west_canonical_padded_v4.png"
+    },
+    "is_changed": [
+      "3f7d3066cd7b03ae983eb201edd68f137f39e39571ebc83020bc77f19ec6c7ee"
+    ]
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Unified_pipe_east_fixed.png"
+    },
+    "is_changed": [
+      "9948b0f1f5c0d05c542d89c1190ded6526323715b43d14d29a6a469d27ecfd66"
+    ]
+  },
+  "4": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "1",
+        0
+      ],
+      "image2": [
+        "2",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "4",
+        0
+      ],
+      "image2": [
+        "3",
+        0
+      ]
+    }
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "24": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_Unified_Helena_run01/native/export_probe_ffv1",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "25": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": "ATD_Unified_Helena_run01/native/export_probe_rgb_comparison"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

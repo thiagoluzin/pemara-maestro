@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Aggressive classic Bay Area thrash metal, razor-tight downpicked guitar riffs, audible growling bass, hard acoustic double-kick drums, biting forceful male baritone, fierce electric lead solo. 192 BPM, E minor. a rapid low-E pedal riff with jagged accents; contrasting melodic bass bridge and a two-stage solo. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nConcrete lungs, the meter spins\nSweat on the glass, the shift begins\nThey sell the oxygen, slice by slice\nWe pay in blood for every price\nThe air grows thin, the walls grow tight\nStarved for the void of endless night\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Verse]\nValve in the wall, cold and green\nTurn it slow, turn it keen\nThe hiss is loud, the pipes are cracking\nBreak the seal, the city is shaking\nNo more coins for a single puff\nNo more fear, no more enough\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Bridge]\nBass hums low, the rhythm breaks\nNo more chains, no more fakes\nThe air floods in, raw and free\nEvery minute belongs to me\n\n[Solo]\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Outro]\nOne last inhale, the engine dies\nThe air is ours, the sky is wide",
+      "abc": "",
+      "seed": 202610166016,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166016,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/17_rationed_breath_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

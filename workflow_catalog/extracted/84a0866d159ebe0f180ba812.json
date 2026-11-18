@@ -1,0 +1,44 @@
+{
+  "1": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "2": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_goldenfir_generic.png"
+    },
+    "is_changed": [
+      "9525528882f8b90254e6a95ee1a3241d9bfd29212d7b1a8ccb13912b90008bd0"
+    ]
+  },
+  "3": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "alpha": [
+        "2",
+        1
+      ]
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "cards_20261011/goldenfir_sata_generic"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

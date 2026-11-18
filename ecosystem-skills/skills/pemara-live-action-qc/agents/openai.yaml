@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pemara Live Action QC"
+  short_description: "QC humano, temporal e físico por artefato"
+  default_prompt: "Use $pemara-live-action-qc para auditar este MP4 live action, suas fronteiras e a ordem segura de acabamento."
+policy:
+  allow_implicit_invocation: true

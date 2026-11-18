@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Classic rock ballad, dramatic and heavy, distorted electric guitars, driving double-kick drums, soaring operatic male vocals, powerful choir backing, epic atmosphere, slow build to explosive chorus\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nA cold wind cuts through the frozen air\nThe clock strikes twelve, no one is there\nA shadow stretches on the broken street\nA promise made in blood and heat\nI looked inside my hollow eyes\nAnd saw the truth I couldn't hide\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Verse]\nThe first one laughs with a silver tongue\nA debt to pay, a debt to hang\nThe second weeps with a heavy hand\nA flood of tears in the promised land\nThe third one waits with a quiet breath\nA door to heaven, a door to death\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Bridge]\nAnd the fourth one stands with a crown of thorns\nA king of nothing, a king of storms\nHe looks at me with a gentle stare\nAnd whispers, \"Son, you're almost there\"\nI fall to my knees in the dust and sand\nHolding the weight of my own hand\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Outro]\nFour shadows... fading\nIn the morning light\nThe battle is over\nWe are gone tonight\nGone tonight",
+      "abc": "X:1\nT:\nM:4/4\nL:1/16\nQ:1/4=77\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% intro\nV: Vocal\nz12\"D#m\"z4|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nZ|D,2D2A2F2B2F2G2A2|z2F2A2F2G2F2E2F2|z2D2A2F2B2F2G2A2|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\"B\"z16|\nV: Ins\nz2F2A2F2G2F2E2F2|z2D2A4B4G2A2-|A4F4G4E2F2-|F4A4B4G2A2-|\nV: Vocal\n\"C#\"z16|\"D#m\"z16|\"D#m\"z16|\"B\"z16|\nV: Ins\nA4F4G4E2F2-|F4A4B4G2A2-|A4F4G4E2F2-|F4A4B4G2A2-|\nV: Vocal\n\"C#\"z16|\nV: Ins\nA4F4G4E2F2|\n% verse\nV: Vocal\n\"D#m\"A2A2A2z4GFG2FA-|\"D#m\"A3z12F|\"B\"F2F2F4z2E2EDDD-|\"B\"D3z12z|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"AA3A2AA3GG2FAA|\"D#m\"z16|\"B\"FF2F3F2G4E2D2-|\"B\"D2z12z2|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"z3FG2G2G2G2GF2A-|\"C#\"AG3z12|\"B\"z3FB2BB3B2cd2e|\"A#\"e16|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"z4a4b2z6|\"D#m\"z2f2f4g3ee2f2|\"B\"z4a2a2b4d2c2-|\"F#\"c2z2f2f2\"C#\"g4e2d2-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2z2a4b4d2c2-|\"F#\"c2z2f4g2f2e2f2|\"B\"z4a4b4d2c2-|\"F#\"c2z4f2\"C#\"g3f3e2|\nV: Ins\nZ4|\nV: Vocal\n\"B\"f16|\"C#\"e6c2c3d3d2-|\"D#m\"d6z8z2|\"D#m\"z16|\nV: Ins\nZ2|z8B4G2A2-|A4F4G4E2F2|\n% verse\nV: Vocal\n\"D#m\"A2A2A4z2GFGF2A|\"D#m\"Az12z3|\"B\"F2FF3z4zFE2DD-|\"B\"D2z12z2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"AA2A3z4GFGFAA|\"D#m\"z16|\"B\"FF2F4z3EEED2D-|\"B\"D3z12z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"z3FG2G2G2GFGF2A|\"C#\"AG3z12|\"B\"z3FB2BB2B2Bc2de|\"A#\"e16|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"z4a4b2z6|\"D#m\"z2f2f4g3ee2f2|\"B\"z4a2a2b4d2c2-|\"F#\"c2z2f2f2\"C#\"g4e2d2-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2z2a4b4d2c2-|\"F#\"c2z2f4g2f2e2f2|\"B\"z4a4b4d2c2-|\"F#\"c2z4f2\"C#\"g3f3e2|\nV: Ins\nZ4|\nV: Vocal\n\"B\"f16|\"C#\"e6c2c3d3d2-|\"D#m\"d16-|\"D#m\"d6z8de|\nV: Ins\nZ4|\n% bridge\nV: Vocal\n\"B\"f2f2f2fef2ed3zA|\"D#m\"ff2f2f2fgf2e3ze|\"C#\"ee2e3eee2dd3zc|\"B\"dd2d3c2c3d3A2-|\nV: Ins\nZ4|\nV: Vocal\n\"B\"A4z8z3F|\"C#\"G2GGG2GFG2FA2G3|\"C#\"z16|\"B\"B2BBB2B2c3d3e2-|\nV: Ins\nZ4|\nV: Vocal\n\"A#\"e16-|\"A#\"e12-e2z2|\nV: Ins\nZ2|\n% chorus\nV: Vocal\n\"D#m\"z4a4b2z6|\"D#m\"z2f2f4g3ee2f2|\"B\"z4a2a2b4d2c2-|\"F#\"c2z2f2f2\"C#\"g4e2d2-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2z2a4b4d2c2-|\"F#\"c2z2f4g2f2e2f2|\"B\"z4a4b4d2c2-|\"F#\"c2z4f2\"C#\"g3f3e2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f16-|\"F#\"f8g6fe|\"B\"d16|\"F#\"c8\"C#\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z4a4b2a4z2|\"F#\"z8g3ff4|\"B\"z4a2a2b4d2c2-|\"F#\"c2z4f2\"C#\"g3f3e2|\nV: Ins\nZ4|\nV: Vocal\n\"B\"f6e8-e2-|\"C#\"e6z2cc2c3AA-|\nV: Ins\nZ2|\n% outro\nV: Vocal\n\"D#m\"A3z12z|\"D#m\"z8G6FF|\"B\"ED3z12|\"C#\"z16|\nV: Ins\nz4A4B4G2A2-|A4F4z8|z4A4B4G2A2-|A4F4G4E2F2|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\nV: Ins\nD16|Z|",
+      "seed": 1605996035,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 1605996035,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_b3d37dafcb61",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

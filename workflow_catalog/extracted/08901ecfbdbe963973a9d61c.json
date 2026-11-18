@@ -1,0 +1,59 @@
+{
+  "1": {
+    "class_type": "LoadControlFoleyModel",
+    "inputs": {
+      "controlfoley_source_dir": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\ControlFoley_source",
+      "model_weights_dir": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\ControlFoley_weights",
+      "variant": "large_44k",
+      "device": "cuda",
+      "precision": "bf16",
+      "low_vram": false,
+      "compile_encoders": false,
+      "auto_fetch_source": false
+    }
+  },
+  "2": {
+    "class_type": "LoadControlFoleyVideo",
+    "inputs": {
+      "video_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\mortal_kombat_irmaos_h3_8x8s\\audio\\ambient_master_20260814\\ambient_input_part2_30s.mp4",
+      "duration": 30.0
+    }
+  },
+  "3": {
+    "class_type": "ControlFoleyGenerate",
+    "inputs": {
+      "controlfoley_model": [
+        "1",
+        0
+      ],
+      "video": [
+        "2",
+        0
+      ],
+      "prompt": "Ultra-realistic live-action arena ambience and synchronized physical Foley. Escalating close combat with heavy body impacts, boots grinding sand, armor plates, leather, cloth, strained breathing, ice blast pressure, brittle freezing cracks, attached shadow movement, falling debris and distant crowd reactions. The armored emperor rises from a stone throne with metal and cape weight but does not speak. Final struggle has grounded body weight, armor strain, a sharp practical-effects separation impact, heavy collapse in sand and shocked arena reaction. Natural cinematic location sound only.",
+      "negative_prompt": "music, soundtrack, melody, rhythm, drums, vocals, speech, dialogue, announcer, chant, synthesizer, chiptune, 8-bit, 16-bit, retro game sound, arcade bleeps, laser, gunfire, cartoon, comedy, exaggerated whoosh",
+      "duration": 30.0,
+      "seed": 14082602,
+      "num_inference_steps": "fixed",
+      "guidance_scale": 5.7,
+      "mask_away_clip": false,
+      "cache_video_features": true,
+      "staged_offload": true,
+      "clip_batch_size_multiplier": "8",
+      "sync_batch_size_multiplier": "8",
+      "reference_audio_path": "",
+      "image_fps": 24.0
+    }
+  },
+  "4": {
+    "class_type": "SaveControlFoleyAudio",
+    "inputs": {
+      "audio": [
+        "3",
+        0
+      ],
+      "filename_prefix": "mortal_kombat_irmaos/full_ambient_part2_30s_raw",
+      "format": "wav"
+    }
+  }
+}

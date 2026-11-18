@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phaser 16bit Platformer"
+  short_description: "Receitas condicionais para Phaser 3: boot, input, controlador,"
+  default_prompt: "Use $phaser-16bit-platformer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

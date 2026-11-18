@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "RE1_NATIVE24_FOLEY.mp4"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLanczosUpscaleRequiredSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "upscaling_obrigatorio/1440p_vertical",
+      "profile_id": "lanczos_nvenc_rife_exact60_dlss5_full_frame_v2_mixed_1440p_vertical",
+      "content_kind": "mixed",
+      "protection_manifest": ""
+    }
+  }
+}

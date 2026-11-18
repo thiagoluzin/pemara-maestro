@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Studio 16-Bits — Portal Sprunki</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  /* --- Tema Dark Cyber Premium --- */
+  :root {
+    --bg-dark: #070712;
+    --bg-panel: rgba(13, 13, 29, 0.6);
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --primary: #c084fc;
+    --secondary: #ff8fab;
+    --cyan: #5eead4;
+    --green: #39ff14;
+    --yellow: #facc15;
+    --snes-purple: #7058a8;
+    --genesis-blue: #0050a0;
+    --active-theme: var(--snes-purple);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-dark);
+    color: #f0f0f8;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Fundo animado de partículas e nébulas */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 20%, rgba(120, 60, 200, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(60, 180, 200, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(255, 100, 150, 0.08) 0%, transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  header {
+    background: rgba(13, 13, 29, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    font-size: 28px;
+    filter: drop-shadow(0 0 10px var(--primary));
+  }
+
+  .logo-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 13px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .console-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .console-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .console-btn.active {
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .console-btn[data-console="snes"].active {
+    background: var(--snes-purple);
+  }
+
+  .console-btn[data-console="genesis"].active {
+    background: var(--genesis-blue);
+  }
+
+  .main-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 73px);
+  }
+
+  /* --- Simulador de Game Preview (Centro) --- */
+  .preview-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    border-right: 1px solid var(--border-glass);
+  }
+
+  .game-monitor {
+    width: 640px;
+    height: 480px;
+    position: relative;
+    border-radius: 16px;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+
+  /* Filtros CSS de Shaders Retro aplicados sobre a tela do monitor */
+  .game-monitor::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Scanlines overlay */
+  .scanlines-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 3px
+    );
+    pointer-events: none;
+    z-index: 9;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* CRT Curvature Distort Overlay */
+  .crt-curvature {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .monitor-footer {
+    width: 640px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    padding: 12px 18px;
+    border-radius: 12px;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    animation: pulse 1.5s infinite;
+  }
+
+  .monitor-controls {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-control:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* --- Painel de Ferramentas (Direita) --- */
+  .tools-sidebar {
+    width: 460px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-glass);
+  }
+
+  .tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--border-glass);
+    overflow-x: auto;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    color: #fff;
+  }
+
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* Form / Inputs Estilizados */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 8px;
+  }
+
+  .form-select, .form-input, .form-textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-glass);
+    border-radius: 10px;
+    color: #fff;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-select:focus, .form-input:focus, .form-textarea:focus {
+    border-color: var(--primary);
+  }
+
+  /* Grid Slicer e Editor */
+  .slicer-workspace {
+    border: 1px solid var(--border-glass);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .canvas-container {
+    max-width: 100%;
+    max-height: 250px;
+    overflow: auto;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background-image: linear-gradient(45deg, #111 25%, transparent 25%),
+                      linear-gradient(-45deg, #111 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #111 75%),
+                      linear-gradient(-45deg, transparent 75%, #111 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+
+  .slicer-canvas {
+    display: block;
+    cursor: crosshair;
+  }
+
+  .slice-grid-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* Recortes Gerados */
+  .recortes-container {
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  .recortes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 4px;
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .recorte-card {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .recorte-card:hover {
+    border-color: var(--primary);
+  }
+
+  .recorte-img {
+    max-width: 90%;
+    max-height: 90%;
+    image-rendering: pixelated;
+  }
+
+  /* Pixel Art Editor */
+  .pixel-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .pixel-palette {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .color-swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.5);
+    transition: transform 0.1s;
+  }
+
+  .color-swatch:hover, .color-swatch.active {
+    transform: scale(1.2);
+    border-color: #fff;
+  }
+
+  /* IA Agent Playground */
+  .script-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .ai-console {
+    background: #020208;
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    margin-top: 16px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ai-console-line {
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .console-info { color: #888; }
+  .console-success { color: var(--green); }
+  .console-error { color: var(--secondary); }
+
+  /* Botoes Premium */
+  .btn-premium {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: filter 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-premium:hover {
+    filter: brightness(1.15);
+  }
+
+  .btn-premium:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Sliders */
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .slider-input {
+    width: 100%;
+    accent-color: var(--primary);
+  }
+
+  /* Switch Toggle */
+  .switch-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider-switch {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: rgba(255,255,255,0.1);
+    transition: .3s;
+    border-radius: 34px;
+  }
+
+  .slider-switch:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider-switch {
+    background-color: var(--primary);
+  }
+
+  input:checked + .slider-switch:before {
+    transform: translateX(22px);
+  }
+
+  /* Badges */
+  .badge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .tech-badge {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .tech-badge-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .tech-badge-val {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    color: var(--cyan);
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="logo-icon">🎮</span>
+    <span class="logo-text">16-BIT GAME STUDIO</span>
+  </div>
+
+  <div class="console-selector">
+    <button class="console-btn active" data-console="snes">SNES Mode</button>
+    <button class="console-btn" data-console="genesis">Sega Genesis Mode</button>
+  </div>
+</header>
+
+<div class="main-container">
+  
+  <!-- Monitor de Visualização do Jogo -->
+  <div class="preview-section">
+    <div class="game-monitor">
+      <div class="scanlines-overlay" id="scanlines"></div>
+      <div class="crt-curvature" id="crt"></div>
+      <canvas class="game-canvas" id="canvas-game" width="320" height="224"></canvas>
+    </div>
+
+    <div class="monitor-footer">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span id="console-status-text">SNES: 256x224 (256 Cores)</span>
+      </div>
+      <div class="monitor-controls">
+        <button class="btn-control" id="btn-play-pause">Play</button>
+        <button class="btn-control" id="btn-reset">Reset</button>
+        <button class="btn-control" id="btn-export-rom">Exportar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Painel de Ferramentas Lateral -->
+  <div class="tools-sidebar">
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="tab-specs">Specs</button>
+      <button class="tab-btn" data-tab="tab-slice-sprites">Slicing</button>
+      <button class="tab-btn" data-tab="tab-pixel">PixelArt</button>
+      <button class="tab-btn" data-tab="tab-shaders">Shaders</button>
+      <button class="tab-btn" data-tab="tab-ia">Agente IA</button>
+    </div>
+
+    <!-- Aba 1: Configuração do Hardware -->
+    <div class="tab-content active" id="tab-specs">
+      <h3 class="section-title">Hardware do Console</h3>
+      <p class="section-desc">Monitore as limitações de hardware sugeridas para o console de desenvolvimento selecionado.</p>
+      
+      <div class="badge-grid">
+        <div class="tech-badge">
+          <div class="tech-badge-title">CPU Principal</div>
+          <div class="tech-badge-val" id="spec-cpu">5A22 3.58MHz</div>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-title">VRAM Dedicada</div>
+          <div class="tech-badge-val" id="spec-vram">64 KB</div>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-title">Cores Simultâneas</div>
+          <div class="tech-badge-val" id="spec-colors">256 / 32768</div>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-title">Som Coprocessador</div>
+          <div class="tech-badge-val" id="spec-sound">SPC700 (Sony)</div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 24px;">
+        <label class="form-label">Escala de Pixels</label>
+        <select class="form-select" id="select-pixel-scale">
+          <option value="1">1x (Original Fiel)</option>
+          <option value="2" selected>2x (Upscaled)</option>
+          <option value="4">4x (Grande Retrô)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Título do Jogo</label>
+        <input type="text" class="form-input" id="input-game-title" value="Super Sprunki Quest">
+      </div>
+
+      <button class="btn-premium" id="btn-save-project">Salvar Projeto</button>
+    </div>
+
+    <!-- Aba 2: Fatiador de Sprites & Backgrounds -->
+    <div class="tab-content" id="tab-slice-sprites">
+      <h3 class="section-title">Cortador de Sprites</h3>
+      <p class="section-desc">Faça o upload de uma folha de sprites ou selecione uma referência para cortar em blocos.</p>
+      
+      <div class="form-group">
+        <label class="form-label">Origem da Imagem</label>
+        <select class="form-select" id="select-slice-source">
+          <option value="upload">Upload Manual (PNG / JPG)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Modo de Fatiamento</label>
+        <select class="form-select" id="select-slice-mode">
+          <option value="smart" selected>Inteligente (Foco em Ilhas)</option>
+          <option value="grid">Grade Rígida (Tamanho Fixo)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="slice-upload-group">
+        <label class="form-label">Upload de Imagem</label>
+        <input type="file" class="form-input" id="input-slice-file" accept="image/*">
+      </div>
+
+      <div class="slicer-workspace">
+        <div class="canvas-container">
+          <canvas class="slicer-canvas" id="canvas-slicer"></canvas>
+        </div>
+        
+        <div class="slice-grid-controls" id="grid-controls-container" style="display: none;">
+          <div>
+            <label class="form-label">Grid L (px)</label>
+            <input type="number" class="form-input" id="input-grid-w" value="32" min="8" max="128">
+          </div>
+          <div>
+            <label class="form-label">Grid A (px)</label>
+            <input type="number" class="form-input" id="input-grid-h" value="32" min="8" max="128">
+          </div>
+        </div>
+        
+        <button class="btn-premium" id="btn-slice-exec">Fatiar Imagem</button>
+      </div>
+
+      <div class="recortes-container">
+        <label class="form-label">Recortes Extraídos (Clique para usar)</label>
+        <div class="recortes-grid" id="recortes-output-grid">
+          <!-- Gerado dinamicamente -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Aba 3: Pixel Art Creator -->
+    <div class="tab-content" id="tab-pixel">
+      <h3 class="section-title">Pixel Art Editor</h3>
+      <p class="section-desc">Crie suas próprias artes 16-bits do zero usando nossa paleta retro.</p>
+      
+      <div class="pixel-editor">
+        <div class="canvas-container">
+          <canvas id="canvas-pixel-editor" width="16" height="16" style="width: 200px; height: 200px; cursor: cell; image-rendering: pixelated;"></canvas>
+        </div>
+
+        <div class="pixel-palette" id="pixel-palette-container">
+          <!-- Gerado via JS baseando-se no console ativo -->
+        </div>
+
+        <div class="slice-grid-controls">
+          <button class="btn-secondary" id="btn-clear-pixel">Limpar</button>
+          <button class="btn-premium" id="btn-use-pixel">Usar Arte</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aba 4: Shaders Retro -->
+    <div class="tab-content" id="tab-shaders">
+      <h3 class="section-title">Shaders & Filtros</h3>
+      <p class="section-desc">Simule filtros analógicos de monitores CRT de tubo para dar o visual 100% fiel de 16-bits.</p>
+      
+      <div class="switch-group">
+        <span>Ativar Scanlines (Linhas de Tubo)</span>
+        <label class="switch">
+          <input type="checkbox" id="check-scanlines">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="switch-group">
+        <span>Curvatura CRT (Tela de Tubo)</span>
+        <label class="switch">
+          <input type="checkbox" id="check-crt">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="switch-group">
+        <span>RGB Split (Aberração Cromática)</span>
+        <label class="switch">
+          <input type="checkbox" id="check-rgb-split">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-header">
+          <span>Intensidade do Ruído Estático (Glitch)</span>
+          <span id="val-glitch">0%</span>
+        </div>
+        <input type="range" class="slider-input" id="range-glitch" min="0" max="100" value="0">
+      </div>
+
+      <div class="slider-container">
+        <div class="slider-header">
+          <span>Filtro de Desfoque de Phosphor</span>
+          <span id="val-phosphor">0%</span>
+        </div>
+        <input type="range" class="slider-input" id="range-phosphor" min="0" max="100" value="0">
+      </div>
+    </div>
+
+    <!-- Aba 5: AI Agent Playground -->
+    <div class="tab-content" id="tab-ia">
+      <h3 class="section-title">Agente IA Playground</h3>
+      <p class="section-desc">Escreva comandos para que o Agente do jogo desenvolva códigos de movimentação física autônoma.</p>
+      
+      <div class="form-group">
+        <label class="form-label">Comando para o Agente IA</label>
+        <input type="text" class="form-input" id="input-ai-prompt" placeholder="Ex: Pular com gravidade e bater nas bordas...">
+      </div>
+      <button class="btn-premium" id="btn-ai-generate">Gerar Código com IA</button>
+
+      <div class="form-group" style="margin-top: 20px;">
+        <div class="script-header">
+          <label class="form-label">Script do Objeto (JS)</label>
+          <span style="font-size: 11px; color: var(--cyan); cursor: pointer;" id="btn-load-demo-code">Carregar Demo</span>
+        </div>
+        <textarea class="form-textarea" id="textarea-js-code" rows="12" style="font-family: monospace; font-size: 12px; line-height: 1.4; background: #020208; border-color: rgba(255,255,255,0.06);"></textarea>
+      </div>
+
+      <button class="btn-secondary" id="btn-run-script">Executar Script Autônomo</button>
+
+      <div class="ai-console" id="ai-console">
+        <div class="ai-console-line console-info">> Console do Agente Iniciado.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // --- Estado do Game Studio ---
+  const state = {
+    console: 'snes', // 'snes' ou 'genesis'
+    pixelScale: 2,
+    isPlaying: false,
+    gameTitle: 'Super Sprunki Quest',
+    activeSprite: null, // Sprite selecionado para simulação
+    spritesList: [],    // Banco de recortes/sprites criadas
+    editorColor: '#ffffff',
+    shaders: {
+      scanlines: false,
+      crt: false,
+      rgbSplit: false,
+      glitch: 0,
+      phosphor: 0
+    },
+    // Parâmetros físicos padrão para o sprite de simulação
+    physics: {
+      x: 140,
+      y: 100,
+      vx: 0,
+      vy: 0,
+      width: 32,
+      height: 32,
+      gravity: 0.4,
+      bounce: 0.6,
+      speed: 2,
+      keys: {}
+    }
+  };
+
+  // Cores predefinidas para os consoles
+  const Palettes = {
+    snes: [
+      '#000000', '#ffffff', '#e03030', '#30e030', '#3030e0', '#f0c030', '#c030f0', '#30f0c0',
+      '#505050', '#a0a0a0', '#801010', '#108010', '#101080', '#908010', '#801090', '#109080'
+    ],
+    genesis: [
+      '#000000', '#ffffff', '#b00000', '#00b000', '#0000b0', '#d0d000', '#d000d0', '#00d0d0',
+      '#404040', '#808080', '#600000', '#006000', '#000060', '#808000', '#800080', '#008080'
+    ]
+  };
+
+  // --- Elementos do DOM ---
+  const canvasGame = document.getElementById('canvas-game');
+  const ctxGame = canvasGame.getContext('2d');
+  const canvasSlicer = document.getElementById('canvas-slicer');
+  const ctxSlicer = canvasSlicer.getContext('2d');
+  const canvasPixel = document.getElementById('canvas-pixel-editor');
+  const ctxPixel = canvasPixel.getContext('2d');
+  const aiConsole = document.getElementById('ai-console');
+  const codeArea = document.getElementById('textarea-js-code');
+
+  // --- Sintetizador de Efeitos Sonoros Retrô (Web Audio API) ---
+  const playBeep = (freq = 440, type = 'sine', duration = 0.08) => {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = type;
+      osc.frequency.value = freq;
+      
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch(e) {}
+  };
+
+  // --- Inicialização e Controle de Console ---
+  const setConsole = (consoleName) => {
+    state.console = consoleName;
+    document.querySelectorAll('.console-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.console === consoleName);
+    });
+
+    // Atualiza metadados fictícios e specs
+    const statusText = document.getElementById('console-status-text');
+    const cpuSpec = document.getElementById('spec-cpu');
+    const vramSpec = document.getElementById('spec-vram');
+    const colSpec = document.getElementById('spec-colors');
+    const soundSpec = document.getElementById('spec-sound');
+
+    if (consoleName === 'snes') {
+      canvasGame.width = 256;
+      canvasGame.height = 224;
+      statusText.innerText = 'SNES: 256x224 (256 Cores)';
+      cpuSpec.innerText = '5A22 3.58MHz';
+      vramSpec.innerText = '64 KB';
+      colSpec.innerText = '256 / 32768';
+      soundSpec.innerText = 'SPC700 (Sony)';
+      document.documentElement.style.setProperty('--active-theme', 'var(--snes-purple)');
+      playBeep(660, 'triangle', 0.12);
+    } else {
+      canvasGame.width = 320;
+      canvasGame.height = 224;
+      statusText.innerText = 'GENESIS: 320x224 (64 Cores)';
+      cpuSpec.innerText = 'MC68000 7.67MHz';
+      vramSpec.innerText = '64 KB';
+      colSpec.innerText = '64 / 512';
+      soundSpec.innerText = 'YM2612 + PSG';
+      document.documentElement.style.setProperty('--active-theme', 'var(--genesis-blue)');
+      playBeep(440, 'sawtooth', 0.12);
+    }
+
+    renderPalette();
+    logConsole(`Alternado para o console: ${consoleName.toUpperCase()}`);
+    resetGame();
+  };
+
+  document.querySelectorAll('.console-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => setConsole(e.target.dataset.console));
+  });
+
+  // --- Abas ---
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      playBeep(880, 'sine', 0.04);
+    });
+  });
+
+  // --- Lógica do Sprite Slicer (Fatiador) ---
+  const refsList = [
+    { name: "ACID", ext: "svg" },
+    { name: "Animus", ext: "png" },
+    { name: "Black", ext: "svg" },
+    { name: "Bluemon", ext: "svg" },
+    { name: "Brud", ext: "svg" },
+    { name: "Chockle", ext: "png" },
+    { name: "Clukr", ext: "svg" },
+    { name: "Coka", ext: "svg" },
+    { name: "Cooka", ext: "svg" },
+    { name: "Cookie", ext: "webp" },
+    { name: "Crocus", ext: "png" },
+    { name: "Deto", ext: "svg" },
+    { name: "Dozer", ext: "svg" },
+    { name: "Durple", ext: "svg" },
+    { name: "Elestial", ext: "webp" },
+    { name: "Fanta2", ext: "svg" },
+    { name: "Fun Bot", ext: "svg" },
+    { name: "Garnold", ext: "svg" },
+    { name: "Gatoman", ext: "svg" },
+    { name: "Glix", ext: "svg" },
+    { name: "Goldy", ext: "svg" },
+    { name: "Gray", ext: "svg" },
+    { name: "Greenmon", ext: "svg" },
+    { name: "Gummo", ext: "webp" },
+    { name: "Horson", ext: "webp" },
+    { name: "Jevin", ext: "svg" },
+    { name: "Klato", ext: "svg" },
+    { name: "Lemon John", ext: "svg" },
+    { name: "Mayie", ext: "svg" },
+    { name: "Medio", ext: "svg" },
+    { name: "Mr Fun Computer", ext: "svg" },
+    { name: "Mr Sun", ext: "png" },
+    { name: "Mr Tree", ext: "svg" },
+    { name: "OWAKCX", ext: "svg" },
+    { name: "Oren", ext: "svg" },
+    { name: "Oreoy", ext: "webp" },
+    { name: "PAXO", ext: "png" },
+    { name: "Pencie", ext: "webp" },
+    { name: "Peppie", ext: "svg" },
+    { name: "Pinki", ext: "svg" },
+    { name: "Polo", ext: "svg" },
+    { name: "Purplemon", ext: "svg" },
+    { name: "Raddy", ext: "svg" },
+    { name: "Redmon", ext: "svg" },
+    { name: "Scary ACID", ext: "svg" },
+    { name: "Scary Simon", ext: "svg" }
+  ];
+
+  let slicerImage = new Image();
+  const selectSliceSource = document.getElementById('select-slice-source');
+  const sliceUploadGroup = document.getElementById('slice-upload-group');
+  const inputSliceFile = document.getElementById('input-slice-file');
+  const gridWInput = document.getElementById('input-grid-w');
+  const gridHInput = document.getElementById('input-grid-h');
+  const recortesGrid = document.getElementById('recortes-output-grid');
+
+  // Preenche dinamicamente o select com todos os 46 modelos de referência
+  refsList.forEach(ref => {
+    const opt = document.createElement('option');
+    opt.value = `${ref.name}.${ref.ext}`;
+    opt.innerText = `Sprunki - ${ref.name} (${ref.ext.toUpperCase()})`;
+    selectSliceSource.appendChild(opt);
+  });
+
+  const loadSlicerImage = (url) => {
+    slicerImage.crossOrigin = "anonymous";
+    slicerImage.onload = () => {
+      canvasSlicer.width = slicerImage.width;
+      canvasSlicer.height = slicerImage.height;
+      drawSlicerGrid();
+      logConsole(`Imagem de sprites carregada com sucesso: ${slicerImage.width}x${slicerImage.height}`);
+    };
+    slicerImage.src = url;
+  };
+
+  let detectedIslandsList = [];
+
+  const detectIslands = () => {
+    if (!slicerImage.src || canvasSlicer.width === 0 || canvasSlicer.height === 0) return [];
+    
+    const width = canvasSlicer.width;
+    const height = canvasSlicer.height;
+    
+    // Cria canvas temporário para ler os pixels originais limpos (sem o grid pontilhado)
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = width;
+    tempCanvas.height = height;
+    const tempCtx = tempCanvas.getContext('2d');
+    tempCtx.drawImage(slicerImage, 0, 0);
+    
+    const imgData = tempCtx.getImageData(0, 0, width, height);
+    const data = imgData.data;
+    
+    const visited = new Uint8Array(width * height);
+    const islands = [];
+    
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const idx = y * width + x;
+        const alpha = data[idx * 4 + 3];
+        
+        if (alpha > 15 && visited[idx] === 0) {
+          let minX = x, maxX = x;
+          let minY = y, maxY = y;
+          
+          const queue = [x, y];
+          visited[idx] = 1;
+          
+          let head = 0;
+          while (head < queue.length) {
+            const cx = queue[head++];
+            const cy = queue[head++];
+            
+            for (let dy = -1; dy <= 1; dy++) {
+              for (let dx = -1; dx <= 1; dx++) {
+                if (dx === 0 && dy === 0) continue;
+                const nx = cx + dx;
+                const ny = cy + dy;
+                
+                if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+                  const nidx = ny * width + nx;
+                  const nalpha = data[nidx * 4 + 3];
+                  
+                  if (nalpha > 15 && visited[nidx] === 0) {
+                    visited[nidx] = 1;
+                    queue.push(nx, ny);
+                    
+                    if (nx < minX) minX = nx;
+                    if (nx > maxX) maxX = nx;
+                    if (ny < minY) minY = ny;
+                    if (ny > maxY) maxY = ny;
+                  }
+                }
+              }
+            }
+          }
+          
+          const w = maxX - minX + 1;
+          const h = maxY - minY + 1;
+          
+          if (w >= 4 && h >= 4) {
+            islands.push({ x: minX, y: minY, w, h });
+          }
+        }
+      }
+    }
+    return islands;
+  };
+
+  const drawSlicerGrid = () => {
+    if (!slicerImage.src) return;
+    ctxSlicer.clearRect(0, 0, canvasSlicer.width, canvasSlicer.height);
+    ctxSlicer.drawImage(slicerImage, 0, 0);
+
+    const mode = document.getElementById('select-slice-mode').value;
+
+    if (mode === 'smart') {
+      detectedIslandsList = detectIslands();
+      
+      ctxSlicer.strokeStyle = '#5eead4'; // ciano neon
+      ctxSlicer.lineWidth = 2;
+      ctxSlicer.setLineDash([4, 3]);
+      
+      detectedIslandsList.forEach(island => {
+        ctxSlicer.strokeRect(island.x, island.y, island.w, island.h);
+      });
+      ctxSlicer.setLineDash([]);
+    } else {
+      const w = parseInt(gridWInput.value) || 32;
+      const h = parseInt(gridHInput.value) || 32;
+
+      ctxSlicer.strokeStyle = 'rgba(255, 107, 160, 0.45)';
+      ctxSlicer.lineWidth = 1;
+      ctxSlicer.setLineDash([]);
+
+      for (let x = 0; x < canvasSlicer.width; x += w) {
+        ctxSlicer.beginPath();
+        ctxSlicer.moveTo(x, 0);
+        ctxSlicer.lineTo(x, canvasSlicer.height);
+        ctxSlicer.stroke();
+      }
+      for (let y = 0; y < canvasSlicer.height; y += h) {
+        ctxSlicer.beginPath();
+        ctxSlicer.moveTo(0, y);
+        ctxSlicer.lineTo(canvasSlicer.width, y);
+        ctxSlicer.stroke();
+      }
+    }
+  };
+
+  selectSliceSource.addEventListener('change', (e) => {
+    const val = e.target.value;
+    if (val === 'upload') {
+      sliceUploadGroup.style.display = 'block';
+    } else {
+      sliceUploadGroup.style.display = 'none';
+      // Carrega a referência do Sprunki Pyramixed
+      loadSlicerImage(`/static/referencias/${val}`);
+    }
+  });
+
+  const selectSliceMode = document.getElementById('select-slice-mode');
+  const gridControlsContainer = document.getElementById('grid-controls-container');
+
+  selectSliceMode.addEventListener('change', (e) => {
+    const mode = e.target.value;
+    if (mode === 'smart') {
+      gridControlsContainer.style.display = 'none';
+    } else {
+      gridControlsContainer.style.display = 'grid';
+    }
+    drawSlicerGrid();
+  });
+
+  inputSliceFile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        loadSlicerImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  [gridWInput, gridHInput].forEach(inp => inp.addEventListener('input', drawSlicerGrid));
+
+  // Executar Fatiamento Inteligente ou Grade Rígida
+  document.getElementById('btn-slice-exec').addEventListener('click', () => {
+    if (!slicerImage.src) return;
+    recortesGrid.innerHTML = '';
+    
+    const mode = selectSliceMode.value;
+    let idx = 0;
+
+    if (mode === 'smart') {
+      if (detectedIslandsList.length === 0) {
+        detectedIslandsList = detectIslands();
+      }
+
+      detectedIslandsList.forEach(island => {
+        const w = island.w;
+        const h = island.h;
+
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = w;
+        tempCanvas.height = h;
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCtx.drawImage(slicerImage, island.x, island.y, w, h, 0, 0, w, h);
+
+        const dataUrl = tempCanvas.toDataURL();
+        const card = document.createElement('div');
+        card.className = 'recorte-card';
+        card.innerHTML = `<img class="recorte-img" src="${dataUrl}">`;
+        card.dataset.index = idx;
+
+        card.addEventListener('click', () => {
+          state.activeSprite = new Image();
+          state.activeSprite.src = dataUrl;
+          state.physics.width = w;
+          state.physics.height = h;
+          logConsole(`Sprite Inteligente #${card.dataset.index} (${w}x${h}) selecionado para o jogo!`);
+          playBeep(523.25, 'sine', 0.08); // Bip dó (C5)
+        });
+
+        recortesGrid.appendChild(card);
+        idx++;
+      });
+    } else {
+      const w = parseInt(gridWInput.value) || 32;
+      const h = parseInt(gridHInput.value) || 32;
+
+      for (let y = 0; y < canvasSlicer.height; y += h) {
+        for (let x = 0; x < canvasSlicer.width; x += w) {
+          if (x + w <= canvasSlicer.width && y + h <= canvasSlicer.height) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = w;
+            tempCanvas.height = h;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(slicerImage, x, y, w, h, 0, 0, w, h);
+
+            const imgData = tempCtx.getImageData(0, 0, w, h).data;
+            let isBlank = true;
+            for (let i = 3; i < imgData.length; i += 4) {
+              if (imgData[i] > 10) { isBlank = false; break; }
+            }
+
+            if (!isBlank) {
+              const dataUrl = tempCanvas.toDataURL();
+              const card = document.createElement('div');
+              card.className = 'recorte-card';
+              card.innerHTML = `<img class="recorte-img" src="${dataUrl}">`;
+              card.dataset.index = idx;
+
+              card.addEventListener('click', () => {
+                state.activeSprite = new Image();
+                state.activeSprite.src = dataUrl;
+                state.physics.width = w;
+                state.physics.height = h;
+                logConsole(`Sprite #${card.dataset.index} (${w}x${h}) selecionado para o jogo!`);
+                playBeep(523.25, 'sine', 0.08); // Bip dó (C5)
+              });
+
+              recortesGrid.appendChild(card);
+              idx++;
+            }
+          }
+        }
+      }
+    }
+    logConsole(`Fatiamento concluído no modo ${mode === 'smart' ? 'Inteligente' : 'Grade'}. ${idx} sprites extraídas.`);
+    playBeep(987.77, 'triangle', 0.15); // Bip si (B5)
+  });
+
+  // --- Pixel Art Creator ---
+  let isDrawingPixel = false;
+
+  const renderPalette = () => {
+    const container = document.getElementById('pixel-palette-container');
+    container.innerHTML = '';
+    const palette = Palettes[state.console];
+    
+    palette.forEach((color, idx) => {
+      const swatch = document.createElement('div');
+      swatch.className = `color-swatch ${idx === 1 ? 'active' : ''}`;
+      swatch.style.backgroundColor = color;
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+        state.editorColor = color;
+        playBeep(700, 'sine', 0.02);
+      });
+      container.appendChild(swatch);
+    });
+    state.editorColor = '#ffffff';
+  };
+
+  const drawPixelGrid = () => {
+    ctxPixel.fillStyle = '#090915';
+    ctxPixel.fillRect(0, 0, canvasPixel.width, canvasPixel.height);
+  };
+
+  const getPixelPos = (e) => {
+    const rect = canvasPixel.getBoundingClientRect();
+    const x = Math.floor((e.clientX - rect.left) / (rect.width / canvasPixel.width));
+    const y = Math.floor((e.clientY - rect.top) / (rect.height / canvasPixel.height));
+    return { x, y };
+  };
+
+  canvasPixel.addEventListener('mousedown', (e) => {
+    isDrawingPixel = true;
+    const { x, y } = getPixelPos(e);
+    ctxPixel.fillStyle = state.editorColor;
+    ctxPixel.fillRect(x, y, 1, 1);
+  });
+
+  canvasPixel.addEventListener('mousemove', (e) => {
+    if (!isDrawingPixel) return;
+    const { x, y } = getPixelPos(e);
+    ctxPixel.fillStyle = state.editorColor;
+    ctxPixel.fillRect(x, y, 1, 1);
+  });
+
+  window.addEventListener('mouseup', () => { isDrawingPixel = false; });
+
+  document.getElementById('btn-clear-pixel').addEventListener('click', () => {
+    drawPixelGrid();
+    playBeep(220, 'sine', 0.1);
+  });
+
+  document.getElementById('btn-use-pixel').addEventListener('click', () => {
+    const dataUrl = canvasPixel.toDataURL();
+    state.activeSprite = new Image();
+    state.activeSprite.src = dataUrl;
+    logConsole("Pixel Art injetada com sucesso no Simulador!");
+    playBeep(880, 'triangle', 0.15);
+  });
+
+  // --- Lógica de Shaders Retro ---
+  const scanlines = document.getElementById('scanlines');
+  const crt = document.getElementById('crt');
+  const checkScanlines = document.getElementById('check-scanlines');
+  const checkCrt = document.getElementById('check-crt');
+  const checkRgb = document.getElementById('check-rgb-split');
+  const rangeGlitch = document.getElementById('range-glitch');
+  const rangePhosphor = document.getElementById('range-phosphor');
+
+  checkScanlines.addEventListener('change', (e) => {
+    state.shaders.scanlines = e.target.checked;
+    scanlines.style.opacity = e.target.checked ? '1' : '0';
+    playBeep(600, 'sine', 0.05);
+  });
+
+  checkCrt.addEventListener('change', (e) => {
+    state.shaders.crt = e.target.checked;
+    crt.style.opacity = e.target.checked ? '1' : '0';
+    playBeep(600, 'sine', 0.05);
+  });
+
+  checkRgb.addEventListener('change', (e) => {
+    state.shaders.rgbSplit = e.target.checked;
+    playBeep(600, 'sine', 0.05);
+  });
+
+  rangeGlitch.addEventListener('input', (e) => {
+    state.shaders.glitch = parseInt(e.target.value);
+    document.getElementById('val-glitch').innerText = `${e.target.value}%`;
+  });
+
+  rangePhosphor.addEventListener('input', (e) => {
+    state.shaders.phosphor = parseInt(e.target.value);
+    document.getElementById('val-phosphor').innerText = `${e.target.value}%`;
+  });
+
+  // --- AI Agent Playground & Console ---
+  const logConsole = (text, type = 'info') => {
+    const line = document.createElement('div');
+    line.className = `ai-console-line console-${type}`;
+    line.innerText = `> ${text}`;
+    aiConsole.appendChild(line);
+    aiConsole.scrollTop = aiConsole.scrollHeight;
+  };
+
+  const defaultDemoCode = `// Script comportamental do Objeto
+// Use as variáveis: sprite (x, y, vx, vy, width, height, gravity, bounce, speed)
+// O canvas do jogo tem resolução de 256x224 ou 320x224
+
+// Inicialização (executa uma vez)
+if (typeof init === 'undefined') {
+  sprite.x = 40;
+  sprite.y = 80;
+  sprite.vx = 2;
+  sprite.vy = 0;
+  init = true;
+}
+
+// Lógica de Atualização (executa a cada frame)
+sprite.x += sprite.vx;
+sprite.y += sprite.vy;
+
+// Gravidade simples
+sprite.vy += sprite.gravity;
+
+// Colisão com as bordas e chão
+if (sprite.x <= 0 || sprite.x + sprite.width >= canvas.width) {
+  sprite.vx = -sprite.vx * sprite.bounce;
+  sprite.x = sprite.x <= 0 ? 0 : canvas.width - sprite.width;
+}
+
+if (sprite.y + sprite.height >= canvas.height) {
+  sprite.vy = -sprite.vy * sprite.bounce;
+  sprite.y = canvas.height - sprite.height;
+}
+`;
+
+  document.getElementById('btn-load-demo-code').addEventListener('click', () => {
+    codeArea.value = defaultDemoCode;
+    logConsole("Código Demo carregado no editor.");
+    playBeep(600, 'sine', 0.05);
+  });
+
+  document.getElementById('btn-run-script').addEventListener('click', () => {
+    try {
+      // Limpa qualquer variável init antiga
+      window.init = undefined;
+      const testFn = new Function('sprite', 'canvas', codeArea.value);
+      testFn(state.physics, canvasGame);
+      logConsole("Script compilado com sucesso. Executando...", "success");
+      playBeep(523, 'sine', 0.1);
+    } catch(e) {
+      logConsole(`Erro de compilação: ${e.message}`, "error");
+      playBeep(200, 'sawtooth', 0.25);
+    }
+  });
+
+  // Assistente de IA de Código local de alta velocidade
+  const scriptsProntos = {
+    pulo: `// Movimentação com física de pulo por teclas
+if (typeof init === 'undefined') {
+  sprite.x = 100;
+  sprite.y = 100;
+  sprite.vx = 0;
+  sprite.vy = 0;
+  init = true;
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'a') sprite.vx = -sprite.speed;
+    if (e.key === 'ArrowRight' || e.key === 'd') sprite.vx = sprite.speed;
+    if ((e.key === 'ArrowUp' || e.key === 'w') && sprite.y >= canvas.height - sprite.height - 2) {
+      sprite.vy = -6; // Força de Pulo
+    }
+  });
+  window.addEventListener('keyup', (e) => {
+    if (['ArrowLeft', 'ArrowRight', 'a', 'd'].includes(e.key)) sprite.vx = 0;
+  });
+}
+
+sprite.x += sprite.vx;
+sprite.y += sprite.vy;
+sprite.vy += sprite.gravity; // Gravidade
+
+// Limites
+if (sprite.y + sprite.height >= canvas.height) {
+  sprite.y = canvas.height - sprite.height;
+  sprite.vy = 0;
+}
+if (sprite.x < 0) sprite.x = 0;
+if (sprite.x + sprite.width > canvas.width) sprite.x = canvas.width - sprite.width;`,
+
+    patrulha: `// Patrulha autônoma horizontal com rotação
+if (typeof init === 'undefined') {
+  sprite.x = 20;
+  sprite.y = canvas.height - sprite.height;
+  sprite.vx = 1.5;
+  init = true;
+}
+
+sprite.x += sprite.vx;
+
+// Inverte direção ao bater nos cantos
+if (sprite.x <= 0 || sprite.x + sprite.width >= canvas.width) {
+  sprite.vx = -sprite.vx;
+  sprite.x = sprite.x <= 0 ? 0 : canvas.width - sprite.width;
+}`,
+
+    seguir: `// Objeto que segue suavemente a posição do cursor
+if (typeof init === 'undefined') {
+  sprite.targetX = 100;
+  sprite.targetY = 100;
+  init = true;
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    sprite.targetX = (e.clientX - rect.left) / (rect.width / canvas.width) - sprite.width/2;
+    sprite.targetY = (e.clientY - rect.top) / (rect.height / canvas.height) - sprite.height/2;
+  });
+}
+
+// Interpolação linear para movimento orgânico suave
+sprite.x += (sprite.targetX - sprite.x) * 0.1;
+sprite.y += (sprite.targetY - sprite.y) * 0.1;`
+  };
+
+  document.getElementById('btn-ai-generate').addEventListener('click', () => {
+    const prompt = document.getElementById('input-ai-prompt').value.toLowerCase().trim();
+    if (!prompt) {
+      logConsole("Por favor, digite um comando de IA.", "error");
+      return;
+    }
+
+    logConsole(`IA analisando o prompt: "${prompt}"...`);
+    playBeep(440, 'triangle', 0.1);
+
+    setTimeout(() => {
+      let code = "";
+      if (prompt.includes("pulo") || prompt.includes("gravidade") || prompt.includes("teclado")) {
+        code = scriptsProntos.pulo;
+        logConsole("Agente IA gerou código de movimentação com Pulo e Gravidade!", "success");
+      } else if (prompt.includes("seguir") || prompt.includes("mouse") || prompt.includes("cursor")) {
+        code = scriptsProntos.seguir;
+        logConsole("Agente IA gerou código para Seguir o Cursor!", "success");
+      } else {
+        code = scriptsProntos.patrulha;
+        logConsole("Agente IA gerou código de Patrulha Autônoma Simples!", "success");
+      }
+      codeArea.value = code;
+      window.init = undefined; // Reset
+      playBeep(880, 'sine', 0.2);
+    }, 1000);
+  });
+
+  // --- Loop Principal do Jogo (Canvas Game Render) ---
+  let demoFrame = 0;
+  const gameLoop = () => {
+    if (!state.isPlaying) return;
+
+    // Fundo preto ou azul escuro retrô
+    ctxGame.fillStyle = '#070712';
+    ctxGame.fillRect(0, 0, canvasGame.width, canvasGame.height);
+
+    // Efeito de estrelas/grade de fundo simples
+    ctxGame.fillStyle = 'rgba(255,255,255,0.04)';
+    for (let i = 0; i < canvasGame.width; i += 16) {
+      ctxGame.fillRect(i, 0, 1, canvasGame.height);
+    }
+    for (let j = 0; j < canvasGame.height; j += 16) {
+      ctxGame.fillRect(0, j, canvasGame.width, 1);
+    }
+
+    // Executa Script do Objeto
+    try {
+      const loopFn = new Function('sprite', 'canvas', codeArea.value);
+      loopFn(state.physics, canvasGame);
+    } catch(e) {}
+
+    // Desenha o Sprite Ativo (ou fallback se nenhum estiver selecionado)
+    if (state.activeSprite) {
+      // Glitch visual de jitter (agitação) opcional se shader ativado
+      let offsetX = 0;
+      let offsetY = 0;
+      if (state.shaders.glitch > 0 && Math.random() < (state.shaders.glitch / 100)) {
+        offsetX = (Math.random() - 0.5) * 6;
+        offsetY = (Math.random() - 0.5) * 4;
+      }
+      
+      ctxGame.imageSmoothingEnabled = false;
+      ctxGame.drawImage(state.activeSprite, state.physics.x + offsetX, state.physics.y + offsetY, state.physics.width, state.physics.height);
+    } else {
+      // Desenha bloco padrão de teste
+      ctxGame.fillStyle = '#c084fc';
+      ctxGame.fillRect(state.physics.x, state.physics.y, state.physics.width, state.physics.height);
+      ctxGame.fillStyle = '#fff';
+      ctxGame.font = '8px Arial';
+      ctxGame.fillText("SEM SPRITE", state.physics.x - 10, state.physics.y - 4);
+    }
+
+    // Simulação do Shader RGB Split (Aberração Cromática)
+    if (state.shaders.rgbSplit) {
+      const w = canvasGame.width;
+      const h = canvasGame.height;
+      const imgData = ctxGame.getImageData(0, 0, w, h);
+      const data = imgData.data;
+      const offset = 2 * 4; // Shift de 2 pixels para o canal vermelho
+
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w - 2; x++) {
+          const idx = (y * w + x) * 4;
+          data[idx] = data[idx + offset]; // Injeta vermelho deslocado
+        }
+      }
+      ctxGame.putImageData(imgData, 0, 0);
+    }
+
+    // Filtro Phosphor Blur (simulação simples desenhando um rect semitransparente)
+    if (state.shaders.phosphor > 0) {
+      ctxGame.fillStyle = `rgba(0,0,0,${0.05 + (100 - state.shaders.phosphor) * 0.0035})`;
+      ctxGame.fillRect(0, 0, canvasGame.width, canvasGame.height);
+    }
+
+    demoFrame++;
+    requestAnimationFrame(gameLoop);
+  };
+
+  const resetGame = () => {
+    state.physics.x = 100;
+    state.physics.y = 80;
+    state.physics.vx = state.console === 'snes' ? 2 : 2.5;
+    state.physics.vy = 0;
+    window.init = undefined;
+    drawPixelGrid();
+    logConsole("Parâmetros do simulador resetados.");
+  };
+
+  // --- Controles de Play/Pause/Reset ---
+  const btnPlay = document.getElementById('btn-play-pause');
+  btnPlay.addEventListener('click', () => {
+    state.isPlaying = !state.isPlaying;
+    btnPlay.innerText = state.isPlaying ? 'Pause' : 'Play';
+    if (state.isPlaying) {
+      gameLoop();
+      logConsole("Simulador INICIADO.");
+      playBeep(523, 'sine', 0.1);
+    } else {
+      logConsole("Simulador PAUSADO.");
+      playBeep(330, 'sine', 0.15);
+    }
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    resetGame();
+    playBeep(440, 'triangle', 0.1);
+  });
+
+  // Exportar / Gravar
+  document.getElementById('btn-export-rom').addEventListener('click', () => {
+    logConsole("Salvando assets recortados e compilando ROM de desenvolvimento...", "info");
+    playBeep(700, 'sine', 0.08);
+    
+    setTimeout(() => {
+      logConsole("Compilado com sucesso! ROM fictícia gerada para emulador.", "success");
+      playBeep(987, 'sine', 0.25);
+    }, 1500);
+  });
+
+  // Inicializa tudo
+  setConsole('snes');
+  renderPalette();
+  drawPixelGrid();
+  codeArea.value = defaultDemoCode;
+  
+  // Carrega Oren como imagem inicial
+  loadSlicerImage('/static/referencias/Oren.svg');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Audio Designer"
+  short_description: "Especialista em áudio de jogo (escola Akira Yamaoka) que DESENHA"
+  default_prompt: "Use $game-audio-designer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

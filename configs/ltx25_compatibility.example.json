@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "engine_id": "ltx_2_5",
+  "ltx_2_3_engine_allowed": false,
+  "ltx_2_3_checkpoint_allowed": false,
+  "ltx_2_3_workflow_allowed": false,
+  "ltx_2_3_ic_lora_allowed": true,
+  "required_classification": "LTX25_COMPATIBILITY_ASSET",
+  "allowlist": [
+    "Lightricks/LTX-2.3-22b-IC-LoRA-Deblur",
+    "Lightricks/LTX-2.3-22b-IC-LoRA-In-Outpainting",
+    "Lightricks/LTX-2.3-22b-IC-LoRA-Ingredients",
+    "Lightricks/LTX-2.3-22b-IC-LoRA-Motion-Track-Control",
+    "Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control"
+  ]
+}

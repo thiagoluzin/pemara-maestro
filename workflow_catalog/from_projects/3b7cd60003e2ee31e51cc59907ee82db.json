@@ -1,0 +1,241 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_ref2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "40",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611030304
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_pika_full_horizontal_20261102/video/T02_ref_identity_initial_qualification_v03",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "30": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A05_dante_nevan_builtin_DLSS5.png"
+    }
+  },
+  "31": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "K01_T01_v01_frame361_motion_proposal.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "subject_definitions:\n<Subject 1> is the adult Dante of <Picture 1>: the same youthful angular fair human face, shaggy silver-white hair, open long worn crimson leather coat, brown harness/buckles, dark trousers, black fingerless gloves and boots.\n<Subject 2> is the EXACT Nevan in <Picture 1>: wide flat dark violet-blue asymmetric blade body, original row of teardrop apertures, three unequal curved blade tips, compact dark string bed and thick braided purple SHORT neck with the small spear headpiece. The entire surface, existing strings and existing dark hardware are the original design in <Picture 1>.\n<Subject 3> is the same opera stage with carved pillars, violet curtains, balconies, warm lamps and floor from <Picture 1> and <Picture 2>.\n<Picture 2> is the exact first frame and camera composition of this continuation, the approved final moving frame of the preceding shot. It supplies initial body, boots, guitar angle, hand contact, gaze and camera; <Picture 1> remains the appearance standard for Dante and Nevan.\n\nsummary:\n[reference generation] A fifteen-second HORIZONTAL16:9 cinematic LIVE-ACTION continuation of the SAME ongoing Nevan performance, from the exact first frame <Picture 2>, through one overhead guitar flourish and a kneeling final chord.\n\nretention_analysis:\nFully retain <Subject 1> and <Subject 2> from <Picture 1> at every moment. Pose and initial perspective come from <Picture 2>. Nevan is one solid rigid prop with the SAME compact proportions, unchanged apertures, blade tips, short thick braided neck and dark compact string bed. Its body remains broad compared with its neck, and its dark violet metal retains the same material. Retain ONLY the existing hardware visible in <Picture 1>. The RIGHT glove plays the original string bed and the LEFT glove grips the original short neck. Fully retain stage geography and warm/violet lighting. One human actor and one guitar; natural skin, hair strands and weighted leather. The complete actor and the entire guitar stay framed. Exclude conventional guitar redesign, long straight neck, extra hardware, extra blades or actors, bending, morphing, throwing, text, speech and singing.\n\ndetailed_description:\n[Shot 1] 00:00-00:15, one uninterrupted wide front-three-quarter shot. Frame one matches <Picture 2>. Start in the middle of the existing playing motion: the incoming weight transfer, right-wrist stroke, coat and camera drift continue immediately. The initial left boot is forward, right boot behind, guitar across waist with its short neck angled upward. No new introduction, pause, testing note or pose reset.\nCamera remains on the same low audience-front rail, with modest lateral travel and visible pillar parallax. Keep its distance to show head, both boots, hands and all Nevan tips. Retreat slightly before the overhead movement so there is ample clear air above the entire prop. Keep the prop's front and hand contacts readable; no approach, close-up, compensating full orbit or hidden cut. Same space and light throughout.\n00:00-00:03: Continue the fast existing guitar phrase, alternating actual RIGHT wrist strokes at the compact strings while LEFT fingers change fingering on the same short thick neck. Complete the incoming step and widen the grounded stance. Dante looks from strings toward the headpiece and grins slightly, enjoying control of the new instrument. Fabric follows the step.\n00:03-00:06: Both hands raise the unchanged rigid Nevan out IN FRONT and ABOVE his forehead, then return it to the front waist position in one broad energetic outside arc. The guitar's flat face stays sufficiently angled toward camera to retain its recognizable blade silhouette, original dark hardware and compact neck. Its blades travel through visible free space outside head, hair, arms and coat. Knees counterbalance the motion; shoulders turn a quarter to the side with planted steps and return front. The coat trails the body. No replay of the behind-head rest or full back-facing turn.\n00:06-00:10: Play the last front-facing solo phrase on the same original strings. A supported torso back lean grows from bent knees and grounded rear boot; the body then returns forward, preparing to kneel. Right wrist keeps articulating the riff, left glove stays on the original short neck. Nevan remains the exact dark violet-blue bladed design from <Picture 1>, not a newly designed electric guitar.\n00:10-00:13: Dante bends through hips and BOTH knees, bringing BOTH kneecaps onto the stage, then BOTH shins settle on the floor behind him with both feet behind the hips. He decelerates into a short controlled two-knee slide, chest upright above both knees. Strike one final chord as the knees meet the floor. Nevan remains outside chest and thighs, supported by LEFT glove and the right hand during the stroke. Cloth responds after floor contact; preserve real weight and clear prop support.\n00:13-00:15: Upright on both knees with both lower legs behind, Dante lets the final chord ring. The left glove holds Nevan diagonally along the left side beside the thigh; the RIGHT arm opens after the final stroke into the theatrical finishing flourish. He lifts his chest, breathes and looks forward with playful satisfaction. Hair and coat continue to settle through the last frame, with natural subtle camera travel, not a frozen image or another riff.\n\noverall_soundscape:\nNative diegetic electric guitar continues mid-phrase from the preceding take: same intimate crunchy original E-minor rock solo around140BPM and same opera-chamber reverberation. Picked attacks follow visible right-hand strokes, with quiet leather, boots and knee contact. Restrained electrical filaments/crackle appear after struck notes. The last chord rings and decays with natural room reflections during the ending. No new count-in, musical intro, sudden boost, added band, voice, applause or copied game recording.\n\nnon_diegetic_music:\nN/A. No added score.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "audio_vae": [
+        "7",
+        0
+      ],
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "30",
+        0
+      ],
+      "ref_images.ref_image_1": [
+        "31",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  },
+  "40": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "8",
+        0
+      ],
+      "latent": [
+        "8",
+        1
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "image": [
+        "31",
+        0
+      ],
+      "frame_idx": 0
+    }
+  }
+}

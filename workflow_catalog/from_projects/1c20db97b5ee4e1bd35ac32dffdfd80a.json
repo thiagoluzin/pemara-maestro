@@ -1,0 +1,352 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/L16_v3_fixed_stairs",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "continuum": {
+    "class_type": "PemaraH3NativeStateReferences",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "base_seed": 22106316,
+      "reference_size": "Max Identity",
+      "reference_image_1": [
+        "cast_celes",
+        0
+      ],
+      "reference_image_2": [
+        "cast_setzer",
+        0
+      ],
+      "reference_image_3": [
+        "cast_locke",
+        0
+      ],
+      "sequence_prompt": "subject_definitions:\n<Picture 1>: Celes, the one blonde real woman in the ivory dress with blue sash and ribbon.\n<Picture 2>: Setzer, the one silver-haired real man in the long black coat, gold waistcoat and black gloves.\n<Picture 3>: Locke, the one brown-haired real man with blue bandana, black jacket, cream shirt, blue trousers and tan boots.\n\nsummary:\nA single locked-camera fifteen-second continuation of the exact incoming video. After the wager, Celes puts away her coin and Setzer puts away his cards, then walks to the existing stairs and begins climbing. The same three actors remain in the same docked ship location. No dialogue.\n\nretention_analysis:\nKeep the incoming camera COMPLETELY FIXED for all fifteen seconds: identical lens, position, height and direction. Stone theatre at left, open gate and bridge at left, wooden cabin with circular window at right, existing curved wooden stair wall and visible stair treads behind Celes. No camera reversal, lateral move, zoom, pan, tilt, cut, reframe or new view. Same steady evening light. There is exactly ONE Celes, ONE Locke and ONE Setzer. Do not add a foreground body. The ship remains stationary. The approved incoming video fixes all scenery and actor positions; cast images only preserve faces and clothing.\n\ndetailed_description:\n[Shot 1] (0-15 seconds) Fixed camera. Start with Celes centered, her coin resting on her open LEFT palm; Locke at left carrying his round wooden shield in his LEFT hand and sword sheathed; Setzer foreground right holding playing cards in his RIGHT glove. Natural purposeful motion, no posing for the camera.\n0-5 seconds: Celes closes her LEFT hand around the single coin, lowers it to her blue sash, slips the coin into the fabric fold and withdraws her empty hand. She then stays at center-left beside Locke. Setzer presses his fan of cards into one stack with his right glove, puts that stack into his coat's inner pocket and withdraws his empty glove. Locke watches them and maintains his shield grip.\n5-10 seconds: Setzer turns away from Celes toward the existing stair treads directly behind his starting position. He walks around Celes on her RIGHT side, keeping a clear gap between his coat and her gown, and takes two steps to the bottom of those SAME stairs. Celes pivots her head to follow him without changing places or walking across his path. His body becomes smaller naturally as he walks away from the fixed camera. No new stairs appear. Cabin wall, circular window, railings and stone arch stay fixed in the picture.\n10-15 seconds: Setzer places his right glove on the existing stair rail and climbs just the first THREE visible treads, deliberately. Plant one boot squarely on each existing wooden tread, transfer body weight, then lift the trailing boot to the next tread. All movement follows the visible staircase away and upward. His black coat follows his legs; solid stairs and rail do not pass through him. End with Setzer paused securely on the third tread, still within the existing staircase view, turning his head slightly toward Celes and Locke below. Celes responds with a small nod; Locke turns his shoulders to look toward the stairs, keeping his shield low. Do not reach or invent the upper landing, helm or a new set. Do not repeat the coin toss. Continuous live motion and breathing, same camera and scenery throughout.\n\noverall_soundscape:\nQuiet evening wind, soft fabric and card rustle, separate wooden boot contacts timed to the visible walk and three stair steps. No words, whispers, singing, score or engine acceleration.\n\nnon_diegetic_music:\nNone.\n",
+      "continuity": "Strong — 39 frames (Experimental)",
+      "initial_state": [
+        "approved_context",
+        0
+      ],
+      "save_prefix": "ffvi_master_L16_fixed_stairs_v3"
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  },
+  "cast_celes": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_celes_approved_bc7d4ba5e3.png"
+    }
+  },
+  "cast_setzer": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_setzer_approved_e2c345da23.png"
+    }
+  },
+  "cast_locke": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_locke_approved_2aa5a3486b.png"
+    }
+  },
+  "approved_tail": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\input\\L15_approved_tail39.mkv",
+      "force_rate": 24,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 39,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "encode_video": {
+    "class_type": "VAEEncodeTiled",
+    "inputs": {
+      "pixels": [
+        "approved_tail",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "encode_audio": {
+    "class_type": "VAEEncodeAudio",
+    "inputs": {
+      "audio": [
+        "approved_tail",
+        2
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "approved_context": {
+    "class_type": "PemaraFFVIApprovedContext",
+    "inputs": {
+      "video_latent": [
+        "encode_video",
+        0
+      ],
+      "audio_latent": [
+        "encode_audio",
+        0
+      ],
+      "source_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\takes\\L15_v2_negotiation\\399a6875_000.mp4",
+      "source_sha256": "75b38c4911c78d7c7278d74c19324ed4ab18d06c5a6cd8bea4361ce353900b35"
+    }
+  }
+}

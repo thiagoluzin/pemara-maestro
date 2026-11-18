@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face { font-family: "Pemara Inter"; src: url("assets/fonts/inter-latin-variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; color: #f7fbff; font-family: "Pemara Inter", sans-serif; }
+    #frame-06-c3tech-ps-g700b-ground { position: absolute; inset: 0; background: radial-gradient(circle at 50% 44%, #132b3c 0%, #07111f 62%, #030914 100%); }
+    #frame-06-c3tech-ps-g700b-grid { position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(142,163,184,.15) 2px, transparent 2px), linear-gradient(90deg, rgba(142,163,184,.15) 2px, transparent 2px); background-size: 72px 72px; }
+    #frame-06-c3tech-ps-g700b-glow { position: absolute; left: 80px; top: 300px; width: 920px; height: 1160px; border-radius: 50%; background: radial-gradient(circle, rgba(255,106,0,.28) 0%, rgba(55,232,135,.10) 44%, transparent 72%); filter: blur(24px); }
+    #frame-06-c3tech-ps-g700b-header { position: absolute; left: 64px; right: 64px; top: 84px; height: 120px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid rgba(142,163,184,.34); }
+    #frame-06-c3tech-ps-g700b-count { font-size: 48px; font-weight: 850; letter-spacing: .08em; color: #37e887; }
+    #frame-06-c3tech-ps-g700b-category { font-size: 26px; font-weight: 800; letter-spacing: .16em; color: #f7fbff; }
+    #frame-06-c3tech-ps-g700b-card-wrap { position: absolute; left: 70px; top: 246px; width: 940px; height: 1175px; padding: 18px; border: 3px solid rgba(247,251,255,.35); border-radius: 44px; background: rgba(16,28,45,.88); box-shadow: 0 36px 80px rgba(0,0,0,.46); }
+    #frame-06-c3tech-ps-g700b-card { width: 100%; height: 100%; object-fit: contain; border-radius: 28px; display: block; }
+    #frame-06-c3tech-ps-g700b-meta { position: absolute; left: 70px; right: 70px; top: 1458px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; }
+    #frame-06-c3tech-ps-g700b-name { font-size: 31px; line-height: 1.08; font-weight: 850; letter-spacing: -.02em; color: #f7fbff; max-width: 620px; }
+    #frame-06-c3tech-ps-g700b-price { font-size: 42px; line-height: 1; font-weight: 900; color: #ff6a00; white-space: nowrap; }
+    #frame-06-c3tech-ps-g700b-progress-track { position: absolute; left: 70px; right: 70px; top: 1568px; height: 10px; border-radius: 999px; background: rgba(142,163,184,.22); overflow: hidden; }
+    #frame-06-c3tech-ps-g700b-progress { width: 50%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ff6a00, #37e887); transform-origin: left center; }
+  </style>
+  <div id="root" data-composition-id="frame-06-c3tech-ps-g700b" data-start="0" data-duration="3.8" data-width="1080" data-height="1920">
+    <div id="frame-06-c3tech-ps-g700b-ground" class="clip" data-start="0" data-duration="3.8" data-track-index="0"></div>
+    <div id="frame-06-c3tech-ps-g700b-grid" class="clip" data-start="0" data-duration="3.8" data-track-index="1"></div>
+    <div id="frame-06-c3tech-ps-g700b-glow" class="clip" data-start="0" data-duration="3.8" data-track-index="2"></div>
+    <div id="frame-06-c3tech-ps-g700b-header" class="clip" data-start="0" data-duration="3.8" data-track-index="3">
+      <div id="frame-06-c3tech-ps-g700b-count">05 / 10</div><div id="frame-06-c3tech-ps-g700b-category">FONTES · PEMARA TECH</div>
+    </div>
+    <div id="frame-06-c3tech-ps-g700b-card-wrap" class="clip" data-start="0" data-duration="3.8" data-track-index="4"><img id="frame-06-c3tech-ps-g700b-card" src="assets/cards/qwen_fonte_48.png" alt="C3TECH PS-G700B"></div>
+    <div id="frame-06-c3tech-ps-g700b-meta" class="clip" data-start="0" data-duration="3.8" data-track-index="5"><div id="frame-06-c3tech-ps-g700b-name">C3TECH PS-G700B</div><div id="frame-06-c3tech-ps-g700b-price">R$ 300</div></div>
+    <div id="frame-06-c3tech-ps-g700b-progress-track" class="clip" data-start="0" data-duration="3.8" data-track-index="6"><div id="frame-06-c3tech-ps-g700b-progress"></div></div>
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#frame-06-c3tech-ps-g700b-header", { opacity: 0, y: -28 }, { opacity: 1, y: 0, duration: .34, ease: "power3.out" }, 0)
+      .fromTo("#frame-06-c3tech-ps-g700b-card-wrap", { opacity: 0, y: 36, scale: .92 }, { opacity: 1, y: 0, scale: 1, duration: .58, ease: "power3.out" }, .08)
+      .fromTo("#frame-06-c3tech-ps-g700b-glow", { opacity: 0, scale: .82 }, { opacity: 1, scale: 1, duration: .72, ease: "power2.out" }, .16)
+      .fromTo("#frame-06-c3tech-ps-g700b-meta", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .42, ease: "power3.out" }, .58)
+      .fromTo("#frame-06-c3tech-ps-g700b-progress", { scaleX: 0 }, { scaleX: 1, duration: .72, ease: "power2.out" }, .84)
+      .to("#frame-06-c3tech-ps-g700b-glow", { scale: 1.06, opacity: .82, duration: .96, ease: "sine.out" }, .90);
+    window.__timelines["frame-06-c3tech-ps-g700b"] = tl;
+  </script>
+</template>

@@ -1,0 +1,286 @@
+{
+  "checked_at": "2026-09-20T04:39:57.999Z",
+  "validation": "Live MCP schema and model names; not artistic approval",
+  "workflows": [
+    {
+      "name": "01_HiDream_Full_ancoras.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\01_HiDream_Full_ancoras.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 33
+      }
+    },
+    {
+      "name": "02_HiDream_Photoshoot_lote8.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\02_HiDream_Photoshoot_lote8.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 35
+      }
+    },
+    {
+      "name": "03_LLaDA_base_correcao.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_base_correcao.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 10
+      }
+    },
+    {
+      "name": "03_LLaDA_turbo_correcao.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_turbo_correcao.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 10
+      }
+    },
+    {
+      "name": "04_Qwen_2512_texto_layout.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\04_Qwen_2512_texto_layout.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 19
+      }
+    },
+    {
+      "name": "05_FLUX_Klein_rascunho.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\05_FLUX_Klein_rascunho.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 16
+      }
+    },
+    {
+      "name": "10_YuE2_composicao_ABC.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10_YuE2_composicao_ABC.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 16
+      }
+    },
+    {
+      "name": "10a_YuE2_planejar_ABC_sem_audio.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10a_YuE2_planejar_ABC_sem_audio.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 3
+      }
+    },
+    {
+      "name": "10b_YuE2_gerar_com_ABC_revisado.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10b_YuE2_gerar_com_ABC_revisado.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 7
+      }
+    },
+    {
+      "name": "11_YuE2_cover_SheetSage.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\11_YuE2_cover_SheetSage.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 13
+      }
+    },
+    {
+      "name": "12_AuK_Base_voz.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Base_voz.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 2
+      }
+    },
+    {
+      "name": "12_AuK_Flash_voz.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Flash_voz.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 2
+      }
+    },
+    {
+      "name": "13_AuK_Base_editar.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Base_editar.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 3
+      }
+    },
+    {
+      "name": "13_AuK_Flash_editar.json",
+      "result": {
+        "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Flash_editar.json",
+        "valid": true,
+        "error_count": 0,
+        "warning_count": 0,
+        "errors": [],
+        "warnings": [],
+        "partner_nodes": [],
+        "spends_credits": false,
+        "object_info_source": {
+          "mode": "local",
+          "host": "127.0.0.1",
+          "port": 8188
+        },
+        "converted_from_ui": true,
+        "converted_node_count": 3
+      }
+    }
+  ]
+}

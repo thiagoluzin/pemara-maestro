@@ -1,0 +1,4 @@
+interface:
+  display_name: "Performance Optimizer"
+  short_description: "Mede e corrige gargalos de aplicação, banco, memória e renderiza"
+  default_prompt: "Use $performance-optimizer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

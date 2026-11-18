@@ -1,0 +1,270 @@
+{
+  "C01_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T01_H3_MASTER01_end_f242.png"
+    }
+  },
+  "C01_start_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C01_start",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C01_save_start": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C01_save_start_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C01_start",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C01_arrival": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C01_CAMERA_approved_target_motion22.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 22,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "C01_arrival_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C01_arrival",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C01_save_arrival": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C01_save_arrival_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C01_arrival",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C03_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T03_H3_MASTER_R3_end_f242.png"
+    }
+  },
+  "C03_start_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C03_start",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C03_save_start": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C03_save_start_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C03_start",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C03_arrival": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C03_CAMERA_approved_target_motion22.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 22,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "C03_arrival_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C03_arrival",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C03_save_arrival": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C03_save_arrival_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C03_arrival",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C06_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T06_H3_MASTER_R2_end_f167.png"
+    }
+  },
+  "C06_start_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C06_start",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C06_save_start": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C06_save_start_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C06_start",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C06_arrival": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C06_CAMERA_approved_target_motion22.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 22,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "C06_arrival_depth": {
+    "class_type": "DepthAnythingV2Preprocessor",
+    "inputs": {
+      "image": [
+        "C06_arrival",
+        0
+      ],
+      "ckpt_name": "depth_anything_v2_vits.pth",
+      "resolution": 512
+    }
+  },
+  "C06_save_arrival": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "C06_save_arrival_video",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/camera_depth/C06_arrival",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "C01_save_start_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C01_start_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "C01_save_arrival_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C01_arrival_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "C03_save_start_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C03_start_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "C03_save_arrival_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C03_arrival_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "C06_save_start_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C06_start_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "C06_save_arrival_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "C06_arrival_depth",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  }
+}

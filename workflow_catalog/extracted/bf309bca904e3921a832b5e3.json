@@ -1,0 +1,137 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Precise local SECOND impact edit. Keep Chris and the ONE shotgun EXACTLY unchanged in aiming pose; no second gun or reshaped receiver. Keep Lisa slim proportions, gaunt face, outfit and existing upper-chest blood wound EXACTLY unchanged. Add a second small blood patch on front dress at upper abdomen below the first. Lisa staggers sideways toward screen RIGHT, torso angled, one bare foot stepping to catch balance, still alive. Her cuffed hands remain together at abdomen, CLOSED iron cuffs and ONE short connecting wrist chain. Exactly ONE realistic small rigid red spent 12-gauge shell with brass base lies on floor near Chris rear boot at LEFT, from ONE pump cycle between shots. No other shells, paper, loose cuffs or waist chain. SAME doors, camera and exposure.\nLisa has the unmistakable angular, gaunt, hunched silhouette of Lisa Trevor: SLIM body, narrow hips, small flat sunken abdomen, prominent collarbones and angular shoulders, severe asymmetrical spinal hunch, head thrust forward below shoulder height, bent knees, long sinewy disproportionate forearms with bony large hands. Threat comes from abnormal proportions and posture. She is NOT obese, not broad-bellied, not barrel-bodied and not muscular like a bodybuilder. Slim emaciated female adult performer in practical prosthetic makeup, dirty mottled scarred skin, deeply asymmetrical gaunt uncovered face, tangled LONG brown hair partly across cheeks. Dirty loose opaque gray ragged knee-to-mid-calf dress hanging from a NARROW frame, cloth cord at waist, bare grounded feet. No mask or hood. Both wrists pass physically THROUGH closed dark iron cuff rings, hands extend beyond them; ONE short chain visibly connects the two cuff eyelets, empty fingers do not hold restraints. No other chain on waist.",
+      "negative_prompt": "obese, corpulent, plus-size, big belly, wide hips, bulky female, huge shoulders, bodybuilder, beauty model, young pretty zombie, face mask, hood, CGI, video game, plastic skin, illustration, held handcuffs, unlinked wrist cuffs, extra chains, duplicate gun, extra person, text",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 11100306,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_identity_v03/A06_LEAN_V01"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_CORRECT_V03_A06_63eec66f8b2c.png"
+    },
+    "is_changed": [
+      "63eec66f8b2cbc783dd0fa2819d5da4e84f8a9212e418b30d859c9c4418d5cb1"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Composição e letra"
+  short_description: "Letras originais, hooks e forma com Qwen 3.8"
+  default_prompt: "Use $pemara-music-songwriter para compor uma letra original e uma forma cantável no idioma e duração pedidos."
+policy:
+  allow_implicit_invocation: true

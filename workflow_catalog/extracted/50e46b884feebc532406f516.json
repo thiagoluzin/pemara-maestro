@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "New Wave of British Heavy Metal, high energy, galloping tempo. Dominant electric bass lead with deep growl, driving double-bass drum kit, twin lead guitars with heavy distortion, powerful operatic male vocal performance, epic and dark atmosphere.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nThe frost bit deep into the deck\nWhere the shadows long and thick\nWe sailed beyond the map’s edge\nChasing the phantom edge\nThe wind screamed through the rigging\nA cold and hollow crying\nI raised my hand to the sky\nAnd cut the bird that flew by\nThe eye was dead, the soul was bare\nThe air grew thick with despair\n\n[Chorus]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nTorn from the dark\nHearts of stone and bone\nWe roam alone\nTide of the Iron Siren\nPulling us home\n\n[Verse]\nThe sails were white as bone\nBut we were never alone\nThey came from the foam below\nWith a cold and heavy flow\nThe moon was a silver coin\nTo buy our wandering pain\nWe danced with the ghostly dead\nIn the mist of the sea’s bed\nThe water was black and still\nAnd the stars began to fall\n\n[Chorus]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nTorn from the dark\nHearts of stone and bone\nWe roam alone\nTide of the Iron Siren\nPulling us home\n\n[Bridge]\nAnd the water was like a glass\nReflecting our past\nEvery face in the deep\nWeeping with no sleep\nI reached out to the wave\nBut the hand of death was grave\nThe siren sang a song\nWhere the light is gone\n\n[Verse]\nNow the ship is drifting free\nOn the edge of eternity\nThe crew is gone, the mast is bent\nWe are not what we have spent\nThe bass hums in the hull\nA low and mournful call\nWaiting for the shore\nWhere the light returns once more\n\n[Outro]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nPulling us home",
+      "abc": "X:1\nT:\nM:2/4\nL:1/16\nQ:1/4=75\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% intro\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD8-|D8|DA,D2E2F2-|F8-|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF6z2|D,A,D2E2F2|A2c2G4-|G8|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,A,D2E2F2-|F8-|F6z2|D,A,D2E2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nA2c2G4-|G8|D,A,D2E2F2-|F6z2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nZ2|D,2D,D,=EDzC-|CDD,D,=EDCD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=EDzC-|CDD,D,=E,4|D,2D,D,=EDzC-|CDD,D,=EDCD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=EDzC-|CDD,D,=E4|D2D,D,=ED2C-|CDD,D,=EDCD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z4\"E\"z4|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=EDzC-|CDD,D,=E4|D2D,D,=ED2C-|CDD,D,=EDCD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z4\"E\"z2AA|\nV: Ins\nD,2D,D,=EDzC-|CDD,D,=E2z2|\n% verse\nV: Vocal\n\"D#m\"AA2A3GG-|\"D#m\"GF2F3FF|\"D#m\"FG2G2F2A-|\"D#m\"Az3\"E\"z2AA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA3GG-|\"D#m\"GF3z4|\"D#m\"EEEE2C2D-|\"D#m\"D3z\"E\"z2AA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2A2A2GG-|\"D#m\"GA3z2Ac-|\"D#m\"c2c2cA2c-|\"D#m\"cd3\"E\"z2df-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2feee-|\"D#m\"ed3z2d2|\"D#m\"e2ee2cc2|\"D#m\"d4\"E\"z3A|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d2d2d2de-|\"B\"ee2e3ze|\"C#\"f2f2f2zg-|\"C#\"gg2aaz3|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"f4e2ee-|\"D#m\"ed2d2c2z|\"F#\"f2f2f2ee-|\"F#\"e3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"f4e2ee-|\"C#\"ed2d2c3|\"G#m\"d4d2cd-|\"G#m\"d3z\"F#6\"z4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2ee-|\"D#m\"e3z3c2|\"F#\"f4g2ee-|\"F#\"e3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"f4e2ee-|\"C#\"ed2d2c3|\"G#m\"z8|ff3e2d2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8-|\"D#m\"d8|\"D#m\"z8|\"D#m\"z4\"E\"z4|\nV: Ins\nZ2|D,2D,D,=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z4\"E\"z2AA-|\nV: Ins\nD,2D,D,=ED2C-|CDD,D,=EDCD|D,2D,D,=ED2C-|CDD,D,=E2z2|\n% verse\nV: Vocal\n\"D#m\"A2AAGG2G|\"D#m\"F2z3FFF|\"D#m\"FG4zFA-|\"D#m\"A3z\"E\"z2AA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AAA2GG|\"D#m\"F2z4FF|\"D#m\"E2EE2C2D-|\"D#m\"D3z\"E\"z2AA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AAA2GG-|\"D#m\"GA3z2Ac-|\"D#m\"c2c2cAAd-|\"D#m\"d3z\"E\"z2ff-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2fff2ee|\"D#m\"d2z3dde-|\"D#m\"e2e2ecdd-|\"D#m\"d3z\"E\"z3A|\nV: Ins\nZ4|\nV: Vocal\n\"B\"d2d4de-|\"B\"ee2e3ee|\"C#\"f4f3g-|\"C#\"gg2aaz3|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"f4e2ee-|\"D#m\"ed2d2c2z|\"F#\"f2f2f2ee-|\"F#\"e3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"f4e2ee-|\"C#\"ed2d2c3|\"G#m\"d4d2cd-|\"G#m\"d3z\"F#6\"z4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2ee-|\"D#m\"e3z3c2|\"F#\"f4g2ee-|\"F#\"e3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"f4e2ee-|\"C#\"ed2d2c3|\"G#m\"z8|ff3e2d2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8-|\"D#m\"d8|\"D#m\"z8|\"D#m\"z6AA|\nV: Ins\nZ2|z2DDDDDD|DDDDDDz2|\n% verse\nV: Vocal\n\"D#m\"A2AA2G2G-|\"D#m\"GA3z3F|\"C#\"F2G2GF2A|\"C#\"Az4zAA|\nV: Ins\nZ4|\nV: Vocal\n\"B\"A2GG2F2F-|\"B\"F3z4z|\"C#\"EE2E2C2D-|\"C#\"D3z3A2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2A2A2GG-|\"D#m\"GA3z2AA|\"C#\"c2c2c2Ac-|\"C#\"cd3z3f|\nV: Ins\nZ4|\nV: Vocal\n\"B\"f2f2f2ee|\"B\"d4z4|\"C#\"e4e4|\"C#\"f4e4|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"d8-|\"D#m\"d8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nZ2|D,D,D,D,=EDD,D,|D,DD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,D,D,D,=EDD,D,|D,DD,D,=EDCD|D,D,D,D,=EDD,D,|D,DD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\na6gf|gfd6|cddccAAG|GFFDD4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF8|D8|C,D,F,A,B,CEG|Acdfe4|\nV: Vocal\n\"B\"z8|\"B\"z8|\"C#\"z8|\"C#\"z8|\nV: Ins\na6gf|gfd6|a6gf|gfe6|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z6AA|\nV: Ins\nf6ed|d8|d2cAc2AG|A2GFG2z2|\n% verse\nV: Vocal\n\"D#m\"AA2A2G2A|\"D#m\"A2z4FF|\"C#\"G2GGG2FA-|\"C#\"A2zAA2AA-|\nV: Ins\nZ4|\nV: Vocal\n\"B\"A3AA2GG|\"B\"F2z4FF|\"C#\"E2E2ECDD-|\"C#\"D2z4AA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2A2A2GG|\"D#m\"A4z3A|\"C#\"c2c2c2Ad-|\"C#\"d3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"B\"ff3f2ee|\"B\"d4z2dd|\"C#\"e4e4|\"C#\"f4e2d2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8-|\"D#m\"d8|\nV: Ins\nZ2|\n% chorus\nV: Vocal\n\"D#m\"f4e2ee-|\"D#m\"ed2d2c3|\"F#\"f2f2f2ee-|\"F#\"e3z4z|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"f4e2ee-|\"C#\"ed2d2c3|\"G#m\"z8|ff3e2d2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d8-|\"D#m\"d8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nZ2|D,2D,D,=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=ED2C-|CDD,D,=EDCD|D,2D,D,=ED2C-|CDD,D,=E4|\n% interlude\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=ED2C-|CDD,D,=EDCD|D,2D,D,=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=ED2C-|CDD,D,=EDCD|D,2D,D,=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD2z2=ED2C-|CDz2=E2CD|D,2z2=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,2D,D,=ED2C-|CDD,D,=EDCD|D,2D,D,=ED2C-|CDD,D,=E4|\nV: Vocal\n\"D#m\"z8|\nV: Ins\nD4z4|",
+      "seed": 3546861811,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 3546861811,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_63240317f2a2",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

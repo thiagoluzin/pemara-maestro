@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "suiteVersion": "1.0.0",
+  "updated": "2026-09-13",
+  "profiles": {
+    "recommended": ["prerequisites", "comfyui", "comfyui-3d", "qwen", "flux2-klein", "z-image", "skintokens", "asset-studio", "zico-blender-bridge"],
+    "full": ["prerequisites", "comfyui", "comfyui-3d", "qwen", "hidream-o1", "flux2-klein", "z-image", "trellis2", "pixal3d", "unirig", "skintokens", "asset-studio", "assetforge", "armorpaint-source", "zico-blender-bridge"]
+  },
+  "components": [
+    {"id":"prerequisites","name":"Dependencias Windows","category":"base","platform":"windows","recommended":true,"diskGB":8,"license":"varias"},
+    {"id":"comfyui","name":"ComfyUI","category":"image","platform":"windows","recommended":true,"diskGB":8,"repo":"https://github.com/Comfy-Org/ComfyUI.git","license":"GPL-3.0"},
+    {"id":"comfyui-3d","name":"ComfyUI TRELLIS.2 + Pixal3D Multi-View","category":"3d","platform":"windows","recommended":true,"diskGB":70,"repo":"https://github.com/visualbruno/ComfyUI-Trellis2.git","models":["microsoft/TRELLIS.2-4B","TencentARC/Pixal3D","facebook/dinov3-vitl16-pretrain-lvd1689m"],"license":"MIT; node comunitario; auditar dependencias","note":"rota Windows/Blackwell preferencial"},
+    {"id":"qwen","name":"Qwen Image 2512 + Edit 2511","category":"image","platform":"windows","recommended":true,"diskGB":85,"repo":"https://github.com/QwenLM/Qwen-Image.git","models":["Qwen/Qwen-Image-2512","Qwen/Qwen-Image-Edit-2511"],"license":"Apache-2.0"},
+    {"id":"hidream-o1","name":"HiDream O1 Image Dev 2604","category":"image","platform":"windows","recommended":false,"diskGB":35,"repo":"https://github.com/HiDream-ai/HiDream-O1-Image.git","branch":"dev","models":["HiDream-ai/HiDream-O1-Image-Dev-2604"],"license":"MIT","note":"experimental; Flash Attention pode exigir compilacao"},
+    {"id":"flux2-klein","name":"FLUX.2 Klein 4B","category":"image","platform":"windows","recommended":true,"diskGB":25,"repo":"https://github.com/black-forest-labs/flux2.git","models":["black-forest-labs/FLUX.2-klein-4B"],"license":"Apache-2.0 para o modelo 4B"},
+    {"id":"z-image","name":"Z-Image + Z-Image Turbo","category":"image","platform":"windows","recommended":true,"diskGB":35,"repo":"https://github.com/Tongyi-MAI/Z-Image.git","models":["Tongyi-MAI/Z-Image","Tongyi-MAI/Z-Image-Turbo"],"license":"Apache-2.0"},
+    {"id":"trellis2","name":"TRELLIS.2 4B oficial (WSL)","category":"3d","platform":"wsl","recommended":false,"diskGB":45,"repo":"https://github.com/microsoft/TRELLIS.2.git","models":["microsoft/TRELLIS.2-4B"],"license":"MIT; auditar dependencias"},
+    {"id":"pixal3d","name":"Pixal3D Multi-View oficial (WSL)","category":"3d","platform":"wsl","recommended":false,"diskGB":55,"repo":"https://github.com/TencentARC/Pixal3D.git","models":["TencentARC/Pixal3D"],"license":"MIT; auditar dependencias"},
+    {"id":"unirig","name":"UniRig","category":"rig","platform":"wsl","recommended":false,"diskGB":18,"repo":"https://github.com/VAST-AI-Research/UniRig.git","license":"MIT"},
+    {"id":"skintokens","name":"SkinTokens / TokenRig","category":"rig","platform":"wsl","recommended":true,"diskGB":24,"repo":"https://github.com/VAST-AI-Research/SkinTokens.git","models":["VAST-AI/SkinTokens"],"license":"verificar modelo antes de uso comercial"},
+    {"id":"asset-studio","name":"Asset Studio","category":"game-tools","platform":"windows","recommended":true,"diskGB":4,"repo":"https://github.com/joe-lloyd/game-asset-generation.git","license":"MIT"},
+    {"id":"assetforge","name":"AssetForge Blender Add-on","category":"game-tools","platform":"windows","recommended":false,"diskGB":2,"repo":"https://github.com/InFaNsO/AssetForge.git","license":"MIT","note":"experimental"},
+    {"id":"armorpaint-source","name":"ArmorPaint fonte","category":"game-tools","platform":"windows","recommended":false,"diskGB":8,"repo":"https://github.com/armory3d/armorpaint.git","license":"zlib","note":"compilacao de desenvolvedor; binario oficial pronto e pago"},
+    {"id":"zico-blender-bridge","name":"ZICO Blender Bridge","category":"integration","platform":"windows","recommended":true,"diskGB":1,"license":"uso interno"}
+  ]
+}

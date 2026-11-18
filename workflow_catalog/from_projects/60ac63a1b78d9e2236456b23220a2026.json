@@ -1,0 +1,310 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "r34l1sm\nsubject_definitions:\n<Subject 1> is Goku, the taller adult human actor on the LEFT in <Picture 1>. Use his exact human face, age, build, black spiky hair, orange woven cotton gi, navy undershirt, navy sash and wristbands, and navy boots. Preserve the small dark emblem, natural skin tone and weathered fabric.\n<Subject 2> is Vegeta, the shorter adult human actor on the RIGHT in <Picture 1>. Use his exact human face, compact muscular build, tall black hair, ivory and ochre worn shoulder armor, navy fabric undersuit, white gloves and boots, and brown tail wrapped around his waist.\n<Subject 3> is the real dry canyon in <Picture 1>, with the split cliff, distant rock towers, small loose stones and hard daylight.\n\nsummary: A single continuous ten-second photographed live-action shot of the two exact human actors from Picture1. Vegeta steps inside Goku's guard, lands ONE compact right body punch and immediately withdraws his fist. Goku loses his footing AFTER the contact and takes backward catching steps while Vegeta follows under control. One coordinated attack and its consequence, not a flurry.\n\nretention_analysis: Retain the actors' exact distinct faces, relative heights, clothing construction, materials, canyon and daylight from Picture1. Picture1 defines the photographed appearance; it is not a pose to hold. Natural human facial structure and organic skin retain variation between forehead, cheeks, forearms and knuckles. Sweat is sparse and localized. The orange gi shows cotton weave and folds, and Vegeta's armor has dull scuffed painted surfaces. Hair remains layered human strands shaped into the approved silhouettes, with small loose strands. This is human stunt photography at normal speed.\n\ndetailed_description: [Shot 1] Both actors remain visible from head to supporting feet in the canyon, Goku LEFT and Vegeta RIGHT. Camera at a three-quarter side view where the glove can be seen reaching the side of Goku's upper abdomen below his forearm. One restrained following camera move keeps both feet and the contact line visible; no cut and no shake used to sell the impact.\nOpening: Vegeta has the initiative. He brings his left glove high to check Goku's raised forearm and takes a short grounded step into arm's reach. Goku reads the approach, raises his forearms and braces; he does not attack, windmill his arms or lift a knee. Both bodies stay balanced over bent knees. The approach happens promptly rather than waiting in a display pose.\nStrike: Vegeta plants his lead boot and drives off his rear boot. His hips turn before his shoulder and his RIGHT glove travels in a short direct path into Goku's upper abdomen under the guarding elbow. The glove makes one brief visible contact. His LEFT glove stays by his head. He immediately pulls the striking right glove back to his ribs, with no lingering touch or repeated tapping. His torso follows the hip rotation and his rear heel turns naturally on the ground.\nConsequence: only AFTER that contact, Goku exhales involuntarily through a tense face, folds briefly through the abdomen and is forced backward. His head and shoulders follow his trunk; his nearer boot catches his displaced weight, then a second backward step prevents a fall. His torso and gi continue moving after Vegeta's glove has already withdrawn. Goku's left forearm protects his ribs while his right hand remains near his face. His feet step and land; the body is never translated as one rigid object. Small dust is kicked up only by boots actually touching the ground.\nRecovery: Vegeta closes the distance in two short measured steps with his fists back in guard, pressuring Goku without throwing another strike. Goku makes a hurried lateral supporting step and regains a low defensive base while still protecting his abdomen. Finish during that continuing pursuit and recovery. Vegeta remains composed and purposeful; Goku is defensive and strained. No simultaneous kicks, no knee lifts, no random limb flailing, no exchange of turns waiting for a hit, no acrobatics, no powers, no blood, no knockout and no transformation.\nPhotograph real human skin in hard canyon daylight: subtle pores, small uneven skin tones and broken highlights, small individual hairs, believable facial muscles under strain. Preserve the exact actor likenesses and costume colors. The skin and textile detail must remain visible during movement. No beauty smoothing, waxy faces, uniformly shiny arms, videogame shading, sculpted plastic hair or glossy toy armor. No sharpening or synthetic grain to fake material detail. No forest or trees. No arm trails, extra limbs, motion echoes, slow motion or frozen final pose.\n\noverall_soundscape: Silent. No voice, music, ambient sound or Foley.\n\nnon_diegetic_music: None.\n",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "31",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "MVR2 — native Ref2VA identity image only, one grounded body punch",
+      "owner_authorization": "Correction after owner criticism of MVR1 skin/plastic/videogame and drunken fighting",
+      "candidate": "MVR2",
+      "content_kind": "live_action",
+      "reference_role": "Picture1 exact identity, photographed materials and canyon; no source video",
+      "anchor_sha256": "a73791ead3e4e7f99621ee96ed897d30f60605817d6260a820362ef9a3b260fa",
+      "quality_approval": "PENDING",
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "auto",
+        "roles": [
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "local_comfy",
+          "model": "gemma4_e2b_it_bf16.safetensors",
+          "evidence": "The scene description explicitly details two human actors, Goku and Vegeta, engaged in a fight.",
+          "externalDataTransfer": false,
+          "evidence_sha256": "be84a1cd099c310243b979445d0e000eb07105ca3edec0e6f3f3bd6d65f811c7",
+          "reused_from": "MVR1: unchanged exact two human identities and live-action scene; only action/reference routing changed"
+        },
+        "adapters": [
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "PENDING_OWNER_REVIEW"
+      }
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110707
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1280,
+      "height": 720,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/pilots/MVR2_image_only_one_body_punch",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "31": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01.png"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  }
+}

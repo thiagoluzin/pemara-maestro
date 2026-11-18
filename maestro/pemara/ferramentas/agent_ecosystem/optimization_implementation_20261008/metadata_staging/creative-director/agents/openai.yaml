@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creative Director"
+  short_description: "Diretor criativo / produtor de jogos e conteúdo"
+  default_prompt: "Use $creative-director para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

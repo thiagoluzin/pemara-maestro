@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Heavy 1980s metal, thick crunchy distorted rhythm guitars, fluid virtuoso lead, forceful characterful male rock singing, thundering drums and bass. 148 BPM, B minor. a swaggering chromatic riff; call-and-answer solo passages and a huge minor-key chorus. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nCrown of iron, heavy on my head\nBuilt my throne on words the dead never said\nGold and glass, the windows start to crack\nI hear the whisper, I hear the attack\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Verse]\nTowers rise, the mountains fall\nI signed the treaties, I broke them all\nThe tapestries are torn and red\nThe hollow halls are filled with dead\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Verse]\nThe final guest arrives with hollow eyes\nSitting cross-legged in the velvet lies\nHe taps his fingers on the oak\nThe throne splits down the center block\nI scream but my mouth is gone\nDevoured by the debt I've long worn\nNow I sit beneath my own decree\nA ghost feeding on my memory\nThe crown rolls off, the floor is bare\nI am the empty room that's there\nSilence swallows the iron weight\nNo shadow left to haunt the gate\n\n[Bridge]\nScreaming through the stone walls\nThe price of power, the loss of all\nMy hands are stained, my eyes are blind\nLeaving all the living behind\n\n[Solo]\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Outro]\nThe doors are locked\nThe echoes stop\nKing of nothing\nOn the edge of the rope",
+      "abc": "",
+      "seed": 202610166011,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166011,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/12_king_of_empty_rooms_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

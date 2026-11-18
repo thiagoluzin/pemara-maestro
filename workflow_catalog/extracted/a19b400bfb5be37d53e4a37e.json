@@ -1,0 +1,163 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Make a precise LOCAL architectural correction in image1: the doorway on RIGHT is an INTERIOR doorway connecting TWO indoor wood rooms. Replace ONLY the blue outdoor background visible THROUGH that doorway with the INTERIOR of the first cabin room from image3: close vertical dark wood walls, horizontal floor continuing on the same level, a small portion of the right-wall wooden bench and narrow cold-lit GLASS window in that adjoining room. Absolutely no outdoor trees, night sky, moon disk, porch or grass through this doorway. Keep the existing doorway position, door panel, frame and wall intact, no extra exit. Preserve EVERYTHING else from image1 unchanged: same one Chris, exact face, uniform, shotgun, empty second room, table left, lamp left, same camera, film texture and exposure. No Lisa appears in either room. This door looks into another room INSIDE the SAME cabin, not outside.",
+      "negative_prompt": "video game, CGI, 3D render, digital illustration, plastic skin, beauty model, slim Lisa, face mask, cloth over face, loose handcuffs held in hands, free wrists, missing chain, duplicate actor, third person, snake, monster plant, shattered wall, giant hole, extra shotgun, muzzle bent, floating feet, text, split screen, montage",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "13",
+        0
+      ],
+      "images.image_3": [
+        "14",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 101116302,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_unmasked_v02/A02_PHOTO_V03"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "CHRIS_LISA_V02_MASTER_a42adea437d5.png"
+    },
+    "is_changed": [
+      "a42adea437d533e92b1b6187a977491df2d079393bfdb540d19c16f234fac966"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "13": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "CHRIS_LISA_V02_ACTOR_bc9f0294f970.png"
+    },
+    "is_changed": [
+      "bc9f0294f970de2f99c07ef41b93d92d25b54a32c549b6a5074e09f7c3f1f665"
+    ]
+  },
+  "14": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "CHRIS_LISA_V02_EMPTYFIRST_6be2771d2499.png"
+    },
+    "is_changed": [
+      "6be2771d2499ccd24a8055985c9a4543d517dbe89b1bddfeabfe6372c8e514de"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

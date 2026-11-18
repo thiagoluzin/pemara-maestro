@@ -1,0 +1,289 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "h3_memory_native",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous ten-second cinematic LIVE-ACTION fight continuation with the EXACT SAME two real adult male actors, masks, hoods, human faces and bodies, yellow-black Scorpion on the LEFT and blue-black Sub-Zero on the RIGHT, in the same sunlit stone courtyard. Picture 1 is the exact last frame of the approved preceding shot: Scorpion is covered with frost and an attached ice shell; Sub-Zero is in guard. Begin in that precise state and geography. Same restrained medium-wide side camera, both full bodies and boots visible throughout. Photographic skin, cloth, wet stone, practical human stunt weight. Comically exaggerated character reactions, delivered by real actors at normal speed.\n\nImmediate escape: Scorpion clenches his fists and strains against the ice. A small orange supernatural flame curls FROM HIS OWN fists and boots, cracking and melting the ice attached to HIS body. Broken ice drops outward, water splashes onto the stones and brief steam rises. Within two seconds he stamps one freed boot, shakes ice off his forearms and steps out of the shell. His original yellow-and-black fabric is now wet and remains wet. His hood and mask stay on. There is only this one Scorpion; broken ice remains irregular fragments, never a human copy. Sub-Zero's confident guard becomes a startled defensive recoil as the yellow fighter comes free.\n\nScorpion immediately presses forward: he plants a boot, snaps a LEFT jab toward Sub-Zero's guard and retracts it, then drives a short RIGHT straight into the blue fighter's raised forearm block. Sub-Zero's shoulders are pushed back after contact and his rear boot takes a catching step. Sub-Zero counters toward Scorpion's ribs; Scorpion twists away, knocks the hand aside and pursues. Quick compact impacts, immediate limb separation, weight through hips, and forced steps. Neither actor waits with a fist parked against the other.\n\nSub-Zero turns that pursuit into a ridiculous but physically clear ice trap: while taking one short backward step, he aims his palms DOWN at the wet stones directly in front of Scorpion's next boot. A SHORT blue-white cold burst travels from Sub-Zero's palms to that patch of floor; the water visibly becomes a small slick sheet of ice. The burst stops. Scorpion commits his next forward step onto the newly frozen patch. ONLY AFTER the boot touches the slick ice, that boot loses traction and shoots forward, his hips lag behind and his free arms windmill in a surprised scramble. He tries one frantic catching step, but the second boot also slips on the SAME patch. He lands heavily on his backside with both palms bracing on the stones; loose ice chips and water scatter after the impact. A broad silent physical-comedy reaction, like an overconfident fighter caught by a banana peel, with natural human balance, gravity and impact. Sub-Zero takes a grounded step sideways out of the skid path and keeps his guard, shoulders briefly shaking in a smug silent chuckle. Scorpion immediately rolls toward one knee, furious and ready to spring back up as the shot ends. End during that active recovery.\n\nPowers have strict owners: orange fire ONLY Scorpion; cold and blue ice ONLY Sub-Zero. Ice starts on Scorpion, melts from HIS fire, and the later floor ice starts only after Sub-Zero's directed burst. Preserve the resulting wet costumes, steam decay, puddle and scattered ice. Exactly two actors. No extra people, clones, floating silhouettes, new weapons, swords, skull face, costume swaps, spontaneous teleport, slow motion, cuts, camera orbit, artificial shake, injury or blood. The comedy comes from intention, the visible ice trap and the failed recovery, never shapeless flailing without cause.\n\noverall_soundscape: Native synchronized ice cracks, falling ice chips, a short fire rush, melting-water splashes, compact punch impacts, wet footfalls, a brief cold hiss and one heavy comic seated thump. Quiet courtyard wind. No speech, vocals, grunts, laughter sound effect or music.\n\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "T02 — Scorpion melts out, fast exchange, Sub-Zero ice-floor comic reversal"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611102002
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T02_H3_MASTER01/native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T02_start_from_approved_H3_f242.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "anchor_master_pad": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "target_width": 1344,
+      "target_height": 768,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "h3_memory_native": {
+    "class_type": "H3MemoryOptimization",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "fused_qkv": "auto",
+      "mlp_memory": "auto",
+      "chunk_rows": 4096,
+      "preserve_precision": true,
+      "precision_mode": "Preserve native",
+      "qkv_streaming_mode": "Auto",
+      "embedding_memory_mode": "Auto",
+      "kitchen_v_memory_mode": "Standard"
+    }
+  }
+}

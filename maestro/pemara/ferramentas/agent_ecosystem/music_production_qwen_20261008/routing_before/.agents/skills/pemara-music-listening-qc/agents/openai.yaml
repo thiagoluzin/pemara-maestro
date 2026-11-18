@@ -1,0 +1,6 @@
+interface:
+  display_name: "Revisão musical"
+  short_description: "Revisa identidade e produção com evidência de escuta"
+  default_prompt: "Use $pemara-music-listening-qc para melhorar a produção musical do Maestro com o Qwen 3.8."
+policy:
+  allow_implicit_invocation: true

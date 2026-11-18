@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Production"
+  short_description: "Especialista em CRIAÇÃO e EDIÇÃO de imagem/foto — geração IA com"
+  default_prompt: "Use $image-production para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

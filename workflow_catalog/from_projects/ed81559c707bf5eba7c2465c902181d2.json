@@ -1,0 +1,289 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "h3_memory_native",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous ten-second cinematic LIVE-ACTION shot with TWO CLEARLY DIFFERENT YELLOW PUNCHES: a fast horizontal RIGHT CROSS, immediately followed by a rising LEFT UPPERCUT UNDER THE CHIN. The second punch leaves Sub-Zero standing GROGGY for the rest of the shot. Exactly the same two adult stunt actors as Picture1: yellow/black Scorpion LEFT, blue/black Sub-Zero RIGHT, same human body proportions, masks, black hoods, practical wet cloth, boots, ruined sunlit courtyard, stone doorway and ice/water patches. Begin at Picture1's exact perspective and immediately move.\n\nScorpion drives in with the fast decisive horizontal RIGHT CROSS across the blue jaw line, preserving that strong cross-punch action. His right glove HITS AND RECOILS immediately toward his own cheek; blue head and shoulders rotate from the contact. This first punch travels SIDEWAYS. Do not stop there. While the blue head is still recovering from the cross, Scorpion lowers his OTHER, LEFT glove below the blue chin to his own lower ribs, with the LEFT ELBOW BENT and tucked close to his body. His knees compress, rear boot pushes off the wet stone and hips drive upward.\n\nNow show the distinct SECOND PUNCH in a tight three-quarter close shot: Scorpion's bent LEFT arm drives VERTICALLY UPWARD from BELOW, the knuckles rise into the UNDERSIDE of Sub-Zero's blue-covered CHIN. Keep the chin underside and the complete curved glove trajectory visible together. This is an UPPERCUT, not another straight cross or a long arm thrust. The elbow stays bent as the fist hooks upward. The glove visibly MEETS the chin before the head snaps up, then immediately pulls AWAY. A crisp sudden chin lift, backward head snap and lifted shoulders follow the contact; no glove parked on the blue face. Keep the exact impact sharp and unobscured by fire, frost, hands or motion-blur smears. A few small orange embers trail BEHIND the moving yellow arm, blue frost fragments scatter afterward, but the yellow knuckles and blue chin remain exposed to the camera.\n\nCAMERA: as the first cross lands, physically DOLLY IN AND SLIGHTLY LOWER on the same side of the fighting axis. Arrive BEFORE the uppercut at a tight chin-level three-quarter two-shot, placing Sub-Zero's chin, eyes and head on the RIGHT and Scorpion's bent left elbow, rising glove and shoulder on the LEFT. Focus sharply on the blue chin and approaching yellow knuckles, background courtyard softly out of focus. Show preparation below the chin, rising path, actual contact and immediate head recoil in the SAME continuous view at normal real-time speed. No cut, axis flip, freeze, slow motion or fake camera shake. After impact DOLLY BACK smoothly with Sub-Zero's forced retreat, widening to show both bodies, knees and boots for his balance loss.\n\nThe uppercut knocks Sub-Zero's weight backward; his boots briefly lose heel contact then land with flexed knees. He makes two fast uneven catching steps, shoulders sagging and arms falling. Scorpion's uppercut glove is already retracted while blue is still reacting. The receiver stays on his feet but is now plainly GROGGY: both hands hang LOW near his belt, knees wobble once then remain soft, shoulders slump and head droops forward after the recoil. His eyes blink and cannot steadily track Scorpion. He attempts one small weight correction and has to step wider to avoid falling. His attempt to lift a hand fails halfway and the hand drops again. He does NOT resume a normal raised guard, counterattack, straighten into a fresh fighting stance or recover full alertness. No rhythmic dancing, comic swaying, smiling or cartoon symbols. This serious stunned condition persists through the entire ending.\n\nScorpion advances one short grounded step, watches his stunned opponent and keeps his own hands ready without adding more attacks. End with blue upright and vulnerable, hands low, knees bent, faltering balance and ongoing breathing; yellow still masked and ready. Both masks remain on. Preserve photographic skin, practical cloth, sunlight, wetness and human mass. No skull, fire breath, chain, weapons, extra actors, dialogue or music.\n\noverall_soundscape: Two different sharp punch impacts: a fast cross impact followed by a heavier uppercut crack, short cloth snaps, a faint ember swish, brittle ice ticks, hard boot landings and quick uneven recovery footfalls. Then strained breathing and courtyard wind. No speech, grunts, laughter or music.\n\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "T06 R2 — cross then distinct rising uppercut, close chin focus, persistent groggy exit"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611082204
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T06_H3_MASTER_R2/native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T07_start_from_approved_T05_R2_f242.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "anchor_master_pad": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "target_width": 1344,
+      "target_height": 768,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "h3_memory_native": {
+    "class_type": "H3MemoryOptimization",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "fused_qkv": "auto",
+      "mlp_memory": "auto",
+      "chunk_rows": 4096,
+      "preserve_precision": true,
+      "precision_mode": "Preserve native",
+      "qkv_streaming_mode": "Auto",
+      "embedding_memory_mode": "Auto",
+      "kitchen_v_memory_mode": "Standard"
+    }
+  }
+}

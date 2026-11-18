@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit this Brazilian colonial side-scrolling 2D game environment reference. Preserve exactly the terrain, river, bridges, houses, trees, vegetation, architecture, colors, drawing style and the placement of all non-sky elements. Replace ONLY the sky and clouds above the horizon with one perfectly flat solid saturated bright magenta chroma key #ff00ff. Keep the outlines of trees, roofs and mountains crisp against the magenta sky. Mountains and distant hills MUST stay intact, only open sky becomes pure magenta. No new objects, no people, no text, no redesign. Wide HD panoramic 2D illustration.",
+      "negative_prompt": "new buildings, different scene, white sky, blue sky, clouds, text, people, characters, blur, mountains removed, pink ground, magenta river",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1920,
+      "height": 1088,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202696003,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_skyclean/zone4_serra"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/zone4_serra_skyedit.png"
+    },
+    "is_changed": [
+      "6ef53900001802dc89477d9c78244d07821e57f8fd66a2f31fd09c5a6a00791f"
+    ]
+  }
+}

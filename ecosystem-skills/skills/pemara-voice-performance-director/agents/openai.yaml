@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Voice Performance Director"
+  short_description: "Dirige vozes intensas, humanas e seguras"
+  default_prompt: "Use $pemara-voice-performance-director para criar uma voz expressiva e escolher o melhor motor do ecossistema."

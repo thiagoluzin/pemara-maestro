@@ -1,0 +1,31 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ultra_instinct_native_v01.png"
+    },
+    "is_changed": [
+      "feaa3a11c998d723fb95c45fae3c031f2baa4e66cf3b329f833eea148ed8d7d8"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "goku_ultra_instinto_20261030/anchors/A01_goku_ultra_instinct_v01"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

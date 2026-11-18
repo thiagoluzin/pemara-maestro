@@ -1,0 +1,137 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Change ONLY the vertical pose of the EXISTING ONE actress in this live-action photograph. LOWER that same woman STRAIGHT DOWN vertically about 180 pixels, with absolutely NO horizontal translation. Her head/torso/waist stay centred on the SAME LEFT-side x position around x=280. Both brown boots now REST ON FLOOR around y=780, directly underneath her existing airborne position; adapt her knees to stand on both grounded soles. Her head now around y=320, NOT y=140. Keep the same face, hair/navy beret, blue-gray shirt/shoulder pads, dark pants, gloves, boots, sweat/dirt/makeup and fearful expression. BOTH empty hands grip the SAME single external waist loop, arms free. Supporting vine becomes longer to reach lower waist and stays continuously attached to same ceiling roots. No suspended/hovering boots. The ONLY person is Jill, already in the photo; do not add a new person or move her to centre of room. Exact same room/camera/perspective/lighting/film grain: same giant red ceiling-attached plant, TWO charred botanical marks, tangled roots/red hanging leaves, fireplace, left door, right window, stone floor. The SAME ONE black drum launcher stays on far-left floor in EXACT same position and realistic proportions, no gun in hands. No other change, text, game look, illustration or plastic skin. This is lowering the existing left-side woman onto floor, not repositioning her sideways.",
+      "negative_prompt": "horizontal relocation, centred woman, second woman, Barry, man, extra firearm, floating woman, CGI, game render, illustration, text, collage",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 10108605,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "jill_plant42_photoreal_20261010/A06_PHOTO_V05"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "PLANT42_PHOTO_AIRBORNE_0f427dd6f174.png"
+    },
+    "is_changed": [
+      "0f427dd6f1741d82ad5acbf812d23b2b1220738fce1f367630720d5070a6fca7"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

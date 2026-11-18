@@ -1,0 +1,159 @@
+{
+  "100": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "SS_T01_G_real_motion.mp4"
+    }
+  },
+  "101": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": [
+        "100",
+        0
+      ]
+    }
+  },
+  "102": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "rt_detr_v4-x-hgnet_fp16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "103": {
+    "class_type": "RTDETR_detect",
+    "inputs": {
+      "model": [
+        "102",
+        0
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "threshold": 0.4,
+      "class_name": "person",
+      "max_detections": 8
+    }
+  },
+  "111": {
+    "class_type": "PemaraCombatSelectFighterBoxes",
+    "inputs": {
+      "bboxes": [
+        "103",
+        0
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "minimum_area_fraction": 0.025
+    }
+  },
+  "104": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sdpose_wholebody_fp16.safetensors"
+    }
+  },
+  "105": {
+    "class_type": "SDPoseKeypointExtractor",
+    "inputs": {
+      "model": [
+        "104",
+        0
+      ],
+      "vae": [
+        "104",
+        2
+      ],
+      "image": [
+        "101",
+        0
+      ],
+      "bboxes": [
+        "111",
+        0
+      ],
+      "batch_size": 4
+    }
+  },
+  "106": {
+    "class_type": "SDPoseDrawKeypoints",
+    "inputs": {
+      "keypoints": [
+        "105",
+        0
+      ],
+      "draw_body": true,
+      "draw_hands": true,
+      "draw_face": true,
+      "draw_feet": true,
+      "stick_width": 3,
+      "face_point_size": 2,
+      "score_threshold": 0.3,
+      "draw_head": true
+    }
+  },
+  "107": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "106",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "108": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "107",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/control_G_real",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "109": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "105",
+        0
+      ]
+    }
+  },
+  "110": {
+    "class_type": "SavePoseKpsAsJsonFile",
+    "inputs": {
+      "pose_kps": [
+        "105",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/control_G_real_keypoints"
+    }
+  },
+  "112": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "111",
+        1
+      ]
+    }
+  },
+  "199": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

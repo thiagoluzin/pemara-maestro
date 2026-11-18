@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fotografia e câmera Pemara"
+  short_description: "Dirija enquadramento, câmera, luz e profundidade"
+  default_prompt: "Use $pemara-cinematography-director para melhorar esta produção de vídeo com decisões concretas e evidências."

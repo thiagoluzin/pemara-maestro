@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <title>Pemara Maestro Pro</title>
+  <link rel="icon" href="assets/brand/pemara-tech-logo.png">
+  <link rel="stylesheet" href="assets/maestro.css?v=20261030-photo-animation-v2">
+  <link rel="stylesheet" href="assets/models3d.css?v=20261019-h3-finishing-errors-v1">
+  <link rel="stylesheet" href="assets/internet-publication.css?v=20260902-ltx25-anchor1">
+  <link rel="stylesheet" href="assets/public-research.css?v=20261102-v2">
+  <link rel="stylesheet" href="assets/modern-studio.css?v=20261102-ui1">
+  <link rel="stylesheet" href="assets/video-inspection.css?v=20261113-v1">
+  <link rel="stylesheet" href="assets/voice-studio.css?v=20261106-v2">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Ir para o conte&uacute;do</a>
+  <div class="brand-watermark" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <img class="brand-logo" src="assets/brand/pemara-tech-logo.png" alt="Pemara Tech">
+        <div class="brand-subtitle">Maestro Pro</div>
+      </div>
+
+      <nav class="nav-list" aria-label="Navega&ccedil;&atilde;o principal">
+        <span class="studio-nav-group">Est&uacute;dio</span>
+        <button class="nav-link active" data-section="dashboard"><span>01</span>In&iacute;cio</button>
+        <button class="nav-link" data-section="gen"><span>02</span>Criar</button>
+        <button class="nav-link" data-section="voices"><span>♫</span>Vozes</button>
+        <button class="nav-link" data-section="models3d"><span>03</span>Modelos 3D</button>
+        <button class="nav-link" data-section="inspection"><span>QC</span>Inspeção de vídeo</button>
+        <button class="nav-link" data-section="films"><span>04</span>Takes</button>
+        <button class="nav-link mobile-production-link" id="mobile-production-link" type="button" aria-pressed="false"><span>05</span>A&ccedil;&otilde;es</button>
+        <button class="nav-link" data-section="assets"><span>05</span>Arquivos</button>
+        <span class="studio-nav-group">Organiza&ccedil;&atilde;o</span>
+        <button class="nav-link" data-section="org"><span>06</span>Organizador</button>
+        <button class="nav-link" data-section="doc"><span>07</span>Documental</button>
+        <button class="nav-link" data-section="cad"><span>08</span>Cadastro</button>
+        <button class="nav-link" data-section="hist"><span>09</span>Hist&oacute;rico</button>
+        <button class="nav-link" data-section="hyperframes"><span>10</span>HyperFrames</button>
+        <span class="studio-nav-group">Recursos</span>
+        <button class="nav-link" data-section="tools"><span>11</span>Motores</button>
+        <button class="nav-link" data-section="research"><span>12</span>Pesquisa com fontes</button>
+      </nav>
+
+      <div class="sidebar-status">
+        <div class="status-dot" id="global-dot"></div>
+        <div>
+          <div class="mini-label">Estado</div>
+          <strong id="global-status">verificando</strong>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main-content" tabindex="-1">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="clock">--:--:--</p>
+          <div class="title-line"><span class="title-mark" aria-hidden="true">&infin;</span><h1 id="view-title" tabindex="-1">Vis&atilde;o Geral</h1></div>
+        </div>
+        <div class="top-actions">
+          <img class="top-logo" src="assets/brand/pemara-tech-logo.png" alt="Pemara Tech">
+          <span class="metric-chip">GPU <strong id="gpu-load-top">--</strong></span>
+          <span class="metric-chip">VRAM <strong id="gpu-vram-top">--</strong></span>
+          <button class="btn secondary" id="refresh-btn" type="button">Atualizar</button>
+          <form class="logout-form" action="/logout" method="post">
+            <button class="btn secondary" type="submit">Sair</button>
+          </form>
+        </div>
+      </header>
+
+      <div class="frontend-notice" id="maestro-connection-status" role="status" aria-live="polite" hidden></div>
+      <div class="frontend-notice" id="maestro-update-status" role="status" hidden>
+        <span>Há uma atualização do Maestro. Conclua sua edição antes de atualizar.</span>
+        <button class="btn secondary small" id="maestro-update-now" type="button">Atualizar quando estiver pronto</button>
+      </div>
+
+      <section class="section voice-studio" id="section-voices" data-title="Estúdio de voz">
+        <div class="voice-heading">
+          <div><p class="eyebrow">NARRAÇÃO &amp; CLONAGEM</p><h2>A sua voz. Novas histórias.</h2><p>Narre textos ou troque a voz das suas gravações com motores locais.</p></div>
+          <span class="voice-engine" id="voice-engine-status" role="status">Verificando Drama 3…</span>
+        </div>
+        <div class="voice-tabs" role="tablist" aria-label="Estúdio de voz">
+          <button type="button" role="tab" id="voice-tab-narration" aria-selected="true" aria-controls="voice-pane-narration" data-voice-tab="narration">Texto para voz</button>
+          <button type="button" role="tab" id="voice-tab-conversion" aria-selected="false" aria-controls="voice-pane-conversion" tabindex="-1" data-voice-tab="conversion">Trocar voz de vídeo</button>
+          <button type="button" role="tab" id="voice-tab-library" aria-selected="false" aria-controls="voice-pane-library" tabindex="-1" data-voice-tab="library">Minhas vozes <span id="voice-library-count">0</span></button>
+          <button type="button" role="tab" id="voice-tab-history" aria-selected="false" aria-controls="voice-pane-history" tabindex="-1" data-voice-tab="history">Histórico</button>
+        </div>
+        <p class="voice-notice" id="voice-message" role="status" aria-live="polite"></p>
+        <div id="voice-pane-narration" role="tabpanel" aria-labelledby="voice-tab-narration">
+          <form id="voice-narration-form" class="voice-workspace">
+            <article class="panel voice-editor">
+              <div class="voice-editor-heading"><h3>Seu roteiro</h3><span id="voice-draft-status">Rascunho neste navegador</span></div>
+              <label for="voice-title" class="sr-only">Nome da narração</label><input id="voice-title" class="voice-title" maxlength="120" value="Nova narração" required placeholder="Nome da narração">
+              <label for="voice-text" class="sr-only">Texto da narração</label>
+              <textarea id="voice-text" maxlength="20000" required rows="12" placeholder="Cole seu texto aqui. Pode ser uma história, um vídeo, um capítulo inteiro.&#10;&#10;A voz, as pausas e a interpretação começam nas suas palavras." aria-describedby="voice-text-help voice-text-count"></textarea>
+              <div class="voice-script-foot"><span id="voice-text-count">0 / 20.000 caracteres</span><span id="voice-duration-estimate">A duração depende da leitura.</span></div>
+              <div class="voice-cues" aria-label="Inserir direção de interpretação"><span>Interpretação</span><button type="button" data-voice-cue="[whispering] ">Sussurro</button><button type="button" data-voice-cue="[happy] ">Alegria</button><button type="button" data-voice-cue="[sad] ">Tristeza</button><button type="button" data-voice-cue="[laughing] ">Riso</button></div>
+              <p id="voice-text-help" class="voice-help">As marcações entram no roteiro e podem influenciar a interpretação. Confira o resultado pela escuta.</p>
+              <div class="voice-editor-actions"><button class="btn secondary" id="voice-new-draft" type="button">Novo roteiro</button><button class="btn primary" id="voice-generate" type="submit" disabled>Gerar narração <span aria-hidden="true">↗</span></button></div>
+            </article>
+            <aside class="panel voice-settings" aria-label="Configurações da narração">
+              <h3>Voz e interpretação</h3>
+              <label for="voice-select">Voz<select id="voice-select"><option value="">Voz livre do modelo</option></select></label>
+              <p class="voice-help" id="voice-selected-description">Sem referência: a identidade vocal pode variar entre gerações.</p>
+              <audio id="voice-reference-player" controls preload="none" aria-label="Ouvir referência da voz selecionada" hidden></audio>
+              <button class="btn secondary" id="voice-add-shortcut" type="button">＋ Clonar uma voz</button>
+              <div class="voice-model"><span>Motor</span><strong>Drama 3</strong><small>Local · sem créditos de API</small></div>
+              <label for="voice-mode">Modo de narração<select id="voice-mode"><option value="single">Passagem única</option><option value="chunked">Texto longo · trechos com continuidade</option></select></label>
+              <p class="voice-help">Trechos com continuidade usam o contexto de áudio do próprio Drama 3.</p>
+              <label for="voice-budget">Limite de áudio<select id="voice-budget"><option value="2048">Até aproximadamente 1min34s</option><option value="4096">Até aproximadamente 3min08s</option><option value="6144" selected>Até aproximadamente 4min43s</option><option value="8192">Até aproximadamente 6min17s</option><option value="16384" data-long-only hidden>Até aproximadamente 12min34s</option><option value="32768" data-long-only hidden>Até aproximadamente 25min07s</option><option value="65536" data-long-only hidden>Até aproximadamente 50min15s</option></select></label>
+              <p class="voice-help">É o teto de geração, não uma duração garantida. O motor encerra a fala quando conclui.</p>
+              <details class="voice-advanced"><summary>Ajustes avançados</summary>
+                <label for="voice-temperature">Variação da interpretação <output id="voice-temperature-value" for="voice-temperature">0,8</output><input id="voice-temperature" type="range" min="0.1" max="1.5" step="0.05" value="0.8"></label>
+                <p class="voice-help">Temperatura: valores maiores aumentam a variação; podem reduzir a consistência.</p>
+                <label for="voice-top-p">Top-p<input id="voice-top-p" type="number" min="0.1" max="1" step="0.05" value="0.9" required></label>
+                <label for="voice-top-k">Top-k<input id="voice-top-k" type="number" min="1" max="100" step="1" value="30" required></label>
+                <label for="voice-seed">Semente<input id="voice-seed" type="number" min="0" max="2147483647" step="1" value="123" required></label>
+                <label for="voice-chunk-length" id="voice-chunk-label" hidden>Caracteres por trecho<input id="voice-chunk-length" type="number" min="32" max="2000" value="800" required><span class="voice-help">Até 32 trechos por narração. Aumente o tamanho do trecho para acomodar roteiros maiores.</span></label>
+              </details>
+            </aside>
+          </form>
+          <article class="panel voice-result" id="voice-current" hidden aria-labelledby="voice-current-title"><div class="panel-head"><div><p class="eyebrow">SUA NARRAÇÃO</p><h3 id="voice-current-title"></h3></div><span id="voice-current-status" role="status"></span></div><div id="voice-current-body"></div></article>
+        </div>
+        <div id="voice-pane-conversion" role="tabpanel" aria-labelledby="voice-tab-conversion" hidden>
+          <div class="voice-pane-heading"><div><h3>O mesmo vídeo. A voz que você escolher.</h3><p class="voice-help">Importe sua gravação e troque a voz mantendo o tempo da fala, as pausas e a duração original.</p></div><span class="voice-engine" id="conversion-engine-status" role="status">Verificando conversor local…</span></div>
+          <p id="conversion-message" class="voice-notice" role="status" aria-live="polite"></p>
+          <div class="voice-workspace">
+            <article class="panel conversion-source">
+              <h3>1. Importe o vídeo ou áudio</h3>
+              <form id="conversion-upload-form"><label for="conversion-file">Arquivo original<input id="conversion-file" type="file" accept="video/mp4,video/quicktime,video/webm,video/x-matroska,audio/*,.mkv,.mov,.m4a" required></label><p class="voice-help">MP4, MOV, MKV, WebM ou áudio · até 5 minutos e 1 GB.</p><button type="submit" class="btn secondary" id="conversion-import">Importar arquivo</button></form>
+              <p id="conversion-source-info" class="voice-help"></p>
+              <video id="conversion-source-video" controls preload="metadata" playsinline aria-label="Vídeo original" hidden></video>
+              <audio id="conversion-upload-audio" controls preload="metadata" aria-label="Áudio original importado" hidden></audio>
+              <p class="voice-help" id="conversion-preview-note" hidden>Prévia do arquivo original. A troca será aplicada à faixa escolhida ao lado.</p>
+            </article>
+            <form id="conversion-form" class="panel voice-settings">
+              <h3>2. Escolha a nova voz</h3>
+              <label for="conversion-title">Nome da conversão<input id="conversion-title" value="Troca de voz" maxlength="120" required></label>
+              <label for="conversion-voice">Voz clonada<select id="conversion-voice" required><option value="">Selecione uma voz da sua biblioteca</option></select></label>
+              <p class="voice-help">Use uma voz cadastrada em “Minhas vozes”, com referência de até 30 segundos.</p>
+              <label for="conversion-track">Faixa de áudio<select id="conversion-track" required><option value="">Importe um arquivo primeiro</option></select></label>
+              <label class="conversion-check"><input id="conversion-background" type="checkbox" checked><span>Preservar música e ambiente</span></label>
+              <p class="voice-help">A voz é separada do fundo antes da troca. Para uma fala já isolada, você pode desmarcar esta opção.</p>
+              <div class="voice-model"><span>Conversor</span><strong>Seed-VC local</strong><small>Troca de voz a partir da fala original</small></div>
+              <p class="voice-help">Uma voz de destino para toda a fala da faixa selecionada. Gravações com vozes sobrepostas precisam de revisão.</p>
+              <button type="submit" class="btn primary" id="conversion-generate" disabled>Trocar voz e sincronizar</button>
+            </form>
+          </div>
+          <article class="panel voice-result" id="conversion-result" hidden><div class="panel-head"><h3 id="conversion-result-title"></h3><span id="conversion-result-status" role="status"></span></div><div id="conversion-result-body"></div></article>
+          <article class="panel voice-result"><div class="panel-head"><h3>Conversões anteriores</h3><button type="button" class="btn secondary small" id="conversion-refresh">Atualizar</button></div><div id="conversion-history"><p class="voice-help">Suas conversões serão preservadas aqui.</p></div><button type="button" class="btn secondary" id="conversion-more" hidden>Carregar mais</button></article>
+        </div>
+        <div id="voice-pane-library" role="tabpanel" aria-labelledby="voice-tab-library" hidden>
+          <div class="voice-pane-heading"><div><h3>Uma biblioteca com a sua identidade.</h3><p class="voice-help">Salve uma referência uma vez e use a mesma voz em novas narrações.</p></div><button class="btn primary" id="voice-add" type="button">＋ Clonar uma voz</button></div>
+          <label for="voice-search" class="sr-only">Buscar nas minhas vozes</label><input type="search" id="voice-search" placeholder="Buscar uma voz pelo nome ou descrição" maxlength="100">
+          <div id="voice-library-list" class="voice-library-list"><p class="voice-empty">Sua biblioteca está vazia. Adicione um áudio de referência para começar.</p></div>
+        </div>
+        <div id="voice-pane-history" role="tabpanel" aria-labelledby="voice-tab-history" hidden>
+          <div class="voice-pane-heading"><div><h3>Suas narrações</h3><p class="voice-help">Cada geração é uma nova versão. As anteriores continuam aqui.</p></div><button class="btn secondary" id="voice-history-refresh" type="button">Atualizar</button></div>
+          <div id="voice-history-list"><p class="voice-empty">Nenhuma narração criada ainda.</p></div><button type="button" class="btn secondary" id="voice-history-more" hidden>Carregar mais</button>
+        </div>
+        <dialog id="voice-clone-dialog" class="voice-clone-dialog" aria-labelledby="voice-clone-title">
+          <form id="voice-clone-form"><div class="panel-head"><div><p class="eyebrow">CLONAGEM POR REFERÊNCIA</p><h2 id="voice-clone-title">Adicione uma voz</h2></div><button class="btn secondary" type="button" id="voice-clone-close" aria-label="Fechar cadastro de voz">✕</button></div>
+            <p class="voice-help">Use uma fala limpa, de uma pessoa por vez, sem música. A referência e a transcrição orientam a identidade da voz.</p>
+            <label for="voice-clone-name">Nome da voz<input id="voice-clone-name" maxlength="100" required placeholder="Ex.: Minha voz · narração"></label>
+            <label for="voice-clone-description">Descrição<input id="voice-clone-description" maxlength="500" placeholder="Ex.: Português brasileiro, timbre grave, leitura calma"></label>
+            <label for="voice-clone-audio">Áudio de referência<input id="voice-clone-audio" type="file" accept="audio/*,.m4a,.flac,.opus" required aria-describedby="voice-clone-audio-help"></label><p id="voice-clone-audio-help" class="voice-help">De 1 a 60 segundos · até 32 MB · WAV, MP3, M4A, OGG ou FLAC. O original é preservado.</p>
+            <audio id="voice-upload-player" controls preload="metadata" aria-label="Conferir áudio de referência" hidden></audio>
+            <label for="voice-clone-transcript">Transcrição exata do áudio<textarea id="voice-clone-transcript" maxlength="5000" required rows="4" placeholder="Escreva exatamente o que é dito na referência, com a pontuação correspondente."></textarea></label>
+            <label class="voice-consent"><input id="voice-clone-authorized" type="checkbox" required><span>Esta é minha voz, uma voz sintética que posso usar ou tenho autorização da pessoa para cloná-la.</span></label>
+            <p id="voice-clone-message" role="status" aria-live="polite"></p><button class="btn primary" id="voice-clone-save" type="submit">Salvar na minha biblioteca</button>
+          </form>
+        </dialog>
+      </section>
+
+      <section class="section" id="section-research" data-title="Pesquisa com fontes">
+        <div class="research-layout">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">REFER&Ecirc;NCIAS</p><h2>Pesquisa com fontes</h2></div></div>
+            <p>Re&uacute;na fontes p&uacute;blicas e confira as afirma&ccedil;&otilde;es antes de us&aacute;-las na produ&ccedil;&atilde;o.</p>
+            <form id="research-form" class="research-form">
+              <label for="research-topic">Assunto<textarea id="research-topic" rows="2" minlength="3" maxlength="500" required placeholder="O que precisa ser pesquisado?"></textarea></label>
+              <label for="research-project">Projeto vinculado<select id="research-project"><option value="">Sem v&iacute;nculo</option></select></label>
+              <label for="research-kind">Tipo de pesquisa<select id="research-kind"><option value="general">Refer&ecirc;ncias e documenta&ccedil;&atilde;o</option><option value="character">Personagem existente</option></select></label>
+              <fieldset id="research-reference" hidden><legend>Vers&atilde;o do personagem</legend>
+                <label for="research-work">Obra / jogo / filme<input id="research-work" maxlength="200"></label>
+                <label for="research-edition">Edi&ccedil;&atilde;o e &eacute;poca<input id="research-edition" maxlength="200"></label>
+                <label for="research-incarnation">Encarna&ccedil;&atilde;o, traje ou skin<input id="research-incarnation" maxlength="200"></label>
+              </fieldset>
+              <label for="research-domains">Dom&iacute;nios permitidos, um por linha<textarea id="research-domains" rows="2" maxlength="2000" required placeholder="exemplo.com&#10;documentacao.exemplo.com"></textarea></label>
+              <label for="research-query">Consulta para buscar novas fontes<input id="research-query" maxlength="500" placeholder="Opcional quando voc&ecirc; j&aacute; tem as URLs"></label>
+              <label for="research-urls">URLs p&uacute;blicas conhecidas, uma por linha<textarea id="research-urls" rows="2" maxlength="6000" placeholder="https://exemplo.com/referencia"></textarea></label>
+              <label for="research-claims">Afirma&ccedil;&otilde;es para conferir, uma por linha<textarea id="research-claims" rows="4" maxlength="12000" required placeholder="Escreva afirma&ccedil;&otilde;es espec&iacute;ficas que as fontes precisam sustentar."></textarea></label>
+              <label for="research-limit">Limite de fontes<select id="research-limit"><option value="1">1 fonte</option><option value="2" selected>2 fontes</option><option value="3">3 fontes</option></select></label>
+              <label class="research-public-check"><input id="research-public-only" type="checkbox" required><span>Confirmo que assunto, consulta, afirma&ccedil;&otilde;es e URLs s&atilde;o p&uacute;blicos e podem ser enviados aos servi&ccedil;os de pesquisa.</span></label>
+              <p class="research-help">Cada pesquisa pode consultar Firecrawl e TypeSafe, sujeitos aos limites dos servi&ccedil;os. O envio n&atilde;o inicia gera&ccedil;&atilde;o de m&iacute;dia.</p>
+              <div class="research-actions"><button class="btn primary" type="submit" id="research-submit">Pesquisar e verificar</button><button class="btn secondary" type="button" id="research-new">Nova pesquisa</button></div>
+            </form>
+            <p id="research-message" role="status" aria-live="polite"></p>
+          </article>
+          <div class="research-results">
+            <article class="panel"><div class="panel-head"><h2>Pesquisas salvas</h2><button class="btn secondary small" type="button" id="research-refresh">Atualizar</button></div>
+              <div id="research-jobs"><p>Abra esta se&ccedil;&atilde;o para consultar as pesquisas.</p></div>
+              <button class="btn secondary small" type="button" id="research-more" hidden>Carregar mais</button>
+            </article>
+            <article class="panel" id="research-detail" hidden><h2 id="research-detail-title" tabindex="-1"></h2><p id="research-detail-status" role="status" aria-live="polite"></p>
+              <div id="research-detail-body"></div>
+            </article>
+          </div>
+        </div>
+        <noscript><p>Ative JavaScript para iniciar uma pesquisa e consultar suas fontes no painel.</p></noscript>
+      </section>
+
+      <section class="section active" id="section-dashboard" data-title="Vis&atilde;o Geral">
+        <section class="studio-welcome" aria-labelledby="studio-welcome-title">
+          <div>
+            <p class="studio-welcome-kicker">PEMARA / EST&Uacute;DIO CRIATIVO</p>
+            <h2 id="studio-welcome-title">D&ecirc; espa&ccedil;o &agrave; sua pr&oacute;xima ideia.</h2>
+            <p>Imagem, v&iacute;deo, m&uacute;sica e 3D. Crie, acompanhe suas produ&ccedil;&otilde;es e encontre seus arquivos em um s&oacute; lugar.</p>
+          </div>
+          <div class="studio-welcome-actions">
+            <button class="btn primary" type="button" data-section-jump="gen">Come&ccedil;ar a criar <span aria-hidden="true">&nbsp;↗</span></button>
+            <button class="btn secondary" type="button" data-section-jump="assets">Explorar arquivos</button>
+          </div>
+        </section>
+        <div class="studio-section-label"><span>Seu est&uacute;dio agora</span><span>Recursos do computador</span></div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span>GPU</span>
+            <strong id="gpu-load">--</strong>
+            <div class="bar"><div id="bar-gpu-load"></div></div>
+            <small id="gpu-extra">RTX 5080</small>
+          </article>
+          <article class="metric-card">
+            <span>VRAM</span>
+            <strong id="gpu-vram">--</strong>
+            <div class="bar"><div id="bar-gpu-vram"></div></div>
+            <small id="gpu-temp">Temp --</small>
+          </article>
+          <article class="metric-card">
+            <span>CPU</span>
+            <strong id="cpu-load">--</strong>
+            <div class="bar"><div id="bar-cpu-load"></div></div>
+            <small id="cpu-extra">Clock --</small>
+          </article>
+          <article class="metric-card">
+            <span>RAM</span>
+            <strong id="ram-load">--</strong>
+            <div class="bar"><div id="bar-ram-load"></div></div>
+            <small id="ram-extra">Uso real</small>
+          </article>
+        </div>
+
+        <section class="panel qwen-runtime-panel" aria-labelledby="qwen-runtime-title">
+          <div class="panel-head qwen-runtime-head">
+            <div>
+              <span class="qwen-runtime-kicker">Qwen local &middot; Ollama</span>
+              <h2 id="qwen-runtime-title">Uso do modelo na codifica&ccedil;&atilde;o</h2>
+            </div>
+            <span
+              class="qwen-runtime-badge"
+              id="qwen-runtime-badge"
+              data-state="unknown"
+              role="status"
+              aria-live="polite"
+            >CONSULTANDO</span>
+          </div>
+          <div class="qwen-runtime-layout">
+            <div class="qwen-runtime-main">
+              <strong class="qwen-runtime-summary" id="qwen-runtime-summary">
+                Verificando OpenCode, Ollama e processo NVIDIA.
+              </strong>
+              <div class="qwen-runtime-location" id="qwen-runtime-location" hidden>
+                <span id="qwen-runtime-location-label">Est&aacute; usando aonde</span>
+                <strong id="qwen-runtime-task"></strong>
+                <code id="qwen-runtime-path"></code>
+              </div>
+              <details class="qwen-runtime-work" id="qwen-runtime-work" hidden>
+                <summary id="qwen-runtime-work-summary">Tarefas ativas</summary>
+                <div id="qwen-runtime-work-list"></div>
+              </details>
+            </div>
+            <dl class="qwen-runtime-facts">
+              <div><dt>Origem</dt><dd id="qwen-runtime-source">--</dd></div>
+              <div><dt>C&aacute;lculo Qwen</dt><dd id="qwen-runtime-sm">--</dd></div>
+              <div><dt>Decis&atilde;o</dt><dd id="qwen-runtime-decision">Bloqueado</dd></div>
+            </dl>
+            <div class="qwen-runtime-actions">
+              <label class="qwen-auto-release-toggle" for="qwen-auto-release-enabled">
+                <input id="qwen-auto-release-enabled" type="checkbox">
+                <span>
+                  <strong>Libera&ccedil;&atilde;o autom&aacute;tica</strong>
+                  <small id="qwen-auto-release-status">Consultando configura&ccedil;&atilde;o.</small>
+                </span>
+              </label>
+              <label class="qwen-auto-release-delay" for="qwen-auto-release-delay">
+                Liberar depois de
+                <select id="qwen-auto-release-delay">
+                  <option value="15">15 segundos</option>
+                  <option value="30">30 segundos</option>
+                  <option value="60">1 minuto</option>
+                  <option value="120">2 minutos</option>
+                  <option value="300">5 minutos</option>
+                </select>
+              </label>
+              <button
+                class="btn qwen-release-button"
+                id="qwen-release-button"
+                type="button"
+                disabled
+              >Liberar agora</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="layout-2">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Servi&ccedil;os</h2>
+              <span id="health-time">--</span>
+            </div>
+            <div class="service-grid" id="health-grid"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Atalhos</h2>
+            </div>
+            <div class="quick-grid">
+              <button class="quick-action" data-section-jump="gen">Criar</button>
+              <button class="quick-action" data-section-jump="films">Projetos</button>
+              <button class="quick-action" data-section-jump="assets">Arquivos</button>
+              <button class="quick-action" data-section-jump="models3d">Modelos 3D</button>
+              <button class="quick-action" data-section-jump="hyperframes">HyperFrames</button>
+              <button class="quick-action" data-tool="comfy" data-port="8188">ComfyUI</button>
+              <button class="quick-action" data-tool="sprunki" data-port="5005">Sprunki</button>
+              <button class="quick-action" data-tool="perplexica" data-port="3002">Perplexica</button>
+              <button class="quick-action" data-tool="ollama" data-port="11435">Ollama</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="section-gen" data-title="Criar">
+        <div class="workspace gen-workspace">
+          <section class="panel gen-chat-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Cria&ccedil;&otilde;es</h2>
+                <span>Imagens, edi&ccedil;&otilde;es e takes aparecem aqui.</span>
+              </div>
+              <span id="gen-status">ComfyUI: verificando</span>
+            </div>
+            <div class="chat-log" id="gen-chat"></div>
+            <details class="gen-history" open>
+              <summary>
+                <span>Trabalhos recentes</span>
+                <span id="gen-history-count">0</span>
+              </summary>
+              <div class="gen-history-list" id="gen-history-list" role="list"></div>
+            </details>
+          </section>
+
+          <form class="panel control-panel gen-control-panel" id="gen-form">
+            <div class="gen-mode-tabs" role="group" aria-label="O que voc&ecirc; quer criar?">
+              <button class="gen-mode-button active" type="button" data-gen-mode="image" aria-pressed="true">Criar imagem</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="edit" aria-pressed="false">Editar imagem</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="video" aria-pressed="false">Animar foto</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="text_video" aria-pressed="false">Texto para v&iacute;deo</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="marketing_card" aria-pressed="false">Criar card</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="music" aria-pressed="false">Criar m&uacute;sica</button>
+              <button class="gen-mode-button" type="button" data-gen-mode="sfx" aria-pressed="false">Criar efeito sonoro</button>
+            </div>
+
+            <label class="sr-only" for="gen-mode">Modo</label>
+            <select class="sr-only" id="gen-mode" tabindex="-1" aria-hidden="true"><option value="image">Imagem</option><option value="edit">Editar foto</option><option value="video">Animar foto</option><option value="text_video">Texto para v&iacute;deo</option><option value="marketing_card">Card real loja</option><option value="music">M&uacute;sica</option><option value="sfx">SFX</option></select>
+
+            <div class="gen-mode-intro">
+              <div>
+                <p class="eyebrow" id="gen-mode-kicker">IMAGEM</p>
+                <h2 id="gen-mode-title">Crie uma imagem</h2>
+                <p id="gen-mode-help">Escolha o motor de imagem e descreva o que voc&ecirc; quer ver.</p>
+              </div>
+              <span class="gen-engine-pill" id="gen-engine-pill">Carregando motor</span>
+            </div>
+
+            <section class="gen-video-engine-picker hidden" id="gen-image-engine-picker" aria-labelledby="gen-image-engine-title">
+              <h3 id="gen-image-engine-title">Motor de fotos e imagens</h3>
+              <label for="gen-image-engine">Escolha o motor
+                <select id="gen-image-engine" aria-describedby="gen-image-engine-help gen-image-engine-availability"><option value="">Carregando motores...</option></select>
+              </label>
+              <p id="gen-image-engine-help" role="status" aria-live="polite"></p>
+              <small id="gen-image-engine-availability"></small>
+            </section>
+
+            <section class="gen-video-engine-picker hidden" id="gen-video-engine-picker" aria-labelledby="gen-video-engine-title">
+              <div>
+                <p class="eyebrow">MOTOR DO V&Iacute;DEO</p>
+                <h3 id="gen-video-engine-title">Escolha o motor deste v&iacute;deo</h3>
+                <p>Selecione MiniMax H3 para este v&iacute;deo.</p>
+              </div>
+              <div class="gen-video-engine-grid" id="gen-video-engines" role="radiogroup" aria-label="Motor de v&iacute;deo"></div>
+              <p class="gen-video-engine-status" id="gen-video-engine-status" role="status" aria-live="polite">Nenhum motor selecionado.</p>
+              <input id="gen-engine-id" type="hidden" value="">
+            </section>
+
+            <div class="gen-media-row hidden" id="gen-media-row">
+              <label class="gen-upload-card" id="gen-base-image-label" for="gen-base-image">
+                <span class="gen-upload-copy"><strong id="gen-base-image-title">Imagem de origem</strong><small id="gen-base-image-help">Escolha a foto que ser&aacute; preservada.</small></span>
+                <span class="gen-file-action">Escolher imagem</span>
+                <input id="gen-base-image" type="file" accept="image/*">
+                <span class="gen-image-preview hidden" id="gen-base-preview-wrap"><img id="gen-base-preview" alt="Pr&eacute;via da imagem de origem"></span>
+              </label>
+              <label class="gen-upload-card hidden" id="gen-end-image-label" for="gen-end-image">
+                <span class="gen-upload-copy"><strong>Quadro final opcional</strong><small>Use quando quiser conduzir o take at&eacute; outra imagem.</small></span>
+                <span class="gen-file-action">Escolher quadro final</span>
+                <input id="gen-end-image" type="file" accept="image/*">
+                <span class="gen-image-preview hidden" id="gen-end-preview-wrap"><img id="gen-end-preview" alt="Pr&eacute;via do quadro final"></span>
+              </label>
+            </div>
+
+            <div class="voice-input-group">
+              <label for="gen-prompt"><span id="gen-prompt-label">Descreva a imagem</span></label>
+              <textarea id="gen-prompt" rows="6" required data-voice-input data-voice-label="prompt da gera&ccedil;&atilde;o" placeholder="Ex.: rua noturna cinematogr&aacute;fica, luz refletida no asfalto molhado, atmosfera realista"></textarea>
+            </div>
+
+            <section class="gen-native-audio hidden" id="gen-request-preview" aria-label="Interpretação do pedido">
+              <button type="button" id="gen-request-check">Conferir pedido</button>
+              <p id="gen-request-summary" role="status" aria-live="polite">Descreva a ação, a duração e a fala. Exemplo: Os três correm do fantasma. Vídeo de 15 segundos. Fala: Corre, Timão! A conferência também acontece ao gerar.</p>
+            </section>
+            <details class="gen-video-direction gen-settings hidden" id="gen-video-direction">
+              <summary>C&acirc;mera e movimento (opcional)</summary>
+              <div class="gen-settings-body">
+              <div class="field-row">
+                <label for="gen-camera-pose">Movimento de c&acirc;mera<select id="gen-camera-pose"><option value="Zoom Out">Dolly out / afastar</option><option value="Zoom In">Push in / aproximar</option><option value="Pan Right">Acompanhar para a direita</option><option value="Pan Left">Acompanhar para a esquerda</option><option value="Pan Up">Subir a c&acirc;mera</option><option value="Pan Down">Descer a c&acirc;mera</option><option value="Follow Action">Acompanhar a ação</option><option value="Static" selected>C&acirc;mera est&aacute;vel, cena viva</option><option value="ClockWise (CW)">&Oacute;rbita hor&aacute;ria</option><option value="Anti Clockwise (ACW)">&Oacute;rbita anti-hor&aacute;ria</option></select></label>
+                <label id="gen-video-conditioning-field" for="gen-video-conditioning-profile">Preserva&ccedil;&atilde;o<select id="gen-video-conditioning-profile"><option value="identity_locked">Preservar a foto inteira</option><option value="manus_motion">Mais movimento interno</option></select></label>
+              </div>
+              <label for="gen-camera-speed">Intensidade do movimento<input id="gen-camera-speed" type="range" value="0.8" min="0.2" max="2" step="0.1"><span class="range-value" id="gen-camera-speed-value">0,8</span></label>
+              </div>
+            </details>
+            <div class="field-row hidden" id="gen-video-fields">
+              <label>Dura&ccedil;&atilde;o do v&iacute;deo (segundos)<input id="gen-video-duration" type="number" value="6" min="0.1" max="30" step="any" inputmode="decimal"></label>
+              <label class="hidden" id="gen-h3-orientation-field">Formato<select id="gen-h3-orientation"><option value="landscape" selected>Horizontal 16:9</option><option value="portrait">Vertical 9:16</option></select></label>
+              <div class="gen-duration-presets" role="group" aria-label="Dura&ccedil;&atilde;o r&aacute;pida do v&iacute;deo">
+                <button class="gen-duration-button" type="button" data-gen-duration="5.13">5 s</button>
+                <button class="gen-duration-button active" type="button" data-gen-duration="6">6 s</button>
+                <button class="gen-duration-button" type="button" data-gen-duration="10">10 s</button>
+                <button class="gen-duration-button" type="button" data-gen-duration="15">15 s</button>
+              </div>
+              <input id="gen-frames" type="hidden" value="181">
+            </div>
+            <label class="hidden" id="gen-content-kind-field" for="gen-content-kind">Tipo da produ&ccedil;&atilde;o
+              <select id="gen-content-kind" aria-describedby="gen-content-kind-help">
+                <option value="unknown" selected>Escolha o tipo</option>
+                <option value="animation">Anima&ccedil;&atilde;o / desenho / 3D</option>
+                <option value="live_action">Live action / pessoas realistas</option>
+                <option value="mixed">Misto: anima&ccedil;&atilde;o e live action</option>
+              </select>
+              <small id="gen-content-kind-help">Define o acabamento adequado &agrave; sua produ&ccedil;&atilde;o.</small>
+            </label>
+            <small id="gen-video-timing-help" class="hidden">Os quadros s&atilde;o calculados automaticamente para o motor selecionado.</small>
+            <div class="gen-native-audio hidden" id="gen-minimax-native-audio-field">
+              <label class="check-label" for="gen-minimax-native-audio">
+                <input id="gen-minimax-native-audio" type="checkbox" aria-describedby="gen-minimax-native-audio-help">
+                <span><strong>&Aacute;udio nativo do MiniMax</strong><small id="gen-minimax-native-audio-help">Ativado quando você pede uma fala. Sem fala, marque para incluir som ambiente. O perfil escolhido precisa oferecer áudio.</small></span>
+              </label>
+            </div>
+            <label class="hidden" id="gen-h3-scene-profile-field">Direção do vídeo<select id="gen-h3-scene-profile"><option value="auto" selected>Padrão + realismo humano automático</option><option value="combat_full_v1">Combate — peso, força e física</option></select><small id="gen-h3-scene-profile-help" role="status">Realismo de pele automático ao detectar pessoas em live action ou cenas mistas. Combate disponível no H3 Base e Pika Flex.</small><small>Descrição e referências são analisadas no próprio computador antes da geração.</small></label>
+            <section class="gen-h3-workflow hidden" id="gen-h3-workflow" aria-labelledby="gen-h3-workflow-title">
+              <div class="gen-h3-workflow-heading"><strong id="gen-h3-workflow-title">Seu take com H3</strong><span id="gen-h3-workflow-state">Verificando</span></div>
+              <p id="gen-h3-workflow-summary" role="status" aria-live="polite">O Maestro prepara o workflow e calcula os quadros. Voc&ecirc; assiste ao resultado e decide se ficou bom.</p>
+              <details id="gen-h3-workflow-technical">
+                <summary>Refer&ecirc;ncia t&eacute;cnica da produ&ccedil;&atilde;o</summary>
+                <p>Estas etapas descrevem projetos completos, com roteiro e v&aacute;rios takes. N&atilde;o s&atilde;o dez formul&aacute;rios para gerar um v&iacute;deo aqui. As revis&otilde;es humanas continuam nos projetos que as exigem.</p>
+                <p id="gen-h3-workflow-catalog"></p>
+                <ol id="gen-h3-workflow-stages"></ol>
+              </details>
+            </section>
+            <div class="field-row gen-provider-row hidden" id="gen-provider-fields">
+              <label for="gen-provider">Motor de &aacute;udio<select id="gen-provider" aria-describedby="gen-provider-help"><option value="yue2_local" selected>YuE2 local</option><option value="ace_step_local">ACE-Step local</option><option value="levo2_local">LeVo 2 local (RTX 5090)</option><option value="eleven_music">ElevenLabs Music</option><option value="eleven_sfx">ElevenLabs SFX</option><option value="lyria">Lyria / Vertex</option></select></label>
+              <label for="gen-duration">Dura&ccedil;&atilde;o (s)<input id="gen-duration" type="number" value="15" min="5" max="15" step="1" inputmode="numeric" aria-describedby="gen-provider-help"></label>
+            </div>
+            <small class="gen-provider-help hidden" id="gen-provider-help" role="status" aria-live="polite"></small>
+            <div class="hidden" id="gen-music-fields">
+              <div class="hidden" id="gen-music-duration-auto-field">
+                <label class="check-label"><input id="gen-music-duration-auto" type="checkbox" aria-describedby="gen-music-duration-auto-help"> Deixar o Qwen 3.8 decidir a dura&ccedil;&atilde;o</label>
+                <small id="gen-music-duration-auto-help">O Qwen planeja letra, estilo, se&ccedil;&otilde;es e dura&ccedil;&atilde;o da m&uacute;sica completa, at&eacute; 15 minutos. Desmarque para definir o tempo.</small>
+              </div>
+              <div class="field-row">
+                <label class="check-label"><input id="gen-music-instrumental" type="checkbox"> Instrumental (sem voz)</label>
+              </div>
+              <small>A IA cria a letra e a composi&ccedil;&atilde;o a partir da sua descri&ccedil;&atilde;o. Depois, voc&ecirc; ouve a m&uacute;sica pronta.</small>
+              <details id="gen-music-advanced"><summary>Ajustes musicais opcionais</summary>
+              <div class="field-row">
+                <label id="gen-music-model-field">Modelo ACE-Step<select id="gen-music-model"><option value="acestep-v15-turbo">Turbo · 8 passos</option><option value="acestep-v15-xl-base">XL Base · 50 passos</option></select></label>
+                <label id="gen-music-bpm-field">BPM (0 = automático)<input id="gen-music-bpm" type="number" value="0" min="0" max="300" step="1"></label>
+              </div>
+              <label for="gen-music-lyrics">Letra pr&oacute;pria (opcional)</label>
+              <textarea id="gen-music-lyrics" rows="5" maxlength="4096" placeholder="Deixe vazio para a IA escrever a letra. Se quiser, cole sua letra aqui."></textarea>
+              <div class="hidden" id="gen-yue-fields">
+                <label>Modo YuE2<select id="gen-music-action"><option value="auto">Autom&aacute;tico: compor com partitura e gerar</option><option value="direct">Gera&ccedil;&atilde;o direta: m&uacute;sica sem partitura intermedi&aacute;ria</option><option value="plan">Somente criar partitura</option><option value="generate">Gerar &aacute;udio com minha partitura revisada</option></select></label>
+                <div id="gen-yue-score-fields">
+                <label for="gen-music-abc">Partitura ABC (editável)</label>
+                <textarea id="gen-music-abc" rows="8" maxlength="100000" placeholder="A partitura aparecerá aqui após o planejamento. Você também pode colar uma partitura ABC própria."></textarea>
+                <label class="check-label"><input id="gen-music-abc-reviewed" type="checkbox"> Revisei esta partitura e quero gerar o áudio</label>
+                </div>
+              </div>
+              </details>
+            </div>
+            <div class="field-row gen-provider-row hidden" id="gen-sfx-fields">
+              <label>Influencia<input id="gen-prompt-influence" type="number" value="0.5" min="0" max="1" step="0.05"></label>
+              <label class="check-label"><input id="gen-loop" type="checkbox"> Loop</label>
+            </div>
+
+            <details class="gen-settings" id="gen-settings">
+              <summary>Ajustes avan&ccedil;ados</summary>
+              <div class="gen-settings-body">
+            <div class="gen-native-audio hidden" id="gen-minimax-live-preview-field">
+              <label class="check-label" for="gen-minimax-live-preview">
+                <input id="gen-minimax-live-preview" type="checkbox" aria-describedby="gen-minimax-live-preview-help">
+                <span><strong>Preview ao vivo do H3</strong><small id="gen-minimax-live-preview-help">Opcional: mostra um quadro intermedi&aacute;rio pelo KJNodes. N&atilde;o altera sampler, encoder, passos nem o MP4 final.</small></span>
+              </label>
+            </div>
+                <div class="field-row">
+                  <label id="gen-model-field">Motor<select id="gen-model"><option>Carregando...</option></select></label>
+                  <label id="gen-h3-profile-field">Perfil H3<select id="gen-h3-quality-profile"><option value="h3_draft">Draft — 1024×576 / 6</option><option value="h3_production" selected>Production — 1088×608 / 10</option><option value="h3_hero">Hero — 1344×768 / 12–14</option><option value="h3_master">Master — 1344×768 / 20</option></select></label>
+                  <label class="hidden" id="gen-h3-variant-field">Variante H3<select id="gen-h3-model-variant"><option value="base" selected>MiniMax H3 Base</option><option value="pika_flex_v1" disabled>Pika Flex — verificando disponibilidade</option><option value="fasth3_8step_v2" disabled>FastH3 8-Step V2 — instalando</option><option value="fasth3_omni_8step_v1" disabled>FastH3-Omni — indisponível</option></select></label>
+                  <label>FPS<input id="gen-fps" type="number" value="30" min="24" max="60" step="1"></label>
+                  <span class="hidden gen-h3-sage-required" id="gen-h3-sage-status" role="status" aria-live="polite">SageAttention + Spectrum obrigat&oacute;rios em todos os workflows H3</span>
+                  <label>Preset<select id="gen-preset"><option value="">Livre</option><option value="marketing_card_real">Card real loja</option><option value="minimax_h3_720p_take_6s">MiniMax H3 720p &mdash; take 6s</option><option value="minimax_h3_720p_take_10s">MiniMax H3 720p &mdash; take 10s</option></select></label>
+                </div>
+                <small class="hidden gen-provider-help" id="gen-h3-variant-help" role="status" aria-live="polite">FastH3: somente texto para v&iacute;deo, 8 steps fixos e sem imagem-&acirc;ncora. H3 Base atende animar foto e refer&ecirc;ncias.</small>
+                <small class="hidden gen-provider-help" id="gen-h3-cache-help" role="status">SageAttention + Spectrum ativos em todos os perfis H3.</small>
+                <label id="gen-lora-label">LoRA<select id="gen-lora"><option value="">Sem LoRA</option></select></label>
+                <div class="field-row gen-advanced">
+                  <label>For&ccedil;a LoRA<input id="gen-lora-strength" type="number" value="0.7" min="-2" max="2" step="0.05"></label>
+                  <label>Seed<input id="gen-seed" type="number" value="-1"></label>
+                </div>
+                <div class="field-row gen-advanced">
+                  <label>Largura<input id="gen-width" type="number" value="1024" step="16"></label>
+                  <label>Altura<input id="gen-height" type="number" value="1024" step="16"></label>
+                </div>
+                <div class="field-row gen-advanced">
+                  <label>Steps<input id="gen-steps" type="number" value="28" min="8" max="80"></label>
+                  <label>Guidance<input id="gen-guidance" type="number" value="3.5" min="1" max="12" step="0.1"></label>
+                </div>
+                <div class="voice-input-group">
+                  <label for="gen-negative">Evitar</label>
+                  <textarea id="gen-negative" rows="3" data-voice-input data-voice-label="itens a evitar" placeholder="Opcional: elementos que n&atilde;o devem aparecer"></textarea>
+                </div>
+              </div>
+            </details>
+
+            <div class="gen-progress hidden" id="gen-progress-wrap">
+              <div class="gen-progress-top"><span id="gen-progress-label">Gerando</span><strong id="gen-progress-percent">0%</strong></div>
+              <div class="progress"><div id="gen-progress-bar"></div></div>
+            </div>
+            <button class="btn primary gen-submit" id="gen-submit" type="submit">Criar imagem</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="section-films" data-title="Takes">
+        <div class="films-layout">
+          <details class="panel film-projects-panel" id="film-project-picker" open>
+            <summary class="film-project-picker-toggle" id="film-project-picker-toggle"><span>Projeto</span><strong id="film-project-picker-name">Escolher projeto</strong><span aria-hidden="true">Trocar ▾</span></summary>
+            <div class="film-project-picker-content">
+            <div class="panel-head">
+              <div>
+                <h2 id="film-projects-title">Projetos</h2>
+                <span id="film-project-count">Carregando</span>
+              </div>
+              <button class="btn secondary small" id="film-refresh" type="button">Atualizar</button>
+            </div>
+            <div class="film-project-list" id="film-project-list" aria-live="polite">
+              <div class="film-empty" role="status">Carregando projetos...</div>
+            </div>
+            <details class="film-project-admin">
+              <summary>Adicionar outro projeto</summary>
+              <form class="film-create-form" id="film-create-form">
+                <label for="film-production-preset">Modelo de produção<select id="film-production-preset">
+                  <option value="">Projeto livre</option>
+                  <option value="SAIYAN_SHOWDOWN">Saiyan Showdown — 7 takes, 70 s</option>
+                </select></label>
+                <label for="film-name">Nome<input id="film-name" type="text" minlength="3" maxlength="120" required></label>
+                <label for="film-objective">Objetivo<textarea id="film-objective" rows="3" maxlength="2000"></textarea></label>
+                <label for="film-distribution-mode">Destino do vídeo<select id="film-distribution-mode">
+                  <option value="auto">Detectar pelo objetivo</option>
+                  <option value="internet">Publicação na internet</option>
+                  <option value="standard">Fluxo cinematográfico habitual</option>
+                </select></label>
+                <p class="ip-hint" id="film-distribution-preview" role="status">Escreva “este vídeo será feito para publicação na internet” para ativar o planejamento de alcance.</p>
+                <label for="film-create-content-kind">Tipo da produção<select id="film-create-content-kind">
+                  <option value="unknown">Definir tipo</option>
+                  <option value="live_action">Live action — Lanczos + RIFE60</option>
+                  <option value="animation">Animação — SeedVR2 + RIFE60</option>
+                  <option value="mixed">Cena mista — Lanczos + RIFE60</option>
+                </select></label>
+                <label for="film-duration">Duração alvo (s)<input id="film-duration" type="number" value="60" min="1" max="7200" required></label>
+                <button class="btn primary" id="film-create-submit" type="submit">Criar projeto</button>
+              </form>
+            </details>
+            </div>
+          </details>
+
+          <div class="films-main">
+            <section class="panel film-summary" aria-labelledby="film-active-title">
+              <div class="panel-head">
+                <div>
+                  <span class="film-kicker">Projeto ativo</span>
+                  <h2 id="film-active-title">Selecione um projeto</h2>
+                </div>
+                <span class="film-status" id="film-active-status">—</span>
+              </div>
+              <p class="film-objective" id="film-active-objective">Os projetos existentes e seus takes aparecerão aqui.</p>
+              <details id="film-production-assets-panel" class="hidden">
+                <summary>Novas referências visuais da produção</summary>
+                <p>Aprovar uma referência confirma essa imagem. A montagem e os vídeos continuam com revisão própria.</p>
+                <div id="film-production-assets" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px"></div>
+              </details>
+              <details id="film-production-comparison-panel" class="hidden">
+                <summary>Comparação do piloto de combate</summary>
+                <p id="film-production-comparison-note"></p>
+                <div id="film-production-comparison" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px"></div>
+              </details>
+              <details id="film-soundtrack-panel" class="hidden">
+                <summary>Trilha sonora fornecida por você</summary>
+                <p>O original será preservado. A faixa precisa de escuta antes da mixagem; falas não serão reinseridas automaticamente.</p>
+                <input id="film-soundtrack-file" type="file" accept=".wav,.flac,.mp3,.m4a,.aac,.ogg" aria-label="Arquivo de trilha sonora">
+                <label><input id="film-soundtrack-rights" type="checkbox"> Tenho autorização para usar esta gravação.</label>
+                <button id="film-soundtrack-upload" class="btn secondary" type="button">Adicionar trilha</button>
+                <p id="film-soundtrack-status" role="status">Nenhuma trilha fornecida.</p>
+                <audio id="film-soundtrack-preview" controls preload="none" class="hidden"></audio>
+              </details>
+              <nav class="film-workflow-tabs" aria-label="Etapa do projeto">
+                <button class="film-workflow-tab active" type="button" data-film-view="review" aria-pressed="true">
+                  <span>Para decidir</span><strong id="film-view-review-count">0</strong>
+                </button>
+                <button class="film-workflow-tab" type="button" data-film-view="production" aria-pressed="false">
+                  <span>Ações</span><strong id="film-view-production-count">0</strong>
+                </button>
+                <button class="film-workflow-tab" type="button" data-film-view="all" aria-pressed="false">
+                  <span>Todos</span><strong id="film-view-all-count">0</strong>
+                </button>
+                <button class="film-workflow-tab" type="button" data-film-view="approved" aria-pressed="false">
+                  <span>Aprovados</span><strong id="film-view-approved-count">0</strong>
+                </button>
+                <button class="film-workflow-tab" type="button" data-film-view="rejected" aria-pressed="false">
+                  <span>Rejeitados</span><strong id="film-view-rejected-count">0</strong>
+                </button>
+              </nav>
+              <p class="film-workflow-help" id="film-workflow-help">Assista ao take e escolha aprovar ou reprovar.</p>
+            </section>
+
+            <section class="panel film-watch-panel" id="film-preview-panel" aria-labelledby="film-preview-title">
+              <div class="film-watch-layout">
+                <div class="film-player-column">
+                  <div class="film-player-heading">
+                    <span class="film-kicker" id="film-preview-kicker">Player do projeto</span>
+                    <h2 id="film-preview-title">Assista aos takes</h2>
+                    <p class="film-preview-meta" id="film-preview-meta">Escolha um take na lista abaixo.</p>
+                  </div>
+                  <div class="film-player-frame" id="film-player-frame">
+                    <video class="hidden" id="film-preview-video" controls playsinline preload="auto"></video>
+                    <img class="hidden" id="film-preview-image" alt="">
+                    <div class="film-player-empty" id="film-preview-empty" role="status">
+                      <span class="film-player-mark" aria-hidden="true">▶</span>
+                      <strong>Selecione um take</strong>
+                      <span>O vídeo ou a imagem aprovada aparecerá aqui.</span>
+                    </div>
+                  </div>
+                  <div class="film-player-buffer" id="film-preview-buffer" role="status" aria-live="polite">
+                    <span id="film-preview-playback-status">Selecione um take para carregar o vídeo.</span>
+                    <progress id="film-preview-buffer-progress" max="100" value="0" aria-label="Buffer do vídeo">0%</progress>
+                  </div>
+                  <div class="film-player-copy">
+
+                    <section class="film-player-review hidden" id="film-player-review" aria-labelledby="film-player-review-title">
+                      <div class="film-player-review-head">
+                        <div>
+                          <span class="film-kicker">Revisão deste take</span>
+                          <h3 id="film-player-review-title">Qual é a sua decisão?</h3>
+                        </div>
+                        <span class="film-player-review-state" id="film-player-review-state">—</span>
+                      </div>
+                      <div class="film-player-decisions" role="group" aria-label="Decisão do take em exibição">
+                        <button class="btn primary" type="button" data-film-player-decision="APPROVED">Aprovar take</button>
+                        <button class="btn danger" type="button" data-film-player-decision="REJECTED">Corrigir take</button>
+                      </div>
+                      <details class="film-review-more">
+                        <summary>Mais opções</summary>
+                        <div class="film-review-more-actions" role="group" aria-label="Outras decisões do take">
+                          <button class="btn secondary small" type="button" data-film-player-decision="READY">Decidir depois</button>
+                          <button class="btn secondary small" type="button" data-film-player-decision="FINAL">Marcar como arquivo final</button>
+                        </div>
+                      </details>
+                      <p class="film-player-review-help" id="film-player-review-help" role="status" aria-live="polite">A decisão será aplicada ao vídeo acima.</p>
+                    </section>
+                    <div class="film-player-actions">
+                      <a class="btn secondary small hidden" id="film-preview-open" href="#" target="_blank" rel="noopener">Abrir arquivo</a>
+                      <a class="btn primary small hidden" id="film-preview-download" href="#" download>Baixar v&iacute;deo</a>
+                    </div>
+                  </div>
+                </div>
+
+                <aside class="film-playlist" aria-labelledby="film-takes-title">
+                  <div class="film-playlist-head">
+                    <div>
+                      <h2 id="film-takes-title">Takes do projeto</h2>
+                      <span id="film-playlist-count">Selecione um projeto</span>
+                    </div>
+                  </div>
+                  <div class="film-takes-list" id="film-takes-list" role="list" aria-live="polite">
+                    <div class="film-empty" role="status">Selecione um projeto.</div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <section class="panel film-production-queue hidden" id="film-production-queue" aria-labelledby="film-production-title" aria-live="polite">
+              <div class="film-production-head">
+                <div>
+                  <span class="film-kicker">GPU do estúdio</span>
+                  <h3 id="film-production-title">Fila de produção</h3>
+                </div>
+                <span class="film-production-total" id="film-production-total">Consultando...</span>
+              </div>
+              <div class="film-production-items" id="film-production-items" role="list">
+                <span class="film-production-empty" role="status">Consultando o ComfyUI.</span>
+              </div>
+            </section>
+
+            <section class="panel film-project-actions" id="film-project-actions" aria-labelledby="film-project-actions-title">
+              <div class="film-project-actions-head">
+                <div>
+                  <span class="film-kicker">Acesso r&aacute;pido</span>
+                  <h3 id="film-project-actions-title">A&ccedil;&otilde;es principais</h3>
+                </div>
+                <span class="film-actions-visible-label">Sempre vis&iacute;veis</span>
+              </div>
+              <div class="film-batch-actions" role="group" aria-label="A&ccedil;&otilde;es principais do projeto">
+                <button class="btn secondary" id="film-batch-anchors" type="button" data-anchor-action="none" aria-describedby="film-anchor-batch-copy film-batch-help" disabled>Fotos-base</button>
+                <button class="btn primary" id="film-batch-production" type="button" aria-describedby="film-batch-help" disabled>Produzir pendentes</button>
+                <label for="film-content-kind">Tipo da produção
+                <select id="film-content-kind" disabled>
+                  <option value="unknown">Definir tipo</option>
+                  <option value="live_action">Live action — Lanczos + RIFE60</option>
+                  <option value="animation">Animação — SeedVR2 + RIFE60</option>
+                  <option value="mixed">Cena mista — Lanczos + RIFE60</option>
+                </select>
+                </label>
+                <label for="film-upscale-resolution">Resolução do acabamento
+                  <select id="film-upscale-resolution" disabled>
+                    <option value="1920x1080">1080p — paisagem</option>
+                    <option value="1080x1920">1080p — vertical</option>
+                    <option value="2560x1440">1440p — paisagem</option>
+                    <option value="1440x2560">1440p — vertical</option>
+                    <option value="3840x2160">4K — paisagem</option>
+                    <option value="2160x3840">4K — vertical</option>
+                  </select>
+                </label>
+                <button class="btn secondary" id="film-batch-upscale" type="button" aria-describedby="film-batch-help" disabled>Upscaling obrigatório · 60 FPS</button>
+              </div>
+              <section class="film-anchor-batch" id="film-anchor-batch" aria-labelledby="film-anchor-batch-title" data-state="idle">
+                <strong id="film-anchor-batch-title">Fotos-base dos takes</strong>
+                <p id="film-anchor-batch-copy" role="status" aria-live="polite">Selecione um projeto para verificar quais takes precisam de uma foto-base pr&oacute;pria.</p>
+              </section>
+              <p class="film-batch-help" id="film-batch-help" role="status" aria-live="polite">Selecione um projeto para ver os trabalhos eleg&iacute;veis.</p>
+            </section>
+
+            <details class="panel film-project-overview">
+              <summary>Resumo e montagem do projeto</summary>
+              <div class="film-project-overview-content">
+              <div class="film-metrics" id="film-metrics" aria-live="polite"></div>
+              <section class="film-assembly" id="film-assembly" aria-labelledby="film-assembly-title">
+                <div>
+                  <span class="film-kicker">Finalização segura</span>
+                  <h3 id="film-assembly-title">Sequência aprovada</h3>
+                  <p id="film-assembly-status" role="status" aria-live="polite">Selecione um projeto para conferir as aprovações.</p>
+                </div>
+                <button class="btn primary" id="film-assembly-start" type="button" disabled>Montar sequência aprovada</button>
+              </section>
+              <section class="film-final-output hidden" id="film-final-output" aria-labelledby="film-final-output-title">
+                <div class="film-final-output-copy">
+                  <span class="film-kicker">Entrega montada</span>
+                  <h3 id="film-final-output-title">Clipe completo</h3>
+                  <p id="film-final-output-meta">Master final do projeto.</p>
+                </div>
+                <div class="film-final-output-actions">
+                  <button class="btn primary" id="film-final-watch" type="button">Assistir clipe completo</button>
+                  <a class="btn secondary" id="film-final-download" href="#" download>Baixar master FHD</a>
+                </div>
+                <div class="film-final-player" id="film-final-player">
+                  <video id="film-final-video" controls playsinline preload="auto"></video>
+                  <p id="film-final-player-status" role="status" aria-live="polite">Carregando o master no player.</p>
+                </div>
+                <div class="film-final-review" id="film-final-review">
+                  <p id="film-final-review-status" role="status" aria-live="polite">Assista ao clipe completo antes da decisão final.</p>
+                  <div class="film-final-review-actions" role="group" aria-label="Decisão final do master">
+                    <button class="btn primary" id="film-final-approve" type="button">Aprovar master</button>
+                    <label for="film-final-rejection-reason">Se reprovar, explique o motivo
+                      <textarea id="film-final-rejection-reason" rows="2" minlength="3" maxlength="2000" data-voice-input data-voice-label="motivo da reprovação do master"></textarea>
+                    </label>
+                    <button class="btn danger" id="film-final-reject" type="button">Reprovar master</button>
+                  </div>
+                </div>
+              </section>
+              </div>
+            </details>
+
+            <section class="panel ip-panel" id="film-internet-publication" hidden aria-label="Publicação na internet">
+              <details id="ip-details">
+                <summary><strong>Publicação na internet</strong><span class="ip-badge" id="ip-badge">Fluxo habitual</span></summary>
+                <div class="ip-content">
+                  <p>Direção antes das âncoras: promessa clara, duas ideias de abertura, progressão e recompensa. Preserva estilo, silêncio, duração e formato. Não inicia renderização nem publica.</p>
+                  <div class="ip-toolbar">
+                    <label for="ip-mode">Modo deste projeto<select id="ip-mode"><option value="standard">Fluxo habitual</option><option value="internet">Publicação na internet</option><option value="auto">Detectar novamente pelo objetivo</option></select></label>
+                    <button type="button" class="btn secondary" id="ip-apply-mode">Aplicar modo</button>
+                    <button type="button" class="btn ghost" id="ip-refresh">Atualizar dados</button>
+                  </div>
+                  <p class="ip-message" id="ip-message" role="status" aria-live="polite"></p>
+                  <div id="ip-enabled" hidden>
+                    <details open>
+                      <summary>1. Direção para publicação</summary>
+                      <p id="ip-readiness"></p>
+                      <form id="ip-plan-form">
+                        <fieldset><div class="ip-grid" id="ip-plan-fields"></div>
+                          <div class="ip-toolbar"><button type="submit" class="btn primary">Salvar direção</button><button type="button" class="btn ghost" id="ip-discard">Descartar rascunho e recarregar</button></div>
+                        </fieldset>
+                      </form>
+                      <button type="button" class="btn secondary" id="ip-copy-brief">Copiar instrução para o diretor</button>
+                      <ul class="ip-checklist" id="ip-checklist"></ul>
+                    </details>
+                    <details>
+                      <summary>2. Preparar pacote de publicação</summary>
+                      <p>Exige o master exato aprovado. Copia o vídeo sem alterar seus bytes e inclui capa, título, descrição e legendas opcionais. Tudo permanece para sua revisão.</p>
+                      <form id="ip-package-form"><fieldset>
+                        <div class="ip-grid">
+                          <label for="ip-package-platform">Destino<select id="ip-package-platform" required></select></label>
+                          <label for="ip-package-label">Nome da variante<input id="ip-package-label" maxlength="120" value="Original"></label>
+                          <label for="ip-package-title">Título fiel ao vídeo<input id="ip-package-title" minlength="3" maxlength="160" required></label>
+                          <label for="ip-cover-time">Quadro de capa no segundo<input id="ip-cover-time" type="number" min="0" max="7200" step="0.01" value="0" required></label>
+                          <label for="ip-package-description">Descrição<textarea id="ip-package-description" rows="3" maxlength="5000"></textarea></label>
+                          <label for="ip-package-captions">Legendas SRT opcionais<textarea id="ip-package-captions" rows="3" maxlength="40000" placeholder="Cole as legendas revisadas; não são gravadas sobre o vídeo."></textarea></label>
+                        </div>
+                        <p id="ip-package-gate"></p><button type="submit" class="btn primary" id="ip-prepare-package">Preparar ZIP local</button>
+                      </fieldset></form>
+                      <ul class="ip-records" id="ip-packages"></ul>
+                    </details>
+                    <details>
+                      <summary>3. Registrar resultados reais</summary>
+                      <p>Copie métricas agregadas do painel da plataforma. Deixe em branco o que não estiver disponível. As visualizações no player do Maestro não são métricas da internet.</p>
+                      <form id="ip-measurement-form"><fieldset>
+                        <div class="ip-grid">
+                          <label for="ip-measurement-package">Pacote publicado<select id="ip-measurement-package" required></select></label>
+                          <label for="ip-post-url">Link da publicação<input id="ip-post-url" type="url" maxlength="2000" placeholder="https://…" required></label>
+                          <label for="ip-window-hours">Horas desde a publicação<input id="ip-window-hours" type="number" min="0" max="8760" step="0.1" value="24" required></label>
+                          <label for="ip-measurement-notes">Observações<textarea id="ip-measurement-notes" rows="2" maxlength="1000"></textarea></label>
+                        </div>
+                        <div class="ip-grid ip-numbers" id="ip-metric-fields"></div>
+                        <button type="submit" class="btn primary" id="ip-save-measurement">Registrar observação</button>
+                      </fieldset></form>
+                      <p id="ip-result-summary"></p><ul class="ip-records" id="ip-measurements"></ul>
+                    </details>
+                  </div>
+                </div>
+              </details>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section-assets" data-title="Arquivos">
+        <section class="panel assets-panel" aria-labelledby="assets-title">
+          <div class="panel-head">
+            <div>
+              <h2 id="assets-title">Biblioteca</h2>
+              <span id="assets-count">Carregando arquivos</span>
+            </div>
+            <button class="btn secondary small" id="assets-refresh" type="button">Atualizar</button>
+          </div>
+          <div class="asset-filters" role="group" aria-label="Filtrar arquivos">
+            <button class="asset-filter active" type="button" data-asset-kind="" aria-pressed="true">Todos</button>
+            <button class="asset-filter" type="button" data-asset-kind="image" aria-pressed="false">Imagens</button>
+            <button class="asset-filter" type="button" data-asset-kind="video" aria-pressed="false">Videos</button>
+            <button class="asset-filter" type="button" data-asset-kind="audio" aria-pressed="false">Audio</button>
+          </div>
+          <div class="asset-grid" id="asset-grid" aria-live="polite">
+            <div class="asset-empty" role="status">Carregando biblioteca...</div>
+          </div>
+          <div class="asset-pagination" aria-label="Paginacao da biblioteca">
+            <button class="btn secondary small" id="assets-prev" type="button">Anterior</button>
+            <span id="assets-page">Pagina 1</span>
+            <button class="btn secondary small" id="assets-next" type="button">Proxima</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="section" id="section-models3d" data-title="Modelos 3D" aria-labelledby="models3d-title">
+        <section class="panel models3d-intro">
+          <div class="panel-head"><div><span class="film-kicker">Imagem → modelo</span><h2 id="models3d-title">Crie seu modelo 3D</h2></div><button class="btn secondary" id="models3d-refresh" type="button">Atualizar</button></div>
+          <p>Use uma imagem de referência, escolha o motor e acompanhe a criação. O modelo fica salvo no projeto para baixar em GLB.</p>
+          <p id="models3d-status" role="status" aria-live="polite">Abra esta área para carregar seus projetos e motores.</p>
+        </section>
+        <div class="models3d-layout">
+          <form class="panel models3d-form" id="models3d-form">
+            <h2>Gerar a partir de uma imagem</h2>
+            <label for="models3d-project">Projeto<select id="models3d-project" required><option value="">Carregando projetos…</option></select></label>
+            <p id="models3d-project-help">Se ainda não tiver um projeto, crie um no painel ao lado.</p>
+            <button class="btn secondary" id="models3d-new-project" type="button">Criar um projeto</button>
+            <label for="models3d-image">Imagem de referência<input id="models3d-image" type="file" accept="image/png,image/jpeg,image/webp" required aria-describedby="models3d-image-help"></label>
+            <p id="models3d-image-help">PNG, JPG ou WebP, até 20 MB. Prefira um objeto inteiro, bem iluminado e sobre fundo simples.</p>
+            <img id="models3d-image-preview" alt="Imagem de referência selecionada" hidden>
+            <label for="models3d-engine">Motor 3D<select id="models3d-engine" required><option value="">Carregando motores…</option></select></label>
+            <p>O resultado desta rota é uma malha GLB sem textura. Confira a geometria no Blender antes de usar.</p>
+            <button class="btn primary" id="models3d-submit" type="submit" disabled>Gerar modelo 3D</button>
+            <p id="models3d-generate-status" role="status" aria-live="polite">Escolha um projeto, uma imagem e um motor.</p>
+          </form>
+          <div class="models3d-sidebar">
+            <form class="panel models3d-form" id="models3d-project-form">
+              <h2>Novo projeto 3D</h2>
+              <label for="models3d-project-name">Nome do projeto<input id="models3d-project-name" minlength="1" maxlength="120" required placeholder="Ex.: Personagem principal"></label>
+              <label for="models3d-project-brief">Descrição<textarea id="models3d-project-brief" rows="3" maxlength="8000" placeholder="Objeto, personagem, estilo e finalidade."></textarea></label>
+              <button class="btn secondary" id="models3d-project-submit" type="submit">Criar projeto</button>
+              <p id="models3d-project-status" role="status" aria-live="polite"></p>
+            </form>
+            <section class="panel"><h2>Motores configurados</h2><ul class="models3d-engines" id="models3d-engines"><li>Consultar motores.</li></ul></section>
+          </div>
+        </div>
+        <section class="panel" aria-labelledby="models3d-history-title">
+          <div class="panel-head"><h2 id="models3d-history-title">Meus modelos</h2><span id="models3d-history-count">0</span></div>
+          <p id="models3d-history-status" role="status" aria-live="polite">Os modelos e trabalhos em andamento aparecem aqui.</p>
+          <ul class="models3d-history" id="models3d-history"></ul>
+        </section>
+      </section>
+
+      <section class="section" id="section-org" data-title="Organizador">
+        <form class="panel" id="org-form">
+          <div class="field-row">
+            <label>Pasta de origem<span class="input-action"><input id="org-source" type="text"><button type="button" class="btn secondary icon-btn" data-pick-target="org-source">...</button></span></label>
+            <label>Pasta de destino<span class="input-action"><input id="org-dest" type="text"><button type="button" class="btn secondary icon-btn" data-pick-target="org-dest">...</button></span></label>
+          </div>
+          <div class="field-row">
+            <label>Modo<select id="org-mode"><option value="conteudo">Conteudo IA</option><option value="formato">Formato</option></select></label>
+            <label>Pastas<input id="org-count" type="number" value="5" min="1" max="30"></label>
+            <label>Modelo Ollama<select id="org-model"><option>Carregando...</option></select></label>
+          </div>
+          <label>Diretrizes<textarea id="org-rules" rows="4"></textarea></label>
+          <button class="btn primary" type="submit">Iniciar organizacao</button>
+        </form>
+        <section class="panel result-panel">
+          <div class="progress"><div id="org-progress"></div></div>
+          <div class="muted" id="org-pct">0%</div>
+          <pre id="org-console">Aguardando comando.</pre>
+        </section>
+      </section>
+
+      <section class="section" id="section-doc" data-title="Documental">
+        <form class="panel compact-form" id="doc-form">
+          <h2>Preenchimento de PDF</h2>
+          <label>PDF template<input id="doc-file" type="file" accept="application/pdf"></label>
+          <button class="btn primary" type="submit">Preencher documento</button>
+        </form>
+        <div class="panel result-panel"><pre id="doc-result">Aguardando PDF.</pre></div>
+      </section>
+
+      <section class="section" id="section-cad" data-title="Cadastro">
+        <section class="panel">
+          <div class="panel-head"><h2>Dados salvos</h2><button class="btn secondary small" id="cad-refresh" type="button">Atualizar</button></div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Dados salvos; deslize horizontalmente se necess&aacute;rio"><table><caption class="sr-only">Dados salvos no cadastro</caption><thead><tr><th scope="col">Categoria</th><th scope="col">Campo</th><th scope="col">Valor</th><th scope="col">A&ccedil;&otilde;es</th></tr></thead><tbody id="cad-body"></tbody></table></div>
+        </section>
+        <form class="panel compact-form" id="cad-form">
+          <h2>Novo campo</h2>
+          <div class="field-row">
+            <label>Categoria<input id="cad-cat" type="text" placeholder="Pessoal"></label>
+            <label>Campo<input id="cad-key" type="text" placeholder="CPF"></label>
+          </div>
+          <button class="btn primary" type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section class="section" id="section-hist" data-title="Hist&oacute;rico">
+        <section class="panel">
+          <div class="panel-head"><h2>Operacoes</h2><button class="btn secondary small" id="hist-refresh" type="button">Atualizar</button></div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Hist&oacute;rico de opera&ccedil;&otilde;es; deslize horizontalmente se necess&aacute;rio"><table><caption class="sr-only">Hist&oacute;rico de opera&ccedil;&otilde;es</caption><thead><tr><th scope="col">Data</th><th scope="col">Arquivo</th><th scope="col">Opera&ccedil;&atilde;o</th></tr></thead><tbody id="hist-body"></tbody></table></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h2>Organizador</h2><button class="btn secondary small" id="org-hist-refresh" type="button">Atualizar</button></div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Hist&oacute;rico do organizador; deslize horizontalmente se necess&aacute;rio"><table><caption class="sr-only">Hist&oacute;rico do organizador</caption><thead><tr><th scope="col">Data</th><th scope="col">Origem</th><th scope="col">Destino</th><th scope="col">Status</th></tr></thead><tbody id="org-hist-body"></tbody></table></div>
+        </section>
+      </section>
+
+      <section class="section" id="section-inspection" data-title="Inspeção de vídeo">
+        <section class="panel"><div class="panel-head"><h2>Inspeção de vídeo</h2><span id="inspection-connection">Decision + Codex</span></div>
+          <p>Decision procura suspeitas por trecho; o Codex examina as evidências e explica. As correções são sugestões para sua revisão.</p>
+          <p>Até 60 segundos por inspeção, no máximo 40 chamadas Decision. O botão envia vídeo e referências ao Google. Regeneração automática desativada.</p>
+        </section>
+        <div class="inspection-grid">
+          <section class="panel"><form id="inspection-form">
+            <label>Vídeo<input id="inspection-file" type="file" accept="video/mp4,video/quicktime,video/webm,.mkv" required></label>
+            <label>Tipo de produção<select id="inspection-kind" required><option value="" selected disabled>Selecione</option><option value="live_action">Live action</option><option value="animation">Animação</option><option value="mixed">Misto</option></select></label>
+            <label>Referências canônicas (opcional, até quatro imagens de 2 MB)<input id="inspection-references" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+            <label>Estado esperado e contexto<textarea id="inspection-context" maxlength="3000" placeholder="Personagens, traje, danos, física esperada e aspectos aprovados"></textarea></label>
+            <label>Amostragem<select id="inspection-fps"><option value="2">2 FPS · cenas lentas</option><option value="12" selected>12 FPS · ação</option><option value="24">24 FPS · ação rápida</option></select></label>
+            <button class="btn primary" id="inspection-submit" type="submit">Analisar com Decision</button>
+          </form><p id="inspection-message" role="status" aria-live="polite"></p></section>
+          <section class="panel" id="inspection-result" hidden>
+            <div class="panel-head"><h2 id="inspection-title">Resultado</h2><span id="inspection-status"></span></div>
+            <video id="inspection-video" controls preload="metadata"></video>
+            <p id="inspection-coverage"></p><p id="inspection-error" role="status"></p>
+            <div id="inspection-timeline" aria-label="Timeline das suspeitas por dimensão"></div>
+            <div id="inspection-markers"></div><div id="inspection-marker-detail"></div>
+            <div class="inspection-actions"><button id="inspection-copy" class="btn primary" type="button" disabled>Copiar pedido para o Codex</button>
+            <button id="inspection-cancel" class="btn secondary" type="button" disabled>Cancelar análise</button>
+            <a id="inspection-report" class="btn secondary" download>Baixar relatório</a></div>
+            <textarea id="inspection-codex-prompt" aria-label="Pedido para copiar ao Codex" readonly hidden></textarea>
+          </section>
+        </div>
+        <section class="panel"><div class="panel-head"><h2>Inspeções salvas</h2><button class="btn secondary" id="inspection-refresh" type="button">Atualizar</button></div><div id="inspection-history"></div></section>
+      </section>
+
+      <section class="section" id="section-hyperframes" data-title="HyperFrames">
+        <div class="hyperframes-workspace">
+          <section class="panel hyperframes-hero">
+            <div class="hyperframes-hero-copy">
+              <span class="hyperframes-kicker">COMPOSI&Ccedil;&Atilde;O DE V&Iacute;DEO</span>
+              <h2>HyperFrames no Maestro</h2>
+              <p>Edite composi&ccedil;&otilde;es HTML, acompanhe o preview e renderize o piloto pelo acesso autenticado do Maestro.</p>
+            </div>
+            <div class="hyperframes-health" id="hyperframes-health" data-state="checking">
+              <span class="status-dot"></span>
+              <div><small>Servi&ccedil;o</small><strong id="hyperframes-health-label">verificando</strong></div>
+            </div>
+            <div class="hyperframes-actions">
+              <button class="btn primary" id="hyperframes-embed" type="button">Abrir aqui no Maestro</button>
+              <button class="btn secondary" id="hyperframes-open" type="button">Abrir em nova guia</button>
+              <button class="btn secondary" id="hyperframes-refresh" type="button">Atualizar estado</button>
+            </div>
+          </section>
+
+          <div class="hyperframes-summary-grid">
+            <section class="panel hyperframes-facts-panel">
+              <div class="panel-head"><h2>Instala&ccedil;&atilde;o</h2><span id="hyperframes-version">--</span></div>
+              <dl class="hyperframes-facts">
+                <div><dt>Projeto</dt><dd id="hyperframes-project">--</dd></div>
+                <div><dt>Acesso online</dt><dd>maestro.pemaratech.com.br:8443</dd></div>
+                <div><dt>DNS dedicado</dt><dd>hyperframes.pemaratech.com.br</dd></div>
+                <div><dt>Origem local</dt><dd id="hyperframes-origin">127.0.0.1:8032</dd></div>
+                <div><dt>Render</dt><dd id="hyperframes-render-state">aguardando</dd></div>
+              </dl>
+              <div class="hyperframes-render-actions">
+                <button class="btn primary" id="hyperframes-render" type="button">Renderizar piloto</button>
+                <button class="btn secondary" id="hyperframes-download" type="button" disabled>Baixar MP4</button>
+              </div>
+              <div class="hyperframes-progress" id="hyperframes-progress" hidden>
+                <div><span id="hyperframes-progress-label">Aguardando</span><strong id="hyperframes-progress-percent">0%</strong></div>
+                <div class="progress"><div id="hyperframes-progress-bar"></div></div>
+              </div>
+            </section>
+
+            <section class="panel hyperframes-rules-panel">
+              <div class="panel-head"><h2>Regras ativas</h2><span>autom&aacute;tico</span></div>
+              <ul class="hyperframes-rules">
+                <li>Sobe junto com o Maestro e &eacute; conferido pelo watchdog a cada 5 minutos.</li>
+                <li>A porta 8032 permanece somente em <code>127.0.0.1</code>.</li>
+                <li>O acesso externo exige a sess&atilde;o autenticada do Maestro.</li>
+                <li>Render por software, sem disputar a GPU do ComfyUI.</li>
+                <li>Sa&iacute;da final continua pendente de aprova&ccedil;&atilde;o visual humana.</li>
+              </ul>
+            </section>
+          </div>
+
+          <section class="panel hyperframes-studio-panel" id="hyperframes-studio-panel" hidden>
+            <div class="panel-head">
+              <div><h2>HyperFrames Studio</h2><span>editor completo incorporado</span></div>
+              <button class="btn secondary small" id="hyperframes-close" type="button">Fechar editor</button>
+            </div>
+            <div class="hyperframes-frame-wrap">
+              <iframe
+                id="hyperframes-frame"
+                title="Editor HyperFrames incorporado ao Maestro"
+                allow="clipboard-read; clipboard-write; fullscreen"
+                referrerpolicy="same-origin"
+              ></iframe>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="section-tools" data-title="Motores">
+        <div class="tools-hero">
+          <div class="tools-hero-mark" aria-hidden="true">&infin;</div>
+          <img src="assets/brand/pemara-tech-logo.png" alt="Pemara Tech">
+          <div>
+            <h2>Ferramentas Pemara</h2>
+            <span>Maestro Pro</span>
+          </div>
+        </div>
+        <div class="tool-grid">
+          <button class="tool-card" data-tool="comfy" data-port="8188"><strong>ComfyUI</strong><span>8188</span></button>
+          <button class="tool-card" data-tool="sprunki" data-port="5005"><strong>Gerador Sprunki</strong><span>5005</span></button>
+          <button class="tool-card" data-tool="perplexica" data-port="3002"><strong>Perplexica</strong><span>3002</span></button>
+          <button class="tool-card" data-tool="ollama" data-port="11435"><strong>Ollama</strong><span>11435</span></button>
+          <button class="tool-card" data-tool="studio" data-port="8029"><strong>Studio API</strong><span>8029</span></button>
+          <button class="tool-card" data-tool="dashboard" data-port="8007"><strong>Dashboard API</strong><span>8007</span></button>
+          <button class="tool-card" data-section-jump="hyperframes"><strong>HyperFrames</strong><span>8032 protegido</span></button>
+        </div>
+      </section>
+      <footer class="app-footer">
+        <img src="assets/brand/pemara-tech-logo.png" alt="Pemara Tech">
+        <span>Maestro Pro</span>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="film-preanalysis-dialog" id="film-preanalysis-dialog" aria-labelledby="film-preanalysis-title" aria-describedby="film-preanalysis-copy">
+    <div class="film-preanalysis-dialog-inner">
+      <div class="film-director-head">
+        <div>
+          <span class="film-kicker">PR&Eacute;-AN&Aacute;LISE</span>
+          <h2 id="film-preanalysis-title">Sequ&ecirc;ncia de &acirc;ncoras</h2>
+        </div>
+        <button class="film-dialog-close" id="film-preanalysis-close" type="button" aria-label="Fechar">&times;</button>
+      </div>
+      <p id="film-preanalysis-copy">START, checkpoint e END em ordem de movimento.</p>
+      <img class="film-preanalysis-image" id="film-preanalysis-image" alt="">
+      <div class="film-preanalysis-actions">
+        <a class="btn secondary small" id="film-preanalysis-full" href="#" target="_blank" rel="noopener">Abrir imagem em tamanho completo</a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="film-director-dialog" id="film-director-dialog" aria-labelledby="film-director-title" aria-describedby="film-director-copy">
+    <form id="film-director-form">
+      <div class="film-director-head">
+        <div>
+          <span class="film-kicker" id="film-director-kicker">CORRE&Ccedil;&Atilde;O</span>
+          <h2 id="film-director-title">Enviar ao diretor</h2>
+        </div>
+        <button class="film-dialog-close" id="film-director-close" type="button" aria-label="Fechar">&times;</button>
+      </div>
+      <p id="film-director-copy">Informe o que precisa melhorar. O v&iacute;deo atual continuar&aacute; guardado.</p>
+      <input id="film-director-take-id" type="hidden">
+      <input id="film-director-mode" type="hidden" value="correction">
+      <label id="film-director-category-field" for="film-director-category">Principal problema
+        <select id="film-director-category" required>
+          <option value="">Selecione</option>
+          <option value="ANCHOR" hidden>Preparar imagem-&acirc;ncora</option>
+          <option value="CAMERA">C&acirc;mera pouco evidente</option>
+          <option value="DEPTH">Falta de profundidade real</option>
+          <option value="INTERNAL_ACTION">Pouca a&ccedil;&atilde;o interna</option>
+          <option value="MORPHING">Deforma&ccedil;&atilde;o ou perda de identidade</option>
+          <option value="AESTHETIC">Est&eacute;tica n&atilde;o preservada</option>
+          <option value="PROGRESSION">Sem progress&atilde;o clara</option>
+          <option value="AUDIO_SYNC">Voz/boca fora de sincronismo</option>
+          <option value="OTHER">Outro motivo</option>
+        </select>
+      </label>
+      <div class="voice-input-group">
+        <label for="film-director-reason"><span id="film-director-reason-label">O que deve ser corrigido</span></label>
+        <textarea id="film-director-reason" rows="4" minlength="3" maxlength="2000" required data-voice-input data-voice-label="motivo da reprova&ccedil;&atilde;o" placeholder="Ex.: aumentar o dolly e separar melhor primeiro plano, rua e edif&iacute;cios."></textarea>
+      </div>
+      <div class="film-director-actions">
+        <button class="btn secondary" id="film-director-cancel" type="button">Cancelar</button>
+        <button class="btn primary" id="film-director-submit" type="submit">Reprovar e enviar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/frontend-resilience.js?v=20261019-h3-finishing-errors-v1"></script>
+<script src="assets/maestro.js?v=20261115-model-retirement-v1"></script>
+  <script src="assets/models3d.js?v=20261019-h3-finishing-errors-v1"></script>
+  <script src="assets/internet-publication.js?v=20260902-ltx25-anchor1"></script>
+  <script src="assets/creative-os.js?v=20260907-v7"></script>
+  <script src="assets/video-inspection.js?v=20261113-v1"></script>
+  <script src="assets/public-research.js?v=20261102-v2"></script>
+  <script src="assets/voice-studio.js?v=20261105-v1"></script>
+  <script src="assets/voice-conversion.js?v=20261106-v3"></script>
+</body>
+</html>

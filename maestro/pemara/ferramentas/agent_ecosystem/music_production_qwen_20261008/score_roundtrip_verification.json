@@ -1,0 +1,896 @@
+{
+  "sourceUnchanged": true,
+  "scoreReviewSimulation": "synthetic_fixture_only",
+  "artisticApproval": false,
+  "phaseOne": {
+    "schemaVersion": 1,
+    "phase": "score_review",
+    "status": "PENDING_SCORE_REVIEW",
+    "engine": "score_first_muscriptor",
+    "humanReviewRequired": true,
+    "autoApprove": false,
+    "orchestrationAllowed": false,
+    "scoreLockRequired": true,
+    "scoreSha256": "0FA1944A51B3E4B4577B4925D10292E3C670B96D91906D4629C9C758B1ED29FD",
+    "transcriptionOrigin": "supplied_score",
+    "source": {
+      "originalName": "technical-fixture.wav",
+      "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "durationSeconds": 6.0,
+      "codec": "pcm_s24le",
+      "sampleRate": 44100,
+      "channels": 2,
+      "format": "wav"
+    },
+    "request": {
+      "preset": "traditional_heavy_metal",
+      "instruments": [
+        "guitar"
+      ],
+      "intensity": 0.9,
+      "keepVocals": true,
+      "orchestrationPrompt": "",
+      "transcriptionDevice": "cpu"
+    },
+    "score": {
+      "schema": "pemara.score-first.inspect.v1",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first\\partitura_candidata.mid",
+      "sourceSha256": "0fa1944a51b3e4b4577b4925d10292e3c670b96d91906d4629c9c758b1ed29fd",
+      "midiType": 0,
+      "ticksPerBeat": 480,
+      "noteCount": 4,
+      "trackCount": 1,
+      "tracks": [
+        {
+          "sourceTrack": 0,
+          "sourceName": "Original technical guitar fixture for Maestro roundtrip validation",
+          "channel": 0,
+          "program": 27,
+          "drums": false,
+          "noteCount": 4,
+          "pitchMin": 40,
+          "pitchMax": 64,
+          "medianPitch": 49.5
+        }
+      ],
+      "timingIssues": [],
+      "technicalPass": true,
+      "scoreReviewRequired": true,
+      "orchestrationAllowed": false
+    },
+    "vocalPreservation": {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first\\voz_preservada.wav",
+      "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "sourceSha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "origin": "owner_supplied_aligned_stem",
+      "durationSeconds": 6.0,
+      "metrics": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "subtype": "PCM_24",
+        "durationSeconds": 6.0,
+        "samplePeakDbfs": -11.55,
+        "clippingSampleCount": 0,
+        "nonFiniteSampleCount": 0
+      },
+      "technicalPass": true,
+      "accompanimentPath": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\work\\score_first\\source_44100_stereo.wav",
+      "listeningApprovalRequired": true,
+      "alignmentEvidence": "duration_only_owner_reviews_sync",
+      "voiceRegenerated": false
+    },
+    "qwenProduction": {
+      "sourceSha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "writer_model": "deterministic_test_fixture",
+      "sectionEvidence": "fixture",
+      "plan": {
+        "duration_seconds": 6,
+        "bpm": 120,
+        "style": "traditional heavy metal technical fixture",
+        "tracks": {
+          "guitar": {
+            "gainDb": -3,
+            "density": 0.8,
+            "velocityScale": 1,
+            "role": "rhythm"
+          }
+        },
+        "sections": [
+          {
+            "name": "verse",
+            "start": 0,
+            "end": 3,
+            "energy": 0.4,
+            "lead": "vocals",
+            "instruments": [
+              "guitar"
+            ]
+          },
+          {
+            "name": "chorus",
+            "start": 3,
+            "end": 6,
+            "energy": 1,
+            "lead": "guitar",
+            "instruments": [
+              "guitar"
+            ]
+          }
+        ]
+      }
+    },
+    "technicalPass": true,
+    "exportWarnings": [],
+    "reviewInstructions": {
+      "leftChannel": "audio original",
+      "rightChannel": "partitura transcrita",
+      "approveOnlyIf": "melodia, harmonia, ritmo, entradas e duracoes conferem"
+    },
+    "limitations": [
+      "MuScriptor e uma transcricao automatica e nao garante partitura perfeita.",
+      "A prova tecnica nao substitui a escuta e a aprovacao do proprietario.",
+      "Nenhum arranjo ou master e criado antes do bloqueio do hash desta partitura."
+    ],
+    "artifacts": [
+      {
+        "key": "scoreMidi",
+        "filename": "partitura_candidata.mid",
+        "relativePath": "outputs/score_first/partitura_candidata.mid",
+        "mediaType": "audio/midi",
+        "sizeBytes": 143,
+        "sha256": "0FA1944A51B3E4B4577B4925D10292E3C670B96D91906D4629C9C758B1ED29FD"
+      },
+      {
+        "key": "scoreReport",
+        "filename": "relatorio_partitura.json",
+        "relativePath": "outputs/score_first/relatorio_partitura.json",
+        "mediaType": "application/json",
+        "sizeBytes": 4325,
+        "sha256": "861A21529196ABAC4913655BC82CF3B41CBF9A082A306E7495F9BF4F0E877513"
+      },
+      {
+        "key": "scoreDryWav",
+        "filename": "partitura_prova_seca.wav",
+        "relativePath": "outputs/score_first/partitura_prova_seca.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1413164,
+        "sha256": "5B617025352815C46710FC54C04DAB17074669DCE39760A0778D7B43C801E35A"
+      },
+      {
+        "key": "scoreProofWav",
+        "filename": "partitura_prova_ab.wav",
+        "relativePath": "outputs/score_first/partitura_prova_ab.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1587702,
+        "sha256": "09541E2281D16A31D4A375A75F308844C3DADEF98DE4C037B73E6ACF1275982C"
+      },
+      {
+        "key": "scoreProofMp3",
+        "filename": "partitura_prova_ab.mp3",
+        "relativePath": "outputs/score_first/partitura_prova_ab.mp3",
+        "mediaType": "audio/mpeg",
+        "sizeBytes": 193977,
+        "sha256": "0A4F8902067656E25BF358D4E8E2B9E71F80658F702590CA4E55CE8FBAD01592"
+      },
+      {
+        "key": "scoreMusicXml",
+        "filename": "partitura_candidata.musicxml",
+        "relativePath": "outputs/score_first/partitura_candidata.musicxml",
+        "mediaType": "application/vnd.recordare.musicxml+xml",
+        "sizeBytes": 5902,
+        "sha256": "B05E95B98BE6C9EBAE8CAEF6FE10E15EA4810384026CF6CD42346968B31AC0FB"
+      },
+      {
+        "key": "preservedVocals",
+        "filename": "voz_preservada.wav",
+        "relativePath": "outputs/score_first/voz_preservada.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1587702,
+        "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B"
+      },
+      {
+        "key": "scorePdf",
+        "filename": "partitura_candidata.pdf",
+        "relativePath": "outputs/score_first/partitura_candidata.pdf",
+        "mediaType": "application/pdf",
+        "sizeBytes": 20394,
+        "sha256": "76E5C89757F0B67B1E8B7AECF05A859D4166F1527FEC2B85147483073ADCD1A1"
+      }
+    ]
+  },
+  "phaseTwo": {
+    "schemaVersion": 3,
+    "phase": "master_review",
+    "status": "PENDING_HUMAN_REVIEW",
+    "engine": "score_first_muscriptor",
+    "humanReviewRequired": true,
+    "autoApprove": false,
+    "localOnly": true,
+    "attempt": "default",
+    "scoreLock": {
+      "sha256": "0fa1944a51b3e4b4577b4925d10292e3c670b96d91906d4629c9c758b1ed29fd",
+      "verifiedBeforeRender": true,
+      "verifiedAfterRender": true,
+      "noteMutationAllowed": false
+    },
+    "source": {
+      "originalName": "technical-fixture.wav",
+      "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "durationSeconds": 6.0,
+      "codec": "pcm_s24le",
+      "sampleRate": 44100,
+      "channels": 2,
+      "format": "wav"
+    },
+    "request": {
+      "preset": "traditional_heavy_metal",
+      "instruments": [
+        "guitar"
+      ],
+      "effectiveInstruments": [
+        "guitar"
+      ],
+      "intensity": 0.9,
+      "keepVocals": true,
+      "orchestrationPrompt": "",
+      "deriveAccompaniment": false,
+      "expressivePerformance": true
+    },
+    "sourceBeatGrid": null,
+    "orchestrationPlan": {
+      "schemaVersion": 2,
+      "engine": "Qwen 3.8 Musical Orchestrator",
+      "prompt": "",
+      "preset": "traditional_heavy_metal",
+      "intensity": 0.9,
+      "effectiveInstruments": [
+        "guitar"
+      ],
+      "tracks": {
+        "piano": {
+          "enabled": false,
+          "gainDb": 0.0,
+          "density": 0.88,
+          "velocityScale": 1.02,
+          "role": "nao selecionado"
+        },
+        "violin": {
+          "enabled": false,
+          "gainDb": -1.0,
+          "density": 0.82,
+          "velocityScale": 1.02,
+          "role": "nao selecionado"
+        },
+        "cello": {
+          "enabled": false,
+          "gainDb": -2.0,
+          "density": 0.66,
+          "velocityScale": 0.96,
+          "role": "nao selecionado"
+        },
+        "guitar": {
+          "enabled": true,
+          "gainDb": -3,
+          "density": 0.8,
+          "velocityScale": 1,
+          "role": "rhythm"
+        },
+        "bass": {
+          "enabled": false,
+          "gainDb": -2.5,
+          "density": 0.68,
+          "velocityScale": 0.96,
+          "role": "nao selecionado"
+        },
+        "drums": {
+          "enabled": false,
+          "gainDb": -2.0,
+          "density": 0.7,
+          "velocityScale": 0.94,
+          "role": "nao selecionado"
+        }
+      },
+      "summary": "guitar: rhythm (-3 dB)",
+      "decisions": [
+        "balanco seguro do preset aplicado",
+        "uma unica familia conduz a melodia por vez",
+        "guitarra, baixo e bateria recebem limites de ataque independentes",
+        "bumbo duplo continuo bloqueado"
+      ],
+      "performancePolicy": {
+        "meterBeats": 4,
+        "introBars": 2,
+        "outroBars": 2,
+        "leadHandoffBars": 4,
+        "melodyPolicy": "single_lead_handoff",
+        "guitarHitsPerBar": 2,
+        "bassHoldBeats": 2,
+        "drumGroove": "traditional_backbeat",
+        "kickBeats": [
+          1
+        ],
+        "snareBeats": [
+          2,
+          4
+        ],
+        "hihatSubdivisionsPerBeat": 2,
+        "continuousDoubleKickAllowed": false,
+        "maximumKickHitsPerBar": 1,
+        "humanizeMilliseconds": 9,
+        "humanizeVelocity": 5,
+        "deterministicSeed": 20260827,
+        "requestedIntensity": 0.9
+      },
+      "qwenProduction": {
+        "sourceSha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+        "writer_model": "deterministic_test_fixture",
+        "sectionEvidence": "fixture",
+        "plan": {
+          "duration_seconds": 6,
+          "bpm": 120,
+          "style": "traditional heavy metal technical fixture",
+          "tracks": {
+            "guitar": {
+              "gainDb": -3,
+              "density": 0.8,
+              "velocityScale": 1,
+              "role": "rhythm"
+            }
+          },
+          "sections": [
+            {
+              "name": "verse",
+              "start": 0,
+              "end": 3,
+              "energy": 0.4,
+              "lead": "vocals",
+              "instruments": [
+                "guitar"
+              ]
+            },
+            {
+              "name": "chorus",
+              "start": 3,
+              "end": 6,
+              "energy": 1,
+              "lead": "guitar",
+              "instruments": [
+                "guitar"
+              ]
+            }
+          ]
+        }
+      },
+      "sections": [
+        {
+          "name": "verse",
+          "start": 0,
+          "end": 3,
+          "energy": 0.4,
+          "lead": "vocals",
+          "instruments": [
+            "guitar"
+          ]
+        },
+        {
+          "name": "chorus",
+          "start": 3,
+          "end": 6,
+          "energy": 1,
+          "lead": "guitar",
+          "instruments": [
+            "guitar"
+          ]
+        }
+      ]
+    },
+    "qwenProduction": {
+      "sourceSha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "writer_model": "deterministic_test_fixture",
+      "sectionEvidence": "fixture",
+      "plan": {
+        "duration_seconds": 6,
+        "bpm": 120,
+        "style": "traditional heavy metal technical fixture",
+        "tracks": {
+          "guitar": {
+            "gainDb": -3,
+            "density": 0.8,
+            "velocityScale": 1,
+            "role": "rhythm"
+          }
+        },
+        "sections": [
+          {
+            "name": "verse",
+            "start": 0,
+            "end": 3,
+            "energy": 0.4,
+            "lead": "vocals",
+            "instruments": [
+              "guitar"
+            ]
+          },
+          {
+            "name": "chorus",
+            "start": 3,
+            "end": 6,
+            "energy": 1,
+            "lead": "guitar",
+            "instruments": [
+              "guitar"
+            ]
+          }
+        ]
+      }
+    },
+    "vocalPreservation": {
+      "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B",
+      "assetUnchanged": true,
+      "voiceRegenerated": false
+    },
+    "midiContract": {
+      "schema": "pemara.score-first.orchestration.v1",
+      "inputScore": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first\\partitura_candidata.mid",
+      "inputScoreSha256": "0fa1944a51b3e4b4577b4925d10292e3c670b96d91906d4629c9c758b1ed29fd",
+      "outputMidi": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first_orchestration\\arranjo_da_partitura_bloqueada.mid",
+      "outputMidiSha256": "64d0dd8244819ea381544236d635032a5135df4ff53a48b51a1c97c588eec5e4",
+      "selectedTargets": [
+        "guitar"
+      ],
+      "mapping": [
+        {
+          "sourceTrack": 0,
+          "sourceName": "Original technical guitar fixture for Maestro roundtrip validation",
+          "sourceChannel": 0,
+          "sourceProgram": 27,
+          "noteCount": 4,
+          "target": "guitar",
+          "targetLabel": "Guitarra metal"
+        }
+      ],
+      "stems": {
+        "guitar": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\work\\score_first_orchestration\\midi_stems\\guitar.mid"
+      },
+      "contract": {
+        "pass": true,
+        "sourceNoteCount": 4,
+        "canonicalOutputNoteCount": 4,
+        "outputNoteCount": 4,
+        "notesMissing": 0,
+        "notesAdded": 0,
+        "authorizedSupportNotesAdded": 0,
+        "unauthorizedNotesAdded": 0,
+        "pitchChanged": 0,
+        "attackChanged": 0,
+        "durationChanged": 0,
+        "velocityChanged": 0
+      },
+      "canonicalContract": {
+        "pass": true,
+        "sourceNoteCount": 4,
+        "outputNoteCount": 4,
+        "notesMissing": 0,
+        "notesAdded": 0,
+        "pitchChanged": 0,
+        "attackChanged": 0,
+        "durationChanged": 0,
+        "velocityChanged": 0
+      },
+      "renderContract": {
+        "pass": true,
+        "sourceNoteCount": 4,
+        "outputNoteCount": 4,
+        "notesMissing": 0,
+        "notesAdded": 0,
+        "pitchChanged": 0,
+        "attackChanged": 0,
+        "durationChanged": 0,
+        "velocityChanged": 0
+      },
+      "programAudit": {
+        "pass": true,
+        "programs": [
+          {
+            "track": 1,
+            "trackName": "Guitarra metal",
+            "channel": 3,
+            "program": 29
+          }
+        ],
+        "windPrograms": [],
+        "unexpectedGuitarPrograms": [],
+        "windProgramCount": 0,
+        "unexpectedGuitarProgramCount": 0
+      },
+      "beatGrid": null,
+      "support": {
+        "mode": "disabled",
+        "supportNoteCount": 0,
+        "instrumentNoteCounts": {}
+      },
+      "instrumentNoteCounts": {
+        "guitar": 4
+      },
+      "arrangementMode": "locked_score_timbre_mapping_only",
+      "noteMutationAllowed": false,
+      "canonicalNoteMutationAllowed": false,
+      "supportNoteGenerationAllowed": false,
+      "humanReviewRequired": true,
+      "autoApprove": false
+    },
+    "performance": {
+      "schema": "pemara.expressive-performance.v1",
+      "profile": "expressive_score_v1",
+      "analysisKind": "audio_envelope_and_deterministic_score_rules",
+      "humanReviewRequired": true,
+      "autoApprove": false,
+      "inputMidiSha256": "64d0dd8244819ea381544236d635032a5135df4ff53a48b51a1c97c588eec5e4",
+      "sourceAudioSha256": "14668e01d78d67b0519edc619fe9484aa57b54f39373fbff6259f9c5025c5b7b",
+      "noteContract": {
+        "pass": true,
+        "sourceNoteCount": 4,
+        "outputNoteCount": 4,
+        "notesMissing": 0,
+        "notesAdded": 0,
+        "pitchChanged": 0,
+        "attackChanged": 0,
+        "durationChanged": 0,
+        "velocityChanged": 0
+      },
+      "scoreDurationSeconds": 4.0,
+      "renderDurationSeconds": 6.0,
+      "sourceAnalysis": {
+        "durationSeconds": 6.0,
+        "sampleRate": 44100,
+        "channels": 2,
+        "frameSeconds": 0.25,
+        "smoothingSeconds": 2.25,
+        "rmsDb": [
+          -21.04,
+          -22.31,
+          -24.06,
+          -25.75,
+          -22.0,
+          -22.72,
+          -23.66,
+          -24.48,
+          -19.77,
+          -20.73,
+          -21.75,
+          -22.73,
+          -23.15,
+          -25.96,
+          -28.15,
+          -30.01,
+          -47.0,
+          -160.0,
+          -160.0,
+          -160.0,
+          -160.0,
+          -160.0,
+          -160.0,
+          -160.0
+        ],
+        "normalizedEnergy": [
+          0.8126,
+          0.7501,
+          0.6531,
+          0.5256,
+          0.5725,
+          0.5839,
+          0.6045,
+          0.6539,
+          0.75,
+          0.6033,
+          0.4023,
+          0.1668,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rangeTransfers": [],
+      "lanes": [
+        {
+          "id": "guitar_01",
+          "instrument": "guitar",
+          "channel": 0,
+          "midi": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first_orchestration\\performance\\guitar_01.mid",
+          "noteCount": 4,
+          "gainDb": 0.0,
+          "pan": null,
+          "firstNoteSeconds": 0.0,
+          "lastNoteSeconds": 4.0,
+          "patch": null,
+          "phraseCount": 1,
+          "expressionEventCount": 16,
+          "expressionRange": [
+            108,
+            118
+          ],
+          "articulations": {},
+          "pitchBendUsed": false,
+          "timingRandomizationUsed": false
+        }
+      ],
+      "outputMidi": "E:\\Pemara\\maestro\\pemara\\ferramentas\\agent_ecosystem\\music_production_qwen_20261008\\cpu_fixtures\\score_roundtrip_17514696\\outputs\\score_first_orchestration\\performance\\interpretacao_sem_alterar_notas.mid",
+      "patches": {},
+      "limitations": [
+        "No interval-legato recordings are present in VPO.",
+        "Technical checks cannot approve musical taste or realism."
+      ]
+    },
+    "voiceCoverage": {
+      "guitar_01": {
+        "renderDurationSeconds": 6.016,
+        "lastNoteCovered": true,
+        "tailCovered": true
+      }
+    },
+    "renderDurationSeconds": 6.0,
+    "mastering": {
+      "method": "two_pass_measured_loudness",
+      "targetLufs": -13.0,
+      "truePeakTargetDb": -2.0,
+      "limiterAutomaticMakeup": false,
+      "measurement": {
+        "input_i": -21.53,
+        "input_tp": -11.02,
+        "input_lra": 5.6,
+        "input_thresh": -31.69,
+        "target_offset": 0.3
+      }
+    },
+    "balance": {
+      "guitar": {
+        "creativeGainDb": -3.0,
+        "productionBalanceDb": 0.0,
+        "rendererCalibrationDb": 0.0,
+        "polishArgumentGainDb": -3.0,
+        "totalFilterGainDb": -3.0,
+        "effectiveCreativeGainDb": -3.0,
+        "renderer": "sfizz",
+        "library": "FreePats FSBS Electric Guitar Direct 2022-09-11",
+        "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\FreePats-EGuitar-FSBS-direct-20220911\\EGuitarFSBS-direct SFZ+FLAC-20220911\\EGuitarFSBS-direct bridge 20220911.sfz",
+        "patchSha256": "0EFC8DBA2BCAE1E840DD96CAABD31F0C160D84753049122C32B382DB122B0B9C",
+        "noGeneralMidiFallback": true,
+        "strictTuning": false,
+        "hiddenBoost": false
+      }
+    },
+    "sampledRuntime": {
+      "renderer": "sfizz",
+      "rendererVersion": "1.2.3",
+      "noGeneralMidiFallback": true,
+      "strictPitchRandomCents": 0
+    },
+    "stemQc": {
+      "guitar": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "subtype": "PCM_24",
+        "durationSeconds": 6.0,
+        "samplePeakDbfs": -12.36,
+        "rmsDbfs": -25.83,
+        "clippingSampleCount": 0,
+        "audible": true
+      },
+      "vocals": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "subtype": "PCM_24",
+        "durationSeconds": 6.0,
+        "samplePeakDbfs": -11.55,
+        "rmsDbfs": -24.73,
+        "clippingSampleCount": 0,
+        "audible": true
+      }
+    },
+    "qc": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "subtype": "PCM_24",
+      "durationSeconds": 6.0,
+      "samplePeakDbfs": -2.51,
+      "rmsDbfs": -16.29,
+      "clippingSampleCount": 0,
+      "integratedLufs": -12.7,
+      "truePeakDbfs": -2.5,
+      "deliveryQc": {
+        "master": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "subtype": "PCM_24",
+          "durationSeconds": 6.0,
+          "samplePeakDbfs": -2.514,
+          "clippingSampleCount": 0,
+          "nonFiniteSampleCount": 0,
+          "integratedLufs": -12.7,
+          "truePeakDbfs": -2.5,
+          "fullDecodePassed": true,
+          "durationMatchesSource": true,
+          "loudnessInReviewRange": true,
+          "truePeakPass": true,
+          "technicalPass": true
+        },
+        "preview": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "subtype": "MPEG_LAYER_III",
+          "durationSeconds": 6.0,
+          "samplePeakDbfs": -2.515,
+          "clippingSampleCount": 0,
+          "nonFiniteSampleCount": 0,
+          "integratedLufs": -12.7,
+          "truePeakDbfs": -2.5,
+          "fullDecodePassed": true,
+          "durationMatchesSource": true,
+          "loudnessInReviewRange": true,
+          "truePeakPass": true,
+          "technicalPass": true
+        }
+      },
+      "approvedVocalAssetUnchanged": true,
+      "fullDecodePassed": true,
+      "durationMatchesSource": true,
+      "durationMatchesRenderTarget": true,
+      "scoreEndPreserved": true,
+      "allPerformanceVoiceEndingsCovered": true,
+      "allPerformanceTailsCovered": true,
+      "allRenderedStemsAudible": true,
+      "allRequestedStemsRendered": true,
+      "metalFoundationAboveMinus18Dbfs": true,
+      "allStemsClipFree": true,
+      "violinClearlyAudible": true,
+      "forbiddenGuitarAbsent": true,
+      "noWindPrograms": true,
+      "sampledInstrumentRendererUsed": true,
+      "strictTuningPatchesUsed": true,
+      "generalMidiViolinAbsent": true,
+      "stemPeakSpreadDb": 0.81,
+      "stemPeakSpreadWithin22Db": true,
+      "midiContractPass": true,
+      "technicalPass": true
+    },
+    "limitations": [
+      "A troca de timbres nao corrige uma nota errada que tenha sido aprovada na partitura.",
+      "O gate prova a geometria MIDI, nao o bom gosto da interpretacao ou da mixagem.",
+      "Os patches de cordas removem desafinacao aleatoria, mas a interpretacao final ainda exige escuta humana.",
+      "O master continua candidato ate a escuta e decisao do proprietario.",
+      "O fraseado e baseado em regras e na envoltoria do audio; nao e uma IA generativa ou um produtor humano.",
+      "A VPO nao possui gravacoes de transicoes legato entre todos os intervalos; o limite timbrico permanece."
+    ],
+    "artifacts": [
+      {
+        "key": "masterWav",
+        "filename": "partitura_primeiro_candidata_master.wav",
+        "relativePath": "outputs/score_first_orchestration/partitura_primeiro_candidata_master.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1587702,
+        "sha256": "FD369EA086AE8F4AB14271346F42FF1AC1F05EC79D7392EA28DA9E0BBEF2F356"
+      },
+      {
+        "key": "previewMp3",
+        "filename": "partitura_primeiro_candidata_preview.mp3",
+        "relativePath": "outputs/score_first_orchestration/partitura_primeiro_candidata_preview.mp3",
+        "mediaType": "audio/mpeg",
+        "sizeBytes": 242460,
+        "sha256": "46743D053A38F308A296A9B60054A1CAE23B5D7E7CA831D2938126C1AFC638F9"
+      },
+      {
+        "key": "lockedScoreMidi",
+        "filename": "partitura_candidata.mid",
+        "relativePath": "outputs/score_first/partitura_candidata.mid",
+        "mediaType": "audio/midi",
+        "sizeBytes": 143,
+        "sha256": "0FA1944A51B3E4B4577B4925D10292E3C670B96D91906D4629C9C758B1ED29FD"
+      },
+      {
+        "key": "arrangementMidi",
+        "filename": "arranjo_da_partitura_bloqueada.mid",
+        "relativePath": "outputs/score_first_orchestration/arranjo_da_partitura_bloqueada.mid",
+        "mediaType": "audio/midi",
+        "sizeBytes": 124,
+        "sha256": "64D0DD8244819EA381544236D635032A5135DF4FF53A48B51A1C97C588EEC5E4"
+      },
+      {
+        "key": "midiContractReport",
+        "filename": "relatorio_contrato_midi.json",
+        "relativePath": "outputs/score_first_orchestration/relatorio_contrato_midi.json",
+        "mediaType": "application/json",
+        "sizeBytes": 2815,
+        "sha256": "74243C6877907109709C671776150801A0D1EA5B1BF7BE0E730630D424472E08"
+      },
+      {
+        "key": "reportJson",
+        "filename": "relatorio_partitura_primeiro_master.json",
+        "relativePath": "outputs/score_first_orchestration/relatorio_partitura_primeiro_master.json",
+        "mediaType": "application/json",
+        "sizeBytes": 16455,
+        "sha256": "BBC7F9D772461B485F9FA7940D7ABB826E40C604F68DCB22A2103AE15E459662"
+      },
+      {
+        "key": "deliveryZip",
+        "filename": "partitura_primeiro_entrega.zip",
+        "relativePath": "outputs/score_first_orchestration/partitura_primeiro_entrega.zip",
+        "mediaType": "application/zip",
+        "sizeBytes": 2861442,
+        "sha256": "3C13B11D28C89E3E64AE9BA33443F9E89BABE4854F2E3800916F211E6C0D54EA"
+      },
+      {
+        "key": "sampledInstrumentManifest",
+        "filename": "manifesto_instrumentos_amostrados.json",
+        "relativePath": "outputs/score_first_orchestration/manifesto_instrumentos_amostrados.json",
+        "mediaType": "application/json",
+        "sizeBytes": 2004,
+        "sha256": "8F3940D5FB9C8577F3249B62223215A293C57E61514F2013FA24976B584CDBBE"
+      },
+      {
+        "key": "referenceListeningWav",
+        "filename": "reference_listening.wav",
+        "relativePath": "outputs/score_first_orchestration/comparison/reference_listening.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1728102,
+        "sha256": "BE8B506658EA901DAC8019A6C4EAAE78DFE44B895AD0A4BE346EFABA1B0849FA"
+      },
+      {
+        "key": "candidateListeningWav",
+        "filename": "candidate_listening.wav",
+        "relativePath": "outputs/score_first_orchestration/comparison/candidate_listening.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1728102,
+        "sha256": "58086A3A6D5B387F7EDEE37AB0A92356471BB01A11F4FD7FE85FCB5D8848F2E8"
+      },
+      {
+        "key": "listeningComparisonReport",
+        "filename": "listening_comparison.json",
+        "relativePath": "outputs/score_first_orchestration/comparison/listening_comparison.json",
+        "mediaType": "application/json",
+        "sizeBytes": 2647,
+        "sha256": "75455829DDAAD5B4904247D1FDB55667F20C51FBC73FBCF6E721FCE18AAED474"
+      },
+      {
+        "key": "performancePlan",
+        "filename": "plano_interpretacao.json",
+        "relativePath": "outputs/score_first_orchestration/performance/plano_interpretacao.json",
+        "mediaType": "application/json",
+        "sizeBytes": 2732,
+        "sha256": "07549568F0DCB50C2CF134170ED4391794A190E914ECA7844E625FD68C9A7ED5"
+      },
+      {
+        "key": "performanceMidi",
+        "filename": "interpretacao_sem_alterar_notas.mid",
+        "relativePath": "outputs/score_first_orchestration/performance/interpretacao_sem_alterar_notas.mid",
+        "mediaType": "audio/midi",
+        "sizeBytes": 184,
+        "sha256": "F340257D6F9E8A039061425F8961512199E703120A706400F4D12DAC12A93BBE"
+      },
+      {
+        "key": "stemGuitarWav",
+        "filename": "guitar_stem.wav",
+        "relativePath": "outputs/score_first_orchestration/stems/guitar_stem.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1587702,
+        "sha256": "F111227557FCF29FAFD2952E64CE25615F3A22219F37C03FE3DADB3019D3B911"
+      },
+      {
+        "key": "stemVocalsWav",
+        "filename": "voz_preservada.wav",
+        "relativePath": "outputs/score_first/voz_preservada.wav",
+        "mediaType": "audio/wav",
+        "sizeBytes": 1587702,
+        "sha256": "14668E01D78D67B0519EDC619FE9484AA57B54F39373FBFF6259F9C5025C5B7B"
+      }
+    ]
+  }
+}

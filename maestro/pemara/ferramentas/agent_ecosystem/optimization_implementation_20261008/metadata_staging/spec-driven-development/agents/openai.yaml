@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec Driven Development"
+  short_description: "Entrada de especificação da família project-planner para requisi"
+  default_prompt: "Use $spec-driven-development para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

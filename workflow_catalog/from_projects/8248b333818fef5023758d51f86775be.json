@@ -1,0 +1,316 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T02_CONTINUUM/T02_full_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_T02_ENTRY_075671a993ec.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T02_CONTINUUM/T02_Vegeta_pressure_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "assemble",
+        1
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "integrated_multimodal_description: [Shot 1] Continue the fight immediately from the supplied opening frame, a continuous ten-second live-action shot. The same TWO adult human actors fight in the same warm rocky canyon. Persistent <Picture 1> defines ONLY their unchanged identities and practical costumes: Goku is the taller man in heavy orange gi, navy undershirt, navy sash and wristbands, asymmetrical naturally black spiky hair; Vegeta is the shorter compact man with the SAME sharp face, widow's peak and upright black hair, white armor with ochre ribbed panels, raised shoulder/hip guards, royal-blue suit, white gloves and white/gold boots. Preserve the SAME facial bones, eyes, noses, jawlines, ages, skin, body builds, hairlines, costume cut, insignia, cloth and armor materials throughout. No actor substitution or face morph. The opening frame controls their current positions and motion, NOT the starting pose of the identity reference. Goku remains screen LEFT and Vegeta screen RIGHT. Vegeta's existing brown furry tail follows his movement behind him; do not reset it to a wrapped-waist pose. No new costume damage or healed damage.\n\nThe fight is already moving at frame one: Vegeta's extended right glove is whipping back from Goku's high guard. Goku is catching his balance and bringing his left forearm back into guard. Continue that retraction into Vegeta's immediate short LEFT hook to the upper abdomen, followed by a fast RIGHT cross into Goku's high guard. No opening stare or stance reset. The body hit folds Goku's ribs/hips and forces a hurried backward catching step. Vegeta advances with his returning fists. This is one quick connected combination, about two seconds.\n\nGoku immediately fires a compact LEFT counter-jab while retreating; Vegeta slips a little, keeps his guard and snaps a RIGHT front kick into Goku's torso. The knee folds back instantly, the white boot lands, and Goku's whole trunk and pelvis continue being driven backward AFTER the boot has separated; two distinct hurried steps catch his weight. Vegeta follows with fast LEFT jab then RIGHT body straight while Goku catches and blocks. Goku keeps reacting actively, not hanging passively from a held limb.\n\nWithout a pause Goku answers with a quick RIGHT straight at Vegeta's upper guard. Vegeta takes a short catching step, plants, and turns directly into a short LEFT hook at Goku's guard followed by a snapping RIGHT low kick to the outer forward thigh. Vegeta pivots his LEFT support boot, retracts the kicking knee and immediately lands. Goku's knee yields, pelvis shifts and opposite boot catches his weight; Vegeta follows the forced recovery, ending with both still moving and engaged.\n\nFAST COMPACT COMBINATIONS at normal fighting speed, immediate counters during recovery, about nine quick attacks across ten seconds. A punch accelerates, touches and whips straight back in a fraction of a second; a kick touches and retracts, never stays pressed to the opponent. The receiver recoils after separation. Stronger hits move the center of mass and force real catching steps; light blocked hits cause smaller reactions. Short connected attacks, not isolated poses. No stopping to think, waiting turns, idle bouncing, drunk swaying, drifting feet, floating boots, long contacts or leg-to-body supports. Vegeta drives most of this exchange; Goku fights back while being pressed.\n\nThe SAME medium-wide three-quarter side camera tracks their short retreat smoothly, full bodies and supporting boots visible, coherent shared ground and unchanged canyon geography. Preserve realistic skin, cloth, armor, hair and image detail. No cut, orbit, digital zoom, camera shake, slow motion, aura, beams, powers, transformation, blood, extra people or text.\n\noverall_soundscape: Fast synchronized compact impacts, distinct catching footfalls, cloth and light canyon wind. No speech, voice, grunts or music.\n\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 10.0,
+      "width": 1536,
+      "height": 864,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611082205,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "DB_T02_COMBAT_VEGETA_20261108_v1",
+      "reference_size": "Match Output",
+      "project_id": "DB_T02_COMBAT_VEGETA_20261108_v1",
+      "video_reference_size": "Efficient - 0.4 MP",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "reference_image_1": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  }
+}

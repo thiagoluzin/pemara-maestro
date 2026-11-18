@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debugger"
+  short_description: "Investiga e corrige erros, crashes, regressões e falhas"
+  default_prompt: "Use $debugger para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-08T21:38:28.314637+00:00",
+  "candidate": "TEST05",
+  "decision": "APPROVED_BY_OWNER",
+  "owner_quote": "Agora? Sim, ficou algo decente, ficou uma luta boa, salva isso, pelo amor de Deus. Salva e processa pra fazer coisa de luta, coloca no maestro, coloca em qualquer lugar, mas salva isso que agora ficou bom esse esquema. Vamos continuar fazendo vídeo usando o continuum",
+  "approved_video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\TEST05\\TEST05_H3_Ritmo_Continuo_10s_720p.mp4",
+  "approved_video_sha256": "c2d529c43dc62e5db2716096603bcf978a709eabf0f54f59faf1a2eacbd5a9cc",
+  "scope": "Exact TEST05240frame video and its combat/rhythm scheme approved. Preserve original audiovisual bitstream. This is not a claim of isolated audio listening or independent approval of every native source/frame.",
+  "workflow": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\workflows\\TEST05_H3_fast_continuous_combinations.api.json",
+  "workflow_sha256": "8f43f0a5bba26ff59482b2a41ad145244aab526e225b4dfa4a9f3d64751992a2",
+  "anchor": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\base_images\\takeT01_take_t01_anchor_b3fe68a2e62d.png",
+  "anchor_sha256": "6e0e11e2f4a314dcbfeaa88c6055756681458246e7f2bfc7e27476459f551e2c",
+  "continuation_authorized": true,
+  "requested_next_take": "Vegeta versus Goku, Vegeta offensive focus, preserve both identities",
+  "new_anchor_authorized": false,
+  "global_training_authorized": false
+}

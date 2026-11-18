@@ -1,0 +1,487 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "camera_control",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A short continuous cinematic LIVE-ACTION camera handoff between actual approved motion sources. Exactly the SAME TWO adult human actors, same masked yellow/black Scorpion LEFT and masked blue/black Sub-Zero RIGHT, same skin, builds, wet practical cloth costumes, boots, ruined sunlit stone courtyard, dark doorway, columns, water and frost patches. The first image is the actual outgoing source pose; the22-frame supplied video is the actual next approved shot beginning. Do not recast, change costume, swap sides, clean away wetness or alter the courtyard.\nACTION: Scorpion is still visibly enclosed in the established frost/ice shell. His chest strains and shoulders load against the shell; fine frost flakes and cold vapor shed with that physical strain. Sub-Zero stays alert with his own hands ready and boots grounded, tracking the trapped man. Keep the shell intact before the supplied arrival begins; the original next shot contains the actual orange fire breakout, which must happen only once. No ice-floor gag or deliberate slipping.\nCAMERA: A short physical push toward the icy yellow torso and a low restrained lateral arc toward the exposed blue guard, then ease outward to meet the supplied moving arrival composition. Keep both full bodies and their support boots visible; weathered columns show real parallax. No full orbit.\nTIMING: The new camera travel and connecting body action occupy frames0 through43, at normal24FPS speed. At frame44 enter the supplied22-FRAME MOVING ARRIVAL, follow all its real pose, limb/camera velocity and support changes through frame65, then continue small existing cloth/breathing movement in archival sampler context. The original next source will continue this same event once, at original speed. Do not reach the arrival early, freeze on a still, repeat an attack, fake a blur wipe, dissolve, morph or stop in a presentation pose. Photographic skin and practical cloth, grounded human weight, clear cause before reaction. No new people, weapons or chain. No slow motion, cuts, artificial shake, text, speech or music.\n\noverall_soundscape: Courtyard wind, physically timed boot scuffs, cloth and existing ice/fire texture only where visible. No gratuitous impact when bodies do not touch. No dialogue, grunts, shouts, vocalizations or music.\n\nnon_diegetic_music: None.\nSTRUCTURAL CAMERA GUIDE: Follow the supplied depth video frame by frame for actual perspective, foreground/background separation and physically moving camera. It is a geometry-only control, never an alternate actor design. Preserve Picture1 human identity and original costume/skin. The depth camera starts immediately, advances/arcs through the first44frames and meets the original moving arrival at44..65. No decorative fragments, duplicated clothing, paper, ribbons, scenery morph or blur wipe.",
+      "width": 1344,
+      "height": 768,
+      "length": 124,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "C01 — câmera no gelo antes da reação de fogo"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "flow_regenerate",
+        0
+      ],
+      "conditioning": [
+        "arrival_guide",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611100600
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "capture_sampler",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_decode",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/C01_CAMERA/full_native124",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T01_H3_MASTER01_end_f242.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "anchor_master_pad": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "target_width": 1344,
+      "target_height": 768,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "h3_memory_native": {
+    "class_type": "H3MemoryOptimization",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "fused_qkv": "auto",
+      "mlp_memory": "auto",
+      "chunk_rows": 4096,
+      "preserve_precision": true,
+      "precision_mode": "Preserve native",
+      "qkv_streaming_mode": "Auto",
+      "embedding_memory_mode": "Auto",
+      "kitchen_v_memory_mode": "Standard"
+    }
+  },
+  "arrival_video": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C01_CAMERA_approved_target_motion22.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 22,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "arrival_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "arrival_video",
+        0
+      ],
+      "frame_idx": 44
+    }
+  },
+  "flow_trajectory": {
+    "class_type": "H3FlowTrajectory",
+    "inputs": {
+      "storage": "system_ram",
+      "max_runs": 4
+    }
+  },
+  "flow_capture": {
+    "class_type": "H3TrajectoryCapture",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "trajectory": [
+        "flow_trajectory",
+        0
+      ],
+      "capture_forecasts": false
+    }
+  },
+  "capture_guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "flow_capture",
+        0
+      ],
+      "conditioning": [
+        "capture_condition",
+        0
+      ]
+    }
+  },
+  "capture_sampler": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "capture_guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "capture_condition",
+        1
+      ]
+    }
+  },
+  "flow_regenerate": {
+    "class_type": "H3FlowAlignedRegenerate",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "trajectory": [
+        "flow_trajectory",
+        0
+      ],
+      "source_conditioning": [
+        "capture_condition",
+        0
+      ],
+      "metrics": [
+        "flow_capture",
+        1
+      ],
+      "guidance_mode": "direction",
+      "direction_weight": 0.35,
+      "acceleration_weight": 0.0,
+      "consistency_weight": 0.0,
+      "low_frequency_cutoff": 0.25,
+      "temporal_weight": 0.0
+    }
+  },
+  "flow_metrics": {
+    "class_type": "H3MetricsJSON",
+    "inputs": {
+      "metrics": [
+        "flow_regenerate",
+        1
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/C01_CAMERA/flow_metrics"
+    }
+  },
+  "camera_depth_video": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C01_physical_parallax_depth124.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 124,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "camera_control_patch": {
+    "class_type": "ModelPatchLoader",
+    "inputs": {
+      "name": "minimax_h3_fun_controlnet_union_2.0_pruned_int8_convrot.safetensors"
+    }
+  },
+  "camera_control": {
+    "class_type": "MiniMaxH3FunControlNetApply",
+    "inputs": {
+      "model": [
+        "h3_memory_native",
+        0
+      ],
+      "model_patch": [
+        "camera_control_patch",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "control_video": [
+        "camera_depth_video",
+        0
+      ],
+      "strength": 0.65,
+      "start_percent": 0.0,
+      "end_percent": 0.8
+    }
+  },
+  "capture_condition": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at0.00seconds, <Picture 1> is fully referenced.\n\nintegrated_multimodal_description: [Shot1] A continuous photographic live-action camera bridge around the same two adult masked human actors, yellow/black Scorpion LEFT and blue/black Sub-Zero RIGHT, same practical cloth, boots, courtyard, doorway, columns, wetness and powers as Picture1. Scorpion is still visibly enclosed in the established frost/ice shell. His chest strains and shoulders load against the shell; fine frost flakes and cold vapor shed with that physical strain. Sub-Zero stays alert with his own hands ready and boots grounded, tracking the trapped man. Keep the shell intact before the supplied arrival begins; the original next shot contains the actual orange fire breakout, which must happen only once. No ice-floor gag or deliberate slipping.\nCAMERA: A short physical push toward the icy yellow torso and a low restrained lateral arc toward the exposed blue guard, then ease outward to meet the supplied moving arrival composition. Keep both full bodies and their support boots visible; weathered columns show real parallax. No full orbit. The supplied grayscale depth video fixes the physical CAMERA TRAJECTORY, not a new appearance. Follow its forward motion and lateral parallax immediately, never hold the initial viewpoint. Preserve human proportions, costume and actual story state. No cut, artificial shake, smear, morph, duplicated body or cloth fragments. No new strike or transformation before the supplied next action.\n\noverall_soundscape: Existing courtyard wind, boot scuff and cloth; no speech or music.\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 124,
+      "first_frame": [
+        "anchor_master_pad",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "C01 — câmera no gelo antes da reação de fogo"
+    }
+  }
+}

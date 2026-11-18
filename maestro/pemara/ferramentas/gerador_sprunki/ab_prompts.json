@@ -1,0 +1,22 @@
+[
+  {
+    "id": "clean_red",
+    "prompt": "sprunki_char, red cartoon music character, full body, centered, simple vertical body, clean black outline, expressive round eyes, playful smile, flat colors, white background"
+  },
+  {
+    "id": "spooky_green",
+    "prompt": "sprunki_char, spooky green cartoon music character, full body, centered, simple silhouette, funny wide eyes, mischievous smile, flat colors, clean outline, white background"
+  },
+  {
+    "id": "cute_yellow",
+    "prompt": "sprunki_char, cute yellow cartoon music character, full body, centered, tiny antenna, playful smile, clean shape, flat colors, white background"
+  },
+  {
+    "id": "blue_robot",
+    "prompt": "sprunki_char, blue robot music character, full body, centered, simple 2d cartoon sprite, square eyes, tiny headphones, clean black outline, white background"
+  },
+  {
+    "id": "purple_singer",
+    "prompt": "sprunki_char, purple singer character, full body, centered, simple Incredibox style body, expressive eyes, open singing mouth, clean outline, flat colors, white background"
+  }
+]

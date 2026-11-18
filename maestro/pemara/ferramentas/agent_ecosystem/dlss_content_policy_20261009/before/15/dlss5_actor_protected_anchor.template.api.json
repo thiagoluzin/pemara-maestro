@@ -1,0 +1,42 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "native_anchor.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "actor_mask.png"
+    }
+  },
+  "3": {
+    "class_type": "ImageToMask",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "channel": "red"
+    }
+  },
+  "4": {
+    "class_type": "PemaraSaveActorProtectedImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "actor_mask": [
+        "3",
+        0
+      ],
+      "protected_subjects": "SUBJECTS_TO_REVIEW",
+      "mask_review_note": "REPLACE_WITH_ACTUAL_COVERAGE_OBSERVATION",
+      "mask_reviewer": "REPLACE_WITH_REAL_REVIEWER",
+      "mask_coverage_checked": false,
+      "filename_prefix": "actor_protected/anchor"
+    }
+  }
+}

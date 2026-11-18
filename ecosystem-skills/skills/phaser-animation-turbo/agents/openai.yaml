@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phaser Animation Turbo"
+  short_description: "Agente turbo para corrigir sprites, spritesheets, escala,"
+  default_prompt: "Use $phaser-animation-turbo para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

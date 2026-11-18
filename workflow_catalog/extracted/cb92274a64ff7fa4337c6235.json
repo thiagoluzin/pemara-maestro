@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "New Wave of British Heavy Metal, high energy, galloping tempo. Dominant electric bass lead with deep growl, driving double-bass drum kit, twin lead guitars with heavy distortion, powerful operatic male vocal performance, epic and dark atmosphere.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nThe frost bit deep into the deck\nWhere the shadows long and thick\nWe sailed beyond the map’s edge\nChasing the phantom edge\nThe wind screamed through the rigging\nA cold and hollow crying\nI raised my hand to the sky\nAnd cut the bird that flew by\nThe eye was dead, the soul was bare\nThe air grew thick with despair\n\n[Chorus]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nTorn from the dark\nHearts of stone and bone\nWe roam alone\nTide of the Iron Siren\nPulling us home\n\n[Verse]\nThe sails were white as bone\nBut we were never alone\nThey came from the foam below\nWith a cold and heavy flow\nThe moon was a silver coin\nTo buy our wandering pain\nWe danced with the ghostly dead\nIn the mist of the sea’s bed\nThe water was black and still\nAnd the stars began to fall\n\n[Chorus]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nTorn from the dark\nHearts of stone and bone\nWe roam alone\nTide of the Iron Siren\nPulling us home\n\n[Bridge]\nAnd the water was like a glass\nReflecting our past\nEvery face in the deep\nWeeping with no sleep\nI reached out to the wave\nBut the hand of death was grave\nThe siren sang a song\nWhere the light is gone\n\n[Verse]\nNow the ship is drifting free\nOn the edge of eternity\nThe crew is gone, the mast is bent\nWe are not what we have spent\nThe bass hums in the hull\nA low and mournful call\nWaiting for the shore\nWhere the light returns once more\n\n[Outro]\nTide of the Iron Siren\nCall us to the dark\nTide of the Iron Siren\nPulling us home",
+      "seed": 3546861811,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_ref2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060103
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_bilateral_pika_native_v03",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "30": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "A fifteen-second HORIZONTAL 16:9 LIVE-ACTION action film shot WITH A CLEARLY AUDIBLE INSTRUMENTAL HEAVY-METAL SOUNDTRACK AND POWERFUL SYNCHRONIZED SWORD SOUNDS. Red-coated Dante and blue-coated Vergil duel in pouring rain on the gothic rooftop. Original distorted electric-guitar riffs, bass and hard driving drums are audibly playing from the FIRST SECOND THROUGH THE END, underneath loud ringing steel collisions and full-bodied rain ambience. Music is an actual audible part of this native soundtrack, not merely a visual mood. No singing or dialogue.\n\nVISUAL REFERENCE: The image fixes the TWO ADULT HUMAN ACTORS, wet costumes, solid weapons and rooftop architecture. It is a CHARACTER AND SET reference, NOT a required final composition. Preserve Dante's exact youthful angular face, shaggy white hair, lean adult body, open wet red leather coat and brown harness, gloves, trousers and boots. He begins on screen RIGHT with ONE broad thick rigid Rebellion sword, skull guard, in his RIGHT hand. Preserve Vergil's exact face, swept-back white hair, embroidered long blue wet coat, dark waistcoat and boots. He begins LEFT with ONE slender rigid curved Yamato katana in his RIGHT hand and its EMPTY black scabbard in his LEFT beside his left hip. Their weapons never swap hands or owners. The same actors and wet materials remain through the close-up.\n\nACTION PROGRESSION: Keep a strong grounded bilateral duel, each brother attacking and defending. Dante drives forward with confident aggressive weight; Vergil watches his shoulder and blade, defends economically and counters. Start already moving, with Dante closing through clear boot steps, raising Rebellion from low guard into a forceful diagonal cut. The FIRST BRIEF STEEL CLASH occurs in the gap between their bodies. Vergil angles Yamato across the incoming blade, yields a planted step and guides the broad sword outward; Dante's shoulder and torso follow the deflection, caught by his next real step. Immediately disengage and continue footwork.\n\nIn the MIDDLE, Vergil steps into a compact horizontal counter-cut. Dante pivots and intercepts with Rebellion. The SECOND BRIEF CLASH visibly changes both rigid blade trajectories. Dante catches his balance and commits to another strong descending attack. Every strike has anticipation, foot drive, hip/shoulder transfer, actual steel contact, deflection and bodily reaction. Their wet coats lag behind acceleration, bootfalls push water outward, and neither opponent passively waits. Preserve the energetic exchange rather than repeated decorative spins.\n\nTHE LAST FIVE SECONDS ARE A NEW ENDING, WITH NO SEPARATION OR POSE RESET: Dante's final descending blow meets Vergil's angled Yamato with a THIRD HARD COLLISION at about ten seconds. They close and this collision settles into a loaded BLADE-TO-BLADE BIND. The broad sword and slender katana press against one another diagonally in an X between their chests, below their chins and well outside their skin. They are physically braced close together, knees flexed and shoulders receiving the load. Their hands remain on their OWN grips; both blades remain distinct rigid solids. Vergil holds the empty sheath safely back at his left hip.\n\nDuring the final bind both brothers look directly INTO EACH OTHER'S EYES, breathing hard, determined and restrained. Dante pushes through his planted legs; Vergil resists with a slight wrist-angle adjustment and shoulder tension. Tiny grinding movements at the blade intersection, tremor from effort, breath, wet hair, cloth and running rain continue. This is a tense live confrontation, not a still photo. Neither looks into the camera. Their final positions are MUCH CLOSER TOGETHER than the opening. KEEP THE SWORDS ENGAGED AND THE EYE CONTACT THROUGH THE FINAL FRAME. Do not lower swords, retreat, recover distant low guards, return to the starting image, celebrate or release the bind.\n\nCAMERA AND STAGING: One uninterrupted normal-speed shot. Start wide enough to see grounded footwork and both weapons. Move decisively sideways with the first attack and along a short low arc with the counter, producing clear parallax between a nearby carved pillar, the fighters and the distant spire. Keep blue left and red right and remain on the same side of their action axis. At the final collision transition into a sustained FORWARD DOLLY-IN for the last five seconds. End in a tight CHEST-UP TWO-SHOT with BOTH faces in three-quarter view, their locked eyes and the X of blades at the lower part of the composition. Camera keeps approaching and subtly rising until the final frame; it does NOT pull back or widen at the end. The final close view reveals facial effort and water running down the steel. Frame both faces, both grips and the blade intersection clearly. Avoid hiding a collision with an edit, flash, whip-pan or body occlusion.\n\nSOUND MIX IN THE NATIVE AUDIO: The heavy-metal backing is unmistakably present from beginning to end: crunchy distorted electric-guitar riff, low bass, punchy kick and snare with energetic drums, no vocals. Keep it strong and audible under the close fight sounds, not barely perceptible. EACH visible STEEL COLLISION produces a forceful sharp metallic attack with low physical weight, a bright steel ring and a short natural rooftop decay. The last clash is the biggest, then a continuous GRITTY METAL SCRAPE under the pressured blade bind, synchronized to its small movements. Full-bodied POURING RAIN on stone, coat and blades, wind through the parapet, audible splashes at actual boots, leather strain and exertion breaths surround the action. Rain and wind remain clearly audible even under the music. The three impacts cut through both music and ambience. No random clangs disconnected from the image, no explosion sound in place of steel, no sudden silence at the final frame. Generate the complete MUSIC, AMBIENCE AND ACTION FOLEY together with the video, natively, rather than a silent scene or ambience-only soundtrack.\n\nPHYSICAL INTEGRITY: The blades collide in empty space and redirect; never pass through each other, arms, torso, faces, coats or scabbard. Body recoil follows the actual collision. Ground translation requires steps or pivots, never skating. Swords keep exact length, thickness and grip ownership through turns. Real skin, wet hair, soaked heavy leather and reflective steel under cold storm light. Tiny friction sparks may follow steel contact but never conceal it. Preserve only two fighters and the same rooftop. No slow motion, fantasy beam, teleportation, rubber sword, blood, extra limbs, duplicated weapons, captions, logos, freeze, wide ending or return to starting pose.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "audio_vae": [
+        "7",
+        0
+      ],
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "30",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

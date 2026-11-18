@@ -1,0 +1,20 @@
+{
+  "2": {
+    "inputs": {
+      "engine": "triposg",
+      "image": [
+        "1",
+        0
+      ],
+      "seed": 42
+    },
+    "class_type": "MaestroShape3D"
+  },
+  "1": {
+    "inputs": {
+      "image": "modeladores_3d_official_sample.png"
+    },
+    "class_type": "LoadImage"
+  }
+}
+

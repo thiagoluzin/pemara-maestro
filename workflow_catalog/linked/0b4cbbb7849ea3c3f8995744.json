@@ -1,0 +1,91 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_fasth3_omni_liveaction_20261022\\long_takes\\L10_v3\\1f69acd3_000.mp4",
+      "force_rate": 24,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 360,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "2": {
+    "class_type": "DownloadAndLoadSAM2Model",
+    "inputs": {
+      "model": "sam2.1_hiera_base_plus.safetensors",
+      "segmentor": "video",
+      "device": "cuda",
+      "precision": "fp16"
+    }
+  },
+  "3": {
+    "class_type": "Sam2VideoSegmentationAddPoints",
+    "inputs": {
+      "sam2_model": [
+        "2",
+        0
+      ],
+      "coordinates_positive": "[{\"x\": 320, \"y\": 190}, {\"x\": 285, \"y\": 260}, {\"x\": 290, \"y\": 390}, {\"x\": 283, \"y\": 485}]",
+      "coordinates_negative": "[{\"x\": 180, \"y\": 270}, {\"x\": 375, \"y\": 420}, {\"x\": 600, \"y\": 400}]",
+      "frame_index": 0,
+      "object_index": 0,
+      "image": [
+        "1",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "Sam2VideoSegmentationAddPoints",
+    "inputs": {
+      "sam2_model": [
+        "3",
+        0
+      ],
+      "prev_inference_state": [
+        "3",
+        1
+      ],
+      "coordinates_positive": "[{\"x\": 935, \"y\": 270}, {\"x\": 995, \"y\": 420}, {\"x\": 735, \"y\": 342}, {\"x\": 1080, \"y\": 575}, {\"x\": 1250, \"y\": 500}, {\"x\": 1312, \"y\": 420}]",
+      "coordinates_negative": "[{\"x\": 300, \"y\": 300}, {\"x\": 600, \"y\": 400}, {\"x\": 1150, \"y\": 710}, {\"x\": 1120, \"y\": 300}]",
+      "frame_index": 0,
+      "object_index": 1
+    }
+  },
+  "5": {
+    "class_type": "Sam2VideoSegmentation",
+    "inputs": {
+      "sam2_model": [
+        "4",
+        0
+      ],
+      "inference_state": [
+        "4",
+        1
+      ],
+      "keep_model_loaded": false
+    }
+  },
+  "6": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "ffvi_L10_v3_repair_masks/foreground"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "British Heavy Metal, epic and aggressive, driven by galloping double-bass drums, palm-muted 8-string guitar riffs, and a soaring, powerful vocal performance with deep baritone lows and high tenor screams. The mood is mystical and ominous, building to a triumphant, chaotic climax.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nBeneath the ancient stars,\nWhere the shadows dance and tear.\nA symbol carved in stone,\nUpon the mountain's throne.\n\nThe winds begin to howl,\nThey make the very walls recoil.\nWe walk the path of fire,\nTo see if we can endure the ire.\n\n[Pre-Chorus]\nCan you hear the drums begin?\nCan you feel the pulse within?\nA rhythm that shakes the ground,\nBefore the final sound.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Verse]\nThrough the valley of the kings,\nWhere the silence starts to sting.\nA mask of gold and rust,\nA moment of absolute trust.\n\nThe lightning strikes the gate,\nIt seals our destiny's fate.\nWith a roar that splits the sky,\nWe look the demon in the eye.\n\n[Pre-Chorus]\nCan you hear the drums begin?\nCan you feel the pulse within?\nA rhythm that shakes the ground,\nBefore the final sound.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Bridge]\n(Heavy instrumental break)\n\n[Verse]\nNow the circle is complete,\nWe stand upon the street.\nThe number is revealed,\nThe secret finally healed.\n\nNo more fear, no more pain,\nThe beast breaks out again.\nWith the fire in our veins,\nWe conquer all our pains.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Outro]\nThe Cipher of the Sun.\nBurning bright.\nNever done.\nSix, nine, three.\nIn the air.\nThe beast is there.\n[Final Chord]",
+      "abc": "X:1\nT:\nM:2/4\nL:1/16\nQ:1/4=72\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% intro\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nZ|z6A,2|D2E2F4-|F4EEDC|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nA,2C2D4-|D8|A,2D2E2F2-|F4EEDC|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nA,2C2D4-|D4zA,DE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF4FGFE-|E4-EA,DE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF4FGFE-|E4-EA,DE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF4FGFE-|E4-EA,DE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF4FGFE-|E4-EzDE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nF4FGFE-|E4-EA,DE|F4F3E|FED3A,DE|\nV: Vocal\n\"F#\"z8|\"C#\"z6D2|\nV: Ins\nF4FGFE-|E4-Ez3|\n% verse\nV: Vocal\n\"D#m\"A2AA2G2A|\"D#m\"Az4zDD|\"F#\"GA2A2G2G-|\"C#\"G3z4D|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2A-|\"D#m\"A3z3DG-|\"F#\"G2FF2E2E-|\"C#\"E3z4D|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2A|\"D#m\"Az4DDD|\"F#\"AA2A2G2G-|\"C#\"G3z3DA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2G|\"D#m\"FF2DDD2A-|\"F#\"AFF2FEEE-|\"C#\"E3z3dd|\nV: Ins\nZ4|\n% pre-chorus\nV: Vocal\n\"B\"f2ff2ee2|\"B\"z6dd|\"C#\"f2ff2ee2|\"C#\"z6zd|\nV: Ins\nZ4|\nV: Vocal\n\"B\"fff2f2ee-|\"B\"e2d2d2d2|\"C#\"a3gg4|\"C#\"b4a4|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2z2|\"F#\"f2f2f4|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2z2|\"D#m\"f2e2d2d2|\"F#\"a4f4|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2d2|\"F#\"a3ff2f2|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"z2ddd2e2|\"B\"f2e2d4|\"C#\"z6c2|\"C#\"c2c2c2A2|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"A4z4|\"D#m\"z8|\"F#\"z8|\"C#\"z8|\nV: Ins\nz4f3e|fed3Ade|f4fgfe-|e4-eAde|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"F#\"z8|\"C#\"z6DD|\nV: Ins\nf4f3e|fed3Ade|f4fgfe-|e4-ez3|\n% verse\nV: Vocal\n\"D#m\"A2AA2G2A|\"D#m\"Az4zDD|\"F#\"GA2A2G2G-|\"C#\"G3z3DA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2A|\"D#m\"Az4zDA-|\"F#\"AFF2FEE2|\"C#\"E4z3D|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"GA2A2G2A|\"D#m\"Az4zDA-|\"F#\"AA2A2GG2|\"C#\"G4zDDA-|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2A2A2GA-|\"D#m\"A2D2D2DA-|\"F#\"A2F2F2EE-|\"C#\"E3z3dd|\nV: Ins\nZ4|\n% pre-chorus\nV: Vocal\n\"B\"f2ff2ee2|\"B\"z6dd|\"C#\"f2ff2ee2|\"C#\"z6zd|\nV: Ins\nZ4|\nV: Vocal\n\"B\"fff2f2ee-|\"B\"e2d2d2d2|\"C#\"a3gg4|\"C#\"b4a4|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2z2|\"F#\"f2f2f4|\"C#\"e2c2c2z2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2z2|\"D#m\"f2e2d2d2|\"F#\"a4f4|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2d2|\"F#\"a3ff2f2|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"z2ddd2e2|\"B\"f2e2d4|\"C#\"z6c2|\"C#\"c2c2c2A2|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"A4z4|\"D#m\"z8|\"F#\"z8|\"C#\"z8|\nV: Ins\nz4f3e|fed3Ade|f4fgfe-|e4-eAde|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"F#\"z8|\"C#\"z8|\nV: Ins\nf4f3e|fed3Ade|f4fgfe-|e4-eAde|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"F#\"z8|\"C#\"z8|\nV: Ins\nf4f3e|fed3Ade|f4fgfe-|e4-eAde|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"F#\"z8|\"C#\"z6DD|\nV: Ins\nf4f3e|fed3Ade|f4fgfe-|e4-ez3|\n% bridge\nV: Vocal\n\"D#m\"A2AA2G2A-|\"D#m\"A3z4D|\"F#\"A2AA2G2G-|\"C#\"G3z4D|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2A-|\"D#m\"A3z4D|\"F#\"A2F2FEE2|\"C#\"E4zDD2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A4zDD2|\"D#m\"A4z3D|\"F#\"A2A2A2GG-|\"C#\"G3z3DD|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A2AA2G2A-|\"D#m\"A3z3d2|\"F#\"a2ff2e3|\"C#\"e8|\nV: Ins\nZ4|\nV: Vocal\n\"C#\"d8-|d8|\nV: Ins\nZ2|\n% chorus\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2z2|\"F#\"f2f2f4|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2z2|\"D#m\"f2e2d2d2|\"F#\"a4f4|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z2f2f2e2|\"D#m\"f2e2d2d2|\"F#\"a3ff2f2|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"z2ddd2e2|\"B\"f2e2d4|\"C#\"z6c2|\"C#\"c2c2c2A2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"A4z4|\"D#m\"z8|\"F#\"z6f2|\"C#\"g2g2g2f2|\nV: Ins\nz4f3e|fed3Ade|f4fgz2|Z|\nV: Vocal\n\"D#m\"a8-|\"D#m\"a8-|\"F#\"a8|\"C#\"g6z2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"f2f2f2z2|\"D#m\"f2e2d2z2|\"F#\"f2f2f2z2|\"C#\"e2c2c4|\nV: Ins\nZ4|\nV: Vocal\n\"B\"z8|\"B\"z8|\"C#\"z6c2|\"C#\"c4A4|\nV: Ins\nf4f3e|fed3Ade|f4fgz2|Z|\n% outro\nV: Vocal\n\"D#m\"A8-|\"D#m\"A4z4|\"F#\"z8|\"C#\"z8|\nV: Ins\nZ|z4zAde|f4fgfe-|e4-eAde|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"F#\"z8|\"C#\"z8|\nV: Ins\nf4f3e|fed3Ade|f4fgfe-|e4-ez3|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nd8-|d8|Z|",
+      "seed": 2460548284,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 2460548284,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_55f2d0192518",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

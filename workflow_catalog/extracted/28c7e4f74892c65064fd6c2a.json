@@ -1,0 +1,151 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "5": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "6": {
+    "class_type": "ETN_LoadMaskBase64",
+    "inputs": {
+      "mask": "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"
+    }
+  },
+  "7": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Image 1 is a walking pose drawing with unfinished legs and forearms. Image 2 is the finished character art style reference. Finish ONLY the dark teal jeans, brown boots and exposed forearms in image 1 to match the detailed hand drawn anime pixel art craftsmanship of image 2. Preserve the exact leg positions from image 1: the near thigh slopes backwards left from hip to knee and the near boot trails on the LEFT, the far leg steps forward RIGHT. Preserve those two boots and two arms exactly. Add natural denim texture, subtle sewn seams, folds on knees, consistent detailed brown lace-up leather ankle boots with black soles and anatomically natural relaxed hands. Keep pose and silhouette fixed, add shading rather than changing anatomy. Do not restore the leg pose of image 2. The wavy hair, face, ochre jacket, ivory shirt, belt and brown asymmetric shoulder bag must remain identical to image 1. Uniform pale gray background.",
+      "negative_prompt": "extra feet, extra legs, deformed hands, changing pose, photorealistic, 3D render, text",
+      "resolution": 0,
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "5",
+        0
+      ],
+      "images.image_2": [
+        "4",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "mask": [
+        "6",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": 23102620,
+      "steps": 25,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "7",
+        1
+      ],
+      "latent_image": [
+        "12",
+        0
+      ],
+      "denoise": 0.65
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaWalk/Qwen21_Probe"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

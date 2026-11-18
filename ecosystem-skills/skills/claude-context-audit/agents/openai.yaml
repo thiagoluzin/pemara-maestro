@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Context Audit"
+  short_description: "Auditoria e otimização de uso de tokens no Claude Code"
+  default_prompt: "Use $claude-context-audit para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\video_global_engine\\\\workflows\\\\Spark\\\\Spark.api.json\",\n  \"valid\": false,\n  \"error_count\": 1,\n  \"warning_count\": 0,\n  \"errors\": [\n    {\n      \"node_id\": \"21\",\n      \"code\": \"unknown_class_type\",\n      \"message\": \"class_type 'MiniMaxH3SparkAttentionSM120' not found in object_info\",\n      \"hint\": \"did you mean: MiniMaxH3SeparateAVLatent, MiniMaxLowVRAMAttention, MiniMaxH3RewriterOptions?\",\n      \"suggestions\": [\n        \"MiniMaxH3SeparateAVLatent\",\n        \"MiniMaxLowVRAMAttention\",\n        \"MiniMaxH3RewriterOptions\"\n      ]\n    }\n  ],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  }\n}"
+    }
+  ],
+  "isError": false
+}

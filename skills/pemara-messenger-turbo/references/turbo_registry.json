@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "dispatcher_profile": "agents-turbo",
+  "canonical_skill_root": "skills",
+  "profile_root": "agents",
+  "aliases": [
+    "animation-engineer",
+    "audio-analysis",
+    "automation-engineer",
+    "balance-tuner",
+    "beatemup-combat-designer",
+    "code-archaeologist",
+    "debugger",
+    "demo-release-engineer",
+    "game-audio-designer",
+    "game-audio-reactive",
+    "game-build-flow",
+    "gamepad-input-specialist",
+    "level-designer",
+    "performance-optimizer",
+    "project-planner",
+    "qa-automation-engineer",
+    "test-engineer"
+  ],
+  "specialized_profiles": [
+    "ai-video-intro-pipeline",
+    "creative-director",
+    "game-developer",
+    "image-production",
+    "online-security-guardian",
+    "sprite-animation",
+    "video-production"
+  ]
+}

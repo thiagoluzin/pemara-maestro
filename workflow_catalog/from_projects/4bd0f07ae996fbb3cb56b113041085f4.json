@@ -1,0 +1,30 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Goku_SSJ3_30s_CRESCIMENTO_v02_REVISAO.mp4"
+    }
+  },
+  "2": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1080,
+      "height": 1920,
+      "filename_prefix": "goku_ssj3_20261029/full30_v02_fhd60/Goku_SSJ3_30s_FHD_60FPS_v02",
+      "content_kind": "live_action",
+      "expected_sha256": "84364609882fd7179588eee8070edb075940d5894c9914bf7201ab6dac159a2f",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

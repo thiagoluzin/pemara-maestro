@@ -1,0 +1,15 @@
+{
+  "1": {
+    "class_type": "PemaraFFVINativeDLSS5",
+    "inputs": {
+      "source_relative_path": "ffvi_opera_fasth3_omni_20261022/background_repair/73bd5268d6/ffvi_T09_approved_performance_native_clean.mp4"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.1",
+  "project_id": "nome_do_projeto",
+  "title": "Titulo do video",
+  "idea": "Ideia bruta do usuario",
+  "objective": "Objetivo do video",
+  "audience": "Publico alvo",
+  "duration_target_seconds": 60,
+  "aspect_ratio": "16:9",
+  "preview_resolution": "1280x720",
+  "final_resolution": "1920x1080",
+  "fps_preview": 60,
+  "fps_final": 60,
+  "delivery_contract": {
+    "required_fps": 60,
+    "scope": "all_owner_facing_review_and_final_deliveries",
+    "native_generation_fps_may_differ": true,
+    "publication_gate": "reject_if_review_or_final_fps_is_not_60"
+  },
+  "style": {
+    "primary": "3d_cartoon_cinematic",
+    "references": [],
+    "palette": [],
+    "mood": []
+  },
+  "audio": {
+    "directive_status": "awaiting_owner_directive",
+    "authority": "owner_only",
+    "scope": "take_or_project_as_explicitly_communicated",
+    "default_without_directive": "visual_only",
+    "inherit_from_previous_take": false,
+    "inherit_from_previous_project": false,
+    "mode": "visual_only",
+    "file": "",
+    "duration_seconds": null,
+    "timeline_rule": "owner_approved_audio_is_timeline_ruler_when_explicitly_present; otherwise visual_story_beats",
+    "loudness_target_lufs": -14,
+    "true_peak_max_dbtp": -1.5
+  },
+  "identity_bible": {
+    "characters": [],
+    "fixed_objects": [],
+    "forbidden_changes": []
+  },
+  "global_negative_rules": [
+    "no generated text",
+    "no watermark",
+    "no native audio",
+    "no extra characters",
+    "no identity drift",
+    "no face morphing"
+  ],
+  "model_formula": {
+    "base_image_primary": "FLUX.1 Krea dev FP8",
+    "base_image_control": "FLUX.1-dev",
+    "graphic_text": "Qwen Image",
+    "video_preview": "MiniMax H3 FL2VA pruned INT8 ConvRot + Qwen3-VL-32B, 1280x720/24",
+    "prompt_contract": "official h3-prompt-writing local pinned",
+    "motion_review": "RIFE 4.6 native 24 -> CFR 60 after owner visual approval",
+    "video_final": "human-approved RealESRGAN x2 75/25, 1920x1080/60",
+    "fallback": "alternative engine only after explicit owner authorization"
+  },
+  "primary_orchestration_policy": "minimax_h3_take_contract@2026-08-16",
+  "continuous_action_contract": {
+    "required": true,
+    "generated_connector_required_between_takes": true,
+    "crossfade_forbidden": true,
+    "freeze_frame_forbidden": true,
+    "static_tail_forbidden": true,
+    "motion_handoff_required": true,
+    "full_duration_motion_required": true,
+    "three_interval_motion_required": true,
+    "moving_transition_anchors_required": true
+  },
+  "take_execution_contract": {
+    "required": true,
+    "version": "maestro_comfy_controls_v1",
+    "declared_controls_must_exist_in_graph": true,
+    "reference_is_not_anchor": true,
+    "reference_video_is_not_pose_control": true,
+    "model_mode_must_match_conditioning_node": true,
+    "failure_policy": "block_before_input_copy_and_gpu_queue"
+  },
+  "universal_orchestration": true,
+  "status": "draft",
+  "content_kind": "unknown"
+}

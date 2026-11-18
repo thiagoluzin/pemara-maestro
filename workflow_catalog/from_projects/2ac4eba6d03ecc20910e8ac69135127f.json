@@ -1,0 +1,156 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux3-image-klein-int8-convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+      "type": "flux3",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "Create a live-action cinema photograph of the young adult Dante from the ORIGINAL Devil May Cry 3, holding his Nevan weapon on the Sunken Opera House stage. Use <ref_image_0> as the strict reference for the original red coat, the character's proportions, hand placement and the purple weapon. Use <ref_image_1> specifically for Dante's facial structure and white hair. Use <ref_image_2> specifically for the COMPLETE shape of Nevan in its GUITAR configuration. These are original-game design references, not examples of the rendering style: translate the exact designs into photographed human skin, worn leather and solid practical prop materials.\nOne adult male actor, early twenties, lean athletic physique, firm angular jaw and prominent cheekbones, straight nose, narrow focused pale eyes, straight relaxed lips and a self-assured unsmiling expression. Match the strong youthful face proportions of the reference rather than inventing a fashion-model face. His chin is slightly raised, eyes looking forward under the fringe, posture loose and confrontational like a cocky demon hunter about to make some noise. Messy layered white hair falls to the jaw with long irregular pointed strands, not a rounded neat bob or salon blowout. Natural pale skin with visible pores, subtle under-eye texture and slight battle grime, no beauty makeup or oily highlighted torso. Keep him young and clean-shaven, not middle-aged.\nHis DMC3 coat is long crimson leather with tall upturned collar, broad angular lapels, padded segmented shoulders, the distinct brown webbing and metal buckles on both sides of the chest and visible vertical fastening details, matching the original. Sleeves pushed toward the elbows; a broad weathered brown horizontal chest strap crosses the otherwise bare chest. Dark trousers, fingerless black combat gloves. The coat hangs with physical weight, not a fitted glossy red fashion jacket. A sword hilt may remain behind his shoulder only as present in the original character reference.\nThe Nevan must faithfully reproduce the SAME weapon from the references. A large flattened asymmetric purple-blue demonic GUITAR BODY of overlapping pointed wing-like blade plates extends to frame-left, including three separate long tapering blade tips with silver edges and small elongated organic cutouts near the upper edge. The lower plate points downward-left. The solid central body has the compact parallel electric string bed. A SHORT thick twisted organic dark-violet neck extends toward frame-right and ends in the compact spear/arrowhead-shaped headpiece. Preserve the proportions of the short neck relative to the huge blade body and the precise original outline. This is the folded playable guitar form, NOT an unfolded reaper scythe. There is no circular ring, no crescent hoop, no giant hole through the entire body, no thin conventional long electric-guitar fretboard, no standard six tuning-peg headstock, no new skeletal-rib design. Right hand over the central strings on the body, left hand gripping the short neck near frame-right, fingers distinct and naturally contacting the object. Keep both blade tips and the headpiece in frame.\nVertical portrait composition, one continuous cinematic scene, Dante shown from head to knees with the instrument spanning the frame at waist level. His torso is slightly diagonal, elbows engaged, knees flexed and shoulders ready to perform; no seductive posing, coy smile or head tipped down admiring himself. A modest low three-quarter camera view makes his face and the broad front of the weapon visible. Restrained aged opera stage with the original purple curtains, carved stone columns and warm practical stage lights, shallow but believable depth. Hard warm side light and faint cool edge light reveal skin and leather without polished glamour lighting. A few small purple electric arcs can cling to the string bed without obscuring the geometry. No woman, extra people, audience, microphone, captions, lettering, watermark, sparks wall or glowing ring. Photograph of an actor and a physical screen-accurate prop on a movie set, not a game render, painted image, costume advertisement or glossy fashion editorial."
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R00_DMC3_Dante_Nevan_original.png"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R01_DMC3_Dante_original_face.png"
+    }
+  },
+  "8": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/R02_DMC3_Nevan_original_silhouette.png"
+    }
+  },
+  "9": {
+    "class_type": "ReferenceMultiLatent",
+    "inputs": {
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "resolution": "keep resolution",
+      "images.image0": [
+        "6",
+        0
+      ],
+      "images.image1": [
+        "7",
+        0
+      ],
+      "images.image2": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 864,
+      "height": 1536,
+      "batch_size": 1
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ],
+      "latent_image": [
+        "10",
+        0
+      ],
+      "seed": 3110202603,
+      "steps": 16,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_20261102/anchors/A02_dante_nevan_flux3_reference_02"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

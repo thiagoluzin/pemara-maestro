@@ -1,0 +1,93 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "16-bit SNES arcade game parallax midground layer, Brazilian colonial village houses of Piratininga, rustic wooden beams, clay tile roofs, church bell tower, whitewashed walls, wooden balconies and fences, side-scroller perspective, solid flat magenta background sky above the roofs, no ground road along bottom, no characters, seamless horizontal composition, clean pixel clusters, dark outline, pixel art, 16-bit SNES era pixel art, clean pixel clusters, limited palette, dark outline, dithering shading, side-scroller arcade game sprite, full body, Brazilian colonial sertao, dusk palette of ochre, teal shadows and ember orange, solid flat magenta background, no anti-aliasing, no 3d render, no blur",
+      "negative_prompt": "text, watermark, blurry, soft edges, anti-aliasing, gradients, photorealistic, 3d render, extra limbs, multiple characters, cropped body, detailed background scenery",
+      "resolution": 1024
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1536,
+      "height": 864,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 2026092802,
+      "steps": 28,
+      "cfg": 3.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1/bg_phase1_village_raw"
+    }
+  }
+}

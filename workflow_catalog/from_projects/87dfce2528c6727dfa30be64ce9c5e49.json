@@ -1,0 +1,331 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "<Picture 1>, <Picture 2> and <Picture 3> show ONE AND THE SAME adult human actor. They are identity and appearance references, not poses to hold or frames to repeat. Picture 1 defines his exact face, body, worn orange woven gi over navy fabric, blue sash, wrist wraps, boots and existing dirt/tears at the start. Picture 2 defines only the final more upright golden real hair and thin blue-white electrical arcs. Picture 3 defines the same actor's natural open-mouth effort, normal human jaw and brow. He is already golden-haired at the beginning. One person only. Photographed live-action cinema, real human skin pores and hair strands, physical fabric and rocks. Preserve his precise identity and costume while the ACTOR MOVES.\n\nintegrated_multimodal_description: [Shot 1] A single unbroken full-body moving take lasting 6.58 seconds, filmed at normal speed. Keep head, hands, knees and boots visible throughout. The actual man performs a forceful physical transformation through a step and full-body exertion, with clear articulated limb movement and visible weight transfer. Starting from the first-frame stance, 0.0-1.4 seconds: he bends BOTH knees and lowers his pelvis, leans his torso forward, bends his elbows and lifts both fists from hip height toward his lower chest, inhaling. These are visibly large bodily actions, not a held portrait. 1.4-3.0 seconds: he lifts his right boot off the rock and steps forward one boot length, planting it firmly with a natural impact and bending that knee to take his weight. The other foot stays behind. His chest and shoulders rotate slightly toward the unseen opponent off-camera right. His mouth opens naturally with the existing yell recording, moderate aperture exactly like Picture 3, without changing facial proportions. 3.0-5.2 seconds: while yelling he drives his torso upward out of the lowered stance and pulls both elbows and fists strongly downward toward his sides; shoulders, forearms, hips and knees visibly articulate. Hair rises into Picture 2's upright spiked strand arrangement and sparse irregular blue-white electrical arcs crackle outside the actor. 5.2-6.58 seconds: as the yell resolves he continues moving, shifts his weight onto the planted front leg, turns his head slightly toward the unseen opponent and brings his right forearm toward a guard position. The ending is materially different from the beginning: advanced foot, bent front knee and raised forearm. No return to the starting portrait, no long held pose. Mouth closes naturally on the recording's release.\n\nThe physical camera tracks approximately 0.4 metres laterally and slightly forward in a smooth shallow 10-degree arc around the actor, maintaining full-body framing and horizon. Foreground stones shift relative to the water and distant mesas with true perspective parallax, not digital zoom or camera shake. Same rocky island geography: teal water to screen left, low rocks to screen right, distant mesas and green overcast sky. The planted step displaces a little loose gravel; a loose blue sash end swings independently with inertia, and fine hair responds to his motion. Subtle translucent warm light with sparse electrical arcs, no solid painted flames or obscuring flash. Natural acting and normal human anatomy, consistent individual face in all frames, no anime, illustration, game render, oversized jaw, thickened brows, glowing eyes, new damage, halo, cuts, closeups, extra person, attack or flight. Actor movement is the main event; effects never substitute for his step and arm movement.\n\noverall_soundscape: The fixed AUDIO GUIDE is the owner's exact already-approved nonverbal adult male yell, breath and transformation effects. Follow its original timing, pitch, gain and speed; it begins quietly, rises into the yell around 1.5 seconds and resolves around 5.35 seconds. No new vocal recording, dialogue or words. Output carries the original audio directly, not reconstructed audio. No music, song, score, choir or instruments.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 158,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "5",
+        0
+      ],
+      "ref_images.ref_image_1": [
+        "19",
+        0
+      ],
+      "ref_images.ref_image_2": [
+        "effort_photo",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "approved_audio_guide",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 29102951
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 768,
+      "height": 1344,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "approved_audio",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261029/motion_M01_ref2va_start_only",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "19": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A02_goku_ssj2_DLSS5_v01.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "approved_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ2_TESTE_GRITO_P01.wav"
+    }
+  },
+  "approved_audio_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "start_guide",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "approved_audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "effort_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A03_goku_ssj2_effort_DLSS5_v01.png"
+    }
+  },
+  "start_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "frame_idx": 0
+    }
+  }
+}

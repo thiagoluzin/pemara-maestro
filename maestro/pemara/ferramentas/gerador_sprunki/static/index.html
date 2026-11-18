@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Sprunki — Pemara Tech</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0d0d1a;
+    color: #f0f0f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  /* Fundo animado */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(120, 60, 200, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(60, 180, 200, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 60% 80%, rgba(255, 100, 150, 0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .logo-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 20px rgba(180, 100, 255, 0.6));
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #c084fc, #60d5fa, #ff8fab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 15px;
+  }
+
+  /* Cards */
+  .cards {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 24px;
+    padding: 40px 36px;
+    width: 300px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 24px;
+  }
+
+  .card:hover { transform: translateY(-8px); }
+
+  /* Card OC Maker — rosa/roxo */
+  .card-oc { border-color: rgba(255, 107, 160, 0.25); }
+  .card-oc::before { background: radial-gradient(ellipse at 50% 0%, rgba(255, 107, 160, 0.12), transparent 70%); }
+  .card-oc:hover { border-color: rgba(255, 107, 160, 0.6); box-shadow: 0 20px 60px rgba(255, 107, 160, 0.15); }
+  .card-oc:hover::before { opacity: 1; }
+
+  /* Card Brand Analyzer — ciano/azul */
+  .card-brand { border-color: rgba(60, 210, 200, 0.25); }
+  .card-brand::before { background: radial-gradient(ellipse at 50% 0%, rgba(60, 210, 200, 0.12), transparent 70%); }
+  .card-brand:hover { border-color: rgba(60, 210, 200, 0.6); box-shadow: 0 20px 60px rgba(60, 210, 200, 0.15); }
+  .card-brand:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 52px;
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+
+  .card-oc .card-icon { color: #ff8fab; }
+  .card-brand .card-icon { color: #5eead4; }
+
+  /* Card Game Studio — roxo retrô/neon */
+  .card-studio { border-color: rgba(192, 132, 252, 0.25); }
+  .card-studio::before { background: radial-gradient(ellipse at 50% 0%, rgba(192, 132, 252, 0.12), transparent 70%); }
+  .card-studio:hover { border-color: rgba(192, 132, 252, 0.6); box-shadow: 0 20px 60px rgba(192, 132, 252, 0.15); }
+  .card-studio:hover::before { opacity: 1; }
+  .card-studio .card-icon { color: #c084fc; }
+  .card-studio .tag { background: rgba(192, 132, 252, 0.12); color: #c084fc; }
+  .card-studio .card-btn { background: linear-gradient(135deg, #c084fc, #7058a8); color: #fff; }
+
+  /* Card Gallery — laranja / âmbar */
+  .card-gallery { border-color: rgba(245, 158, 11, 0.25); }
+  .card-gallery::before { background: radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.12), transparent 70%); }
+  .card-gallery:hover { border-color: rgba(245, 158, 11, 0.6); box-shadow: 0 20px 60px rgba(245, 158, 11, 0.15); }
+  .card-gallery:hover::before { opacity: 1; }
+  .card-gallery .card-icon { color: #f59e0b; }
+  .card-gallery .tag { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+  .card-gallery .card-btn { background: linear-gradient(135deg, #f59e0b, #b45309); color: #fff; }
+
+  .card h2 {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .card-oc .tag { background: rgba(255, 107, 160, 0.15); color: #ff8fab; }
+  .card-brand .tag { background: rgba(94, 234, 212, 0.12); color: #5eead4; }
+
+  .card-btn {
+    margin-top: 8px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: filter 0.2s;
+  }
+
+  .card-btn:hover { filter: brightness(1.15); }
+  .card-oc .card-btn { background: linear-gradient(135deg, #ff6b9d, #c84b8f); color: #fff; }
+  .card-brand .card-btn { background: linear-gradient(135deg, #14b8a6, #0e7490); color: #fff; }
+
+  footer {
+    margin-top: 60px;
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo-icon">🎵</span>
+  <h1>Portal Sprunki</h1>
+  <p class="subtitle">Pemara Tech · Powered by Flux.1-dev + RTX 5080</p>
+</header>
+
+<div class="cards">
+
+  <!-- OC Maker -->
+  <a class="card card-oc" href="/oc">
+    <span class="card-icon">✨</span>
+    <h2>OC Maker</h2>
+    <p>Monte seu personagem peça por peça. Escolha corpo, olhos, boca, chapéu e acessório.</p>
+    <div class="card-tags">
+      <span class="tag">Drag & Drop</span>
+      <span class="tag">Color Picker</span>
+      <span class="tag">Canvas</span>
+      <span class="tag">Export PNG</span>
+    </div>
+    <button class="card-btn">Entrar no OC Maker →</button>
+  </a>
+
+  <!-- Brand Analyzer -->
+  <a class="card card-brand" href="/brand">
+    <span class="card-icon">🏢</span>
+    <h2>Brand Analyzer</h2>
+    <p>Envie o logo ou foto de uma marca. A IA extrai cores, estilo e gera um Sprunki único.</p>
+    <div class="card-tags">
+      <span class="tag">CLIP Analysis</span>
+      <span class="tag">Flux.1-dev</span>
+      <span class="tag">LoRA Sprunki</span>
+      <span class="tag">Auto Prompt</span>
+    </div>
+    <button class="card-btn">Analisar Marca →</button>
+  </a>
+
+  <!-- Game Studio -->
+  <a class="card card-studio" href="/studio">
+    <span class="card-icon">🎮</span>
+    <h2>Game Studio 16-Bits</h2>
+    <p>Crie e fatie sprites/backgrounds, aplique shaders de CRT/Scanlines e programe com IA de agente.</p>
+    <div class="card-tags">
+      <span class="tag">Sprite Slicer</span>
+      <span class="tag">CRT Shaders</span>
+      <span class="tag">AI Agent Coder</span>
+      <span class="tag">16-Bit Physics</span>
+    </div>
+    <button class="card-btn">Entrar no Game Studio →</button>
+  </a>
+
+  <!-- LoRA Gallery -->
+  <a class="card card-gallery" href="/lora_gallery">
+    <span class="card-icon">🎨</span>
+    <h2>Amostras do Dataset</h2>
+    <p>Visualize e avalie as 50 imagens e legendas criadas para treinar a IA do Sprunki LoRA.</p>
+    <div class="card-tags">
+      <span class="tag">50 OCs</span>
+      <span class="tag">Legendas</span>
+      <span class="tag">Avaliação</span>
+      <span class="tag">Dataset</span>
+    </div>
+    <button class="card-btn">Ver Amostras LoRA →</button>
+  </a>
+
+</div>
+
+<footer>Pemara Tech © 2025 — uso interno</footer>
+
+</body>
+</html>

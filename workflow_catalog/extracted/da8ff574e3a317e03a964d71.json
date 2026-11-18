@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Fast epic thrash metal, heavy downpicked distorted guitars, forceful male baritone, huge live drums, clear powerful bass, fierce harmonized lead guitars. 176 BPM, F sharp minor. a descending chromatic riff against a steady pulse; a shouted four-word breakdown and accelerating-feeling climax. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nGrit under the fingernails, coal in the throat\nThe whistle screams a warning I cannot ignore\nI pull the lever down, the iron groans\nEvery carriage holds a stolen season, a stolen bone\n\n[Chorus]\nFlip the switch! Burn the track!\nTime is bleeding through the cracks!\n\n[Verse]\nPlatform four is empty, but the shadows breathe\nThey count the seconds missing from my hand\nThe conductor looks, his clock face cracks\nI shatter it against the rails, the silence snaps\n\n[Verse]\nThe tracks are cold, the schedule is dead\nBut the years don’t vanish, they’re not fed\nThey pile up on the platform floor\nA mountain of the stolen four\nI step into the waiting crowd\nAnd feel the weight of the lost shroud\nEvery face is young, every hand is grey\nThey look at me and stare away\nI hold the lever, I hold the key\nBut I can’t give the years back to me\nThe last train leaves with no one there\nI am the one who isn’t fair\n\n[Bridge]\nSLOW. DOWN. STOP. NOW.\n\n[Solo]\n\n[Chorus]\nFlip the switch! Burn the track!\nTime is bleeding through the cracks!\n\n[Chorus]\nFlip the switch! Burn the track!\nTime is bleeding through the cracks!\n\n[Outro]\nLast train halts. Years return. The switchman walks.",
+      "abc": "",
+      "seed": 202610166017,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166017,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/18_the_last_switchman_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "76": {
+    "class_type": "PrimitiveStringMultiline",
+    "inputs": {
+      "value": "Single isolated antique Brazilian rural writing desk, an original photorealistic game prop for a dilapidated coffee farmhouse in Minas Gerais, 1994. A sturdy rectangular dark honey-brown hardwood restoration worktable, 140 cm wide and 75 cm deep, 78 cm tall, thick plank tabletop with naturally worn rounded corners, four clearly separated straight square wooden legs connected by simple side stretchers, one shallow centered closed drawer with a small tarnished brass cup handle. Handcrafted restrained early twentieth century joinery, subtle irregular wood grain, pale worn edges, a few old ink stains and small scratches, believable well-used solid furniture rather than broken debris. Entire desk visible from elevated front three-quarter view, all four legs readable with empty space between them. Empty tabletop, no books, no tools, no accessories, no chair. Neutral light-grey seamless studio background, soft even diffuse light, minimal contact shadow, extremely sharp detailed PBR materials, straight lines and plausible proportions, square composition, object centered with margin all around, no labels, no text, no watermark."
+    },
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "78": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "ATerraDevolve/Concepts/MesaRestauro_v01",
+      "images": [
+        "82",
+        0
+      ]
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "80": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "81": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "86",
+        0
+      ],
+      "guider": [
+        "90",
+        0
+      ],
+      "sampler": [
+        "80",
+        0
+      ],
+      "sigmas": [
+        "93",
+        0
+      ],
+      "latent_image": [
+        "83",
+        0
+      ]
+    }
+  },
+  "82": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "81",
+        0
+      ],
+      "vae": [
+        "89",
+        0
+      ]
+    }
+  },
+  "83": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": [
+        "84",
+        0
+      ],
+      "height": [
+        "85",
+        0
+      ],
+      "batch_size": 1
+    }
+  },
+  "84": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1024
+    },
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "85": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1024
+    },
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "86": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 13102602
+    }
+  },
+  "87": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "88": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "89": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "90": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "cfg": 1.0,
+      "model": [
+        "87",
+        0
+      ],
+      "positive": [
+        "92",
+        0
+      ],
+      "negative": [
+        "91",
+        0
+      ]
+    }
+  },
+  "91": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "92",
+        0
+      ]
+    }
+  },
+  "92": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": [
+        "76",
+        0
+      ],
+      "clip": [
+        "88",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "93": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "84",
+        0
+      ],
+      "height": [
+        "85",
+        0
+      ]
+    }
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

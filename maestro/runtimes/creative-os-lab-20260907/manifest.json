@@ -1,0 +1,2234 @@
+[
+  {
+    "id": "h3_all_in_one",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_all_in_one",
+    "commit": "6c9666c91a994898f00ad0bb9f2608df3ee5322a",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_all_in_one",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "route_registry_fixture": true,
+      "nodes": {
+        "H3OneNode": {
+          "inputs": {
+            "required": {},
+            "optional": {
+              "prompt": [
+                "STRING",
+                {
+                  "forceInput": true
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "IMAGE",
+            "STRING"
+          ],
+          "function": "noop"
+        },
+        "H3CacheBust": {
+          "inputs": {
+            "required": {
+              "clip": [
+                "CLIP"
+              ],
+              "fingerprint": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": ""
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "CLIP"
+          ],
+          "function": "passthrough"
+        },
+        "H3MaskVideoPrepare": {
+          "inputs": {
+            "required": {
+              "images": [
+                "IMAGE"
+              ],
+              "audio": [
+                "AUDIO"
+              ],
+              "source_fps": [
+                "FLOAT",
+                {
+                  "default": 24.0,
+                  "min": 1.0,
+                  "max": 240.0,
+                  "step": 0.001
+                }
+              ],
+              "max_seconds": [
+                "FLOAT",
+                {
+                  "default": 5.0,
+                  "min": 0.2,
+                  "max": 15.0,
+                  "step": 0.1
+                }
+              ],
+              "target_fps": [
+                "FLOAT",
+                {
+                  "default": 24.0,
+                  "min": 24.0,
+                  "max": 24.0,
+                  "step": 1.0
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "IMAGE",
+            "AUDIO",
+            "AUDIO",
+            "FLOAT",
+            "INT"
+          ],
+          "function": "prepare"
+        },
+        "H3IdentityAnchor": {
+          "inputs": {
+            "required": {
+              "conditioning": [
+                "CONDITIONING"
+              ],
+              "vae": [
+                "VAE"
+              ],
+              "latent": [
+                "LATENT"
+              ],
+              "frame_count": [
+                "INT",
+                {
+                  "default": 124,
+                  "min": 5,
+                  "max": 3600,
+                  "step": 1
+                }
+              ],
+              "width": [
+                "INT",
+                {
+                  "default": 1344,
+                  "min": 32,
+                  "max": 16384,
+                  "step": 32
+                }
+              ],
+              "height": [
+                "INT",
+                {
+                  "default": 768,
+                  "min": 32,
+                  "max": 16384,
+                  "step": 32
+                }
+              ],
+              "anchor": [
+                [
+                  "first",
+                  "last"
+                ],
+                {
+                  "default": "first"
+                }
+              ]
+            },
+            "optional": {
+              "image": [
+                "IMAGE"
+              ]
+            }
+          },
+          "return_types": [
+            "CONDITIONING"
+          ],
+          "function": "apply"
+        },
+        "H3AudioTrim": {
+          "inputs": {
+            "required": {
+              "audio": [
+                "AUDIO"
+              ],
+              "trim_seconds": [
+                "FLOAT",
+                {
+                  "default": 5.0,
+                  "min": 0.5,
+                  "max": 15.0,
+                  "step": 0.1
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "AUDIO"
+          ],
+          "function": "apply"
+        },
+        "H3AudioJoinSmooth": {
+          "inputs": {
+            "required": {
+              "audio": [
+                "AUDIO"
+              ],
+              "source_frames": [
+                "IMAGE"
+              ],
+              "source_fps": [
+                "FLOAT",
+                {
+                  "default": 24.0,
+                  "min": 1.0,
+                  "max": 240.0,
+                  "step": 0.001
+                }
+              ],
+              "continuation_frames": [
+                "IMAGE"
+              ],
+              "fps": [
+                "FLOAT",
+                {
+                  "default": 24.0,
+                  "min": 1.0,
+                  "max": 240.0,
+                  "step": 0.001
+                }
+              ],
+              "fade_seconds": [
+                "FLOAT",
+                {
+                  "default": 0.25,
+                  "min": 0.0,
+                  "max": 1.0,
+                  "step": 0.05
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "AUDIO"
+          ],
+          "function": "smooth"
+        },
+        "H3OneSAM3CropCheck": {
+          "inputs": {
+            "required": {
+              "bboxes": [
+                "BOUNDING_BOX"
+              ],
+              "track_data": [
+                "SAM3_TRACK_DATA"
+              ]
+            },
+            "optional": {
+              "masks": [
+                "MASK"
+              ],
+              "confidence_threshold": [
+                "FLOAT",
+                {
+                  "default": 0.4,
+                  "min": 0.0,
+                  "max": 1.0,
+                  "step": 0.01
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "STRING"
+          ],
+          "function": "inspect"
+        },
+        "H3PaintedRegion": {
+          "inputs": {
+            "required": {
+              "painted": [
+                "MASK"
+              ],
+              "track": [
+                "MASK"
+              ],
+              "grow": [
+                "INT",
+                {
+                  "default": 8,
+                  "min": 0,
+                  "max": 64,
+                  "step": 1
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "MASK"
+          ],
+          "function": "follow"
+        },
+        "H3StitchFrames": {
+          "inputs": {
+            "required": {
+              "image_1": [
+                "IMAGE"
+              ],
+              "padding": [
+                "INT",
+                {
+                  "default": 8,
+                  "min": 0,
+                  "max": 256,
+                  "step": 1
+                }
+              ],
+              "pad_frames": [
+                [
+                  "freeze",
+                  "black"
+                ],
+                {
+                  "default": "freeze"
+                }
+              ],
+              "columns": [
+                "INT",
+                {
+                  "default": 0,
+                  "min": 0,
+                  "max": 4,
+                  "step": 1
+                }
+              ],
+              "background": [
+                "STRING",
+                {
+                  "default": "#000000"
+                }
+              ]
+            },
+            "optional": {
+              "image_2": [
+                "IMAGE"
+              ],
+              "image_3": [
+                "IMAGE"
+              ],
+              "image_4": [
+                "IMAGE"
+              ]
+            }
+          },
+          "return_types": [
+            "IMAGE"
+          ],
+          "function": "stitch"
+        },
+        "H3MotionRefScale": {
+          "inputs": {
+            "required": {
+              "images": [
+                "IMAGE"
+              ],
+              "short_edge": [
+                "INT",
+                {
+                  "default": 256,
+                  "min": 32,
+                  "max": 768,
+                  "step": 32
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "IMAGE"
+          ],
+          "function": "scale"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  },
+  {
+    "id": "h3_fun_control",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_fun_control",
+    "commit": "22a7ec38c4d16a76a8dea53b6e0faa0356f4f220",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_fun_control",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "nodes": {
+        "H3FunControlLoader": {
+          "inputs": {
+            "required": {
+              "control_net_name": [
+                []
+              ]
+            }
+          },
+          "return_types": [
+            "H3_FUN_CONTROL"
+          ],
+          "function": "load"
+        },
+        "H3FunControlApply": {
+          "inputs": {
+            "required": {
+              "model": [
+                "MODEL"
+              ],
+              "control_net": [
+                "H3_FUN_CONTROL"
+              ],
+              "vae": [
+                "VAE"
+              ],
+              "control_video": [
+                "IMAGE"
+              ],
+              "strength": [
+                "FLOAT",
+                {
+                  "default": 1.0,
+                  "min": 0.0,
+                  "max": 2.0,
+                  "step": 0.05,
+                  "tooltip": "Scales every control skip. 0 is a true bypass."
+                }
+              ],
+              "start_percent": [
+                "FLOAT",
+                {
+                  "default": 0.0,
+                  "min": 0.0,
+                  "max": 1.0,
+                  "step": 0.01
+                }
+              ],
+              "end_percent": [
+                "FLOAT",
+                {
+                  "default": 1.0,
+                  "min": 0.0,
+                  "max": 1.0,
+                  "step": 0.01
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "MODEL"
+          ],
+          "function": "apply"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  },
+  {
+    "id": "h3_latent_upscale",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_latent_upscale",
+    "commit": "d7c01b9011f2e8439493f6c02c29995a27df276f",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_latent_upscale",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "nodes": {
+        "MinimaxH3LatentUpscalerNode2D": {
+          "inputs": {
+            "required": {
+              "latent": [
+                "LATENT"
+              ],
+              "model_name": [
+                [
+                  "(\u8bf7\u5c06\u6a21\u578b\u653e\u5165: E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\models\\latent_upscale_models)"
+                ]
+              ],
+              "scale": [
+                "FLOAT",
+                {
+                  "default": 2.0,
+                  "min": 1.0,
+                  "max": 4.0,
+                  "step": 0.1
+                }
+              ],
+              "device": [
+                [
+                  "cuda",
+                  "cpu"
+                ],
+                {
+                  "default": "cuda"
+                }
+              ],
+              "precision": [
+                [
+                  "fp32",
+                  "fp16",
+                  "bf16"
+                ],
+                {
+                  "default": "fp32"
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "LATENT"
+          ],
+          "function": "run"
+        },
+        "MinimaxH3LatentUpscaler3D": {
+          "inputs": "Schema(node_id='MinimaxH3LatentUpscaler3D', display_name='Minimax H3 Latent Upscaler (3D)', category='video/MinimaxH3', inputs=[<comfy_api.latest._io.Input object at 0x00000233A6A9FA50>, <comfy_api.latest._io.Input object at 0x00000233A6AA8990>, <comfy_api.latest._io.Input object at 0x00000233A6AA8650>, <comfy_api.latest._io.Input object at 0x00000233A5762510>, <comfy_api.latest._io.Input object at 0x00000233A6AA8350>, <comfy_api.latest._io.Input object at 0x00000233A6AA85D0>, <comfy_api.latest._io.Input object at 0x00000233A6AA8AD0>, <comfy_api.latest._io.Input object at 0x00000233A6AA8B90>], outputs=[<comfy_api.latest._io.Output object at 0x00000233A6AA8C90>], hidden=[], description='', search_aliases=['minimax', 'h3', 'latent', 'upscale', '3d'], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "*"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MMH3TemporalSplitParamsV10": {
+          "inputs": "Schema(node_id='MMH3TemporalSplitParamsV10', display_name='MMH3 Temporal Split Params', category='latent/upscale/minimax', inputs=[<comfy_api.latest._io.Input object at 0x00000233A5542490>, <comfy_api.latest._io.Input object at 0x00000233A5756650>, <comfy_api.latest._io.Input object at 0x00000233A6AA9610>, <comfy_api.latest._io.Input object at 0x00000233A6AA9A90>, <comfy_api.latest._io.Input object at 0x00000233A6AA9E50>], outputs=[<comfy_api.latest._io.Output object at 0x00000233A6AA9F90>], hidden=[], description='H3 \u539f\u751f\u7f51\u683c\u65f6\u95f4\u5206\u5757 (5+17m \u5e27) + \u4e09\u91cd\u951a\u3002', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "H3_TEMPORAL_PARAM_V10"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MMH3SpatialSplitParamsV10": {
+          "inputs": "Schema(node_id='MMH3SpatialSplitParamsV10', display_name='MMH3 Spatial Split Params', category='latent/upscale/minimax', inputs=[<comfy_api.latest._io.Input object at 0x00000233A5761F50>, <comfy_api.latest._io.Input object at 0x00000233A6AA8C90>, <comfy_api.latest._io.Input object at 0x00000233A6AA8B90>, <comfy_api.latest._io.Input object at 0x00000233A6AAA150>, <comfy_api.latest._io.Input object at 0x00000233A6AAA190>, <comfy_api.latest._io.Input object at 0x00000233A6AAA1D0>], outputs=[<comfy_api.latest._io.Output object at 0x00000233A6AAA210>, <comfy_api.latest._io.Output object at 0x00000233A5542290>], hidden=[], description='\u7b80\u5316\u7a7a\u95f4\u5206\u5757: \u767e\u5206\u6bd4\u91cd\u53e0/\u6e10\u53d8 + \u7f1d\u90bb\u57df\u964d\u566a\u4e0a\u9650\u3002', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "H3_SPATIAL_PARAM_V10",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MMH3SplitUpscale": {
+          "inputs": "Schema(node_id='MMH3SplitUpscale', display_name='MMH3 Split Upscale', category='latent/upscale/minimax', inputs=[<comfy_api.latest._io.Input object at 0x00000233A57569D0>, <comfy_api.latest._io.Input object at 0x00000233A6AAA410>, <comfy_api.latest._io.Input object at 0x00000233A6AAA450>, <comfy_api.latest._io.Input object at 0x00000233A6AAA4D0>, <comfy_api.latest._io.Input object at 0x00000233A6AAA590>, <comfy_api.latest._io.Input object at 0x00000233A6AAA550>, <comfy_api.latest._io.Input object at 0x00000233A6AAA610>, <comfy_api.latest._io.Input object at 0x00000233A6AAA690>, <comfy_api.latest._io.Input object at 0x00000233A6AAA710>, <comfy_api.latest._io.Input object at 0x00000233A6AAA750>, <comfy_api.latest._io.Input object at 0x00000233A6AAA810>, <comfy_api.latest._io.Input object at 0x00000233A6AAA890>], outputs=[<comfy_api.latest._io.Output object at 0x00000233A6AAA990>], hidden=[], description='\u9884\u9632(\u51bb\u7ed3\u9884\u586b+\u4e09\u91cd\u951a) + \u6821\u6b63(\u989c\u8272\u5339\u914d+\u9489\u6e90) + \u6297\u5206\u53c9(seam_denoise) + probe \u95e8\u63a7 polish\u3002', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "LATENT"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  },
+  {
+    "id": "h3_motion_director",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_motion_director",
+    "commit": "f99390645533c0993a8914f2585d7199ebc3e8e2",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_motion_director",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "nodes": {
+        "MiniMaxH3MotionDirector": {
+          "inputs": {
+            "required": {
+              "model": [
+                "MODEL",
+                {
+                  "tooltip": "MiniMax H3 UNET (UNETLoader)."
+                }
+              ],
+              "video_vae": [
+                "VAE",
+                {
+                  "tooltip": "MiniMax H3 video VAE (minimax_h3_video_vae)."
+                }
+              ],
+              "audio_vae": [
+                "VAE",
+                {
+                  "tooltip": "MiniMax H3 audio VAE (minimax_h3_audio_vae). Required for r2v / v2v / rv2v."
+                }
+              ],
+              "clip": [
+                "CLIP",
+                {
+                  "tooltip": "CLIPLoader type=minimax (qwen3vl)."
+                }
+              ],
+              "task_type": [
+                [
+                  "t2v \u2014 \u6587\u751f\u89c6\u9891(Text to Video)",
+                  "i2v \u2014 \u56fe\u751f\u89c6\u9891(Image to Video)",
+                  "fl2v \u2014 \u9996\u5c3e\u5e27\u751f\u89c6\u9891(First-Last Frame)",
+                  "r2v \u2014 \u53c2\u8003\u4e3b\u4f53\u751f\u89c6\u9891(Reference to Video)",
+                  "v2v \u2014 \u89c6\u9891\u8f6c\u89c6\u9891(Video to Video)",
+                  "rv2v \u2014 \u53c2\u8003\u7d20\u6750\u6539\u89c6\u9891(Reference Video Edit)",
+                  "mixed \u2014 \u6df7\u5408\u6a21\u5f0f(Mixed)"
+                ],
+                {
+                  "default": "t2v \u2014 \u6587\u751f\u89c6\u9891(Text to Video)",
+                  "tooltip": "MiniMax H3 Director \u652f\u6301 t2v / i2v / fl2v / r2v / v2v / rv2v / mixed\u3002Mixed \u4e3a\u9010\u6bb5\u5143\u6a21\u5f0f\uff1b\u5176 Segment \u4f1a\u7f16\u8bd1\u6210\u73b0\u6709 H3 task\uff0c\u4e0d\u4f1a\u628a mixed \u9001\u8fdb\u6a21\u578b\u3002\u63d0\u793a\u8bcd\u76f4\u63a5\u9001\u5165 MiniMaxH3ImageToVideo \u6216 MiniMaxH3ReferenceToVideo\uff08\u5185\u90e8 tokenize\uff09\u3002"
+                }
+              ],
+              "global_prompt": [
+                "STRING",
+                {
+                  "default": "A cinematic scene with natural motion and synchronized ambience",
+                  "multiline": true,
+                  "tooltip": "User prompt \u2014 sent directly to MiniMaxH3ImageToVideo / ReferenceToVideo. r2v: <Picture 1>. v2v: source-timeline edit (<Video 1>). rv2v: source timeline + reference images (<Video 1> + <Picture N>). mixed: each segment compiles to an existing H3 task."
+                }
+              ],
+              "bd_grp_sample": [
+                "BDGROUP",
+                {
+                  "default": "\u91c7\u6837\u8bbe\u7f6e"
+                }
+              ],
+              "cfg": [
+                "FLOAT",
+                {
+                  "default": 1.0,
+                  "min": 0.0,
+                  "max": 30.0,
+                  "step": 0.01,
+                  "tooltip": "CFG for KSampler."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 0,
+                  "min": 0,
+                  "max": 18446744073709551615,
+                  "control_after_generate": true,
+                  "tooltip": "Random seed for sampling."
+                }
+              ],
+              "frame_rate": [
+                "FLOAT",
+                {
+                  "default": 24.0,
+                  "min": 1.0,
+                  "max": 240.0,
+                  "step": 0.01,
+                  "tooltip": "Timeline / output FPS (H3 trained at 24)."
+                }
+              ],
+              "width": [
+                "INT",
+                {
+                  "default": 864,
+                  "min": 32,
+                  "max": 8192,
+                  "step": 32
+                }
+              ],
+              "height": [
+                "INT",
+                {
+                  "default": 480,
+                  "min": 32,
+                  "max": 8192,
+                  "step": 32
+                }
+              ],
+              "ref_max_size": [
+                "INT",
+                {
+                  "default": 864,
+                  "min": 32,
+                  "max": 8192,
+                  "step": 32
+                }
+              ],
+              "total_frames": [
+                "INT",
+                {
+                  "default": 124,
+                  "min": 5,
+                  "max": 100000,
+                  "tooltip": "Frame count at 24 fps; snapped to MiniMax 17k+5 grid (124 \u2248 5s)."
+                }
+              ],
+              "timeline_data": [
+                "STRING",
+                {
+                  "default": "",
+                  "multiline": true,
+                  "tooltip": "Internal \u2014 video, segments, refs (populated by UI)."
+                }
+              ]
+            },
+            "optional": {
+              "bd_grp_motion": [
+                "BDGROUP",
+                {
+                  "default": "Motion Context"
+                }
+              ],
+              "motion_context_enabled": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Use the previous segment's final exported frames as real H3 motion history. For segment N>1 this replaces the old single-last-frame continuity handoff."
+                }
+              ],
+              "context_length": [
+                "INT",
+                {
+                  "default": 22,
+                  "min": 1,
+                  "max": 39,
+                  "step": 1,
+                  "tooltip": "Previous exported frames carried into the next segment. Video mode uses H3-valid runs 1, 5, 22 or 39 and snaps down when a shorter value is entered."
+                }
+              ],
+              "source_overlap_frames": [
+                "INT",
+                {
+                  "default": 5,
+                  "min": 0,
+                  "max": 5,
+                  "step": 5,
+                  "tooltip": "V2V/RV2V only. 5 runs an independent H3-native bridge across each eligible boundary: five original source frames are conditioning only, generated frames at B-2/B+2 are anchors, and regenerated B-1/B/B+1 replace the hard cut. Visual Motion Context is skipped. 0 disables Source Bridge. Mixed v1 always forces this to 0 because its Source Videos are segment-local."
+                }
+              ],
+              "audio_context_enabled": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Continue the previous segment's final exported generated audio. Automatically disabled for source or mute audio mode."
+                }
+              ],
+              "color_reanchor_enabled": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Re-anchor incoming Motion Context color statistics to a stable reference to reduce cumulative color drift."
+                }
+              ],
+              "bd_grp_advanced": [
+                "BDGROUP",
+                {
+                  "default": "\u9ad8\u7ea7\u91c7\u6837"
+                }
+              ],
+              "steps": [
+                "INT",
+                {
+                  "default": 25,
+                  "min": 1,
+                  "max": 200,
+                  "tooltip": "Sampling steps \u2014 official template: 25."
+                }
+              ],
+              "sampler_name": [
+                [
+                  "euler",
+                  "euler_cfg_pp",
+                  "euler_ancestral",
+                  "euler_ancestral_cfg_pp",
+                  "heun",
+                  "heunpp2",
+                  "exp_heun_2_x0",
+                  "exp_heun_2_x0_sde",
+                  "dpm_2",
+                  "dpm_2_ancestral",
+                  "lms",
+                  "dpm_fast",
+                  "dpm_adaptive",
+                  "dpmpp_2s_ancestral",
+                  "dpmpp_2s_ancestral_cfg_pp",
+                  "dpmpp_sde",
+                  "dpmpp_sde_gpu",
+                  "dpmpp_2m",
+                  "dpmpp_2m_cfg_pp",
+                  "dpmpp_2m_sde",
+                  "dpmpp_2m_sde_gpu",
+                  "dpmpp_2m_sde_heun",
+                  "dpmpp_2m_sde_heun_gpu",
+                  "dpmpp_3m_sde",
+                  "dpmpp_3m_sde_gpu",
+                  "ddpm",
+                  "lcm",
+                  "ipndm",
+                  "ipndm_v",
+                  "deis",
+                  "res_multistep",
+                  "res_multistep_cfg_pp",
+                  "res_multistep_ancestral",
+                  "res_multistep_ancestral_cfg_pp",
+                  "gradient_estimation",
+                  "gradient_estimation_cfg_pp",
+                  "er_sde",
+                  "seeds_2",
+                  "seeds_3",
+                  "sa_solver",
+                  "sa_solver_pece",
+                  "ddim",
+                  "uni_pc",
+                  "uni_pc_bh2"
+                ],
+                {
+                  "default": "res_multistep",
+                  "tooltip": "Internal mode sampler. Official template: res_multistep."
+                }
+              ],
+              "scheduler": [
+                [
+                  "simple",
+                  "sgm_uniform",
+                  "karras",
+                  "exponential",
+                  "ddim_uniform",
+                  "beta",
+                  "normal",
+                  "linear_quadratic",
+                  "kl_optimal"
+                ],
+                {
+                  "default": "simple",
+                  "tooltip": "Official template: BasicScheduler simple."
+                }
+              ],
+              "shift_video": [
+                "FLOAT",
+                {
+                  "default": 12.0,
+                  "min": 0.01,
+                  "max": 100.0,
+                  "step": 0.01,
+                  "tooltip": "MiniMaxH3SigmaShift shift_video."
+                }
+              ],
+              "shift_audio": [
+                "FLOAT",
+                {
+                  "default": 3.0,
+                  "min": 0.01,
+                  "max": 100.0,
+                  "step": 0.01,
+                  "tooltip": "MiniMaxH3SigmaShift shift_audio."
+                }
+              ],
+              "sampler": [
+                "SAMPLER",
+                {
+                  "tooltip": "External mode: connect KSamplerSelect or MiniMax-H3 Turbo Sampler."
+                }
+              ],
+              "sigmas": [
+                "SIGMAS",
+                {
+                  "tooltip": "External mode: connect BasicScheduler or another standard ComfyUI scheduler built from the same H3 MODEL."
+                }
+              ],
+              "bd_grp_perf": [
+                "BDGROUP",
+                {
+                  "default": "\u6027\u80fd"
+                }
+              ],
+              "clear_vram_between_segments": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "\u6bb5\u95f4\u6e05\u7406\u663e\u5b58\uff1a\u6bcf\u6bb5\u7ed3\u675f\u540e\u5378\u8f7d\u6a21\u578b\u5e76\u6e05\u7a7a CUDA \u7f13\u5b58\u3002"
+                }
+              ],
+              "export_source_images": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "\u8f93\u51fa source_images\uff08\u65f6\u95f4\u8f74\u539f\u7247\u5e27\u5bf9\u6bd4\uff09\u3002\u9ed8\u8ba4\u5173\u4ee5\u8282\u7701\u5185\u5b58\u3002"
+                }
+              ],
+              "bd_grp_experimental": [
+                "BDGROUP",
+                {
+                  "default": "Experimental"
+                }
+              ],
+              "pin_renorm_enabled": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Re-normalize only the previous segment's video latent tail to the first handoff std of the current visual chain. Does not modify audio, source video, Picture references, or RGB Color Re-anchor."
+                }
+              ],
+              "postprocess_config": [
+                "STRING",
+                {
+                  "default": "",
+                  "multiline": false,
+                  "tooltip": "Internal Director post-processing and Output Preview configuration."
+                }
+              ],
+              "director_inputs": [
+                "MMX_MOTION_DIR_INPUTS",
+                {
+                  "forceInput": true,
+                  "tooltip": "Unified external prompts/assets. Connect MiniMax H3 Motion Director Inputs. Mode and group count are controlled by this Director."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID",
+              "prompt": "PROMPT",
+              "extra_pnginfo": "EXTRA_PNGINFO"
+            }
+          },
+          "return_types": [
+            "IMAGE",
+            "AUDIO",
+            "FLOAT"
+          ],
+          "function": "execute"
+        },
+        "MiniMaxH3MotionDirectorInputs": {
+          "inputs": {
+            "required": {},
+            "optional": {}
+          },
+          "return_types": [
+            "MMX_MOTION_DIR_INPUTS"
+          ],
+          "function": "pack"
+        },
+        "MiniMaxH3MotionDirectorAssets": {
+          "inputs": {
+            "required": {},
+            "optional": {}
+          },
+          "return_types": [
+            "MMX_MOTION_DIR_ASSETS"
+          ],
+          "function": "pack"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  },
+  {
+    "id": "h3_prompt_rewriter",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_prompt_rewriter",
+    "commit": "5a265ac32063a91b73f09e85dddea31623f21c66",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_prompt_rewriter",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "nodes": {
+        "MiniMaxH3PromptRewriter": {
+          "inputs": {
+            "required": {
+              "prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "The short prompt to expand into an H3 audio-video description."
+                }
+              ],
+              "model": [
+                [
+                  "Qwen3.6-27B (official, bf16) \u00b7 51.8 GB download \u00b7 16 GB as nf4 / 28 GB as int8 / 54 GB as bf16",
+                  "Qwen3.6-27B bnb-4bit (samajlouis) \u00b7 17.3 GB download \u00b7 ~16 GB, nothing extra to install \u2014 third-party repack, not published by Qwen",
+                  "Qwen3.6-27B bnb-4bit (wyzxxywl) \u00b7 16.8 GB download \u00b7 ~16 GB, nothing extra to install \u2014 third-party repack, not published by Qwen",
+                  "Qwen3.6-27B FP8 \u00b7 28.8 GB download \u00b7 ~29 GB \u2014 advanced: needs the 'kernels' package plus a Triton kernel download, and leaves no room for the video model beside it",
+                  "Qwen3.6-27B GGUF Q8_0 \u00b7 26.6 GB download \u00b7 ~30 GB with the adapter \u2014 needs ~30 GB of VRAM; lower gpu_layers if it will not fit",
+                  "Qwen3.6-27B GGUF Q6_K \u00b7 21 GB download \u00b7 ~25 GB with the adapter",
+                  "Qwen3.6-27B GGUF Q5_K_M \u00b7 18.2 GB download \u00b7 ~22 GB with the adapter",
+                  "Qwen3.6-27B GGUF Q4_K_M \u00b7 15.7 GB download \u00b7 ~19 GB with the adapter, less if you offload fewer layers",
+                  "Qwen3.6-27B GGUF IQ4_XS \u00b7 14.4 GB download \u00b7 ~18 GB with the adapter",
+                  "Qwen3.6-27B GGUF UD-Q3_K_XL \u00b7 13.5 GB download \u00b7 ~17 GB with the adapter",
+                  "Qwen3.6-27B GGUF UD-IQ2_M \u00b7 10.1 GB download \u00b7 ~13 GB with the adapter \u2014 smallest usable quant, noticeably lower fidelity",
+                  "Qwen3.6-27B Uncensored (HauhauCS) GGUF Q8_K_P \u00b7 29.8 GB download \u00b7 ~33 GB with the adapter \u2014 abliterated fine-tune, not the base the LoRA was trained on; needs ~33 GB of VRAM, so most cards will need lower gpu_layers",
+                  "Qwen3.6-27B Uncensored (HauhauCS) GGUF Q6_K_P \u00b7 21.6 GB download \u00b7 ~25 GB with the adapter \u2014 abliterated fine-tune, not the base the LoRA was trained on",
+                  "Qwen3.6-27B Uncensored (HauhauCS) GGUF Q5_K_P \u00b7 19.4 GB download \u00b7 ~23 GB with the adapter \u2014 abliterated fine-tune, not the base the LoRA was trained on",
+                  "Qwen3.6-27B Uncensored (HauhauCS) GGUF Q4_K_P \u00b7 16.3 GB download \u00b7 ~20 GB with the adapter \u2014 abliterated fine-tune, not the base the LoRA was trained on"
+                ],
+                {
+                  "tooltip": "Base model. Entries prefixed 'on disk:' are already downloaded; the rest are fetched on first use. GGUF entries need no extra install: without llama-cpp-python the node fetches the official llama.cpp binaries. Use the button to edit the list."
+                }
+              ],
+              "resolution": [
+                [
+                  "48:9",
+                  "32:9",
+                  "21:9",
+                  "16:9",
+                  "4:3",
+                  "1:1",
+                  "3:4",
+                  "9:16"
+                ],
+                {
+                  "default": "16:9",
+                  "socketless": true,
+                  "tooltip": "Target aspect ratio the rewrite is composed for. It has no socket on purpose: a ratio arriving from the graph belongs on 'aspect_ratio', which reads the spellings other nodes use and overrides this while it is connected."
+                }
+              ],
+              "duration": [
+                "FLOAT,INT",
+                {
+                  "widgetType": "FLOAT",
+                  "default": 10.0,
+                  "min": 0.1,
+                  "max": 600.0,
+                  "step": 0.1,
+                  "round": 0.1,
+                  "tooltip": "Target clip length in seconds; drives shot count and pacing.\n\nRight-click the node for 'duration': the default value back, or a new upper end for the widget. It offers 30 seconds until you change it and the server takes up to 600, because a widget's range is fixed when the node is declared and one number cannot suit every graph -- MiniMax's own guide is written around clips of a few seconds, while the stretched pipelines the community has built run well past that. What you set is remembered with the workflow."
+                }
+              ],
+              "quantization": [
+                [
+                  "nf4",
+                  "int8",
+                  "bfloat16",
+                  "float16"
+                ],
+                {
+                  "default": "nf4",
+                  "tooltip": "How to load an unquantized checkpoint: nf4 needs about 16 GB of VRAM, int8 about 28 GB, bfloat16 about 54 GB. Ignored for GGUF models and for checkpoints that are already quantized."
+                }
+              ],
+              "greedy": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Deterministic decoding. Turn off to sample; see the options node."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 42,
+                  "min": 0,
+                  "max": 4294967295,
+                  "control_after_generate": true
+                }
+              ],
+              "keep_model_loaded": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Keep the 27B model in VRAM after the rewrite. Leave off when the same GPU has to run MiniMax-H3 video generation afterwards \u2014 or give the rewriter a card of its own with 'device' in the options node, and then there is nothing to compete with."
+                }
+              ]
+            },
+            "optional": {
+              "aspect_ratio": [
+                "STRING,COMBO",
+                {
+                  "default": "",
+                  "widgetType": "STRING",
+                  "tooltip": "Optional, and it overrides the picker while something is connected. Reads a ratio ('16:9'), a frame size ('3840x1080') or a bare number ('1.78'), and a label around the pair is fine -- '3:4 (Portrait Standard)' reads as 3:4. A size within 2% of a listed ratio is called by its name, so 1376x768 arrives as 16:9 rather than as 43:24."
+                }
+              ],
+              "options": [
+                "H3_REWRITER_OPTIONS"
+              ],
+              "bypass": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand 'prompt' straight to the output and run no model at all: nothing is downloaded, nothing is loaded, no VRAM is touched. This is what ComfyUI's own bypass (Ctrl+B) cannot do here - it only forwards a connected link, and every input this node writes from is a widget, so bypassing the node the usual way leaves the nodes downstream with nothing. The section outputs come back empty."
+                }
+              ],
+              "repeat_last": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand back a prompt this node already has instead of running the model again.\n\nBy default that is the node's own last answer: with nothing kept yet it runs once, keeps what it wrote and says so, and from then on returns that same text for as long as the switch is on, whatever else you change. Pick something in the library window and this switch hands that saved prompt on instead -- the window chooses which prompt, this switch is what makes it happen.\n\nOff is always a real run. The session store is in memory only, one answer per node: it is not saved with the workflow and does not survive a restart, while a saved prompt does both. 'bypass' still wins over all of it."
+                }
+              ],
+              "library_pick": [
+                "STRING",
+                {
+                  "default": "",
+                  "tooltip": "Which saved prompt this node hands on instead of writing one, as JSON written by the library window. It is a widget so the choice is saved with the workflow and reaches an API run: a pick the graph does not carry is a graph that reproduces something else.\n\nIt applies only while 'repeat_last' is on. That switch is what hands a kept prompt on at all; this says which one, and empty means the node's own last answer."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "rewrite"
+        },
+        "MiniMaxH3RewriterOptions": {
+          "inputs": {
+            "required": {
+              "max_new_tokens": [
+                "INT",
+                {
+                  "default": 2048,
+                  "min": 64,
+                  "max": 16384,
+                  "step": 64
+                }
+              ],
+              "temperature": [
+                "FLOAT",
+                {
+                  "default": 0.7,
+                  "min": 0.0,
+                  "max": 2.0,
+                  "step": 0.01
+                }
+              ],
+              "top_p": [
+                "FLOAT",
+                {
+                  "default": 0.8,
+                  "min": 0.0,
+                  "max": 1.0,
+                  "step": 0.01
+                }
+              ],
+              "top_k": [
+                "INT",
+                {
+                  "default": 20,
+                  "min": 0,
+                  "max": 200
+                }
+              ],
+              "repetition_penalty": [
+                "FLOAT",
+                {
+                  "default": 1.05,
+                  "min": 1.0,
+                  "max": 2.0,
+                  "step": 0.01
+                }
+              ],
+              "attn_implementation": [
+                [
+                  "sdpa",
+                  "eager",
+                  "flash_attention_2"
+                ],
+                {
+                  "default": "sdpa",
+                  "tooltip": "Non-GGUF models only."
+                }
+              ]
+            },
+            "optional": {
+              "adapter": [
+                [
+                  "lightx2v/MiniMax-H3-Prompt-Rewriter-LoRA",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-F16.gguf \u00b7 3.48 GB download",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-Q8_0.gguf \u00b7 1.85 GB download \u2014 half the size, same rewrite behaviour",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-8B-F16.gguf \u00b7 1.3 GB download",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-8B-Q8_0.gguf \u00b7 0.69 GB download \u2014 half the size, same rewrite behaviour",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-Omni-F16.gguf \u00b7 0.65 GB download",
+                  "MiniMax-H3-Prompt-Rewriter-LoRA-Omni-Q8_0.gguf \u00b7 0.34 GB download \u2014 half the size, same rewrite behaviour"
+                ],
+                {
+                  "default": "lightx2v/MiniMax-H3-Prompt-Rewriter-LoRA",
+                  "tooltip": "Which build of the prompt-rewriter LoRA to use. The first entry means whichever one the model list names for the base model you picked. Below it are the published precisions - F16 and the smaller Q8_0, which rewrites the same and halves the download - and any '.gguf' adapter already in your ComfyUI model folders."
+                }
+              ],
+              "use_lora": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Turn off to run the plain Qwen3.6-27B baseline."
+                }
+              ],
+              "merge_lora": [
+                [
+                  "auto",
+                  "on",
+                  "off"
+                ],
+                {
+                  "default": "auto",
+                  "tooltip": "Fold the adapter into the base weights once at load, rather than running it as its own matmuls on every token. Measured on Qwen3-VL-8B: 25 tokens a second against 14. 'auto' merges on an unquantized base, where it costs 0.07 s and nothing else, and leaves the adapter attached on a bitsandbytes 4-bit or 8-bit one, where merging means dequantizing and quantizing back. 'on' merges there too, for about 4.5 s at load and the same speed afterwards.\n\nA merged run is not word-for-word the unmerged one at the same seed: folding the adapter in reassociates the arithmetic, so a token here and there comes out different. GGUF is unaffected."
+                }
+              ],
+              "auto_download": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Fetch missing weights from Hugging Face. Turn off to fail instead."
+                }
+              ],
+              "gpu_layers": [
+                "INT",
+                {
+                  "default": -1,
+                  "min": -1,
+                  "max": 999,
+                  "tooltip": "GGUF only: layers to put on the GPU. -1 is all of them; lower it to fit a smaller card, at the cost of speed."
+                }
+              ],
+              "n_ctx": [
+                "INT",
+                {
+                  "default": 8192,
+                  "min": 2048,
+                  "max": 131072,
+                  "step": 1024,
+                  "tooltip": "GGUF only: context size llama.cpp allocates."
+                }
+              ],
+              "gguf_runtime": [
+                [
+                  "auto",
+                  "llama-cpp-python",
+                  "llama.cpp"
+                ],
+                {
+                  "default": "auto",
+                  "tooltip": "GGUF only: what runs the model. 'auto' uses llama-cpp-python when it is importable and the official llama.cpp binaries otherwise. Force 'llama.cpp' if an installed wheel is broken; force 'llama-cpp-python' to keep the model resident between runs, which the binaries cannot do."
+                }
+              ],
+              "device": [
+                [
+                  "auto",
+                  "cuda:0",
+                  "cpu"
+                ],
+                {
+                  "default": "auto",
+                  "tooltip": "Which device the language model runs on. 'auto' behaves as before.\n\nPick a second card and two things change: the model no longer competes with ComfyUI's own for VRAM, and 'keep_model_loaded' becomes worth turning on, because nothing has to be evicted to make room.\n\nVisible here:\n  cuda:0 \u2014 NVIDIA GeForce RTX 5090, 31.8 GB"
+                }
+              ],
+              "llama_backend": [
+                [
+                  "auto",
+                  "vulkan",
+                  "cuda",
+                  "cpu"
+                ],
+                {
+                  "default": "auto",
+                  "tooltip": "GGUF only, and only when llama-cpp-python is absent: which official llama.cpp build to fetch. 'auto' takes CUDA on Windows with a supported NVIDIA card (511 MB, about twice as fast) and Vulkan otherwise. Pick 'vulkan' to keep the download at 34 MB.\n\nNothing is fetched at all when llama.cpp is already here: a build on PATH, one named in MINIMAX_H3_LLAMA_BIN, or a path written into user/minimax_h3_rewriter/llama_bin.txt is run as it is -- the file being the one that works when the server's environment is not yours to set. That is the way to a CUDA llama.cpp on Linux, where upstream publishes no CUDA build."
+                }
+              ],
+              "trust_remote_code": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Non-GGUF models only. Some checkpoints ship their own Python and Transformers runs it when the model loads. Off means such a model is refused rather than executed. Turn it on only for a model you picked and trust \u2014 not because a downloaded workflow asked for it."
+                }
+              ],
+              "prompt_file": [
+                [
+                  "global"
+                ],
+                {
+                  "default": "global",
+                  "tooltip": "Which set of saved prompts the nodes connected to this one work in: the file the save dialog writes to and the library window lists. One file is one working set, so a workflow can keep its prompts apart from the rest.\n\nThe button below makes a new one. The list is read when ComfyUI starts, so a file made by hand needs a browser refresh to appear here -- the same as the model list. Nothing in the run reads this: a prompt already chosen carries its own file name, so the pick keeps working whatever this says."
+                }
+              ],
+              "self_check": [
+                [
+                  "warnings and notes",
+                  "warnings only",
+                  "off"
+                ],
+                {
+                  "default": "warnings and notes",
+                  "tooltip": "How much of the self-check the nodes connected to this one say out loud. Every fresh answer is read back against the rules of MiniMax's own writing guides -- shot numbering and cut times against the duration, dialogue markup, reference tags against what the task takes and what is connected, retention entries, the alignment line.\n\n'warnings and notes' says everything. 'warnings only' drops the guide's softer suggestions, such as the 350-500 word length, and keeps what H3 will likely misread. 'off' says nothing.\n\nThe reading itself is regexes over text already in memory and costs nothing, so this decides what is reported, not what is looked at -- 'fix_once' keeps working with this off. It does not cover the nodes' own warnings about their inputs, which are about your wiring rather than the model's prose and are always said."
+                }
+              ],
+              "fix_once": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Let the nodes act on what the self-check found, instead of only saying it. Off -- the default -- means the answer you get is exactly what the model wrote.\n\nTwo things happen when it is on. The alignment line of the frame tasks is a fixed sentence the node already knows, so a model that dropped it simply gets it back: no model, no risk. And for the mechanical findings -- a cut time past the end, an unbalanced <d>, a tag pointing at a reference that is not there -- the writer is asked once more with those findings folded into the prompt as rules.\n\nOnce, never a loop: a model that ignored a rule twice will ignore it a third time, and every attempt costs a full generation. The re-run is skipped on an answer too broken to rescue, and its result is kept only if it is genuinely better -- otherwise the first answer stands. Whatever happens is said on the node."
+                }
+              ]
+            }
+          },
+          "return_types": [
+            "H3_REWRITER_OPTIONS"
+          ],
+          "function": "build"
+        },
+        "MiniMaxH3GuidedWriter": {
+          "inputs": {
+            "required": {
+              "prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "The short prompt to expand into an H3 audio-video description."
+                }
+              ],
+              "model": [
+                [
+                  "Qwen3.5-4B \u00b7 2.6 GB download \u00b7 ~5 GB with the guide in context \u2014 smallest that still holds the format; start here on an 8 GB card",
+                  "Qwen3.5-9B \u00b7 5.3 GB download \u00b7 ~8 GB with the guide in context \u2014 best writing per gigabyte; lower gpu_layers if 8 GB is tight",
+                  "Qwen3.5-9B Uncensored (HauhauCS) \u00b7 5.2 GB download \u00b7 ~8 GB with the guide in context \u2014 abliterated fine-tune: does not refuse scenes the stock model declines to describe",
+                  "Gemma 3 12B Instruct \u00b7 6.8 GB download \u00b7 ~10 GB with the guide in context \u2014 non-Qwen alternative; its chat template takes no system role, which the node handles",
+                  "Mistral Small 3.2 24B Instruct \u00b7 13.4 GB download \u00b7 ~17 GB with the guide in context \u2014 for a 16 GB card and up, when the 9B's prose is not enough",
+                  "Qwen3.8-27B Q2_K_XL \u00b7 9.2 GB download \u00b7 ~13 GB with the guide in context \u2014 the 27B's prose on a 16 GB card; unsloth's dynamic 2-bit, rougher than the Q4 but still the biggest writer this side of it",
+                  "Qwen3.8-27B Q3_K_XL \u00b7 12.2 GB download \u00b7 ~16 GB with the guide in context \u2014 the middle road: most of the Q4's quality, three gigabytes less to hold",
+                  "Qwen3.8-27B Q4_K_M \u00b7 15.3 GB download \u00b7 ~19 GB with the guide in context \u2014 the strongest prose in the list, for a 24 GB card; newer than the rewriter's own base, but its extra layer is why the 27B LoRA cannot ride it",
+                  "Qwen3.8-27B Q6_K_XL \u00b7 23.6 GB download \u00b7 ~27 GB with the guide in context \u2014 near-lossless, for a 32 GB card - and little room for the video model beside it; lower gpu_layers if it will not fit",
+                  "ollama: jornada-orquestrador:latest [mistral3, 14.1 GB]",
+                  "ollama: medgemma-jornada:latest [gemma3, 3.1 GB]",
+                  "ollama: pemara-qwen3.6-27b-uncensored-mm-q6kp:latest [qwen35, 21.6 GB]",
+                  "ollama: qwen3.5:4b [qwen35, 3.2 GB]",
+                  "ollama: qwen3.5:4b-thinking [qwen35, 3.2 GB]",
+                  "ollama: qwen3.8-27b-uncensored-yarn-524k:latest [qwen35, 18.2 GB]"
+                ],
+                {
+                  "tooltip": "Any GGUF language model. Entries prefixed 'on disk:' are already in your ComfyUI model folders and 'ollama:' ones are models you pulled for Ollama; the rest are fetched on first use. Nothing has to be installed: without llama-cpp-python the node runs the official llama.cpp binaries."
+                }
+              ],
+              "task": [
+                [
+                  "T2VA",
+                  "I2VA",
+                  "FL2VA",
+                  "L2VA"
+                ],
+                {
+                  "default": "T2VA",
+                  "tooltip": "T2VA: text only. I2VA: the reference image is the first frame. FL2VA: first and last frame. L2VA: the reference image is the last frame. Everything but T2VA also writes the alignment instruction line, with the duration already filled in."
+                }
+              ],
+              "resolution": [
+                [
+                  "48:9",
+                  "32:9",
+                  "21:9",
+                  "16:9",
+                  "4:3",
+                  "1:1",
+                  "3:4",
+                  "9:16"
+                ],
+                {
+                  "default": "16:9",
+                  "socketless": true,
+                  "tooltip": "Target aspect ratio the rewrite is composed for. It has no socket on purpose: a ratio arriving from the graph belongs on 'aspect_ratio', which reads the spellings other nodes use and overrides this while it is connected."
+                }
+              ],
+              "duration": [
+                "FLOAT,INT",
+                {
+                  "widgetType": "FLOAT",
+                  "default": 10.0,
+                  "min": 0.1,
+                  "max": 600.0,
+                  "step": 0.1,
+                  "round": 0.1,
+                  "tooltip": "Target clip length in seconds; drives shot count and pacing.\n\nRight-click the node for 'duration': the default value back, or a new upper end for the widget. It offers 30 seconds until you change it and the server takes up to 600, because a widget's range is fixed when the node is declared and one number cannot suit every graph -- MiniMax's own guide is written around clips of a few seconds, while the stretched pipelines the community has built run well past that. What you set is remembered with the workflow."
+                }
+              ],
+              "greedy": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Deterministic decoding. Worth keeping on for small models, which drift out of the format when they sample."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 42,
+                  "min": 0,
+                  "max": 4294967295,
+                  "control_after_generate": true
+                }
+              ],
+              "keep_model_loaded": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Keep the writer in VRAM after the rewrite. Leave off when the same GPU has to run MiniMax-H3 video generation afterwards \u2014 or send it to a second card with 'device' in the options node."
+                }
+              ]
+            },
+            "optional": {
+              "aspect_ratio": [
+                "STRING,COMBO",
+                {
+                  "default": "",
+                  "widgetType": "STRING",
+                  "tooltip": "Optional, and it overrides the picker while something is connected. Reads a ratio ('16:9'), a frame size ('3840x1080') or a bare number ('1.78'), and a label around the pair is fine -- '3:4 (Portrait Standard)' reads as 3:4. A size within 2% of a listed ratio is called by its name, so 1376x768 arrives as 16:9 rather than as 43:24."
+                }
+              ],
+              "reference_material": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "This node reads text, not pixels. For I2VA, FL2VA and L2VA, describe what the reference frames show \u2014 by hand, or from a captioner node \u2014 so the rewrite is anchored to them.\n\nDescribe what the reference frames show, one per line:\nPicture 1: ...\n"
+                }
+              ],
+              "options": [
+                "H3_REWRITER_OPTIONS"
+              ],
+              "bypass": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand 'prompt' straight to the output and run no model at all: nothing is downloaded, nothing is loaded, no VRAM is touched. This is what ComfyUI's own bypass (Ctrl+B) cannot do here - it only forwards a connected link, and every input this node writes from is a widget, so bypassing the node the usual way leaves the nodes downstream with nothing. The section outputs come back empty."
+                }
+              ],
+              "system_prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "Replace the whole assembled guide with your own system prompt, and the guide is not even fetched. This is what aims these nodes at something other than MiniMax-H3: the H3 format lives in that text and nowhere else, so a guide written for LTX, Krea or Wan makes this a writer for those. 'MiniMax-H3 Guide Prompt (any LLM)' hands you the stock one on its 'system_prompt' output - the shortest way in is to take it, edit it and connect it back here.\n\nLeft empty, nothing changes. The task message is never replaced: it carries the prompt, the aspect ratio and the duration, which any guide needs.\n\nOne consequence to expect. This node splits the answer into the H3 sections, so a guide that replies with a paragraph fills 'rewritten_prompt' and leaves the section outputs empty. That is worth knowing rather than worth avoiding."
+                }
+              ],
+              "repeat_last": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand back a prompt this node already has instead of running the model again.\n\nBy default that is the node's own last answer: with nothing kept yet it runs once, keeps what it wrote and says so, and from then on returns that same text for as long as the switch is on, whatever else you change. Pick something in the library window and this switch hands that saved prompt on instead -- the window chooses which prompt, this switch is what makes it happen.\n\nOff is always a real run. The session store is in memory only, one answer per node: it is not saved with the workflow and does not survive a restart, while a saved prompt does both. 'bypass' still wins over all of it."
+                }
+              ],
+              "library_pick": [
+                "STRING",
+                {
+                  "default": "",
+                  "tooltip": "Which saved prompt this node hands on instead of writing one, as JSON written by the library window. It is a widget so the choice is saved with the workflow and reaches an API run: a pick the graph does not carry is a graph that reproduces something else.\n\nIt applies only while 'repeat_last' is on. That switch is what hands a kept prompt on at all; this says which one, and empty means the node's own last answer."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "write"
+        },
+        "MiniMaxH3GuidedWriterRef": {
+          "inputs": {
+            "required": {
+              "prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "What the target video should show, and how it uses the references."
+                }
+              ],
+              "reference_assets": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "Required. One asset per line \u2014 the node reads text, not pixels, so this is all the model knows about them. Label them Picture N, Video N or Audio N and say what each one is for.\n\nList every reference asset, one per line:\nPicture 1: young woman, long dark hair, blue cardigan, seated by a window\nVideo 1: source clip being edited \u2014 handheld walk down a night street\nAudio 1: voice-timbre reference for the woman\n"
+                }
+              ],
+              "model": [
+                [
+                  "Qwen3.5-4B \u00b7 2.6 GB download \u00b7 ~5 GB with the guide in context \u2014 smallest that still holds the format; start here on an 8 GB card",
+                  "Qwen3.5-9B \u00b7 5.3 GB download \u00b7 ~8 GB with the guide in context \u2014 best writing per gigabyte; lower gpu_layers if 8 GB is tight",
+                  "Qwen3.5-9B Uncensored (HauhauCS) \u00b7 5.2 GB download \u00b7 ~8 GB with the guide in context \u2014 abliterated fine-tune: does not refuse scenes the stock model declines to describe",
+                  "Gemma 3 12B Instruct \u00b7 6.8 GB download \u00b7 ~10 GB with the guide in context \u2014 non-Qwen alternative; its chat template takes no system role, which the node handles",
+                  "Mistral Small 3.2 24B Instruct \u00b7 13.4 GB download \u00b7 ~17 GB with the guide in context \u2014 for a 16 GB card and up, when the 9B's prose is not enough",
+                  "Qwen3.8-27B Q2_K_XL \u00b7 9.2 GB download \u00b7 ~13 GB with the guide in context \u2014 the 27B's prose on a 16 GB card; unsloth's dynamic 2-bit, rougher than the Q4 but still the biggest writer this side of it",
+                  "Qwen3.8-27B Q3_K_XL \u00b7 12.2 GB download \u00b7 ~16 GB with the guide in context \u2014 the middle road: most of the Q4's quality, three gigabytes less to hold",
+                  "Qwen3.8-27B Q4_K_M \u00b7 15.3 GB download \u00b7 ~19 GB with the guide in context \u2014 the strongest prose in the list, for a 24 GB card; newer than the rewriter's own base, but its extra layer is why the 27B LoRA cannot ride it",
+                  "Qwen3.8-27B Q6_K_XL \u00b7 23.6 GB download \u00b7 ~27 GB with the guide in context \u2014 near-lossless, for a 32 GB card - and little room for the video model beside it; lower gpu_layers if it will not fit",
+                  "ollama: jornada-orquestrador:latest [mistral3, 14.1 GB]",
+                  "ollama: medgemma-jornada:latest [gemma3, 3.1 GB]",
+                  "ollama: pemara-qwen3.6-27b-uncensored-mm-q6kp:latest [qwen35, 21.6 GB]",
+                  "ollama: qwen3.5:4b [qwen35, 3.2 GB]",
+                  "ollama: qwen3.5:4b-thinking [qwen35, 3.2 GB]",
+                  "ollama: qwen3.8-27b-uncensored-yarn-524k:latest [qwen35, 18.2 GB]"
+                ],
+                {
+                  "tooltip": "Any GGUF language model. The full-reference guide is the longer of the two, so a 4B will hold the format but a 9B keeps the labels consistent across all six sections."
+                }
+              ],
+              "resolution": [
+                [
+                  "48:9",
+                  "32:9",
+                  "21:9",
+                  "16:9",
+                  "4:3",
+                  "1:1",
+                  "3:4",
+                  "9:16"
+                ],
+                {
+                  "default": "16:9",
+                  "socketless": true,
+                  "tooltip": "Target aspect ratio the rewrite is composed for. It has no socket on purpose: a ratio arriving from the graph belongs on 'aspect_ratio', which reads the spellings other nodes use and overrides this while it is connected."
+                }
+              ],
+              "duration": [
+                "FLOAT,INT",
+                {
+                  "widgetType": "FLOAT",
+                  "default": 10.0,
+                  "min": 0.1,
+                  "max": 600.0,
+                  "step": 0.1,
+                  "round": 0.1,
+                  "tooltip": "Target clip length in seconds; drives shot count and pacing.\n\nRight-click the node for 'duration': the default value back, or a new upper end for the widget. It offers 30 seconds until you change it and the server takes up to 600, because a widget's range is fixed when the node is declared and one number cannot suit every graph -- MiniMax's own guide is written around clips of a few seconds, while the stretched pipelines the community has built run well past that. What you set is remembered with the workflow."
+                }
+              ],
+              "greedy": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Deterministic decoding. Keep it on unless the result is too plain."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 42,
+                  "min": 0,
+                  "max": 4294967295,
+                  "control_after_generate": true
+                }
+              ],
+              "keep_model_loaded": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Keep the writer in VRAM after the rewrite."
+                }
+              ]
+            },
+            "optional": {
+              "aspect_ratio": [
+                "STRING,COMBO",
+                {
+                  "default": "",
+                  "widgetType": "STRING",
+                  "tooltip": "Optional, and it overrides the picker while something is connected. Reads a ratio ('16:9'), a frame size ('3840x1080') or a bare number ('1.78'), and a label around the pair is fine -- '3:4 (Portrait Standard)' reads as 3:4. A size within 2% of a listed ratio is called by its name, so 1376x768 arrives as 16:9 rather than as 43:24."
+                }
+              ],
+              "options": [
+                "H3_REWRITER_OPTIONS"
+              ],
+              "bypass": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand 'prompt' straight to the output and run no model at all: nothing is downloaded, nothing is loaded, no VRAM is touched. This is what ComfyUI's own bypass (Ctrl+B) cannot do here - it only forwards a connected link, and every input this node writes from is a widget, so bypassing the node the usual way leaves the nodes downstream with nothing. The section outputs come back empty."
+                }
+              ],
+              "system_prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "Replace the whole assembled guide with your own system prompt, and the guide is not even fetched. This is what aims these nodes at something other than MiniMax-H3: the H3 format lives in that text and nowhere else, so a guide written for LTX, Krea or Wan makes this a writer for those. 'MiniMax-H3 Guide Prompt (any LLM)' hands you the stock one on its 'system_prompt' output - the shortest way in is to take it, edit it and connect it back here.\n\nLeft empty, nothing changes. The task message is never replaced: it carries the prompt, the aspect ratio and the duration, which any guide needs.\n\nOne consequence to expect. This node splits the answer into the H3 sections, so a guide that replies with a paragraph fills 'rewritten_prompt' and leaves the section outputs empty. That is worth knowing rather than worth avoiding."
+                }
+              ],
+              "repeat_last": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand back a prompt this node already has instead of running the model again.\n\nBy default that is the node's own last answer: with nothing kept yet it runs once, keeps what it wrote and says so, and from then on returns that same text for as long as the switch is on, whatever else you change. Pick something in the library window and this switch hands that saved prompt on instead -- the window chooses which prompt, this switch is what makes it happen.\n\nOff is always a real run. The session store is in memory only, one answer per node: it is not saved with the workflow and does not survive a restart, while a saved prompt does both. 'bypass' still wins over all of it."
+                }
+              ],
+              "library_pick": [
+                "STRING",
+                {
+                  "default": "",
+                  "tooltip": "Which saved prompt this node hands on instead of writing one, as JSON written by the library window. It is a widget so the choice is saved with the workflow and reaches an API run: a pick the graph does not carry is a graph that reproduces something else.\n\nIt applies only while 'repeat_last' is on. That switch is what hands a kept prompt on at all; this says which one, and empty means the node's own last answer."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "write"
+        },
+        "MiniMaxH3GuidePrompt": {
+          "inputs": {
+            "required": {
+              "prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": ""
+                }
+              ],
+              "task": [
+                [
+                  "T2VA",
+                  "I2VA",
+                  "FL2VA",
+                  "L2VA",
+                  "Ref2VA"
+                ],
+                {
+                  "default": "T2VA",
+                  "tooltip": "Ref2VA uses the full-reference guide and its six output sections."
+                }
+              ],
+              "resolution": [
+                [
+                  "48:9",
+                  "32:9",
+                  "21:9",
+                  "16:9",
+                  "4:3",
+                  "1:1",
+                  "3:4",
+                  "9:16"
+                ],
+                {
+                  "default": "16:9",
+                  "socketless": true,
+                  "tooltip": "Target aspect ratio the rewrite is composed for. It has no socket on purpose: a ratio arriving from the graph belongs on 'aspect_ratio', which reads the spellings other nodes use and overrides this while it is connected."
+                }
+              ],
+              "duration": [
+                "FLOAT,INT",
+                {
+                  "widgetType": "FLOAT",
+                  "default": 10.0,
+                  "min": 0.1,
+                  "max": 600.0,
+                  "step": 0.1,
+                  "round": 0.1,
+                  "tooltip": "Target clip length in seconds; drives shot count and pacing.\n\nRight-click the node for 'duration': the default value back, or a new upper end for the widget. It offers 30 seconds until you change it and the server takes up to 600, because a widget's range is fixed when the node is declared and one number cannot suit every graph -- MiniMax's own guide is written around clips of a few seconds, while the stretched pipelines the community has built run well past that. What you set is remembered with the workflow."
+                }
+              ]
+            },
+            "optional": {
+              "aspect_ratio": [
+                "STRING,COMBO",
+                {
+                  "default": "",
+                  "widgetType": "STRING",
+                  "tooltip": "Optional, and it overrides the picker while something is connected. Reads a ratio ('16:9'), a frame size ('3840x1080') or a bare number ('1.78'), and a label around the pair is fine -- '3:4 (Portrait Standard)' reads as 3:4. A size within 2% of a listed ratio is called by its name, so 1376x768 arrives as 16:9 rather than as 43:24."
+                }
+              ],
+              "reference_material": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "What the reference frames or assets show. Required for Ref2VA.\n\nList every reference asset, one per line:\nPicture 1: young woman, long dark hair, blue cardigan, seated by a window\nVideo 1: source clip being edited \u2014 handheld walk down a night street\nAudio 1: voice-timbre reference for the woman\n"
+                }
+              ],
+              "auto_download": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Fetch the guide from MiniMaxAI/MiniMax-H3 if it is not already in the ComfyUI user directory."
+                }
+              ],
+              "format": [
+                [
+                  "plain",
+                  "chatml"
+                ],
+                {
+                  "default": "plain",
+                  "tooltip": "How the third output joins the two. 'plain' puts a blank line between them and lets the LLM node apply the model's own chat template, which lands the guide in the user turn. 'chatml' writes the turns out instead, so a Qwen text encoder takes the guide as a real system message and skips its thinking block; on a model that is not ChatML, leave this on 'plain'."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "build"
+        },
+        "MiniMaxH3ReferenceCaption": {
+          "inputs": {
+            "required": {
+              "role": [
+                [
+                  "Subject",
+                  "Picture",
+                  "Video",
+                  "Audio"
+                ],
+                {
+                  "default": "Picture",
+                  "tooltip": "Subject: a person, object or place to reuse. Picture: this frame is a concrete first/last/key frame. Video: a clip whose structure or content is reused. Audio: a sound or voice reference. The role picks both the label and what the model is asked for."
+                }
+              ],
+              "model": [
+                [
+                  "Qwen2.5-Omni-3B \u00b7 3.4 GB download \u00b7 ~5 GB \u2014 image, audio and video in one small model; verified against this pack",
+                  "Qwen2.5-Omni-7B \u00b7 5.8 GB download \u00b7 ~8 GB \u2014 same modalities, better prose; step up when the 3B's captions are too plain",
+                  "ollama: pemara-qwen3.6-27b-uncensored-mm-q6kp:latest [+mmproj, vision, 22.4 GB]",
+                  "ollama: qwen3.8-27b-uncensored-yarn-524k:latest [+mmproj, vision, 19.1 GB]"
+                ],
+                {
+                  "tooltip": "A multimodal GGUF and its projector. Entries prefixed 'on disk:' are pairs already in your ComfyUI model folders, 'ollama:' ones are vision models you pulled for Ollama. Not every multimodal GGUF works: llama.cpp's mtmd has to understand the projector, and some current models abort while loading it. Ignored entirely while 'clip' is connected."
+                }
+              ],
+              "length": [
+                [
+                  "brief",
+                  "standard",
+                  "detailed"
+                ],
+                {
+                  "default": "standard",
+                  "tooltip": "How much the model is asked to write."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 42,
+                  "min": 0,
+                  "max": 4294967295,
+                  "control_after_generate": true
+                }
+              ]
+            },
+            "optional": {
+              "image": [
+                "IMAGE",
+                {
+                  "tooltip": "A frame, or a batch of frames from a clip."
+                }
+              ],
+              "audio": [
+                "AUDIO"
+              ],
+              "video": [
+                "VIDEO"
+              ],
+              "clip": [
+                "CLIP",
+                {
+                  "tooltip": "A multimodal text encoder loaded by 'CLIPLoader' \u2014 Qwen3-VL or Gemma-4. Connect it and this asset is described by that model instead of by 'model', which stays loaded between runs rather than being read off disk each time. Only Gemma-4 E2B, E4B and 12B can hear audio. Leave it unconnected and nothing changes."
+                }
+              ],
+              "previous": [
+                "STRING",
+                {
+                  "forceInput": true,
+                  "tooltip": "reference_assets from the previous caption node in the chain."
+                }
+              ],
+              "description": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "Type the description yourself and no model is run at all \u2014 the fastest way to add an asset you can describe in a few words."
+                }
+              ],
+              "instruction": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "Override what the model is asked. Empty uses the role's own question."
+                }
+              ],
+              "max_frames": [
+                "INT",
+                {
+                  "default": 8,
+                  "min": 1,
+                  "max": 64,
+                  "tooltip": "How many frames to take from an IMAGE batch, spread evenly. All of them would overflow the context and the wall clock."
+                }
+              ],
+              "context_size": [
+                "INT",
+                {
+                  "default": 0,
+                  "min": 0,
+                  "max": 131072,
+                  "step": 1024,
+                  "tooltip": "0 sizes the context from the references and the card: llama.cpp reserves the whole KV cache up front, and a model trained for 256k would ask for tens of GB of it before looking at anything. Set a number to say it yourself; too small a value fails the run outright rather than truncating."
+                }
+              ],
+              "options": [
+                "H3_REWRITER_OPTIONS"
+              ],
+              "bypass": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Pass 'previous' through unchanged and run no model at all, which drops this asset from the chain without unwiring it. Numbering stays correct: each node numbers what it receives, so the assets after this one close the gap. 'caption' comes back empty."
+                }
+              ],
+              "repeat_last": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand back the last caption this node produced instead of looking at the asset again.\n\nWith nothing kept yet the node describes it once, keeps the caption and says so; from then on it reuses that caption, numbered into the chain as usual, so the assets before and after this one stay correct. Switch it off for a real run, which replaces what is kept.\n\nThe store is in memory for this ComfyUI session only, one caption per node: it is not saved with the workflow and does not survive a restart. 'bypass' still wins over it, and a 'description' typed by hand skips the model regardless."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING"
+          ],
+          "function": "describe"
+        },
+        "MiniMaxH3PromptWriter8B": {
+          "inputs": {
+            "required": {
+              "prompt": [
+                "STRING",
+                {
+                  "multiline": true,
+                  "default": "",
+                  "tooltip": "The short prompt to expand into an H3 audio-video description."
+                }
+              ],
+              "model": [
+                [
+                  "Qwen3-VL-8B-Instruct (official, bf16) \u00b7 17.5 GB download \u00b7 ~8 GB as nf4 / ~13 GB as int8 / ~20 GB as bf16",
+                  "Qwen3-VL-8B-Instruct GGUF Q4_K_M \u00b7 5.4 GB download \u00b7 ~9 GB with the adapter",
+                  "Qwen3-VL-8B-Instruct GGUF Q8_0 \u00b7 8.8 GB download \u00b7 ~13 GB with the adapter"
+                ],
+                {
+                  "tooltip": "A Qwen3-VL-8B base. A GGUF entry is two files from one conversion, the model and its projector; a safetensors entry is the official folder the adapter was trained on. Entries prefixed 'on disk:' are already in your ComfyUI model folders; the rest are fetched on first use. Only the 8B fits the adapter - another size is refused by name and number before anything is downloaded."
+                }
+              ],
+              "task": [
+                [
+                  "T2VA",
+                  "I2VA",
+                  "FL2VA",
+                  "L2VA"
+                ],
+                {
+                  "default": "T2VA",
+                  "tooltip": "T2VA: text only, no frames. I2VA: 'first_frame' is the first frame. FL2VA: both frames. L2VA: 'last_frame' is the final frame. The model calls these T2AV, I2AV, FL2AV and L2AV; they are the same four."
+                }
+              ],
+              "resolution": [
+                [
+                  "48:9",
+                  "32:9",
+                  "21:9",
+                  "16:9",
+                  "4:3",
+                  "1:1",
+                  "3:4",
+                  "9:16"
+                ],
+                {
+                  "default": "16:9",
+                  "socketless": true,
+                  "tooltip": "Target aspect ratio the rewrite is composed for. It has no socket on purpose: a ratio arriving from the graph belongs on 'aspect_ratio', which reads the spellings other nodes use and overrides this while it is connected."
+                }
+              ],
+              "duration": [
+                "FLOAT,INT",
+                {
+                  "widgetType": "FLOAT",
+                  "default": 10.0,
+                  "min": 0.1,
+                  "max": 600.0,
+                  "step": 0.1,
+                  "round": 0.1,
+                  "tooltip": "Target clip length in seconds; drives shot count and pacing.\n\nRight-click the node for 'duration': the default value back, or a new upper end for the widget. It offers 30 seconds until you change it and the server takes up to 600, because a widget's range is fixed when the node is declared and one number cannot suit every graph -- MiniMax's own guide is written around clips of a few seconds, while the stretched pipelines the community has built run well past that. What you set is remembered with the workflow."
+                }
+              ],
+              "quantization": [
+                [
+                  "nf4",
+                  "int8",
+                  "bfloat16",
+                  "float16"
+                ],
+                {
+                  "default": "nf4",
+                  "tooltip": "How to load the safetensors build: nf4 needs about 8 GB of VRAM, int8 about 13 GB, bfloat16 about 20 GB. Ignored for GGUF models, which carry their own quantization, and for checkpoints that are already quantized."
+                }
+              ],
+              "greedy": [
+                "BOOLEAN",
+                {
+                  "default": true,
+                  "tooltip": "Deterministic decoding. Turn off to sample; see the options node."
+                }
+              ],
+              "seed": [
+                "INT",
+                {
+                  "default": 42,
+                  "min": 0,
+                  "max": 4294967295,
+                  "control_after_generate": true
+                }
+              ],
+              "keep_model_loaded": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Keep the model in VRAM after the rewrite. A safetensors base honours it on every task, being loaded in this process. A GGUF base can only honour it on T2VA: the tasks with frames run in a subprocess, which takes the model with it when it exits."
+                }
+              ]
+            },
+            "optional": {
+              "aspect_ratio": [
+                "STRING,COMBO",
+                {
+                  "default": "",
+                  "widgetType": "STRING",
+                  "tooltip": "Optional, and it overrides the picker while something is connected. Reads a ratio ('16:9'), a frame size ('3840x1080') or a bare number ('1.78'), and a label around the pair is fine -- '3:4 (Portrait Standard)' reads as 3:4. A size within 2% of a listed ratio is called by its name, so 1376x768 arrives as 16:9 rather than as 43:24."
+                }
+              ],
+              "first_frame": [
+                "IMAGE",
+                {
+                  "tooltip": "The exact first frame, for I2VA and FL2VA. The model looks at it and anchors the opening shot to what is actually in the picture."
+                }
+              ],
+              "last_frame": [
+                "IMAGE",
+                {
+                  "tooltip": "The exact final frame, for L2VA and FL2VA. Connect this one rather than 'first_frame' for L2VA -- which end of the clip a picture belongs to is what the model is told."
+                }
+              ],
+              "options": [
+                "H3_REWRITER_OPTIONS"
+              ],
+              "bypass": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand 'prompt' straight to the output and run no model at all: nothing is downloaded, nothing is loaded, no VRAM is touched. This is what ComfyUI's own bypass (Ctrl+B) cannot do here - it only forwards a connected link, and every input this node writes from is a widget, so bypassing the node the usual way leaves the nodes downstream with nothing. The section outputs come back empty."
+                }
+              ],
+              "repeat_last": [
+                "BOOLEAN",
+                {
+                  "default": false,
+                  "tooltip": "Hand back a prompt this node already has instead of running the model again.\n\nBy default that is the node's own last answer: with nothing kept yet it runs once, keeps what it wrote and says so, and from then on returns that same text for as long as the switch is on, whatever else you change. Pick something in the library window and this switch hands that saved prompt on instead -- the window chooses which prompt, this switch is what makes it happen.\n\nOff is always a real run. The session store is in memory only, one answer per node: it is not saved with the workflow and does not survive a restart, while a saved prompt does both. 'bypass' still wins over all of it."
+                }
+              ],
+              "library_pick": [
+                "STRING",
+                {
+                  "default": "",
+                  "tooltip": "Which saved prompt this node hands on instead of writing one, as JSON written by the library window. It is a widget so the choice is saved with the workflow and reaches an API run: a pick the graph does not carry is a graph that reproduces something else.\n\nIt applies only while 'repeat_last' is on. That switch is what hands a kept prompt on at all; this says which one, and empty means the node's own last answer."
+                }
+              ]
+            },
+            "hidden": {
+              "unique_id": "UNIQUE_ID"
+            }
+          },
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "rewrite"
+        },
+        "MiniMaxH3MultiReferenceCaption": {
+          "inputs": "Schema(node_id='MiniMaxH3MultiReferenceCaption', display_name='MiniMax-H3 Multi Reference Caption', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CF917D0>, <comfy_api.latest._io.Input object at 0x000002204CF922D0>, <comfy_api.latest._io.Input object at 0x000002204CF91250>, <comfy_api.latest._io.Input object at 0x000002204CF92950>, <comfy_api.latest._io.Input object at 0x000002204CE53510>, <comfy_api.latest._io.Input object at 0x000002204CF92FD0>, <comfy_api.latest._io.Input object at 0x000002204B4CA050>, <comfy_api.latest._io.Input object at 0x000002204CE74110>, <comfy_api.latest._io.Input object at 0x000002204CF93210>, <comfy_api.latest._io.Input object at 0x000002204CF90290>, <comfy_api.latest._io.Input object at 0x000002204CF90310>, <comfy_api.latest._io.Input object at 0x000002204CF93250>, <comfy_api.latest._io.Input object at 0x000002204CF93690>, <comfy_api.latest._io.Input object at 0x000002204CF901D0>, <comfy_api.latest._io.Input object at 0x000002204CF93610>, <comfy_api.latest._io.Input object at 0x000002204CF93950>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CF93910>, <comfy_api.latest._io.Output object at 0x000002204A6A4110>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Describes every connected reference asset with a small multimodal model and writes them out as one finished 'reference_assets' block for the Ref2VA writer. The group an asset is plugged into decides its label, so the four labels the guide allows are the only four that can come out. Inputs grow as you fill them, and the strip below shows what is connected: click a square to silence that reference without unplugging it, and the band under a square asks that one reference something other than its role's usual question.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3UniversalWriter": {
+          "inputs": "Schema(node_id='MiniMaxH3UniversalWriter', display_name='MiniMax-H3 Universal Writer', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CF92610>, <comfy_api.latest._io.Input object at 0x000002204CE3AA50>, <comfy_api.latest._io.Input object at 0x000002204CF8EF90>, <comfy_api.latest._io.Input object at 0x000002204CF8EFD0>, <comfy_api.latest._io.Input object at 0x000002204CF8F050>, <comfy_api.latest._io.Input object at 0x000002204CF8F150>, <comfy_api.latest._io.Input object at 0x000002204CF8F210>, <comfy_api.latest._io.MultiType.Input object at 0x000002204B4CA690>, <comfy_api.latest._io.Input object at 0x000002204CF8F290>, <comfy_api.latest._io.Input object at 0x000002204CF8F490>, <comfy_api.latest._io.Input object at 0x000002204CF8D5D0>, <comfy_api.latest._io.Input object at 0x000002204CF90190>, <comfy_api.latest._io.Input object at 0x000002204CF90090>, <comfy_api.latest._io.Input object at 0x000002204CF90110>, <comfy_api.latest._io.Input object at 0x000002204CF90150>, <comfy_api.latest._io.Input object at 0x000002204CF90050>, <comfy_api.latest._io.Input object at 0x000002204CF900D0>, <comfy_api.latest._io.Input object at 0x000002204CF92690>, <comfy_api.latest._io.Input object at 0x000002204CF906D0>, <comfy_api.latest._io.Input object at 0x000002204CFB7B50>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CFB7D10>, <comfy_api.latest._io.Input object at 0x000002204CFB7310>, <comfy_api.latest._io.Input object at 0x000002204CFB7E50>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CF8FE90>, <comfy_api.latest._io.Output object at 0x000002204CF8FC90>, <comfy_api.latest._io.Output object at 0x000002204CF8FD10>, <comfy_api.latest._io.Output object at 0x000002204CF8FC50>, <comfy_api.latest._io.Output object at 0x000002204CF8FBD0>, <comfy_api.latest._io.Output object at 0x000002204CF8FD50>, <comfy_api.latest._io.Output object at 0x000002204CF8FF10>, <comfy_api.latest._io.Output object at 0x000002204CF8FE50>, <comfy_api.latest._io.Output object at 0x000002204CF8F850>, <comfy_api.latest._io.Output object at 0x000002204CF8F590>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Describes every connected reference and writes the finished MiniMax-H3 prompt, in one node, for all five tasks. One socket takes an image, a clip or a sound; the strip under the inputs shows what is connected and in what order, and dragging a square renumbers the block. A square's badge says what its image is for -- a frame, a subject, or a batch to read as a clip -- which is how one socket still produces the four labels the Ref2VA guide allows. No LoRA anywhere: both models are ordinary GGUFs.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3PromptCheck": {
+          "inputs": "Schema(node_id='MiniMaxH3PromptCheck', display_name='MiniMax-H3 Prompt Check', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CF91C90>, <comfy_api.latest._io.Input object at 0x000002204BAC8210>, <comfy_api.latest._io.Input object at 0x000002204CE15490>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CF2C2D0>, <comfy_api.latest._io.Input object at 0x000002204CF2C410>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CF2CE10>, <comfy_api.latest._io.Output object at 0x000002204CF2CE50>, <comfy_api.latest._io.Output object at 0x000002204CF2CE90>, <comfy_api.latest._io.Output object at 0x000002204CF2CED0>, <comfy_api.latest._io.Output object at 0x000002204CF2CF10>, <comfy_api.latest._io.Output object at 0x000002204CF2CF50>, <comfy_api.latest._io.Output object at 0x000002204CF2CF90>, <comfy_api.latest._io.Output object at 0x000002204CF2CFD0>, <comfy_api.latest._io.Output object at 0x000002204CF2D010>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Reads a finished MiniMax-H3 prompt against the rules the guides are written by, and splits it into its fields. The text arrives on a socket, so a prompt written outside this pack -- by another node, or by hand -- gets the same reading as one written inside it: shot numbering, cut times against the duration, dialogue markup, reference tags against what the task can take and what is actually connected.\\n\\nNo model is loaded and nothing is generated. What goes in comes out of the first output unchanged; what the rules found comes out of the last one, and is announced on screen the way a rewrite's own findings are.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3PromptPresets": {
+          "inputs": "Schema(node_id='MiniMaxH3PromptPresets', display_name='MiniMax-H3 Prompt Presets', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CE15550>], outputs=[<comfy_api.latest._io.Output object at 0x000002204BE218D0>, <comfy_api.latest._io.Output object at 0x000002204CF90150>, <comfy_api.latest._io.Output object at 0x000002204CF90090>, <comfy_api.latest._io.Output object at 0x000002204CF8F150>, <comfy_api.latest._io.Output object at 0x000002204CFB7310>, <comfy_api.latest._io.Output object at 0x000002204CFB7E50>, <comfy_api.latest._io.Output object at 0x000002204CF2C110>, <comfy_api.latest._io.Output object at 0x000002204CF2D0D0>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Hands on one of the thousand MiniMax-H3 prompts that ship with the pack. Pick one in the browser -- filtered by shooting style, subject, shape or words, with the frame of the clip it was written for -- and its text comes out ready to use.\\n\\nThey are finished T2VA prompts in the format the writers here produce, so 'prompt' can go straight to the generator, or into a writer's own prompt input to be rewritten from. No model is loaded and nothing is downloaded during a run.\\n\\nThe prompts and the clips they describe are ostris's work, carried here with the author's permission and with credit. The prompts are his own and effectively MIT; the clips are MiniMax-H3 output, whose licence forbids using it to train models, and the frames cut from them by this pack carry that same restriction.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "FLOAT",
+            "INT",
+            "INT",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3ReferenceAdapter": {
+          "inputs": "Schema(node_id='MiniMaxH3ReferenceAdapter', display_name='MiniMax-H3 Reference Adapter', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CF2C0D0>, <comfy_api.latest._io.Input object at 0x000002204CE53F90>, <comfy_api.latest._io.Input object at 0x000002204CF2C790>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CF2C8D0>, <comfy_api.latest._io.Output object at 0x000002204CF2CB90>, <comfy_api.latest._io.Output object at 0x000002204CF2CB10>, <comfy_api.latest._io.Output object at 0x000002204CF2CA90>, <comfy_api.latest._io.Output object at 0x000002204CF2CA10>, <comfy_api.latest._io.Output object at 0x000002204CF2C9D0>, <comfy_api.latest._io.Output object at 0x000002204CF2C990>, <comfy_api.latest._io.Output object at 0x000002204CF2C690>, <comfy_api.latest._io.Output object at 0x000002204CF2C650>, <comfy_api.latest._io.Output object at 0x000002204CF2CC10>, <comfy_api.latest._io.Output object at 0x000002204CF2D1D0>, <comfy_api.latest._io.Output object at 0x000002204CF2D250>, <comfy_api.latest._io.Output object at 0x000002204CF2D2D0>, <comfy_api.latest._io.Output object at 0x000002204CF2D350>, <comfy_api.latest._io.Output object at 0x000002204CF2D3D0>, <comfy_api.latest._io.Output object at 0x000002204CF2D450>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description='Takes references that arrive together -- an image batch, a list from another node, or a bundle from another pack -- and hands them back one to a socket, which is the shape the writer nodes take.\\n\\nNothing is loaded, decoded or described here: the values are passed through as they arrived, only sorted by kind and separated. Outputs left over are empty, and an empty one can be wired or not without changing the run.\\n\\nNine pictures, three clips and three sounds are what Ref2VA can hold, so that is what there is room for. Anything past it is reported on the summary output rather than silently dropped.', search_aliases=[], is_input_list=True, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "IMAGE",
+            "VIDEO",
+            "VIDEO",
+            "VIDEO",
+            "AUDIO",
+            "AUDIO",
+            "AUDIO",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3PromptWriterOmni": {
+          "inputs": "Schema(node_id='MiniMaxH3PromptWriterOmni', display_name='MiniMax-H3 Prompt Rewriter Omni (sees and hears)', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CF8E010>, <comfy_api.latest._io.Input object at 0x000002204CF2DB50>, <comfy_api.latest._io.Input object at 0x000002204CF2E950>, <comfy_api.latest._io.Input object at 0x000002204CF2EB10>, <comfy_api.latest._io.Input object at 0x000002204CF2EBD0>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CF2ECD0>, <comfy_api.latest._io.Input object at 0x000002204CF2EC90>, <comfy_api.latest._io.Input object at 0x000002204CF2EF10>, <comfy_api.latest._io.Input object at 0x000002204CF2EE90>, <comfy_api.latest._io.Input object at 0x000002204CF2F0D0>, <comfy_api.latest._io.Input object at 0x000002204CF2EED0>, <comfy_api.latest._io.Input object at 0x000002204CF2F150>, <comfy_api.latest._io.Input object at 0x000002204CF2F190>, <comfy_api.latest._io.Input object at 0x000002204CF2F250>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CF2F350>, <comfy_api.latest._io.Input object at 0x000002204CF2F290>, <comfy_api.latest._io.Input object at 0x000002204CF2F510>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CF2F490>, <comfy_api.latest._io.Output object at 0x000002204CF2F590>, <comfy_api.latest._io.Output object at 0x000002204CF2F5D0>, <comfy_api.latest._io.Output object at 0x000002204CF2F610>, <comfy_api.latest._io.Output object at 0x000002204CF2F650>, <comfy_api.latest._io.Output object at 0x000002204CF2F690>, <comfy_api.latest._io.Output object at 0x000002204CF2F6D0>, <comfy_api.latest._io.Output object at 0x000002204CF2F710>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Rewrites a short prompt into a MiniMax-H3 audio-video description with lightx2v's third LoRA, on Qwen2.5-Omni-7B. It is the only one of the three that hears: a reference reaches it as the picture, the clip or the sound itself, and it covers all five tasks including Ref2AV, the full-reference mode with six output fields. One socket takes any of the three kinds; the strip below shows what is connected and in what order, and that order is what numbers the labels.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3UniversalRewriter": {
+          "inputs": "Schema(node_id='MiniMaxH3UniversalRewriter', display_name='MiniMax-H3 Universal Rewriter', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CFC4F90>, <comfy_api.latest._io.Input object at 0x000002204B4BEED0>, <comfy_api.latest._io.Input object at 0x000002204CFC5010>, <comfy_api.latest._io.Input object at 0x000002204CFC5050>, <comfy_api.latest._io.Input object at 0x000002204CFC5150>, <comfy_api.latest._io.Input object at 0x000002204CFC5210>, <comfy_api.latest._io.Input object at 0x000002204CFC5310>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CFC5450>, <comfy_api.latest._io.Input object at 0x000002204CFC5390>, <comfy_api.latest._io.Input object at 0x000002204CFB61D0>, <comfy_api.latest._io.Input object at 0x000002204CF90C90>, <comfy_api.latest._io.Input object at 0x000002204CF90D90>, <comfy_api.latest._io.Input object at 0x000002204CFB6450>, <comfy_api.latest._io.Input object at 0x000002204CFB5990>, <comfy_api.latest._io.Input object at 0x000002204CFB5850>, <comfy_api.latest._io.Input object at 0x000002204CFB5750>, <comfy_api.latest._io.Input object at 0x000002204CFB6690>, <comfy_api.latest._io.Input object at 0x000002204CFC72D0>, <comfy_api.latest._io.Input object at 0x000002204CFC4250>, <comfy_api.latest._io.Input object at 0x000002204CFC41D0>, <comfy_api.latest._io.Input object at 0x000002204CFC6AD0>, <comfy_api.latest._io.MultiType.Input object at 0x000002204CFC6CD0>, <comfy_api.latest._io.Input object at 0x000002204CFC7590>, <comfy_api.latest._io.Input object at 0x000002204CFC7D90>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CFC7B90>, <comfy_api.latest._io.Output object at 0x000002204CFC5C50>, <comfy_api.latest._io.Output object at 0x000002204CFC7110>, <comfy_api.latest._io.Output object at 0x000002204CFC7B10>, <comfy_api.latest._io.Output object at 0x000002204CFC6C50>, <comfy_api.latest._io.Output object at 0x000002204CFC6A90>, <comfy_api.latest._io.Output object at 0x000002204CFC75D0>, <comfy_api.latest._io.Output object at 0x000002204CFC6C90>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description='Runs any of the three MiniMax-H3 prompt-rewriter LoRAs and returns a structured audio-video description. The tab at the top picks the adapter: 27B is text-only and writes T2VA; 8B and Omni are multimodal and look at the frames you connect, so they also write I2VA, FL2VA and L2VA. Only the base model and its quantization belong to a tab -- the prompt, the aspect ratio, the duration and the seed are shared, so trying another adapter is one click rather than a second node. Weights are fetched on first use.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3PromptReducer": {
+          "inputs": "Schema(node_id='MiniMaxH3PromptReducer', display_name='MiniMax-H3 Prompt Reducer', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CFC5690>, <comfy_api.latest._io.Input object at 0x000002204CFC7990>, <comfy_api.latest._io.Input object at 0x000002204CF92FD0>, <comfy_api.latest._io.Input object at 0x000002204CF918D0>, <comfy_api.latest._io.Input object at 0x000002204CF92D10>, <comfy_api.latest._io.Input object at 0x000002204CF91C50>, <comfy_api.latest._io.Input object at 0x000002204CF92650>, <comfy_api.latest._io.Input object at 0x000002204CF92750>, <comfy_api.latest._io.Input object at 0x000002204CF92890>, <comfy_api.latest._io.Input object at 0x000002204CF90290>, <comfy_api.latest._io.Input object at 0x000002204CF92D50>, <comfy_api.latest._io.Input object at 0x000002204CF92910>, <comfy_api.latest._io.Input object at 0x000002204CF92290>, <comfy_api.latest._io.Input object at 0x000002204CF92CD0>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CFC7F50>, <comfy_api.latest._io.Output object at 0x000002204CFC5D10>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Turns a finished MiniMax-H3 prompt back into the short line it could have been written from: 'A black cat walks along a fence' out of four hundred words of blocking, light and sound.\\n\\nThe format is taken apart without a model first -- field names, the alignment sentence, the [Shot n] markers, the <Picture n> tags and the sound sections all come off by rule -- so what the model is asked is only 'shorten this paragraph', which a 4B can do. Reference bindings go with the scaffolding: the result describes a video, not a set of pictures the next run will not have.\\n\\nThree things it is for: changing one word of a prompt you liked without rewriting the other four hundred, feeding a prompt written for H3 to a generator that wants a short one, and putting a readable line on a saved prompt.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3ReducePrompt": {
+          "inputs": "Schema(node_id='MiniMaxH3ReducePrompt', display_name='MiniMax-H3 Reduce Prompt (any LLM)', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002204CE44590>, <comfy_api.latest._io.Input object at 0x000002204CFC52D0>, <comfy_api.latest._io.Input object at 0x000002204CFC6AD0>, <comfy_api.latest._io.Input object at 0x000002204CFC7950>, <comfy_api.latest._io.Input object at 0x000002204CFC7690>, <comfy_api.latest._io.Input object at 0x000002204CFC5D50>, <comfy_api.latest._io.Input object at 0x000002204CFC5610>, <comfy_api.latest._io.Input object at 0x000002204CFCC210>, <comfy_api.latest._io.Input object at 0x000002204CFCC1D0>], outputs=[<comfy_api.latest._io.Output object at 0x000002204CFC7DD0>, <comfy_api.latest._io.Output object at 0x000002204CFCC150>, <comfy_api.latest._io.Output object at 0x000002204CFCC110>, <comfy_api.latest._io.Output object at 0x000002204CFCC190>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Turns a finished MiniMax-H3 prompt back into the short line it could have been written from: 'A black cat walks along a fence' out of four hundred words of blocking, light and sound.\\n\\nThe format is taken apart without a model first -- field names, the alignment sentence, the [Shot n] markers, the <Picture n> tags and the sound sections all come off by rule -- so what the model is asked is only 'shorten this paragraph', which a 4B can do. Reference bindings go with the scaffolding: the result describes a video, not a set of pictures the next run will not have.\\n\\nThis one runs nothing. It hands back the system and user messages as strings for whatever LLM node you already have -- local, API, or remote -- and costs no VRAM and no time. The parsing still happens here, so the scene your model receives is already clean. The third output is both messages in one string, for a node that takes a single prompt.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "STRING",
+            "STRING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  },
+  {
+    "id": "h3_timeline_director",
+    "source": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_timeline_director",
+    "commit": "e4d6d5ea44eb00e2414d16dd94883be8e2661213",
+    "probe": {
+      "plugin": "E:\\Pemara\\maestro\\runtimes\\creative-os-lab-20260907\\sources\\h3_timeline_director",
+      "cpu_only": true,
+      "workflow_executed": false,
+      "route_registry_fixture": true,
+      "nodes": {
+        "MiniMaxH3TimelineDirector": {
+          "inputs": "Schema(node_id='MiniMaxH3TimelineDirector', display_name='MiniMax H3 Timeline Director', category='model/conditioning/minimax', inputs=[<comfy_api.latest._io.Input object at 0x000002D257C77A50>, <comfy_api.latest._io.Input object at 0x000002D22F820FD0>, <comfy_api.latest._io.Input object at 0x000002D22F821010>, <comfy_api.latest._io.Input object at 0x000002D22F820F90>, <comfy_api.latest._io.Input object at 0x000002D22F799FD0>, <comfy_api.latest._io.Input object at 0x000002D22F821350>, <comfy_api.latest._io.Input object at 0x000002D22F821B10>, <comfy_api.latest._io.Input object at 0x000002D22F820E50>, <comfy_api.latest._io.Input object at 0x000002D22F7CAC90>], outputs=[<comfy_api.latest._io.Output object at 0x000002D22DCEA690>, <comfy_api.latest._io.Output object at 0x000002D230858750>, <comfy_api.latest._io.Output object at 0x000002D230858890>, <comfy_api.latest._io.Output object at 0x000002D230858910>], hidden=[], description='Assemble H3 references on an editable timeline. Overlapping video can use native Add Guide, editable reference, or boundary-only mode; gaps automatically anchor their boundary frames.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "CONDITIONING",
+            "LATENT",
+            "AUDIO",
+            "AUDIO"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3TimelinePlanner": {
+          "inputs": "Schema(node_id='MiniMaxH3TimelinePlanner', display_name='MiniMax H3 Material Planner', category='model/conditioning/minimax', inputs=[<comfy_api.latest._io.Input object at 0x000002D22F799CD0>, <comfy_api.latest._io.Input object at 0x000002D22DC75750>, <comfy_api.latest._io.Input object at 0x000002D22EE49710>, <comfy_api.latest._io.Input object at 0x000002D22EE49F10>, <comfy_api.latest._io.Input object at 0x000002D23085B210>], outputs=[<comfy_api.latest._io.Output object at 0x000002D23085B690>, <comfy_api.latest._io.Output object at 0x000002D23085B750>], hidden=[], description='Edit a timeline and output a lightweight material plan. The plan may feed a prompt rewriter before the rewritten prompt and same plan enter the H3 Plan Encoder, avoiding cycles.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "MINIMAX_H3_TIMELINE_PLAN",
+            "MINIMAX_H3_OMNI_MEDIA_BUNDLE"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3TimelineEncoder": {
+          "inputs": "Schema(node_id='MiniMaxH3TimelineEncoder', display_name='MiniMax H3 Plan Encoder', category='model/conditioning/minimax', inputs=[<comfy_api.latest._io.Input object at 0x000002D22EE48AD0>, <comfy_api.latest._io.Input object at 0x000002D22DD0D750>, <comfy_api.latest._io.Input object at 0x000002D22F821B10>, <comfy_api.latest._io.Input object at 0x000002D230858750>, <comfy_api.latest._io.Input object at 0x000002D2308589D0>, <comfy_api.latest._io.Input object at 0x000002D230858910>], outputs=[<comfy_api.latest._io.Output object at 0x000002D23085B950>, <comfy_api.latest._io.Output object at 0x000002D23085BA10>, <comfy_api.latest._io.Output object at 0x000002D23085BA50>, <comfy_api.latest._io.Output object at 0x000002D23085BAD0>], hidden=[], description='Encode a material plan and final H3 prompt into references, native Guides, conditioning, and AV latent.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "CONDITIONING",
+            "LATENT",
+            "AUDIO",
+            "AUDIO"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3OmniPromptBridge": {
+          "inputs": "Schema(node_id='MiniMaxH3OmniPromptBridge', display_name='MiniMax H3 Omni Media Prompt Bridge', category='MiniMax-H3', inputs=[<comfy_api.latest._io.Input object at 0x000002D23085BCD0>, <comfy_api.latest._io.Input object at 0x000002D22EE4A790>, <comfy_api.latest._io.Input object at 0x000002D23085BE90>, <comfy_api.latest._io.Input object at 0x000002D23085BE50>, <comfy_api.latest._io.Input object at 0x000002D23085BFD0>, <comfy_api.latest._io.Input object at 0x000002D2308C8250>, <comfy_api.latest._io.Input object at 0x000002D2308C8210>, <comfy_api.latest._io.Input object at 0x000002D2308C81D0>, <comfy_api.latest._io.Input object at 0x000002D2308C8190>, <comfy_api.latest._io.Input object at 0x000002D2308C8510>, <comfy_api.latest._io.Input object at 0x000002D2308C84D0>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308C8550>], hidden=[<Hidden.unique_id: 'UNIQUE_ID'>], description=\"Read the planner's ordered Omni media bundle and call the MiniMax-H3 Prompt Rewriter Omni backend directly, without expanding or wiring individual media ports.\", search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3AddLatentGuide": {
+          "inputs": "Schema(node_id='MiniMaxH3AddLatentGuide', display_name='MiniMax H3 Direct Latent Guide (Experimental)', category='MiniMax H3/Experimental', inputs=[<comfy_api.latest._io.Input object at 0x000002D22E017AD0>, <comfy_api.latest._io.Input object at 0x000002D2308C8890>, <comfy_api.latest._io.Input object at 0x000002D2308C8E10>, <comfy_api.latest._io.Input object at 0x000002D2308C90D0>, <comfy_api.latest._io.Input object at 0x000002D2308C9110>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308C92D0>, <comfy_api.latest._io.Output object at 0x000002D2308C9310>], hidden=[], description='Copy a valid temporal block from the tail of a sampled MiniMax H3 AV latent directly into another target latent for RGB/VAE round-trip A/B testing.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "CONDITIONING",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3VisualDifferenceMetrics": {
+          "inputs": "Schema(node_id='MiniMaxH3VisualDifferenceMetrics', display_name='MiniMax H3 Video Difference Metrics (Experimental)', category='MiniMax H3/Experimental', inputs=[<comfy_api.latest._io.Input object at 0x000002D22EE36210>, <comfy_api.latest._io.Input object at 0x000002D22EE496D0>, <comfy_api.latest._io.Input object at 0x000002D2308C98D0>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308C8210>, <comfy_api.latest._io.Output object at 0x000002D2308C9950>], hidden=[], description='Compare two RGB frame batches and report MAE, MSE, PSNR, means, saturation, and amplified differences.', search_aliases=[], is_input_list=False, is_output_node=True, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "STRING",
+            "IMAGE"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteSegmentExpansion": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteSegmentExpansion', display_name='MiniMax H3 Finite Segment Expansion', category='MiniMax H3/Long Video', inputs=[<comfy_api.latest._io.Input object at 0x000002D22EE367D0>, <comfy_api.latest._io.Input object at 0x000002D22EE49A50>, <comfy_api.latest._io.Input object at 0x000002D22EE48B50>, <comfy_api.latest._io.Input object at 0x000002D2308C9A10>, <comfy_api.latest._io.Input object at 0x000002D2308C8E90>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308C9D10>, <comfy_api.latest._io.Output object at 0x000002D2308C9E10>, <comfy_api.latest._io.Output object at 0x000002D2308C9E50>], hidden=[], description='Parse prompts, validate segment counts, match per-segment media, and build a finite plan. This node performs no model loading, scheduling, or sampling.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "MINIMAX_H3_FINITE_SEGMENT_PLAN",
+            "INT",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3LongReferenceSegmentPlan": {
+          "inputs": "Schema(node_id='MiniMaxH3LongReferenceSegmentPlan', display_name='MiniMax H3 Long Reference Auto Segmentation', category='MiniMax H3/Long Video', inputs=[<comfy_api.latest._io.Input object at 0x000002D2308CA0D0>, <comfy_api.latest._io.Input object at 0x000002D2308CA2D0>, <comfy_api.latest._io.Input object at 0x000002D2308CA350>, <comfy_api.latest._io.Input object at 0x000002D2308CA3D0>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308CA410>, <comfy_api.latest._io.Output object at 0x000002D2308CA550>, <comfy_api.latest._io.Output object at 0x000002D2308CA590>, <comfy_api.latest._io.Output object at 0x000002D2308CA450>], hidden=[], description='Use the Material Planner generation duration to split long reference media. Audio-only plans follow the longest standalone audio; video-plus-audio plans follow whichever is longer. Video purpose is preserved, one prompt is reused, and standalone audio can be sliced on the same clock.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "MINIMAX_H3_FINITE_SEGMENT_PLAN",
+            "INT",
+            "INT",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteSegmentSampler": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteSegmentSampler', display_name='MiniMax H3 Finite Segment Sampler', category='MiniMax H3/Long Video', inputs=[<comfy_api.latest._io.Input object at 0x000002D22EE48750>, <comfy_api.latest._io.Input object at 0x000002D2308CA910>, <comfy_api.latest._io.Input object at 0x000002D2308C8E90>, <comfy_api.latest._io.Input object at 0x000002D2308CAA50>, <comfy_api.latest._io.Input object at 0x000002D2308CAB10>, <comfy_api.latest._io.Input object at 0x000002D2308CAB90>, <comfy_api.latest._io.Input object at 0x000002D2308CAC90>, <comfy_api.latest._io.Input object at 0x000002D2308CAD50>, <comfy_api.latest._io.Input object at 0x000002D2308CAD90>, <comfy_api.latest._io.Input object at 0x000002D2308CADD0>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308CAFD0>, <comfy_api.latest._io.Output object at 0x000002D2308CB150>, <comfy_api.latest._io.Output object at 0x000002D2308CB1D0>, <comfy_api.latest._io.Output object at 0x000002D2308CB190>], hidden=[], description='Expand a finite plan into a standard acyclic sampling graph. Sampler and scheduler remain external; no Loop, Loop Variable, or Close Loop nodes are required.', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=False, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=True, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "LATENT",
+            "IMAGE",
+            "AUDIO",
+            "STRING"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteAudioTrimTail": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteAudioTrimTail', display_name='MiniMax H3 Finite Audio Tail Trim (Internal)', category='MiniMax H3/Internal', inputs=[<comfy_api.latest._io.Input object at 0x000002D22EE48BD0>, <comfy_api.latest._io.Input object at 0x000002D2308CBB50>], outputs=[<comfy_api.latest._io.Output object at 0x000002D230859890>], hidden=[], description='', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=True, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "AUDIO"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteOutputTrim": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteOutputTrim', display_name='MiniMax H3 Finite Output Trim (Internal)', category='MiniMax H3/Internal', inputs=[<comfy_api.latest._io.Input object at 0x000002D2308CB1D0>, <comfy_api.latest._io.Input object at 0x000002D22EE35B50>, <comfy_api.latest._io.Input object at 0x000002D2308CAA50>], outputs=[<comfy_api.latest._io.Output object at 0x000002D22F7F2490>, <comfy_api.latest._io.Output object at 0x000002D22F7F2390>], hidden=[], description='', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=True, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "IMAGE",
+            "AUDIO"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteLatentContinuation": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteLatentContinuation', display_name='MiniMax H3 Finite Latent Continuation (Internal)', category='MiniMax H3/Internal', inputs=[<comfy_api.latest._io.Input object at 0x000002D22F7F2BD0>, <comfy_api.latest._io.Input object at 0x000002D22F7F2E90>, <comfy_api.latest._io.Input object at 0x000002D22F7F2F50>, <comfy_api.latest._io.Input object at 0x000002D22F7F2DD0>, <comfy_api.latest._io.Input object at 0x000002D22F7F3110>, <comfy_api.latest._io.Input object at 0x000002D22F7F3190>, <comfy_api.latest._io.Input object at 0x000002D22F7F3310>, <comfy_api.latest._io.Input object at 0x000002D22F7F34D0>], outputs=[<comfy_api.latest._io.Output object at 0x000002D22F7F3610>, <comfy_api.latest._io.Output object at 0x000002D22F7F3690>, <comfy_api.latest._io.Output object at 0x000002D22F7F3710>, <comfy_api.latest._io.Output object at 0x000002D22F7F3810>], hidden=[], description='', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=True, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "CONDITIONING",
+            "LATENT",
+            "INT",
+            "MODEL"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        },
+        "MiniMaxH3FiniteSegmentFinalize": {
+          "inputs": "Schema(node_id='MiniMaxH3FiniteSegmentFinalize', display_name='MiniMax H3 Finite Segment Finalize (Internal)', category='MiniMax H3/Internal', inputs=[<comfy_api.latest._io.Input object at 0x000002D2308E4290>, <comfy_api.latest._io.Input object at 0x000002D2308E4110>, <comfy_api.latest._io.Input object at 0x000002D2308E7A50>, <comfy_api.latest._io.Input object at 0x000002D2308E7850>, <comfy_api.latest._io.Input object at 0x000002D2308E75D0>, <comfy_api.latest._io.Input object at 0x000002D2308E6E10>], outputs=[<comfy_api.latest._io.Output object at 0x000002D2308E42D0>, <comfy_api.latest._io.Output object at 0x000002D2308E7950>, <comfy_api.latest._io.Output object at 0x000002D2308E4690>], hidden=[], description='', search_aliases=[], is_input_list=False, is_output_node=False, is_deprecated=False, is_experimental=False, is_dev_only=True, is_api_node=False, price_badge=None, not_idempotent=False, enable_expand=False, accept_all_inputs=False, essentials_category=None, has_intermediate_output=False)",
+          "return_types": [
+            "LATENT",
+            "IMAGE",
+            "AUDIO"
+          ],
+          "function": "EXECUTE_NORMALIZED"
+        }
+      },
+      "errors": [],
+      "import_pass": true
+    },
+    "production_qualified": false
+  }
+]

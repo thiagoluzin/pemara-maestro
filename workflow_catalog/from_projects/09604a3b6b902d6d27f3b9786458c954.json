@@ -1,0 +1,1117 @@
+{
+  "id": "pemara-combat-engine-v1",
+  "revision": 1,
+  "last_node_id": 16,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        1760,
+        90
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          },
+          "link": null
+        },
+        {
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "title": "Load Diffusion Model"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        1760,
+        480
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        },
+        {
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          },
+          "link": null
+        },
+        {
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "minimax",
+        "device": "default"
+      },
+      "title": "Load CLIP"
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        1760,
+        870
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            11,
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_int8_convrot.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+      },
+      "title": "Load VAE"
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        1760,
+        1260
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      },
+      "title": "Load VAE"
+    },
+    {
+      "id": 5,
+      "type": "MiniMaxH3SigmaShift",
+      "pos": [
+        1760,
+        1650
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "shift_video",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift_video"
+          },
+          "link": null
+        },
+        {
+          "name": "shift_audio",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift_audio"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2,
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3SigmaShift"
+      },
+      "widgets_values": [
+        12.0,
+        3.0
+      ],
+      "widgets_values_named": {
+        "shift_video": 12.0,
+        "shift_audio": 3.0
+      },
+      "title": "ModelSamplingMiniMaxH3"
+    },
+    {
+      "id": 6,
+      "type": "BasicGuider",
+      "pos": [
+        1760,
+        2040
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "title": "Basic Guider"
+    },
+    {
+      "id": 7,
+      "type": "BasicScheduler",
+      "pos": [
+        1760,
+        2430
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 4
+        },
+        {
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": null
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": null
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1.0
+      ],
+      "widgets_values_named": {
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1.0
+      },
+      "title": "BasicScheduler"
+    },
+    {
+      "id": 8,
+      "type": "KSamplerSelect",
+      "pos": [
+        1760,
+        2820
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "res_multistep"
+      ],
+      "widgets_values_named": {
+        "sampler_name": "res_multistep"
+      },
+      "title": "KSamplerSelect"
+    },
+    {
+      "id": 9,
+      "type": "RandomNoise",
+      "pos": [
+        440,
+        90
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        2026110701,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "noise_seed": 2026110701
+      },
+      "title": "RandomNoise"
+    },
+    {
+      "id": 10,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1760,
+        3210
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 5
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 6
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 7
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "title": "SamplerCustomAdvanced"
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        1760,
+        3600
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "title": "VAE Decode"
+    },
+    {
+      "id": 12,
+      "type": "CreateVideo",
+      "pos": [
+        2640,
+        90
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          },
+          "link": null
+        },
+        {
+          "name": "bit_depth",
+          "type": "COMBO",
+          "widget": {
+            "name": "bit_depth"
+          },
+          "link": null
+        },
+        {
+          "name": "color_space",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_space"
+          },
+          "link": null
+        },
+        {
+          "name": "codec",
+          "type": "COMBO",
+          "widget": {
+            "name": "codec"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24.0,
+        8,
+        "sRGB",
+        "none"
+      ],
+      "widgets_values_named": {
+        "fps": 24.0,
+        "bit_depth": 8,
+        "color_space": "sRGB",
+        "codec": "none"
+      },
+      "title": "Create Video"
+    },
+    {
+      "id": 13,
+      "type": "SaveVideo",
+      "pos": [
+        2640,
+        480
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 13
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        },
+        {
+          "name": "format",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "format"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "pemara_combat_v1/pilot/pemara_combat_baseline",
+        "mp4",
+        "h264",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "pemara_combat_v1/pilot/pemara_combat_baseline",
+        "format": "mp4",
+        "format.codec": "h264"
+      },
+      "title": "Save Video"
+    },
+    {
+      "id": 14,
+      "type": "PemaraDLSS5ContentPolicy",
+      "pos": [
+        2640,
+        870
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "content_kind",
+          "type": "COMBO",
+          "widget": {
+            "name": "content_kind"
+          },
+          "link": null
+        },
+        {
+          "name": "stage",
+          "type": "COMBO",
+          "widget": {
+            "name": "stage"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PemaraDLSS5ContentPolicy"
+      },
+      "widgets_values": [
+        "live_action",
+        "native_preview"
+      ],
+      "widgets_values_named": {
+        "content_kind": "live_action",
+        "stage": "native_preview"
+      },
+      "title": "Tipo da produção — live action ou animação"
+    },
+    {
+      "id": 15,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        1760,
+        3990
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "h3-realism-people-t2v-i2v-r2v.safetensors",
+        0.7
+      ],
+      "widgets_values_named": {
+        "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+        "strength_model": 0.7
+      },
+      "title": "Load LoRA"
+    },
+    {
+      "id": 16,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        440,
+        480
+      ],
+      "size": [
+        360,
+        340
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 15
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 16
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 17
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": null
+        },
+        {
+          "name": "ref_image_size",
+          "type": "COMBO",
+          "widget": {
+            "name": "ref_image_size"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+      },
+      "widgets_values": [
+        "r34l1sm\nScene: A boxing ring with ropes and a blue canvas in a small indoor gym.\nCharacters: Two original adult male boxers. Fighter A starts left in a red sleeveless top, white shorts with red panels and red gloves. Fighter B starts right in a black sleeveless top, black shorts with red side stripes and dark gloves. Keep each identity, clothing and relative geography consistent. Use supplied labeled reference images when present.\nCamera: One continuous wide low ringside shot. Keep both full bodies and the native reference framing visible.\nStyle: Photorealistic live-action cinema.\nChoreography: Follow the reference boxing exchange at its original speed: both adults begin in guard; A steps forward with a straight punch, B slips and responds, both reset their distance, then close into a brief clinch. Keep action ownership and each visible support step. This is a boxing exchange, not a knockdown or a supernatural hit.\nMechanics: show preparation, a grounded weight shift, acceleration toward the declared target, contact or a motivated defense, displacement following the attack direction, and recovery of balance. Do not react to an impact before contact. Do not add more attacks than requested. Follow the supplied movement control when present; preserve support, distance and action ownership. No cuts through contact, hidden hits, fused limbs, teleportation or unmotivated speed changes. \nAudio: Silent output; no dialogue or narration.\nInstruction boundary: Scene, Camera, Choreography and Mechanics are direction, never spoken words. No captions, subtitles or text overlays.",
+        864,
+        480,
+        124,
+        "match"
+      ],
+      "widgets_values_named": {
+        "prompt": "r34l1sm\nScene: A boxing ring with ropes and a blue canvas in a small indoor gym.\nCharacters: Two original adult male boxers. Fighter A starts left in a red sleeveless top, white shorts with red panels and red gloves. Fighter B starts right in a black sleeveless top, black shorts with red side stripes and dark gloves. Keep each identity, clothing and relative geography consistent. Use supplied labeled reference images when present.\nCamera: One continuous wide low ringside shot. Keep both full bodies and the native reference framing visible.\nStyle: Photorealistic live-action cinema.\nChoreography: Follow the reference boxing exchange at its original speed: both adults begin in guard; A steps forward with a straight punch, B slips and responds, both reset their distance, then close into a brief clinch. Keep action ownership and each visible support step. This is a boxing exchange, not a knockdown or a supernatural hit.\nMechanics: show preparation, a grounded weight shift, acceleration toward the declared target, contact or a motivated defense, displacement following the attack direction, and recovery of balance. Do not react to an impact before contact. Do not add more attacks than requested. Follow the supplied movement control when present; preserve support, distance and action ownership. No cuts through contact, hidden hits, fused limbs, teleportation or unmotivated speed changes. \nAudio: Silent output; no dialogue or narration.\nInstruction boundary: Scene, Camera, Choreography and Mechanics are direction, never spoken words. No captions, subtitles or text overlays.",
+        "width": 864,
+        "height": 480,
+        "length": 124,
+        "ref_image_size": "match"
+      },
+      "title": "PERSONAGENS / DIREÇÃO — H3"
+    }
+  ],
+  "links": [
+    [
+      1,
+      15,
+      0,
+      5,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      5,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      3,
+      16,
+      0,
+      6,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      5,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      9,
+      0,
+      10,
+      0,
+      "NOISE"
+    ],
+    [
+      6,
+      6,
+      0,
+      10,
+      1,
+      "GUIDER"
+    ],
+    [
+      7,
+      8,
+      0,
+      10,
+      2,
+      "SAMPLER"
+    ],
+    [
+      8,
+      7,
+      0,
+      10,
+      3,
+      "SIGMAS"
+    ],
+    [
+      9,
+      16,
+      1,
+      10,
+      4,
+      "LATENT"
+    ],
+    [
+      10,
+      10,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      11,
+      3,
+      0,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      12,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      12,
+      0,
+      13,
+      0,
+      "VIDEO"
+    ],
+    [
+      14,
+      1,
+      0,
+      15,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      2,
+      0,
+      16,
+      0,
+      "CLIP"
+    ],
+    [
+      16,
+      3,
+      0,
+      16,
+      1,
+      "VAE"
+    ],
+    [
+      17,
+      4,
+      0,
+      16,
+      2,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "5 H3 CINEMATIC — GERAÇÃO",
+      "bounding": [
+        1740,
+        30,
+        410,
+        4350
+      ],
+      "color": "#425ca0",
+      "font_size": 20,
+      "flags": {}
+    },
+    {
+      "title": "2 PERSONAGENS — IDENTIDADE / PROMPT / SEED",
+      "bounding": [
+        420,
+        30,
+        410,
+        840
+      ],
+      "color": "#695085",
+      "font_size": 20,
+      "flags": {}
+    },
+    {
+      "title": "7 EXPORTAÇÃO — MP4 E RELATÓRIOS",
+      "bounding": [
+        2620,
+        30,
+        410,
+        1230
+      ],
+      "color": "#3c7d82",
+      "font_size": 20,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.55,
+      "offset": [
+        40,
+        40
+      ]
+    },
+    "pemara_title": "PEMARA_COMBAT_BASELINE"
+  },
+  "version": 0.4
+}

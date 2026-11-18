@@ -1,0 +1,218 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Use the input image as the absolute visual and identity reference for the entire shot. CRITICAL IDENTITY LOCK: Preserve both people exactly as they appear in the reference image throughout the entire video. Do not redesign, reinterpret, beautify, age, de-age, or modify either person. Maintain the exact facial identity, facial proportions, skin tone, hairstyle, hair color, body proportions, height relationship, clothing, accessories, shoes, and overall appearance. The man remains on the LEFT. The woman remains on the RIGHT. Never swap their positions. Keep exactly TWO people in the scene. SCENE: An elegant full-body portrait of the two people standing together inside the beautiful flower-covered environment shown in the reference image. ACTION: Begin almost exactly like the reference photograph. Both subjects naturally come alive. The man maintains a relaxed posture beside the woman. He makes a very subtle natural breathing movement, blinks naturally once or twice, slightly moves his head toward the woman and then looks back toward the camera with a warm smile. The woman maintains her position beside him. She breathes naturally, blinks naturally, makes a very small elegant head movement, subtly adjusts her posture and smiles warmly toward the camera. They briefly look at each other and smile, then naturally return their gaze toward the camera. Their bodies remain mostly stationary. No walking. No dancing. No exaggerated gestures. No large arm movements. No sudden movement. Their hands and fingers remain anatomically stable and natural. ENVIRONMENTAL MOTION: Very subtle movement in some leaves and flowers caused by a gentle breeze. Extremely subtle natural movement in the woman's hair. The floral background remains structurally unchanged. CAMERA: Single continuous cinematic shot. Very slow and subtle camera dolly-in. Approximately 3 to 5 percent forward camera movement during the entire shot. Camera remains at approximately chest/eye level. Full bodies remain visible from head to shoes. Do not crop their feet. No camera orbit. No rotation. No sudden zoom. No cuts. MOTION STYLE: Photorealistic human motion. Natural biomechanics. Subtle micro-expressions. Realistic blinking. Natural breathing. Stable facial features. Stable anatomy. Stable clothing. Stable hands. Stable background. LIGHTING: Preserve the warm elegant lighting of the reference image. Maintain realistic skin texture and photographic detail. STRICT CONSISTENCY: First frame must closely match the input image. Maintain identity consistency frame-to-frame. Maintain clothing consistency frame-to-frame. Maintain body proportions frame-to-frame. Maintain background geometry frame-to-frame. Avoid: face morphing, identity drift, facial reconstruction, changing hairstyles, changing clothing, changing body shape, changing height, extra people, duplicate people, extra arms, extra legs, extra fingers, deformed hands, warped faces, floating objects, walking, dancing, hugging, kissing, large gestures, exaggerated expressions, camera shake, fast camera movement, background transformation, scene transition, cuts. The result should look like the original photograph naturally coming to life, not like a newly generated scene.\n\noverall_soundscape: Physical ambience and visible action sounds remain synchronized with the target video timeline.\n\nnon_diegetic_music: N/A",
+      "width": 1088,
+      "height": 608,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 10,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 1653434992749165883
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1088,
+      "height": 608,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/file_000000004808820eb360c19eef48ac15_1ec75a5afd.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "creative_os_video_latent_12": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va_video_latent"
+    }
+  }
+}

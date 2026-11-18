@@ -1,0 +1,105 @@
+{
+  "5": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "6": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "width": 235,
+      "height": 395,
+      "x": 243,
+      "y": 49
+    }
+  },
+  "7": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 320,
+      "height": 538,
+      "crop": "disabled"
+    }
+  },
+  "8": {
+    "class_type": "ImageCompositeMasked",
+    "inputs": {
+      "destination": [
+        "30",
+        0
+      ],
+      "source": [
+        "7",
+        0
+      ],
+      "x": 32,
+      "y": 16,
+      "resize_source": false
+    }
+  },
+  "30": {
+    "class_type": "EmptyImage",
+    "inputs": {
+      "width": 384,
+      "height": 576,
+      "batch_size": 1,
+      "color": 0
+    }
+  },
+  "99": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "10": {
+    "class_type": "DWPreprocessor",
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "detect_hand": "disable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 512,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "scale_stick_for_xinsr_cn": "disable"
+    }
+  },
+  "23": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaRedo6/original_pose_detection"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "24": {
+    "class_type": "SavePoseKpsAsJsonFile",
+    "inputs": {
+      "pose_kps": [
+        "10",
+        1
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaRedo6/original_pose_detection"
+    }
+  }
+}

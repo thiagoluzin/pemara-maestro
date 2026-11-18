@@ -1,0 +1,97 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "thrash metal clássico dos anos 80, andamento acelerado e agressivo, riffs pesados com palhetada descendente rápida (downpicking), bateria com pedal duplo cadenciado e vocais rasgados",
+      "lyrics": "[Instrumental]",
+      "abc": "X:1\r\nT:\r\nM:4/4\r\nL:1/32\r\nQ:1/4=160\r\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\r\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\r\nK:D#m\r\n% intro\r\nV: Vocal\r\nz24z4\"D#m\"z4|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nz24z4D,D,D,D,|D,4A,4D4A,4F4D4A,4E4|D4A,4G4D4A,4F2G2F4E4|D,4A,4D4A,4F4D4A,4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"B\"z32|\"B\"z32|\"C#\"z32|\r\nV: Ins\r\nD4A,4G4D4A,4F2G2F4E4|B,4B,4D4B,4F4D4B,4E4|D4B,4G4D4B,4F2G2F4E4|C,4C4E4C4F4C4C,4E4|\r\nV: Vocal\r\n\"C#\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nC4C,4G4C4A,4A,2A,2F2E2D2C2|D32|z16A12G2F2|G4A4F24-|\r\nV: Vocal\r\n\"D#m\"z32|\"B\"z32|\"B\"z32|\"C#\"z32|\r\nV: Ins\r\nF8z8A12G2F2|G4A4F24-|F8z8A12G2F2|G16z4F4E4F4|\r\nV: Vocal\r\n\"C#\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nE4C4A,4C4A,4G,4F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|\r\nV: Vocal\r\n\"D#m\"z32|\"B\"z32|\"B\"z32|\"C#\"z32|\r\nV: Ins\r\nD,4D,4G,4D,4D,4F,2G,2F,4E,4|B,,4B,,4B,,4B,,4F,4B,,4B,,4E,4|B,,4B,,4G,4B,,4B,,4F,2G,2F,4E,4|C,4C,4C,4C,4F,4C,4C,4E,4|\r\nV: Vocal\r\n\"C#\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nC,4C,4G,4C,4C,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|\r\nV: Vocal\r\n\"D#m\"z32|\"B\"z32|\"B\"z32|\"C#\"z32|\r\nV: Ins\r\nD,4D,4G,4D,4D,4F,2G,2F,4E,4|B,,4B,,4B,,4B,,4F,4B,,4B,,4E,4|B,,4B,,4G,4B,,4B,,4F,2G,2F,4E,4|C,4C,4C,4C,4F,4C,4C,4E,4|\r\nV: Vocal\r\n\"C#\"z32|\r\nV: Ins\r\nC,4C,4G,4C,4C,4F,2G,2F,4E,4|\r\n% interlude\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|D,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,8B,,4B,,8|B,,4B,,8B,,4A,4B,4A,8|C,8C,4C,8C,4C,8|C,4C,8C,4A,4B,4A,8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|D,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,8B,,4B,,8|B,,4B,,8B,,4A,4B,4A,8|C,8C,4C,8C,4C,8|C,4C,8C,4A,4B,4A,8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD12D12D8-|D4D12A4B4A8|D12D12D8-|D4D12A4B4A8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,12B,12B,8-|B,4B,12A4B4A8|C12C12C8-|C4C12A4B4A8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD12D12D8-|D4D12A4B4A8|D12D12D8-|D4D12A4B4A8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,12B,12B,8-|B,4B,12A4B4A8|C12C12C8-|C4C12A4B4A8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|D,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,8B,,4B,,8|B,,4B,,8B,,4A,4B,4A,8|C,8C,4C,8C,4C,8|C,4C,8C,4A,4B,4A,8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|D,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,8B,,4B,,8|B,,4B,,8B,,4A,4B,4A,8|C,8C,4C,8C,4C,8|C,4C,8C,4A,4B,4A,8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|D,4D,4D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,4B,4B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C4C4C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|D,8D,4D,8D,4D,8|D,4D,8D,4A,4B,4A,8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,8B,,4B,,8|B,,4B,,8B,,4A,4B,4A,8|C,8C,4C,8C,4C,8|C,4C,8C,4A,4B,4A,8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD12D12D8-|D4D12A4B4A8|D12D12D8-|D4D12A4B4A8|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,12B,12B,8-|B,4B,12A4B4A8|C12C12C8-|C4C12A4B4A8|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,8D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,8B,4B,4F4B,4B,4E4|B,4B,4G4B,4B,4F2G2F4E4|C8C4C4F4C4C4E4|C4C4G4C4C4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD,8D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F,2G,2F,4E,4|D,8D,4D,4F,4D,4D,4E,4|D,4D,4G,4D,4D,4F2G2F4E4|\r\nV: Vocal\r\n\"B\"z32|\"B\"z32|\"C#\"z32|\"C#\"z32|\r\nV: Ins\r\nB,,8B,,4B,,4F,4B,,4B,,4E,4|B,,4B,,4G,4B,,4B,,4F,2G,2F,4E,4|C,8C,4C,4F,4C,4C,4E,4|C,4C,4G,4C,4C,4F2G2F4E4|\r\nV: Vocal\r\n\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\"D#m\"z32|\r\nV: Ins\r\nD8D8D8z8|Z3|",
+      "seed": 816517807,
+      "mode": "full",
+      "max_duration": 180.0,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 816517807,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_037db5dd6d3e",
+      "format": "flac"
+    }
+  }
+}

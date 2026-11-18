@@ -1,0 +1,182 @@
+{
+  "project": "@pemara/harness",
+  "version": "0.1.0",
+  "validated_at": "2026-08-21",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.16.0",
+    "npm": "11.17.0",
+    "pnpm": "11.7.0"
+  },
+  "upstreams": {
+    "deepseek_harness": {
+      "commit": "141eb6fef83422698aef7a981029e843e8161534",
+      "version": "0.1.0-rc.8",
+      "git_status_clean": true
+    },
+    "reversa": {
+      "commit": "f3c36892e8aefa44f020f7ad74917089e67ddaa3",
+      "version": "1.2.58",
+      "git_status_clean": true
+    }
+  },
+  "gates": [
+    {
+      "name": "node_test",
+      "command": "npm test",
+      "exit_code": 0,
+      "passed": 19,
+      "failed": 0,
+      "covers": [
+        "reopen persistence",
+        "exclusive and expired leases",
+        "round budget",
+        "checkpoint fence",
+        "effect idempotency",
+        "uncertain effect recovery",
+        "independent completion verification",
+        "DSH plugin contract",
+        "CLI process boundary",
+        "actual child process exit",
+        "host-only uncertain effect reconciliation",
+        "host-only resume after rejected verification",
+        "Qwen profile default route",
+        "loopback-only OpenAI-compatible configuration",
+        "launcher credential environment restoration",
+        "workspace-aware DSH source launch",
+        "interactive desktop launcher safety contract",
+        "desktop launcher dry-run"
+      ]
+    },
+    {
+      "name": "real_dsh_context",
+      "command": "tsx test/real-dsh-compat.mts",
+      "exit_code": 0,
+      "output": {
+        "compatible": true,
+        "tools": 5
+      }
+    },
+    {
+      "name": "profile_composition",
+      "command": "start-pemara-dsh.ps1 -Workspace E:\\Pemara --dump-config",
+      "exit_code": 0,
+      "observed_entries": [
+        "agent-default-model=pemara-qwen38/qwen3.8-27b-uncensored-yarn-524k",
+        "llm-pi-ai baseURL=http://127.0.0.1:11436/v1",
+        "@pemara/harness/dsh-plugin"
+      ]
+    },
+    {
+      "name": "qwen_route_e2e",
+      "command": "npm run test:qwen:e2e",
+      "exit_code": 0,
+      "endpoint": "temporary deterministic OpenAI-compatible server on 127.0.0.1:11436",
+      "agent_requests": 4,
+      "pemara_tool_calls": 3,
+      "workspace": "E:\\Pemara",
+      "model_facing_skills": 296,
+      "user_only_skills": 4,
+      "flow": [
+        "harness_task_create",
+        "harness_task_checkpoint",
+        "harness_task_request_completion",
+        "independent host verification"
+      ],
+      "task_id": "qwen-route-e2e-50148-1787299656482",
+      "session_id": "session-9c8207b4-eb08-4caa-aa3c-d1d53b5bd87e",
+      "state_after_host_gate": "COMPLETED_VERIFIED",
+      "verifier": "qwen-route-e2e-host-gate"
+    },
+    {
+      "name": "desktop_shortcut",
+      "exit_code": 0,
+      "path": "C:\\Users\\admin_remoto\\Desktop\\Pemara Harness Qwen.lnk",
+      "target": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "launcher": "E:\\Pemara\\pemara_harness\\bin\\Open-PemaraHarness.ps1",
+      "workspace": "E:\\Pemara",
+      "properties_validated": [
+        "shortcut exists",
+        "target matches",
+        "launcher argument present",
+        "workspace argument present",
+        "working directory matches"
+      ]
+    },
+    {
+      "name": "agent_skill_plugin_inventory",
+      "exit_code": 0,
+      "root_agents_per_headless_task": 1,
+      "in_process_subagents": true,
+      "shipped_presets_not_selected": [
+        "standard",
+        "code",
+        "minimal",
+        "cordis"
+      ],
+      "skills_total": 300,
+      "skills_model_facing": 296,
+      "skills_user_only": [
+        "hsb-app",
+        "hsb-flash",
+        "hsb-setup",
+        "hsb-test"
+      ],
+      "custom_plugin": "@pemara/harness/dsh-plugin",
+      "codex_provider_installed": false,
+      "claude_code_provider_installed": false,
+      "deepseek_web_key_configured": false,
+      "telemetry": "DISABLED"
+    },
+    {
+      "name": "headless_deterministic_smoke",
+      "exit_code": 0,
+      "output": "PEMARA_DSH_SMOKE_OK task=profile-smoke-20260821-final",
+      "session_id": "session-d36e50f6-eac3-415e-b466-b5e3481ddbbd",
+      "state_before_host_gate": "COMPLETED_PENDING_VERIFY",
+      "state_after_host_gate": "COMPLETED_VERIFIED",
+      "verifier": "codex-final-independent-gate"
+    },
+    {
+      "name": "syntax",
+      "command": "node --check plus PowerShell Parser.ParseFile",
+      "exit_code": 0,
+      "node_files_checked": 12,
+      "powershell_files_checked": 2
+    },
+    {
+      "name": "package_dry_run",
+      "command": "npm pack --dry-run --json",
+      "exit_code": 0,
+      "entry_count": 14,
+      "shasum": "186001bc5644bd801f3e9de07fa597a37697317f"
+    },
+    {
+      "name": "real_qwen_gpu_gate",
+      "exit_code": 0,
+      "result": "BLOCKED_GPU_IN_USE",
+      "qwen_11436_online": false,
+      "comfy_queue_running": 1,
+      "comfy_queue_pending": 0,
+      "gpu_total_mib": 32607,
+      "gpu_used_mib": 27449,
+      "gpu_free_mib": 4738,
+      "required_free_mib": 12000,
+      "action": "Qwen not started; no force flag and no unrelated GPU work evicted"
+    },
+    {
+      "name": "artifact_manifest",
+      "command": "npm run manifest:check",
+      "exit_code": 0,
+      "files": 35
+    }
+  ],
+  "not_claimed": [
+    "automatic cross-process DSH supervisor",
+    "real Qwen GGUF inference while GPU is occupied",
+    "native Codex or Claude Code subagent provider integration",
+    "Web UI validation",
+    "production deployment",
+    "online security gate"
+  ]
+}

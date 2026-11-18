@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/thu-ml/SageAttention",
+  "commit": "d1a57a546c3d395b1ffcbeecc66d81db76f3b4b5",
+  "downloaded_at": "2026-08-15",
+  "purpose": "isolated RTX 5090 SM120 compatibility and numerical-quality pilot",
+  "production_installed": false,
+  "notes": "SageAttention3 requires Python 3.13. The current Maestro runtime remains unchanged on full attention."
+}

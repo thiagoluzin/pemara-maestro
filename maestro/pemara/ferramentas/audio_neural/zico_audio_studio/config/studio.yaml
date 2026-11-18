@@ -1,0 +1,23 @@
+studio:
+  host: 127.0.0.1
+  port: 8790
+  output_root: outputs
+  consent_required_for_voice_clone: true
+router:
+  narration_ptbr: chatterbox_ptbr
+  expressive_voice: qwen3_tts
+  dialogue: fish_speech
+  video_foley: mmaudio
+  music: ace_step
+  strict_reorchestration: midi_hybrid
+mastering:
+  integrated_lufs: -14
+  true_peak_dbtp: -1.0
+  dialogue_lufs: -16
+  music_under_dialogue_db: -6
+engines:
+  chatterbox_ptbr: {enabled: true, port: 8791}
+  qwen3_tts: {enabled: false, port: 8792}
+  fish_speech: {enabled: false, port: 8793}
+  mmaudio: {enabled: false, port: 8794}
+  ace_step: {enabled: false, port: 8795}

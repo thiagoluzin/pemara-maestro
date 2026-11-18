@@ -1,0 +1,2264 @@
+{
+  "source": "https://learn.chatgpt.com/docs/build-skills#enable-or-disable-local-codex-skills",
+  "canonical_root": "C:/Users/admin_remoto/.agents/skills",
+  "reason": "Managed HeyGen HyperFrames installation updated 2026-10-07 in user .agents, with plugin-aware execution paths and current reference layout; old .codex copy preserved as historical compatibility source. Nested SaaS methods linked by canonical parent.",
+  "config_backup_private": "C:/Users/admin_remoto/.codex/backups/skill_consolidation_20261008/config.toml.before",
+  "config_before_sha256": "eab6cfa849a771159ea716e476dbb82b5acfd99e0b583063f598cb510c355de0",
+  "config_after_sha256": "e00d855a62341052418699e6ab2a513eaabd7d25f122ddd07714eb3eabc05f3b",
+  "app_restart_required": true,
+  "active_discovery_after_restart_verified": false,
+  "disabled_paths": [
+    "C:/Users/admin_remoto/.codex/skills/general-video/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-core/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/SKILL.md",
+    "C:/Users/admin_remoto/.codex/skills/media-use/SKILL.md",
+    "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/SKILL.md"
+  ],
+  "archive": "C:/Users/admin_remoto/.codex/backups/skill_consolidation_20261008/duplicate_skill_sources.zip",
+  "archive_sha256": "64bddca4094004a9ef5ee9080963db813181e64969d0f8b18ac226e71daf5a3f",
+  "files": [
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/general-video/scripts/frame-packets.mjs",
+      "archive_member": "user_codex/general-video/scripts/frame-packets.mjs",
+      "sha256": "924b74405b4cfd1e1da78b5328207941bf6a666c1dd6cd732ba64ba2c5ce6c34"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/general-video/scripts/frame-packets.test.mjs",
+      "archive_member": "user_codex/general-video/scripts/frame-packets.test.mjs",
+      "sha256": "05b2bbe7cd60f68b40b65e7cf5a6e7ef377d5d899dc85848ab8a6db6886bd5eb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/general-video/SKILL.md",
+      "archive_member": "user_codex/general-video/SKILL.md",
+      "sha256": "23ac61f3fd8d43c00864b6bce0cd8499f7b6742c5acb8c0a18268e35bd8ed73c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/general-video/sub-agents/frame-worker.md",
+      "archive_member": "user_codex/general-video/sub-agents/frame-worker.md",
+      "sha256": "91b6e5a51c21f9402e080a1ab690c43d34444cbc834b2f0751fa9f87bb59ea37"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/capability-menu.md",
+      "archive_member": "user_codex/hyperframes/references/capability-menu.md",
+      "sha256": "36778a35948e702d97e325ecb4c775c04bef06a7a4e126164443045377b64a5d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/intent-interview.md",
+      "archive_member": "user_codex/hyperframes/references/intent-interview.md",
+      "sha256": "0ebea9102e903772b13e8eee096644c6bb1d2b2394eef7a12f9ce63dae376aef"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/pitch-round.md",
+      "archive_member": "user_codex/hyperframes/references/pitch-round.md",
+      "sha256": "2d9ceb09ff7be704ebe47b64152b8f6d5dd611925d405e9f87f47f24dd65775c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/route-briefs.md",
+      "archive_member": "user_codex/hyperframes/references/route-briefs.md",
+      "sha256": "9b1752a23b2d31dfa31127fcf8ef43bcab4fb419550560a1334ab3199eb33846"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/embedded-captions.md",
+      "archive_member": "user_codex/hyperframes/references/routes/embedded-captions.md",
+      "sha256": "4e2f83a54caad625ae0dc4150b619f8b5afd65410965f53f6a40c430253207d1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/faceless-explainer.md",
+      "archive_member": "user_codex/hyperframes/references/routes/faceless-explainer.md",
+      "sha256": "cd76f75e109e11c1bbda483b46791acd98103184a7102eb0365f966abec6b037"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/general-video.md",
+      "archive_member": "user_codex/hyperframes/references/routes/general-video.md",
+      "sha256": "dda0e1559cb57e5ba8e589f0fa6eedadbef78030bd2dccb4172b3b496da9fef1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/motion-graphics.md",
+      "archive_member": "user_codex/hyperframes/references/routes/motion-graphics.md",
+      "sha256": "36c1ecfb67d1ad3dd0dac63667a931ad217bd617e9798eb742e1f9865caedb3b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/music-to-video.md",
+      "archive_member": "user_codex/hyperframes/references/routes/music-to-video.md",
+      "sha256": "f0b8c86130ea1167f9c3116cae5b3440f86d184c6264cad1cb2dad0675e09dc2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/pr-to-video.md",
+      "archive_member": "user_codex/hyperframes/references/routes/pr-to-video.md",
+      "sha256": "179d31b24940f6ee80d833d03e7b9b4c012cede7cbc07f88b460637239d66a57"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/product-launch-video.md",
+      "archive_member": "user_codex/hyperframes/references/routes/product-launch-video.md",
+      "sha256": "ed2cba0be42a1e34361f65f7c633110935ef53c47933584e7b9ffc2ff07c366f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/remotion-to-hyperframes.md",
+      "archive_member": "user_codex/hyperframes/references/routes/remotion-to-hyperframes.md",
+      "sha256": "86cffe564eb4e92b12375f558aeb5d30e271f97416d3c5f32ee77bcf6b14e35c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/slideshow.md",
+      "archive_member": "user_codex/hyperframes/references/routes/slideshow.md",
+      "sha256": "8f81d2f8102dd257fd3b7730edbda618c2ec8e0c180e4494e89592aa7cc5cc5b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/routes/talking-head-recut.md",
+      "archive_member": "user_codex/hyperframes/references/routes/talking-head-recut.md",
+      "sha256": "d027e04e427c358ca0182e55b0449c0256ad7828b13b6e760d64a60de01eb0cc"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/skill-lifecycle.md",
+      "archive_member": "user_codex/hyperframes/references/skill-lifecycle.md",
+      "sha256": "74cc697ac9171443043942cd9f61a126bfea1ee984b62f88382e4351d79e23c7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/references/workflow-catalog.md",
+      "archive_member": "user_codex/hyperframes/references/workflow-catalog.md",
+      "sha256": "5f3e684ca26bc811c3c124e39633fbb685a410de1563f989b8a8cadab2680d8a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/SKILL.md",
+      "archive_member": "user_codex/hyperframes/SKILL.md",
+      "sha256": "3f1e57ac7071e91629133651250bd5d9d60ce8119faa318a5be2cba6d375c793"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/animate-text.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/animate-text.md",
+      "sha256": "82f0e94d031480d186df792f0e2f8535276d805d699e5c84b9a7b736d107b10a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/animejs.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/animejs.md",
+      "sha256": "ade4ebfdfe4bab62ef98ec4ebc83b84f0792faad5993ff5d398d67d1a499de93"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/css-animations.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/css-animations.md",
+      "sha256": "52a1a7fd8702cf8721bbe63e324f0492f3966c5b092925f5135839132a999012"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/gsap-easing-and-stagger.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/gsap-easing-and-stagger.md",
+      "sha256": "825e8d2524ad166d8c29d59d72caa9e81c3a0368bcfbe059c86371a64d3494d0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/gsap-timeline-and-labels.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/gsap-timeline-and-labels.md",
+      "sha256": "96aaef95ff4e546dfff9d2090ca07d3d921d99b01348ef4adccae7686a515dca"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/gsap-transforms-and-perf.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/gsap-transforms-and-perf.md",
+      "sha256": "a73c1ea0af7dd782936dd5726e0ea6c1cdc98126c89c6aec4370624f4622ee67"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/gsap.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/gsap.md",
+      "sha256": "d5f12fbbcb0a1a3e044f46d92cb42ee64193994585914fbca0121f3bc3733978"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/html-in-canvas-patterns.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/html-in-canvas-patterns.md",
+      "sha256": "5e7c801c65d8f34f38c535bc9ed6808ebb6f475f166347bf71a453eb87614e9a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/lottie.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/lottie.md",
+      "sha256": "287a330e1a08eeb051e8f4a2e251f1667d57ed980ccd7572f4a4a87a177cfd73"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/three.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/three.md",
+      "sha256": "9448a3eb9ec3141d2dadcc2bb338cc7cf9abc995b8d869244822c7e0557acbc2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/typegpu.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/typegpu.md",
+      "sha256": "221d7aa6dc3007e0c9fc31f27e10aa979c0a25567d98540fc0d2e4e9a79bbd24"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/adapters/waapi.md",
+      "archive_member": "user_codex/hyperframes-animation/adapters/waapi.md",
+      "sha256": "3e173bc484cd7daef9022c2c80e8e2091ab73321def54c2a100ddf738ee8d1e0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/agent-progress-theater.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/agent-progress-theater.md",
+      "sha256": "1939690276ebf41123126e40915c283b69d3b2fd7d563f774c96e6ff6a076d4b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/camera-journey.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/camera-journey.md",
+      "sha256": "0508b034b4a1c30bf3cd37a25137987c435e7805f3d5a98f85921ce0e6f06d1e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/comparison-split.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/comparison-split.md",
+      "sha256": "af2af2ddf86aba21ed8b2016b7b1bd4b1ced52b4ac98f17eff487dca1097599a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/constellation-hub.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/constellation-hub.md",
+      "sha256": "729357480806d512217f46155d7810537f0ab6f7f46ba47b0905e4c3ea4d59c0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/cta-morph-press.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/cta-morph-press.md",
+      "sha256": "0f8ee56ff89af960cf2deb1da86994d5bb93186b85e71d601fb5c64b40deaaeb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/cursor-ui-demo.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/cursor-ui-demo.md",
+      "sha256": "f4403a088e1358b59a21eabc4f5867f53b9179f5a4abf2f28e8e9982ef9fb479"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/dataviz-countup.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/dataviz-countup.md",
+      "sha256": "9de0c34b44bcee7dda7371f8597df3421b4e6d46380237f76e815044f02e4a1f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/device-surface-showcase.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/device-surface-showcase.md",
+      "sha256": "83d1c7b91b40ba24de324a14b50d023514c95b6b01a3c5bcf5c066a770e07fc8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/fixed-anchor-cycle.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/fixed-anchor-cycle.md",
+      "sha256": "1a49afda275f54c0383e8569b405175f2a2424a74574d935d1fdf3858f50eb89"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/grid-card-assemble.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/grid-card-assemble.md",
+      "sha256": "c35349ce839aec1e279ec66b297553c3a9dd1f30fdf64ce8b768c9fafdb4e662"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/kinetic-type-beats.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/kinetic-type-beats.md",
+      "sha256": "4515b7aa6284898117e8970b76c04fd350ec61c664f5b241deb81c7fdd655d8c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/logo-assemble-lockup.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/logo-assemble-lockup.md",
+      "sha256": "53bff65b0b4b14566bceb061c71a9a987003273aa1f7ef711dc20c30b812ec55"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/overwhelm-surround.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/overwhelm-surround.md",
+      "sha256": "e35c5bff4db70574124db06122d79443cc0d3ab8238b52949548c4ba995c5b9e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/panel-edit-live-sync.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/panel-edit-live-sync.md",
+      "sha256": "f864194c9a56ca7936df72b92b4806427437c1a09fab11cd27eb3d0499186644"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/prompt-type-submit-generate.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/prompt-type-submit-generate.md",
+      "sha256": "c94f17f6cccec12c7e8eac246d8b534e7cb4120a3f9b7c52dee049b9d228da1a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/spatial-pan-stations.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/spatial-pan-stations.md",
+      "sha256": "6c044d1fbdb057aae80d46efd1e5fa7222ad3e294a249566f36c82221ba02386"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/ticker-takeover.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/ticker-takeover.md",
+      "sha256": "58e7a19b1aca8f3a85affbc24005d1b26ffd9b953053166783afa428f524b5d8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/titlecard-reveal.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/titlecard-reveal.md",
+      "sha256": "bc8382861af871ef8688589327680b85674a4a5f326214f783b82f3a0725c00c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/transcript-scroll-artifact-reveal.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/transcript-scroll-artifact-reveal.md",
+      "sha256": "bb76b82b375ad919412fd201186c82950f636753608efd810ac4f32c5655de4b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/typewriter-reveal.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/typewriter-reveal.md",
+      "sha256": "be324c142dc5bf89649df3c59aa8a7e218ca99d8afe1222f4028a314a237245c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/video-text-pivot.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/video-text-pivot.md",
+      "sha256": "6472224469cfb1801989510bec88a997819fa51cd4a5260bc23eee0fd7f086ed"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints/zoom-out-workspace-reveal.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints/zoom-out-workspace-reveal.md",
+      "sha256": "30a6a396a72bcd37127100f6e4cb5f13f6ca1ea179df7001ce347a3b84c8b7ae"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/blueprints-index.md",
+      "archive_member": "user_codex/hyperframes-animation/blueprints-index.md",
+      "sha256": "601228ddcfda89ed6add52bd08becf53296764e155126fb5e7100eb29caaa46e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/brand-reveal-assemble-zoom.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/brand-reveal-assemble-zoom.html",
+      "sha256": "6ef0274922bf33c9362c638476d97c475931941263f03934ce06f677c8301e5f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/comparison-split-cards.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/comparison-split-cards.html",
+      "sha256": "6fbf71a6620971f67d984d08346758a088d45297b68f2098d05a516001daa2b8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/concept-demo-decode-pan.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/concept-demo-decode-pan.html",
+      "sha256": "003f8bbde732f9c982493ba3a531c8d861bdb3119fe772dc3bad135924b355ac"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/cta-morph-press.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/cta-morph-press.html",
+      "sha256": "4d423157e55cc7c46d112d3471bac207a2072f5f7d190f506809bc6c7ac68644"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/cta-orbit-collapse.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/cta-orbit-collapse.html",
+      "sha256": "d41514f8bb0a4808a66f719bdc3b2118f16a476d47ac71b7db14a73e723f7aee"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/demo-page-scroll-spotlight.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/demo-page-scroll-spotlight.html",
+      "sha256": "aa1252821669b2f81d7925bac2869ee9a06650abec152c9ab0c978df1f9b2808"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/hook-counter-burst.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/hook-counter-burst.html",
+      "sha256": "4766950cad912becd81d293ee23475caf4eac8c02dbde31c4c4f7ed015cb127b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/messaging-multi-phrase.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/messaging-multi-phrase.html",
+      "sha256": "dbfa5e74f09b0e2b45cb28cd100915143aab7f59ad3a2dffb46f5f88c3cccd77"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/metric-video-text-pivot.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/metric-video-text-pivot.html",
+      "sha256": "5d0ede336552e9ac402bd7bf7dc84d95c9f76699d0e8ebb78f2dfeac3c7ebc36"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/problem-mockup-overwhelm.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/problem-mockup-overwhelm.html",
+      "sha256": "127d94b53a48d36bf1a5eb5a9fd4e44b0c4cb3a5478c19783aff940f6683106d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/proof-logo-chain.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/proof-logo-chain.html",
+      "sha256": "b607d15d84d7666cb519626f1292fa42902f1c58e38766c2c8b5dc75825e7cc2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/takeover-ticker-displace.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/takeover-ticker-displace.html",
+      "sha256": "8d39a9028d8302ccd185d6fa2c5a6da1f097b4e9af083d18a1f0063a96989d22"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/examples/workflow-approve-press.html",
+      "archive_member": "user_codex/hyperframes-animation/examples/workflow-approve-press.html",
+      "sha256": "2b04b61cc30113195f3a8173aec2a3abcaf13ddd5b7d577baea44aacae65990d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/3d-camera-flight.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/3d-camera-flight.md",
+      "sha256": "f88aa996dfff909ba780e0ace41dd7fe3cb2b275b6d87694470f26e78fbb13c1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/3d-page-scroll.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/3d-page-scroll.md",
+      "sha256": "4afe02d1205513afc9fe669c739e9734f23057b15b92bf62dff6004f00c1650c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/3d-text-depth-layers.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/3d-text-depth-layers.md",
+      "sha256": "e95234a6a42bdd25a555365d5978f7f3cf20305c5f1a3be46c39b9b5d34a49d9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/ai-tracking-box.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/ai-tracking-box.md",
+      "sha256": "7e7b0433c58d95f468d65ae061beb3037f83442940aadfe89e32da8039ef5bfa"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/ambient-glow-bloom.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/ambient-glow-bloom.md",
+      "sha256": "06cf000cd14dc72f92f4038114c21020ffc358efad921bcea05d85025d28a5e4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/anchored-layout-expand.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/anchored-layout-expand.md",
+      "sha256": "11eae6a4c3ca7c31ae41c068c577a960c76fd9714bea12a2bc9ec608f8b098c3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/asr-keyword-glow.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/asr-keyword-glow.md",
+      "sha256": "30d60b09bfe977896b588f2ae53d2c02a6d45d65aeaa32e261c25cba0e26d4d8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/avatar-cloud-network.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/avatar-cloud-network.md",
+      "sha256": "c29e0c58150e0056516c76c30932d93f9ac9a57bdb99ec6ff7327867d34a1a90"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/camera-cursor-tracking.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/camera-cursor-tracking.md",
+      "sha256": "60dc50359c1cf60b96cee782a2ce11ec33c5e653c5f330df6ee270b280693235"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/card-morph-anchor.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/card-morph-anchor.md",
+      "sha256": "57ee55f0401026160808532dbfe4d060a412b1c2c603f8ce1f097913a556676b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/center-outward-expansion.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/center-outward-expansion.md",
+      "sha256": "e8f95caa0060d015abce3c3dc422b9e05756bde5c2d5ce6a341360a14ec75217"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/chart-scrub-readout.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/chart-scrub-readout.md",
+      "sha256": "e0a0fb62a9ce7ca4ef535ee50328078dc8bb7cf63f1f3a8ee68844b4a5294f61"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/chromatic-glitch.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/chromatic-glitch.md",
+      "sha256": "388eb6e8d7eb65c8ebca22c07538e7bd383184242a9dfcfe5561fad854551f28"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/context-sensitive-cursor.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/context-sensitive-cursor.md",
+      "sha256": "ba33d4d325d83e8e96905cfa24160f9d64a9ae36b831374f203436e790cd1951"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/control-target-sync.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/control-target-sync.md",
+      "sha256": "7f82b8a64cca6759580b9c7ab1dd4373a7c03a474bd8cfc927e18b587614dc47"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/coordinate-target-zoom.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/coordinate-target-zoom.md",
+      "sha256": "b716cdceace2e34518bf77dae1e0f04e2bad3c0d181b0e4919843ca8ed2c957c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/counting-dynamic-scale.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/counting-dynamic-scale.md",
+      "sha256": "442d9f9a5cf8c10cc62fc5ece5732eca58f76aaa9724cebe92c1f91cc515fa62"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/css-marker-patterns.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/css-marker-patterns.md",
+      "sha256": "8ac8dd360b4dc8d78d34c3846b834155ad2b482a2d1388cbbd2d3061c6e9d0c2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/cursor-click-ripple.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/cursor-click-ripple.md",
+      "sha256": "ab4fd696c1a4a2288f6835db43a683cd3fd570415b89034d0b0fe9159891a8e7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/cursor-drag.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/cursor-drag.md",
+      "sha256": "c7c88d33ab9f7f1c6f0a93d984d4acb1b95698a2bd7a99ef306065da727445be"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/depth-of-field-blur.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/depth-of-field-blur.md",
+      "sha256": "d83b73641a8d5591ca1809bb0df21675537628e00ddb2a2d144fe562be1025df"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/depth-scatter-assemble.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/depth-scatter-assemble.md",
+      "sha256": "63689fce3df29c4eca02f83cebf578f6026935bb04f3b57dbf465c63b4d8ba1e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/discrete-text-sequence.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/discrete-text-sequence.md",
+      "sha256": "d3eb00b0942f98eb30908f1b90f44c0bf9a4da1c2eb0dc6899b14accb75802cf"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/dynamic-content-sequencing.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/dynamic-content-sequencing.md",
+      "sha256": "cf19e1093c89bc692b75173a1588c65266143da2594511d0d4c866989d91429f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/gradient-text-sweep.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/gradient-text-sweep.md",
+      "sha256": "ee17df8644eea65f2751c97604db1546c17260ab054483579e221eba6a5257a1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/gsap-effects.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/gsap-effects.md",
+      "sha256": "63ee2ee5d9dcef1ecbd88b69526e1621f0ff7ce682ec7f2dbe553b5647656bbd"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/hacker-flip-3d.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/hacker-flip-3d.md",
+      "sha256": "692deb9eac46dc171d724ba42f27eac05a73ffb7fbe346f83078ee44620252d6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/kinetic-beat-slam.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/kinetic-beat-slam.md",
+      "sha256": "c6511d005223459713b918f107db8ea68e6b6ab5ba090fa718ce775b9ba19e28"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/motion-blur-streak.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/motion-blur-streak.md",
+      "sha256": "003c84624802e82bbab3b4871afd45eaad7261ffee35fb20c571f90d49a2a9ad"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/multi-cursor-choreography.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/multi-cursor-choreography.md",
+      "sha256": "6d4207d9a0dac8a9ec9d681a6bd30b5cb2707b76349c513f336701c8ea4b4c14"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/multi-phase-camera.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/multi-phase-camera.md",
+      "sha256": "ffdcd08f47ed49d52d31b27f11676435d45fb34581fabe1507bc59e79364e375"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/nudge-curve.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/nudge-curve.md",
+      "sha256": "91084469a672c8c979e8f2e2f76f78526fdff8e1d647650a5f4a54e21df1b3ad"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/orbit-3d-entry.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/orbit-3d-entry.md",
+      "sha256": "2b24b8d92203e75faaef14c4bfdb216a70f700660056a6f77a9e5f035c5de94f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/particle-burst.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/particle-burst.md",
+      "sha256": "b54113dc2d079ff49cd800b650e2c521cd4cf1af8aa125bfa2c9ff53fe5c88d1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/physics-press-reaction.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/physics-press-reaction.md",
+      "sha256": "858ebad87af7bc4e7d7141f7aea19ad62d67a6af0bda6e01c9e3e8e841f38483"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/press-release-spring.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/press-release-spring.md",
+      "sha256": "36947331983342c48470c6a685ce04175ada089b0370adbb62acc06dcc98f579"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/reactive-displacement.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/reactive-displacement.md",
+      "sha256": "7913e02dd6a303017993315045e0c3cd30aa2df9f09093b697e0396ecb7cfe51"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/scale-swap-transition.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/scale-swap-transition.md",
+      "sha256": "e527ce5e2614f5ef8dc0a4da8b97d2a015a85866f1d52d22d22c8411efdaa854"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/sine-wave-loop.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/sine-wave-loop.md",
+      "sha256": "54f283f4a8915de5c3f6d7c668b97f416efad3df6b5baf4941254cea8831944b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/split-tilt-cards.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/split-tilt-cards.md",
+      "sha256": "a50c135af38eb5a85f7f2f8753e5a8dcff3e6782392c2c6ee42bfafad9e41ab4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/spring-pop-entrance.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/spring-pop-entrance.md",
+      "sha256": "f6cfb58b967769900edc0a4b9ed2685127167a8e4f74f7047df07d4ca4a10fbf"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/stat-bars-and-fills.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/stat-bars-and-fills.md",
+      "sha256": "2da2a14d1d040e6c7c3634745eb047cd2805090ad374900d07ada50ecbcf650e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/svg-icon-enrichment.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/svg-icon-enrichment.md",
+      "sha256": "f0209f4c4254281d1750bb5d4e963f5372361b1443ada43236a27a0e37bbb810"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/svg-path-draw.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/svg-path-draw.md",
+      "sha256": "38e304463abcde3ac88095d682f86a2ea30517d366683d09d6bccccc6752c304"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/theme-crossfade-morph.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/theme-crossfade-morph.md",
+      "sha256": "d1855ee32b2b2a45f9b5dffd3d1edf96dd08b199d6aa8c685e302878ba8f0fef"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/vertical-spring-ticker.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/vertical-spring-ticker.md",
+      "sha256": "b1752901fe0fe2e6b8dc3211832f73ccd69b6ad2d7eaf4c48e6f8b6b8ee630d8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/viewport-change.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/viewport-change.md",
+      "sha256": "c1ac00dab35da2fe57fd11d460a96730c37f73d8b4d5e73a0ce85b18b9922a75"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules/waterfall-entry.md",
+      "archive_member": "user_codex/hyperframes-animation/rules/waterfall-entry.md",
+      "sha256": "d9b8a3df6c59e0af6eef1f3f3d7ffb8058c8983976e4ce150566215770ff7c50"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/rules-index.md",
+      "archive_member": "user_codex/hyperframes-animation/rules-index.md",
+      "sha256": "21eba5fd57769b7560b846a0a9aca8e8f6cacb3130d76e9cd090b564f9e46679"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/animation-map-sampling.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/animation-map-sampling.mjs",
+      "sha256": "1d9275d8764fab0c185291d498b6eedd87622437226a4f7a48c44607e25debe7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/animation-map-sampling.test.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/animation-map-sampling.test.mjs",
+      "sha256": "470d2e9a7aa9c530d13298a604e01b1b031255b3b99546f446d62091b33217ac"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/animation-map.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/animation-map.mjs",
+      "sha256": "136a3d473f4cae48538b62da8025968393397d462508c091752d7b0302c7f1a4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/animation-map.test.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/animation-map.test.mjs",
+      "sha256": "5d3b9ff36d82f3a0c53c2d7e3947e82a27cbcc9af177362abcc2cb96c611a930"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/package-loader.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/package-loader.mjs",
+      "sha256": "432301ff69c05d457327d15844c01392c434da97504c67489dfde182b6e76aad"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/scripts/package-loader.test.mjs",
+      "archive_member": "user_codex/hyperframes-animation/scripts/package-loader.test.mjs",
+      "sha256": "beb88750ec35aa701b92bd8e6e90220797c78127c8447416956f8dd3259e34dd"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/SKILL.md",
+      "archive_member": "user_codex/hyperframes-animation/SKILL.md",
+      "sha256": "69a9903796e65c66edbe9ec9621eca8953c7cc2a93a718687306891daf0463d4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/techniques.md",
+      "archive_member": "user_codex/hyperframes-animation/techniques.md",
+      "sha256": "59eca990aad2beade34e47b3c5ea7f03df894574bf9264dd2bd42188542420e7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/catalog.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/catalog.md",
+      "sha256": "3914ec091c1f16bfee5c53d38ed6af1dfab74caedf561788dc39e67c6d7ca239"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-3d.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-3d.md",
+      "sha256": "e1c3888dd0a2d4b36d25200c1e5ef9038649ae63953865e4b2c4c40fb028d7dd"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-blur.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-blur.md",
+      "sha256": "fd3eef889a517e1dd985ca816f36f1abfb43420a4b664d4fcc453554cdf561f9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-cover.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-cover.md",
+      "sha256": "ba4e5926791c9e6a0a069e20afc91324acb018903f43b4b3f2866d9654f5b7eb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-destruction.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-destruction.md",
+      "sha256": "3f2fbbd561aacc8276f70cbee09ff420fc6e9c65b1e060c14e8399960d3bfbbc"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-dissolve.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-dissolve.md",
+      "sha256": "47c11ca0a715675c2788aa4a162a652b5dc5f1773b058ea93e9907af56a4eb7c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-distortion.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-distortion.md",
+      "sha256": "7140650692926959bd5459ca5c478a9b4f137cc76fb92b9138e3b0d353677c06"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-grid.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-grid.md",
+      "sha256": "c62b17058aa7ba42d34df29436b6b4233e47ff2b72f2c7ce0963c75bdec45144"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-light.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-light.md",
+      "sha256": "53f0422d3f6dd2584a30501f84e4f09c9b515f605d51ed264a2061567dda15db"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-mechanical.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-mechanical.md",
+      "sha256": "4fed48fa659a4b215a996beeea619d244e6c893700178b1f969c17f2ee0a8612"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-other.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-other.md",
+      "sha256": "2156e4fcc3b42cba9e0d9e268944269057fb48ff15fc1983e3ff9386fa2a8cf8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-push.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-push.md",
+      "sha256": "d526a9612483472de4d865ae27061c98842a5155973dd0cec37fac4998dc1b97"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-radial.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-radial.md",
+      "sha256": "5d8f20de439e3f2c8d45df11c8acbe31dc1b9342e2d54bbe66b451cf81ca0a1b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/css-scale.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/css-scale.md",
+      "sha256": "3c0cb33d6c844a7265379225f3241d8964afcc908ee757a1ebfb1700a5320ea7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/overview.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/overview.md",
+      "sha256": "ec878d479d16addcd88c770b39fc88fa5219086478aee39e9f96a1096a58b084"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/transitions/TRANSITION-REGISTRY.md",
+      "archive_member": "user_codex/hyperframes-animation/transitions/TRANSITION-REGISTRY.md",
+      "sha256": "fb9358d5d4219d2df9d81b02bd8c8e06fd62ed29557bd0c798d8223354c103ef"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/references/attributes.md",
+      "archive_member": "user_codex/hyperframes-audio/references/attributes.md",
+      "sha256": "58a9d87f78cdd438603ca3d60ca0876bea1d714c593165aa785d4dd086116f85"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/references/diagnosis.md",
+      "archive_member": "user_codex/hyperframes-audio/references/diagnosis.md",
+      "sha256": "6496d8ba77e74adc48a81defe3c9c13310f6fca41ec17ca171dc851bc6e2b2e9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/references/fx-registry.md",
+      "archive_member": "user_codex/hyperframes-audio/references/fx-registry.md",
+      "sha256": "5c3d6f5e0037a1596fd2df70037d57e638f08492f58d8e75bf2225de52162adc"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/references/presets.md",
+      "archive_member": "user_codex/hyperframes-audio/references/presets.md",
+      "sha256": "6878ef09982cb9cefb2d0148a22d8ed431806b3cef9f62e2d1d8cdbabec37917"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/scripts/carve.mjs",
+      "archive_member": "user_codex/hyperframes-audio/scripts/carve.mjs",
+      "sha256": "cad9ddfb745efdb40c7f52446142593bb25514bc2a3fab05fd5b5cc4d3e69c42"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/scripts/carve.test.mjs",
+      "archive_member": "user_codex/hyperframes-audio/scripts/carve.test.mjs",
+      "sha256": "ab5d6c458c25882588e29356289c309b6d067b861767d0986a8d4ac87be46253"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/SKILL.md",
+      "archive_member": "user_codex/hyperframes-audio/SKILL.md",
+      "sha256": "78f60bc28fc11ed214248b49f767f9571088fc209cb15c97b1d12abcf4526eac"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/beats.md",
+      "archive_member": "user_codex/hyperframes-cli/references/beats.md",
+      "sha256": "5b90e725a0a676cadfd597524e3abed77e80a5aca03a4d7bee2c3be44e5b85d6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/cloud.md",
+      "archive_member": "user_codex/hyperframes-cli/references/cloud.md",
+      "sha256": "65d1a787a940ee360a07e492014c775a898a4b794e26f778e17dca659ffa7a1f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/cloudrun.md",
+      "archive_member": "user_codex/hyperframes-cli/references/cloudrun.md",
+      "sha256": "87ba98cc0db3721fb09776d44a5c8ef75fd95b6a74cea1376dc028907b98aeba"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/compare-and-batch.md",
+      "archive_member": "user_codex/hyperframes-cli/references/compare-and-batch.md",
+      "sha256": "d17fa5a16707d981fa6473b99a28aa45abf41bca0fd96c5157c632abd0bfc222"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/doctor-browser.md",
+      "archive_member": "user_codex/hyperframes-cli/references/doctor-browser.md",
+      "sha256": "7c8ab29ca563b288286fa3f5812e6badf3b36aea3641a0ef0197a1a8afba7527"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/init-and-scaffold.md",
+      "archive_member": "user_codex/hyperframes-cli/references/init-and-scaffold.md",
+      "sha256": "aa19617ba7778dfc61f7ed13c72d2f6f097c78cb751666c8cfdee2f4be3c5415"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/lambda.md",
+      "archive_member": "user_codex/hyperframes-cli/references/lambda.md",
+      "sha256": "73e681f3e5c6c3608b8d4f66b4b75628eed708803b4d2fd5532366659a0667c9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/lint-validate-inspect.md",
+      "archive_member": "user_codex/hyperframes-cli/references/lint-validate-inspect.md",
+      "sha256": "d13bd04a73c1400152f20ff45fa5a93bf6746994b0184a7af3269f739510ca6d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/preview-render.md",
+      "archive_member": "user_codex/hyperframes-cli/references/preview-render.md",
+      "sha256": "e822dce3ce9d51ba327e1f0975b29dc9b88aea3429ad402eb8d5d0a3495c698b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/references/upgrade-info-misc.md",
+      "archive_member": "user_codex/hyperframes-cli/references/upgrade-info-misc.md",
+      "sha256": "0189413e6dc5fb4e36bd70eeab536e8e193470a6983627fa491b104f791c59e0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/SKILL.md",
+      "archive_member": "user_codex/hyperframes-cli/SKILL.md",
+      "sha256": "1ea0ee445a628d1f7e8308b9b44ffdf9cd6b012d352476443afdbf26f02db093"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/brief-contract.md",
+      "archive_member": "user_codex/hyperframes-core/references/brief-contract.md",
+      "sha256": "199345fc5b0db0ae52f5559cfa331be9b24132850511a83c8e70558ec385f053"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/brief-format.md",
+      "archive_member": "user_codex/hyperframes-core/references/brief-format.md",
+      "sha256": "ee5008e1c6d5cb9f2e4aa27990a1f1f254b71197e5dd61c5c3da067cd792878d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/composition-patterns.md",
+      "archive_member": "user_codex/hyperframes-core/references/composition-patterns.md",
+      "sha256": "7b70fdd31ac776a8610b2d50274ce03fb57441ce484ba5a05e9b0b158900d5a0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/creator-editing-recipes.md",
+      "archive_member": "user_codex/hyperframes-core/references/creator-editing-recipes.md",
+      "sha256": "2f5fbe5ce788fde0874dd1ea083045cfb6622cf5e98ebc791974b58f6e0b13a8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/data-attributes.md",
+      "archive_member": "user_codex/hyperframes-core/references/data-attributes.md",
+      "sha256": "ef30c21797dbc6d16414737360c212b605d64803b0e5dcfb9329beed5de3dc3a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/determinism-rules.md",
+      "archive_member": "user_codex/hyperframes-core/references/determinism-rules.md",
+      "sha256": "7a37eafbee27d67d2508657035e411542882bf4e982b1c031de28a323ddf5f67"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/frame-worker-core.md",
+      "archive_member": "user_codex/hyperframes-core/references/frame-worker-core.md",
+      "sha256": "3eeb4c736189a5ab901e6ace75361fc50630b808ccca86ed5bbdc23b2ac83c45"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/full-screen-motion.md",
+      "archive_member": "user_codex/hyperframes-core/references/full-screen-motion.md",
+      "sha256": "662ab555a1400e224bee0007dc57f2882429ae274afe0930587cf3b96ed738f3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/minimal-composition.md",
+      "archive_member": "user_codex/hyperframes-core/references/minimal-composition.md",
+      "sha256": "3d20c3d098bb37318d01ac9b40594213a09244e30304e92620dbb9532ed4e9ce"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/production-loop.md",
+      "archive_member": "user_codex/hyperframes-core/references/production-loop.md",
+      "sha256": "c10437d9c583447c75e0480d9cc5e9830935edf557d155e83e9007b8b749aae9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/review-loop.md",
+      "archive_member": "user_codex/hyperframes-core/references/review-loop.md",
+      "sha256": "0c7297d26ba2eab7cf0d73c71db1162aae7a907b029f6f214eaa81091f5afdbf"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/script-format.md",
+      "archive_member": "user_codex/hyperframes-core/references/script-format.md",
+      "sha256": "54b55ab61ed47abfdaeb74bb62550609f2c69e32c83e9aa6e8d3c6e15290ae12"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/storyboard-format.md",
+      "archive_member": "user_codex/hyperframes-core/references/storyboard-format.md",
+      "sha256": "a5f1de05279cb12877494ce0ae15d4dbd64388162b5c730ab9e4e8a414f46730"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/sub-compositions.md",
+      "archive_member": "user_codex/hyperframes-core/references/sub-compositions.md",
+      "sha256": "3e4c5b9be398bce63f1a18490d9a7757ccc30dde4d2bcb5fd44c52b03ae7f78e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/subagent-dispatch.md",
+      "archive_member": "user_codex/hyperframes-core/references/subagent-dispatch.md",
+      "sha256": "979074196889d149fff53afebd6604258dbab777951f455c9a831ffb8576cab7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/tailwind.md",
+      "archive_member": "user_codex/hyperframes-core/references/tailwind.md",
+      "sha256": "f59b38a172092686931b0a126552860e63010af5e53da70cfb71c38ce7d9cdd8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/tracks-and-clips.md",
+      "archive_member": "user_codex/hyperframes-core/references/tracks-and-clips.md",
+      "sha256": "d6dfec78323fa7c7dd817df43560cc5dda336c41b4d2cb45462f81b74bf5b02a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/references/variables-and-media.md",
+      "archive_member": "user_codex/hyperframes-core/references/variables-and-media.md",
+      "sha256": "6457ea392ae1dcd7c581c9a7d4d9cc772ce0a59ff71098151fa6fcfc76d9b12b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/scripts/lib/frame-packets-core.mjs",
+      "archive_member": "user_codex/hyperframes-core/scripts/lib/frame-packets-core.mjs",
+      "sha256": "a7357861342ff4edaff7d4d74af6e1102263d1bbb9eaaecb0ab57f2e41661d0a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/SKILL.md",
+      "archive_member": "user_codex/hyperframes-core/SKILL.md",
+      "sha256": "4ab1e4d7f1ac9111b5a5a1502410a76db3367ecf95cd14bae62429135a28856a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/biennale-yellow/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/biennale-yellow/caption-skin.html",
+      "sha256": "e6e24155d587ab0fe1beca7c62e6fbfcce9d069cfb9cf02dfcecffe95194554b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/biennale-yellow/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/biennale-yellow/frame-showcase.html",
+      "sha256": "5ba04e47cf9897e023dcfa49e1ec26fe26bac0c5061097dc6e7cb1d9ed46d7d0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/biennale-yellow/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/biennale-yellow/FRAME.md",
+      "sha256": "76d22cced9c152b0edb520543cf34c4ce772a312caa7211c40d4315b53c053cf"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blockframe/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blockframe/caption-skin.html",
+      "sha256": "85ef2bf1579587b97e26b617ea0c957329879e8413c2875605a278ad947c7d26"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blockframe/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blockframe/frame-showcase.html",
+      "sha256": "8d2e4963713928b353d0aa28c2c83fce415df81b66a500c192b602c0aaf4ddf2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blockframe/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blockframe/FRAME.md",
+      "sha256": "ef8d9d47a209bed4ccc2d928c14a81cdaecb5129f5dc0cdc0dc40afc7ef92931"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blue-professional/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blue-professional/caption-skin.html",
+      "sha256": "a4cec56e723db7fc6b6f0c71a52314f80fc3f3f6c43747ae46af8a0761aa0c8b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blue-professional/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blue-professional/frame-showcase.html",
+      "sha256": "715b130d086977a48925a3c79bb079fbc7270274c9c9a7761bf275df3020b0ba"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/blue-professional/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/blue-professional/FRAME.md",
+      "sha256": "62e9a445885f6057084493de385a8ce20c3b4a299ae36a553ef54884f06bad68"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/bold-poster/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/bold-poster/caption-skin.html",
+      "sha256": "c5408b8d2b36028d85455003a5f0bbcde863f33474799477bab6afa261ec0214"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/bold-poster/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/bold-poster/frame-showcase.html",
+      "sha256": "57bbc3374b6a8b37ce59e36ed784c22bbb88fd44d039955221913b3e1bacf159"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/bold-poster/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/bold-poster/FRAME.md",
+      "sha256": "af756ef993099f9ac78328f676eb79a6572ff0e9c2aacf12787471cd4525b171"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/broadside/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/broadside/caption-skin.html",
+      "sha256": "d09b3e09bf497c0f2ed8db9dee181f376f75c65a25246181dc9d8f82cc938d6a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/broadside/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/broadside/frame-showcase.html",
+      "sha256": "8d23a2cbeb898568a5626b38ffc864236fb4a09930d59b17c34c45f34c8e4161"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/broadside/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/broadside/FRAME.md",
+      "sha256": "3af0a1e5e61bece19841671672d7732082f03d5699b713475e90323a21dbcc89"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/capsule/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/capsule/caption-skin.html",
+      "sha256": "a66a37a0b2060ebe635f4d2309b3cf0f78c31203de19c12fc477a23009ec0e89"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/capsule/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/capsule/frame-showcase.html",
+      "sha256": "b3a642b5df3bbfb1ff227f1b82ee3ea02b51f20a0d7c5c46c97d72b180cddb4f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/capsule/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/capsule/FRAME.md",
+      "sha256": "f06dba67a3859f7c732b5177f7bcc58c94592caa5d6bbbcc6730a7876f5baa7a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cartesian/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cartesian/caption-skin.html",
+      "sha256": "48f7b844d2936e0e0fc142605ec627adadc12120691bacb50dba7390d8706137"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cartesian/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cartesian/frame-showcase.html",
+      "sha256": "d7867cee5e07c4f22345c566071f2ce0261b3fccca111a94dfbec5fde64f3e55"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cartesian/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cartesian/FRAME.md",
+      "sha256": "3dc6a31813a333b2a7a1509ddbd3b4dabbbd7e12e6479b6cff10d69c185fec95"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cobalt-grid/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cobalt-grid/caption-skin.html",
+      "sha256": "506c0abc064ee4450afc7d34ff71a6fd04fa0dda69d57608ab310569d7651c03"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cobalt-grid/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cobalt-grid/frame-showcase.html",
+      "sha256": "b135214cd2e310273a01e3f72b2828149f022803954a22a13cbf27aa1c2f518a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/cobalt-grid/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/cobalt-grid/FRAME.md",
+      "sha256": "62a6c9e6e5188cc29b9c0098e9bb8e72c23f152d9a99dd92c58139d26b69b19f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/caption-skin.html",
+      "sha256": "fe96654fb76433caf5b3c81e4b9c52c07c1d03b267411c12ed94f054ccb92028"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/EBGaramond-400.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/EBGaramond-400.woff2",
+      "sha256": "b63448e2680a0dbde70ebb2f3de78f6c515122835491f938e8a8595b46f29210"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/EBGaramond-700.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/EBGaramond-700.woff2",
+      "sha256": "5d0f8a497a48fd2a3611d07acc844f65c9fbb35419eafa4e1295f5f0f95f86e4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/Inter-400.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/Inter-400.woff2",
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/Inter-700.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/Inter-700.woff2",
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/JetBrainsMono-400.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/JetBrainsMono-400.woff2",
+      "sha256": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/JetBrainsMono-700.woff2",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/JetBrainsMono-700.woff2",
+      "sha256": "d0d4e818808f2a0ba39b2b09d1989366f63494e295f003c7ef436697378507e8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-eb-garamond.txt",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-eb-garamond.txt",
+      "sha256": "f03c8eda63076cd52317dcd40aa04db8472d4cb592dfaafa385129dfdafc7f9c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-inter.txt",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-inter.txt",
+      "sha256": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-jetbrains-mono.txt",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/fonts/OFL-jetbrains-mono.txt",
+      "sha256": "403581b69dac5cff4079205e01c6b467e56af449ecbd7247693ddb1baafa005b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/frame-showcase.html",
+      "sha256": "08d711f5409a6af3fb6de05febe47fee77e4c8e85517bf2d087e2277b524e4ab"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/code-editorial/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/code-editorial/FRAME.md",
+      "sha256": "b1c123526634e31a3e36cff9856e3b4322f2f778d2c7f573aa35a9ee1e90deb7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/coral/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/coral/caption-skin.html",
+      "sha256": "9af79dabd44f5d6ac934a5c371aad5316a4e2db76542a1ec3c969245b33892fa"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/coral/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/coral/frame-showcase.html",
+      "sha256": "8ddf31ae13a4e57fe9730892fbbcb171cae67a204b5cb00b00374984f49b8f76"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/coral/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/coral/FRAME.md",
+      "sha256": "8530ecb36d1bb2d53392d88d972df35beeba19a5bcb3260fc9b18a58de7cdfe8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/creative-mode/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/creative-mode/caption-skin.html",
+      "sha256": "ef4a13de5757453294db153607891e60ab3f408603ed222e53b908359dcbd296"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/creative-mode/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/creative-mode/frame-showcase.html",
+      "sha256": "32c1371fcd526c56edb515e5b255ad736a3e330ba3ff2631c61576064b384ef0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/creative-mode/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/creative-mode/FRAME.md",
+      "sha256": "c1a1359502d9fc79ef267305291fe0f651219c72d88088cee32327dd933dead8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/daisy-days/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/daisy-days/caption-skin.html",
+      "sha256": "6090e702f09c1df11e7289269a5b1ebc126981107c3ed5d9f951f69d471d1494"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/daisy-days/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/daisy-days/frame-showcase.html",
+      "sha256": "4fb93e5fa3ba12367f303996b6ca8b62f8e18c721d02e8032274df12d49d96f3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/daisy-days/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/daisy-days/FRAME.md",
+      "sha256": "42d827dbd279990052e171d04380b5e6bbc111ae391dc283deb7a452e70b9b97"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/editorial-forest/caption-skin.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/editorial-forest/caption-skin.html",
+      "sha256": "31999378b8fed9a4511432e38017f287127ce25a534ee57bfe4cc0f3b74c7d48"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/editorial-forest/frame-showcase.html",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/editorial-forest/frame-showcase.html",
+      "sha256": "bb87b88b91184f4fee7f02eea63ed35d9d378fa89fad8988326e31e82a43dbb1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/frame-presets/editorial-forest/FRAME.md",
+      "archive_member": "user_codex/hyperframes-creative/frame-presets/editorial-forest/FRAME.md",
+      "sha256": "ceeb2ab768367da1e1f3e1eca36ab9feeb3de3e4d15493319b0044c3d869329c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/bold-energetic.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/bold-energetic.md",
+      "sha256": "17bc6b7889302151b4e5c84c0c6a33df676647078011d9decb2b68810e3baa7f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/clean-corporate.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/clean-corporate.md",
+      "sha256": "d0c8c86838abb77985609629afe600d0ca365eccd835820f309959e8a85cba9d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/dark-premium.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/dark-premium.md",
+      "sha256": "abfecbf7e8dca3b674376590a0467aac3e13b2135022ae4ec519c4b27c2303b1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/jewel-rich.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/jewel-rich.md",
+      "sha256": "17c8f7506469f66bca4e27ef78c19f0bcbf250f88fe840e3043816b7041c4fc5"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/monochrome.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/monochrome.md",
+      "sha256": "fe8586f6d70707098859063bdef34d68084f02cf7d5aaa436d4c9915a7ae3748"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/nature-earth.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/nature-earth.md",
+      "sha256": "9710549b17487787fef3c7cb459cfd6e4ac28c1593bf471fcf55a3b4e546beed"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/neon-electric.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/neon-electric.md",
+      "sha256": "35225bf8d2cd37223e88e0bc59b0a96bc8adeda7225389b3df97b675cfd33dfb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/pastel-soft.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/pastel-soft.md",
+      "sha256": "ed4e25bb5f4953c002e55a53320249621437e03b5a11d43e3c1bd32c869b6d95"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/palettes/warm-editorial.md",
+      "archive_member": "user_codex/hyperframes-creative/palettes/warm-editorial.md",
+      "sha256": "c467ee3cc0bbf4b2bedccc8106e18293b8a06dbac8f092b10300492da0e0559a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/audio-reactive.md",
+      "archive_member": "user_codex/hyperframes-creative/references/audio-reactive.md",
+      "sha256": "ad93a0c588a702203a08ed909842570f010f041500aa33512d2b06f66d450c1c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/beat-direction.md",
+      "archive_member": "user_codex/hyperframes-creative/references/beat-direction.md",
+      "sha256": "312560b513e689aeda44956c9a883cf465a982b8efce9730722bfb8d147f94f9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/composition-patterns.md",
+      "archive_member": "user_codex/hyperframes-creative/references/composition-patterns.md",
+      "sha256": "bb287bdaa4779698d8cb6541488335aacabef781ebca1fa661b3fd8f3462d034"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/data-in-motion.md",
+      "archive_member": "user_codex/hyperframes-creative/references/data-in-motion.md",
+      "sha256": "6066c79717156c4a41ef86f28e07c6bd35f18d6830b12893c58523063c788d7d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/design-adherence.md",
+      "archive_member": "user_codex/hyperframes-creative/references/design-adherence.md",
+      "sha256": "ff21deb80143c8e09092958a6f40bc712173a43d23c5ea88742566573a2a7241"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/design-picker.md",
+      "archive_member": "user_codex/hyperframes-creative/references/design-picker.md",
+      "sha256": "3b37cd0e9366b8f9c30b5e31a909193b23b58ada7f73675eab0fe7d2a74bbdf8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/design-spec.md",
+      "archive_member": "user_codex/hyperframes-creative/references/design-spec.md",
+      "sha256": "a583fe293facc2e6d242fa69f64c8cdc110c5cfe25f8ddb2429bfb445fcf8ad5"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/house-style.md",
+      "archive_member": "user_codex/hyperframes-creative/references/house-style.md",
+      "sha256": "d301b2a7799e3219c0e8fe5303f397a5a3d8114892c1323e1688b7435cd1b549"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/motion-principles.md",
+      "archive_member": "user_codex/hyperframes-creative/references/motion-principles.md",
+      "sha256": "43cb4193d2716bffde5a44f3740021f0b2eede83fe5c75d30e3f5398e2bf6d2e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/narration.md",
+      "archive_member": "user_codex/hyperframes-creative/references/narration.md",
+      "sha256": "6002bb2a2270149a8955068d5952fc57cd22594649f576b3e8c38057846610b6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/prompt-expansion.md",
+      "archive_member": "user_codex/hyperframes-creative/references/prompt-expansion.md",
+      "sha256": "3c428274da00f7809e93a2036454b2b9cba9a20b3ae3811d43f33a50501a36f6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/story-spine.md",
+      "archive_member": "user_codex/hyperframes-creative/references/story-spine.md",
+      "sha256": "30055b1a74d8fbfedc3ed9bc3a8a868da15210b0361265c5f87e0b1972f9a797"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/typography.md",
+      "archive_member": "user_codex/hyperframes-creative/references/typography.md",
+      "sha256": "7980c58de09cc05e31f27c526de35a1a3daeb0dd06c61168557a53fd9aeee185"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/video-composition.md",
+      "archive_member": "user_codex/hyperframes-creative/references/video-composition.md",
+      "sha256": "037a966583e4b5fc4c3385ef6217560d36237ec638d2b68b5808950c873e424b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/references/visual-styles.md",
+      "archive_member": "user_codex/hyperframes-creative/references/visual-styles.md",
+      "sha256": "c22d2c3f0732398ff52cbb469cf17567706b4d6555ad4149cae950a7cb3867c6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/scripts/contrast-report.mjs",
+      "archive_member": "user_codex/hyperframes-creative/scripts/contrast-report.mjs",
+      "sha256": "c53d140011adfd1c5b9a0a2444ca80a4ed1b027163c48811d92524477374f104"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/scripts/extract-audio-data.py",
+      "archive_member": "user_codex/hyperframes-creative/scripts/extract-audio-data.py",
+      "sha256": "2b72d7aaa8688a4c524042274364f9696fb26fa9dd7125c58798cbdf021950e8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/scripts/package-loader.mjs",
+      "archive_member": "user_codex/hyperframes-creative/scripts/package-loader.mjs",
+      "sha256": "432301ff69c05d457327d15844c01392c434da97504c67489dfde182b6e76aad"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/scripts/package-loader.test.mjs",
+      "archive_member": "user_codex/hyperframes-creative/scripts/package-loader.test.mjs",
+      "sha256": "beb88750ec35aa701b92bd8e6e90220797c78127c8447416956f8dd3259e34dd"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/SKILL.md",
+      "archive_member": "user_codex/hyperframes-creative/SKILL.md",
+      "sha256": "488782fc741a43e002b5c6ac0da69cc2b12abaa42b6c0056df2aa53bea553c16"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/templates/design-picker.html",
+      "archive_member": "user_codex/hyperframes-creative/templates/design-picker.html",
+      "sha256": "c417139fef8e21b34d56a85cedda8b9597c9574e0727ce603a4743c4ee592c1a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/agents/openai.yaml",
+      "archive_member": "user_codex/hyperframes-keyframes/agents/openai.yaml",
+      "sha256": "1fbce5f9defa4c5f2d9e8cd7fad67566e21aba09e93a25e5836ebca62bd68f4b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/references/keyframe-patterns.md",
+      "archive_member": "user_codex/hyperframes-keyframes/references/keyframe-patterns.md",
+      "sha256": "727cbc8db92968e9a8c9e77434e6aa45ad4e938df577c86ba75d118aa7e6e88d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/SKILL.md",
+      "archive_member": "user_codex/hyperframes-keyframes/SKILL.md",
+      "sha256": "924d038dc7eb20d16e05fa0e9837fa50bdcac0ce131aee80ebd8188cb67110d1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/examples/add-block.md",
+      "archive_member": "user_codex/hyperframes-registry/examples/add-block.md",
+      "sha256": "0e3353755c4ef55e53570d1266a4a43b2c5aef9bbe41276430e38cfa6580b83a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/examples/add-component.md",
+      "archive_member": "user_codex/hyperframes-registry/examples/add-component.md",
+      "sha256": "d06992d31eec617a91f5c34630c9274c52dd07898bd24f10a869d0d1cab5af29"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/component-quality-bar.md",
+      "archive_member": "user_codex/hyperframes-registry/references/component-quality-bar.md",
+      "sha256": "f0d4c3c44131bc0791f8a8cc3d2d7478d38045451775af7d20b2dd47cf5f91ac"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/contributing.md",
+      "archive_member": "user_codex/hyperframes-registry/references/contributing.md",
+      "sha256": "be54184f032624181f72c7b89998eb3bb61d7b1f372662697196f43a41fc4ab9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/demo-html-pattern.md",
+      "archive_member": "user_codex/hyperframes-registry/references/demo-html-pattern.md",
+      "sha256": "dfc50cd33eff2c2be75437786fc3e851ab0085f7d453fb35b3380ecf9a6e9f04"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/discovery.md",
+      "archive_member": "user_codex/hyperframes-registry/references/discovery.md",
+      "sha256": "5f7ba6b3b32bc2b989e73943bce86194186fbd8e676c22805b6ec9a28e4db7b3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/install-locations.md",
+      "archive_member": "user_codex/hyperframes-registry/references/install-locations.md",
+      "sha256": "83793e7d6aeea9a751755e4bd23ea48182ff9af082287b98a1192343d2571dd1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/placeholder-material.md",
+      "archive_member": "user_codex/hyperframes-registry/references/placeholder-material.md",
+      "sha256": "15adf4a40b26166f64df784aed065adb58051d9ccd5c0c52ad9b71e3b8367a09"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/templates.md",
+      "archive_member": "user_codex/hyperframes-registry/references/templates.md",
+      "sha256": "98e1ef62d3c1264b28139d85a1c9b5a8b7438209914aebef6d9890e3f4275805"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/wiring-blocks.md",
+      "archive_member": "user_codex/hyperframes-registry/references/wiring-blocks.md",
+      "sha256": "397f9ad5a9244d173b97bb5a5dfe76ea3cbccfb8dde16cba8b3dabc6044b011a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/references/wiring-components.md",
+      "archive_member": "user_codex/hyperframes-registry/references/wiring-components.md",
+      "sha256": "6c8341c29fdae6de4f9fd1560a668d11cf34731b81fe5a06c9aeb4a000047b2a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/SKILL.md",
+      "archive_member": "user_codex/hyperframes-registry/SKILL.md",
+      "sha256": "9bb3d0f74b47bf7fe93208228d4bd4431538bff9440d074271a4b413a9f6cc3d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/.gitignore",
+      "archive_member": "user_codex/media-use/.gitignore",
+      "sha256": "a299ec0fcdb6bc6670cf9fb22eefe3fcc37730e2e554b7f54e25de88be1ede02"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/chime.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/chime.mp3",
+      "sha256": "74823b1b27703c56e0652db838f503c150ce9c2442d47d27430af3d5121d6d12"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/click-soft.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/click-soft.mp3",
+      "sha256": "075e17bdac5c13662a1c9530050e0046f81d4138e00eb3bf30427a7b4404103d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/click.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/click.mp3",
+      "sha256": "075e17bdac5c13662a1c9530050e0046f81d4138e00eb3bf30427a7b4404103d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/CREDITS.md",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/CREDITS.md",
+      "sha256": "79590c7738b0427b10f362f76b02cfd2643158a40e1d5fd787f9ac6b33bcf4ce"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/error.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/error.mp3",
+      "sha256": "b4882e3941ca496b5038e7c7d64318419da9f69d3da9540a1c693adc639cf121"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/glitch-1.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/glitch-1.mp3",
+      "sha256": "760b72bdaad71f83350e2ef3a9d037daf58f44855a05a6cce25d990f1ffb888a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/glitch-2.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/glitch-2.mp3",
+      "sha256": "b326efdf687f18f68f0df7443a65b0ea7a4a1287dfe3143ea23707cc645257f1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/glitch-3.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/glitch-3.mp3",
+      "sha256": "7ebe61cfd0d69a2d35d9ee3a88c26025101e999d5cc6bfb2df410f820b433042"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/impact-bass-1.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/impact-bass-1.mp3",
+      "sha256": "634d5eda5eb7b501aca98393a64f3815eccf24157cd1d95df55aaec1b5000bd7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/impact-bass-2.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/impact-bass-2.mp3",
+      "sha256": "fb832995477784f44ba8533359d20caf706195b52117ecc2a33b3e63e3c1307b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/key-press.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/key-press.mp3",
+      "sha256": "bcc892df0898bf466162f14233c3e92a8c1ea351f6affd8a3a7e56c9a760bb72"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/manifest.json",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/manifest.json",
+      "sha256": "1b1aae06c6e25412e1d217ebf1e646a0ed36410c0fcad11acdb8f5d5e5b7dc10"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/notification.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/notification.mp3",
+      "sha256": "b1559967dedb7994a82371f10cec9f7f3992e6b147b4cd88d62112bcdc3f9ba3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/ping.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/ping.mp3",
+      "sha256": "c54d088fa2709e6b3c9ce87594a9187d0d5338d3a8c683271f9c4353a8ee8c91"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/pop.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/pop.mp3",
+      "sha256": "19ab7193f626ff57fdeef60b45543bac416fcbcec803cfb417abe4b271c1b352"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/riser.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/riser.mp3",
+      "sha256": "d2f29d49f27dee7d3b25af22ffe5bebc39390cc5d5fb3b3e1c433499c77f3d1d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/sparkle.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/sparkle.mp3",
+      "sha256": "a66b2829a307bcb5b1f6551d7cdc72fe45bbe9a91abfb994d28db8d5e4e42ea8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/typing.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/typing.mp3",
+      "sha256": "944160652faeb7b32acc9341ede4d735a5c9a4ce3fe8509ef7eab91efb430487"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/whoosh-cinematic.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/whoosh-cinematic.mp3",
+      "sha256": "0a0f3505856fdfa84ac6b86b3c55ccd0ef1eb4ff0907d7b6934002218a73404e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/whoosh-short.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/whoosh-short.mp3",
+      "sha256": "c2efd9d902a59bf9ec5019035d7deadd17762136896b6e3cb6dd99ea50997a30"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/assets/sfx/whoosh.mp3",
+      "archive_member": "user_codex/media-use/audio/assets/sfx/whoosh.mp3",
+      "sha256": "c2efd9d902a59bf9ec5019035d7deadd17762136896b6e3cb6dd99ea50997a30"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/bgm.md",
+      "archive_member": "user_codex/media-use/audio/references/bgm.md",
+      "sha256": "59377dd15d537ed967a24733ea4246d2dfd502eb5a6d3eef6934a245533ddb39"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/captions/authoring.md",
+      "archive_member": "user_codex/media-use/audio/references/captions/authoring.md",
+      "sha256": "ff658d9d0eaf505f0684f67247fbe8b90fb0cda28f645b10a32a46c3b755400c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/captions/motion.md",
+      "archive_member": "user_codex/media-use/audio/references/captions/motion.md",
+      "sha256": "20646595c341902877f31804d4ac6be54e1a261f7d34600660b0e9fcae964019"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/captions/transcript-handling.md",
+      "archive_member": "user_codex/media-use/audio/references/captions/transcript-handling.md",
+      "sha256": "84c4d5181749022c00b6de62ffe95fe257598fb5f9111d9e8541d25a13836287"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/remove-background.md",
+      "archive_member": "user_codex/media-use/audio/references/remove-background.md",
+      "sha256": "d5a8f2e21c4f0029a025a490dbc9ef6ace76dfe2d6c674a8ecd2f1484cfbe9c8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/requirements.md",
+      "archive_member": "user_codex/media-use/audio/references/requirements.md",
+      "sha256": "1ebd23531306ca51a85623e82a1e25fd16814b8539fe9b69cabf9f418fff55b3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/sfx.md",
+      "archive_member": "user_codex/media-use/audio/references/sfx.md",
+      "sha256": "1f1cf76ba2ed9a01a18cc85db547a5da7cfe4607b162a75ac9ecdfeceb21f860"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/transcribe.md",
+      "archive_member": "user_codex/media-use/audio/references/transcribe.md",
+      "sha256": "e688fcb18ff58a4170f867c7c35bf5dfcfc5fd335d92bdb1a90e9fddcf26854c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/tts-to-captions.md",
+      "archive_member": "user_codex/media-use/audio/references/tts-to-captions.md",
+      "sha256": "cfc9b701b372ee95cd73bc97e13a181604089af01738400dead86df9293a8942"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/references/tts.md",
+      "archive_member": "user_codex/media-use/audio/references/tts.md",
+      "sha256": "a1a4873b7d3f428272daeee60425d31691d76d858b515b3f2f2c8f051dbdcaf6"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/audio.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/audio.mjs",
+      "sha256": "fe09400fc1d61ca470331534cee720d5eb985557702bd19de2a918791f831033"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/audio.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/audio.test.mjs",
+      "sha256": "1d90248d9cf06f27ae8ab500b796644c854bf2130e9677834dfb106e400f550c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/heygen-tts.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/heygen-tts.mjs",
+      "sha256": "72cce7893630ec1e5f1fa6c57c9b4788ecb92b3e6341de78a87d3d88eb37852e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/bgm.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/bgm.mjs",
+      "sha256": "6abc218c13d1198ee1578220a5614089ad33a261f376c90d33188c2ab504bc61"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/bgm.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/bgm.test.mjs",
+      "sha256": "104e54a91e2b18e1f9613a8ebf2041899397267fa7935849805a836394c17b55"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/concurrency.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/concurrency.mjs",
+      "sha256": "36a28dc1a0528b5605cba29a593dd54a786ad6283611b09a634946b12a5ed32e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/concurrency.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/concurrency.test.mjs",
+      "sha256": "daf0b162a9c3fc1a20cc22dff19566530e198459a10afcdf42ad39bec2426f55"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/heygen.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/heygen.mjs",
+      "sha256": "faed945f9fd498afd0ec254016682245b39249792d17937d274fb37b377bac54"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/heygen.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/heygen.test.mjs",
+      "sha256": "9f250fa340da752d689b1333eb44c046a9d98320cad8fc5262bc6c787601ed1d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/python.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/python.mjs",
+      "sha256": "d62ff14dc60fc2edee95347ce46a25925520ea6e240f0656a822bf52be0537cb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/python.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/python.test.mjs",
+      "sha256": "87fe9ff61183283ecd21f6f181dd159346628b15b79db505fc94a2c1973ad802"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/sfx.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/sfx.mjs",
+      "sha256": "df6f841ee97f1165410370eb5c18b8e9236a4c6b7763099e7aa65f263bb7b041"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/sfx.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/sfx.test.mjs",
+      "sha256": "3717448e6a2b7649dc62358ffe751cadab55d5e851e7278ed29b339ec3c9a47a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/tts.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/tts.mjs",
+      "sha256": "f7b45c49990218d4e067156a964f7b0b2087bf401e56e3bfdf76c8254fbfd068"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/tts.spawn.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/tts.spawn.test.mjs",
+      "sha256": "62ec9589648477e8c7242567e9daa67d1cf07a0fbe2cf9968acef8df8e982ef2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lib/tts.test.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/lib/tts.test.mjs",
+      "sha256": "45af6be08b3064e0dd09fac0e96a0607a14af522dcefef1b8faba16b08c263da"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/lyria-recipe.py",
+      "archive_member": "user_codex/media-use/audio/scripts/lyria-recipe.py",
+      "sha256": "07bcba4a128430545a03e7ced49b9a6750a77d72a3659d67e4e9886fe9731436"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/audio/scripts/wait-bgm.mjs",
+      "archive_member": "user_codex/media-use/audio/scripts/wait-bgm.mjs",
+      "sha256": "30c2bfe1219a3dffbce3b3044449b45bba565b7b1e0128a8ee84f8d0e4f87fb8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/luts/index.json",
+      "archive_member": "user_codex/media-use/luts/index.json",
+      "sha256": "988ac83c14bc3a9ef09aa6ab64459a0aa9e766e96361738136970ec89df1675a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/luts/README.md",
+      "archive_member": "user_codex/media-use/luts/README.md",
+      "sha256": "c06cbbf2aab80cbf8aa25c83497202a63107a61e083b6c199a89d513e8096a3b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/audio.md",
+      "archive_member": "user_codex/media-use/references/audio.md",
+      "sha256": "0077128019f44bb2f86c7fed54180080e97a45455c88c76889e69cf988f45bc7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/grading.md",
+      "archive_member": "user_codex/media-use/references/grading.md",
+      "sha256": "f329c584d69ac7f3c44ba617252d7e137e7cdf58e48940e2bf93a75268b69b3e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/media-treatment-recipes.md",
+      "archive_member": "user_codex/media-use/references/media-treatment-recipes.md",
+      "sha256": "e472e76571ee1498abe46e152c85fc0c5d0ae014b2ce9e634d5c041ae60ab9af"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/media-treatments.md",
+      "archive_member": "user_codex/media-use/references/media-treatments.md",
+      "sha256": "13fceb2fb71b98048d923db3aa2ad35c1016e16b25f0c2115ed3a6a77e732ab4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/memory.md",
+      "archive_member": "user_codex/media-use/references/memory.md",
+      "sha256": "3938a859317b26edc069d8fb2e26e62dc733b2761183f0e496d448edeac40f18"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/meta.md",
+      "archive_member": "user_codex/media-use/references/meta.md",
+      "sha256": "47e0391893b157705539129d0f9f071a2d7ced8cab272bb7b6d58117474fdbb3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/operations.md",
+      "archive_member": "user_codex/media-use/references/operations.md",
+      "sha256": "40a12346216106a29e0649036657a0016b61a4d3cd8c4ecc1f7dd8ced58405a5"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/resolve.md",
+      "archive_member": "user_codex/media-use/references/resolve.md",
+      "sha256": "4564d847ed85868b4c717026fd8d0a46bad503fc731e3e9447f0a7aa78a4c966"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/setup-providers.md",
+      "archive_member": "user_codex/media-use/references/setup-providers.md",
+      "sha256": "25d0c2ba7534dbcbcbb6d69bd29383c4918d700bb223d436364c09d48578e05d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/references/telemetry-dashboard.md",
+      "archive_member": "user_codex/media-use/references/telemetry-dashboard.md",
+      "sha256": "bdc30ad1ff84ebe7f5ca835acb9f47b33717e041ea79b41c6f0db489b86094a7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/audio-duck.mjs",
+      "archive_member": "user_codex/media-use/scripts/audio-duck.mjs",
+      "sha256": "e957481254d6e41ec886f51995fcfa9351863c68b44540b730a49bcfd9dcc7f8"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/dither.mjs",
+      "archive_member": "user_codex/media-use/scripts/dither.mjs",
+      "sha256": "8e9f437526f39f417f6793912ddeef71094ddb5a5b8d4893c5339086bc39547f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/dither.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/dither.test.mjs",
+      "sha256": "c22c3a0ae41647ac3f733b489a6bc6043fd294155d00954be5d901b3cff7d216"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/eval.mjs",
+      "archive_member": "user_codex/media-use/scripts/eval.mjs",
+      "sha256": "fadf274111a682acbfdff91eca75b977e3821c53026cd058551c538027f21f51"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/adopt.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/adopt.mjs",
+      "sha256": "82f46374e759a79a88830bd059116835cf71b7fc617a8a23a68523925ed0954d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/adopt.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/adopt.test.mjs",
+      "sha256": "ca19fb75d72e8ed9fd29d81071c73b994a42ff2b71cb1ed17f9ddd45f02618f9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/bgm-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/bgm-provider.mjs",
+      "sha256": "37db0d3e8ee052d1341339a75b68a3f98b2aaf2d3689a682149138ffb4aedf95"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/brand-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/brand-provider.mjs",
+      "sha256": "3519d28f8bb2e59eed0c0706a1f57e0782aa94ed6237338b6110474d9ec093a1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/bundled-sfx-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/bundled-sfx-provider.mjs",
+      "sha256": "0e642499cca0288b87ed818a69c50de561d754645011f4c5fa8e8b0f0d87504b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/bundled-sfx-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/bundled-sfx-provider.test.mjs",
+      "sha256": "885459e875b862f1b9ad1fc3390883c39ae6150e5218a9946740277db7f56915"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cache.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cache.mjs",
+      "sha256": "1d30cc8b37468d2eafcf2603a03d7d97cb44571fa9348f9aa2e794a3e8b74df2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/candidates.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/candidates.mjs",
+      "sha256": "75cd6b4b7f9aebfa1611b4426c6059c8c6e431987cfcaf199b00f777cdc95282"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/candidates.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/candidates.test.mjs",
+      "sha256": "2f9edde8bc8b79729e2583269d66a9517a361149ad78b4ec674087ccb27575d1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/codex-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/codex-provider.mjs",
+      "sha256": "1d58d7b3ea07253700f52b7ebb3250d21f9afdbeb06e7cc8b6fae0a429bb48b0"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/codex-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/codex-provider.test.mjs",
+      "sha256": "71d26ffc40296f98040101f8e4543b35b2854a66fea2d360950f96dfcd93f61f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/coverage.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/coverage.test.mjs",
+      "sha256": "a78046a8c5df9c41555499152df2a8692304e66155e1b8344460e9f7bad1dc21"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cube-build.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cube-build.mjs",
+      "sha256": "c57b5561641dc97e73474ceb91f33357792028874eaac8012620d094dcfb2a07"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cube-build.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cube-build.test.mjs",
+      "sha256": "d915460484e53263c792e2d67813895f79fa22f07f002cab46c4f663478da939"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cube-validate.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cube-validate.mjs",
+      "sha256": "72c341cdf0d4e533e4b934da50500bf1e161aab0fa626ab2beff6dad50a1803d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cube-validate.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cube-validate.test.mjs",
+      "sha256": "9b2acbba85879eb8f75d63c6e6f9162cce61bac266441d4e1b2b1117f16b9bb7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cutlist.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cutlist.mjs",
+      "sha256": "9226c19382993a9a6efac0acb6f02e3693b4d044c224bee447ad3df2560e176b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/cutlist.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/cutlist.test.mjs",
+      "sha256": "c1fa07209831542bb6279465d2c2ec9fa51db5e23ff13e1cc62265df00d7b9d3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/duck.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/duck.mjs",
+      "sha256": "0143a675f28eadb6642d6afad1c7760fab98c98f5cec798331bd6832a5f2bc96"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/duck.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/duck.test.mjs",
+      "sha256": "c09a01c891f08fe37ca12f34061abeda2195a30d79d6ec175b6059364e1733b3"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/error-diffusion.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/error-diffusion.mjs",
+      "sha256": "aa718fe95f98087979bab5ea31d68b8e45fbde0c5b874c6888ad21923fb45936"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/error-diffusion.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/error-diffusion.test.mjs",
+      "sha256": "365640f4035bbd1180b3663adca87d8735fad3c0b20b7fe41a562d8cd71154fd"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/freeze.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/freeze.mjs",
+      "sha256": "77e664bb548cdcaba779f602754a0430df28a613fd940e093e383428a7bc620c"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/freeze.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/freeze.test.mjs",
+      "sha256": "c4789af891c8e78bb5e3750079e157f776f1541ecff2e340e222517229b49f86"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/grade-analyzer.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/grade-analyzer.mjs",
+      "sha256": "c1812812fcf431fce2e6217b29079a3fdb02fca82c97a96f99424dfd15afc9d9"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/grade-analyzer.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/grade-analyzer.test.mjs",
+      "sha256": "a47684600e07b719062879e9fac2eac81f625137d539a9459524974eaec4bd27"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-cli.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-cli.mjs",
+      "sha256": "a7f299edf2bd3438dee3389dc3f812ffc5f3ba74eaa7d11c6d0e520b6f9d875a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-cli.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-cli.test.mjs",
+      "sha256": "1c002533fb5b883e42f1f8d4cbd642a9ef08794e13be106b652df90f463c4c15"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-search.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-search.mjs",
+      "sha256": "574e75e0479b3edf4ae5c519a437939b244637807c0094b8de7043f2bfbbdc77"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-search.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-search.test.mjs",
+      "sha256": "016cb16093b76a0601613899f92788f1bb112b0c0305aef3ff661a961682c660"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-video-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-video-provider.mjs",
+      "sha256": "74c5eaa50823926e4fcd2a22274db4a39a08250a2a76a6c7ba2414439ce2fd44"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/heygen-video-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/heygen-video-provider.test.mjs",
+      "sha256": "8e4812731dd8fa6d9fb98633ab3c9cb97cabe697fc445b32ab92d777e8930e0e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/image-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/image-provider.mjs",
+      "sha256": "73ac032e7cf0bd80a08d3b279a16e60de1a6c010d9e197451d56a5fdd6874481"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/index-gen.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/index-gen.mjs",
+      "sha256": "36ab3b3793e93947aa673b802e858a3d72862e0bfed379dcc971fb390ad40364"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/local-models.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/local-models.mjs",
+      "sha256": "9916ad6fd76be32b25c6a2d3473089d56efdada2211f831efb27134f3755006f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/local-models.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/local-models.test.mjs",
+      "sha256": "5eaa3b3c7bb8c112e83174cf6772fab5c0cd9eaa98536382159dd38260e7010f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/local-run.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/local-run.mjs",
+      "sha256": "bac5df4976a34f1839b323bb4ad7ab60effcb648f8baae7d4bcbe27f5f9191e2"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/local-run.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/local-run.test.mjs",
+      "sha256": "7742f1cc8797cd72fb91fc8675fb89c3daceef48b91deb7e108a754ba6cc6e05"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/logo-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/logo-provider.mjs",
+      "sha256": "6ce1e9ac0e88673d95f942ee55257c599f21d2324b6f83734b093617d6ecd7db"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/logo-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/logo-provider.test.mjs",
+      "sha256": "68e520d98ce7f5a18c2bc676c59302fac71dfeba87fc0dd5178a814bd82d2345"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/ltx-video-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/ltx-video-provider.mjs",
+      "sha256": "75e0ec5b17bd8ebcbb4641beb79fec1eedcc3a063aff21637b2340f18119a860"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/ltx-video-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/ltx-video-provider.test.mjs",
+      "sha256": "02f26ff072e0984a67a519b150f689df797bc4686e9625909e2ee4219e173f74"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/lut-preset-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/lut-preset-provider.mjs",
+      "sha256": "fe52aa4a4a957a60a0f193c41446411632b24f8b747c60686022308b1b734af7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/lut-preset-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/lut-preset-provider.test.mjs",
+      "sha256": "9d3279a0bf15cd9a09faca8b2108c7a4261e5bdb98ec55da0d3b72ee25aee39e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/manifest.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/manifest.mjs",
+      "sha256": "3ee2ea7e827cc29831aa8706b470ff54a8ec4a2d21857a3cd73299a63cfc0c14"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/manifest.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/manifest.test.mjs",
+      "sha256": "8fff90d2607cd647043e49cc3e53f1c0739a2f2bbe5c246ba1a812db65f57aac"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/match.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/match.mjs",
+      "sha256": "82c99f95a578b18f40388a50040d734a156d5cfa17d6ae4ebb514ace1489ff6a"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/mflux-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/mflux-provider.mjs",
+      "sha256": "900c56d18ad79f9d2d01c3e5105ed4277dc812b1c52955d96c0ee19f19d7a6a7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/misses.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/misses.mjs",
+      "sha256": "5ed22ebca48b7737018709918150eae564d437e5b930bea295f48ee76aa3f40b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/misses.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/misses.test.mjs",
+      "sha256": "f8b0603ab3c1bfd31961a505d81a3b2f4088c8c494d19e29f69484a8cdc481ff"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/npx-sync.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/npx-sync.mjs",
+      "sha256": "dc6b79487293be9040ec3c48db8a919e04a23fa09983fa9eb9bf8c7c6b5098bb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/npx-sync.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/npx-sync.test.mjs",
+      "sha256": "d477daabcf44ef51563aedb2a03f88c0db49a2048e73f45c25882b59e0a4fa0f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/parakeet-words.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/parakeet-words.mjs",
+      "sha256": "d5b66efe6cb8975beab2f523503113c3be3117e687ebc20695e7ab08c2ba1b4d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/parakeet-words.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/parakeet-words.test.mjs",
+      "sha256": "f93f215c8b7e02a262f7aafcf9b09cadab2713bb9d15e6953693e2ac9834387b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/prefs-store.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/prefs-store.mjs",
+      "sha256": "f269085ba51a941c8a5a3fc4ff995b465c729b6fbe82d16dbbdc559426907bdb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/prefs-store.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/prefs-store.test.mjs",
+      "sha256": "a3f18b806fa721ef10e5a90cba679ef7e67a703f57af32e516edec6ac4876c57"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/probe.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/probe.mjs",
+      "sha256": "bf582ad2970d5723e95f7b875ed083773ff8355b4a72cd62f2c5c13ff63c4770"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/probe.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/probe.test.mjs",
+      "sha256": "e34bb14a3120cafe43776ff6ea60077080560d3d1c26a45ccb80fce65560b1fe"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/providers.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/providers.mjs",
+      "sha256": "a8d67479d945a02fa3ee45477526c63770f8b74f952a72f0361c5f7e0129645b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/recipe-store.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/recipe-store.mjs",
+      "sha256": "97c495ad6e6da8a15c7af1ec5e3b3c465e00a3e26198cc866791fdea1cbe1796"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/recipe-store.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/recipe-store.test.mjs",
+      "sha256": "d1955278b2b4cde6beed32dcb92562a5404334275fbba649c65479ad1ae3ec15"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/registry.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/registry.mjs",
+      "sha256": "c1241d0b9d4b85d0d523a91a80f69beb3f1efe8265555261c5da02ef0c1e14cc"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/registry.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/registry.test.mjs",
+      "sha256": "ece966536b70dfcbafbd2a2b8fc06b13cadac098f88335d1a33471ca03b16d57"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/search.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/search.mjs",
+      "sha256": "e14bee0c2988abc4c471b7e88ecbf8da7b4b476d67ae1b2c34d4b1293fab47c1"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/search.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/search.test.mjs",
+      "sha256": "93c20b3628f1f04e35b3bdb382cb0d29df19099de82850c6ef7898a1a6090146"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/sfx-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/sfx-provider.mjs",
+      "sha256": "c350a66469b7520f578c06f4c3281d83a96201420b451fbd3af596b13c57a619"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/specs.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/specs.mjs",
+      "sha256": "3b8f26230be875bbf4cfa44836dd3632d925e9809626c428fc836cbb2706b71e"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/specs.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/specs.test.mjs",
+      "sha256": "f59c6c93ab4894ee49a11a46c3fb975d139457f99c5aa63820fa9ec9acc344ef"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/stats.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/stats.mjs",
+      "sha256": "4134952ab6d24d1793d0c6f32a98d011bcba11a61c7b6ce05df5a33d8fc40c67"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/stats.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/stats.test.mjs",
+      "sha256": "bcdb276881d9a70e88f8cb82a96a0c5526a414c0f0ceb2b0b505317d5f6778ae"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/telemetry.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/telemetry.mjs",
+      "sha256": "72311f34e16050dc153341bb982514f61c175b50d8219fa658380b25c47fdaf7"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/telemetry.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/telemetry.test.mjs",
+      "sha256": "1b018dd88be188c86075304e9ef5c28264e69e67e60d66b7516a429f4c5e6983"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/tts-local-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/tts-local-provider.mjs",
+      "sha256": "2eaca35c4aaddcde547d4a4f64c50f5c55b5a09239e5ced819f67cd05eba799b"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/tts-local-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/tts-local-provider.test.mjs",
+      "sha256": "66b51a1f5b8fcd4f935541989b76f358ace8f1a0946b52e5ce264b7b0c2a0d9d"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/usage.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/usage.mjs",
+      "sha256": "0731c6709210ea6384ac70087ef61030e7047fd3075bfd53ceb669520121bb63"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/usage.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/usage.test.mjs",
+      "sha256": "b6ed5dafbdd4f4e3775bf7483b2add22275f4906e9be08cc83f1aeceb2bfa9ca"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/voice-provider.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/voice-provider.mjs",
+      "sha256": "1d83560ca6d78d58c3d85e989245c07530b32186c67508fdfbd145722dd10b85"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/voice-provider.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/voice-provider.test.mjs",
+      "sha256": "6f2904cf374066caca014e4a0a12dfb8d87fbd50bcb09c5c26d6337b063ce9da"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/lib/words.mjs",
+      "archive_member": "user_codex/media-use/scripts/lib/words.mjs",
+      "sha256": "612261aa0c27130d42b507746d59416466969e69efa2d44bb64cd8bc5adef216"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/prefs.mjs",
+      "archive_member": "user_codex/media-use/scripts/prefs.mjs",
+      "sha256": "3634bb0895cd049bd8180defe43b6d2479b2f854e8ae777c3960bb884235dad4"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/recipe.mjs",
+      "archive_member": "user_codex/media-use/scripts/recipe.mjs",
+      "sha256": "945a5bfe84c1a75a92fe5d1567ef421660081b5d18d4d283d38bf203845f7a8f"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/resolve.mjs",
+      "archive_member": "user_codex/media-use/scripts/resolve.mjs",
+      "sha256": "aacd2e3181b9abe8a31c56cac336d6aeff1a2607531c8eea12120ae9f329da37"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/resolve.test.mjs",
+      "archive_member": "user_codex/media-use/scripts/resolve.test.mjs",
+      "sha256": "f39dfc5d3ab712e2304dd9ff9077478b45b3a3d9e0f0e35655dc9c278def39cb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/transcribe.mjs",
+      "archive_member": "user_codex/media-use/scripts/transcribe.mjs",
+      "sha256": "1ca9a628bdbc61c7f4464ea07c8e7f56cfbfc18fad9a47de3059952821c0e195"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/scripts/transcript-cut.mjs",
+      "archive_member": "user_codex/media-use/scripts/transcript-cut.mjs",
+      "sha256": "0951f7bd029dbf767c07002fa14fa047f2181721838544e5304d5d8c863f58eb"
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/SKILL.md",
+      "archive_member": "user_codex/media-use/SKILL.md",
+      "sha256": "1301ea7cb53a0a44f5c7d62c34cba7e00b9e69b31bed57dc8d645417cea0da7c"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/01-auth-sessions.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/01-auth-sessions.md",
+      "sha256": "f8cd6175f422fef6ba02334ec5cbacdb46285f952ef033092bf51ff7a5156a15"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/02-client-side-trust.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/02-client-side-trust.md",
+      "sha256": "57b1ecbf5d1ff2eb7fef8788dd3556a56e1071c9c149483b6f30da36c5722335"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/03-idor.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/03-idor.md",
+      "sha256": "4aec9cc94e74fbdc79589968257c5839f1b98b5c40335748cca30206180d7341"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/04-mass-assignment.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/04-mass-assignment.md",
+      "sha256": "d69e0797431f69519f0978cb4a6390e7a953aee972c923aca5e012851d1129e6"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/05-race-condition.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/05-race-condition.md",
+      "sha256": "6c8930eb92199c0b594b8821cdd7615aee3c8c614bf885b2443aa4357e4cac9d"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/06-injection-xss-upload.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/06-injection-xss-upload.md",
+      "sha256": "38884cb220d2d3493713f7715ac038f61aadaad39ad2e3d1f5a95cf3e3552ca0"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/references/07-data-exposure-infra.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/references/07-data-exposure-infra.md",
+      "sha256": "079b5405db763bb04cc3dcf5d3aff39bcbd72514638317a2a541e17a707575d9"
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/SKILL.md",
+      "archive_member": "pemara_nested/saas-pentest-hardening/SKILL.md",
+      "sha256": "f76f2c2d02bb1fbe9a84d1bfaaa17b7a48c4067d09a52507b2c07effff3c05ec"
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "general-video",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/general-video/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/general-video/SKILL.md",
+      "canonical_sha256": "6e0aad276db66d31791bdb19abdd12f3650ce03b7f7329d1c2d2c9176d87214c",
+      "disabled_sha256": "23ac61f3fd8d43c00864b6bce0cd8499f7b6742c5acb8c0a18268e35bd8ed73c"
+    },
+    {
+      "name": "hyperframes",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes/SKILL.md",
+      "canonical_sha256": "a277e9e46b3b5b8619639a353a4af3f46f8ae4f2e622ba802d5af730d135f410",
+      "disabled_sha256": "3f1e57ac7071e91629133651250bd5d9d60ce8119faa318a5be2cba6d375c793"
+    },
+    {
+      "name": "hyperframes-animation",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-animation/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/SKILL.md",
+      "canonical_sha256": "b35f1f8eff68e9ff480a5d5d343a1bf5a40ebb7d0d9be20b0b980cfdb36047f3",
+      "disabled_sha256": "69a9903796e65c66edbe9ec9621eca8953c7cc2a93a718687306891daf0463d4"
+    },
+    {
+      "name": "hyperframes-audio",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-audio/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/SKILL.md",
+      "canonical_sha256": "03007db5f0ea61f093c401f681e30d686c4a490f7462c6fd34949722e881b278",
+      "disabled_sha256": "78f60bc28fc11ed214248b49f767f9571088fc209cb15c97b1d12abcf4526eac"
+    },
+    {
+      "name": "hyperframes-cli",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-cli/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/SKILL.md",
+      "canonical_sha256": "f722ee03ba20a3a8c6d2ba200729230e0245827a3178a02ef56e8b4b92c92a4e",
+      "disabled_sha256": "1ea0ee445a628d1f7e8308b9b44ffdf9cd6b012d352476443afdbf26f02db093"
+    },
+    {
+      "name": "hyperframes-core",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-core/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/SKILL.md",
+      "canonical_sha256": "18ac7784765cc29af5a4d88f2a63a15deaf5395985009af188b5e3718edcfe3d",
+      "disabled_sha256": "4ab1e4d7f1ac9111b5a5a1502410a76db3367ecf95cd14bae62429135a28856a"
+    },
+    {
+      "name": "hyperframes-creative",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-creative/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/SKILL.md",
+      "canonical_sha256": "9da7b7ac84c8d884b54125887ecca1a645a38337013082b96af2fdc0259c945a",
+      "disabled_sha256": "488782fc741a43e002b5c6ac0da69cc2b12abaa42b6c0056df2aa53bea553c16"
+    },
+    {
+      "name": "hyperframes-keyframes",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-keyframes/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/SKILL.md",
+      "canonical_sha256": "d6484e8367ed522f2a89af9ec30ae3cd86ae243b5a23c5ab00a7a682e3d1a791",
+      "disabled_sha256": "924d038dc7eb20d16e05fa0e9837fa50bdcac0ce131aee80ebd8188cb67110d1"
+    },
+    {
+      "name": "hyperframes-registry",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/hyperframes-registry/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/SKILL.md",
+      "canonical_sha256": "f1925b202cabd125b509658b11db593b55340b1926ecb056fc31aa4233a2b4f6",
+      "disabled_sha256": "9bb3d0f74b47bf7fe93208228d4bd4431538bff9440d074271a4b413a9f6cc3d"
+    },
+    {
+      "name": "media-use",
+      "canonical": "C:/Users/admin_remoto/.agents/skills/media-use/SKILL.md",
+      "disabled": "C:/Users/admin_remoto/.codex/skills/media-use/SKILL.md",
+      "canonical_sha256": "9622271fb82ad862ee248034833ae19e26cc963962066e824213681527502c07",
+      "disabled_sha256": "1301ea7cb53a0a44f5c7d62c34cba7e00b9e69b31bed57dc8d645417cea0da7c"
+    }
+  ]
+}

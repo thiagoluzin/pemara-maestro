@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Audio Reactive"
+  short_description: "Áudio de jogo como PILAR de design (linha Akira Yamaoka), não"
+  default_prompt: "Use $game-audio-reactive para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

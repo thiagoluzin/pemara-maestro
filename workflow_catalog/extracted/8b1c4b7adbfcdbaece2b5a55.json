@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Ozzy Osbourne-inspired, Hard-driving 1980s heavy metal, cutting heavily distorted guitars, intricate neoclassical riff, roaring articulate male rock voice, explosive drum fills, furious melodic guitar solo. 154 BPM, E minor. an angular high-register guitar answer over a low chug; explosive double-time chorus. 1980s hard metal, neoclassical, Ozzy Osbourne style. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro/Verse/Ch 0-120s; Verse/Bridge/S 120-210s; Chorus/Outro 210-292s; Ending 292-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=154, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nNeon bleeds on the cobblestone\nShadows lengthen, the city is stone\nWe built a throne from a broken spine\nAnd named it holy, named it divine\nThe blade hangs heavy above my head\nA living god for the dead\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Verse]\nHis hands are shaking, the sweat is cold\nThe story of us is getting old\nOne click of the jaw, one snap of the chain\nThe false god bleeds out in the rain\nI watched the fear turn to hate\nBefore the lever fell late\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Bridge]\nThe rope is cut, the wheel is free\nThe crowd screams for my liberty\nBut the silence is the loudest sound\nWhen the king of fear hits the ground\n\n[Solo]\n\n[Chorus]\nSaint of the Guillotine!\nCut the head, keep the scene!\nThey worship the rust on the iron blade\nBut I’m still breathing, I’m still made!\n\n[Outro]\nThe lever snaps.\nThe city wakes.\nNo more saints.\nJust the stakes.",
+      "seed": 202610161008,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

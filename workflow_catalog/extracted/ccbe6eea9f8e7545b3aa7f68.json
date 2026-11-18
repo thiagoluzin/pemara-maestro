@@ -1,0 +1,307 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_ExactRef_20261101_west_aim_anchor_v2_conditioning.png"
+    },
+    "is_changed": [
+      "1886b6ab61a2f039e57284da611b48dab2431a7e669d7eec5eb04d2b32565835"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 896,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "The EXACT left-facing pixel-art Helena sprite shown in this reference remains in exactly this aiming stance, with only very subtle natural breathing. Preserve the precise face, original mature age, pixel texture, closed mouth, open eyes, low bun, clothes, slim leather satchel and every detail of the compact dark-steel revolver. The same small revolver is held in her anatomical RIGHT hand, supported by her left hand. Maintain the identical barrel, cylinder, trigger guard, wooden grip, subdued highlights and exact weapon scale. Stable full-body LEFT side profile, both boot soles planted together, steady arms and steady gun aimed horizontally LEFT. No firing, no recoil, no lowering, no turning. Completely fixed camera and character size, uniform charcoal background. Same original artwork, not a redesign; one person and one gun, entire body and weapon visible throughout."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "different face, younger face, changed artwork, glossy 3d, illustration redesign, larger weapon, longer barrel, chrome, changed revolver, duplicate weapon, deformed fingers, changed bag, stepping, turning, weapon sway, camera motion, missing boots, text, watermark"
+    }
+  },
+  "16": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "width": 896,
+      "height": 768,
+      "length": 17,
+      "batch_size": 1,
+      "start_image": [
+        "12",
+        0
+      ],
+      "end_image": [
+        "23",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 111010202,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 111010202,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_ExactRef_20261101/aim_west_faithful_v2/preview",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_ExactRef_20261101_west_aim_anchor_v2_conditioning.png"
+    },
+    "is_changed": [
+      "1886b6ab61a2f039e57284da611b48dab2431a7e669d7eec5eb04d2b32565835"
+    ]
+  },
+  "24": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_ExactRef_20261101/aim_west_faithful_v2/native",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "input_color_depth": "16bit"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

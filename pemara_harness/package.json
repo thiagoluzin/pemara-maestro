@@ -1,0 +1,41 @@
+{
+  "name": "@pemara/harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Durable, restart-safe orchestration core for long-running LLM work.",
+  "engines": {
+    "node": ">=24"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./dsh-plugin": "./dsh/plugin.mjs",
+    "./dsh-task-file-startup": "./dsh/task-file-startup.mjs",
+    "./dsh-builder-policy": "./dsh/builder-policy.mjs",
+    "./research": "./src/research.mjs"
+  },
+  "bin": {
+    "pemara-harness": "./bin/pemara-harness.mjs",
+    "pemara-supervisor": "./bin/pemara-supervisor.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/durable-task-store.test.mjs test/migrations.test.mjs test/supervisor-store.test.mjs test/supervisor.test.mjs test/supervisor-cli.test.mjs test/supervisor-kill-restart.test.mjs test/filesystem-effect.test.mjs test/git-effect.test.mjs test/subprocess-effect.test.mjs test/builder-contract.test.mjs test/builder-contract-v2.test.mjs test/builder-tools.test.mjs test/builder-profile.test.mjs test/builder-launcher.test.mjs test/dsh-plugin.test.mjs test/task-file-startup.test.mjs test/cli.test.mjs test/crash-recovery.test.mjs test/doctor.test.mjs test/qwen-profile.test.mjs test/launcher.test.mjs test/cockpit-store.test.mjs test/provider-store.test.mjs test/task-runner.test.mjs test/media-attachments.test.mjs test/media-context.test.mjs test/monitor.test.mjs test/monitor-launcher.test.mjs test/fixed-evaluation.test.mjs test/research.test.mjs test/research-providers.test.mjs",
+    "test:fixed-evaluation": "node --test test/fixed-evaluation.test.mjs",
+    "evaluate:freeze": "node bin/pemara-evaluate.mjs freeze",
+    "evaluate:compare": "node bin/pemara-evaluate.mjs compare",
+    "test:core": "node --test test/durable-task-store.test.mjs",
+    "test:contract": "node --test test/builder-contract.test.mjs",
+    "test:dsh": "node --test test/dsh-plugin.test.mjs",
+    "test:qwen:e2e": "node --test test/qwen-profile.e2e.mjs",
+    "test:builder:e2e": "node --test test/builder-profile.e2e.mjs",
+    "test:dsh:compat": "node scripts/run-real-dsh-compat.mjs",
+    "manifest": "node scripts/generate-manifest.mjs",
+    "manifest:check": "node scripts/generate-manifest.mjs --check",
+    "research:plan": "node bin/pemara-harness.mjs research-plan",
+    "research": "node bin/pemara-harness.mjs research",
+    "research:status": "node bin/pemara-harness.mjs research-status"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2"
+  }
+}

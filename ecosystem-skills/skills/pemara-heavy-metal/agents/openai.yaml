@@ -1,0 +1,6 @@
+interface:
+  display_name: "Heavy metal"
+  short_description: "Riffs, melodia vocal e refrões de heavy metal"
+  default_prompt: "Use $pemara-heavy-metal para dirigir ou revisar a fase musical solicitada, respeitando o motor, o escopo e as autorizações existentes."
+policy:
+  allow_implicit_invocation: true

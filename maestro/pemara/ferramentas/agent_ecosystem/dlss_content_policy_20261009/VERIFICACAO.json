@@ -1,0 +1,45 @@
+{
+  "policy": "dlss5_live_action_actor_exclusion_v1",
+  "runtime_pid": 99032,
+  "live_policy_job": "fafbb48e-4598-448b-9a2d-e0dbfa7dbd4a",
+  "animation_policy_job": "5df7829e-8492-4d15-9694-dc2810c53548",
+  "lossless_mask_job": "d16f272e-9145-496c-a3c5-744564d3f358",
+  "mask_changed_channel_values": 0,
+  "mask_dimensions": [
+    941,
+    1672
+  ],
+  "live_queue_empty_verified": true,
+  "preserved_assets": [
+    {
+      "path": "C:\\Users\\admin_remoto\\Documents\\Codex\\2026-10-08\\vamos-tentar-recriar-aquela-ic-nica\\outputs\\jill_anchor_dlss_background_v01\\JILL_CENARIO_DLSS5.png",
+      "sha256": "dcc68bc3d1dc35a1532eee6b84b2a4a9f07a36f314f64e11d46d083ee93adf86",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\Documents\\Codex\\2026-10-08\\vamos-tentar-recriar-aquela-ic-nica\\outputs\\jill_spencer_final60_v15\\videos\\JILL_SPENCER_FINAL_FULLHD_60FPS_DLSS5_V15.mp4",
+      "sha256": "d8f2b5ddc5ec48f15f92aa6c6d82700f87f7a1fe3ed8e6c4cd777f4c3bbb3a23",
+      "unchanged": true
+    }
+  ],
+  "skills_validation": {
+    "passed": 4
+  },
+  "javascript_syntax": "PASS",
+  "project_kind_create_patch": "PASS",
+  "unit_tests_initial": {
+    "count": 150,
+    "passed": true
+  },
+  "limitations": [
+    "Classification is explicit; no automatic visual classifier.",
+    "Live-action final video requires reviewed per-frame actor masks; no automatic tracking added.",
+    "Maestro backend was not running; backend/UI changes load on next launch.",
+    "Comfy MCP get_logs returned an old 2026-09-20 log; runtime node execution used for current validation."
+  ],
+  "unit_tests_final": {
+    "count": 170,
+    "passed": true,
+    "seconds": 31.269
+  }
+}

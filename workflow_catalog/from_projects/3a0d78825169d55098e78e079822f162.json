@@ -1,0 +1,286 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/L18_v1_ascent",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "A continuous fifteen-second live-action shot beginning exactly at the supplied frame, on the same real wooden airship deck at blue hour. Preserve these three actors and their approved faces, proportions, hair, costumes and carried objects. Preserve the existing staircase on the right, its solid wooden treads, curved red side and brass railing above, the cabin door and porthole, the stone theatre at left, and the closed gate behind Locke. Fixed warm lantern lighting, no flashes. The ship remains docked and the exterior gangway remains stationary. Only the same three people are present.\nAt the start the silver-haired man Setzer in the long black coat is on the LOWER existing stairs, settling from a downward step. He does not start on the upper deck. Celes, the blonde woman in the ivory gown with blue sash, stands in the center foreground facing him. Locke, brown-haired with a blue bandana, stands left of Celes inside the closed gate, his wooden shield low in his LEFT hand and sword sheathed.\nIn the first four seconds Setzer settles both boots on the solid stair treads, raises his gaze toward Celes and Locke, then says one inviting but decisive line, in a calm mature male voice and natural Brazilian Portuguese: <d>[Portuguese] Venham comigo. Vamos ao comando.</d> His lips match his speech. Celes listens, looks briefly to Locke, then looks toward the clear stair entrance. Locke answers her glance with one small nod and shifts half a pace aside to let her go first. Neither Celes nor Locke speaks.\nFrom four to ten seconds Setzer turns his torso and feet to face UP the staircase, away from camera. He climbs the existing treads toward the upper landing, one grounded step at a time. Each boot lands on a separate solid wooden tread before he transfers his weight and lifts the other boot. His long coat follows behind his legs and remains clear of the railing. The stairway itself stays completely rigid, unchanged. Celes approaches the foot of the stairs in two natural steps, gathering a small amount of the front hem in one hand to clear her shoes, without changing or removing any part of her dress. She waits for Setzer to move ahead. Locke stays behind her, giving her space; his shield remains in his left hand.\nFrom ten to fifteen seconds Setzer steps from the last tread onto the existing upper landing and turns his head back toward his companions. Celes places her free hand on the existing stair rail, then begins ascending the first few solid treads. Her visible foot support and weight transfer precede each following step. She remains several steps behind Setzer. Locke follows across the lower deck to the foot of the stairs, then waits there until Celes has cleared his path. Three distinct bodies, in this exact order: Setzer ahead, Celes second, Locke last. They never overlap through one another or through any wooden surface. End with the group visibly moving toward the upper deck, with Setzer on the landing, Celes on the lower stairs and Locke at their base.\nCamera begins at the exact incoming composition and stays on the same axis, then makes only a slow, slight upward tilt motivated by Setzer's ascent, revealing more of the existing upper railing and landing while keeping Celes and Locke and the foot of the stairs in frame. No cut, no sudden zoom or camera orbit. Continuous normal-speed action with distinct individual reactions, no synchronized marching. The gate stays closed and the ship does not lift or move away from the theatre. Audio: exactly the single Portuguese sentence above, soft wind, clothing and individual boot contacts aligned with each step. No other dialogue, narration, singing or score.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 22107118,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "ffvi_master_L18_ascent_v1_20261023",
+      "reference_size": "Max Identity",
+      "project_id": "ffvi_opera_h3_master_liveaction_20261022",
+      "video_reference_size": "Match Output",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "first_frame": [
+        "approved_incoming_frame",
+        0
+      ]
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  },
+  "approved_incoming_frame": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_master_L17_v2_approved_last_359.png"
+    }
+  }
+}

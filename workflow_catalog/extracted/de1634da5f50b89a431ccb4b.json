@@ -1,0 +1,202 @@
+{
+  "1": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_fp8mixed.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pemara_qwen_marketing/qwenmax_36_fonte_de_alimentacao_duex_dx_600fse_600w_80_plus_bronze_cor_preto_reference.png"
+    },
+    "is_changed": [
+      "078d0ce0d1c9a7a0520e9b97c55c26a4cec37a0360e12dc5535c21239426f196"
+    ]
+  },
+  "5": {
+    "class_type": "FluxKontextImageScale",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "1",
+        0
+      ],
+      "image1": [
+        "5",
+        0
+      ],
+      "prompt": "Create one finished professional 4:5 social media sales ad for Pemara Tech.\nPicture 1 is an existing factual draft ad. Preserve its real product, exact title, exact price, exact website and exact commercial data.\nPicture 2 is the real product photo. Use it only to protect the true product identity, box, brand and model.\nPicture 3 is only the approved Pemara Tech advertising style reference. Borrow premium polish, lighting, depth, hierarchy and finish; do not copy its old product, old price or old text.\nThis is a refinement pass: improve the visual quality while keeping the factual information unchanged.\nFinal artwork must be a single integrated commercial image, not a collage, not pasted text, not a screenshot, not a poster mockup.\n\nRender ONLY these exact readable text strings, without labels:\nPEMARA TECH\nFONTE DE ALIMENTACAO DUEX DX-600FSE+ 600W 80\nR$ 230\nPEMARATECH.COM.BR\nRIO PRETO E REGIAO\n\nMandatory brand mark: autism infinity symbol in orange/green, clean and small.\nPlace the autism infinity symbol only in the ad corner or header. Never place it on the product, box, cooler, brand logo, price or website.\nTypography must be crisp, straight, correctly spelled, high contrast, with the price very large and the website in a clean footer.\nThe price must be exactly \"R$ 230\". Never write 91,000, 11,000, 15.000 or any other price.\nDo not render installment/payment plan text.\nThe website must be exactly \"PEMARATECH.COM.BR\". Never invent another website or extra footer.\nThe product title must be exactly \"FONTE DE ALIMENTACAO DUEX DX-600FSE+ 600W 80\" and must not become \"PEMARA RTX\" or another product.\nCatalog facts read from the published store database: fabricante: DUEX; tipo: FONTE; estoque: 20. Use only these facts and the product name; omit anything not listed.\nNo extra slogans, no English labels, no guide text, no extra small text, no random footer words.\nNo decorative background words, no giant fake headline, no blurred text behind the product. Text only in clean commercial information areas.\nDesign direction: premium hardware store ad, dark graphite tech background, orange and green accent lights, cinematic depth, controlled glow, subtle hardware-grid detail, polished commercial finish, product large and clean, strong first-read hierarchy, no dead empty template space.\nDo not invent technologies, awards, fake specs, fake discounts, people, hands, mouse, laptop, notebook or unrelated products.",
+      "image2": [
+        "16",
+        0
+      ],
+      "image3": [
+        "18",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "inputs": {
+      "clip": [
+        "1",
+        0
+      ],
+      "prompt": "wrong product, changed product category, mouse, notebook, laptop, person, hand, face, fake logo, fake technology,\nbad Portuguese, misspelled words, duplicated text, broken rectangles, open boxes, paint style, cheap collage,\ntext over product, cropped product, residue around product, watermark, QR code, invented claim,\nreference text, use exactly, huge price, ruge price, installment, payment plan, monthly payment, guide text,\ndecorative text, giant headline, fake headline, blurred text, background words,\nsymbol on product, logo on product, mark on box, sticker on product,\ncopy old product from style reference, copy old price from style reference, style reference text,\nreplace box with bare GPU, remove product box, change brand, change title,\n91,000, 11,000, pemara rtx, hartinet, wizo, random website, fake footer"
+    }
+  },
+  "8": {
+    "class_type": "FluxKontextMultiReferenceLatentMethod",
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "reference_latents_method": "index_timestep_zero"
+    }
+  },
+  "9": {
+    "class_type": "FluxKontextMultiReferenceLatentMethod",
+    "inputs": {
+      "conditioning": [
+        "7",
+        0
+      ],
+      "reference_latents_method": "index_timestep_zero"
+    }
+  },
+  "10": {
+    "class_type": "CFGNorm",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "strength": 1.0
+    }
+  },
+  "11": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "11",
+        0
+      ],
+      "seed": 20260742,
+      "steps": 52,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.02
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "pemara_qwen_max/qwenmax_36_fonte_de_alimentacao_duex_dx_600fse_600w_80_plus_bronze_cor_preto_a01"
+    }
+  },
+  "15": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pemara_qwen_marketing/qwenmax_36_fonte_de_alimentacao_duex_dx_600fse_600w_80_plus_bronze_cor_preto_product.jpg"
+    },
+    "is_changed": [
+      "a02834420116d5fb0491fd4608c450e7352ffacfb49086327ea1212ad1e91026"
+    ]
+  },
+  "16": {
+    "class_type": "FluxKontextImageScale",
+    "inputs": {
+      "image": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pemara_qwen_marketing/qwenmax_36_fonte_de_alimentacao_duex_dx_600fse_600w_80_plus_bronze_cor_preto_style.png"
+    },
+    "is_changed": [
+      "fc331051a83a21688e41b8354920007eccc818fa8e3fa72bdb83aefdce4f0612"
+    ]
+  },
+  "18": {
+    "class_type": "FluxKontextImageScale",
+    "inputs": {
+      "image": [
+        "17",
+        0
+      ]
+    }
+  }
+}

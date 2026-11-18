@@ -1,0 +1,163 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit image 1 with one tiny prop correction. Lisa's two wrists are now correctly trapped through the wooden stock and her two hands protrude in front with fingers free. KEEP both occupied wrist holes, tight iron liners and hands EXACTLY as they are. There is an erroneous THIRD EMPTY HOLE in the center of the wood between her wrists. REMOVE ONLY that central empty hole, filling it with solid weathered wood of the identical grain, color, roughness and lighting. The center of the stock is now completely solid wood, no dark round mark, recess or third opening. Exactly TWO holes remain, both occupied by Lisa's wrists. Preserve the chain attachment and the split/hinged stock. Change nothing else: identical imposing Lisa, mask, body, hands, feet, Chris identity, shotgun, cabin, lighting and composition. This is a practical live-action movie photograph. No blood, injury, illustration, text or collage. Additional references supply the unchanged Chris actor.",
+      "negative_prompt": "illustration, painting, anime, cartoon, cel shading, video game render, plastic CGI, wax skin, generic different soldier, duplicated characters, missing mask, wrong clothing, tentacles, blood, gore, extra limbs, disembodied hands, floating chain, duplicate guns, blurred face, subtitles, letters, watermark, collage, different room, wide-angle distortion , holding plank, hands gripping wooden bar, fingers wrapping wood, hands on top of stock, open cuffs, unattached cuffs, floating stock , empty wrist holes, unused holes, hands outside the ends of the board, external cuffs, hands gripping stock",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "22",
+        0
+      ],
+      "images.image_3": [
+        "24",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 1010260601,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_cabana_20261010/LA01_QWEN_V06"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_WRIST_CORRECTION_MASTER_V05.png"
+    },
+    "is_changed": [
+      "8c1fd7c8050ac1fa21ba43b128d626cd7b2e02f04637183e5c3eb1fbdf95bdfb"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "22": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_YAWN_A13.png"
+    },
+    "is_changed": [
+      "539c2d392ec246057e5e33f91117e1538de3b4349767979f47b4194fb1446dcc"
+    ]
+  },
+  "24": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_QWEN_CHRIS_FACE_A01.png"
+    },
+    "is_changed": [
+      "2c116eac8cde6939a54514e8d7fc6e0845d619e834d4f3960ab2891d451246ed"
+    ]
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_ref2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611020101
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_pika_flex_20261102/video/T01_pika_ref2va_native_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "30": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A05_dante_nevan_builtin_DLSS5.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "subject_definitions:\n<Subject 1> is the exact adult Dante in <Picture 1>: youthful angular clean-shaven face, shaggy silver-white fringe, fair human skin, lean athletic proportions, open long crimson leather coat with raised collar and structured shoulders, brown harness and buckles, dark trousers, black fingerless gloves and boots.\n<Subject 2> is the exact Nevan guitar from <Picture 1>: broad flat violet-blue asymmetric bladed body with three unequal wing/blade tips, small upper teardrop apertures, compact string bed, SHORT THICK twisted neck and spear-shaped headpiece. One solid rigid instrument; never a conventional guitar, long scythe or circular hoop.\n<Subject 3> is the photographed opera stage of <Picture 1>, with its carved pillars, violet curtains, balconies, warm practical lamps and solid stage floor. Exactly one actor and one guitar.\n\nsummary:\n[reference generation] A fifteen-second vertical cinematic LIVE-ACTION take of Dante performing with Nevan in the opera house, at natural real-time speed.\n\nretention_analysis:\nFully preserve <Subject 1> face, hair, anatomy, costume and materials from <Picture 1>. Fully preserve <Subject 2> short-neck silhouette, flat body, asymmetrical tips, apertures and contact points throughout every angle. Fully preserve <Subject 3> architecture, lighting and stage geography. The picture is an appearance reference, not a frozen pose: Dante performs the action described below. Natural human skin, individual hair strands, weighted worn leather and solid metallic violet prop. No cartoon, plastic skin, game rendering, robot or costume redesign. Five fingers per hand. RIGHT hand physically strums the existing compact string bed; LEFT hand grips the existing SHORT neck. No band, crowd, microphone, extra actor, singing, speech, logos, subtitles or text.\n\ndetailed_description:\n[Shot 1] 00:00-00:15, one uninterrupted front three-quarter shot. Begin with Dante already holding Nevan across his waist as in the reference. The actor appears SMALL inside the large opera stage: the frame contains his full head, boots, both hands and ALL blade tips, with empty floor below and free air above and beside the guitar. Start a deliberate camera dolly backward for the first3seconds to create clearance, then travel smoothly along a shallow20-degree arc toward his right/front by10seconds. Keep his whole silhouette and complete Nevan visible throughout; stop the lateral move while his hands continue. No cuts, whip-pan, teleports, tight inserts or slow motion.\n00:00-00:03: Dante looks down at his right glove, plucks a short testing phrase on Nevan's actual strings, notices a restrained violet electrical response AFTER contact, then lifts his eyes with a small knowing grin. His left fingers stay on the short neck. Boots remain grounded, coat and hair respond after the shoulder movement.\n00:03-00:07: He commits to a crunchy riff. Right wrist makes distinct alternating string strokes; left fingers change fingering along the same compact neck. Knees soften, weight moves from rear boot to front boot, shoulders begin to rock with the phrase. His confident expression follows the sound, not a vacant fixed stare. Each string stroke has a synchronized guitar attack.\n00:07-00:11: He widens his stance by one visible planted step, tilts the rigid guitar neck slightly upward, leans his torso back and drives a more emphatic phrase. Left hand stays at the same neck length, right at the string bed; fingers never slide through the prop. Sparse electrical filaments follow a struck chord, reflected briefly on the real leather. No extra effects hide contact.\n00:11-00:15: Dante returns the guitar to a clear waist-height playing angle while sustaining the riff, makes one sharp torso accent and answers with a fast picked flourish. Left knee bends and straightens through a genuine weight transfer; no skating or levitation. By the final second he is front three-quarter, boots planted, Nevan across the waist, both hands STILL PLAYING and gaze forward, delivering ongoing rhythm to the next take. Do not stop in a posed freeze or resolve the performance yet.\n\noverall_soundscape:\nNative synchronized diegetic electric guitar from the visible Nevan only: an original crunchy E-minor riff around140BPM, clear picked notes and string attacks aligned with right-hand strokes, slide/fret noises, leather and grounded boot movements, restrained electrical crackle triggered by playing, natural reverberation of the large opera chamber. No copied game recording, no voice, no drums, no bass backing band, no applause or crowd. The guitar is the only musical source.\n\nnon_diegetic_music:\nN/A. No added background score.\n",
+      "width": 768,
+      "height": 1344,
+      "length": 362,
+      "audio_vae": [
+        "7",
+        0
+      ],
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "30",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

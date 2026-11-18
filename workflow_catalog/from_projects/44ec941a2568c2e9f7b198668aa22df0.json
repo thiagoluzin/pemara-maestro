@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611121602
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP16_PIKA_20261112/T02_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] An original expressive 3D CG animated Brazilian street-news comedy at a peaceful protest by adult PC gamers. One uninterrupted static eye-level medium-wide portrait shot,768x1344,15seconds. Reporter screen-left, gamer screen-right, both fully original fictional adults, lively faces, visible hands and solid grounded bodies. A small asynchronous adult crowd stands behind them in a warm Brazilian square. Soft afternoon sunlight from screen-left, colorful matte clothes, coherent contact shadows. Plain red-brick storefront and plain navy awning. No existing character, real person, store name or numerical price claim. No violence, fire, weapons or damage.\nExactly TWO enormous plain pale ivory BLANK paper protest boards high above every head, fully front-facing, rectangular and nearly still. Left paper stays within x28to356, right within x412to740. Both boards lie above y480, with a generous air gap between the paper and all hair, hands, microphones and bodies. Both boards and all four corners stay fully visible for the entire shot. Separate supporters hold the wooden poles far below the papers. No occlusion and no board bouncing during laughter or chanting. Exactly two boards, no other signs. All paper surfaces have absolutely no letters, numbers, symbols, drawings or texture marks. Exact huge lettering will be composited later. Leave the upper navy awning plain without writing. All clothing, microphone and computer props are unbranded. No subtitles or other on-screen text.\n\nStatic eye-level medium-wide waist-up portrait interview. Exactly two huge matte ivory blank rectangular placards, one left and one right, remain completely visible above all heads. Both occupy nearly half the picture width, with all four real paper corners visible. All heads and hair stay clearly below y650 in the768x1344 source. All paper lies between y160 and y580. Supporters grip separate wooden poles far below the paper. Papers remain nearly motionless while people react. Plain red-brick storefront and plain navy awning; no white windows, shop signs, third placard, text, symbols or logos. Warm afternoon light. Keep faces and empty hands visible. Fixed framing supports punchline and reaction; no camera movement, cut or zoom.\n\nA different pair of original fictional adults. Reporter screen-left: light brown skin, shoulder-length wavy dark hair, plum blazer. Gamer screen-right: dark brown skin, short curly hair, forest-green sweatshirt, rectangular glasses. Distinct faces and clothes. All supporters are adults.\n\nBoth hands stay empty. No computer, fan, table, money or documents. After the punchline the gamer briefly purses his lips as if considering cooling by breath, without extra spoken words, before noticing the reporter laugh.\n\nThe gamer is momentarily surprised by the cooling question, looks back at the reporter and admits the ridiculous manual cooling plan with mock practicality. Reporter stays attentive through processador, then recognizes the absurdity, lowers microphone and laughs visibly and audibly. Gamer notices her laugh and joins later, briefly holding his abdomen. Crowd laughter is delayed and uneven, resolves before one chant.\n\nACTING SCORE: Play the ridiculous answer as a sincere attempt to convince the reporter. Start with engaged curiosity and attentive listening, not constant grinning. One dominant meaningful gesture accompanies the answer. The reporter perceives the punchline only after its final word, glances briefly toward the relevant prop, then tries to suppress a smile and fails. The laugh is clearly visible and AUDIBLE: microphone lowers to waist, eyes squeeze, head tips back briefly, then a small forward lean with two uneven shoulder bounces and one hand against the abdomen. The gamer holds a straight face for a short recognition beat, then cracks into an amused grin and joins with a shorter irregular voiced laugh. Nearby supporters react later and differently; no synchronized mechanical swaying. Both catch their breath and exchange an amused look. Laughter must have a cause in this exchange. Keep feet planted, prop supported and boards motionless. No frozen faces, talking-mouth-only acting, anticipation before the joke, flat monotone or tiny polite chuckle.\n\nExactly THREE verbal turns in native Brazilian Portuguese. Reporter(S1), an adult female voice, asks once at 0.2 to 2.4 seconds, curious and attentive: <d>[Portuguese] E o cooler do processador?</d> Reporter then listens with closed lips. Gamer(S2), an adult male voice, answers once at 2.8 to 7.7 seconds, with clear ordinary conversational Brazilian Portuguese diction, mock seriousness and a brief pause between sentences: <d>[Portuguese] Cooler? Depois desse preço, vou ter que assoprar o processador!</d> No repeated words or additional utterances. Reporter reacts only after the last word, with a short recognition beat, an unsuccessful attempt to hold a smile, microphone lowered below the mouth, then a clear AUDIBLE warm voiced belly laugh. Eyes close, shoulders bounce twice unevenly, body leans forward briefly and recovers. Gamer joins later with a shorter clearly audible spontaneous laugh. The crowd reacts after the two leads, with different timing, never synchronized swaying. Laughing is nonverbal: no invented words, babble or extra syllables. Let laughter resolve by 10.1 seconds. At 10.5 to 13.5 seconds the adult supporters chant ONCE: <d>[Portuguese] Mais núcleos, menos dívidas!</d> The reporter and gamer are silent and smiling during the chant. Recover with an exchanged amused look from 13.5 to 15 seconds. No additional speech.\n\nOne static continuous shot, normal speed, no cuts or zoom. Only specified exact dialogue tags contain spoken words. Laughter is native in-scene nonverbal voiced laughter with irregular breaths, not extra syllables or words. No canned laugh track, narrator, music, subtitles, logos, watermarks or added verbal remarks. Keep background street ambience soft under dialogue and laughter.\noverall_soundscape: Expressive clearly intelligible on-screen native Brazilian Portuguese voices and spontaneous warm voiced laughter synchronized with bodily reactions, with low outdoor ambience.\nnon_diegetic_music: N/A",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

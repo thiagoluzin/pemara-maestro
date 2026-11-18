@@ -1,0 +1,2057 @@
+{
+  "UNETLoader": {
+    "id": "UNETLoader",
+    "name": "UNETLoader",
+    "display_name": "Load Diffusion Model",
+    "description": "",
+    "category": "model/loaders",
+    "output_types": [
+      "MODEL"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "unet_name",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "PEMARA_20260920\\flux-2-klein-4b.safetensors",
+          "acestep_v1.5_turbo.safetensors",
+          "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors",
+          "flux-2-klein-4b.safetensors",
+          "ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+          "ltx-2.5-22b-distilled-transformer-nvfp4.safetensors",
+          "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+          "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+          "qwen_image_2.1_int8_convrot.safetensors",
+          "wan2.2_animate_14B_bf16.safetensors"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "weight_dtype",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "default",
+          "fp8_e4m3fn",
+          "fp8_e4m3fn_fast",
+          "fp8_e5m2"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "MODEL",
+        "type": "MODEL"
+      }
+    ]
+  },
+  "CLIPLoader": {
+    "id": "CLIPLoader",
+    "name": "CLIPLoader",
+    "display_name": "Load CLIP",
+    "description": "Recipes:\nsd: clip-l\nstable cascade: clip-g\nsd3: t5 xxl / clip-g / clip-l\nstable audio: t5 base\nmochi: t5 xxl\ncogvideox: t5 xxl (226-token padding)\ncosmos: old t5 xxl\nlumina2: gemma 2 2B\nwan: umt5 xxl\nhidream: llama-3.1 (Recommend) or t5\nomnigen2: qwen vl 2.5 3B\njoyimage: qwen3-vl 8B\nlens: gpt-oss-20b\npixeldit: gemma 2 2B elm\nminimax: MiniMax H3 Qwen3-VL or Music3 Qwen/RVQ",
+    "category": "model/loaders",
+    "output_types": [
+      "CLIP"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "clip_name",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "PEMARA_20260920\\gemma4_e4b_it_fp8_scaled.safetensors",
+          "PEMARA_20260920\\qwen_3_4b.safetensors",
+          "clip_l.safetensors",
+          "gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+          "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+          "gemma4_e2b_it_bf16.safetensors",
+          "gemma4_e4b_it_fp8_scaled.safetensors",
+          "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+          "qwen3vl_8b_int8_convrot.safetensors",
+          "qwen_0.6b_ace15.safetensors",
+          "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+          "qwen_3_4b.safetensors",
+          "qwen_4b_ace15.safetensors",
+          "t5xxl_fp16.safetensors",
+          "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "type",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "stable_diffusion",
+          "stable_cascade",
+          "sd3",
+          "stable_audio",
+          "mochi",
+          "ltxv",
+          "pixart",
+          "cosmos",
+          "lumina2",
+          "wan",
+          "hidream",
+          "chroma",
+          "ace",
+          "omnigen2",
+          "qwen_image",
+          "hunyuan_image",
+          "flux2",
+          "ovis",
+          "longcat_image",
+          "cogvideox",
+          "lens",
+          "pixeldit",
+          "ideogram4",
+          "boogu",
+          "krea2",
+          "joyimage",
+          "mage",
+          "minimax",
+          "yue2"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "device",
+        "type": "COMBO",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "default",
+          "cpu"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "CLIP",
+        "type": "CLIP"
+      }
+    ]
+  },
+  "VAELoader": {
+    "id": "VAELoader",
+    "name": "VAELoader",
+    "display_name": "Load VAE",
+    "description": "",
+    "category": "model/loaders",
+    "output_types": [
+      "VAE"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "vae_name",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "PEMARA_20260920\\flux2-vae.safetensors",
+          "ace_1.5_vae.safetensors",
+          "ae.safetensors",
+          "flux2-vae.safetensors",
+          "ltx-2.5-audio-vae-bf16.safetensors",
+          "ltx-2.5-video-vae-bf16.safetensors",
+          "ltx-2.5-video-vae-conv-bf16.safetensors",
+          "minimax_h3_audio_vae_fp32.safetensors",
+          "minimax_h3_video_vae_fp16.safetensors",
+          "minimax_h3_video_vae_int8_convrot.safetensors",
+          "qwen_image_2.1_vae_bf16.safetensors",
+          "qwen_image_vae.safetensors",
+          "wan_2.1_vae.safetensors",
+          "pixel_space"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "VAE",
+        "type": "VAE"
+      }
+    ]
+  },
+  "MiniMaxH3MemoryEfficientSageAttentionPatch": {
+    "id": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "name": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "display_name": "MiniMax H3 Mem Eff Sage Attention Patch",
+    "description": "EXPERIMENTAL! Activates custom sageattention on the MiniMax H3 self-attention to reduce peak VRAM usage, overrides the attention mode. Requires latest sageattention version.",
+    "category": "KJNodes/minimax",
+    "output_types": [
+      "MODEL"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "ComfyUI-KJNodes",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "model",
+        "type": "MODEL"
+      }
+    ]
+  },
+  "MiniMaxH3SigmaShift": {
+    "id": "MiniMaxH3SigmaShift",
+    "name": "MiniMaxH3SigmaShift",
+    "display_name": "ModelSamplingMiniMaxH3",
+    "description": "Set the video/audio flow shifts.",
+    "category": "model/patch/minimax",
+    "output_types": [
+      "MODEL"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "shift_video",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0.01,
+          "max": 100,
+          "step": 0.01,
+          "default": 12
+        }
+      },
+      {
+        "name": "shift_audio",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0.01,
+          "max": 100,
+          "step": 0.01,
+          "default": 3
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "MODEL",
+        "type": "MODEL"
+      }
+    ]
+  },
+  "MiniMaxH3PDDAccApply": {
+    "id": "MiniMaxH3PDDAccApply",
+    "name": "MiniMaxH3PDDAccApply",
+    "display_name": "MiniMax H3 PDD Acc LoRA (Apply)",
+    "description": "Applies a MiniMax-H3 PDD Acc LoRA (alibaba-pai): trunk LoRA (converted to ComfyUI naming if needed) + per-step fused final-layer head bank. Wire the sigmas output to SamplerCustomAdvanced and sample with euler, CFG 1.0, SigmaShift 12/3. Remove other distill LoRAs (turbo) and cache nodes.",
+    "category": "model/patch/minimax",
+    "output_types": [
+      "MODEL",
+      "SIGMAS",
+      "STRING"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "ComfyUI-MiniMax-H3-PDD-Acc",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "pdd_file",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "MiniMax-H3-FL2VA-Acc-8Step.safetensors",
+          "MiniMax-H3-Ref2VA-Acc-8Step.safetensors"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "nfe",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "8",
+          "4",
+          "6"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "8"
+        }
+      },
+      {
+        "name": "lora_strength",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "default": 1
+        }
+      },
+      {
+        "name": "head_strength",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "default": 1
+        }
+      },
+      {
+        "name": "on_off_grid",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "error",
+          "clamp"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "error"
+        }
+      },
+      {
+        "name": "partition",
+        "type": "STRING",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": ""
+        }
+      },
+      {
+        "name": "enabled",
+        "type": "BOOLEAN",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": true
+        }
+      },
+      {
+        "name": "bypass_sigmas",
+        "type": "SIGMAS",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "partition_check",
+        "type": "COMBO",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "error",
+          "warn",
+          "off"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "error"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "model",
+        "type": "MODEL"
+      },
+      {
+        "name": "sigmas",
+        "type": "SIGMAS"
+      },
+      {
+        "name": "info",
+        "type": "STRING"
+      }
+    ]
+  },
+  "MiniMaxH3ImageToVideo": {
+    "id": "MiniMaxH3ImageToVideo",
+    "name": "MiniMaxH3ImageToVideo",
+    "display_name": "MiniMax H3 Image to Video",
+    "description": "",
+    "category": "model/conditioning/minimax",
+    "output_types": [
+      "CONDITIONING",
+      "LATENT"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "clip",
+        "type": "CLIP",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "vae",
+        "type": "VAE",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "prompt",
+        "type": "STRING",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "width",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 32,
+          "max": 16384,
+          "step": 32,
+          "default": 1344
+        }
+      },
+      {
+        "name": "height",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 32,
+          "max": 16384,
+          "step": 32,
+          "default": 768
+        }
+      },
+      {
+        "name": "length",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 5,
+          "max": 3600,
+          "step": 17,
+          "default": 124
+        }
+      },
+      {
+        "name": "first_frame",
+        "type": "IMAGE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "last_frame",
+        "type": "IMAGE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "last_frame_index",
+        "type": "INT",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": -1,
+          "max": 3599,
+          "step": 1,
+          "default": -1
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "positive",
+        "type": "CONDITIONING"
+      },
+      {
+        "name": "LATENT",
+        "type": "LATENT"
+      }
+    ]
+  },
+  "MiniMaxH3ReferenceToVideo": {
+    "id": "MiniMaxH3ReferenceToVideo",
+    "name": "MiniMaxH3ReferenceToVideo",
+    "display_name": "MiniMax H3 Reference to Video",
+    "description": "<Picture i> / <Video k> / <Audio j> reference conditioning for MiniMax H3. Use the same tags when prompting.",
+    "category": "model/conditioning/minimax",
+    "output_types": [
+      "CONDITIONING",
+      "LATENT"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "clip",
+        "type": "CLIP",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "prompt",
+        "type": "STRING",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "width",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 32,
+          "max": 16384,
+          "step": 32,
+          "default": 1344
+        }
+      },
+      {
+        "name": "height",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 32,
+          "max": 16384,
+          "step": 32,
+          "default": 768
+        }
+      },
+      {
+        "name": "length",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 5,
+          "max": 3600,
+          "step": 17,
+          "default": 124
+        }
+      },
+      {
+        "name": "ref_image_size",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "match",
+          "max"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "match"
+        }
+      },
+      {
+        "name": "vae",
+        "type": "VAE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "audio_vae",
+        "type": "VAE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "ref_images",
+        "type": "COMFY_AUTOGROW_V3",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        },
+        "autogrow": true,
+        "wire_as": "ref_images.ref_image0, ref_images.ref_image1, …"
+      },
+      {
+        "name": "ref_videos",
+        "type": "COMFY_AUTOGROW_V3",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        },
+        "autogrow": true,
+        "wire_as": "ref_videos.ref_video0, ref_videos.ref_video1, …"
+      },
+      {
+        "name": "ref_video_audios",
+        "type": "COMFY_AUTOGROW_V3",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        },
+        "autogrow": true,
+        "wire_as": "ref_video_audios.ref_video_audio0, ref_video_audios.ref_video_audio1, …"
+      },
+      {
+        "name": "ref_audios",
+        "type": "COMFY_AUTOGROW_V3",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        },
+        "autogrow": true,
+        "wire_as": "ref_audios.ref_audio0, ref_audios.ref_audio1, …"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "positive",
+        "type": "CONDITIONING"
+      },
+      {
+        "name": "LATENT",
+        "type": "LATENT"
+      }
+    ]
+  },
+  "BasicGuider": {
+    "id": "BasicGuider",
+    "name": "BasicGuider",
+    "display_name": "Basic Guider",
+    "description": "",
+    "category": "model/sampling/guiders",
+    "output_types": [
+      "GUIDER"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "conditioning",
+        "type": "CONDITIONING",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "GUIDER",
+        "type": "GUIDER"
+      }
+    ]
+  },
+  "BasicScheduler": {
+    "id": "BasicScheduler",
+    "name": "BasicScheduler",
+    "display_name": "BasicScheduler",
+    "description": "",
+    "category": "model/sampling/schedulers",
+    "output_types": [
+      "SIGMAS"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "scheduler",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "simple",
+          "sgm_uniform",
+          "karras",
+          "exponential",
+          "ddim_uniform",
+          "beta",
+          "normal",
+          "linear_quadratic",
+          "kl_optimal"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "steps",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 1,
+          "max": 10000,
+          "step": null,
+          "default": 20
+        }
+      },
+      {
+        "name": "denoise",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "default": 1
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "SIGMAS",
+        "type": "SIGMAS"
+      }
+    ]
+  },
+  "KSamplerSelect": {
+    "id": "KSamplerSelect",
+    "name": "KSamplerSelect",
+    "display_name": "KSamplerSelect",
+    "description": "",
+    "category": "model/sampling/samplers",
+    "output_types": [
+      "SAMPLER"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "sampler_name",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "euler",
+          "euler_cfg_pp",
+          "euler_ancestral",
+          "euler_ancestral_cfg_pp",
+          "heun",
+          "heunpp2",
+          "exp_heun_2_x0",
+          "exp_heun_2_x0_sde",
+          "dpm_2",
+          "dpm_2_ancestral",
+          "lms",
+          "dpm_fast",
+          "dpm_adaptive",
+          "dpmpp_2s_ancestral",
+          "dpmpp_2s_ancestral_cfg_pp",
+          "dpmpp_sde",
+          "dpmpp_sde_gpu",
+          "dpmpp_2m",
+          "dpmpp_2m_cfg_pp",
+          "dpmpp_2m_sde",
+          "dpmpp_2m_sde_gpu",
+          "dpmpp_2m_sde_heun",
+          "dpmpp_2m_sde_heun_gpu",
+          "dpmpp_3m_sde",
+          "dpmpp_3m_sde_gpu",
+          "ddpm",
+          "lcm",
+          "ipndm",
+          "ipndm_v",
+          "deis",
+          "cfgpp_ud10_ab",
+          "res_multistep",
+          "res_multistep_cfg_pp",
+          "res_multistep_ancestral",
+          "res_multistep_ancestral_cfg_pp",
+          "gradient_estimation",
+          "gradient_estimation_cfg_pp",
+          "er_sde",
+          "seeds_2",
+          "seeds_3",
+          "sa_solver",
+          "sa_solver_pece",
+          "ddim",
+          "uni_pc",
+          "uni_pc_bh2"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "SAMPLER",
+        "type": "SAMPLER"
+      }
+    ]
+  },
+  "RandomNoise": {
+    "id": "RandomNoise",
+    "name": "RandomNoise",
+    "display_name": "RandomNoise",
+    "description": "",
+    "category": "model/sampling/noise",
+    "output_types": [
+      "NOISE"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "noise_seed",
+        "type": "INT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 18446744073709552000,
+          "step": null,
+          "default": 0
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "NOISE",
+        "type": "NOISE"
+      }
+    ]
+  },
+  "SamplerCustomAdvanced": {
+    "id": "SamplerCustomAdvanced",
+    "name": "SamplerCustomAdvanced",
+    "display_name": "SamplerCustomAdvanced",
+    "description": "",
+    "category": "model/sampling/custom",
+    "output_types": [
+      "LATENT"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "noise",
+        "type": "NOISE",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "guider",
+        "type": "GUIDER",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "sampler",
+        "type": "SAMPLER",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "sigmas",
+        "type": "SIGMAS",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "latent_image",
+        "type": "LATENT",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "type": "LATENT"
+      },
+      {
+        "name": "denoised_output",
+        "type": "LATENT"
+      }
+    ]
+  },
+  "VAEDecode": {
+    "id": "VAEDecode",
+    "name": "VAEDecode",
+    "display_name": "VAE Decode",
+    "description": "Decodes latent images back into pixel space images.",
+    "category": "model/latent",
+    "output_types": [
+      "IMAGE"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "samples",
+        "type": "LATENT",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "vae",
+        "type": "VAE",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "IMAGE",
+        "type": "IMAGE"
+      }
+    ]
+  },
+  "CreateVideo": {
+    "id": "CreateVideo",
+    "name": "CreateVideo",
+    "display_name": "Create Video",
+    "description": "Create a video from images.",
+    "category": "video",
+    "output_types": [
+      "VIDEO"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "images",
+        "type": "IMAGE",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "fps",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 1,
+          "max": 120,
+          "step": 1,
+          "default": 30
+        }
+      },
+      {
+        "name": "audio",
+        "type": "AUDIO",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "bit_depth",
+        "type": "COMBO",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "auto",
+          8,
+          10
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "auto"
+        }
+      },
+      {
+        "name": "color_space",
+        "type": "COMBO",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "sRGB",
+          "HDR",
+          "HDR PQ"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "sRGB"
+        }
+      },
+      {
+        "name": "codec",
+        "type": "COMBO",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "none",
+          "auto",
+          "h264",
+          "av1"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "none"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "VIDEO",
+        "type": "VIDEO"
+      }
+    ]
+  },
+  "SaveVideo": {
+    "id": "SaveVideo",
+    "name": "SaveVideo",
+    "display_name": "Save Video",
+    "description": "Saves the input videos to your ComfyUI output directory.",
+    "category": "video",
+    "output_types": [
+      "VIDEO"
+    ],
+    "output_node": true,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "video",
+        "type": "VIDEO",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "filename_prefix",
+        "type": "STRING",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": "video/ComfyUI"
+        }
+      },
+      {
+        "name": "format",
+        "type": "COMFY_DYNAMICCOMBO_V3",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "auto",
+          "mp4",
+          "mkv",
+          "webm"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "codec",
+        "type": "COMFY_DYNAMICCOMBO_V3",
+        "required": false,
+        "is_link": false,
+        "section": "optional",
+        "choices": [
+          "auto",
+          "h264",
+          "av1"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "video",
+        "type": "VIDEO"
+      }
+    ]
+  },
+  "LoadImage": {
+    "id": "LoadImage",
+    "name": "LoadImage",
+    "display_name": "Load Image",
+    "description": "",
+    "category": "image",
+    "output_types": [
+      "IMAGE",
+      "MASK"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "image",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "A_fidelity_v1.png",
+          "BALLROOM_WALTZ_DIRECT_V1.png",
+          "B_fidelity_v1.png",
+          "C01_DUEL_LATERAL_START_V1.png",
+          "C01_DUEL_LATERAL_START_V2.png",
+          "C02_SEIFER_CAMERA_START_V1.png",
+          "C04_CRIANCAS_GUARDIOES_CLOSE_v2.png",
+          "C04_CRIANCAS_GUARDIOES_REACAO_v1.png",
+          "C04_MIRA_CLOSE_v1.png",
+          "C04_NUMBERBLOCKS_REACAO_v1.png",
+          "C04_PALCO_VAZIO_v1.png",
+          "C04_RUMI_FULLBODY_v2.png",
+          "C04_RUMI_PONTE_v1.png",
+          "C04_SPRUNKIS_REACAO_v1.png",
+          "C04_TRIO_ENTRADA_v1.png",
+          "C04_TRIO_PERFORMANCE_A_v1.png",
+          "C04_TRIO_REFRAO_FINAL_v1.png",
+          "C04_ZOEY_CLOSE_v1.png",
+          "C04_ZOEY_MIRA_DUO_v1.png",
+          "ChatGPT Image 20 de set. de 2026, 22_17_27.png",
+          "DARK_FEATHER_INTERLUDE_V1.png",
+          "DUEL_COMPACT_CUT_START_V1.png",
+          "DUEL_FIRST_CONTACT_DRIVE_END_V7.png",
+          "DUEL_FIRST_CONTACT_DRIVE_START_V6.png",
+          "DUEL_FIRST_CONTACT_DRIVE_START_V9.png",
+          "DUEL_HIGH_DEFLECTION_DIRECT_V11.png",
+          "DUEL_HIGH_PARRY_CANDIDATE_V1.png",
+          "DUEL_HIGH_PARRY_CANDIDATE_V3.png",
+          "DUEL_HIGH_PARRY_END_V6.png",
+          "DUEL_HIGH_PARRY_END_V7.png",
+          "DUEL_HIGH_PARRY_END_V9.png",
+          "DUEL_HIGH_PARRY_START_V4.png",
+          "DUEL_OBLIQUE_CUT_START_V10.png",
+          "DUEL_PRECONTACT_CANDIDATE_V2.png",
+          "DUEL_SPATIAL_CANDIDATE_V1.png",
+          "DUEL_SQUALL_DIAGONAL_DIRECT_V12.png",
+          "EDEA_CHAMBER_CANDIDATE_V4.png",
+          "EDEA_RAISED_ARMS_V2.png",
+          "F01_ORIGINAL_SQUALL_COMPOSITE_V2.png",
+          "F01_SQUALL_CUT_SEIFER_PARRY_V1.png",
+          "F02_ORIGINAL_SQUALL_COMPOSITE_V2.png",
+          "HYPERION_BLADE_INSERT_DIRECT_V1.png",
+          "R02_BOUNDARY_00.png",
+          "R02_BOUNDARY_01.png",
+          "R02_BOUNDARY_02.png",
+          "R02_BOUNDARY_03.png",
+          "R02_BOUNDARY_04.png",
+          "R02_BOUNDARY_05.png",
+          "R02_BOUNDARY_06.png",
+          "R02_BOUNDARY_07.png",
+          "R03_C01_CAMERA_BRIDGE_END.png",
+          "R03_C01_CAMERA_BRIDGE_START.png",
+          "R03_C02_CAMERA_BRIDGE_END.png",
+          "R03_C02_CAMERA_BRIDGE_START.png",
+          "R03_C03_CAMERA_BRIDGE_END.png",
+          "R03_C03_CAMERA_BRIDGE_START.png",
+          "R03_C04_CAMERA_BRIDGE_END.png",
+          "R03_C04_CAMERA_BRIDGE_START.png",
+          "R03_C05_CAMERA_BRIDGE_END.png",
+          "R03_C05_CAMERA_BRIDGE_START.png",
+          "R03_C06_CAMERA_BRIDGE_END.png",
+          "R03_C06_CAMERA_BRIDGE_START.png",
+          "RINOA_BALLROOM_POINTING_DIRECT_V1.png",
+          "RINOA_FIELD_START_CANDIDATE_V1.png",
+          "RINOA_FIELD_START_CANDIDATE_V2.png",
+          "RINOA_ORANGE_INTERIOR_V1.png",
+          "RINOA_TEAR_DIRECT_V1.png",
+          "SEIFER_BECKON_CANDIDATE_V1.png",
+          "SEIFER_BLUE_VISION_DIRECT_V2.png",
+          "SEIFER_BLUE_VISION_V1.png",
+          "SEIFER_CIRCULAR_RECOVERY_V3.png",
+          "SEIFER_CIRCULAR_RECOVERY_V5.png",
+          "SEIFER_COMPACT_CUT_END_V12.png",
+          "SEIFER_COMPACT_CUT_START_V10.png",
+          "SEIFER_HORIZONTAL_DIRECT_V13.png",
+          "SEIFER_HYPERION_CANDIDATE_V1.png",
+          "SEIFER_HYPERION_GRIP_CANDIDATE_V2.png",
+          "SEIFER_OVERHEAD_PREPARATION_V2.png",
+          "SEIFER_PALM_FLARE_V1.png",
+          "SEIFER_REACTION_DIRECT_V1.png",
+          "SQUALL_ATTACK_SEIFER_PARRY_CANDIDATE_V1.png",
+          "SQUALL_ATTACK_SEIFER_PARRY_CANDIDATE_V2.png",
+          "SQUALL_BLADE_GROUND_V1.png",
+          "SQUALL_DUCK_RECOVER_END_V6.png",
+          "SQUALL_DUCK_RECOVER_V1.png",
+          "SQUALL_DUCK_RECOVER_V3.png",
+          "SQUALL_GROUND_DROPLET_V2.png",
+          "SQUALL_GROUND_DROP_DIRECT_V3.png",
+          "SQUALL_GROUND_POST_DROP_GUIDE_V1.png",
+          "SQUALL_POST_FLARE_RECOVERY_V1.png",
+          "SQUALL_REVOLVER_CANDIDATE_V4.png",
+          "SQUALL_RINOA_SUNSET_V2.png",
+          "SQUALL_RISING_RECOVERY_DIRECT_V1.png",
+          "SQUALL_VISION_EYE_V1.png",
+          "T01.png",
+          "T02.png",
+          "T03.png",
+          "T03_v2.png",
+          "T04.png",
+          "art_painting_anchor.png",
+          "art_painting_close_anchor.png",
+          "chem_lab_anchor.png",
+          "h3_upgrade_robot_hand.png",
+          "it_lab_anchor.png",
+          "jk_alunas_robotica.png",
+          "jk_festa_musical_crop.jpg",
+          "jk_img-5.jpg",
+          "jk_leitura_crop.jpg",
+          "jk_playground_children_A01.png",
+          "jk_realidade_virtual_crop.jpg",
+          "lh_base.png",
+          "lh_game_sight.png",
+          "lh_official_profile.jpg",
+          "lh_three_quarter.png",
+          "modeladores_3d_official_sample.png",
+          "patio_chase_close_anchor.png",
+          "patio_chase_rear_anchor.png",
+          "patio_children_anchor.png",
+          "patio_close.png",
+          "patio_close_badge.png",
+          "patio_four_children_anchor.png",
+          "patio_front.png",
+          "patio_side.png",
+          "patio_tag_side_anchor.png",
+          "patio_wide.png",
+          "playground_anchor.png",
+          "prime_building_children_A01.png",
+          "prime_building_lab_crop.jpg",
+          "prime_feelings_lab_crop.jpg",
+          "prime_reading_lab_crop.jpg",
+          "qwen21_validation_red.png",
+          "sala_3d_a01.png",
+          "sala_auxiliar_a05.png",
+          "sala_professora_corredor_a03.png",
+          "sala_vertical_proporcoes_a04.png",
+          "shiryu_connect_C01_end.png",
+          "shiryu_connect_C01_start.png",
+          "shiryu_connect_C02_end.png",
+          "shiryu_connect_C02_start.png",
+          "shiryu_connect_C03_end.png",
+          "shiryu_connect_C03_start.png",
+          "shiryu_guided_C01_end.png",
+          "shiryu_guided_C01_mid.png",
+          "shiryu_guided_C02_end.png",
+          "shiryu_guided_C02_mid.png",
+          "shiryu_guided_C03_end.png",
+          "shiryu_guided_C03_mid.png",
+          "shiryu_hand_impact_v2.png",
+          "shiryu_hand_launch_v2.png",
+          "shiryu_hand_start_v2.png",
+          "shiryu_kinetic_v2_C01.png",
+          "shiryu_kinetic_v2_C02.png",
+          "shiryu_kinetic_v2_C03.png",
+          "shiryu_kinetic_v2_T05.png",
+          "shiryu_rev_D0.png",
+          "shiryu_rev_I0.png",
+          "shiryu_rev_M0.png",
+          "shiryu_rev_M1.png",
+          "tidus_lulu_candidate_a01.png",
+          "wakka_kimahri_candidate_a02.png",
+          "yuna_climax_candidate_a05.png",
+          "yuna_dance_candidate_a03.png",
+          "yuna_opening_candidate_a02.png",
+          "yuna_tidus_pre_kiss_a01.png",
+          "yuna_visual_candidate_a01.png"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "IMAGE",
+        "type": "IMAGE"
+      },
+      {
+        "name": "MASK",
+        "type": "MASK"
+      }
+    ]
+  },
+  "PreviewAny": {
+    "id": "PreviewAny",
+    "name": "PreviewAny",
+    "display_name": "Preview as Text",
+    "description": "Preview any input value as text.",
+    "category": "utilities",
+    "output_types": [
+      "STRING"
+    ],
+    "output_node": true,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "source",
+        "type": "*",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "STRING",
+        "type": "STRING"
+      }
+    ]
+  },
+  "LoadVideo": {
+    "id": "LoadVideo",
+    "name": "LoadVideo",
+    "display_name": "Load Video",
+    "description": "",
+    "category": "video",
+    "output_types": [
+      "VIDEO"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "file",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "T12_original_motion_132_13270_56f.mp4",
+          "T13_original_motion_14525_14683_39f.mp4",
+          "T20B_original_drop_motion_22f.mp4",
+          "h3_upgrade_dancer_pose.mp4",
+          "shiryu_completo_conectores_foley_v2.mp4"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "VIDEO",
+        "type": "VIDEO"
+      }
+    ]
+  },
+  "GetVideoComponents": {
+    "id": "GetVideoComponents",
+    "name": "GetVideoComponents",
+    "display_name": "Get Video Components",
+    "description": "Extracts video frames, audio, frame rate, bit depth, and color space.",
+    "category": "video",
+    "output_types": [
+      "IMAGE",
+      "AUDIO",
+      "FLOAT",
+      "COMBO"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "video",
+        "type": "VIDEO",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "images",
+        "type": "IMAGE"
+      },
+      {
+        "name": "audio",
+        "type": "AUDIO"
+      },
+      {
+        "name": "fps",
+        "type": "FLOAT"
+      },
+      {
+        "name": "bit_depth",
+        "type": "COMBO"
+      },
+      {
+        "name": "color_space",
+        "type": "COMBO"
+      }
+    ]
+  },
+  "ModelPatchLoader": {
+    "id": "ModelPatchLoader",
+    "name": "ModelPatchLoader",
+    "display_name": "Load Model Patch",
+    "description": "",
+    "category": "model/loaders",
+    "output_types": [
+      "MODEL_PATCH"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "name",
+        "type": "COMBO",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [
+          "ltx-2.5-duration-head-bf16.safetensors",
+          "minimax_h3_fun_controlnet_union_2.0_pruned_int8_convrot.safetensors",
+          "minimax_h3_fun_controlnet_union_pruned_int8_convrot.safetensors"
+        ],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "MODEL_PATCH",
+        "type": "MODEL_PATCH"
+      }
+    ]
+  },
+  "MiniMaxH3FunControlNetApply": {
+    "id": "MiniMaxH3FunControlNetApply",
+    "name": "MiniMaxH3FunControlNetApply",
+    "display_name": "Apply MiniMax H3 Fun ControlNet",
+    "description": "Apply a MiniMax H3 Fun ControlNet to a text-to-video model as a model patch.",
+    "category": "model/patch/minimax",
+    "output_types": [
+      "MODEL"
+    ],
+    "output_node": false,
+    "is_api_node": false,
+    "deprecated": false,
+    "pack": "core",
+    "labels": [],
+    "cloud_disabled": false,
+    "inputs": [
+      {
+        "name": "model",
+        "type": "MODEL",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "model_patch",
+        "type": "MODEL_PATCH",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "vae",
+        "type": "VAE",
+        "required": true,
+        "is_link": true,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "strength",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 10,
+          "step": 0.01,
+          "default": 1
+        }
+      },
+      {
+        "name": "start_percent",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 1,
+          "step": 0.001,
+          "default": 0
+        }
+      },
+      {
+        "name": "end_percent",
+        "type": "FLOAT",
+        "required": true,
+        "is_link": false,
+        "section": "required",
+        "choices": [],
+        "options": {
+          "min": 0,
+          "max": 1,
+          "step": 0.001,
+          "default": 1
+        }
+      },
+      {
+        "name": "control_video",
+        "type": "IMAGE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "mask",
+        "type": "MASK",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      },
+      {
+        "name": "source_video",
+        "type": "IMAGE",
+        "required": false,
+        "is_link": true,
+        "section": "optional",
+        "choices": [],
+        "options": {
+          "min": null,
+          "max": null,
+          "step": null,
+          "default": null
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "MODEL",
+        "type": "MODEL"
+      }
+    ]
+  }
+}

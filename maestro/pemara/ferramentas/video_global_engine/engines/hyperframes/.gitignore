@@ -1,0 +1,4 @@
+node_modules/
+.hyperframes/
+projects/*/renders/
+projects/*/snapshots/

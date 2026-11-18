@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "EXACT SAME ADULT rifleman as reference 1, identical normal human proportions, same small black moustache, cream shirt, brown leather hat, olive trousers, dark brown boots. Single full body 2D game sprite in this pose: walking LEFT in side profile right boot forward heel contacting ground left boot extended back. Match exactly reference 1 painting style, realistic adult anatomical proportions, high definition hand-painted arcade illustration, NOT chibi NOT caricature NOT pixel art. Pure flat saturated magenta background with no gradient, no ground and no shadow. Entire subject contained with margin.",
+      "negative_prompt": "chibi, cartoon big head, red pants, brown hair, missing hat, short jacket, white background, cropped limbs, multiple people, typography, extra limbs, background scenery, shadow",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202694009,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_corrected/enemy_walk_3"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/correct_enemy.png"
+    },
+    "is_changed": [
+      "e943ee4f8cefcb2c398c71b86b54b26deb9ea3fdb80d1ab198b1f14662ae18f1"
+    ]
+  }
+}

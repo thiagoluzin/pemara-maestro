@@ -1,0 +1,307 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 is the exact photographed human actor at 0.00 seconds; Picture 2 is the exact same photographed human actor at 6.54 seconds. These are literal film photographs to preserve, including the real human face and cloth, not inspiration for an illustrated character.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted photographed live-action shot of the same adult man in Picture 1 and Picture 2, with the original facial bone structure, ordinary human brow and teeth, pores, tiny scratches and individual hair strands. The same torn orange woven outfit over dark navy cloth, blue sash, wrist wraps and boots; every existing tear and stain stays. Same rocky island with teal water left, low rock right and distant mesas. Hold head-to-toe framing and natural perspective; restrained physical camera drift only. Real skin, real fabric, real atmospheric light. The only intended changes between the two reference states are a more upright arrangement of the already golden hair and a few external thin electrical arcs in the golden energy around him.\n0.0–1.4 seconds: he takes one deliberate diaphragmatic breath, then lowers his shoulders and firms his abdominal support. 1.4–2.1 seconds: knees flex subtly with both boots planted, fists tighten and eyelids close. 2.1–4.6 seconds: he releases a forceful supported human nonverbal exertion yell, lifting his chin only slightly and opening his jaw within ordinary anatomical range, keeping the same face, neck length and brow shape. There is a real dark mouth cavity with human teeth, no stretching of the face. Both eyelids remain fully closed during effort. His already blond hair lifts gradually toward Picture 2 and thin irregular blue-white electrical arcs appear OUTSIDE the body and face; the translucent warm energy stirs cloth, dust and a few small stones. The external light never becomes a solid flat flame graphic, and does not hide the body or landscape. 4.6–5.8 seconds: the yell releases into exhalation, jaw closes and chin returns toward the controlled reference angle. 5.8–6.58 seconds: ordinary irises and dark pupils reopen, reaching the exact human face and controlled stance of Picture 2 while breathing, fine hair, cloth, dust and a few electrical arcs continue to move. No new figure, text, cut, halo, huge muscles, glowing eyeballs or facial redesign.\n\noverall_soundscape: Outdoor wind, one close adult male inhalation and subdued stone rattle. From 2.1 to 4.6 seconds a strong deep chest-supported adult male NONVERBAL AAH EXERTION YELL rises organically from a rough low onset to a powerful human peak, then releases into one natural breath. Strong voice in front of effects, slight natural vocal grain, no distorted monster sound or identifiable actor imitation. No words. Low nonmusical pressure rush, dry electrical snaps and gravel stay below the voice and synchronize to the energy. No musical notes, melody, score, song, singing, choir, instruments, percussion or soundtrack.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 158,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "22",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810282
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 768,
+      "height": 1344,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/pilot02_photographic_endpoint",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "19": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A02_goku_ssj2_DLSS5_v01.png"
+    }
+  },
+  "21": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "22": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "image": [
+        "21",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  }
+}

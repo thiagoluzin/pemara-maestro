@@ -1,0 +1,31 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "dmc3_nevan_20261102/A05_dante_nevan_builtin_native.png"
+    },
+    "is_changed": [
+      "52ec0e727d9a123f7898b4d2de9e983124d81fae7ea86d38e947adc07e286a3a"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_20261102/anchors/A05_dante_nevan_builtin_05"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

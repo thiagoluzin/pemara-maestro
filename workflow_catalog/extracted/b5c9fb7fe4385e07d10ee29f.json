@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Heavy thrash metal with raw, aggressive energy. Features dual lead guitars, rapid drumming, and guttural English vocals. The mood is intense and visceral, driven by a pounding groove and sharp riffs. The track builds to a chaotic climax before a abrupt, heavy ending.. Producer style: Thrash Metal. Roles: guitar: Distorted lead and rhythm guitars, heavy palm muting and fast alternate picking; bass: Aggressive electric bass, tracking the guitar riffs tightly; drums: Fast double-bass drumming, sharp snare hits, and intense cymbal crashes; vocals: Guttural, aggressive English vocals with high energy and raw tone. Form: Intro 0-12s energy 0.8 lead guitar; Verse 1 12-36s energy 0.6 lead vocals; Pre-Chorus 36-44s energy 0.7 lead vocals; Chorus 44-60s energy 0.9 lead vocals; Verse 2 60-84s energy 0.6 lead vocals; Pre-Chorus 84-92s energy 0.7 lead vocals; Chorus 92-108s energy 0.9 lead vocals; Bridge 108-124s energy 0.8 lead guitar; Chorus 124-140s energy 0.95 lead vocals; Outro 140-180s energy 0.5 lead guitar. Complete ending.\nComplete song, target duration 172 seconds maximum. Compose the entire ABC arrangement within 164 seconds, including a short outro and a resolved final cadence. Reserve the last 8 seconds for the final chord decay and silence. Finish all sung words before the outro. No endless loop, unfinished solo, or long fade-out. Write explicit measures, no repeat signs; keep intro and interludes brief.. Qwen producer tempo 165 BPM. Planned form: Intro 0-12s energy 0.8 lead guitar; Verse 1 12-36s energy 0.6 lead vocals; Pre-Chorus 36-44s energy 0.7 lead vocals; Chorus 44-60s energy 0.9 lead vocals; Verse 2 60-84s energy 0.6 lead vocals; Pre-Chorus 84-92s energy 0.7 lead vocals; Chorus 92-108s energy 0.9 lead vocals; Bridge 108-124s energy 0.8 lead guitar; Chorus 124-140s energy 0.95 lead vocals; Outro 140-180s energy 0.5 lead guitar. Finish all singing before the final decay.",
+      "lyrics": "[Intro]\n\n[Verse]\nBlood drips from the stone\nThe forest floor is known\nBare feet on the cold ground\nWhere the weak are unbound\n\n[Pre-Chorus]\nWe dig, we dig\nTill the sky begins to crack\n\n[Chorus]\nRoots Bloody Roots\nDrinking deep from the soil's mouth\nRoots Bloody Roots\nHolding on, holding on\n\n[Verse]\nIron teeth in the dark\nPiercing through the bark\nWe bleed into the dirt\nBorn from the birth\n\n[Pre-Chorus]\nWe dig, we dig\nTill the sky begins to crack\n\n[Chorus]\nRoots Bloody Roots\nDrinking deep from the soil's mouth\nRoots Bloody Roots\nHolding on, holding on\n\n[Bridge]\nNo sky, no sun\nJust the pulse of the one\nBeneath the skin\nWhere it begins\n\n[Chorus]\nRoots Bloody Roots\nDrinking deep from the soil's mouth\nRoots Bloody Roots\nHolding on, holding on\n\n[Outro]\nHolding on... (Feedback swell)\nFinal Chord Decay\nSilence",
+      "seed": 881750316,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

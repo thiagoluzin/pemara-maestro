@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Sepultura-inspired, Brutal Brazilian groove thrash, heavily downtuned guitars, syncopated palm-muted riffs, aggressive barked male English vocals, huge toms, tight dry heavy drums. 116 BPM, D minor. a percussive four-hit guitar motif; bass and tom responses; short commanding shouted refrain. Brutal Brazilian groove thrash, D minor, riff-led, barked vocals, tight dry drums.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Verse 1 0-90s; Chorus 1 90-150s; Verse 2 & Ch 2 150-240s; Bridge, Solo & 240-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=116, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nIron links, cold steel breath\nChains that hold, now cut the death\nStone by stone, the wall exhales\nGrey dust hangs in stagnant halls\nWe pull the weight, we drag the rust\nTurn the shackles into dust\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Verse]\nEyes of wire, watching deep\nNow they blink in shattered sleep\nHands that bled, now hands that tear\nStrip the city of its stare\nThe watchtower falls in two\nHollow light lets shadows through\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Bridge]\nOne stone loose, the others groan\nWeight of years, finally gone\nThe last link snaps, the floor gives way\nWe stand tall in the dust of day\n\n[Solo]\n\n[Chorus]\nBreak the grey\nBreak the gaze\nConcrete burns, the silence dies\nConcrete Rebellion\n\n[Outro]\nThe wall is down\nThe city is found\nChains are gone\nWe are not strong",
+      "seed": 202610161013,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

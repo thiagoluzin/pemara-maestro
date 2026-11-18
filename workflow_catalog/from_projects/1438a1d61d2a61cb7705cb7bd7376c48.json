@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "dmc3_nevan_20261102/Dante_Nevan_Montagem_30s_PICTURE_LOCK_v01.mp4"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLanczosUpscaleRequiredSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1080,
+      "height": 1920,
+      "filename_prefix": "dmc3_nevan_20261102/final/Dante_Nevan_30s_FHD_exact60_v01",
+      "profile_id": "lanczos_nvenc_rife_exact60_no_nr_v3_1080p_vertical",
+      "content_kind": "live_action",
+      "protection_manifest": ""
+    }
+  }
+}

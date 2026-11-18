@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P21_pixaroma_master20_v2_clean_background",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P21_P20_approved_endpoint.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P21_finale.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23102102
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Continuous nine-second live-action cinematic opera, exact supplied opening pose and stage. Three real adult actors only. Draco LEFT: young clean-shaven curly dark-haired man, NAVY BLUE heavy cape, BLUE brocade tunic/trousers, SILVER breastplate, brown boots. Maria/Celes CENTRE: blonde ponytail BLUE bow, IVORY satin gown with BLUE belt and trim, both hands EMPTY. Ralse RIGHT: bearded dark-haired mature man, RED tunic, GOLD breastplate, BURGUNDY cape, black boots. The swords remain SHEATHED at their owners' belts. Same exact faces, material colours, proportions and body heights.\n\nCamera is bolted to its audience tripod: constant lens, framing, perspective, focus and exposure throughout. Each actor keeps BOTH FEET at the same starting floor marks and the same depth. No step, slide, retreat, approach, camera pullback or change in scale. Movement is purposeful upper-body acting with realistic joints, supported feet and natural breathing. The permanent scenic backdrop is a continuous ordinary matte BLUE cyclorama with its existing moon, blue stone parapet, right red curtain and column. Stationary physical scenery under steady neutral-white stage light. The space around the actors shows only uninterrupted blue scenic surface: no actor silhouette, echo, halo, duplicated outline or floating texture in the backdrop. Actors have solid single natural outlines.\n\nThe recording is instrumental. At0-1s Draco and Ralse finish their breath and gently close their relaxed lips. Maria turns her eyes toward Draco and lowers the already empty hand beside her gown. Their shoulders breathe naturally while their feet remain planted.\nAt1-3s Draco inclines his head toward Maria, then looks back to Ralse, keeping his free hand low and his other hand beside his own sheathed hilt. Ralse's existing open low palm relaxes slowly toward his hip. Maria watches Draco, visibly attentive, and begins lifting both EMPTY hands to her waist, with elbows comfortably separated from the men's armour.\nAt3-6s Maria opens both empty palms in a restrained plea, hands only at waist height, turns her face toward Ralse and meets his gaze. Natural fingers and wrists, hands do not touch another person. Ralse answers with a small softened head turn to Maria and a visible silent breath, keeping his lips resting and sword sheathed. Draco watches them, maintaining his upright supported stance. The actors stay at their original heights and floor marks.\nAt6-9.42s Maria slowly lowers both empty hands beside her gown and turns her gaze back toward Draco. Ralse's free hand finishes lowering; Draco's shoulders soften with the exhale. All three continue small eye movements, breathing and gentle cloth recovery through the final frame. Their bodies remain separate and physically grounded. No new singing, syllables, props, contact, sword draw, battle, exit, blackout or ending pose reset. Preserve the blue scenic backdrop and visible moon exactly through the last frame.\n\noverall_soundscape: Preserve the supplied original English Pixel Remaster recording exactly, with its instrumental ending and original natural end. All three performers silent, lips resting. No replacement voice, invented dialogue, new music or Foley, retiming or added fade.\n\nnon_diegetic_music: N/A; original recorded staged-opera orchestra.",
+      "width": 1344,
+      "height": 768,
+      "length": 226,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  }
+}

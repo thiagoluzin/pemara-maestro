@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "host": "127.0.0.1",
+  "port": 8788,
+  "upstream": "https://api.openai.com",
+  "storeDirectory": "E:\\Pemara\\.agents\\token-skein\\store",
+  "eventsPath": "E:\\Pemara\\.agents\\token-skein\\events.jsonl",
+  "compression": {
+    "enabled": true,
+    "minimumBytes": 6000,
+    "recentInputItems": 4,
+    "maximumSummaryLines": 120,
+    "ttlSeconds": 21600
+  },
+  "vision": {
+    "enabled": false,
+    "models": [
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-5.6-luna"
+    ],
+    "minimumBytes": 24000,
+    "maximumPages": 4,
+    "estimatedTokensPerPage": 1600,
+    "minimumSavingsRatio": 1.5
+  },
+  "style": {
+    "enabled": true,
+    "instruction": "[TokenSkein output policy] Be concise and direct. Preserve technical details, exact commands, paths, errors, identifiers, security warnings, and irreversible-action confirmations. Avoid filler and repeated summaries."
+  },
+  "routing": {
+    "enabled": true,
+    "overrideExisting": false
+  },
+  "shell": {
+    "enabled": false,
+    "preferRtk": true,
+    "minimumBytes": 3000,
+    "maximumLines": 160,
+    "autoAllow": false
+  },
+  "economics": {
+    "enabled": true,
+    "usagePath": "E:\\Pemara\\.agents\\token-skein\\usage.jsonl"
+  },
+  "limits": {
+    "maxRequestBytes": 8388608,
+    "upstreamTimeoutMs": 120000
+  },
+  "archive": {
+    "maxBytes": 209715200
+  }
+}

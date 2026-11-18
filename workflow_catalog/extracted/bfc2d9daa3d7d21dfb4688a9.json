@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Black Sabbath-inspired, Ominous heavy doom metal, down-tuned fuzzy guitar, massive deliberate bass, loose hard-hitting drums, anguished powerful male voice, violent riff changes. 96 BPM, C minor. a weighty riff falling by semitone; crushing half-time bridge and brief frantic guitar release. Doom Metal, C minor, 96 BPM, down-tuned, fuzzy, heavy, anguished male vocals, riff-led, violent dynamics, crushing half-. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verse  0-100s; Chorus & Verse 100-195s; Bridge & Solo 195-260s; Final Chorus 260-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=96, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nDust on the pick, the vein runs dry\nWe chisel the stone, the timber sigh\nA seam of black, a wall of bone\nThe iron gate isn't alone\n\n[Chorus]\nIt speaks in tongues that haven't been born\nA cold breath rising, a silent morn\nThe mouth of the earth, it opens wide\nWith nothing to hide, with nowhere to hide\n\n[Verse]\nThe heavy door swings slow in the dark\nA voice like gravel, a tearing mark\nIt knows our names before we are old\nA story written in rust and gold\n\n[Chorus]\nIt speaks in tongues that haven't been born\nA cold breath rising, a silent morn\nThe mouth of the earth, it opens wide\nWith nothing to hide, with nowhere to hide\n\n[Bridge]\nWe run for the light, but the light is gone\nThe roots have pulled, the night has won\nThe door seals shut with a thunderous crack\nNo turning back, no turning back\n\n[Solo]\n\n[Chorus]\nIt speaks in tongues that haven't been born\nA cold breath rising, a silent morn\nThe mouth of the earth, it opens wide\nWith nothing to hide, with nowhere to hide\n\n[Outro]\nThe mountain swallows our final breath\nThe voices stop, the dead are left\nSilence",
+      "seed": 202610161007,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

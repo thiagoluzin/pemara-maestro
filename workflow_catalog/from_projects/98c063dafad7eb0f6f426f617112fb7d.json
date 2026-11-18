@@ -1,0 +1,272 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P22_pixaroma_master20_v1_overture",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P22_overture.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23102201
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] Fifteen-second single continuous LIVE-ACTION opening of the Jidoor opera performance, a real historic jewel-box opera theatre with real seated adult spectators and real orchestra players. Physical carved dark wood, worn gilded plaster, burgundy velvet curtains, brass rails and practical warm theatre light; photographic material detail, not a game, cartoon, miniature, 3D render or illustration. The massive MAIN STAGE CURTAIN is FULLY CLOSED along its centre seam and stays closed throughout this complete shot. Burgundy/red heavy velvet, gold embroidered edging and gold hanging valances, an ornate dark gilded proscenium. This is the overture BEFORE the narrator and BEFORE Draco or Maria enter. There is NO visible performer or conductor on the stage, NO solo singer, NO man addressing the audience. Do not reveal the blue moon scenery yet; it is physically hidden behind the closed front curtain.\n\nThe camera begins just above the centre aisle behind the last visible row of seated audience. Symmetrical proscenium and closed curtain dominate the upper two-thirds. In the lower foreground the backs of seated spectators in restrained period evening clothes frame the empty aisle. They remain seated facing the curtain, not looking into camera. Down in the orchestra pit below the stage lip, a small ensemble of real musicians is visible from behind and at an angle; two violinists' supported elbows and bows can be read above their music stands. Individual background faces are small and secondary. No spotlighted conductor, no modern screens, microphone, electric guitar, concert arena or modern clothes.\n\nFrom0-4s the existing overture begins over the theatre. A very slow physical dolly moves forward along the EMPTY centre aisle toward the stage, with real differential motion: nearest chair backs and brass rails move outward and past the frame while the distant curtain slowly grows. Constant focal length and smooth supported camera movement, no zoom, orbit, cut or perspective jump. Spectators quietly finish settling: one adult on the left lowers a programme to their lap, another on the right straightens their shoulders and turns their head forward. Keep feet, seats and bodies separate and physically supported, no walking through chairs. In the pit the two violinists begin slow connected bow strokes with their right hands, left hands supporting their own instruments. Bows and instruments stay attached to their owners and in the same physical space.\n\nFrom4-10s the same gentle forward dolly continues, the near chair backs slide out of the lower corners and the orchestra pit becomes clearer below the stationary closed curtain. One violinist changes bow direction at the end of a stroke while the other sustains the preceding stroke; independent naturally timed arm movement, not every player mirroring the same pose. A seated musician farther back adjusts the angle of their score without turning the sheet into another object. A few audience heads subtly track toward the stage and settle. The heavy velvet keeps its continuous folds and tiny natural fabric sway, centre seam stays fully shut. All warm wall lamps stay steady, natural gold and burgundy palette, no strobe, colour cast, flare or flickering spotlight.\n\nFrom10-15.08s the camera advances the final short part of this same slow aisle movement, still entirely behind the orchestra and clear of seated bodies. Violinists continue supported bowing and breathing with small shoulder responses to the overture; no instrument dissolves or changes hands. Spectators remain attentive and seated. The closed velvet stage curtain fills a little more of the composition, building anticipation without opening, blackout, fade or frozen ending. Maintain physical music stands, distinct chair rows, continuous proscenium geometry and normal real people through the last moving frame. The frame ends with the overture still in progress, before any stage performer appears.\n\noverall_soundscape: Use ONLY the supplied original English Pixel Remaster recording for this exact initial overture interval, preserving its original opening silence, music timing, stereo, fixed gain and duration. No generated voices, singing, dialogue, applause, Foley or replacement orchestration. Visible instrumental performance is broad musical acting; no claim of note-perfect instrument technique.\n\nnon_diegetic_music: N/A; the existing recorded opera overture is the sole score.",
+      "width": 1344,
+      "height": 768,
+      "length": 362
+    }
+  }
+}

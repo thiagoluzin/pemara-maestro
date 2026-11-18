@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "project_id": "pemara_estudio_40anos",
+  "standard": {
+    "native_resolution": {
+      "width": 832,
+      "height": 480,
+      "rule": "480p Wan A14B training sweet spot",
+      "flexible": true,
+      "flexible_note": "Pode aceitar 480×832 portrait via STUDIO_ALLOW_40ANOS_PORTRAIT=1"
+    },
+    "native_fps": 16,
+    "native_frames": 81,
+    "native_duration_seconds": 5.06,
+    "min_take_seconds": 6,
+    "post_pipeline": [
+      {
+        "stage": "rife_2x",
+        "tool": "rife-ncnn-vulkan",
+        "model": "rife-v4.6",
+        "from_frames": 81,
+        "to_frames": 163,
+        "from_fps": 16,
+        "to_fps": 32
+      },
+      {
+        "stage": "realesrgan_anime_x4",
+        "tool": "realesrgan-ncnn-vulkan",
+        "model": "realesrgan-x4plus-anime",
+        "from_resolution": [832, 480],
+        "to_resolution": [3328, 1920]
+      },
+      {
+        "stage": "ffmpeg_reshape_to_1920x1080",
+        "tool": "ffmpeg",
+        "target_resolution": [1920, 1080],
+        "target_fps": 30,
+        "method": "scale+fps_resample"
+      }
+    ],
+    "final_mp4_path_pattern": "{project_dir}/takes/{take_id}__{slug}_final_1920x1080_30fps.mp4",
+    "preview_mp4_path_pattern": "{project_dir}/takes/{take_id}__{slug}_preview_480p_32fps.mp4",
+    "log_path_pattern": "{project_dir}/logs/pemara_estudio_40anos_{take_id}.log"
+  },
+  "constraints": {
+    "absolute_rule": "NUNCA renderizar Wan A14B em geometria diferente de 480p / 16fps / 81 frames nativos direto. Upscale + RIFE apenas em pós.",
+    "fallback_models": [
+      "Wan A14B Q5_K_M (default)",
+      "Wan A14B Q8_0 (test only, não usar para produção em 5090)",
+      "Wan A14B fp16 + offload (caso extremo)"
+    ],
+    "wihte_distill_loras_safe_with": ["lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors"],
+    "no_native_480p_render_exception": null,
+    "QC_contract": [
+      "ping-pong motion visible",
+      "no character/human silhouette",
+      "no invented text",
+      "no slideshow pattern"
+    ]
+  },
+  "scheduling": {
+    "start_at": "after 22:00 BRT",
+    "stop_at": "before 07:00 BRT",
+    "watchdog_every_seconds": 60,
+    "max_consecutive_errors": 2
+  }
+}

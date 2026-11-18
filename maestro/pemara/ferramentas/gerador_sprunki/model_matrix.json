@@ -1,0 +1,46 @@
+{
+  "active_generation": "flux1_dev",
+  "models": {
+    "flux1_dev": {
+      "label": "FLUX.1 dev",
+      "role": "baseline_generation_and_main_training",
+      "workflow": "workflow_api.json",
+      "unet_name": "flux1-dev.safetensors",
+      "train_model_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\unet\\flux1-dev.safetensors",
+      "enabled": true
+    },
+    "flux1_krea_fp8": {
+      "label": "FLUX.1 Krea dev FP8",
+      "role": "candidate_generation",
+      "workflow": "workflow_krea_fp8_api.json",
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+      "fallback_unet_names": [
+        "flux1-krea-dev-fp8.safetensors",
+        "flux1-krea-dev.safetensors"
+      ],
+      "train_model_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\unet\\flux1-krea-dev.safetensors",
+      "enabled": true
+    },
+    "flux2_klein_4b": {
+      "label": "FLUX.2 klein 4B",
+      "role": "future_candidate",
+      "workflow": "workflow_flux2_klein4b_api.json",
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "enabled": false
+    }
+  },
+  "comparison": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 28,
+    "guidance_scale": 3.5,
+    "seeds": [
+      10101,
+      20202,
+      30303,
+      40404,
+      50505,
+      60606
+    ]
+  }
+}

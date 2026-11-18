@@ -1,0 +1,22 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {"file": "Goku_Transformacao_SSJ_Vertical_30s_PREVIA.mp4"}
+  },
+  "2": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": ["1", 0],
+      "width": 1080,
+      "height": 1920,
+      "filename_prefix": "goku_ssj_20261027/final_fhd60/Goku_SSJ_Vertical_30s_FHD_60FPS",
+      "content_kind": "live_action",
+      "expected_sha256": "ce4cb759907d0a62a039522dcd602d7eec5912e11881e26c2e8ead90f772725e",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {"content_kind": "live_action", "stage": "final"}
+  }
+}

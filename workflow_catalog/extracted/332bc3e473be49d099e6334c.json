@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Complex aggressive progressive thrash metal, sharp downpicked guitar riffs, strong audible bass, angular accented live drums, biting male baritone, intricate lead guitar solo. 186 BPM, E minor. asymmetric-feeling riff accents within explicit 4/4, melodic middle section, mounting riff variations and a decisive final chord. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nAsh falls like grey snow on the stone\nThe order signed, the ink is drawn\nBurn the ledger, burn the name\nLeave no trace of where we came\nMy hands are shaking, the match is lit\nBut the pages hide a bitter wit\nI fold the truth in wax and wire\nAnd seal it for the coming fire\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Verse]\nThe dial spins, the frequency climbs\nCarving words out of the chimes\nThey watch me burn, they think it's done\nBut the signal runs, the signal runs\nEvery scar is a coded line\nEvery tear is a design\nI am the ghost in the machine\nScreaming what they cannot see\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Bridge]\nNow the tower hums a low decree\nThe last transmitter, wild and free\nOne more breath before the cut\nThe history of us, the history of us\n\n[Solo]\n\n[Chorus]\nHide the light in the static noise\nA world without witness, a world without choice\nBroadcast the lie until it breaks\nWake the sleepers for the sake\n\n[Outro]\nThe screen goes black\nThe truth remains\nIn the final chord\nIt chains",
+      "abc": "",
+      "seed": 202610166019,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166019,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/20_a_world_without_witness_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

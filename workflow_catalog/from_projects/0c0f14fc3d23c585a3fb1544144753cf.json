@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P26_pixaroma_master20_v1_curtain_reveal",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P26_overture.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 26102501
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous fifteen-second LIVE-ACTION practical opera-stage curtain opening, beginning at the EXACT supplied final frame of the approved previous take. The theatre impresario has already walked out to screen right and does NOT return. This shot has NO people, performers, silhouettes or faces. Preserve the exact downstage wooden floor, opaque burgundy velvet main curtain across the rear, the existing narrow timber rigging and hanging ropes at both far side edges, left candle table, side chairs and right-side furniture. Same real theatre/apron space, camera position, framing and perspective throughout. The camera is absolutely stationary, no zoom, dolly, pan, orbit, shake or recentering. Physical action belongs to the main curtain mechanism. The side rigging, chairs and tables remain bolted in place and do not move with the curtain.\n\nFrom0-7.2s the main curtain remains CLOSED along its centre seam. Keep both existing heavy velvet panels at their supplied locations and scale, same burgundy colour, seams, weight and folds. Only a very small natural settling of the lowest fabric edge suggests the fly mechanism preparing; do not inflate, ripple or billow the curtain like a flag. The practical candle flames remain small and steady, no pulsing exposure or newly lit lamps. No returning impresario, stagehand, orchestra conductor or singer. Same empty downstage floor with visible wood grain and contact shadows, no new object on the apron.\n\nFrom7.2-12s the theatre mechanism draws the TWO EXISTING velvet panels APART from the vertical CENTRAL SEAM, smoothly and symmetrically toward the left and right side wings. The left half retracts LEFT and the right half retracts RIGHT; the upper supports remain fixed, heavy fabric gathers in real vertical folds as the lower hems slide laterally above the same stage floor. Cloth accelerates gently and then slows, with normal weight and attached material, no dissolving, transparent velvet, morphing wall or cloth passing through a chair. Side ropes, timber frames, candle tables and chairs remain in the foreground, unchanged. A narrow central gap grows continuously into a full stage opening; reveal the scenery progressively through the actual gap rather than replacing the whole background in one frame.\n\nBEHIND THIS REAL CURTAIN is the first-act opera BATTLEFIELD SET: an EMPTY practical theatre stage, several LOW separate reddish-brown scenic rocks resting on the existing wooden stage floor, a taller cluster of rough red-ochre painted rocky flats near stage LEFT and another cluster near stage RIGHT, with clear open acting space across the centre. Far behind them is a large flat hand-painted theatre backdrop of WARM GOLDEN SUNSET CLOUDS, honey gold and pale cream light with muted warm-grey cloud shadows. This is visible practical stagecraft with textured scenery, a painted canvas backdrop and physical contact shadows, NOT a real outdoor landscape, game pixels, cartoon or polished CGI. Use only a few low rocks so the centre acting path stays clear. There is NO moon, night sky, castle, battlement, blue parapet, balcony or extra curtain behind the panels. There are NO characters, soldiers, props in motion or creatures on this set in this interval. The sun is painted into the cloudy sunset, not a blinding spotlight or bright white aperture.\n\nKeep the REVEALED SET softly illuminated at its final comfortable exposure from its first appearance. No white flash, bloom burst, flare, magical glow, magenta wash, flickering gold light or sudden change of camera exposure. Candlelit downstage foreground remains at its existing warm stable level; only the dark occluded space is uncovered as the panels move. Real depth separates the foreground rigging and furniture, gathered velvet panels, low scenic rocks, tall side flats and distant painted canvas. No new theatre walls and no perspective jump.\n\nFrom12-15.08s the same two heavy velvet panels ease to their final GATHERED side positions and settle with slight natural fabric weight response; the centre remains open. Hold the original stationary camera and the empty newly revealed battlefield, ready for Draco's entrance in a LATER shot. No one enters now, no singing mouth, no narrator, no new object passes across the background, no growing rocks or moving painted clouds. Preserve the final scenic arrangement and exposure through the final frame. Do not close the curtain again, fade, blackout, freeze the entire image, display words or cut to a new shot.\n\noverall_soundscape: Preserve ONLY the supplied exact next contiguous interval of the original English Pixel Remaster opera recording, same stereo, fixed gain, timing and duration. Do not generate singing, narration, dialogue, applause, footsteps, curtain motor noise, Foley or substitute music. Curtain motion is a restrained physical interpretation of the existing orchestral transition, without a new audio performance.\n\nnon_diegetic_music: N/A; original opera recording is the sole music.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P26_P25_approved_endpoint.png"
+    }
+  }
+}

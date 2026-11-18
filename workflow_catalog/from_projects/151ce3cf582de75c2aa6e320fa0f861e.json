@@ -1,0 +1,363 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "r34l1sm\nFor the target video, at 0.00 seconds, <Picture 1> is fully referenced as the opening frame. Preserve both human actors, faces, hair, body proportions, original Saiyan-saga outfits, mountain and light throughout. Exactly two adult male human performers, Goku in orange initially frame-left and shorter Vegeta in white-and-gold Saiyan armor initially frame-right, no scouter. One ten-second live-action film sequence at normal speed, with motivated traveling camera and strong physical contact. No dialogue, vocalizations, screaming, singing, subtitles, slow motion or freeze poses.\n\nintegrated_multimodal_description: [Shot 1, 00:00.000–00:02.000] Starting in Picture 1, Vegeta drives his rear foot into the rock, turns his hip and lands a right body punch against Goku; Goku's abdomen and shoulders recoil only after fist contact. Vegeta follows with a left hook into Goku's forearms and a grounded side kick that makes Goku stagger and skid left, carving dust. A low lateral tracking camera shows both bodies, grounded feet, visible contacts and delayed cloth motion. [Shot 2, 00:02.000–00:04.000] Without resetting their positions, Goku plants his foot and erupts in a tight crimson Kaioken aura, his hair remains black. The camera arcs thirty degrees on the same side of the axis as Goku pushes off, lands a straight punch into Vegeta's torso and a short elbow. Vegeta actively raises both forearms and tries to brace; Goku's pressure breaks through and knocks Vegeta's upper body backward after each contact. [Shot 3, 00:04.000–00:06.400] Goku's crimson aura intensifies with a second unmistakably stronger pulse. He pivots through his hips and lands a heavy side kick squarely against Vegeta's chest plate. The shot holds the boot-to-armor contact before Vegeta is launched frame-right. The camera pulls back and travels with the uninterrupted flight to the same mountain. Vegeta strikes it with back and shoulders, rock fractures outward and heavy blocks fall after impact. His armor remains scuffed and dusty; damage never vanishes. He pulls free and propels upward using ki above the damaged face. [Shot 4, 00:06.400–00:08.200] A rising diagonal pullback reveals Goku grounded below frame-left and Vegeta high frame-right, within the same rocky valley. Vegeta looks toward Goku, furious at being overpowered, and draws his two open hands beside his shoulder in the distinctive Galick Gun charge. A dense violet-white energy sphere expands between his palms, violet pressure buffets the armor and loose rock. Goku sees the gathering threat, sets a broad grounded stance and cups both hands together at his hip: a blue-white Kamehameha sphere grows, his red Kaioken aura remaining tightly attached to his body. [Shot 5, 00:08.200–00:10.000] Vegeta thrusts both palms and fires a massive Galick Gun diagonally downward-left: a thick turbulent violet energy column with a white-hot core wider than his torso, luminous volumetric sheath, concentric pressure fronts and purple light flooding nearby rock. Goku thrusts both hands forward-up and fires a broad blue-white Kamehameha diagonally upward-right; red Kaioken wraps Goku's body, not Vegeta. Both streams visibly travel across the valley and meet at its center. Their meeting point swells into a violently compressed blue-violet-white pressure volume, illuminating the fighters and dislodging rock in the same geography. The camera continues dollying backward past foreground rocks to show the immense scale, with both fighters and both connected energy sources visible. End exactly during the first sustained collision at ten seconds, still moving and feeding both beams, without resolving a winner or dissolving into an opaque flash.\n\noverall_soundscape: Only H3-generated desert wind, grounded shoe scrapes, sharp air displacement, heavy low-frequency fist and kick impacts synchronized after contact, armor strain, mountain fracture, falling stones, and escalating ki pressure. Separate powerful violet and blue energy roars build into a deep thunderous collision; retain the impact transients, without any human voice, breathing vocalization, grunts or speech.\n\nnon_diegetic_music: A sparse instrumental action underscore with low drums and sustained orchestral brass and strings, rising during the charge while staying below the physical impacts, without vocals or any quoted melody.\n\n[Human realism direction]\nPreserve the reference identity, age, facial proportions, skin tone, costume and lighting. Natural skin microtexture, subtle pores, varied roughness and realistic highlights; natural eyes, muscle tension and expressions. Avoid waxy or plastic skin, beauty smoothing and airbrushed faces. Preserve the requested camera behavior; realism does not require camera shake.\n\n[Combat physical direction]\nExecute only the specified choreography, attacks, defenses, powers and outcome. Preserve each actor's identity, weapon ownership, geography and accumulated damage. Physical chain for every exchange: anticipation, ground-supported propulsion through legs and hips, trajectory, visible contact or evasion, momentum transfer, displacement, reaction, recovery. A block redirects momentum; a miss carries inertia. Balance, friction, traction, gravity and center of mass govern motion. Reactions caused by impacts start after contact; anticipatory defenses remain allowed. Feet step, pivot, skid or drag visibly, never slide rigidly. Grapples require grip, tension and leverage; jumps require compression, takeoff, ballistic travel and landing. Cloth, hair and loose material follow bodies with delayed secondary motion; environmental response follows the impact. Keep attack lines, contact and body displacement readable in the requested camera. Continue motion between actions without automatic guard resets, freeze poses, teleporting, limb fusion or interpenetration. No artificial slow motion or speed ramps unless requested. No flashes, cuts or camera shake to conceal missing contact. Finish requested attacks before any subsequent dialogue, preserving the exact dialogue and requested audio. Do not invent extra opponents, injuries, dialogue or soundtracks. Follow the requested intensity and the character's established abilities.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "combat_full_v1",
+        "roles": [
+          "combat",
+          "physics",
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "local_comfy",
+          "model": "gemma4_e2b_it_bf16.safetensors",
+          "evidence": "The scene descriptions explicitly mention two adult male human performers, Goku and Vegeta.",
+          "externalDataTransfer": false,
+          "evidence_sha256": "9e0b11466f74cfcd9bff8e025cfffecdcf858782bc7bb148c60850ad6236d77b"
+        },
+        "adapters": [
+          {
+            "role": "combat",
+            "file": "H3_Combat_V2.safetensors",
+            "strength": 0.8,
+            "bytes": 155110280,
+            "sha256": "5b3edb09e9d6029439badf9bc9db4ba4a355ae679b0810888de82c4793c0bac8",
+            "repo": "JOKER141/MiniMax-H3-Combat-Base-V2",
+            "revision": "7b3c5b7157d66517f5bd8f5d3fa8fd2c66bc4d11"
+          },
+          {
+            "role": "physics",
+            "file": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+            "strength": 0.3,
+            "bytes": 155109672,
+            "sha256": "7d14f3701560068e7004159c8b2a7278bd2dbfc9e5e3b60d0bc9aef6c049919d",
+            "repo": "Jojocodex/minimax-h3-spatial-physics-lora",
+            "revision": "476b24df28b9b7cc5481b750469698f5cc4b0558"
+          },
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [
+          "anticipation",
+          "propulsion",
+          "contact_or_evasion",
+          "displacement",
+          "reaction",
+          "recovery"
+        ],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "PENDING_OWNER_REVIEW"
+      }
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110701
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_vegeta_saiyan_live_action_10s_20261106/T01_v01/T01_H3_base_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "goku_vegeta_A04_OWNER_APPROVED.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_scene_combat": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "H3_Combat_V2.safetensors",
+      "strength_model": 0.8
+    }
+  },
+  "pemara_scene_physics": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_combat",
+        0
+      ],
+      "lora_name": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+      "strength_model": 0.3
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_physics",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  },
+  "pemara_scene_content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  }
+}

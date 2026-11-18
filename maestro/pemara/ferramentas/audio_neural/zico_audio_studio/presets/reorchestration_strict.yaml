@@ -1,0 +1,12 @@
+mode: strict
+preserve:
+  melody: 1.0
+  chord_progression: 1.0
+  bpm: 1.0
+  structure: 1.0
+  bar_positions: 1.0
+  duration: 1.0
+  rests: 1.0
+creativity: 0.10
+pipeline: [analyze, separate_stems, transcribe_midi, replace_instruments, render, remix, master, qa]
+outputs: [stems, midi, master_wav, preview_mp3, qa_report]

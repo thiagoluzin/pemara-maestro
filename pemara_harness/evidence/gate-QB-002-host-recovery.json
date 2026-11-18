@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "task": "QB-002",
+  "report": "independent host recovery and verification",
+  "verifiedAt": "2026-08-21T15:49:52.3801080-03:00",
+  "status": "HOST_CORRECTED_CANDIDATE_PASS",
+  "promotionAuthorized": false,
+  "implementation": {
+    "commit": "426d0f4365ef761cad3967aa841fca9b5aad2dd3",
+    "branch": "main",
+    "releaseTagged": false,
+    "pushed": false,
+    "ownerApprovalPending": true
+  },
+  "originalQwenAttempt": {
+    "status": "REJECTED_CONTRACT_VIOLATION",
+    "rejectionEvidence": "evidence/gate-QB-002.json",
+    "builderCommit": "d8c41cfeb9a3b4f94b3dec699e0b06c794b96181",
+    "unauthorizedMergeCommit": "882d4b394a59f5a16f2a604b1d8f5ef26a7cdbed",
+    "preservedForensicBranch": "forensics/qb-002-unauthorized-merge-20260821",
+    "containmentCommit": "b27f949",
+    "historyRewritten": false,
+    "runtimeArtifactsDeleted": false
+  },
+  "realQwenProof": {
+    "model": "qwen3.8-27b-uncensored-yarn-524k",
+    "sessionId": "session-dcf4bf61-b501-44df-a772-ef7160b78c89",
+    "sessionArtifact": ".runtime/dsh-home-builder/sessions/--E-Pemara-worktrees-pemara-harness-qwen-QB-002--/session-dcf4bf61-b501-44df-a772-ef7160b78c89/session.jsonl.zstd",
+    "sessionArtifactSha256": "daacfea0855d5ba1de6b8171b12f7dc57311b9988c39714e7b7a9d3d55edd26f",
+    "ledgerState": "COMPLETED_PENDING_VERIFY",
+    "roundsStarted": 1,
+    "maxRounds": 6,
+    "toolCalls": 4,
+    "toolSurface": [
+      "harness_task_create",
+      "harness_task_get",
+      "harness_task_begin_round",
+      "harness_task_checkpoint",
+      "harness_task_request_completion"
+    ],
+    "approvedSkills": [
+      "test-driven-development",
+      "incremental-implementation",
+      "api-and-interface-design",
+      "observability-and-instrumentation"
+    ],
+    "forbiddenToolsObserved": [],
+    "commandsExecuted": 0,
+    "filesChanged": 0,
+    "finalMarker": "PEMARA_BUILDER_REAL_OK",
+    "worktree": "E:\\Pemara\\worktrees\\pemara-harness-qwen\\QB-002",
+    "worktreeHead": "d8c41cfeb9a3b4f94b3dec699e0b06c794b96181",
+    "worktreeClean": true
+  },
+  "hostVerification": {
+    "deterministicSuite": {
+      "command": "npm test",
+      "passed": 70,
+      "failed": 0
+    },
+    "realDshMockE2E": {
+      "command": "npm run test:builder:e2e",
+      "passed": 1,
+      "failed": 0,
+      "network": "loopback mock only",
+      "exactTools": 5,
+      "exactSkills": 4,
+      "operationalProfileUnchanged": true,
+      "operationalLedgerUnchanged": true,
+      "workspaceFilesCreated": 0
+    },
+    "browser": {
+      "report": "evidence/monitor-browser-verification.json",
+      "reportSha256": "e3aef0439bec341e182d9b65eb41b51a53f78ee25cb57d812c90efc39c5f24f3",
+      "desktopScreenshotSha256": "b86ef4a143d111ec30a0621e38a27531c4bfe254423d678cb2e04c60e98d2e87",
+      "mobileScreenshotSha256": "476fd58e52682a7dcf1687d05263288760e972b09637695cd50f023a98cdc44f",
+      "consoleErrors": 0,
+      "exceptions": 0,
+      "failedRequests": 0,
+      "badResponses": 0,
+      "unnamedButtons": 0,
+      "horizontalOverflow": false
+    },
+    "manifest": {
+      "command": "npm run manifest:check",
+      "expectedFilesAfterThisReport": 73
+    },
+    "upstreams": {
+      "third_party/deepseek-harness": "clean",
+      "third_party/reversa": "clean"
+    },
+    "desktopShortcut": {
+      "path": "C:\\Users\\admin_remoto\\Desktop\\Pemara Harness Visual.lnk",
+      "target": "bin/Open-PemaraMonitor.ps1"
+    },
+    "liveSnapshot": {
+      "monitor": "http://127.0.0.1:3080",
+      "monitorLoopbackOnly": true,
+      "monitorReadOnly": true,
+      "qwenPidPreserved": 53204,
+      "qwenState": "ready",
+      "qwenGenerating": false
+    }
+  },
+  "capabilityBoundary": {
+    "builderV1": "Produces durable candidate content through five ledger tools and cannot mutate the workspace.",
+    "autonomousCoding": "Not yet available. It requires owner-approved contract v2 with narrow filesystem, Git, and subprocess adapters; raw shell and raw Git remain denied."
+  },
+  "decision": "Host-corrected candidate passed technical verification. Keep COMPLETED_PENDING_VERIFY and require explicit owner approval before release, tag, push, or verified promotion."
+}

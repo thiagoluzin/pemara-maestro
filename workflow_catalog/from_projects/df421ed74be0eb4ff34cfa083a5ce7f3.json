@@ -1,0 +1,469 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P07_pixaroma_master20_v1_singing",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 10.0,
+      "overlap_seconds": 1.5
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P01_celes_approved.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P07_pixaroma_celes_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "overlap_pose",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23100701
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "stage_lock",
+        0
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "incoming": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_P06_approved_endpoint.png"
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "One uninterrupted LIVE ACTION opera shot continuing the exact incoming frame from the SAME LOCKED WIDE audience camera. <Picture 1> is canonical Celes/Maria: preserve the approved real adult woman's face, blonde ponytail with blue bow, natural beige skin, ivory physical satin gown with blue trim and the SAME red roses. Initially she is in slight audience-left three-quarter stance, BOTH HANDS already around the stems at waist height, eyes directed toward the distant audience-left horizon. Continue that exact stance and breath without resetting to a front portrait.\nGLOBAL TIMING FOR THIS ENTIRE15.083-SECOND SHOT, not a restart in each Pixaroma window: the recording begins with a short instrumental lead-in, then the existing ENGLISH female opera singing returns at approximately3.5seconds. During0-3.5seconds Maria listens, releases a small breath and renews her outward gaze before taking a quiet preparatory inhalation. Lips stay naturally relaxed until the supplied singer actually begins. During3.5-9seconds she sings the exact supplied English performance toward the absent beloved beyond audience-left. Coordinate jaw, lips, breathing and phrase releases with the real audio; no generic repetitive mouth pumping. Her objective is to offer gratitude through the phrase, allowing the stern look to soften in the eyes and cheeks without an added grin. Eyeline stays beyond the audience rather than looking into the lens.\nDuring9-15seconds she continues the same recorded vocal phrase, with a small head inclination and a measured opening of the upper chest on the sung breath. Let the changing vowels, listening eyes, shoulder recovery and weight of the gown carry the performance. No bow, applause smile, last-note finale or frozen tail; this is a continuing aria and the vocal thought remains alive at the end.\nBoth hands stay around the SAME flower stems and the bouquet remains LOW AT THE WAIST throughout, never raised toward her mouth. The RIGHT hand supports the stems continuously; LEFT fingers retain contact beside the right fingers with only tiny natural adjustments. No hand opens away, no invitation returns, no crossing arms, duplicate fingers, phantom forearm, extra hand or floating bouquet. The shared five-frame approved pose/motion guide at global119-123 and final pose guide constrain hand contact, actor scale and stage geography; they are NOT a replacement song or phoneme timing. Follow the actual locked track for the voice and mouth performance.\nFeet stay planted behind the original stone foreground; small balanced breathing and shoulder movement only. No walking, sliding, approaching the camera, magnifying the actor, leaning forward into a closeup, sitting, full spin or change of body proportions. Preserve the original full-length WIDE distance, head size, crown near y100, blue waist sash near y360 and foreground battlement near y690 in this1344x768 frame. Stable eye and face anatomy, real fingers, hair strands and weighted satin, not plastic CGI.\nExactly ONE woman remains visible. No partner, silhouette, hand, shadow, traffic or new object enters from the curtain or background. Keep the same stone edges, blue painted moonlit backdrop and red velvet curtain on SCREEN RIGHT, with unchanged camera axis and perspective. Steady neutral soft white illumination on beige skin and ivory dress; blue remains in backdrop and trim. No magenta or pink wash, flash, flicker, pulse, glow or light source changing. No camera move, zoom, cuts, dissolve, fade, crop, text or subtitles. Preserve the existing English song recording and timing; no new voice, invented words, Portuguese replacement singing, extra music or Foley.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "ref_image_size": "match",
+      "ref_images.ref_image_1": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "first_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "identity",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "incoming",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "region": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_actor_generation_region.png"
+    }
+  },
+  "stage_lock": {
+    "class_type": "PemaraH3StageLockedLatent",
+    "inputs": {
+      "latent": [
+        "audio_sync",
+        1
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "stage_image": [
+        "incoming",
+        0
+      ],
+      "actor_region": [
+        "region",
+        0
+      ]
+    }
+  },
+  "end_pose_image": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_approved_end_pose.png"
+    }
+  },
+  "end_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "first_pose",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "end_pose_image",
+        0
+      ],
+      "frame_idx": 361
+    }
+  },
+  "overlap_image_0": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_overlap_P04_0168.png"
+    }
+  },
+  "overlap_image_1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_overlap_P04_0169.png"
+    }
+  },
+  "overlap_image_2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_overlap_P04_0170.png"
+    }
+  },
+  "overlap_image_3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_overlap_P04_0171.png"
+    }
+  },
+  "overlap_image_4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P07_overlap_P04_0172.png"
+    }
+  },
+  "overlap_batch_1": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_image_0",
+        0
+      ],
+      "image2": [
+        "overlap_image_1",
+        0
+      ]
+    }
+  },
+  "overlap_batch_2": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_1",
+        0
+      ],
+      "image2": [
+        "overlap_image_2",
+        0
+      ]
+    }
+  },
+  "overlap_batch_3": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_2",
+        0
+      ],
+      "image2": [
+        "overlap_image_3",
+        0
+      ]
+    }
+  },
+  "overlap_batch_4": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "overlap_batch_3",
+        0
+      ],
+      "image2": [
+        "overlap_image_4",
+        0
+      ]
+    }
+  },
+  "overlap_pose": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "end_pose",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "overlap_batch_4",
+        0
+      ],
+      "frame_idx": 119
+    }
+  }
+}

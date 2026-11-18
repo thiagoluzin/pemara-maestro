@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vanilla Web Patterns"
+  short_description: "Biblioteca de receitas HTML/CSS/JS da família"
+  default_prompt: "Use $vanilla-web-patterns para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

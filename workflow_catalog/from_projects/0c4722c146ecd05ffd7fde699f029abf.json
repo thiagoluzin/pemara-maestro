@@ -1,0 +1,361 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "r34l1sm\nFor the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] One continuous TEN SECOND photographed live-action fight at brisk normal human speed. Begin moving immediately from the supplied opening frame. Preserve those exact two human actors and their distinctive faces, hair, height difference, costumes, tail and the warm dry rocky canyon. Goku is the taller orange-and-blue man on the LEFT. Vegeta is the shorter navy-clad man on the RIGHT with white-and-ochre shoulder/hip armor, white gloves/boots and a brown tail wrapped at his waist. No transformations or energy powers. Real skin, cloth and flexible practical armor throughout.\n\nCamera: a steady medium-wide three-quarter side view, with both full bodies, boots and contact points visible. It tracks only enough to follow their displacement, stays on the original side of the attack line and never cuts or orbits. Daylight and canyon geography remain fixed. Show the bodies carrying the impact, without shake or flashes.\n\nThe action is five connected brief strikes with recovery between them. They watch each other, attempt trained defenses and move independently. A landed strike redirects the defender's whole mass: shoulder/trunk move, pelvis follows and a forced supporting step catches the weight. Each attacking hand or leg immediately withdraws after contact. The defender's involuntary reaction starts AFTER contact. Each time range is action, never a held pose.\n\n0.0-1.1s: Vegeta completes the already extending RIGHT straight punch. Goku raises his LEFT forearm to intercept it near his cheek. The glove hits the forearm once and snaps back. Goku's blocking shoulder is knocked backward; his trunk and hips follow and his rear boot takes a firm catching step LEFT. The block reduces the blow; it does not launch him. Vegeta steps into the space Goku gives up.\n\n1.1-3.0s: From that forward step Vegeta lowers his center of mass, drives from the rear boot and rotates his hips into a short LEFT hook to Goku's orange-covered upper abdomen under the guarding elbow. The glove lands once and recoils immediately. Goku folds at the waist AFTER the contact, abdomen tightening, shoulders and hips driven backward. He loses his original stance and takes two hurried backward catching steps while keeping his eyes on Vegeta. His gi moves after his body. Vegeta follows without leaving the fist pressed into him.\n\n3.0-5.0s: Vegeta plants and pivots his LEFT foot, turns his hips and whips his RIGHT shin into the outside of Goku's forward thigh. AFTER shin-to-thigh contact, Goku's struck knee buckles and his pelvis drops to that side; he catches himself on the other leg with a lateral recovery step. Vegeta bends the kicking knee, withdraws and replants his right boot promptly. Neither man hovers or keeps a knee raised waiting.\n\n5.0-7.1s: Goku regains traction from that recovery step, advances one short step and drives a compact RIGHT straight punch toward Vegeta's cheek. Vegeta tries to bring his left glove across to block but is late. The punch makes brief contact near the cheek/guard and immediately retracts. Vegeta's head turns AFTER contact, then his shoulders and pelvis rock backward. He takes a clear backward catching step toward screen RIGHT, guard disrupted and eyes returning to Goku.\n\n7.1-9.2s: Goku plants the RIGHT support boot, lifts his LEFT knee and extends a short forceful LEFT front kick into Vegeta's armored torso and lowered forearm guard. The sole lands once; Vegeta bends at the hips and is pushed backward through his torso and pelvis, forcing two quick staggered recovery steps. His boots lift and land separately to arrest the motion. Goku folds the kicking knee, withdraws the foot and lands back on his own stance, maintaining pressure.\n\n9.2-10.0s: Goku follows with one grounded pressure step while restoring his guard. Vegeta is still completing his backward recovery and rebuilding his base. End in continuing movement, at a changed distance and location; no reset to the opening pose and no new strike.\n\nAll blows are sharp and short, with ordinary real-time timing. Keep the effort in planted soles, leg drive, hip rotation, compressed cloth, disrupted guard and catching steps. Reactions differ between a forearm block, abdominal punch, thigh kick, cheek punch and torso kick. Shoes do not slide together as a rigid body. Dust follows actual boot landings. Keep limbs separate and anatomically human; no doubled fists, limb trails, fused arms, impossible bends, falls without contact, slow motion, speed ramps, camera shakes, edits through impact, giant dust clouds, new opponents, blood or wounds. No text overlays.\n\noverall_soundscape: Silent diagnostic visual test. No speech, grunts, screams, Foley, music or ambience.\n\nnon_diegetic_music: None.\n\n[Human realism direction]\nPreserve the reference identity, age, facial proportions, skin tone, costume and lighting. Natural skin microtexture, subtle pores, varied roughness and realistic highlights; natural eyes, muscle tension and expressions. Avoid waxy or plastic skin, beauty smoothing and airbrushed faces. Preserve the requested camera behavior; realism does not require camera shake.\n\n[Combat physical direction]\nExecute only the specified choreography, attacks, defenses, powers and outcome. Preserve each actor's identity, weapon ownership, geography and accumulated damage. Physical chain for every exchange: anticipation, ground-supported propulsion through legs and hips, trajectory, visible contact or evasion, momentum transfer, displacement, reaction, recovery. A block redirects momentum; a miss carries inertia. Balance, friction, traction, gravity and center of mass govern motion. Reactions caused by impacts start after contact; anticipatory defenses remain allowed. Feet step, pivot, skid or drag visibly, never slide rigidly. Grapples require grip, tension and leverage; jumps require compression, takeoff, ballistic travel and landing. Cloth, hair and loose material follow bodies with delayed secondary motion; environmental response follows the impact. Keep attack lines, contact and body displacement readable in the requested camera. Continue motion between actions without automatic guard resets, freeze poses, teleporting, limb fusion or interpenetration. No artificial slow motion or speed ramps unless requested. No flashes, cuts or camera shake to conceal missing contact. Finish requested attacks before any subsequent dialogue, preserving the exact dialogue and requested audio. Do not invent extra opponents, injuries, dialogue or soundtracks. Follow the requested intensity and the character's established abilities.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "DB TEST01 — approved anchor, full-body impact recovery",
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "combat_full_v1",
+        "roles": [
+          "combat",
+          "physics",
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "owner_approved_anchor_and_agent_visual_review",
+          "evidence": "Exact approved still depicts two adult human actors fighting; current request explicitly selects combat",
+          "source_sha256": "6e0e11e2f4a314dcbfeaa88c6055756681458246e7f2bfc7e27476459f551e2c",
+          "externalDataTransfer": false
+        },
+        "adapters": [
+          {
+            "role": "combat",
+            "file": "H3_Combat_V2.safetensors",
+            "strength": 0.8,
+            "bytes": 155110280,
+            "sha256": "5b3edb09e9d6029439badf9bc9db4ba4a355ae679b0810888de82c4793c0bac8",
+            "repo": "JOKER141/MiniMax-H3-Combat-Base-V2",
+            "revision": "7b3c5b7157d66517f5bd8f5d3fa8fd2c66bc4d11"
+          },
+          {
+            "role": "physics",
+            "file": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+            "strength": 0.3,
+            "bytes": 155109672,
+            "sha256": "7d14f3701560068e7004159c8b2a7278bd2dbfc9e5e3b60d0bc9aef6c049919d",
+            "repo": "Jojocodex/minimax-h3-spatial-physics-lora",
+            "revision": "476b24df28b9b7cc5481b750469698f5cc4b0558"
+          },
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [
+          "anticipation",
+          "propulsion",
+          "contact_or_evasion",
+          "displacement",
+          "reaction",
+          "recovery"
+        ],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "PENDING_OWNER_REVIEW"
+      }
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611081801
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/TEST01/TEST01_full_native_243f",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST01_APPROVED_6e0e11e2.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/TEST01/TEST01_10s_24fps",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "pemara_scene_combat": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "H3_Combat_V2.safetensors",
+      "strength_model": 0.8
+    }
+  },
+  "pemara_scene_physics": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_combat",
+        0
+      ],
+      "lora_name": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+      "strength_model": 0.3
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_physics",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  }
+}

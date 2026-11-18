@@ -1,0 +1,262 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds, <Picture 1> is fully referenced as the opening frame. Preserve the EXACT TWO HUMAN PERFORMERS shown in the photograph: the taller black-haired man in the orange cotton uniform is the defender; the shorter black-haired man in white-and-gold armor and a blue bodysuit is the attacker. Keep both distinct real human faces, hair, body sizes, costumes, the wrapped tail, mountain, sun and rocky geography. This is ONLY the opening physical beatdown, an uninterrupted ten-second live-action martial-arts shot. Both have black hair and no energy aura. No transformations, energy blasts, mountain collision or concluding victory in this take. Normal speed, continuous weight and recovery, no cuts or slow motion.\n\nintegrated_multimodal_description: [Shot 1, 00:00.000–00:03.000] From the exact photograph's loaded stance, the shorter armored fighter drives off his rear foot, rotates his hips and lands a straight right body punch against the taller orange-clad fighter's abdomen. Keep the fist-to-torso contact visible before the orange fighter folds and his feet skid half a step left. The attacker withdraws the punching arm and takes a grounded following step. The orange fighter exhales silently, raises his near forearm and tries a short counter straight; the armored fighter reads it, turns his forearm into a compact outward parry and steps off the punch line. A low chest-height camera trucks alongside them on the south side of the left-right axis, showing feet, hands, contact and faces, with loose foreground stones passing faster than the distant mountain.\n[00:03.000–00:07.000] The armored fighter punishes the missed counter: his planted foot and hips drive a compact left hook into the orange fighter's raised forearm. The guard visibly absorbs contact, the orange fighter's shoulder is displaced and he makes an unsteady recovery step. He tries to square his shoulders and raise both hands; the armored fighter rotates into one grounded side kick against his lower ribs. Hold both bodies and the boot-to-body contact clearly in frame before the orange fighter is knocked backward two steps, heels carving dust and knees flexing as he fights to stay upright. Dust, hair, gi fabric and armor straps respond after each body movement. The camera makes a short thirty-degree physical arc on the same side of the fight axis, moving through the gravel to reveal the line of the kick without crossing the axis. The armored fighter retracts the kicking leg and lands his foot with weight instead of freezing the leg in the air.\n[00:07.000–00:10.000] The taller orange fighter retreats diagonally left with actual staggered footfalls, catches his balance on a planted foot and brings his forearms back up while watching the approaching opponent. His gi and cheek remain dusty and his torso shows strain. The armored fighter immediately follows with two purposeful grounded steps, controls the center and drives a short punch into the renewed guard, forcing another shoulder recoil and half-step. He keeps advancing while the orange fighter begins regaining a low defensive base. The camera pulls back diagonally with them to keep the space between bodies and the large mountain at screen-right visible. End DURING their ongoing physical pressure and recovery at ten seconds, without a finishing pose or an energy effect. The orange fighter has not yet activated any power; the next take will begin from this continuing retreat and pressure.\n\noverall_soundscape: Generated native action audio only: dry desert wind, individual foot plants and gritty skids, cloth movement, armored forearm impacts, heavy short body punches and one deep side-kick impact with a brief air displacement. Impact sounds occur at visible contact; rock and grit settle after footfalls. Absolutely no dialogue, screams, grunts, vocal breathing, narration, singing or human voice.\n\nnon_diegetic_music: Sparse low instrumental percussion with restrained sustained strings underneath the impacts, maintaining a forward pulse without vocals or any quoted melody.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110702
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_vegeta_saiyan_live_action_10s_20261106/T01_r02/T01_Vegeta_domina_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "goku_vegeta_A04_OWNER_APPROVED.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  }
+}

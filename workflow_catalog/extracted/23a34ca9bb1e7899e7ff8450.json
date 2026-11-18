@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Traditional Thrash Metal, aggressive and raw, heavy distorted guitars, thunderous double-bass drums, punchy low-end bass, powerful male vocals, fast tempo, high energy, no spoken words\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nConcrete cracks beneath the feet\nShadows stretch across the street\nThe sirens wail in hollow tune\nBeneath the rust and broken moon\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Verse]\nSteel bars bend but do not break\nEvery step is for the sake\nOf the ones who fell behind\nLeaving dust on the blind\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Bridge]\nRise up from the ash and bone\nMake the silence scream and groan\nNo mercy in the iron gate\nJust the rhythm of the fate\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Outro]\nDominion... falls... silent",
+      "seed": 1306891695,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

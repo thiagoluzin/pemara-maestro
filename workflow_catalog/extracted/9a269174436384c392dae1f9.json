@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Fast classic British heavy metal, galloping bass, sharply articulated palm-muted guitars, heroic twin harmonies, full-throated clean male tenor, aggressive real drums. 172 BPM, D minor. a descending guitar harmony and a charging bass hook; dueling solos trade four-bar phrases. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nIron cold against the wrist\nThe crowd demands a final kiss\nOf dust and blood upon the stone\nThe witness stands alone, alone\nMy oath was forged in salt and pain\nTo cut the traitor by the mane\nBut as I raised the heavy steel\nHer eyes revealed the truth I feel\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Verse]\nThe snap of oak beneath my heel\nThe pieces scatter on the field\nThe King’s cavalry rides hard\nSpear and shield in the dark\nThey roar for heads and spines\nFor the price of my broken lines\nI stand with only jagged steel\nAnd the weight of the oath I feel\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Bridge]\nNow the chargers break the line\nHorses scream, the air is mine\nI swing the shards, a jagged arc\nA thousand spears, a single spark\nMy ribs crack, the dust is thick\nThe final witness, I can't stick\nI fall upon the broken ground\nWhere the kingdom’s roots are found\n\n[Solo]\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Outro]\nThe blade is dust\nThe oath is trust\nThe king is gone\nThe song is sung",
+      "abc": "",
+      "seed": 202610166001,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166001,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/02_oath_of_the_broken_blade_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

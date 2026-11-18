@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Epic aggressive heavy metal, propulsive gallops, melodic independent bass, bright harmonized distorted leads, high powerful male tenor, hard snare attacks. 158 BPM, F sharp minor. minor-key ascending refrain against a descending bass; rhythmic unison stops before the chorus. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nDust on the viewport, the engine’s a scream\nWe signed for the stars, not a hollowed-out dream\nThe captain’s a ghost with a ledger of lies\nCounting the souls like a butcher counts flies\nThe hum of the hull is a ticking clock\nWe’re moving away from the place we got stuck\nBut the charts on the wall have been burned to the floor\nAnd the heat is the only thing we can see anymore\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Verse]\nThe navigator drops his pen on the deck\nSays the star isn’t waiting, it’s coming to fetch\nThe air recyclers are coughing up rust\nAnd the smell of the burning is sweet as dust\nI saw the reflection in the steel of the door\nA thousand red eyes and a hungry core\nWe didn’t buy tickets, we bought our own grave\nNow we’re walking toward the light, step by step, brave\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Bridge]\nHold the line!\nDo not look back!\nThe void is a mouth and it’s hungry for cracks\nHold the line!\nThe metal is thin!\nWe are the fuel and the fire is in\n\n[Solo]\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Outro]\nThe glass cracks, the air is gone\nWe belong to the burning dawn\nPrisoners... of the Ninth Sun\nGone",
+      "abc": "",
+      "seed": 202610166002,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166002,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/03_prisoners_of_the_ninth_sun_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

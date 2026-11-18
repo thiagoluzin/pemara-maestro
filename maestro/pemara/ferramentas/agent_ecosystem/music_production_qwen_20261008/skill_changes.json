@@ -1,0 +1,67 @@
+[
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\SKILL.md",
+    "sha256Before": "b199d758681f56bdbf340f76a6abf8ce1b4eefb30e2cdf12f747d9ddb76c2ac2",
+    "sha256After": "b199d758681f56bdbf340f76a6abf8ce1b4eefb30e2cdf12f747d9ddb76c2ac2"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\agents\\openai.yaml",
+    "sha256Before": "c70d6372d57df73365d187f4ee2103e32d1e5fb479256377ec41e8c1ac606272",
+    "sha256After": "c70d6372d57df73365d187f4ee2103e32d1e5fb479256377ec41e8c1ac606272"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\SKILL.md",
+    "sha256Before": "1d5faa7cc04715e3048dfb7c549013fda08c49e362ebb7b697c292bcbfc37223",
+    "sha256After": "1d5faa7cc04715e3048dfb7c549013fda08c49e362ebb7b697c292bcbfc37223"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\agents\\openai.yaml",
+    "sha256Before": "d500ea1a603fd9a3eb57e81bf89a995316645a21b9c8aae7dd3814bc73a55c4e",
+    "sha256After": "d500ea1a603fd9a3eb57e81bf89a995316645a21b9c8aae7dd3814bc73a55c4e"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\SKILL.md",
+    "sha256Before": "96b5d9a44631178a4407f82a3cdb864cc122797572bf6ae60a5e3c7ba1606c9f",
+    "sha256After": "96b5d9a44631178a4407f82a3cdb864cc122797572bf6ae60a5e3c7ba1606c9f"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\agents\\openai.yaml",
+    "sha256Before": "8dfead07a0b4f4c0037ff04f2190c81912a4bec406318057a5af0157cfe4812e",
+    "sha256After": "8dfead07a0b4f4c0037ff04f2190c81912a4bec406318057a5af0157cfe4812e"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\SKILL.md",
+    "sha256Before": "b1440a9d577a107d5fd3e22fd29e7a7b07a5f394047c59d6f58fb3a190f12bbf",
+    "sha256After": "b1440a9d577a107d5fd3e22fd29e7a7b07a5f394047c59d6f58fb3a190f12bbf"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\agents\\openai.yaml",
+    "sha256Before": "9aad1b660ae5184486dc3010dd5d54c939d5ebc38aa01e69fe4b869eada17bfb",
+    "sha256After": "9aad1b660ae5184486dc3010dd5d54c939d5ebc38aa01e69fe4b869eada17bfb"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\music-production-contract.md",
+    "sha256Before": "d601d0a1750beecde6068349917fcfff34132ab630cac42a779f9d6c226195a6",
+    "sha256After": "d601d0a1750beecde6068349917fcfff34132ab630cac42a779f9d6c226195a6"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-messenger-turbo\\references\\turbo_registry.json",
+    "sha256Before": "86462bd25a5fdfd85d5c2c7be72e72fb9490a319f182ba21e1b7362269519b73",
+    "sha256After": "df10abaff14b59aa80ad91787cf941ca502d335f0efe23234c658c94568e3165"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-ecosystem-orchestrator\\SKILL.md",
+    "sha256Before": "0506ba246ec53dc03a10ec16c5b5a5a91075d9a4635772cfc3d65925fcd6834e",
+    "sha256After": "2bf7ff88d20b13e02d9709559a3e5bcd1a8d6853fafd75e7f9ea50018596b35c"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\README_PEMARA_ECOSYSTEM.md",
+    "sha256Before": "648487f63989b14e4c252c30d007e827698b4cdb1402ae57a04adacc3fef83ee",
+    "sha256After": "e99d11301f3614f37f5c6087a8149db858a4509d36e86e0a62d5d969efa4c1e3"
+  },
+  {
+    "path": "E:\\Pemara\\AGENTS.md",
+    "sha256Before": "54d0984c6fe7b82e2cf02fe83a6a676991bfb7a1c1c4bc3fa783195b6356ef48",
+    "sha256After": "a08f92586a9cfc888c7aaf1c78f3f5746a030fde4f8d13e164bf30eada8d8b38"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "id": "h3_live_action_identity_performance",
+  "label": "H3 Live Action - Identity and Performance",
+  "engine": "minimax_h3",
+  "mode": "REF2VA",
+  "fallbackAllowed": false,
+  "useWhen": [
+    "human close-up",
+    "dialogue or facial acting",
+    "identity consistency has priority over exact choreography"
+  ],
+  "qualityRoute": {
+    "normal": "h3_production",
+    "high": "h3_hero",
+    "critical": "h3_master"
+  },
+  "riskEscalation": {
+    "close_up": "high",
+    "extreme_close_up": "high"
+  },
+  "controlContract": {
+    "required": [
+      "approved appearance references with SHA-256 and approval scope",
+      "identity matrix per character and temporal beat",
+      "three-interval motion contract"
+    ],
+    "motion": "prompt guided or approximate reference-video structure",
+    "exactPoseControl": false,
+    "referenceVideoIsPoseControl": false,
+    "referenceImageSize": "max"
+  },
+  "nodeContract": {
+    "required": [
+      "UNETLoader",
+      "CLIPLoader",
+      "VAELoader",
+      "LoadImage",
+      "MiniMaxH3ReferenceToVideo",
+      "MiniMaxH3SigmaShift",
+      "BasicGuider",
+      "BasicScheduler",
+      "RandomNoise",
+      "KSamplerSelect",
+      "SamplerCustomAdvanced",
+      "LTXVSeparateAVLatent",
+      "VAEDecodeTiled",
+      "ImageScale",
+      "CreateVideo",
+      "SaveVideo"
+    ],
+    "optional": [
+      "VHS_LoadVideo",
+      "ModelPreviewOverrideKJ"
+    ],
+    "forbidden": [
+      "MiniMaxH3ImageToVideo",
+      "unbound DWPose exact-pose claim",
+      "RIFE or upscale before source approval"
+    ]
+  },
+  "promptContract": {
+    "language": "English except original dialogue and visible text",
+    "sections": [
+      "subject_definitions",
+      "summary",
+      "retention_analysis",
+      "detailed_description",
+      "overall_soundscape",
+      "non_diegetic_music"
+    ],
+    "identityRule": "Bind every <Subject N> to explicit approved <Picture N> references.",
+    "photographyRule": "Describe skin, lens, motivated lighting, material response and natural asymmetry; do not request generic photorealism alone."
+  },
+  "outputStatus": "TECHNICAL_CANDIDATE_PENDING_HUMAN_REVIEW"
+}

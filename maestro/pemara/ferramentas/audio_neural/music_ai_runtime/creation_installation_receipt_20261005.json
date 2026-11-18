@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-05",
+  "status": "TURBO_ORIGINAL_AUDIO_SMOKE_PASSED",
+  "source_commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "source_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\sources\\ACE-Step-1.5-20261005",
+  "model_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\models\\ace_step",
+  "old_runtime_preserved": true,
+  "models": {
+    "acestep-v15-turbo": "PASS_10s_instrumental_and_180s_vocal",
+    "acestep-v15-xl-base": "INSTALLED_NOT_SMOKE_TESTED_FOR_ORIGINAL_CREATION"
+  },
+  "yue2": "BOTH_GRAPHS_MCP_VALID_NO_CURRENT_AUDIO_SMOKE",
+  "tests": "8 music tests + 11 persistence tests passed; broad regression 127/129, two existing sync queue test errors",
+  "song_job_id": "music-midnight-masquerade-20261005-attempt01",
+  "song_sha256": "056f1a08dd28b2022e862e7fe035f0d14b1daef56a27e2b01a4d6f395b7bd20a",
+  "approval_status": "PENDING_HUMAN_REVIEW",
+  "build": "20261005-local-music-create-v2"
+}

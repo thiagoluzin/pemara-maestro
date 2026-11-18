@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-08-21T11:45:00-03:00",
+  "change": "desktop-qwen-autostart",
+  "implementation": {
+    "launcher": "E:\\Pemara\\pemara_harness\\bin\\Open-PemaraHarness.ps1",
+    "qwen_launcher": "E:\\Pemara\\local_ai_qwen\\scripts\\Start-Qwen38-Yarn524K.ps1",
+    "endpoint": "http://127.0.0.1:11436/v1/models",
+    "expected_model": "qwen3.8-27b-uncensored-yarn-524k",
+    "automatic_start": true,
+    "separate_powershell": true,
+    "minimum_free_gpu_mib": 12000,
+    "waits_for_empty_comfy_queue": true,
+    "uses_force": false,
+    "evicts_gpu_processes": false,
+    "cross_process_start_mutex": true
+  },
+  "automated_validation": {
+    "npm_test": {
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0
+    },
+    "launcher_tests": {
+      "passed": 5,
+      "offline_child_start_and_readiness_wait": "PASS",
+      "active_comfy_work_blocks_start": "PASS"
+    },
+    "powershell_parser_files": 2,
+    "powershell_parser_result": "PASS"
+  },
+  "live_gate": {
+    "qwen_endpoint_ready": false,
+    "comfy_queue_running": 0,
+    "comfy_queue_pending": 0,
+    "gpu_memory_free_mib_at_gate": 988,
+    "gpu_memory_used_mib_after_gate": 31265,
+    "gpu_memory_free_mib_after_gate": 922,
+    "gpu_utilization_percent_after_gate": 94,
+    "visible_compute_process_pid": 32352,
+    "visible_compute_process_name": "C:\\Program Files\\Python311\\python.exe",
+    "decision": "BLOCKED_LOW_VRAM",
+    "qwen_start_process_invoked": false,
+    "gpu_processes_evicted": 0
+  },
+  "remaining_real_gate": "Reopen the desktop shortcut or leave the corrected launcher open. It will start the real GGUF automatically after free VRAM reaches 12000 MiB and the ComfyUI queue is empty."
+}

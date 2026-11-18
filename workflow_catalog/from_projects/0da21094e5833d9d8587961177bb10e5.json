@@ -1,0 +1,632 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "r34l1sm\nsubject_definitions:\n<Subject 1> is Goku, the taller adult human actor on the LEFT in <Picture 1>: preserve his exact face, black swept spiky hair, orange cotton gi, navy undershirt, blue sash, wristbands and navy boots. <Pictures 2-9> show the SAME man receiving successive punches and recovering his balance.\n<Subject 2> is Vegeta, the shorter compact adult human actor on the RIGHT in <Picture 1>: preserve his exact face, tall black hair, ivory shoulder armor with ochre plates, navy undersuit, white gloves/boots, and brown tail wrapped at the waist. He remains the aggressor in every reference.\n<Subject 3> is the same dry sunlit canyon, distant thin rock towers on the left and split cliff on the right. Preserve daylight, geography and the lateral full-body camera.\n\nsummary: [keyframe completion] ONE UNINTERRUPTED TEN-SECOND live-action fight. Vegeta dominates with three brief forceful punches. Goku defends, receives the hits, is displaced and struggles to regain balance; he does not counterattack. The nine supplied pictures define the chronological compositions listed below. Generate continuous fast normal-speed action BETWEEN them, with distinct impacts and immediate fist retraction, not held poses or a slideshow.\n\nretention_analysis: Preserve exact casting, proportions, screen sides, wardrobe, materials and setting from <Picture 1>. The other pictures are directed physical states of the same actors, not new identities or separate shots. Preserve the actual contact anatomy and post-contact recoil in the pictures. Keep Goku's stomach protection after the body hit. No energy effects, additional people, costume changes, blood or knockout.\n\ndetailed_description: [Shot 1] Continuous lateral waist-height full-body view in natural sunlight. At 0.000 seconds the composition is <Picture 1>. Both bodies begin moving out of that initial guard. Vegeta drives from his rear foot and closes the gap; at0.792 seconds his planted support and loaded hip match <Picture 2>.\nAt1.083 seconds, <Picture 3> shows the brief first impact: Vegeta's right glove meets the taller Goku's cheek. The glove instantly retracts; at1.250 seconds the composition is <Picture 4>, Goku's head and trunk recoil LEFT and a rear support step begins. His impact reaction must not start before visible contact. Continue his catching step and defensive recovery while Vegeta advances behind his retracted guard.\nAt3.583 seconds, <Picture 5> is the brief left body-hook contact against the orange cloth of Goku's abdomen. Vegeta immediately pulls his left fist free; by3.833 seconds <Picture 6> shows Goku folding and protecting the stomach as his legs catch the displaced weight. He stays hurt and tries to retreat while Vegeta denies him space. Do not let a glove remain pressed into the target across this interval.\nAt6.583 seconds, <Picture 7> is the brief right punch to Goku's upper chest. After contact the fist recoils and Goku's shoulders, hips and supporting legs respond; by6.833 seconds <Picture 8> shows the broken balance and catching step. Keep that recoil physically continuous and paid for by foot contact and friction. Continue Goku's hurried retreat and Vegeta's grounded pursuit. At9.500 seconds the active step and protective posture match <Picture 9>. Carry that moving recovery/pursuit forward through the end of the shot without resetting to a standoff.\nEach punch is a sharp impulse: feet plant and hips turn before the strike, contact occurs briefly, then the recipient's body continues recoiling AFTER the glove is already clear. Clothes and modest dirt respond after the body and footfalls. No slow motion, frozen contacts, rigid sliding, airborne hovering, ghost arms, flashes or camera shake used to counterfeit impact. Keep all supporting feet and contact points visible, realistic skin texture, practical cloth and armor, the same two actors and the same screen sides. The camera follows their movement with restrained lateral tracking and no cuts.\n\noverall_soundscape: Silent visual-only output; no voices, Foley, ambient track or music.\n\nnon_diegetic_music: None.\n\n[Human realism direction]\nPreserve the reference identity, age, facial proportions, skin tone, costume and lighting. Natural skin microtexture, subtle pores, varied roughness and realistic highlights; natural eyes, muscle tension and expressions. Avoid waxy or plastic skin, beauty smoothing and airbrushed faces. Preserve the requested camera behavior; realism does not require camera shake.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "31",
+        0
+      ],
+      "ref_images.ref_image_1": [
+        "32",
+        0
+      ],
+      "ref_images.ref_image_2": [
+        "33",
+        0
+      ],
+      "ref_images.ref_image_3": [
+        "34",
+        0
+      ],
+      "ref_images.ref_image_4": [
+        "35",
+        0
+      ],
+      "ref_images.ref_image_5": [
+        "36",
+        0
+      ],
+      "ref_images.ref_image_6": [
+        "37",
+        0
+      ],
+      "ref_images.ref_image_7": [
+        "38",
+        0
+      ],
+      "ref_images.ref_image_8": [
+        "39",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Ref2VA — nove referências e nove guias nativos",
+      "owner_approval_required_for_new_stills": false,
+      "video_queue_blocked_until_exact_still_approval": false,
+      "reference_group": "ref2va_beatdown_9_v1",
+      "not_pose_control": true,
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "auto",
+        "roles": [
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "local_comfy",
+          "model": "gemma4_e2b_it_bf16.safetensors",
+          "evidence": "The scene descriptions explicitly define two human actors, Goku and Vegeta, engaged in a fight.",
+          "externalDataTransfer": false,
+          "evidence_sha256": "64b296fc7f778069068421eaf9792568572d349b00f1ccd1383af7d9394ab136"
+        },
+        "adapters": [
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "PENDING_OWNER_REVIEW"
+      },
+      "owner_approval": "APPROVED_EXACT_STILLS_ONLY",
+      "approval_receipt_sha256": "69f77633e04fec1a7d1a9f91fac0b0bb49537e1ede755a2d63c7cd991d9086b5"
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "bd_guide_09",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110707
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1280,
+      "height": 720,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/pilots/REF9_beatdown_10s_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "31": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01.png"
+    }
+  },
+  "32": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A02.png"
+    }
+  },
+  "33": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A03.png"
+    }
+  },
+  "34": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A04.png"
+    }
+  },
+  "35": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A05.png"
+    }
+  },
+  "36": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A06.png"
+    }
+  },
+  "37": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A07.png"
+    }
+  },
+  "38": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A08.png"
+    }
+  },
+  "39": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A09.png"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "bd_guide_01": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "31",
+        0
+      ],
+      "frame_idx": 0
+    },
+    "_meta": {
+      "title": "A01 — Base aprovada",
+      "anchor_sha256": "a73791ead3e4e7f99621ee96ed897d30f60605817d6260a820362ef9a3b260fa",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_02": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_01",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ],
+      "frame_idx": 19
+    },
+    "_meta": {
+      "title": "A02 — Vegeta fecha a distância",
+      "anchor_sha256": "065196aaeb0dd7030929b75443b580815ebdbdf68224cbb51257c1c0a81641ae",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_03": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_02",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "33",
+        0
+      ],
+      "frame_idx": 26
+    },
+    "_meta": {
+      "title": "A03 — Contato no rosto",
+      "anchor_sha256": "bf5676a10c1fac723100e2e90093a63b0aa3ac454df2491377e95fbdd6c7c73e",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_04": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_03",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "34",
+        0
+      ],
+      "frame_idx": 30
+    },
+    "_meta": {
+      "title": "A04 — Recuo do primeiro golpe",
+      "anchor_sha256": "8f29661d7a8fcee362a4510008c38be7bdfaa375a20fb45763f49b1bf7d97d95",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_05": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_04",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "35",
+        0
+      ],
+      "frame_idx": 86
+    },
+    "_meta": {
+      "title": "A05 — Contato no abdômen",
+      "anchor_sha256": "180db42712ffe246b56da7478ed19c24ae018cf36b0bc2e237582ffc727f4249",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_06": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_05",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "36",
+        0
+      ],
+      "frame_idx": 92
+    },
+    "_meta": {
+      "title": "A06 — Tronco dobra e protege o corpo",
+      "anchor_sha256": "a2c076a2568daa9ac399eab4b0f331a9c4ff81c86479e28776331ab9153b43e9",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_07": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_06",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "37",
+        0
+      ],
+      "frame_idx": 158
+    },
+    "_meta": {
+      "title": "A07 — Contato no peito",
+      "anchor_sha256": "bb8cf3cf2dd3287aeb9aafa95458230459a63a3a746d3472e4907dd6a495b7f1",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_08": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_07",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "38",
+        0
+      ],
+      "frame_idx": 164
+    },
+    "_meta": {
+      "title": "A08 — Perda de base e passo de apoio",
+      "anchor_sha256": "0aedbe928e6f08a8333deb54cb7ff1ea3788d550b8b2f7a46b8f42cbc58210dd",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "bd_guide_09": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "bd_guide_08",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ],
+      "frame_idx": 228
+    },
+    "_meta": {
+      "title": "A09 — Goku recua; Vegeta persegue",
+      "anchor_sha256": "d325f23bcbc6edcb9f6c5fc7f0c6d4f70c0c66397e4718e5802969d6318c59c3",
+      "owner_approval": "APPROVED"
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  }
+}

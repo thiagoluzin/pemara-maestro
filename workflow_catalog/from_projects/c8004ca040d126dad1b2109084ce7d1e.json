@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P23_pixaroma_master20_v1_overture_continued",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P23_overture.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23102301
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous fifteen-second LIVE-ACTION continuation of the exact supplied opera auditorium shot. Preserve the SAME physical theatre, burgundy velvet main curtain and its gold embroidery, carved gilded proscenium, warm steady wall lamps, black orchestra pit wall and red-topped pit barrier, chair rows, brass posts and real seated spectators. Preserve the exact arrangement and appearance of these background people and instruments from the opening image, without introducing any named stage performer. The main curtain remains FULLY CLOSED along its centre seam for this entire interval, no singer, narrator, extra figure or silhouette onstage. The scenic moon and castle remain hidden behind that real curtain. Natural photographic wood, gold plaster, velvet, hair and clothing textures; no game render, cartoon, animation or polished CGI.\n\nThe camera starts at the exact outgoing P22 viewpoint near the front of the clear centre aisle, still BEHIND the red-topped orchestra-pit barrier. From0-2s finish only a VERY SMALL remaining forward glide, smoothly decelerating to a supported stationary audience view before reaching the barrier. Do not cross or pass through that barrier, a chair or a seated person. From2s onward the tripod camera stays still at the resulting position, same perspective, focal length, exposure and composition; no zoom, pan, orbit, pullback or drift. The closer orchestra view makes the musicians' independent arm work legible. Real physical continuity from the first image, not a new theatre or a reset farther back in the aisle.\n\nFrom0-4s the existing orchestra carries the overture onward. The two prominent violinists seen from behind in the middle of the pit continue their own bow strokes: right hands guide their OWN bows, left hands support their OWN violins close to the shoulder. Their elbows have normal joints, bow and instrument remain attached to the same musician, no floating or exchanged objects. The player slightly left of centre finishes one sustained stroke and changes bow direction; the player to the right continues a different stroke with a small delayed shoulder response. The nearest spectators remain seated and attentive; the man on the left completes a small head turn toward the pit while the woman on the right keeps looking toward the closed curtain. Nobody stands or walks through the rows.\n\nFrom4-9s the violinists continue real restrained independent bowing and breathing over the supplied music. One lowers the bow tip slightly at the end of a stroke and then begins the next supported stroke; the other sustains the preceding motion, avoiding mirror-synchronised duplicate bodies. A musician farther left makes a small seated torso adjustment while keeping their violin and music stand stable. A seated foreground spectator lets the programme rest on their lap without changing the sheet into another prop. Preserve all chairs, railings, pages, faces, body scale and positions. Do not turn a seated spectator into a musician or replace a person as the camera settles.\n\nFrom9-15.08s the orchestral phrase continues into the next passage. The two prominent players smoothly reverse their bow directions at different moments, with visible small hand, wrist, elbow and shoulder responses and natural breathing. The other musicians remain distinct and physically supported. Spectators maintain attentive seated postures with subtle eye/head responses; there is no clapping or standing ovation. Keep useful human movement through the last frame rather than freezing the ensemble. The main curtain remains completely shut; same gold ornaments, warm lamps and continuous theatre geography through the ending. No blackout, fade, opening seam, new stage character, invented conductor entrance, title text or portrait reset.\n\noverall_soundscape: Preserve ONLY the supplied next contiguous interval of the original English Pixel Remaster recording, same orchestral mix, stereo, timing, fixed gain and exact duration. There is no new sung or spoken part directed in this interval. No generated dialogue, vocals, applause, Foley or replacement score. The visible instrumental acting is a broad interpretation of the existing music, not a new audio performance or a promise of note-perfect bowing.\n\nnon_diegetic_music: N/A; original recorded opera overture is the sole score.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P23_P22_approved_endpoint.png"
+    }
+  }
+}

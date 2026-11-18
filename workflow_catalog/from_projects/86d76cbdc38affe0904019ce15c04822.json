@@ -1,0 +1,89 @@
+{
+  "100": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "c7ef96ea_000.png"
+    }
+  },
+  "102": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "rt_detr_v4-x-hgnet_fp16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "103": {
+    "class_type": "RTDETR_detect",
+    "inputs": {
+      "model": [
+        "102",
+        0
+      ],
+      "image": [
+        "100",
+        0
+      ],
+      "threshold": 0.4,
+      "class_name": "person",
+      "max_detections": 8
+    }
+  },
+  "111": {
+    "class_type": "PemaraCombatSelectFighterBoxes",
+    "inputs": {
+      "bboxes": [
+        "103",
+        0
+      ],
+      "image": [
+        "100",
+        0
+      ],
+      "minimum_area_fraction": 0.025
+    }
+  },
+  "104": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sdpose_wholebody_fp16.safetensors"
+    }
+  },
+  "105": {
+    "class_type": "SDPoseKeypointExtractor",
+    "inputs": {
+      "model": [
+        "104",
+        0
+      ],
+      "vae": [
+        "104",
+        2
+      ],
+      "image": [
+        "100",
+        0
+      ],
+      "bboxes": [
+        "111",
+        0
+      ],
+      "batch_size": 1
+    }
+  },
+  "109": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "105",
+        0
+      ]
+    }
+  },
+  "199": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

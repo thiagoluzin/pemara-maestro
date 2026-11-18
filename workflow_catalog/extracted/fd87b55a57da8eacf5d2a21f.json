@@ -1,0 +1,336 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_animate_14B_bf16.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "Wan2.2 Animate 14B — local BF16"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Local UMT5"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "_meta": {
+      "title": "Local Wan 2.1 VAE"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "Helena_pixel_perfil_derivada_v1_20261023.png"
+    },
+    "_meta": {
+      "title": "Canonical east reference — exact staged hash"
+    },
+    "is_changed": [
+      "2cdb5f5149e52015fef5e300ffaba02ffea78376dc5a220660ebc18f793cb39f"
+    ]
+  },
+  "5": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 512,
+      "height": 768,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "Full reference — uniform 50 percent downscale"
+    }
+  },
+  "6": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "_meta": {
+      "title": "Local CLIP Vision H"
+    }
+  },
+  "7": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "6",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "crop": "none"
+    },
+    "_meta": {
+      "title": "Whole-character identity conditioning"
+    }
+  },
+  "8": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:/a terra rejeita/TerraDevolveGodot/art_source/Helena_Wan_Lateral_20261027_r2/videos/843e81e9_000.mp4",
+      "force_rate": 0.0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 33,
+      "skip_first_frames": 13,
+      "select_every_nth": 1,
+      "format": "None"
+    },
+    "_meta": {
+      "title": "Running source 13–45 inclusive — no resampling"
+    },
+    "is_changed": [
+      "b644f0741d0586708001266bfe246140a2bb5771bee16a138051f87e0d4d3cd4"
+    ]
+  },
+  "9": {
+    "class_type": "DWPreprocessor",
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "detect_hand": "enable",
+      "detect_body": "enable",
+      "detect_face": "disable",
+      "resolution": 512,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "scale_stick_for_xinsr_cn": "disable"
+    },
+    "_meta": {
+      "title": "Local body and hand pose — no source face"
+    }
+  },
+  "10": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "The woman in the reference image performs the movement shown by the pose sequence. Full-body 2D pixel art, fixed side camera."
+    },
+    "_meta": {
+      "title": "Minimal action prompt — pose supplies the motion"
+    }
+  },
+  "11": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    },
+    "_meta": {
+      "title": "Empty negative — base Animate CFG 1"
+    }
+  },
+  "12": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift": 5.0
+    },
+    "_meta": {
+      "title": "Wan Animate base shift 5"
+    }
+  },
+  "13": {
+    "class_type": "WanAnimateToVideo",
+    "inputs": {
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "width": 512,
+      "height": 768,
+      "length": 33,
+      "batch_size": 1,
+      "continue_motion_max_frames": 5,
+      "video_frame_offset": 0,
+      "clip_vision_output": [
+        "7",
+        0
+      ],
+      "reference_image": [
+        "5",
+        0
+      ],
+      "pose_video": [
+        "9",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Animate Move — canonical reference plus source skeleton"
+    }
+  },
+  "14": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "seed": 2710279001,
+      "steps": 20,
+      "cfg": 1.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "simple",
+      "positive": [
+        "13",
+        0
+      ],
+      "negative": [
+        "13",
+        1
+      ],
+      "latent_image": [
+        "13",
+        2
+      ],
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "Base Animate pilot — no distillation or Pixel LoRA"
+    }
+  },
+  "15": {
+    "class_type": "TrimVideoLatent",
+    "inputs": {
+      "samples": [
+        "14",
+        0
+      ],
+      "trim_amount": [
+        "13",
+        3
+      ]
+    },
+    "_meta": {
+      "title": "Remove reference latent dynamically"
+    }
+  },
+  "16": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Decode 33 motion frames"
+    }
+  },
+  "17": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "filename_prefix": "ATD_Wan_Lateral_20261027_r2/animate_identity_pilot/frames"
+    },
+    "_meta": {
+      "title": "Unaltered generated full-body frames"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "ATD_Wan_Lateral_20261027_r2/animate_identity_pilot/pose_control"
+    },
+    "_meta": {
+      "title": "Pose diagnostic — required review before judging transfer"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "19": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "fps": 16.0
+    },
+    "_meta": {
+      "title": "Native frames at source timing"
+    }
+  },
+  "20": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "19",
+        0
+      ],
+      "filename_prefix": "ATD_Wan_Lateral_20261027_r2/animate_identity_pilot/preview",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "_meta": {
+      "title": "Native review video — no upscaling or interpolation"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "21": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    },
+    "_meta": {
+      "title": "Declared content type — animation native preview"
+    }
+  }
+}

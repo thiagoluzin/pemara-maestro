@@ -1,0 +1,26 @@
+{
+  "plan": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\agent_ecosystem\\\\music_production_qwen_20261008\\\\yue_plan_validation.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  }\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "generate": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\agent_ecosystem\\\\music_production_qwen_20261008\\\\yue_generate_validation.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  }\n}"
+        }
+      ],
+      "isError": false
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<template>
+  <style>
+    @font-face { font-family: "Pemara Inter"; src: url("assets/fonts/inter-latin-variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+    #root { position:relative; width:1080px; height:1920px; overflow:hidden; color:#f7fbff; font-family:"Pemara Inter", sans-serif; }
+    #frame-12-outro-ground { position:absolute; inset:0; background:radial-gradient(circle at 50% 42%, #173449 0%, #07111f 58%, #030914 100%); }
+    #frame-12-outro-glow { position:absolute; left:100px; top:200px; width:880px; height:1050px; border-radius:50%; background:radial-gradient(circle, rgba(55,232,135,.22), rgba(255,106,0,.14) 46%, transparent 72%); filter:blur(32px); }
+    #frame-12-outro-logo { position:absolute; left:205px; top:180px; width:670px; height:410px; object-fit:contain; }
+    #frame-12-outro-cta { position:absolute; left:64px; right:64px; top:720px; text-align:center; font-size:102px; line-height:.94; font-weight:900; letter-spacing:-.055em; }
+    #frame-12-outro-cta strong { color:#ff6a00; }
+    #frame-12-outro-site { position:absolute; left:110px; right:110px; top:1040px; padding:28px 22px; border:3px solid rgba(55,232,135,.72); border-radius:28px; background:rgba(16,28,45,.9); text-align:center; font-size:42px; font-weight:850; color:#37e887; }
+    #frame-12-outro-region { position:absolute; left:120px; right:120px; top:1195px; text-align:center; font-size:31px; font-weight:750; letter-spacing:.08em; color:#f7fbff; }
+    #frame-12-outro-rule { position:absolute; left:160px; right:160px; top:1325px; height:9px; background:linear-gradient(90deg, transparent, #ff6a00, #37e887, transparent); }
+  </style>
+  <div id="root" data-composition-id="frame-12-outro" data-start="0" data-duration="3.0" data-width="1080" data-height="1920">
+    <div id="frame-12-outro-ground" class="clip" data-start="0" data-duration="3.0" data-track-index="0"></div>
+    <div id="frame-12-outro-glow" class="clip" data-start="0" data-duration="3.0" data-track-index="1"></div>
+    <img id="frame-12-outro-logo" class="clip" data-start="0" data-duration="3.0" data-track-index="2" src="assets/pemara-logo.png" alt="Pemara Tech">
+    <div id="frame-12-outro-cta" class="clip" data-start="0" data-duration="3.0" data-track-index="3">ESCOLHA<br><strong>A SUA</strong></div>
+    <div id="frame-12-outro-site" class="clip" data-start="0" data-duration="3.0" data-track-index="4">LOJA.PEMARATECH.COM.BR</div>
+    <div id="frame-12-outro-region" class="clip" data-start="0" data-duration="3.0" data-track-index="5">SÃO JOSÉ DO RIO PRETO E REGIÃO</div>
+    <div id="frame-12-outro-rule" class="clip" data-start="0" data-duration="3.0" data-track-index="6"></div>
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#frame-12-outro-logo", { opacity: 0, y: -70 }, { opacity: 1, y: 0, duration: .40, ease: "power3.out" }, 0)
+      .fromTo("#frame-12-outro-cta", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: .46, ease: "power3.out" }, .16)
+      .fromTo("#frame-12-outro-glow", { opacity: 0, scale: .82 }, { opacity: 1, scale: 1, duration: .72, ease: "power2.out" }, .18)
+      .fromTo("#frame-12-outro-site", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .36, ease: "power3.out" }, .66)
+      .fromTo("#frame-12-outro-region", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .34, ease: "power3.out" }, .88)
+      .fromTo("#frame-12-outro-rule", { scaleX: 0 }, { scaleX: 1, duration: .34, ease: "power2.out" }, 1.06);
+    window.__timelines["frame-12-outro"] = tl;
+  </script>
+</template>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animation Engineer"
+  short_description: "Especialista em animação para jogos — animação de"
+  default_prompt: "Use $animation-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

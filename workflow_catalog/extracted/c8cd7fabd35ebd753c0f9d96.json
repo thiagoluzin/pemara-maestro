@@ -1,0 +1,47 @@
+{
+  "1": {
+    "class_type": "MiniMaxH3PromptWriterOmni",
+    "inputs": {
+      "reference_layout": "{}",
+      "task": "T2AV",
+      "resolution": "16:9",
+      "duration": 5,
+      "prompt": "A locked camera observes an empty stone courtyard in warm morning sunlight. Only the leaves of one small tree sway gently. No people, animals, text, camera motion or music.",
+      "model": "Qwen2.5-Omni-7B GGUF Q4_K_M · 6.2 GB download · ~9 GB with the adapter and a 12k context",
+      "quantization": "nf4",
+      "greedy": true,
+      "seed": 20260910,
+      "keep_model_loaded": false,
+      "options": [
+        "2",
+        0
+      ]
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3RewriterOptions",
+    "inputs": {
+      "max_new_tokens": 1024,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.05,
+      "attn_implementation": "sdpa",
+      "adapter": "MiniMax-H3-Prompt-Rewriter-LoRA-Omni-F16.gguf · 0.65 GB download",
+      "gguf_runtime": "llama.cpp",
+      "llama_backend": "cuda",
+      "device": "cuda:0",
+      "auto_download": false,
+      "n_ctx": 8192
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "1",
+        0
+      ]
+    }
+  }
+}

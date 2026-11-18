@@ -1,0 +1,33 @@
+{
+  "scene": "frame-08-gstorm-vanguard-preto",
+  "duration_s": 3.8,
+  "duration": 3.8,
+  "rules": [
+    "spring-pop-entrance",
+    "ambient-glow-bloom"
+  ],
+  "exit": {
+    "vector": "stationary 0 px/s",
+    "still_moving": false
+  },
+  "entry": {
+    "vector": "up 62 px/s",
+    "from_rest": false
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-08-gstorm-vanguard-preto-card-wrap",
+      "bySec": 0.5
+    },
+    {
+      "kind": "before",
+      "a": "#frame-08-gstorm-vanguard-preto-card-wrap",
+      "b": "#frame-08-gstorm-vanguard-preto-meta"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#frame-08-gstorm-vanguard-preto-card-wrap"
+    }
+  ]
+}

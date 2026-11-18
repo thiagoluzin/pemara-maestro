@@ -1,0 +1,97 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive, distorted electric guitars, double bass drums, fast tempo, harsh male vocals, technical riffs",
+      "lyrics": "[Verse]\nBlade of steel, cutting deep\nMachines wake while the city sleeps\nChains of gold, binding hands\nBuilding empires on shifting sands\n\n[Chorus]\nGrip the wire, pull the thread\nDead men dancing in their heads\nMaster of the iron song\nWhere the rhythm and the blood belong",
+      "abc": "X:1\nT:\nM:4/4\nL:1/32\nQ:1/4=170\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:Em\n% verse\nV: Vocal\n\"Em\"z16g4g8g4-|\"Em\"g8z8g4g8g4-|\"Em\"g4z24z4|\"Em\"z32|\nV: Ins\nB16z16|Z|z12B4z8B4z4|B4z4B4z4B4E4G4A4|\nV: Vocal\n\"Em\"z16g4g8g4-|\"Em\"g4e8e4e4d8e4|\"Em\"e2z24z6|\"Em\"z32|\nV: Ins\nB16z16|Z|z12B4z8B4z4|B4z4B4z4B4E4G4A4|\nV: Vocal\n\"Em\"z16g8g4g4-|\"Em\"g8z8g8g4g4-|\"Em\"g8z24|\"Em\"z32|\nV: Ins\nB16z16|Z|z12B4z8B4z4|B4z4B4z4B4E4G4A4|\nV: Vocal\n\"Em\"z16g4g8g4-|\"Em\"g4e8e4e8d8|\"Em\"e32-|\"Em\"e16z16|\nV: Ins\nB16z16|Z2|z16B4E4G4A4|\n% chorus\nV: Vocal\n\"Em\"z16g8g4g4-|\"G\"g4e8z4g8g4g4-|\"D\"g8z24|\"D\"z32|\nV: Ins\nB16z16|Z|z12f4z8f8|g12f12d8|\nV: Vocal\n\"Em\"z16g4g8g4-|\"G\"g4e12e8d8|\"D\"e32-|\"D\"e32|\nV: Ins\ne16z16|Z3|\nV: Vocal\n\"Em\"z16g8g4g4-|\"G\"g4e12g4g8g4-|\"D\"g8z24|\"D\"z32|\nV: Ins\nZ2|z12f4z8f8|g12f12d8|\nV: Vocal\n\"C\"z16e8e4e4-|\"C\"e4e12z16|\"D\"z16e8e8|g8e8d16|\nV: Ins\nc16z16|Z3|\n% interlude\nV: Vocal\n\"Em\"e32-|\"Em\"e32|\"Em\"z32|\"Em\"z32|\nV: Ins\nZ2|B,4E,2E,2E,4B,4E,4E,4B,4E,4|B,4E,4B,4E,4B,4E,4G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,2E,2E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,4B,4E,2E,2E,2E,2B,4E,4|B,4E,4B,4E,4B,4E,4G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,2E,2E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,2E,2E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z32|\"Em\"z32|\nV: Ins\nB,4E,4E,4=F4E,4E,4D4E,4|E,4^C4E,4E,4B,4E,4G,4A,4|B,4E,2E,2E,2E,2B,4E,2E,2E,2E,2B,4E,2E,2|B,4E,2E,2B,4E,2E,2B,4E,2E,2G,4A,4|\nV: Vocal\n\"Em\"z32|\"Em\"z32|\"Em\"z",
+      "seed": 4074365682,
+      "mode": "full",
+      "max_duration": 30.0,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 4074365682,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_6276aa8bd3d6",
+      "format": "flac"
+    }
+  }
+}

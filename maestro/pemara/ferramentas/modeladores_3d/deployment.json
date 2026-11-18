@@ -1,0 +1,60 @@
+{
+  "scope": "Image-to-3D geometry via local ComfyUI",
+  "runtime": "D:/PemaraRuntimes/ComfyUI-v0.36.0-pemara",
+  "officialNewWeightHashesVerified": 5,
+  "status": "TECHNICAL_DEPLOYMENT_VALIDATED",
+  "date": "2026-09-22",
+  "blenderImportAndCpuPreviewPassed": [
+    "triposg",
+    "hunyuan3d_2_1",
+    "trellis2"
+  ],
+  "models": [
+    {
+      "engine": "hunyuan3d_2_1",
+      "promptId": "2ffb9981-ac1a-40b6-a5d0-79a0da068fee",
+      "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\hunyuan3d_2_1\\2ffb9981_000.glb",
+      "bytes": 6343988,
+      "sha256": "6b7593ba097bf608334d47bfa24dcf5a62ccc3b97969ce2dbec4b89a9979d931",
+      "vertices": 176200,
+      "faces": 352400,
+      "watertight": false,
+      "technicalInferencePassed": true,
+      "textured": false,
+      "printReady": false,
+      "artisticApproval": false
+    },
+    {
+      "engine": "trellis2",
+      "promptId": "67e51052-fefb-418d-b581-8c3bd28bd75f",
+      "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\trellis2\\67e51052_000.glb",
+      "bytes": 60211632,
+      "sha256": "a0a3ab7b2f4d4fa22fe039993347fb7c4a62038e2de9c2128c836266b2b5383f",
+      "vertices": 1632191,
+      "faces": 3385380,
+      "watertight": false,
+      "technicalInferencePassed": true,
+      "textured": false,
+      "printReady": false,
+      "artisticApproval": false
+    },
+    {
+      "engine": "triposg",
+      "promptId": "c1f75d35-e750-42a5-960d-905cd31f9bc1",
+      "output": "E:\\Pemara\\maestro\\pemara\\ferramentas\\modeladores_3d\\validation\\triposg\\c1f75d35_000.glb",
+      "bytes": 24570252,
+      "sha256": "4d9a2eb99639e7b9702ba08d6ba3577ac24809e03476ebf46247f5acd2374d99",
+      "vertices": 682479,
+      "faces": 1364976,
+      "watertight": false,
+      "technicalInferencePassed": true,
+      "textured": false,
+      "printReady": false,
+      "artisticApproval": false
+    }
+  ],
+  "studioSelectorModified": false,
+  "artisticApproval": false,
+  "printReady": false,
+  "node": "MaestroShape3D"
+}

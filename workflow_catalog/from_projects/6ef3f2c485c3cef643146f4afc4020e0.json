@@ -1,0 +1,365 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "C06_start_T06_f119.png"
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "vegeta_identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "VEGETA_GALICK_PREP_R2_finished_DLSS5.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "flow_progressive",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "flow_trajectory": {
+    "class_type": "H3FlowTrajectory",
+    "inputs": {
+      "storage": "system_ram",
+      "max_runs": 4
+    }
+  },
+  "flow_progressive": {
+    "class_type": "H3ProgressiveTargetInputHandoff",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "trajectory": [
+        "flow_trajectory",
+        0
+      ],
+      "source_mode": "scale",
+      "source_scale": 0.7,
+      "source_width": 864,
+      "source_height": 640,
+      "handoff_coordinate": 0.35,
+      "handoff_selection": "fixed",
+      "guidance_mode": "direction+temporal",
+      "direction_weight": 0.25,
+      "acceleration_weight": 0.0,
+      "consistency_weight": 0.0,
+      "low_frequency_cutoff": 0.25,
+      "temporal_weight": 0.2,
+      "handoff_transfer": "bicubic"
+    }
+  },
+  "flow_metrics": {
+    "class_type": "H3MetricsJSON",
+    "inputs": {
+      "metrics": [
+        "flow_progressive",
+        1
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/C06R2_CAMERA_FLOW/metrics"
+    }
+  },
+  "condition": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] ONE continuous five-second LIVE-ACTION camera shot of ONE adult human, VEGETA, recovering beside a cracked standing boulder in the dry ochre canyon. Continue exactly from the supplied first frame. <Picture 1> fixes this same actor's angular human face, widow-peak black hair, blue suit, white/ochre armor with raised shoulder and hip guards, white gloves/boots and brown tail. Natural skin, dust and tactile materials. Only one person is visible during this entire shot.\nHe has just stood up after striking the rock. At once he takes TWO purposeful grounded steps forward away from the boulder into the clear ground, pushing loose grit with his soles. His angry gaze remains toward his opponent far offscreen LEFT. He plants a wide stance, rotates his torso left, then raises BOTH white-gloved hands together beside his RIGHT TEMPLE, elbows bent. A small VIOLET charge starts between both hands beside his head. Keep that compact energy connected to his hands, and keep his arms bent in this head-side preparation. He does not launch it.\nCAMERA: Move with these two steps in a low lateral dolly, then arc modestly to his front-left to reveal his grounded preparation. The cracked boulder physically passes beyond the right edge because of the camera's bearing and his forward steps. Preserve it as a real landmark; do not dissolve or reshape it into the backdrop. The remaining layered cliffs share the same warm sunlight. Camera translates through real three-plane parallax, remains level with no cut, and eases into the supplied moving arrival interval during the last0.917seconds. Show his complete supporting boots, hips, face and hands throughout. Do not zoom through his body or flip his facing direction.\nCONTINUITY: Reach the supplied22-frame moving preparation at4.25seconds, then continue its same pose, tiny hand/charge movement and shared floor through the final frame. No pause for a photograph. No other person enters, crosses or materializes in the frame. No return to exchanging punches or kicks. No attack, grappling, leap, sprint toward anyone, beam, explosion, teleport, montage, slow motion, freeze frame or scenery morph. One human recovers, walks two steps, plants, and prepares his head-side charge; that is the entire causal action.\noverall_soundscape: Canyon air, falling small grit, two firm boot scuffs, armor/cloth movement and a rising low compact electrical hum beside his hands. Sound effects only. No speech, voices, words, grunts, cries, shouts, singing or music.\nnon_diegetic_music: None.",
+      "width": 1536,
+      "height": 864,
+      "length": 124,
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "vegeta_identity",
+        0
+      ]
+    }
+  },
+  "start_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "condition",
+        0
+      ],
+      "latent": [
+        "condition",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "arrival_video": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "C06_target_motion22_ffv1.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 22,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "arrival_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "start_guide",
+        0
+      ],
+      "latent": [
+        "condition",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "arrival_video",
+        0
+      ],
+      "frame_idx": 102
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611090622
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "flow_progressive",
+        0
+      ],
+      "conditioning": [
+        "arrival_guide",
+        0
+      ]
+    }
+  },
+  "sampler": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "condition",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sampler",
+        0
+      ]
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "separate",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "create": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "create",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/C06R2_CAMERA_FLOW/C06R2_camera_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  }
+}

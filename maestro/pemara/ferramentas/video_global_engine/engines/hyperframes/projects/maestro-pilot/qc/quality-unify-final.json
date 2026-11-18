@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "tool": "pemara-quality-unify",
+  "tool_version": "1.0.0",
+  "generated_at": "2026-08-09T21:46:27.443037Z",
+  "root": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\engines\\hyperframes",
+  "verdict": "PASS",
+  "counts": {
+    "files": 25,
+    "text_files": 15,
+    "skills": 0,
+    "plugins": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": []
+}

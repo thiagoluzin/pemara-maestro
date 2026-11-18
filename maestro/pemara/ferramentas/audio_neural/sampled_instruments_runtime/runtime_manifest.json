@@ -1,0 +1,52 @@
+{
+  "schema": "pemara.sampled-instruments-runtime.v1",
+  "installedRoot": "D:\\PemaraAI\\music-production\\sampled-instruments",
+  "policy": {
+    "localOnly": true,
+    "originalLibrariesPreserved": true,
+    "generalMidiFallbackForSelectedInstruments": false,
+    "scoreMutationAllowed": false,
+    "humanListeningApprovalRequired": true
+  },
+  "renderer": {
+    "name": "sfizz",
+    "version": "1.2.3",
+    "homepage": "https://github.com/sfztools/sfizz",
+    "archiveSha256": "7431cbe9b7f2e71a9ff4b12fbbe82c766dbf75b1eedecca627e7506cb06a9fcc"
+  },
+  "libraries": [
+    {
+      "name": "Virtual Playing Orchestra",
+      "version": "3.3",
+      "instruments": ["violin", "cello"],
+      "homepage": "https://virtualplaying.com/virtual-playing-orchestra/",
+      "license": "mixed source licenses; see bundled Documentation/license.htm",
+      "wavesArchiveSha256": "ca8f1e0b56eede35314994646e5f1f307ec349616c967fbecf627c43aa646e90",
+      "scriptsArchiveSha256": "f0f2bf0e42d2a39c5f49401addcffa840fd8f5525670f5945bf5093a5442bda5"
+    },
+    {
+      "name": "Accurate Salamander Grand Piano",
+      "version": "6.1a",
+      "instruments": ["piano"],
+      "homepage": "https://www.ir.isas.jaxa.jp/~cyamauch/AccurateSalamander/index.html",
+      "license": "CC BY 3.0",
+      "archiveSha256": "7fc55c3e01f12b004c9b4af39d1680f5ab1c4b3531aaf5c5de09f796205c2dae"
+    },
+    {
+      "name": "Growlybass",
+      "version": "1.002",
+      "instruments": ["bass"],
+      "homepage": "https://sfzinstruments.github.io/basses/growlybass/",
+      "license": "royalty-free for commercial and non-commercial use",
+      "archiveSha256": "b92dca75494fa39d6e8d8b8addeabfe70c5aaa59b5f9a0f624be6de51a2374bc"
+    },
+    {
+      "name": "SM Drums",
+      "version": "Sforzando 1.2",
+      "instruments": ["drums"],
+      "homepage": "https://sfzinstruments.github.io/drums/sm_drums/",
+      "license": "public domain",
+      "archiveSha256": "d761e03c559cb92cfbabec5dd4349b7f0ee89a0824db156d3e46e124ff9ad1f2"
+    }
+  ]
+}

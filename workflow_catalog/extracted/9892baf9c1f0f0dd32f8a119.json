@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Classic rock ballad, dramatic and heavy, distorted electric guitars, driving double-kick drums, soaring operatic male vocals, powerful choir backing, epic atmosphere, slow build to explosive chorus\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nA cold wind cuts through the frozen air\nThe clock strikes twelve, no one is there\nA shadow stretches on the broken street\nA promise made in blood and heat\nI looked inside my hollow eyes\nAnd saw the truth I couldn't hide\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Verse]\nThe first one laughs with a silver tongue\nA debt to pay, a debt to hang\nThe second weeps with a heavy hand\nA flood of tears in the promised land\nThe third one waits with a quiet breath\nA door to heaven, a door to death\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Bridge]\nAnd the fourth one stands with a crown of thorns\nA king of nothing, a king of storms\nHe looks at me with a gentle stare\nAnd whispers, \"Son, you're almost there\"\nI fall to my knees in the dust and sand\nHolding the weight of my own hand\n\n[Chorus]\nRise up, my four shadows\nRiding through the dark\nBreaking down the walls\nThat hold my heart\nFour shadows coming\nTo claim their throne\nThe battle is joined\nIn flesh and bone\n\n[Outro]\nFour shadows... fading\nIn the morning light\nThe battle is over\nWe are gone tonight\nGone tonight",
+      "seed": 1605996035,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

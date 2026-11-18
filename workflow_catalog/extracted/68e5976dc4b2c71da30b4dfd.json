@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Sepultura-inspired, Ferocious old-school Brazilian death thrash metal, razor-picked distorted guitar riffs, harsh aggressive intelligible male English vocals, explosive double-kick drums, raw tight bass. 196 BPM, E minor. fast tremolo riff with abrupt syncopated rests; dissonant solo and a punishing half-time breakdown. Sepultura Arise death thrash, E minor, aggressive, riff-led. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Opening Riffs 0-150s; Breakdown & T 150-240s; Final Chorus 240-280s; Outro Decay 280-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=196, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nDust crawls on the tower glass\nThe flag is cut, the crown is ash\nHe keeps the dial spinning round\nA voice from underground\n\n[Chorus]\nBaptized in static\nSignal bleeds through the wire\nNo god to save the flock\nJust the hiss and the fire\nBaptized in static\n\n[Verse]\nThey drag the mics through the street\nChasing the ghost on the beat\nThe regulator is dead\nBut the frequency is spread\n\n[Chorus]\nBaptized in static\nSignal bleeds through the wire\nNo god to save the flock\nJust the hiss and the fire\nBaptized in static\n\n[Bridge]\nHalf-time thunder shakes the floor\nThe breaker trips, the lights are sore\nOne last command in the dark\nThey cut the cord, the world is stark\n\n[Solo]\nDissonant scream, razor edge\nChasing the echo, seeking the ledge\n\n[Chorus]\nBaptized in static\nSignal bleeds through the wire\nNo god to save the flock\nJust the hiss and the fire\nBaptized in static\n\n[Outro]\nSilence falls\nThe tower cracks",
+      "seed": 202610161012,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

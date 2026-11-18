@@ -1,0 +1,306 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Fixed_Contact_lever_empty_hands_east_start_Krita_v2.png"
+    },
+    "is_changed": [
+      "4a99e50d7aa0355ca7319663c277d24255f6e60a96b7afe4fe11b788219df802"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 896,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "The EXACT SAME adult woman Helena from the complete body reference, same mature oval face, nose, jaw, eyes, brown low bun, beige rolled sleeve collared shirt, blue jeans, brown worn boots and brown crossbody satchel on her ANATOMICAL LEFT hip. Preserve her exact head size, body proportions, age, outfit and detailed hand-painted pixel-art shading. No redesign or beautification. One coherent whole-body 2D drawing each moment, never a cutout puppet. Fixed orthographic camera and uniform charcoal background. Whole head, both hands, boots and all equipment always visible with generous margins. Same location, scale and ground baseline. ONE solo whole Helena, exactly her own TWO hands. The scene mechanism is a VISIBLE RIGID fixed physical reference; act on THAT exact object. The actual long steel lever is attached to the blue-gray FIXED hinge. Reach the RIGHT hand to the visible brown BALL at its upper end. CURL fingers AROUND that ball, brace boots, then PULL the same rigid lever DOWN AND TOWARD HER around its fixed hinge until horizontal. Torso leans slightly with real effort, no walking or new mechanism. Open fingers ONLY AFTER the ball reaches the supplied lower endpoint, lower hand, return upright. LEFT arm relaxed. Same supplied body view, original scale and mature face. No hand gestures in empty space. Completely unarmed: NO firearm, holster, knife or new equipment. Entire head, fingers, boots and original equipment stay inside frame; camera and fixture absolutely fixed. End in the exact supplied neutral pose and final mechanism state."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "different woman, changed face, teenager, anime, 3d, photograph, different clothes, loose hair, ponytail, jacket, missing bag, duplicate bag, mirrored bag, missing boots, extra limbs, extra hands, extra fingers, body cutout, cropped feet, cropped head, cropped weapon, morphing weapon, stretching, shrinking, zoom, camera movement, text, watermark, blur, ghosting, second person, offscreen hand, offering, palm-up display, extra furniture, moving fixture, handshake, clipped actor"
+    }
+  },
+  "16": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "width": 896,
+      "height": 864,
+      "length": 49,
+      "batch_size": 1,
+      "start_image": [
+        "12",
+        0
+      ],
+      "end_image": [
+        "23",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 2810590392,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 2810590392,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_Unified_Helena_run01/fixed_contact_lever_empty_hands_east_v2",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Fixed_Contact_lever_empty_hands_east_end_Krita_v2.png"
+    },
+    "is_changed": [
+      "fcfbb07219b394a41ccd56cff34fc99bafc7b84dee5ede66d411621015415299"
+    ]
+  },
+  "24": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_Unified_Helena_run01/native_next/fixed_contact_lever_empty_hands_east_v2",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

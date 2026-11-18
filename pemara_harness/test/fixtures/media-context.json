@@ -1,0 +1,15 @@
+{
+  "pemaraMediaContext": 1,
+  "trust": "media-untrusted-data",
+  "taskSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "attachments": [
+    {
+      "name": "foto.png",
+      "kind": "image",
+      "evidence": {
+        "ok": true,
+        "observation": "um objeto vermelho"
+      }
+    }
+  ]
+}

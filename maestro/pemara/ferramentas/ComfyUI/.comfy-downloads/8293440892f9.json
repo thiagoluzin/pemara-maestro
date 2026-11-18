@@ -1,0 +1,18 @@
+{
+  "id": "8293440892f9",
+  "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/loras/minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+  "dest": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+  "schema": "download-state/1",
+  "pid": 25276,
+  "pid_create_time": 1787626476.2417371,
+  "total_bytes": 1956193000,
+  "completed_bytes": 1956193000,
+  "status": "completed",
+  "error": null,
+  "started_at": "2026-08-25T02:54:36+00:00",
+  "updated_at": "2026-08-25T02:55:15+00:00",
+  "downloader": "httpx",
+  "kind": "background",
+  "needs_civitai_auth": false,
+  "needs_hf_auth": false
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\models\\vae\\minimax_h3_video_vae_int8_convrot.safetensors",
+    "Hash": "52A2C8C73583C86E4F41CDCCE3A6AD0EA562987BC0BF3D60A0CEF5F5C8E60C0E"
+  },
+  {
+    "Path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\models\\pdd_acc\\MiniMax-H3-FL2VA-Acc-8Step.safetensors",
+    "Hash": "0B29BE7042D883970EB0C20774A9BA03D95669ED80A721BB4D21BE8EA0D0A196"
+  },
+  {
+    "Path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\models\\pdd_acc\\MiniMax-H3-Ref2VA-Acc-8Step.safetensors",
+    "Hash": "111C82E669F6E20E628228172EDF39395F1A9FC3AD049793895E542C0F55B18C"
+  },
+  {
+    "Path": "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\models\\model_patches\\minimax_h3_fun_controlnet_union_2.0_pruned_int8_convrot.safetensors",
+    "Hash": "890AF58BB350F0C2F6C409B1C67EA8F4196654297D037769B72DE1E6F504C612"
+  }
+]

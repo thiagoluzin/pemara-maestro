@@ -1,0 +1,23 @@
+{
+  "name": "Spark",
+  "status": "DRAFT_BLOCKED_RUNTIME_AND_ATTENTION_QUALIFICATION",
+  "source": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_H3_UPGRADES\\01_H3_BASE_INT8_VAE.json",
+  "source_sha256": "2c56e7ba90ab3ff03d8dcd8698e750bdc26cedb197dbad2251b43480c3482375",
+  "files": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\Spark\\Spark.json",
+      "sha256": "d6c482d63995c072a20f3ce6d25286fbac2f029601306d5ac5e57d0ea1c9ba9f"
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\Spark\\Spark.api.json",
+      "sha256": "9cde752a293c504b0194dd8e4838ff6cdf0e22a96a45b35a66c2c7b344afb99f"
+    },
+    {
+      "path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\Spark.json",
+      "sha256": "d6c482d63995c072a20f3ce6d25286fbac2f029601306d5ac5e57d0ea1c9ba9f"
+    }
+  ],
+  "installed_custom_nodes": false,
+  "restarted_comfyui": false,
+  "submitted_render": false
+}

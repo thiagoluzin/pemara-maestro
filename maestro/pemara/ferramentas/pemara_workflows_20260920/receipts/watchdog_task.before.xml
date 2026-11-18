@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2026-06-17T12:28:27</Date>
+    <Author>PC_GERAL_THIAGO\admin_remoto</Author>
+    <URI>\Pemara ComfyUI Watchdog</URI>
+  </RegistrationInfo>
+  <Principals>
+    <Principal id="Author">
+      <UserId>S-1-5-21-1648413847-3916207418-1809613172-1003</UserId>
+      <LogonType>InteractiveToken</LogonType>
+    </Principal>
+  </Principals>
+  <Settings>
+    <DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <Hidden>true</Hidden>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <IdleSettings>
+      <Duration>PT10M</Duration>
+      <WaitTimeout>PT1H</WaitTimeout>
+      <StopOnIdleEnd>true</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+  </Settings>
+  <Triggers>
+    <TimeTrigger>
+      <StartBoundary>2026-06-17T12:28:00</StartBoundary>
+      <Repetition>
+        <Interval>PT1M</Interval>
+      </Repetition>
+    </TimeTrigger>
+  </Triggers>
+  <Actions Context="Author">
+    <Exec>
+      <Command>C:\Windows\System32\wscript.exe</Command>
+      <Arguments>"E:\Pemara\run_powershell_hidden.vbs" "E:\Pemara\maestro\pemara\tools\watchdog_comfy_runtime.ps1" "-Once" "-Port" "8188" "-RuntimeRoot" "E:\Pemara\maestro\runtimes\ComfyUI-v0.34.2" "-Python" "D:\PemaraRuntimes\comfyui-v0342-py311\Scripts\python.exe" "-ExpectedComfy" "0.34.2" "-ExpectedTorch" "2.14.0+cu130"</Arguments>
+    </Exec>
+  </Actions>
+</Task>

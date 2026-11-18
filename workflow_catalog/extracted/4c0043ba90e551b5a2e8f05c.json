@@ -1,0 +1,150 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit ONLY the hanging lantern beside the left door in image 1. Replace its incorrect tall cage lantern with the EXACT lantern photographed in image 2 from the owner-approved first scene: broad rounded clear glass globe, simple black weathered kerosene lantern body, curved side supports, short upper metal chimney, broad lower metal reservoir. Same warm flame light. Match that practical prop shape and materials, not a generic tall gothic cage. Keep it mounted at the same left-door wall location and comparable height as the original reference. Only ONE lantern; none on floor. Do not alter the door opening or framing.\nEVERYTHING ELSE IN IMAGE 1 REMAINS IDENTICAL, especially Chris's correct smaller LEFT-FACING PROFILE crossing the actual door threshold and carrying the black shotgun IN FRONT of his chest with both gloved hands. Keep his boots, head, face, body position and weapon exactly as they are. Do not return him to the foreground floor or turn his back. Preserve Lisa at right, her mask and strong hunched body, dirty gray dress, two tiny chest specks, both wrists actually locked THROUGH the two occupied holes of the wooden stock, fingers free, and ankle chain. Preserve cabin, wood, window, table, floor and forest. Real cinematic live-action 16:9 photograph; no guide lines, extra people, object, gun, shot, blood, text or collage.",
+      "negative_prompt": "illustration, painting, anime, cartoon, cel shading, video game render, plastic CGI, wax skin, generic different soldier, duplicated characters, missing mask, wrong clothing, tentacles, blood, gore, extra limbs, disembodied hands, floating chain, duplicate guns, blurred face, subtitles, letters, watermark, collage, different room, wide-angle distortion, holding plank, fingers gripping wood, empty wrist holes, detached restraint",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ],
+      "images.image_2": [
+        "22",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 1010260708,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "chris_lisa_cabana_20261010/LA07_QWEN_V08"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_EXIT_SCENE_V07.png"
+    },
+    "is_changed": [
+      "8bc98f9fcba29a192471d189f866677f157f45fbb3b8fead4337e78efbd4ac5e"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 864,
+      "crop": "disabled"
+    }
+  },
+  "11": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "12": {
+    "class_type": "QwenImage21Cache",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "device": "auto",
+      "dtype": "default"
+    }
+  },
+  "22": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "LISA_EXIT_LANTERN_CANONICAL.png"
+    },
+    "is_changed": [
+      "8864371f836e9bcfa6013f74d35dc9f5bc328b063b50d28d4394efc4189bd3fa"
+    ]
+  }
+}

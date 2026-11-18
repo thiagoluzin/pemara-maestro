@@ -1,0 +1,184 @@
+{
+  "1": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  },
+  "10": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_408.png"
+    },
+    "is_changed": [
+      "cff56ba040ca3bc898925860753c972e8b5fd91e85ecede40e2f84d0aaff4b90"
+    ]
+  },
+  "11": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "10",
+        0
+      ],
+      "alpha": [
+        "10",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "cards_20261011/408_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "13": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_409.png"
+    },
+    "is_changed": [
+      "e3fe95ff315b2686a49925c5a76f1dad36d0d24bd4bf53a99278dd72e447fa44"
+    ]
+  },
+  "14": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "alpha": [
+        "13",
+        1
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "cards_20261011/409_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "16": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_410.png"
+    },
+    "is_changed": [
+      "76d717597e3b4739a5b9e02df67f77b6229c396d26b87058235ae09009cad56d"
+    ]
+  },
+  "17": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "16",
+        0
+      ],
+      "alpha": [
+        "16",
+        1
+      ]
+    }
+  },
+  "18": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "17",
+        0
+      ],
+      "filename_prefix": "cards_20261011/410_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "19": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_411.png"
+    },
+    "is_changed": [
+      "d15388a7fc34a1de5c145d1e57b123d22cf9c6b78a2906043e2ec1e74762c85d"
+    ]
+  },
+  "20": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "19",
+        0
+      ],
+      "alpha": [
+        "19",
+        1
+      ]
+    }
+  },
+  "21": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "20",
+        0
+      ],
+      "filename_prefix": "cards_20261011/411_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "cards_20261011_412.png"
+    },
+    "is_changed": [
+      "de743aeee2701e37923743b87a52d3a3202d40357234335c5b755284f29cd753"
+    ]
+  },
+  "23": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "22",
+        0
+      ],
+      "alpha": [
+        "22",
+        1
+      ]
+    }
+  },
+  "24": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "23",
+        0
+      ],
+      "filename_prefix": "cards_20261011/412_official"
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A real photograph from a live action period fantasy film, a real human actor on a practical set, physically believable skin pores, natural eyes, individually visible hair, hand sewn fabric, worn natural materials, restrained movie lighting, no illustration, no animation, no video game render, no plastic skin, no cosplay snapshot, no text or watermark. Two adult male actors playing Draco and Prince Ralse in the stage opera Maria and Draco, a physical period theater production. Full length wardrobe lineup, separate silhouettes with a clear gap, no touching. On the left Draco: dark short wavy hair, lean young face, blue wool military tunic with muted steel costume breastplate, navy cloak, brown boots, sheathed theatrical sword. On the right Ralse: a dark-haired adult man with neat beard, red military coat, modest brass costume armor, burgundy cloak, dark boots, sheathed theatrical sword. Neither resembles Locke or Setzer. Their costumes are film adaptations, not modern army uniforms. Neutral backstage brick wall and warm theatrical lighting, both actors facing three-quarter toward camera, hands visible. No helmets concealing faces, no crown, no weapons drawn, no text.",
+      "negative_prompt": "illustration, anime, cartoon, 3D game character, glossy plastic skin, text, watermark, extra fingers, duplicate person",
+      "resolution": 0,
+      "images": {}
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 22102606,
+      "steps": 28,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_fasth3_omni_20261022/casting/draco_ralse"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

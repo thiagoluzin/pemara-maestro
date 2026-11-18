@@ -1,0 +1,4 @@
+interface:
+  display_name: "Balance Tuner"
+  short_description: "Especialista em balanceamento e curvas de dificuldade (escola Mi"
+  default_prompt: "Use $balance-tuner para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

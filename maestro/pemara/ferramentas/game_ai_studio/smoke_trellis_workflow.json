@@ -1,0 +1,1 @@
+{"1":{"class_type":"LoadImage","inputs":{"image":"maestro_3d_install_cube.png"}},"2":{"class_type":"MaestroGame3D","inputs":{"image":["1",0],"engine":"trellis2","seed":42}}}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sprite Image Reading"
+  short_description: "Leitura, análise e visualização de imagens e sprites em Python"
+  default_prompt: "Use $sprite-image-reading para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

@@ -1,0 +1,271 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "clip_name2": "byt5_small_glyphxl_fp16.safetensors",
+      "type": "hunyuan_video_15",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "A single unbroken eight-second photorealistic live-action fight between exactly two adult male martial artists in the same stone courtyard as the opening image. Preserve their exact faces, hoods, cloth masks, bare arms, yellow-and-black Scorpion costume on screen left and blue-and-black Sub-Zero costume on screen right, human proportions, afternoon sunlight and courtyard geography. Full bodies and feet remain visible. Real sweat, skin pores, worn fabric, contact shadows and bodily inertia. No cuts.\nDuring the first two seconds, Scorpion steps forward, plants his left foot and rotates his hips into a fast right roundhouse kick toward Sub-Zero's ribs. Sub-Zero blocks the kick visibly with both forearms, bends his knees and yields one short step only after contact. Scorpion retracts his right foot to the ground and follows with one short straight punch; Sub-Zero parries outward and moves his head aside.\nDuring the middle three seconds, Sub-Zero changes level decisively into his recognizable low ice slide counterattack: he compresses his legs, pushes off his rear foot and travels a short distance toward Scorpion with the front leg extended low. A thin patch of frost forms directly beneath the blue fighter's sliding path. His low extended foot visibly reaches Scorpion's lower shin and supporting ankle. This contact causes Scorpion to lose his balance; the fall starts after the low strike. Only Sub-Zero performs this deliberate sliding move; other steps plant and lift naturally.\nDuring the last three seconds, Scorpion falls sideways with the impact vector, absorbs the landing with his forearm and shoulder and completes one short recovery roll. He begins rising from one knee with his hands returning to guard. Sub-Zero visibly brakes the slide, plants a foot, rises into his guard and keeps his attention on Scorpion. Cloth, loose dust and a few dry leaves react with the bodies. The scene ends while both men are still actively recovering, without a held pose.\nA restrained physical camera track slightly toward screen left follows Scorpion's displacement, producing subtle genuine parallax of the stone columns. Keep the contact line unobstructed, the floor visible and the sunlight consistent. The choreography is brisk and forceful at ordinary real-time speed, with readable weight transfer, attack, block, counterattack and consequence. Scorpion's sheathed kunai and secured tether stay at his waist. No dialogue, text, music or added characters.",
+      "clip": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cartoon, animation, video game render, plastic skin, extra people, extra limbs, duplicate hands, fused bodies, identity change, costume change, floating feet, causeless falling, slow motion, freeze, static ending, cut, teleport, morph, text, watermark",
+      "clip": [
+        "2",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "hunyuanvideo15_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "scorpion_subzero_hunyuan_classic_20261110/A01_APPROVED_54c6af10adcf.png"
+    }
+  },
+  "7": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "7",
+        0
+      ],
+      "image": [
+        "20",
+        0
+      ],
+      "crop": "center"
+    }
+  },
+  "9": {
+    "class_type": "HunyuanVideo15ImageToVideo",
+    "inputs": {
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "width": 1280,
+      "height": 720,
+      "length": 193,
+      "batch_size": 1,
+      "start_image": [
+        "20",
+        0
+      ],
+      "clip_vision_output": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "hunyuan_safe_acceleration",
+        0
+      ],
+      "shift": 7.0
+    }
+  },
+  "11": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 50,
+      "denoise": 1.0
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 63478192
+    }
+  },
+  "13": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "14": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "hunyuan_easycache",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ],
+      "cfg": 6.0
+    }
+  },
+  "15": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "14",
+        0
+      ],
+      "sampler": [
+        "13",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "9",
+        2
+      ]
+    }
+  },
+  "16": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 4096,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "fps": 24.0
+    }
+  },
+  "18": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "17",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v03_safe_sage_easycache",
+      "format": "mp4",
+      "codec": "h264",
+      "format.codec": "h264"
+    }
+  },
+  "19": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v03_safe_sage_easycache"
+    }
+  },
+  "hunyuan_content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "20": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "target_width": 1280,
+      "target_height": 720,
+      "padding_color": "black",
+      "interpolation": "lanczos"
+    }
+  },
+  "hunyuan_safe_acceleration": {
+    "class_type": "PemaraHunyuan15SafeAcceleration",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "sage_mode": "fp8_fp32_accum",
+      "disable_dynamic_vram": true,
+      "metrics_prefix": "scorpion_subzero_hunyuan_classic_20261110/T01_hunyuan_v03"
+    }
+  },
+  "hunyuan_easycache": {
+    "class_type": "EasyCache",
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95,
+      "verbose": true
+    }
+  }
+}

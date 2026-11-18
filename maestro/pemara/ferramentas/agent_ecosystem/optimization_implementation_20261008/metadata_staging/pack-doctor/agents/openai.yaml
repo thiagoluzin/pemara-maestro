@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pack Doctor"
+  short_description: "Verificador autônomo do próprio pacote AGENTS TURBO"
+  default_prompt: "Use $pack-doctor para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

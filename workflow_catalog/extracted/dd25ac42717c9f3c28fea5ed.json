@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and mechanical, driven by rapid galloping double bass drums and palm-muted chugging riffs. The mood is tense and visceral. Features a high-pitched, raspy male vocal delivery with sharp, percussive enunciation. Includes a mid-song guitar harmonized solo section and intense tempo shifts to mirror the original's dynamic structure. 190 BPM, D-sharp minor. Limit the COMPLETE song to 128 measures in 4/4, including a final resolved outro. Intro 4 bars, verse 24, chorus 16, verse 24, chorus 16, bridge 8, final chorus 28, outro 8. No additional repetitions.\nComplete song, target duration 172 seconds maximum. Compose the entire ABC arrangement within 164 seconds, including a short outro and a resolved final cadence. Reserve the last 8 seconds for the final chord decay and silence. Finish all sung words before the outro. No endless loop, unfinished solo, or long fade-out. Write explicit measures, no repeat signs; keep intro and interludes brief.",
+      "lyrics": "[Intro]\n(Heavy guitar riff, rapid double bass)\n\n[Verse]\nSombras rastejando pelo ch\u00e3o frio\nCora\u00e7\u00f5es de pedra, sil\u00eancio do rio\nA nuvem negra engole o sol\nO cheiro de ferro, a cor de metal\n\nEles caminham em linha, sem rosto\nUm ex\u00e9rcito de vidro, um destino posto\nA engrenagem gira, o dente m\u00f3i\nO medo que cresce, o suor que cai\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Verse]\nSangue na areia, osso no ch\u00e3o\nA mar\u00e9 subindo, a lua de m\u00e1rmore e sol\nA sombra da torre toca seu rosto\nO f\u00f4lego quebra, o esp\u00edrito posto\n\nOlhos vazios, pupilas de a\u00e7o\nO ritmo \u00e9 o chicote, o sil\u00eancio \u00e9 o la\u00e7o\nA batida acelera, o tempo despenca\nA luz que se apaga, a escurid\u00e3o avan\u00e7a\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Bridge]\n(Guitar Solo, high pitch, harmonized)\nTens! Tens! Tens! Tens!\nO fio puxa! O fio corta!\nTens! Tens! Tens! Tens!\nA carne se abre! O sangue escorre!\n\n[Verse]\nA torre de concreto, o c\u00e9u de chumbo\nO eco do martelo, o som do trombone\nA multid\u00e3o grita, mas ningu\u00e9m ouve\nA corrente aperta, a dor que se prova\n\nA engrenagem para, o ar fica denso\nO cora\u00e7\u00e3o falha, o fim \u00e9 o mesmo\nA m\u00e1scara cai, o rosto se parte\nA luz final, o \u00faltimo aparte\n\n[Chorus]\nRei das Antenas! Puxa o fio!\nA dor \u00e9 o pre\u00e7o, o suor \u00e9 o rio\nRei das Antenas! Corta a carne!\nA m\u00e1quina avan\u00e7a, a alma se arrepende\n\n[Outro]\n(Heavy riff, fast tempo)\nRei das Antenas!\nRei das Antenas!\nRei das Antenas!\n(Fade out with rapid double bass)",
+      "seed": 240005,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

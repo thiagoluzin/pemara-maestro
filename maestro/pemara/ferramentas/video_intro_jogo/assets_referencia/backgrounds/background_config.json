@@ -1,0 +1,127 @@
+{
+  "fase1": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 360,
+    "layer3": {
+      "variants": [
+        2
+      ],
+      "overlapPx": 2
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 448
+    }
+  },
+  "fase2": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 92,
+      "overlapPx": 500
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 420
+    }
+  },
+  "fase3": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 62,
+      "overlapPx": 200
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 420
+    }
+  },
+  "fase4": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 92,
+      "overlapPx": 250
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 448
+    }
+  },
+  "fase5": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 92,
+      "overlapPx": 80
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 448
+    }
+  },
+  "fase6": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 92,
+      "overlapPx": 96
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 448
+    }
+  },
+  "fase7": {
+    "floorY": 800,
+    "floorBottomY": 1056,
+    "bossFloorFrac": 0.82,
+    "bossWalkableTopFrac": 0.6,
+    "bossArenaMargin": 190,
+    "layer2": {
+      "offsetY": 250
+    },
+    "layer3": {
+      "offsetY": 92,
+      "overlapPx": 112
+    },
+    "layer4": {
+      "scale": 0.8,
+      "offsetY": 448
+    }
+  }
+}

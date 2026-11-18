@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "pemara-character-bible@1",
+  "status": "DRAFT_RESEARCH_REQUIRED",
+  "characters": [
+    {
+      "id": "character_1",
+      "origin": "existing",
+      "invariants": [
+        "PREENCHER APOS PESQUISA"
+      ],
+      "references": [],
+      "missingViews": [
+        "front",
+        "profile",
+        "back",
+        "wardrobe_details"
+      ],
+      "research": {
+        "status": "PENDING",
+        "version": "",
+        "reviewer": "",
+        "sources": [],
+        "facts": {
+          "appearance": {
+            "summary": "",
+            "sourceIds": []
+          },
+          "wardrobeMaterials": {
+            "summary": "",
+            "sourceIds": []
+          },
+          "combatMechanics": {
+            "summary": "",
+            "sourceIds": []
+          },
+          "powersAndLimits": {
+            "summary": "",
+            "sourceIds": []
+          },
+          "personalityAndMovement": {
+            "summary": "",
+            "sourceIds": []
+          }
+        },
+        "blockingUnknowns": [
+          "Definir obra, edicao, encarnacao e traje antes das ancoras"
+        ],
+        "adaptations": []
+      }
+    }
+  ]
+}

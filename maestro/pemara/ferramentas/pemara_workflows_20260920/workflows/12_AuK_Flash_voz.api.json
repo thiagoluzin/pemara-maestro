@@ -1,0 +1,21 @@
+{
+  "1": {
+    "class_type": "PemaraAuK",
+    "inputs": {
+      "variant": "Flash",
+      "instruction": "Generate speech saying: Este é um teste de voz do PEMARA.",
+      "seconds": 3.0,
+      "seed": 42
+    }
+  },
+  "2": {
+    "class_type": "SaveAudio",
+    "inputs": {
+      "audio": [
+        "1",
+        0
+      ],
+      "filename_prefix": "PEMARA/AUDIO/auk_flash_candidate"
+    }
+  }
+}

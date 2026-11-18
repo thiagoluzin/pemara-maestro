@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hero Sprite Scaling"
+  short_description: "Ajustar/auditar o TAMANHO e a ESCALA dos heróis jogáveis de"
+  default_prompt: "Use $hero-sprite-scaling para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

@@ -1,0 +1,17 @@
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] A continuous ten-second live-action martial-arts exchange between the EXACT two adult human actors in the opening image. Preserve their faces, hair, proportions, orange-and-blue Goku initially LEFT, navy-white-ochre armored Vegeta initially RIGHT, practical costume textures and warm rocky canyon. Vegeta's brown tail stays wrapped at his waist. Keep the same medium-wide three-quarter side camera and both full bodies and boots visible; restrained tracking follows their retreat.
+
+They are already fighting when the shot begins. FAST, COMPACT COMBINATIONS at real fighting speed, with immediate counters. The next attacker commits while the previous attacking hand is returning. Both read the opponent and react instantly, keeping eyes engaged. A punch accelerates out, touches, and whips straight back in a fraction of a second. A kick snaps out, its knee immediately folds back, and the boot lands. The receiver keeps recoiling AFTER the striking limb has separated. Short connected actions, not individual poses.
+
+Opening combination: Vegeta snaps the opening RIGHT straight into Goku's LEFT forearm block, instantly withdraws it and fires a short LEFT hook into the upper abdomen. Goku folds briefly and takes a catching step; during Vegeta's retraction Goku immediately answers with a quick LEFT jab toward the guard. Vegeta advances after his punches, Goku counters during his forced recovery. This whole opening exchange takes only about two seconds.
+
+Continue without a pause: Goku drives a RIGHT cross at Vegeta's cheek/upper guard, recoils the fist and immediately snaps a LEFT front kick into the armored torso. Vegeta is driven bodily backward and takes two distinct hurried catching steps. Goku retracts and lands the kicking boot immediately, then follows the retreat. During that pursuit Vegeta catches his weight, plants and pivots the LEFT support boot and whips his RIGHT shin into the OUTSIDE of Goku's forward thigh. He retracts and lands at once. Goku's knee yields, his pelvis shifts sideways and the other boot catches his weight. The punches, front kick, pursuit and low counter-kick flow through the middle of the shot.
+
+Closing combination: Vegeta immediately adds a short LEFT straight into Goku's recovering high guard. Goku parries and counters with a quick RIGHT straight. Vegeta recoils, takes a short catching step and immediately returns a RIGHT straight toward Goku's cheek/guard. Goku's head, shoulders and hips are knocked back after contact and a forced step catches him as Vegeta follows. End during the pursuit and recovery, still active.
+
+Nine distinct quick strikes in ten seconds. Punches transfer weight through the hips; stronger body hits force catching steps, blocked jabs cause smaller recoils. Recovery itself flows into the next defense or counter. No stopping to consider the next move, no idle bouncing, no automatic return to the opening pose. Never leave a fist pressed against a face, forearm or torso; never balance with a kicking leg held against the opponent. No rigid sliding feet, floating boots or drunken swaying. Preserve real skin, cloth, hair and armor detail. No cuts, orbiting, camera shake, flashes, powers, transformations, blood, extra people or text.
+
+overall_soundscape: Quick synchronized impacts, distinct footfalls, cloth and light canyon wind. No speech, vocalizations, grunts or music.
+
+non_diegetic_music: None.

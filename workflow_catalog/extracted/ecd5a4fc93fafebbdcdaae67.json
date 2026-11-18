@@ -1,0 +1,110 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit reference image 1 into exactly ONE full body 2D game animation frame. Keep the EXACT SAME character identity, face, hat, outfit, weapons, colors, body proportions and hand-painted art style as reference 1. Change ONLY the pose to: standing in left side profile, firing both pistols horizontally LEFT. Entire subject contained inside canvas with clear margin on every edge. Side profile for a horizontal platform action game. Pure perfectly flat bright magenta #ff00ff background, no scenery, no shadows, no floor, no text. Human face and anatomy unchanged, not caricature. If mounted, keep the exact same rider and horse from reference 1.",
+      "negative_prompt": "different character, different clothes, missing weapon, oversized head, Simpsons, yellow skin, chibi, photorealism, 3d, scenery, gradient, shadow, floor, cropped body, extra limbs, multiple characters, text, watermark",
+      "resolution": 1024,
+      "images.image_1": [
+        "20",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202697000,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_reference_fixed/boss_shoot"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/fixed_boss_reference.png"
+    },
+    "is_changed": [
+      "a023d11e222ad94dd80424c150df17464a3933e4f23dfd2f54c45bbe766ea622"
+    ]
+  }
+}

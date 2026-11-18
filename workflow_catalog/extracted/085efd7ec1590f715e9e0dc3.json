@@ -1,0 +1,110 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Edit reference 1 into one game sprite. The exact SAME rifleman walking LEFT in side profile, right supporting leg under hip and left knee passing forward, holding his same rifle at waist. EXACT SAME colors, face, clothing and hand painted drawing style as reference. Neutral daylight, warm natural brown leather, cream shirt, neutral olive trousers, natural skin. Full body with generous margins. Isolated on perfectly FLAT SATURATED CYAN #00ffff background. No blue lighting, no magenta lighting, no recoloring the subject, no shadows, no ground, no text.",
+      "negative_prompt": "pink subject, purple subject, blue clothes, color cast, chibi, cartoon oversized head, scenery, missing saddle, rider, cropped body, gradient, shadow, ground, text",
+      "resolution": 1024,
+      "images.image_1": [
+        "20",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 202698001,
+      "steps": 20,
+      "cfg": 3.2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/phase1_color_corrected/enemy_walk_4"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/phase1_20260930/fixed_enemy_reference.png"
+    },
+    "is_changed": [
+      "9921272f5977a18801ac8cc0b605ae00dea85cf9bd5b76cd78a609d8f55f9449"
+    ]
+  }
+}

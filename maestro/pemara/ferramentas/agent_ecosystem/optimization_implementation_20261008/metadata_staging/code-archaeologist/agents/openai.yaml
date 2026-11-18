@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Archaeologist"
+  short_description: "Expert in legacy code, refactoring, and understanding undocument"
+  default_prompt: "Use $code-archaeologist para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

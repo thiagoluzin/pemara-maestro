@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.4",
+  "project_id": "nome_do_projeto",
+  "methodology": "h3_ltx25_owner_approved_anchor_rife60_human_qc_assembly",
+  "status": "draft",
+  "primary_orchestration_policy": "policies/primary_take_orchestration_h3_ltx25.json",
+  "engine_policy": {
+    "primary_take_orchestration": {
+      "status": "OWNER_SELECTION_REQUIRED",
+      "version": "primary_take_orchestration_h3_ltx25_v1",
+      "generation_profile": null,
+      "allowed_generation_profiles": [
+        "minimax_h3_fl2va_int8_720p24",
+        "ltx25_two_stage_distilled_960x544p24"
+      ],
+      "fallback_allowed": false,
+      "conditioning_profile": "identity_locked"
+    },
+    "review_motion_pipeline": {
+      "enabled": true,
+      "status": "LOCKED_APPROVED",
+      "version": "h3_ltx25_rife425_midpoint48_retime60_v1",
+      "source_fps": 24,
+      "applies_to_engines": ["minimax_h3", "ltx_2_5"],
+      "source_resolutions": {
+        "minimax_h3": {"width": 1280, "height": 720},
+        "ltx_2_5": {"width": 960, "height": 544}
+      },
+      "delivery_fps": 60,
+      "upscale_allowed_before_human_approval": false,
+      "failure_policy": "fail_closed_never_publish_native24_as_review_fallback"
+    },
+    "audio_directive": {
+      "authority": "owner_only",
+      "owner_will_communicate_per_take_or_project": true,
+      "default_without_explicit_directive": "visual_only",
+      "inherit_from_previous_take": false,
+      "inherit_from_previous_project": false,
+      "native_generation_without_directive": "forbidden",
+      "mix_without_directive": "forbidden"
+    }
+  },
+  "universal_transition_motion_gate": {
+    "required": true,
+    "policy_version": "2.0",
+    "pillars": [
+      "evident_camera",
+      "real_depth",
+      "internal_action",
+      "clear_progression"
+    ],
+    "contract_gate": "python tools/transition_motion_gate.py production_manifest.json --stage contract",
+    "approval_gate": "python tools/transition_motion_gate.py production_manifest.json --stage approval"
+  },
+  "continuous_action_contract": {
+    "required": true,
+    "generated_connector_required_between_takes": true,
+    "crossfade_forbidden": true,
+    "freeze_frame_forbidden": true,
+    "static_tail_forbidden": true,
+    "motion_handoff_required": true,
+    "full_duration_motion_required": true,
+    "three_interval_motion_required": true,
+    "moving_transition_anchors_required": true
+  },
+  "take_execution_contract": {
+    "required": true,
+    "version": "maestro_comfy_controls_v1",
+    "declared_controls_must_exist_in_graph": true,
+    "reference_is_not_anchor": true,
+    "reference_video_is_not_pose_control": true,
+    "model_mode_must_match_conditioning_node": true,
+    "failure_policy": "block_before_input_copy_and_gpu_queue"
+  },
+  "takes": [
+    {
+      "id": "01",
+      "slug": "abertura",
+      "timeline_start_seconds": 0,
+      "target_duration_seconds": 8,
+      "role": "opening",
+      "take_mode": "precision",
+      "continuity_contract": {
+        "character_topology": "declare the exact visible characters, separations, fusions and forbidden anatomy changes",
+        "wardrobe_lock": "declare immutable costume, accessory and absorbed-form clothing",
+        "power_state": "declare the state entering and leaving this take",
+        "entry_motion": "declare body, object and camera direction inherited from the previous cut",
+        "exit_motion": "declare the moving state handed to the next take",
+        "impact_language": "declare contact, recoil, displacement, cloth, dust, debris and environment response",
+        "forbidden_transitions": [
+          "freeze",
+          "static_tail",
+          "crossfade",
+          "reset"
+        ]
+      },
+      "transition": {
+        "is_transition": true,
+        "connects_from": "estado visual anterior",
+        "connects_to": "estado visual seguinte"
+      },
+      "objective": "Apresentar o mundo visual e o clima.",
+      "shot_contract": {
+        "provider_style": "veo_kling",
+        "subject": "ambiente, objeto ou personagem principal do take",
+        "action": "acao fisica visivel do take",
+        "scene": "contexto visual aprovado",
+        "camera": {
+          "angle": "eye level, low angle, high angle ou top shot",
+          "movement": "dolly, truck, crane, arc, pan, tilt, rack focus ou drone",
+          "lens": "wide, normal ou telephoto",
+          "focus": "deep focus, rack focus ou subject locked"
+        },
+        "lighting": "mudanca de luz obrigatoria",
+        "mood": "clima emocional do take",
+        "motion_beats": {
+          "start": "estado inicial visivel",
+          "middle": "transformacao, travessia ou acao central",
+          "end": "estado final visivel"
+        },
+        "transition_motion_contract": {
+          "camera_evidence": {
+            "movement": "physical dolly, truck, crane, tracking or orbit",
+            "physical_translation": true,
+            "perspective_change": "describe the visible viewpoint and overlap change"
+          },
+          "real_depth": {
+            "foreground": "foreground subject or occluder",
+            "midground": "midground action or geography",
+            "background": "background destination or environment",
+            "differential_motion": "describe different apparent speeds across all three planes",
+            "occlusion_or_scale_change": "describe a coherent overlap, occlusion or scale change"
+          },
+          "internal_action": {
+            "primary_event": "one physical event with a visible consequence",
+            "independent_elements": [
+              "first element moving independently from the camera",
+              "second element moving independently from the camera"
+            ],
+            "camera_independent": true
+          },
+          "progression": {
+            "start": "readable initial state",
+            "middle": "event develops and changes the scene",
+            "end": "materially changed final state",
+            "end_state_change": "what remains different at the cut",
+            "exit_or_cut": "hard cut, musical impact or directional exit into the next take"
+          },
+          "continuity": {
+            "editorial_method": "generated_action_connector",
+            "continuous_action": true,
+            "motion_handoff": true,
+            "action_occupies_full_duration": true,
+            "entry_motion": "describe the exact body, object and camera velocity inherited from the preceding take",
+            "exit_motion": "describe the exact moving state handed into the following take",
+            "interval_motion": {
+              "early_0_30": "describe useful inherited motion during the first 30 percent",
+              "middle_30_70": "describe the irreversible action developing during the middle 40 percent",
+              "late_70_100": "describe consequence and moving handoff through the final 30 percent"
+            },
+            "moving_anchor_context": {
+              "start_source": "source take and frame with visible motion before and after",
+              "start_has_motion_before_and_after": true,
+              "end_source": "destination take and frame with visible motion before and after",
+              "end_has_motion_before_and_after": true
+            },
+            "crossfade_frames": 0,
+            "freeze_frames": 0,
+            "static_hold_frames": 0
+          }
+        },
+        "visual_references": {
+          "start_frame": "",
+          "start_frame_json": "",
+          "end_frame": "",
+          "end_frame_json": "",
+          "style_refs": [],
+          "object_refs": []
+        },
+        "variants": {
+          "count": 4,
+          "duration_seconds": 6,
+          "select_before_final": true
+        },
+        "negative_rules": [
+          "no slideshow",
+          "no static hold",
+          "no digital zoom only",
+          "no flat 2D parallax only",
+          "no camera drift without perspective change",
+          "no particles or light as the only event",
+          "no reset or static tail",
+          "no fake text",
+          "no camera rig",
+          "no intrusive characters",
+          "no colored triangles or bands"
+        ]
+      },
+      "base_image": {
+        "status": "pending",
+        "model": "FLUX.1 Krea dev FP8",
+        "prompt": "",
+        "file": "",
+        "metadata": "",
+        "json_rule": "required_sidecar_before_video"
+      },
+      "video_generation": {
+        "profile": "owner_selection_required",
+        "engine_selection_required": true,
+        "allowed_profiles": [
+          "minimax_h3_fl2va_int8_720p24",
+          "ltx25_two_stage_distilled_960x544p24"
+        ],
+        "fallback_allowed": false,
+        "backend": "pending_owner_selection",
+        "text_encoder": "engine_managed_after_selection",
+        "conditioning_profile": "identity_locked",
+        "width": 0,
+        "height": 0,
+        "fps": 0,
+        "frames": 0,
+        "steps": 0,
+        "guidance": 0.0
+      },
+      "control_claims": {
+        "anchor_binding": "first_last_exact",
+        "motion_binding": "prompt_guided",
+        "allowed_anchor_binding": [
+          "none",
+          "first_last_exact",
+          "timeline_exact",
+          "references_only"
+        ],
+        "allowed_motion_binding": [
+          "prompt_guided",
+          "reference_video",
+          "exact_pose"
+        ],
+        "rule": "timeline_exact must be implemented as adjacent first-last segments; exact_pose must use a graph with a real pose-conditioning input"
+      },
+      "audio_directive": {
+        "status": "awaiting_owner_directive",
+        "authority": "owner_only",
+        "scope": "this_take",
+        "mode": "visual_only",
+        "inherit_from_previous_take": false,
+        "source_file": "",
+        "timing": "",
+        "mix_instructions": "",
+        "owner_approval": "pending"
+      },
+      "video": {
+        "status": "pending",
+        "preview_model": "MiniMax H3 FL2VA pruned INT8 ConvRot + Qwen3-VL-32B",
+        "final_model": "owner-approved MiniMax H3 take + RIFE 4.6 + RealESRGAN FHD",
+        "provider_profile": "minimax_h3_take_contract@2026-08-16",
+        "output_preview": "",
+        "output_final": ""
+      },
+      "motion_layers": {
+        "camera": "evident physical translation with visible perspective change",
+        "foreground": "fastest coherent displacement, overlap or occlusion change",
+        "midground": "independent action and medium differential displacement",
+        "background": "slowest coherent displacement with stable geography",
+        "internal_action": "one physical event plus at least two independently moving elements",
+        "lighting_particles": "supporting motion only; never the sole event"
+      },
+      "animation_prompt": "Animate this approved image as a real cinematic shot, not a living photo. Use evident physical camera translation, real three-plane depth, one physical event plus two independent scene motions, and materially different beginning, middle and end states. Finish on a motivated cut or directional exit. Preserve approved identity, geography, objects, colors and style. No text, watermark or native audio.",
+      "negative_rules": [
+        "no face morphing",
+        "no extra characters",
+        "no fake text",
+        "no watermark",
+        "no native audio",
+        "no exaggerated motion"
+      ],
+      "qc": {
+        "status": "pending",
+        "metadata": "",
+        "contact_sheet": "",
+        "first_frame": "",
+        "mid_frame": "",
+        "last_frame": "",
+        "approval_criteria": [
+          "identity preserved",
+          "evident physical camera movement and perspective change",
+          "real foreground, midground and background depth",
+          "internal action independent from the camera",
+          "clear progression through different start, middle and end states",
+          "no artifacts"
+        ],
+        "transition_motion_gate": {
+          "status": "pending",
+          "evident_camera": false,
+          "real_depth": false,
+          "internal_action": false,
+          "clear_progression": false,
+          "continuous_action": false,
+          "motion_across_all_intervals": false,
+          "moving_anchor_context": false,
+          "no_crossfade": false,
+          "no_freeze": false,
+          "no_static_tail": false,
+          "no_reset": false,
+          "evidence": "contact sheet and reviewed MP4"
+        },
+        "rejection_reasons": []
+      }
+    }
+  ]
+}

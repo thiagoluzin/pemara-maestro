@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Video Motion Director"
+  short_description: "Direção de movimento e QC temporal de takes H3"
+  default_prompt: "Use $pemara-video-motion-director para dirigir movimento e revisar takes MiniMax H3 no Maestro, preservando identidade, ação, motor e aprovação exata."

@@ -1,0 +1,345 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "r34l1sm\nFor the target video, at 0.00 seconds, <Picture 1> is fully referenced. Keep the photograph's same two REAL HUMAN ACTORS, faces, hair, body sizes, clothes, light and rocky valley. The SHORTER WHITE-AND-GOLD ARMORED man is the dominant attacker. The TALLER ORANGE-CLAD man is the overwhelmed defender. A ten-second LIVE-ACTION FILM SEQUENCE with THREE SHOTS and exactly THREE forceful strikes by the armored attacker. The defender's attempts to protect himself FAIL. Both retain black hair. No powers or aura in this opening take. Physical normal-speed action throughout.\n\nintegrated_multimodal_description: [Shot 1, 00:00.000–00:03.200] From Picture 1 the armored fighter immediately steps hard into range and twists his hips into ONE right straight punch into the orange fighter's abdomen. The camera rapidly but smoothly dollies closer from the opening full-body view to a waist-up two-shot, keeping fist, abdomen and both faces visible. Show the fist reach and compress the cloth BEFORE the orange fighter folds sharply around the impact. His elbows drop, his torso bends, his rear foot scrapes backward and one knee buckles under the loss of balance. The armored attacker retracts his right fist and takes the space the defender loses. Keep this contact and complete first recoil in this shot. Their expressions show effort and pain, with mouths closed and no voice.\n[Shot 2, 00:03.200–00:06.200] Cut during the same continuing stagger to a tighter three-quarter angle on the SAME south side of the action axis. Preserve the exact separation, bent posture and ongoing motion. The orange fighter is still folded from the body punch and tries to raise his near forearm. Before he can close the guard, the armored fighter plants his forward foot, turns his torso and lands ONE short left hook against the exposed cheek beside the failing guard. The contact is clearly visible in this angle before the orange fighter's head and shoulders turn away. His upper body twists, he crosses an unsteady recovery step and stumbles backward, unable to counterattack. Loose hair and dusty cloth follow his body with delayed motion. The armored fighter remains planted and immediately follows the retreat; he is never knocked backward. Hold the contact, head reaction and stumbling feet in the same shot before the next cut.\n[Shot 3, 00:06.200–00:10.000] Cut on that continuing backward stumble to a LOW SIDE-ON FULL-BODY view, still on the same side of the axis. Both feet, the space between the men and the mountain remain visible. The armored fighter closes with a real step, plants his support foot, chambers one leg and drives ONE powerful side kick into the orange fighter's exposed torso. Keep the boot touching the cloth in frame BEFORE the defender is thrown backward several body lengths. The attacker retracts the kick and lands firmly. The camera physically dollies backward with the displaced orange fighter, widening to show his feet losing traction, his heavy landing and the dusty skid along the stone. The defender drops onto one knee and a bracing hand, then strains to push himself upward while the armored attacker advances into the space. End with the orange fighter still struggling to regain his base and the armored fighter still approaching, not in matching standing guards. Show bodily weight and ground friction, not a weightless wire float. Foreground rocks shift against the distant mountain as the camera moves. No flashes, debris clouds or cutaways may conceal a contact.\n\noverall_soundscape: Dry desert wind and audible planted footsteps, gritty skids, three distinct deep body-impact transients synchronized to the actual contacts, a heavy landing and falling grit. Only these physical sounds and background instrumentation. No speech, screams, grunts, vocal breathing, narration or singing.\n\nnon_diegetic_music: Low restrained instrumental drums and sustained dark strings under the impacts, without vocals or quoted melody.\n\n[Human realism direction]\nPreserve the reference identity, age, facial proportions, skin tone, costume and lighting. Natural skin microtexture, subtle pores, varied roughness and realistic highlights; natural eyes, muscle tension and expressions. Avoid waxy or plastic skin, beauty smoothing and airbrushed faces. Preserve the requested camera behavior; realism does not require camera shake.\n\n[Combat physical direction]\nExecute only the specified choreography, attacks, defenses, powers and outcome. Preserve each actor's identity, weapon ownership, geography and accumulated damage. Physical chain for every exchange: anticipation, ground-supported propulsion through legs and hips, trajectory, visible contact or evasion, momentum transfer, displacement, reaction, recovery. A block redirects momentum; a miss carries inertia. Balance, friction, traction, gravity and center of mass govern motion. Reactions caused by impacts start after contact; anticipatory defenses remain allowed. Feet step, pivot, skid or drag visibly, never slide rigidly. Grapples require grip, tension and leverage; jumps require compression, takeoff, ballistic travel and landing. Cloth, hair and loose material follow bodies with delayed secondary motion; environmental response follows the impact. Keep attack lines, contact and body displacement readable in the requested camera. Continue motion between actions without automatic guard resets, freeze poses, teleporting, limb fusion or interpenetration. No artificial slow motion or speed ramps unless requested. No flashes, cuts or camera shake to conceal missing contact. Finish requested attacks before any subsequent dialogue, preserving the exact dialogue and requested audio. Do not invent extra opponents, injuries, dialogue or soundtracks. Follow the requested intensity and the character's established abilities.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "project_core_combat_realism_aux_physics_ablation_r04",
+        "roles": [
+          "combat",
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "local_comfy",
+          "model": "gemma4_e2b_it_bf16.safetensors",
+          "evidence": "The scene descriptions and reference image clearly depict two human actors engaged in a fight sequence.",
+          "externalDataTransfer": false,
+          "evidence_sha256": "a9af369d512cce10c03df5db2bf122f502b5b3691e8a11ad85c9f011703a6a6a"
+        },
+        "adapters": [
+          {
+            "role": "combat",
+            "file": "H3_Combat_V2.safetensors",
+            "strength": 0.8,
+            "bytes": 155110280,
+            "sha256": "5b3edb09e9d6029439badf9bc9db4ba4a355ae679b0810888de82c4793c0bac8",
+            "repo": "JOKER141/MiniMax-H3-Combat-Base-V2",
+            "revision": "7b3c5b7157d66517f5bd8f5d3fa8fd2c66bc4d11"
+          },
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [
+          "anticipation",
+          "propulsion",
+          "contact_or_evasion",
+          "displacement",
+          "reaction",
+          "recovery"
+        ],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "DIAGNOSTIC_PENDING_VISUAL_REVIEW",
+        "projectScopedOverride": true,
+        "presetUnchanged": true,
+        "experimental_auxiliary_removed": "wushu_spatial_physics_clean_3000_pruned.safetensors"
+      }
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110703
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "18",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_vegeta_saiyan_live_action_10s_20261106/T01_r04_diagnostic/T01_core_combat_realism_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "goku_vegeta_A04_OWNER_APPROVED.png"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_scene_combat": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "H3_Combat_V2.safetensors",
+      "strength_model": 0.8
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_combat",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  },
+  "pemara_scene_content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  }
+}

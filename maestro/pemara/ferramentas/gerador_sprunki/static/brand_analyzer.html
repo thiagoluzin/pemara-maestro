@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Analyzer — Portal Sprunki</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0d0d1a;
+  color: #f0f0f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 56px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.topbar a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; }
+.topbar a:hover { color: #fff; }
+.topbar h1 { font-size: 17px; font-weight: 600; color: #5eead4; flex: 1; }
+.topbar .tag-mode { font-size: 11px; background: rgba(94,234,212,0.12); color: #5eead4; padding: 3px 10px; border-radius: 20px; }
+
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* ── Painel esquerdo ─────────────────────────────────────────── */
+.panel-left {
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 4px;
+}
+
+/* Drop zone */
+.drop-zone {
+  border: 2px dashed rgba(94,234,212,0.25);
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: rgba(94,234,212,0.6);
+  background: rgba(94,234,212,0.04);
+}
+.drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.drop-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.drop-text { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.5; }
+.drop-text strong { color: #5eead4; }
+
+#preview-wrap { display: none; }
+#brand-preview {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px;
+}
+.change-img-btn {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.change-img-btn:hover { color: #5eead4; }
+
+/* Campos */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: rgba(255,255,255,0.4); }
+.field input, .field textarea {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #f0f0f8;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: rgba(94,234,212,0.45);
+}
+.field textarea { resize: vertical; min-height: 60px; }
+
+/* Checkboxes */
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.15s;
+}
+.check-item:hover { border-color: rgba(94,234,212,0.3); color: #fff; }
+.check-item input { accent-color: #14b8a6; width: 14px; height: 14px; }
+
+.btn-generate {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #14b8a6, #0e7490);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.1s;
+  width: 100%;
+}
+.btn-generate:hover { filter: brightness(1.12); }
+.btn-generate:active { transform: scale(0.98); }
+.btn-generate:disabled { filter: brightness(0.5); cursor: not-allowed; }
+
+/* ── Painel direito ──────────────────────────────────────────── */
+.panel-right {
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Análise de cores */
+.palette-display { display: flex; gap: 10px; flex-wrap: wrap; }
+.swatch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.swatch-circle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.12);
+}
+.swatch-hex { font-size: 10px; color: rgba(255,255,255,0.4); font-family: monospace; }
+.swatch-name { font-size: 11px; color: rgba(255,255,255,0.5); }
+.swatch-pct { font-size: 10px; color: rgba(255,255,255,0.3); }
+
+/* Tags de estilo */
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.style-tag {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(94,234,212,0.1);
+  color: #5eead4;
+  border: 1px solid rgba(94,234,212,0.2);
+}
+
+/* Prompt gerado */
+.prompt-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  position: relative;
+}
+.copy-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+
+/* Progress / resultado */
+.progress-wrap {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.spinner {
+  width: 44px; height: 44px;
+  border: 3px solid rgba(94,234,212,0.2);
+  border-top-color: #14b8a6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.progress-bar-wrap {
+  width: 100%; height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #14b8a6, #60d5fa);
+  border-radius: 4px;
+  transition: width 0.3s;
+  width: 0%;
+}
+
+.result-card {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.result-card img {
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.result-actions { display: flex; gap: 10px; }
+.btn-sm {
+  padding: 10px 20px; border-radius: 10px;
+  font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer;
+  transition: filter 0.15s;
+}
+.btn-sm:hover { filter: brightness(1.15); }
+.btn-dl { background: linear-gradient(135deg, #14b8a6, #0e7490); color: #fff; }
+.btn-cl { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 12px;
+  color: rgba(255,255,255,0.2);
+  font-size: 14px;
+  min-height: 300px;
+}
+.empty-state span { font-size: 48px; }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="/">← Portal</a>
+  <h1>🏢 Brand Analyzer</h1>
+  <span class="tag-mode">Flux.1-dev + LoRA Sprunki</span>
+</nav>
+
+<div class="main">
+
+  <!-- Painel esquerdo: input -->
+  <div class="panel-left">
+
+    <!-- Upload -->
+    <div>
+      <div class="section-title">Imagem da Marca</div>
+      <div class="drop-zone" id="drop-zone">
+        <input type="file" id="img-input" accept="image/*" onchange="handleFile(this.files[0])">
+        <span class="drop-icon">🏢</span>
+        <div class="drop-text">
+          <strong>Clique ou arraste</strong> o logo ou foto<br>
+          PNG, JPG, WEBP — qualquer tamanho
+        </div>
+      </div>
+      <div id="preview-wrap">
+        <img id="brand-preview" alt="Preview da marca">
+        <div class="change-img-btn" onclick="resetImage()">Trocar imagem</div>
+      </div>
+    </div>
+
+    <!-- Nome da marca -->
+    <div class="field">
+      <label>Nome da Marca</label>
+      <input type="text" id="brand-name" placeholder="Ex: Nescau, Coca-Cola, Nike...">
+    </div>
+
+    <!-- Hints manuais -->
+    <div>
+      <div class="section-title" style="margin-bottom:8px">Hints (opcional)</div>
+      <div class="check-grid">
+        <label class="check-item">
+          <input type="checkbox" id="has-mascot"> Tem mascote
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="is-food"> Alimento/bebida
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="is-sport"> Esporte/tech
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="is-kids"> Público infantil
+        </label>
+      </div>
+    </div>
+
+    <!-- Extra -->
+    <div class="field">
+      <label>Detalhe extra (opcional)</label>
+      <textarea id="extra-desc" placeholder="Ex: adicionar elementos de cacau, cor de destaque dourada..."></textarea>
+    </div>
+
+    <button class="btn-generate" id="btn-gen" onclick="startGeneration()" disabled>
+      🔍 Analisar e Gerar Sprunki
+    </button>
+
+  </div>
+
+  <!-- Painel direito: resultados -->
+  <div class="panel-right" id="panel-right">
+
+    <div class="empty-state" id="empty-state">
+      <span>🎨</span>
+      Envie uma imagem de marca para começar
+    </div>
+
+    <!-- Análise de cores (aparece após análise) -->
+    <div style="display:none" id="analysis-section">
+
+      <div class="section-title">Paleta Extraída</div>
+      <div class="palette-display" id="palette-display"></div>
+
+      <div class="section-title" style="margin-top:16px">Tags de Estilo (CLIP)</div>
+      <div class="tag-list" id="style-tags"></div>
+
+      <div class="section-title" style="margin-top:16px">Prompt Gerado</div>
+      <div class="prompt-box" id="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt()">Copiar</button>
+        <span id="prompt-text"></span>
+      </div>
+
+    </div>
+
+    <!-- Progresso -->
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="spinner"></div>
+      <div id="progress-text" style="font-size:15px;font-weight:600">Analisando marca...</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Resultado final -->
+    <div class="result-card" id="result-card">
+      <div style="font-size:13px;font-weight:600;color:#5eead4">✓ Sprunki gerado!</div>
+      <img id="result-img" alt="Sprunki gerado">
+      <div class="result-actions">
+        <button class="btn-sm btn-dl" onclick="downloadResult()">⬇ Baixar PNG</button>
+        <button class="btn-sm btn-cl" onclick="resetResult()">Gerar outro</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let currentFile    = null;
+let currentPromptId = null;
+let pollInterval   = null;
+let lastResultUrl  = null;
+
+// ── Upload ────────────────────────────────────────────────────────────────────
+
+function handleFile(file) {
+  if (!file) return;
+  currentFile = file;
+  const url   = URL.createObjectURL(file);
+  document.getElementById('brand-preview').src = url;
+  document.getElementById('drop-zone').style.display   = 'none';
+  document.getElementById('preview-wrap').style.display = 'block';
+  document.getElementById('btn-gen').disabled = false;
+  document.getElementById('empty-state').style.display = 'none';
+}
+
+function resetImage() {
+  currentFile = null;
+  document.getElementById('img-input').value  = '';
+  document.getElementById('drop-zone').style.display   = 'block';
+  document.getElementById('preview-wrap').style.display = 'none';
+  document.getElementById('btn-gen').disabled = true;
+  document.getElementById('analysis-section').style.display = 'none';
+  document.getElementById('result-card').style.display  = 'none';
+  document.getElementById('empty-state').style.display  = 'flex';
+}
+
+// Drag & drop
+const dz = document.getElementById('drop-zone');
+dz.addEventListener('dragover',  e => { e.preventDefault(); dz.classList.add('dragover');    });
+dz.addEventListener('dragleave', e => { dz.classList.remove('dragover'); });
+dz.addEventListener('drop',      e => { e.preventDefault(); dz.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+
+// ── Geração ───────────────────────────────────────────────────────────────────
+
+async function startGeneration() {
+  if (!currentFile) return;
+
+  const brandName = document.getElementById('brand-name').value.trim() || 'custom';
+
+  // Mostra progresso
+  document.getElementById('progress-wrap').style.display  = 'flex';
+  document.getElementById('result-card').style.display    = 'none';
+  document.getElementById('analysis-section').style.display = 'none';
+  document.getElementById('progress-text').textContent    = 'Analisando cores e estilo...';
+  document.getElementById('progress-fill').style.width    = '10%';
+  document.getElementById('btn-gen').disabled             = true;
+
+  const fd = new FormData();
+  fd.append('image',       currentFile);
+  fd.append('brand_name',  brandName);
+  fd.append('extra_desc',  document.getElementById('extra-desc').value.trim());
+  fd.append('has_mascot',  document.getElementById('has-mascot').checked);
+  fd.append('is_food',     document.getElementById('is-food').checked);
+  fd.append('is_sport',    document.getElementById('is-sport').checked);
+  fd.append('is_kids',     document.getElementById('is-kids').checked);
+
+  try {
+    const resp = await fetch('/api/analyze_brand', { method: 'POST', body: fd });
+    const data = await resp.json();
+
+    if (data.status === 'error') throw new Error(data.message);
+
+    // Mostra análise
+    showAnalysis(data);
+
+    document.getElementById('progress-text').textContent = 'Gerando na RTX 5080...';
+    document.getElementById('progress-fill').style.width = '20%';
+
+    currentPromptId = data.prompt_id;
+    startPolling(data.prompt_id);
+
+  } catch (e) {
+    document.getElementById('progress-text').textContent = 'Erro: ' + e.message;
+    document.getElementById('btn-gen').disabled = false;
+  }
+}
+
+function showAnalysis(data) {
+  const section = document.getElementById('analysis-section');
+  section.style.display = 'block';
+
+  // Paleta
+  const paletteEl = document.getElementById('palette-display');
+  paletteEl.replaceChildren();
+  (Array.isArray(data.palette) ? data.palette : []).slice(0, 6).forEach(color => {
+    const hex = /^#[0-9a-f]{6}$/i.test(String(color.hex || '')) ? String(color.hex) : '#000000';
+    const card = document.createElement('div');
+    card.className = 'swatch-card';
+    const circle = document.createElement('div');
+    circle.className = 'swatch-circle';
+    circle.style.backgroundColor = hex;
+    const hexLabel = document.createElement('div');
+    hexLabel.className = 'swatch-hex';
+    hexLabel.textContent = hex;
+    const name = document.createElement('div');
+    name.className = 'swatch-name';
+    name.textContent = String(color.name || '').slice(0, 80);
+    const percentage = document.createElement('div');
+    percentage.className = 'swatch-pct';
+    percentage.textContent = `${Math.max(0, Math.min(100, Number(color.pct) || 0))}%`;
+    card.append(circle, hexLabel, name, percentage);
+    paletteEl.appendChild(card);
+  });
+
+  // Tags
+  const tagsEl = document.getElementById('style-tags');
+  tagsEl.replaceChildren();
+  (Array.isArray(data.style_tags) ? data.style_tags : []).slice(0, 20).forEach(rawTag => {
+    const tag = document.createElement('span');
+    tag.className = 'style-tag';
+    tag.textContent = String(rawTag || '').slice(0, 120);
+    tagsEl.appendChild(tag);
+  });
+
+  // Prompt
+  document.getElementById('prompt-text').textContent = data.prompt || '';
+}
+
+function startPolling(promptId) {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(async () => {
+    const r = await fetch(`/api/status/${promptId}`);
+    const d = await r.json();
+
+    const pct = d.progress || 0;
+    document.getElementById('progress-fill').style.width = Math.max(20, pct) + '%';
+    if (d.status === 'queued')     document.getElementById('progress-text').textContent = 'Na fila da GPU...';
+    if (d.status === 'generating') document.getElementById('progress-text').textContent = `Gerando... ${pct}%`;
+
+    if (d.status === 'done') {
+      clearInterval(pollInterval);
+      document.getElementById('progress-wrap').style.display = 'none';
+      const card = document.getElementById('result-card');
+      card.style.display = 'flex';
+      const img = document.getElementById('result-img');
+      img.src = d.output;
+      lastResultUrl = d.output;
+      document.getElementById('btn-gen').disabled = false;
+    }
+
+    if (d.status === 'error') {
+      clearInterval(pollInterval);
+      document.getElementById('progress-text').textContent = 'Erro: ' + (d.error || '?');
+      document.getElementById('btn-gen').disabled = false;
+    }
+  }, 1000);
+}
+
+function downloadResult() {
+  if (!lastResultUrl) return;
+  const a = document.createElement('a');
+  a.href     = lastResultUrl;
+  a.download = `sprunki_brand_${Date.now()}.png`;
+  a.click();
+}
+
+function resetResult() {
+  document.getElementById('result-card').style.display = 'none';
+  document.getElementById('progress-wrap').style.display = 'none';
+}
+
+function copyPrompt() {
+  const txt = document.getElementById('prompt-text').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar', 1500);
+  });
+}
+</script>
+</body>
+</html>

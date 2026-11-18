@@ -1,0 +1,40 @@
+{
+    "baseline":  {
+                    "commit":  "2a8649f5d7153f4e166b4579cbd0dd67cff7e7b8",
+                    "tag":  "baseline-0.1.0",
+                    "tag_commit":  "2a8649f5d7153f4e166b4579cbd0dd67cff7e7b8"
+                },
+    "qwen":  {
+                 "endpoint":  "http://127.0.0.1:11436/v1/models",
+                 "model":  "qwen3.8-27b-uncensored-yarn-524k",
+                 "status":  "online"
+             },
+    "timestamp":  "2026-08-21T15:33:26Z",
+    "baseline_checks":  {
+                            "npm_test":  {
+                                             "dsh_plugin":  "1/1 pass",
+                                             "launcher":  "2/7 (5 spawn EPERM - sandbox)",
+                                             "note":  "run under DSH Windows sandbox: in-memory suites pass; 3 files (cli, crash-recovery, launcher) blocked by documented spawn-EPERM sandbox boundary, not code",
+                                             "qwen_profile":  "3/3 pass",
+                                             "durable_task_store":  "8/8 pass"
+                                         },
+                            "manifest_check":  "pass (37 files)",
+                            "syntax_check":  "pass (node --check all .mjs/.mts)",
+                            "cli_smoke":  "pass (create/status/list against temp db)"
+                        },
+    "upstreams":  {
+                      "reversa":  "f3c36892e8aefa44f020f7ad74917089e67ddaa3",
+                      "deepseek_harness":  "141eb6fef83422698aef7a981029e843e8161534"
+                  },
+    "ledger":  {
+                   "effects":  0,
+                   "schema_version":  1,
+                   "wal_checkpoint":  "TRUNCATE",
+                   "copy_sha256":  "C4CE90817C2C3A6AFBE418C715BAF1937A245C99B323FE1DC154AE8FAA5E3196",
+                   "path":  ".runtime/dsh-home/pemara/ledger.sqlite",
+                   "events":  39,
+                   "copy_path":  "evidence/baseline-20260821/ledger-copy.sqlite",
+                   "tasks":  8
+               },
+    "task":  "QB-baseline-0"
+}

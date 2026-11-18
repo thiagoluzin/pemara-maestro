@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Traditional Thrash Metal, aggressive and raw, heavy distorted guitars, thunderous double-bass drums, punchy low-end bass, powerful male vocals, fast tempo, high energy, no spoken words\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nConcrete cracks beneath the feet\nShadows stretch across the street\nThe sirens wail in hollow tune\nBeneath the rust and broken moon\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Verse]\nSteel bars bend but do not break\nEvery step is for the sake\nOf the ones who fell behind\nLeaving dust on the blind\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Bridge]\nRise up from the ash and bone\nMake the silence scream and groan\nNo mercy in the iron gate\nJust the rhythm of the fate\n\n[Chorus]\nThis is our concrete dominion\nWhere the broken find their prison\nScream until the walls give way\nChase the night until it's day\n\n[Outro]\nDominion... falls... silent",
+      "abc": "X:1\nT:\nM:2/4\nL:1/16\nQ:1/4=93\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% intro\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\n% verse\nV: Vocal\n\"D#m\"d4d3d-|\"D#m\"d2d2d2c2|\"D#m\"d2z6|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d3d-|\"D#m\"d2d2c2c2|\"D#m\"d2z6|\"D#m\"z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d3f-|\"D#m\"f2d2cc3|\"D#m\"d4z4|\"D#m\"z6c2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d3f-|\"D#m\"f2d2c2c2|\"D#m\"d4z4|\"D#m\"z2a2g2f2|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"a4d2df-|\"F#\"f2g2z2gf|\"C#\"g2g2g2a2|\"D#m\"gfd2z4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"a2d2d2df-|\"F#\"f2g2g2z2|\"C#\"g2gg3a2|gfd2d4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\ndD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\n% verse\nV: Vocal\n\"D#m\"d4d3d-|\"D#m\"d2d2c2c2|\"D#m\"d4z4|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d3f-|\"D#m\"f2d2c2c2|\"D#m\"d4z4|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d3f-|\"D#m\"f2d2c2c2|\"D#m\"d4z4|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d4d4|\"D#m\"f3f3g2|\"D#m\"a8|z2a2g2f2|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"D#m\"a4d2df-|\"F#\"f2g2z2gf|\"C#\"g2g2g2a2|\"D#m\"gfd2z4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"a2d2d2df-|\"F#\"f2g2g2z2|\"C#\"g2gg3a2|gfd2d4|\nV: Ins\nZ4|\n% interlude\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD,D,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDD,D,DD,D,DD,|D,DD,D,^^C2^C2|DD,D,DD,D,DD,|D,DD,D,^^G2F2|\n% verse\nV: Vocal\n\"D#m\"D4D3F-|\"D#m\"F2D2C2C2|\"D#m\"D4z4|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"D4D3F-|\"D#m\"F2D2C2C2|\"D#m\"D4z4|\"D#m\"z6C2|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"D4D3F-|\"D#m\"F2D2C2C2|\"D#m\"D4z4|\"D#m\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"D4D3F-|\"D#m\"F2D2C2C2|\"D#m\"D4z4|\"D#m\"z8|\nV: Ins\nZ3|z4F2z2|\n% interlude\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD2D2DDDD|FDDDDDDD|FDDDDDDD|FDDDFDDD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nFDDDDDDD|FDDDDDDD|FDDDDDDD|FDDDFDDD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nd6d2-|d6de|fedcBAGF|E8|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDEFGABcB|AGFEDEFG|A4A4|A4A4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nFDDDFDDD|FDDDFDDD|FDDDFDDD|FDDDFDDD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z2a2g2f2|\nV: Ins\nFDDDFDDD|FDDDFDDD|FDDDFDDD|F2z6|\n% chorus\nV: Vocal\n\"D#m\"a4d2df-|\"F#\"f2g2z2gf|\"C#\"g2g2g2a2|\"D#m\"gfd2z4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"a2d2d2df-|\"F#\"f2g2g2z2|\"C#\"g2gg3a2|gfd2d4|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z8|\"D#m\"z6c2|\"D#m\"d3dz4|\"D#m\"z8|\nV: Ins\nDz2Dz2dz|zdz6|Z2|\nV: Vocal\n\"D#m\"f4z4|\"D#m\"z8|\"D#m\"f3dz4|\"D#m\"z8|\nV: Ins\nZ4|\n% outro\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nDDDDDDDD|FDDDDDDD|FDDDDDDD|FDDDFDDD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\"D#m\"z8|\nV: Ins\nFDDDDDDD|FDDDDDDD|FDDDDDDD|FDDDFDDD|\nV: Vocal\n\"D#m\"z8|\"D#m\"z8|\nV: Ins\nD2z6|Z|",
+      "seed": 1306891695,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 1306891695,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_1d113ca939d8",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "3": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 56,
+      "steps": 12,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": [
+        "108",
+        0
+      ],
+      "positive": [
+        "299",
+        0
+      ],
+      "negative": [
+        "299",
+        1
+      ],
+      "latent_image": [
+        "87",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 43,
+      "steps": 12,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": [
+        "40",
+        0
+      ],
+      "positive": [
+        "98",
+        0
+      ],
+      "negative": [
+        "98",
+        1
+      ],
+      "latent_image": [
+        "98",
+        2
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "dino_v3_L_naf_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 42,
+      "steps": 20,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": [
+        "126",
+        0
+      ],
+      "positive": [
+        "91",
+        0
+      ],
+      "negative": [
+        "91",
+        1
+      ],
+      "latent_image": [
+        "91",
+        2
+      ]
+    }
+  },
+  "23": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 42,
+      "steps": 12,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": [
+        "126",
+        0
+      ],
+      "positive": [
+        "94",
+        0
+      ],
+      "negative": [
+        "94",
+        1
+      ],
+      "latent_image": [
+        "94",
+        2
+      ]
+    }
+  },
+  "40": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "trellis_2_bf16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "87": {
+    "class_type": "EmptyTrellis2LatentStructure",
+    "inputs": {
+      "batch_size": 1
+    }
+  },
+  "91": {
+    "class_type": "Trellis2ShapeStage",
+    "inputs": {
+      "positive": [
+        "299",
+        0
+      ],
+      "negative": [
+        "299",
+        1
+      ],
+      "voxel": [
+        "119",
+        0
+      ]
+    }
+  },
+  "92": {
+    "class_type": "VaeDecodeShapeTrellis",
+    "inputs": {
+      "samples": [
+        "23",
+        0
+      ],
+      "vae": [
+        "117",
+        0
+      ]
+    }
+  },
+  "93": {
+    "class_type": "VaeDecodeTextureTrellis",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "118",
+        0
+      ],
+      "shape_subdivides": [
+        "92",
+        1
+      ]
+    }
+  },
+  "94": {
+    "class_type": "Trellis2UpsampleStage",
+    "inputs": {
+      "target_resolution": 1536,
+      "positive": [
+        "91",
+        0
+      ],
+      "negative": [
+        "91",
+        1
+      ],
+      "shape_latent": [
+        "18",
+        0
+      ],
+      "vae": [
+        "117",
+        0
+      ]
+    }
+  },
+  "98": {
+    "class_type": "Trellis2TextureStage",
+    "inputs": {
+      "positive": [
+        "94",
+        0
+      ],
+      "negative": [
+        "94",
+        1
+      ],
+      "shape_latent": [
+        "23",
+        0
+      ]
+    }
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "108": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "shift": 5.0,
+      "model": [
+        "125",
+        0
+      ]
+    }
+  },
+  "117": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "trellis_2_shape_vae_bf16.safetensors"
+    }
+  },
+  "118": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "trellis_2_texture_vae_bf16.safetensors"
+    }
+  },
+  "119": {
+    "class_type": "VaeDecodeStructureTrellis2",
+    "inputs": {
+      "resolution": "32",
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "117",
+        0
+      ]
+    }
+  },
+  "122": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Helena_Busto_v04.png"
+    },
+    "is_changed": [
+      "e5022ad3d95b2056f380422f4bf4985012cdfc8ad561404337dc8e3ca32718dd"
+    ]
+  },
+  "125": {
+    "class_type": "RescaleCFG",
+    "inputs": {
+      "multiplier": 0.7,
+      "model": [
+        "199",
+        0
+      ]
+    }
+  },
+  "126": {
+    "class_type": "RescaleCFG",
+    "inputs": {
+      "multiplier": 0.5,
+      "model": [
+        "279",
+        0
+      ]
+    }
+  },
+  "192": {
+    "class_type": "RemoveBackground",
+    "inputs": {
+      "bg_removal_model": [
+        "193",
+        0
+      ],
+      "image": [
+        "122",
+        0
+      ]
+    }
+  },
+  "193": {
+    "class_type": "LoadBackgroundRemovalModel",
+    "inputs": {
+      "bg_removal_name": "birefnet.safetensors"
+    }
+  },
+  "199": {
+    "class_type": "CFGOverride",
+    "inputs": {
+      "cfg": 1.0,
+      "start_percent": 0.667,
+      "end_percent": 1.0,
+      "model": [
+        "40",
+        0
+      ]
+    }
+  },
+  "241": {
+    "class_type": "RemeshMesh",
+    "inputs": {
+      "resolution": 384,
+      "sign_mode": "udf",
+      "sign_mode.qef": false,
+      "sign_mode.drop_inverted_components": false,
+      "sign_mode.drop_enclosed_components": false,
+      "band": 1.0,
+      "project_back": 0.0,
+      "fix_poles": false,
+      "smooth_iters": 3,
+      "drop_small_components": 0.01,
+      "precluster_max_verts": 20000000,
+      "mesh": [
+        "92",
+        0
+      ]
+    }
+  },
+  "279": {
+    "class_type": "CFGOverride",
+    "inputs": {
+      "cfg": 1.0,
+      "start_percent": 0.769,
+      "end_percent": 1.0,
+      "model": [
+        "40",
+        0
+      ]
+    }
+  },
+  "285": {
+    "class_type": "MeshToFile3D",
+    "inputs": {
+      "mesh": [
+        "450",
+        0
+      ]
+    }
+  },
+  "299": {
+    "class_type": "Trellis2Conditioning",
+    "inputs": {
+      "clip_vision_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "312",
+        0
+      ]
+    }
+  },
+  "312": {
+    "class_type": "ImageCropToMask",
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "pad_factor": 1.1,
+      "grow_mask": 0,
+      "background": "#000000",
+      "images": [
+        "122",
+        0
+      ],
+      "masks": [
+        "192",
+        0
+      ]
+    }
+  },
+  "322": {
+    "class_type": "Save3DAdvanced",
+    "inputs": {
+      "model_3d": [
+        "285",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/Helena/Helena_Cabeca_Superficie_v09",
+      "viewport_state": {},
+      "width": 768,
+      "height": 768
+    }
+  },
+  "400": {
+    "class_type": "RenderMesh",
+    "inputs": {
+      "mesh": [
+        "450",
+        0
+      ],
+      "mode": "auto",
+      "width": 1024,
+      "height": 1024,
+      "background": "#30343b",
+      "camera_info": [
+        "410",
+        0
+      ]
+    }
+  },
+  "401": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "400",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/Helena/Helena_Cabeca_Frente_v09"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "410": {
+    "class_type": "CreateCameraInfo",
+    "inputs": {
+      "mode": "orbit",
+      "mode.yaw": 12.0,
+      "mode.pitch": 2.0,
+      "mode.distance": 2.3,
+      "target_x": 0.0,
+      "target_y": 0.0,
+      "target_z": 0.0,
+      "roll": 0.0,
+      "fov": 35.0,
+      "zoom": 1.0,
+      "camera_type": "perspective"
+    }
+  },
+  "420": {
+    "class_type": "CreateCameraInfo",
+    "inputs": {
+      "mode": "orbit",
+      "mode.yaw": 65.0,
+      "mode.pitch": 0.0,
+      "mode.distance": 2.3,
+      "target_x": 0.0,
+      "target_y": 0.0,
+      "target_z": 0.0,
+      "roll": 0.0,
+      "fov": 35.0,
+      "zoom": 1.0,
+      "camera_type": "perspective"
+    }
+  },
+  "421": {
+    "class_type": "RenderMesh",
+    "inputs": {
+      "mesh": [
+        "450",
+        0
+      ],
+      "mode": "auto",
+      "width": 1024,
+      "height": 1024,
+      "background": "#30343b",
+      "camera_info": [
+        "420",
+        0
+      ]
+    }
+  },
+  "422": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "421",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/Helena/Helena_Cabeca_Perfil_v09"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "450": {
+    "class_type": "PaintMesh",
+    "inputs": {
+      "mesh": [
+        "241",
+        0
+      ],
+      "voxel_colors": [
+        "93",
+        0
+      ]
+    }
+  }
+}

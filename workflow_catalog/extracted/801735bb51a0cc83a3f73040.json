@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Crushing Brazilian groove metal, very low distorted guitar riffs, primal floor-tom polyrhythms, powerful bass, raw guttural male English vocal, gang shouts. 104 BPM, C minor. a low stomping syncopated guitar hook, original percussion-only tension break, enormous riff return. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nConcrete swallows the river’s tongue\nWe built a wall where the ancestors sung\nThe water rises, cold and thick\nBurying the map, burying the ditch\nThey say the flood is clean, they say it’s new\nBut the mud knows the faces we knew\n\n[Chorus]\nStone remembers! Stone remembers!\nFeet in the clay, the valley trembles\nStone remembers! Stone remembers!\nBlood in the bedrock, the silence tembles\n\n[Verse]\nValve turns slow, the pressure climbs\nDrowning the names, drowning the times\nThe old men walk on the submerged floor\nWith roots for legs and stone for core\nThey don’t scream, they just stand in the deep\nWaking the giants from their sleep\n\n[Chorus]\nStone remembers! Stone remembers!\nFeet in the clay, the valley trembles\nStone remembers! Stone remembers!\nBlood in the bedrock, the silence tembles\n\n[Verse]\nThe pressure cracks the concrete spine\nThe water rushes through the line\nBut the stone beneath begins to grind\nWith the sound of a thousand minds\nThey don’t flow, they march in rows\nWith muddy feet and silent throes\nThe valley drains into the deep\nBut the giants rise from under the sleep\nThey wear the river as a shroud\nWith the history of the drowned in the crowd\nThe dam holds back the sea of bone\nStone remembers what the flesh has shown\n\n[Bridge]\n(Percussion only)\nTom-tom... Tom-tom... Tom-tom... Tom-tom...\nSilence...\n(Explosion of riffs)\nCRUSH!\n\n[Solo]\n(Distorted guitar solo)\n\n[Chorus]\nStone remembers! Stone remembers!\nFeet in the clay, the valley trembles\nStone remembers! Stone remembers!\nBlood in the bedrock, the silence tembles\n\n[Outro]\nThe dam breaks... The dam breaks...\nStone remembers... The dam breaks...",
+      "abc": "",
+      "seed": 202610166014,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166014,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/15_blood_remembers_stone_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

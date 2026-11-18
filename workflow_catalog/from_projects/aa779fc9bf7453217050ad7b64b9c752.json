@@ -1,0 +1,209 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_ref2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611060106
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_dante_vergil_rooftop_20261106/video/T01_active_native_duel_v06",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "30": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "A01_dante_vergil_rooftop_builtin_native_v01.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "Fifteen-second HORIZONTAL LIVE-ACTION ACTION FILM with native synchronized sound. Dante and Vergil from Devil May Cry 3 fight fiercely on a stormy gothic rooftop. It is an ACTIVE TWO-SIDED DUEL: they chase, attack, intercept, counter and drive each other backward through wet footwork. The first ELEVEN seconds are continuous conflict with no static crossed-sword hold; only the last FOUR seconds become the intense close confrontation. One unbroken normal-speed shot.\n\nUse the image ONLY to preserve the exact two adult actors and their weapons, wet costumes and setting. Dante, in RED on the RIGHT: exact youthful angular face, shaggy white hair, open heavy red leather coat, chest harness, gloves and boots; ONE broad rigid skull-guard Rebellion in his RIGHT hand. Vergil, in BLUE on the LEFT: exact face, swept white hair, embroidered long blue wet coat and waistcoat; ONE slender rigid Yamato katana in his RIGHT hand, EMPTY black sheath safely in LEFT hand beside his own left hip. Hands and weapons keep their owners. This is a moving scene, not a photo interpolation. Remain within blade reach during attacks.\n\nOPENING: Dante rushes two real steps toward Vergil and drives a committed diagonal Rebellion cut. Vergil plants, brings Yamato ACROSS THE CUT'S PATH and their middle blade sections HIT at the same visible point between the bodies. Steel stops steel briefly and both blades change direction, with a loaded wrist/shoulder reaction and a splash at Vergil's retreating boot. They immediately separate the blades by a short distance and keep traveling, not waiting in an X pose.\n\nNEXT EXCHANGE: Vergil steps back in with a compact horizontal counter-cut. Dante pivots and moves Rebellion directly INTO the incoming Yamato arc. Their edges COLLIDE again, rebound and redirect. Dante catches his mass with a grounded step, then immediately drives forward again. The opponent reacts to the partner's actual blade, not a private sword routine. The collision area remains visible.\n\nESCALATION: Dante presses Vergil across the wet stones with another hard advancing cut. Vergil intercepts the blade in the actual shared space, redirects it and turns his braced shoulder into Dante's upper arm to break the pressure. Dante is displaced one step AFTER the shove, catches his balance, pivots back toward Vergil and returns immediately with a descending blow. Both remain facing and watching each other. Strong leg drive, shoulder resistance and wet coats trailing after the abrupt changes; no spins, celebration, long pauses or flourish at empty air. The first three collisions are BRIEF events, never held poses. Each advances or reverses initiative and position.\n\nENDING, last four seconds: Dante's returning descending blow PHYSICALLY HITS Vergil's raised angled Yamato. The TWO DISTINCT RIGID STEEL BLADES settle under real pressure into a crossed X below their faces. Only now do they remain close, knees braced and shoulders loaded, staring directly into EACH OTHER'S EYES and breathing hard. Small grinding blade movement continues. Camera drives FORWARD to a chest/face two-shot with both faces and the blade intersection readable. Keep the tense live pressure and forward approach through the final frame. No retreat, return to opening guards, wide reset or freeze.\n\nCAMERA: Decisive physical lateral tracking follows the moving exchanges with parallax past the foreground carved pillar and distant tower. Short low arc reveals the counter and shove, then transition to the final forward dolly-in. Blue remains left and red right on the same action axis. Before the final approach, frame both whole moving bodies, grips, sword tips and feet. No whip-pan, edit, bright flash or spark cloud hides a blade collision. Steel contact is sold by actual visible intersection, stopped/deflected trajectory and bodily reaction. Real speed, not slow motion.\n\nSINGLE COHERENT NATIVE SOUNDTRACK GENERATED WITH THESE EXACT MOVEMENTS: Clearly audible ORIGINAL instrumental heavy metal, ONE continuous low distorted guitar riff with bass and forceful drums; no vocal or competing second melody. Foreground steel attacks occur ONLY at the four visible blade collisions, with sharp metallic onset, weight and a short natural ring. Scraping belongs only to actual blade contact; swishes accompany the separated blades. Boots splash at their real footfalls, wet leather strains, wind and strong pouring rain surround them. Final clash becomes a gritty pressure scrape under close breaths and the same metal backing. One unified film mix, with clear synchronized Foley above the backing. No old-take soundtrack, doubled impact layers, delayed repeat clangs, artificial echo doubling, crowd, speech, singing or sudden silence. Native action sound must come from THIS moving scene, not a soundtrack laid over unrelated poses.\n\nPreserve rigid sword shape/length and body anatomy. Collision happens in the SAME three-dimensional location, not a projection of blades passing at different depths. Feet step, pivot and brake rather than skate. Impacts and shoves cause reaction after contact. Same cold storm light, wet material and original roof. No blade through bodies or steel, extra people, weapon swap, neon power, blood, text, logos, long stationary hold before the ending or repeated empty swings.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "audio_vae": [
+        "7",
+        0
+      ],
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "30",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

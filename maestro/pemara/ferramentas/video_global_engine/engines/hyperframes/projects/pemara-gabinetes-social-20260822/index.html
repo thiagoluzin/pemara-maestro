@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080,height=1920">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Pemara Inter"; src: url("assets/fonts/inter-latin-variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+    body { font-family: "Pemara Inter", sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #07111f; }
+    .scene-host { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <div data-hf-id="hf-b6rk" id="root" data-composition-id="main" data-start="0" data-duration="39.6" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-g6uu" id="host-frame-01-intro" class="clip scene-host" data-composition-id="frame-01-intro" data-composition-src="compositions/frame-01-intro.html" data-start="0.0" data-duration="3.0" data-track-index="1"></div>
+    <div data-hf-id="hf-b0s1" id="host-frame-02-gamdias-atlas-m1" class="clip scene-host" data-composition-id="frame-02-gamdias-atlas-m1" data-composition-src="compositions/frame-02-gamdias-atlas-m1.html" data-start="2.6" data-duration="3.8" data-track-index="2"></div>
+    <div data-hf-id="hf-5tkm" id="host-frame-03-deepcool-cg530" class="clip scene-host" data-composition-id="frame-03-deepcool-cg530" data-composition-src="compositions/frame-03-deepcool-cg530.html" data-start="6.0" data-duration="3.8" data-track-index="1"></div>
+    <div data-hf-id="hf-ynvw" id="host-frame-04-antec-df700" class="clip scene-host" data-composition-id="frame-04-antec-df700" data-composition-src="compositions/frame-04-antec-df700.html" data-start="9.4" data-duration="3.8" data-track-index="2"></div>
+    <div data-hf-id="hf-mrq2" id="host-frame-05-kalkan-asgard" class="clip scene-host" data-composition-id="frame-05-kalkan-asgard" data-composition-src="compositions/frame-05-kalkan-asgard.html" data-start="12.8" data-duration="3.8" data-track-index="1"></div>
+    <div data-hf-id="hf-24kp" id="host-frame-06-cooler-master-elite-301" class="clip scene-host" data-composition-id="frame-06-cooler-master-elite-301" data-composition-src="compositions/frame-06-cooler-master-elite-301.html" data-start="16.2" data-duration="3.8" data-track-index="2"></div>
+    <div data-hf-id="hf-7bov" id="host-frame-07-duex-aquario" class="clip scene-host" data-composition-id="frame-07-duex-aquario" data-composition-src="compositions/frame-07-duex-aquario.html" data-start="19.6" data-duration="3.8" data-track-index="1"></div>
+    <div data-hf-id="hf-pnh1" id="host-frame-08-gstorm-vanguard-preto" class="clip scene-host" data-composition-id="frame-08-gstorm-vanguard-preto" data-composition-src="compositions/frame-08-gstorm-vanguard-preto.html" data-start="23.0" data-duration="3.8" data-track-index="2"></div>
+    <div data-hf-id="hf-uly7" id="host-frame-09-gstorm-vanguard-branco" class="clip scene-host" data-composition-id="frame-09-gstorm-vanguard-branco" data-composition-src="compositions/frame-09-gstorm-vanguard-branco.html" data-start="26.4" data-duration="3.8" data-track-index="1"></div>
+    <div data-hf-id="hf-b4ui" id="host-frame-10-kalkan-alfern-lite" class="clip scene-host" data-composition-id="frame-10-kalkan-alfern-lite" data-composition-src="compositions/frame-10-kalkan-alfern-lite.html" data-start="29.8" data-duration="3.8" data-track-index="2"></div>
+    <div data-hf-id="hf-k6yg" id="host-frame-11-c3tech-mt33bk" class="clip scene-host" data-composition-id="frame-11-c3tech-mt33bk" data-composition-src="compositions/frame-11-c3tech-mt33bk.html" data-start="33.2" data-duration="3.8" data-track-index="1"></div>
+    <div data-hf-id="hf-zt2v" id="host-frame-12-outro" class="clip scene-host" data-composition-id="frame-12-outro" data-composition-src="compositions/frame-12-outro.html" data-start="36.6" data-duration="3.0" data-track-index="2"></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.to("#host-frame-01-intro", { y: -1920, duration: .40, ease: "power3.in" }, 2.6)
+      .fromTo("#host-frame-02-gamdias-atlas-m1", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 2.6)
+    .to("#host-frame-02-gamdias-atlas-m1", { y: -1920, duration: .40, ease: "power3.in" }, 6.0)
+      .fromTo("#host-frame-03-deepcool-cg530", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 6.0)
+    .to("#host-frame-03-deepcool-cg530", { y: -1920, duration: .40, ease: "power3.in" }, 9.4)
+      .fromTo("#host-frame-04-antec-df700", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 9.4)
+    .to("#host-frame-04-antec-df700", { y: -1920, duration: .40, ease: "power3.in" }, 12.8)
+      .fromTo("#host-frame-05-kalkan-asgard", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 12.8)
+    .to("#host-frame-05-kalkan-asgard", { y: -1920, duration: .40, ease: "power3.in" }, 16.2)
+      .fromTo("#host-frame-06-cooler-master-elite-301", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 16.2)
+    .to("#host-frame-06-cooler-master-elite-301", { y: -1920, duration: .40, ease: "power3.in" }, 19.6)
+      .fromTo("#host-frame-07-duex-aquario", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 19.6)
+    .to("#host-frame-07-duex-aquario", { y: -1920, duration: .40, ease: "power3.in" }, 23.0)
+      .fromTo("#host-frame-08-gstorm-vanguard-preto", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 23.0)
+    .to("#host-frame-08-gstorm-vanguard-preto", { y: -1920, duration: .40, ease: "power3.in" }, 26.4)
+      .fromTo("#host-frame-09-gstorm-vanguard-branco", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 26.4)
+    .to("#host-frame-09-gstorm-vanguard-branco", { y: -1920, duration: .40, ease: "power3.in" }, 29.8)
+      .fromTo("#host-frame-10-kalkan-alfern-lite", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 29.8)
+    .to("#host-frame-10-kalkan-alfern-lite", { y: -1920, duration: .40, ease: "power3.in" }, 33.2)
+      .fromTo("#host-frame-11-c3tech-mt33bk", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 33.2)
+    .to("#host-frame-11-c3tech-mt33bk", { y: -1920, duration: .40, ease: "power3.in" }, 36.6)
+      .fromTo("#host-frame-12-outro", { y: 1920 }, { y: 0, duration: .40, ease: "power3.out" }, 36.6);
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>

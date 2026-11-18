@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Iron Maiden-inspired, Fast classic British heavy metal, galloping bass, sharply articulated palm-muted guitars, heroic twin harmonies, full-throated clean male tenor, aggressive real drums. 172 BPM, D minor. a descending guitar harmony and a charging bass hook; dueling solos trade four-bar phrases. Fast classic British heavy metal, D minor, galloping bass, palm-muted riffs, heroic tenor vocals, aggressive real drums. Riff-led with contrast through rhythm changes and dueling solos.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro_Riff 0-20s; Verse_1 20-70s; Chorus_1 70-100s; Verse_2 100-150s; Chorus_2 150-180s; Bridge 180-220s; Solo_Trade 220-260s; Final_Chorus 260-292s; Outro 292-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=172, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nIron cold against the wrist\nThe crowd demands a final kiss\nOf dust and blood upon the stone\nThe witness stands alone, alone\nMy oath was forged in salt and pain\nTo cut the traitor by the mane\nBut as I raised the heavy steel\nHer eyes revealed the truth I feel\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Verse]\nThe snap of oak beneath my heel\nThe pieces scatter on the field\nThe King’s cavalry rides hard\nSpear and shield in the dark\nThey roar for heads and spines\nFor the price of my broken lines\nI stand with only jagged steel\nAnd the weight of the oath I feel\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Bridge]\nNow the chargers break the line\nHorses scream, the air is mine\nI swing the shards, a jagged arc\nA thousand spears, a single spark\nMy ribs crack, the dust is thick\nThe final witness, I can't stick\nI fall upon the broken ground\nWhere the kingdom’s roots are found\n\n[Solo]\n\n[Chorus]\nOath of the broken blade\nShatter the iron that I made\nI will not kill the final light\nIn the dark of the dying night\nBreak the sword, let the blood flow\nWatch the kingdom’s shadow grow\n\n[Outro]\nThe blade is dust\nThe oath is trust\nThe king is gone\nThe song is sung",
+      "seed": 202610161001,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

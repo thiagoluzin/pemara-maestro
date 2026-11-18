@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261104051
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP05_PIKA_20261104/T01_blank_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot1] An original expressive stylized 3D animated Brazilian street-news comedy at a PEACEFUL gamers protest. Fictional ADULT people only, rounded appealing faces, matte colorful clothes, grounded feet, coherent hands. No live action or real-person imitation. Warm afternoon light from screen-left, soft coherent shadows. One fictional unbranded red-brick electronics storefront in a Brazilian square. No logos, price tags, subtitles, watermarks, news graphics, weapons, fire, smoke or music.\nVertical768x1344, ONE uninterrupted eye-level medium-wide interview. Reporter screen-left, interviewee screen-right; faces occupy the central half and both hands remain visible. Fixed stable camera; the interview depends on readable acting and large placards. Three distinct depth layers: speakers, two sign holders, distant storefront. No cuts, zoom, orbit, shake or camera drift. Planted feet, natural weight shifts and independent body/clothes/eye motion, never robotic synchronized movements.\nEXACTLY TWO very large rectangular pale ivory BLANK protest placards face the camera in the UPPER portrait frame. One upper-left and one upper-right, each a landscape rectangle approximately320px wide and230px high. Navy-blue thin straight border, complete clean flat pale paper surface and all FOUR corners visible at every frame. Outer margins24px or more. Lower edges remain above all hair with a visible gap. Two adults behind the speakers hold only the wooden poles below the boards. Hold placards almost still, tiny natural independent sway; never cross faces or leave frame. No other signs. Surfaces MUST REMAIN COMPLETELY BLANK without letters, symbols, images, pseudotext or numbers: large exact Portuguese typography is added later by deterministic graphics. No hand, hair or prop covers either paper interior.\nNatural clear Brazilian Portuguese with original fictional adult voices, one indicated speaker at a time. Only TWO speech turns. During the partner's speech keep mouth closed and look toward that speaker. No improvised words, repeated sentence, overlapping speech or crowd chant. Quiet protest murmur underneath speech; brief laughter ONLY AFTER the punchline. Finish all spoken words by12s, then preserve natural physical reaction and recovery through15.08s without freezing or repetitive gestures. No music.\n\nReporter: original adult woman with short curly dark hair, red jacket over cream shirt, dark jeans, holding one black unbranded microphone in her right hand, screen-left. Gamer: original adult man with short brown hair, orange headphones around his neck, blue plain T-shirt and dark jeans, screen-right. Empty hands; no phone, card, GPU or money props.\n0-0.7s establish the adult pair and both blank signs. 0.7-3.5s reporter turns toward him and asks once: [Speech]Qual é o maior gargalo do seu PC?[EndSpeech] She then extends the microphone toward his mouth, keeping it below his face. 3.8-8.8s he replies ONE COMPLETE turn: [Speech]Meu salário! A placa roda tudo, mas meu bolso trava![EndSpeech] He opens one empty palm toward his pocket on bolso and ends with a dry resigned look. 8.8-15.08s reporter understands then laughs briefly; gamer shrugs once, smiles ruefully, returns his hand to rest. Crowd reacts only after his last word. Both remain alive and listening, independently moving, with signs clear.",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

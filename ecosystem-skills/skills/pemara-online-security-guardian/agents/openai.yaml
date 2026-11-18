@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guardião de Segurança Pemara"
+  short_description: "Blindagem contínua do ecossistema online"
+  default_prompt: "Use $pemara-online-security-guardian para auditar e blindar uma superfície online da Pemara com evidências."

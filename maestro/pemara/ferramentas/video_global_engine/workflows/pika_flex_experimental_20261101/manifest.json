@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-01",
+  "status": "mcp_validated_all_modes_t2v_gpu_pilot_passed_owner_review_pending",
+  "owner_exception": "Sim, liberar Pika Flex experimental com Sage e sem Spectrum",
+  "scope": "Pika Flex standalone experimental only; Master20 and other H3 graphs unchanged",
+  "sources": [
+    "https://docs.comfy.org/tutorials/video/pika/pika-h3-flex",
+    "https://huggingface.co/Comfy-Org/MiniMax-H3"
+  ],
+  "workflows": [
+    {
+      "mode": "t2v",
+      "content_kind": "animation",
+      "api": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_T2V.api.json",
+      "ui": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_T2V.json",
+      "installed_ui": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA Pika Flex\\PEMARA_Pika_Flex_T2V.json",
+      "sha256": "4e3fc3b18098ab59c13aa62890590c4179a02f2ab87f1f48be3923fb83e6b3c2",
+      "frames": 124,
+      "fps": 24,
+      "duration_seconds": 5.166666666666667
+    },
+    {
+      "mode": "fl2va",
+      "content_kind": "mixed",
+      "api": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_FL2VA.api.json",
+      "ui": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_FL2VA.json",
+      "installed_ui": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA Pika Flex\\PEMARA_Pika_Flex_FL2VA.json",
+      "sha256": "15672227bdac7f0bb5ee2dbc0af0421d2641e4e0993c14c33c73ce15acbdf5e9",
+      "frames": 124,
+      "fps": 24,
+      "duration_seconds": 5.166666666666667
+    },
+    {
+      "mode": "ref2va",
+      "content_kind": "mixed",
+      "api": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_REF2VA.api.json",
+      "ui": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\pika_flex_experimental_20261101\\PEMARA_Pika_Flex_REF2VA.json",
+      "installed_ui": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA Pika Flex\\PEMARA_Pika_Flex_REF2VA.json",
+      "sha256": "09f9c3513b7a88a4080ad85f4c53ffa40224f84fc883c73c7a32fb296583ae9a",
+      "frames": 124,
+      "fps": 24,
+      "duration_seconds": 5.166666666666667
+    }
+  ],
+  "pilot": {
+    "prompt_id": "da1d7f41-836e-497d-95a0-eb4a3366ecf2",
+    "file": "E:\\Pemara\\work\\pika_flex_update_20261101\\pilot\\da1d7f41_000.mp4",
+    "sha256": "b3bdeb5591fd4e6d09886e8c22b21c667f7c737cffcf5a092df65f5cb2717c31",
+    "full_decode_passed": true,
+    "visual_review": "sampled_contact_sheet_only",
+    "speech_accuracy_reviewed": false,
+    "owner_approved": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "80s British Heavy Metal, Iron Maiden style. Driving gallop rhythm, powerful drum and bass, raspy high vocals, soaring lead guitar solos. Epic and energetic mood.. Producer style: 80s British Heavy Metal. Roles: guitar: Soaring lead solos and heavy rhythm chugs; bass: Punchy, driving bass lines locking with drums; drums: Powerful gallop rhythm, double bass and crash cymbals; vocals: Raspy, high-pitched lead vocals with heavy reverb. Form: Intro 0-15s energy 0.6 lead guitar; Verse 1 15-45s energy 0.7 lead vocals; Pre-Chorus 1 45-60s energy 0.8 lead vocals; Chorus 1 60-90s energy 0.9 lead vocals; Verse 2 90-120s energy 0.7 lead vocals; Pre-Chorus 2 120-135s energy 0.8 lead vocals; Chorus 2 135-165s energy 0.9 lead vocals; Solo 165-215s energy 1 lead guitar; Final Chorus 215-255s energy 0.95 lead vocals; Outro 255-300s energy 0.8 lead guitar. Complete ending.\nComplete song, target duration 292 seconds maximum. Compose the entire ABC arrangement within 284 seconds, including a short outro and a resolved final cadence. Reserve the last 8 seconds for the final chord decay and silence. Finish all sung words before the outro. No endless loop, unfinished solo, or long fade-out. Write explicit measures, no repeat signs; keep intro and interludes brief.. Qwen producer tempo 128 BPM. Planned form: Intro 0-15s energy 0.6 lead guitar; Verse 1 15-45s energy 0.7 lead vocals; Pre-Chorus 1 45-60s energy 0.8 lead vocals; Chorus 1 60-90s energy 0.9 lead vocals; Verse 2 90-120s energy 0.7 lead vocals; Pre-Chorus 2 120-135s energy 0.8 lead vocals; Chorus 2 135-165s energy 0.9 lead vocals; Solo 165-215s energy 1 lead guitar; Final Chorus 215-255s energy 0.95 lead vocals; Outro 255-300s energy 0.8 lead guitar. Finish all singing before the final decay.",
+      "lyrics": "[Verse]\nWheels of steel on the midnight road\nChasing shadows, bearing the load\nThe engine roars a thunderous call\nAnswering the darkness, standing tall\n\n[Pre-Chorus]\nRising up from the dust and fire\nWith a burning, hungry desire\n\n[Chorus]\nSteel horizon, breaking the dawn\nWe ride the wind, we carry on\nSteel horizon, wild and free\nUnderneath the endless sea\n\n[Verse]\nSwords of light in the morning sky\nCutting through the clouds so high\nNo fear remains in the warrior's heart\nOnly the beat of the drum apart\n\n[Pre-Chorus]\nRising up from the dust and fire\nWith a burning, hungry desire\n\n[Chorus]\nSteel horizon, breaking the dawn\nWe ride the wind, we carry on\nSteel horizon, wild and free\nUnderneath the endless sea\n\n[Bridge]\nGuitar Solo\n\n[Chorus]\nSteel horizon, breaking the dawn\nWe ride the wind, we carry on\nSteel horizon, wild and free\nUnderneath the endless sea\n\n[Outro]\nSteel horizon... fading light... gone.",
+      "seed": 2346481464,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

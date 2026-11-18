@@ -1,0 +1,110 @@
+{
+  "id": "h3_live_action_continuous_bilateral_combat_8s",
+  "label": "H3 Live Action - Continuous Bilateral Combat 8s",
+  "engine": "minimax_h3",
+  "mode": "FL2VA",
+  "fallbackAllowed": false,
+  "evidenceBase": {
+    "project": "vejito_blue_vs_goku_black_rose_3x6s_liveaction_v1",
+    "approvedRoute": "R6",
+    "methodOnly": true,
+    "creativeAssetsReusable": false
+  },
+  "useWhen": [
+    "two human characters exchange several weighted attacks without resetting pose",
+    "the shot must breathe longer than a five-second isolated signature unit",
+    "continuity should be carried by one uninterrupted action and an active cut"
+  ],
+  "qualityRoute": {
+    "normal": "h3_approved_action_720p8s",
+    "high": "h3_approved_action_720p8s",
+    "critical": "h3_approved_action_720p8s"
+  },
+  "durationContract": {
+    "nativeFrames": 192,
+    "nativeFps": 24,
+    "effectiveDurationSeconds": 8.0,
+    "minimumReciprocalExchanges": 3,
+    "rule": "one uninterrupted long take with both fighters attacking, defending, being displaced and recovering"
+  },
+  "geometryContract": {
+    "nativeSampling": "1344x768",
+    "deliveryConform": "1280x720",
+    "reason": "matches the owner-approved H3 8-second action route and keeps latent dimensions model-safe"
+  },
+  "controlContract": {
+    "required": [
+      "approved dynamic first and last anchors with SHA-256 and approval scope",
+      "identity and combat-identity matrices for both fighters",
+      "three temporal intervals with reciprocal physical exchanges",
+      "cause-before-effect ledger for every displacement",
+      "ground-contact explanation for every grounded body translation",
+      "active cut strategy that does not require a generated five-second patch"
+    ],
+    "intermediateAnchor": "forbidden inside uninterrupted bilateral melee because a forced future impact pose can pull the reaction before contact",
+    "motion": "prompt-guided between two dynamic boundaries; bind the moving end anchor to final frame 191 and require useful body, camera, cloth and environmental motion through that frame",
+    "exactPoseControl": false,
+    "modelMayChooseDifferentMoves": false
+  },
+  "nodeContract": {
+    "required": [
+      "UNETLoader",
+      "CLIPLoader",
+      "VAELoader",
+      "LoadImage",
+      "MiniMaxH3ImageToVideo",
+      "MiniMaxH3SigmaShift",
+      "BasicGuider",
+      "BasicScheduler",
+      "RandomNoise",
+      "KSamplerSelect",
+      "SamplerCustomAdvanced",
+      "LTXVSeparateAVLatent",
+      "VAEDecodeTiled",
+      "ImageScale",
+      "CreateVideo",
+      "SaveVideo",
+      "PemaraH3FaceRefine"
+    ],
+    "optional": [
+      "ModelPreviewOverrideKJ"
+    ],
+    "forbidden": [
+      "MiniMaxH3AddGuide",
+      "MiniMaxH3ReferenceToVideo mixed into the FL2VA graph",
+      "five-second independent combat patch",
+      "reaction beginning before visible contact",
+      "unmotivated hovering or rigid ground sliding",
+      "camera shake, RIFE or Foley used to counterfeit impact",
+      "RIFE or upscale before source approval"
+    ]
+  },
+  "promptContract": {
+    "language": "English except original dialogue and visible text",
+    "sections": [
+      "integrated_multimodal_description",
+      "overall_soundscape",
+      "non_diegetic_music"
+    ],
+    "timelineRule": "Begin with ONE UNINTERRUPTED EIGHT-SECOND; write reciprocal action over 0-30%, 30-70% and 70-100%, with useful motion through the last frame.",
+    "causalityRule": "For every hit: load and propulsion occur first, visible contact occurs next, defender compression and center-of-mass travel begin only after contact, then both recover.",
+    "groundingRule": "Every grounded translation is visibly paid for by stepping, pivoting, skidding with a furrow, rolling or being dragged; every airborne arc starts with visible propulsion or post-contact launch and ends with a landing.",
+    "bilateralRule": "Both fighters attack, block or evade and regain initiative; no polite turn-taking, passive target or one-sided pose sequence.",
+    "junctionRule": "End during a dynamic camera/body vector suitable for a direct match-on-action, occlusion cut or whip-pan cut; never rebuild pose in a connector.",
+    "readabilityRule": "Keep contact and foot support readable; do not hide causal beats with effects, framing, shake or debris."
+  },
+  "outputStatus": "TECHNICAL_CANDIDATE_REQUIRES_CAUSAL_MOTION_GATE_AND_HUMAN_REVIEW",
+  "faceRefine": {
+    "enabled": true,
+    "default": true,
+    "node": "PemaraH3FaceRefine",
+    "steps": 12,
+    "denoise": 0.45,
+    "canvasSize": 512,
+    "scope": "all_new_local_h3_video_workflows",
+    "audioPreserved": true,
+    "rawVideoPreserved": true,
+    "identityVerified": false,
+    "ownerApproval": "PENDING"
+  }
+}

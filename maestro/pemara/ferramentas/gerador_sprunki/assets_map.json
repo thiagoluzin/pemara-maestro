@@ -1,0 +1,495 @@
+{
+  "Sprunki Phase X": {
+    "characters": [
+      {
+        "name": "Orange (Oren)",
+        "image": "organized/Sprunki Phase X/Orange (Oren)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Orange (Oren)\\kick.wav"
+      },
+      {
+        "name": "Red (Raddy)",
+        "image": "organized/Sprunki Phase X/Red (Raddy)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Red (Raddy)\\snare.wav"
+      },
+      {
+        "name": "Silver (Clukr)",
+        "image": "organized/Sprunki Phase X/Silver (Clukr)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Silver (Clukr)\\ride cymbal.wav"
+      },
+      {
+        "name": "Fun Bot",
+        "image": "organized/Sprunki Phase X/Fun Bot/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Fun Bot\\amen.wav"
+      },
+      {
+        "name": "Green (Vineria)",
+        "image": "organized/Sprunki Phase X/Green (Vineria)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Green (Vineria)\\shaky shaky.wav"
+      },
+      {
+        "name": "Gray (Gray)",
+        "image": "organized/Sprunki Phase X/Gray (Gray)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Gray (Gray)\\bass1.wav"
+      },
+      {
+        "name": "Brown (brud)",
+        "image": "organized/Sprunki Phase X/Brown (brud)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Brown (brud)\\goofy ahh thing.wav"
+      },
+      {
+        "name": "Gold (Garnold)",
+        "image": "organized/Sprunki Phase X/Gold (Garnold)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Gold (Garnold)\\arpeg.wav"
+      },
+      {
+        "name": "Lime (OWAKCX)",
+        "image": "organized/Sprunki Phase X/Lime (OWAKCX)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Lime (OWAKCX)\\wind up1.wav"
+      },
+      {
+        "name": "Sky blue (Sky)",
+        "image": "organized/Sprunki Phase X/Sky blue (Sky)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Sky blue (Sky)\\music box1.wav"
+      },
+      {
+        "name": "Mr. Sun",
+        "image": "organized/Sprunki Phase X/Mr. Sun/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Mr. Sun\\piano1.wav"
+      },
+      {
+        "name": "Purple (Durple)",
+        "image": "organized/Sprunki Phase X/Purple (Durple)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Purple (Durple)\\tromp new1.wav"
+      },
+      {
+        "name": "Mr. Tree",
+        "image": "organized/Sprunki Phase X/Mr. Tree/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Mr. Tree\\organ1.wav"
+      },
+      {
+        "name": "Yellow (Simon)",
+        "image": "organized/Sprunki Phase X/Yellow (Simon)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Yellow (Simon)\\square1.wav"
+      },
+      {
+        "name": "Tan (Tunner)",
+        "image": "organized/Sprunki Phase X/Tan (Tunner)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Tan (Tunner)\\whistle1.wav"
+      },
+      {
+        "name": "Mr. Fun Computer",
+        "image": "organized/Sprunki Phase X/Mr. Fun Computer/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Mr. Fun Computer\\aising1.wav"
+      },
+      {
+        "name": "White (Wenda)",
+        "image": "organized/Sprunki Phase X/White (Wenda)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\White (Wenda)\\boring hey sound.wav"
+      },
+      {
+        "name": "Pink (Pinki)",
+        "image": "organized/Sprunki Phase X/Pink (Pinki)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Pink (Pinki)\\femchoir1.wav"
+      },
+      {
+        "name": "Blue (Jevin)",
+        "image": "organized/Sprunki Phase X/Blue (Jevin)/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Blue (Jevin)\\new choir1.wav"
+      },
+      {
+        "name": "Black?",
+        "image": "organized/Sprunki Phase X/Black/idle.png",
+        "sound": "organized\\Sprunki Phase X\\Black\\creepy1.wav"
+      },
+      {
+        "name": "Assets",
+        "image": "organized/Sprunki Phase X/Assets/idle.png",
+        "sound": null
+      },
+      {
+        "name": "loop controller",
+        "image": "organized\\Sprunki Phase X\\loop controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "other controller",
+        "image": "organized\\Sprunki Phase X\\other controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "dark",
+        "image": "organized/Sprunki Phase X/dark/idle.png",
+        "sound": null
+      }
+    ],
+    "backgrounds": [
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Phase X\\Stage\\backdrop.svg",
+        "sound": null
+      }
+    ]
+  },
+  "Sprunki Congelados": {
+    "characters": [
+      {
+        "name": "Silver (Clukr)",
+        "image": "organized/Sprunki Congelados/Silver (Clukr)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Silver (Clukr)\\ride cymbal.wav"
+      },
+      {
+        "name": "Mr. Tree",
+        "image": "organized/Sprunki Congelados/Mr. Tree/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Mr. Tree\\organ1.wav"
+      },
+      {
+        "name": "Mr. Fun Computer",
+        "image": "organized/Sprunki Congelados/Mr. Fun Computer/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Mr. Fun Computer\\aising1.wav"
+      },
+      {
+        "name": "Black?",
+        "image": "organized/Sprunki Congelados/Black/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Black\\creepy1.wav"
+      },
+      {
+        "name": "Assets",
+        "image": "organized/Sprunki Congelados/Assets/idle.png",
+        "sound": null
+      },
+      {
+        "name": "loop controller",
+        "image": "organized\\Sprunki Congelados\\loop controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "other controller",
+        "image": "organized\\Sprunki Congelados\\other controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "dark",
+        "image": "organized/Sprunki Congelados/dark/idle.png",
+        "sound": null
+      },
+      {
+        "name": "Icicles",
+        "image": "organized/Sprunki Congelados/Icicles/idle.png",
+        "sound": null
+      },
+      {
+        "name": "Snow",
+        "image": "organized/Sprunki Congelados/Snow/idle.png",
+        "sound": null
+      },
+      {
+        "name": "Oren",
+        "image": "organized/Sprunki Congelados/Oren/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Oren\\kick.mp3"
+      },
+      {
+        "name": "Fun Bot",
+        "image": "organized/Sprunki Congelados/Fun Bot/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Fun Bot\\amen.wav"
+      },
+      {
+        "name": "Red (Raddy)",
+        "image": "organized/Sprunki Congelados/Red (Raddy)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Red (Raddy)\\snare.wav"
+      },
+      {
+        "name": "Mr. Sun",
+        "image": "organized/Sprunki Congelados/Mr. Sun/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Mr. Sun\\piano1.wav"
+      },
+      {
+        "name": "Purple (Durple)",
+        "image": "organized/Sprunki Congelados/Purple (Durple)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Purple (Durple)\\tromp new1.wav"
+      },
+      {
+        "name": "Yellow (Simon)",
+        "image": "organized/Sprunki Congelados/Yellow (Simon)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Yellow (Simon)\\square1.wav"
+      },
+      {
+        "name": "Gold (Garnold)",
+        "image": "organized/Sprunki Congelados/Gold (Garnold)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Gold (Garnold)\\arpeg.wav"
+      },
+      {
+        "name": "Tan (Tunner)",
+        "image": "organized/Sprunki Congelados/Tan (Tunner)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Tan (Tunner)\\whistle1.wav"
+      },
+      {
+        "name": "Gray",
+        "image": "organized/Sprunki Congelados/Gray/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Gray\\bass1.wav"
+      },
+      {
+        "name": "Brown (brud)",
+        "image": "organized/Sprunki Congelados/Brown (brud)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Brown (brud)\\goofy ahh thing.wav"
+      },
+      {
+        "name": "Sky blue (Sky)",
+        "image": "organized/Sprunki Congelados/Sky blue (Sky)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Sky blue (Sky)\\music box1.wav"
+      },
+      {
+        "name": "Lime (OWAKCX)",
+        "image": "organized/Sprunki Congelados/Lime (OWAKCX)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Lime (OWAKCX)\\wind up1.wav"
+      },
+      {
+        "name": "Pink (Pinki)",
+        "image": "organized/Sprunki Congelados/Pink (Pinki)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Pink (Pinki)\\femchoir1.wav"
+      },
+      {
+        "name": "White (Wenda)",
+        "image": "organized/Sprunki Congelados/White (Wenda)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\White (Wenda)\\boring hey sound.wav"
+      },
+      {
+        "name": "Green (Vineria)",
+        "image": "organized/Sprunki Congelados/Green (Vineria)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Green (Vineria)\\shaky shaky.mp3"
+      },
+      {
+        "name": "Blue (Jevin)",
+        "image": "organized/Sprunki Congelados/Blue (Jevin)/idle.png",
+        "sound": "organized\\Sprunki Congelados\\Blue (Jevin)\\new choir1.wav"
+      }
+    ],
+    "backgrounds": [
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.png",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Congelados\\Stage\\backdrop.svg",
+        "sound": null
+      }
+    ]
+  },
+  "Sprunki Babies": {
+    "characters": [
+      {
+        "name": "Orange (Oren)",
+        "image": "organized/Sprunki Babies/Orange (Oren)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Orange (Oren)\\kick.wav"
+      },
+      {
+        "name": "Red (Raddy)",
+        "image": "organized/Sprunki Babies/Red (Raddy)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Red (Raddy)\\snare.wav"
+      },
+      {
+        "name": "Silver (Clukr)",
+        "image": "organized/Sprunki Babies/Silver (Clukr)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Silver (Clukr)\\ride cymbal.wav"
+      },
+      {
+        "name": "Fun Bot",
+        "image": "organized/Sprunki Babies/Fun Bot/idle.png",
+        "sound": "organized\\Sprunki Babies\\Fun Bot\\amen.wav"
+      },
+      {
+        "name": "Green (Vineria)",
+        "image": "organized/Sprunki Babies/Green (Vineria)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Green (Vineria)\\shaky shaky.wav"
+      },
+      {
+        "name": "Gray (Gray)",
+        "image": "organized/Sprunki Babies/Gray (Gray)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Gray (Gray)\\bass1.wav"
+      },
+      {
+        "name": "Brown (brud)",
+        "image": "organized/Sprunki Babies/Brown (brud)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Brown (brud)\\goofy ahh thing.wav"
+      },
+      {
+        "name": "Gold (Garnold)",
+        "image": "organized/Sprunki Babies/Gold (Garnold)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Gold (Garnold)\\Newgarnoldsound.wav"
+      },
+      {
+        "name": "Lime (OWAKCX)",
+        "image": "organized/Sprunki Babies/Lime (OWAKCX)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Lime (OWAKCX)\\wind up1.wav"
+      },
+      {
+        "name": "Sky blue (Sky)",
+        "image": "organized/Sprunki Babies/Sky blue (Sky)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Sky blue (Sky)\\music box1.wav"
+      },
+      {
+        "name": "Mr. Sun/Mr. moon",
+        "image": "organized/Sprunki Babies/Mr. Sun_Mr. moon/idle.png",
+        "sound": "organized\\Sprunki Babies\\Mr. Sun_Mr. moon\\Piano_fixed_finally1.wav"
+      },
+      {
+        "name": "Purple (Durple)",
+        "image": "organized/Sprunki Babies/Purple (Durple)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Purple (Durple)\\tromp1 old.wav"
+      },
+      {
+        "name": "Mr. Tree",
+        "image": "organized/Sprunki Babies/Mr. Tree/idle.png",
+        "sound": "organized\\Sprunki Babies\\Mr. Tree\\organ1.wav"
+      },
+      {
+        "name": "Yellow (Simon)",
+        "image": "organized/Sprunki Babies/Yellow (Simon)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Yellow (Simon)\\square1.wav"
+      },
+      {
+        "name": "Tan (Tunner)",
+        "image": "organized/Sprunki Babies/Tan (Tunner)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Tan (Tunner)\\Newtunnersound1.wav"
+      },
+      {
+        "name": "Mr. Fun Computer",
+        "image": "organized/Sprunki Babies/Mr. Fun Computer/idle.png",
+        "sound": "organized\\Sprunki Babies\\Mr. Fun Computer\\aising1.wav"
+      },
+      {
+        "name": "White (Wenda)",
+        "image": "organized/Sprunki Babies/White (Wenda)/idle.png",
+        "sound": "organized\\Sprunki Babies\\White (Wenda)\\boring hey sound.wav"
+      },
+      {
+        "name": "Pink (Pinki)",
+        "image": "organized/Sprunki Babies/Pink (Pinki)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Pink (Pinki)\\femchoir1.wav"
+      },
+      {
+        "name": "Blue (Jevin)",
+        "image": "organized/Sprunki Babies/Blue (Jevin)/idle.png",
+        "sound": "organized\\Sprunki Babies\\Blue (Jevin)\\new choir1.wav"
+      },
+      {
+        "name": "Mr.Black",
+        "image": "organized/Sprunki Babies/Mr.Black/idle.png",
+        "sound": "organized\\Sprunki Babies\\Mr.Black\\recording1.wav"
+      },
+      {
+        "name": "Assets",
+        "image": "organized/Sprunki Babies/Assets/idle.png",
+        "sound": null
+      },
+      {
+        "name": "loop controller",
+        "image": "organized\\Sprunki Babies\\loop controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "Bio",
+        "image": "organized/Sprunki Babies/Bio/idle.png",
+        "sound": null
+      },
+      {
+        "name": "other controller",
+        "image": "organized\\Sprunki Babies\\other controller\\idle.svg",
+        "sound": null
+      },
+      {
+        "name": "dark",
+        "image": "organized/Sprunki Babies/dark/idle.png",
+        "sound": null
+      },
+      {
+        "name": "SprunkiBabies",
+        "image": "organized/Sprunki Babies/SprunkiBabies/idle.png",
+        "sound": null
+      },
+      {
+        "name": "SprunkiBabiesBases",
+        "image": "organized/Sprunki Babies/SprunkiBabiesBases/idle.png",
+        "sound": null
+      },
+      {
+        "name": "Baby Black",
+        "image": "organized/Sprunki Babies/Baby Black/idle.png",
+        "sound": null
+      },
+      {
+        "name": "SprunkiBabiesNighttimeBases",
+        "image": "organized/Sprunki Babies/SprunkiBabiesNighttimeBases/idle.png",
+        "sound": null
+      },
+      {
+        "name": "SprunkiBabiesNighttime",
+        "image": "organized/Sprunki Babies/SprunkiBabiesNighttime/idle.png",
+        "sound": null
+      },
+      {
+        "name": "SprunkiBabiesNighttime2",
+        "image": "organized/Sprunki Babies/SprunkiBabiesNighttime2/idle.png",
+        "sound": null
+      }
+    ],
+    "backgrounds": [
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.svg",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.png",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.png",
+        "sound": null
+      },
+      {
+        "name": "Stage",
+        "image": "organized\\Sprunki Babies\\Stage\\backdrop.svg",
+        "sound": null
+      }
+    ]
+  }
+}

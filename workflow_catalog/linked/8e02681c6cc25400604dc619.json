@@ -1,0 +1,15 @@
+{
+  "1": {
+    "class_type": "PemaraFFVINativeDLSS5",
+    "inputs": {
+      "source_relative_path": "ffvi_opera_fasth3_omni_20261022/action_pilot_native/T21_00001_.mp4"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

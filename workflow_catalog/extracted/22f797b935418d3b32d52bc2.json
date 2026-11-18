@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Metallica-inspired, Aggressive classic Bay Area thrash metal, razor-tight downpicked guitar riffs, audible growling bass, hard acoustic double-kick drums, biting forceful male baritone, fierce electric lead solo. 192 BPM, E minor. a rapid low-E pedal riff with jagged accents; contrasting melodic bass bridge and a two-stage solo. Bay Area thrash metal, E minor, aggressive and rhythmic. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Opening Riff & 0-90s; Bridge & Solo 90-200s; Final Chorus 200-270s; Outro 270-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=192, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nConcrete lungs, the meter spins\nSweat on the glass, the shift begins\nThey sell the oxygen, slice by slice\nWe pay in blood for every price\nThe air grows thin, the walls grow tight\nStarved for the void of endless night\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Verse]\nValve in the wall, cold and green\nTurn it slow, turn it keen\nThe hiss is loud, the pipes are cracking\nBreak the seal, the city is shaking\nNo more coins for a single puff\nNo more fear, no more enough\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Bridge]\nBass hums low, the rhythm breaks\nNo more chains, no more fakes\nThe air floods in, raw and free\nEvery minute belongs to me\n\n[Solo]\n\n[Chorus]\nRationed breath! Choke on the cost\nCount the lungs you’ve lost\nRationed breath! Gasping in the dark\nWatch the valve tear the mark\n\n[Outro]\nOne last inhale, the engine dies\nThe air is ours, the sky is wide",
+      "seed": 202610161016,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

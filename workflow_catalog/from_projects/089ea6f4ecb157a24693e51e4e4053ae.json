@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P25_pixaroma_master20_v1_impresario_exit",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P25_overture.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 25102501
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous fifteen-second LIVE-ACTION continuation of the EXACT approved older theatre impresario shown in the supplied outgoing frame. Same face, age, receding grey hair, curved grey moustache, portly body, dark navy-blue frock coat, ivory waistcoat and white cravat, dark trousers and leather shoes. His RIGHT hand already holds the same letter LOW beside his right thigh; his LEFT hand rests near his waistcoat. Start at this exact pose and scale, not an earlier portrait with both hands holding a letter. Natural skin, navy fabric and ivory cloth, warm steady practical theatre light; no magenta cast or exposure change.\n\nKeep the exact physical side-curtain set from the first frame: closed opaque burgundy velvet backdrop, timber rigging and vertical ropes at the far sides, left candle table, side chair, dark wooden stage floor. The camera stays FIXED from first frame to last, same framing, height and perspective. Same one named actor, same letter. Preserve chair, table, ropes and curtain; do not open any seam or reveal a moon, castle or hidden stage. No other person enters.\n\nFrom0-5s the impresario wants to direct the audience's attention toward the coming play. He first looks toward the audience, then extends his LEFT forearm in ONE modest presenting gesture at waist height, open palm facing slightly upward toward the stage, with normal wrist and fingers. The RIGHT hand holds the SAME existing letter low at the right hip throughout. The paper stays one folded sheet of unchanged size; do not duplicate it, pass it between hands, pocket it or transform it. His chest breathes naturally, shoulders stay relaxed. Mouth rests closed, no speaking, singing, phonetic lip motions or exaggerated jaw movement. The music already supplies the introduction; he is acknowledging it silently.\n\nFrom5-8s he finishes the presenting gesture, lets the left arm relax and looks toward the CLEAR FLOOR route at screen RIGHT before turning. He turns his head first, then shoulders, pelvis and supported feet into a quarter-turn toward screen right. His body turns through a small grounded pivot, not a rigid rotating cutout. The letter remains in his right hand at thigh level, coat tails respond after the torso. He does not turn through the burgundy curtain or retreat into it. He has a clear lateral path DOWNSTAGE IN FRONT OF the rope rigging and all furniture.\n\nFrom8-13.5s he walks naturally to screen RIGHT along that clear downstage floor, taking four or five measured alternating steps at normal speed. Show foot lift, placement and weight transfer with real hip/knee/ankle movement; one foot supports the body while the other advances. No sliding shoes, gliding torso, disappearing legs or floor penetration. The same right hand carries the letter with a small natural swing beside the thigh, not through the coat. Left arm makes a restrained independent counter-swing. He passes IN FRONT of the stationary right-side rigging, separated from it by clear depth, never between or through its ropes. The camera does not follow him or zoom. He exits naturally beyond the right FRAME EDGE along the clear floor, leaving the physical room; do not dissolve, shrink, fade or morph his body, do not make the ropes absorb him. Preserve his face/profile, coat, trousers, shoes and paper until each is naturally occluded beyond the frame edge.\n\nFrom13.5-15.08s hold the same live-action view of the now-empty side-curtain space while the original orchestral passage continues. There is no returning actor or new cast member. The opaque velvet main curtain remains firmly shut; same floor, rope rigging, table and chair, with subtle practical candle life rather than a flash or pulsing lights. The ending is quiet expectation before the stage reveal, not a fade, blackout, audience applause or duplicate entrance. No added words, title, subtitle, camera cut or portrait reset.\n\noverall_soundscape: Preserve ONLY the supplied exact next contiguous interval of the original English Pixel Remaster recording, original stereo, fixed gain, timing and duration. Do not generate narration, singing, dialogue, applause, footsteps, Foley or substitute music. This is a silent physical acknowledgement and withdrawal over the original orchestral recording, without mouthed words.\n\nnon_diegetic_music: N/A; original recorded opera is the sole music.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P25_P24_approved_endpoint.png"
+    }
+  }
+}

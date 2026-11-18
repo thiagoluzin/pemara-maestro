@@ -1,0 +1,9 @@
+﻿{
+    "uuid":  "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+    "name":  "NVIDIA GeForce RTX 5090",
+    "powerLimitWatts":  575,
+    "defaultPowerLimitWatts":  575,
+    "minPowerLimitWatts":  400,
+    "maxPowerLimitWatts":  575,
+    "temperatureC":  46
+}

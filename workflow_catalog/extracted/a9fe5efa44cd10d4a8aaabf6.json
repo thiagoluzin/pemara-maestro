@@ -1,0 +1,300 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_animate_14B_bf16.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "_meta": {
+      "title": "Wan2.2 Animate 14B — local BF16"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Local UMT5"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "_meta": {
+      "title": "Local Wan 2.1 VAE"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_ExactRef_20261101_walk_approved_west.png"
+    },
+    "_meta": {
+      "title": "Canonical east reference — exact staged hash"
+    },
+    "is_changed": [
+      "871a367013c105eae823c2f542bfa3cf19d3ceb4cfa5381e952f477449c24f9a"
+    ]
+  },
+  "5": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 896,
+      "height": 768,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "Full reference — uniform 50 percent downscale"
+    }
+  },
+  "6": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "_meta": {
+      "title": "Local CLIP Vision H"
+    }
+  },
+  "7": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "6",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "crop": "none"
+    },
+    "_meta": {
+      "title": "Whole-character identity conditioning"
+    }
+  },
+  "8": {
+    "class_type": "VHS_LoadImagesPath",
+    "inputs": {
+      "directory": "E:\\a terra rejeita\\TerraDevolveGodot\\art_source\\Helena_Referencia_Exata_20261101\\pose_guides\\walk_east_v1",
+      "image_load_cap": 25,
+      "skip_first_images": 0,
+      "select_every_nth": 1
+    },
+    "is_changed": [
+      "115ed09ac666fa551ce0dda492a91d25cee860fba3c663fd2d0fdf0b5abc0615"
+    ]
+  },
+  "10": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "The EXACT original full-body game sprite in the reference walks in place facing RIGHT, following precisely the supplied approved body motion and foot contacts. Transfer ONLY the facing direction. Preserve the SAME face, SAME age, SAME clothing folds and shading, SAME thin soft leather satchel, SAME small dark steel six-shot revolver with SAME compact barrel, cylinder and wooden grip. The original drawing style must remain exact, no redesign, no simplification. Keep the revolver in her anatomical RIGHT hand, the satchel on her anatomical LEFT hip, and the diagonal strap unchanged. View the opposite physical side of the SAME woman. Coherent complete body, head, both hands, gun, bag and both boots remain fully visible inside the fixed 896x768 canvas. Side-view 2D game sprite, static camera, uniform dark charcoal background, no scenery, no zoom, no camera motion. Alternating left/right feet, the SAME complete stride as the supplied pose sequence. The gun stays securely in the right hand and does not morph."
+    },
+    "_meta": {
+      "title": "Minimal action prompt — pose supplies the motion"
+    }
+  },
+  "11": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": ""
+    },
+    "_meta": {
+      "title": "Empty negative — base Animate CFG 1"
+    }
+  },
+  "12": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift": 5.0
+    },
+    "_meta": {
+      "title": "Wan Animate base shift 5"
+    }
+  },
+  "13": {
+    "class_type": "WanAnimateToVideo",
+    "inputs": {
+      "positive": [
+        "10",
+        0
+      ],
+      "negative": [
+        "11",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "width": 896,
+      "height": 768,
+      "length": 25,
+      "batch_size": 1,
+      "continue_motion_max_frames": 5,
+      "video_frame_offset": 0,
+      "clip_vision_output": [
+        "7",
+        0
+      ],
+      "reference_image": [
+        "5",
+        0
+      ],
+      "pose_video": [
+        "8",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Animate Move — canonical reference plus source skeleton"
+    }
+  },
+  "14": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "12",
+        0
+      ],
+      "seed": 111010100,
+      "steps": 20,
+      "cfg": 1.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "simple",
+      "positive": [
+        "13",
+        0
+      ],
+      "negative": [
+        "13",
+        1
+      ],
+      "latent_image": [
+        "13",
+        2
+      ],
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "Base Animate pilot — no distillation or Pixel LoRA"
+    }
+  },
+  "15": {
+    "class_type": "TrimVideoLatent",
+    "inputs": {
+      "samples": [
+        "14",
+        0
+      ],
+      "trim_amount": [
+        "13",
+        3
+      ]
+    },
+    "_meta": {
+      "title": "Remove reference latent dynamically"
+    }
+  },
+  "16": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Decode 33 motion frames"
+    }
+  },
+  "21": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    },
+    "_meta": {
+      "title": "Declared content type — animation native preview"
+    }
+  },
+  "30": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_ExactRef_20261101/walk_east_native_v2/native",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "input_color_depth": "16bit"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "31": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_ExactRef_20261101/walk_east_native_v2/preview",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "16",
+        0
+      ],
+      "fps": 16.0
+    }
+  }
+}

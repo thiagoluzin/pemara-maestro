@@ -1,0 +1,78 @@
+{
+  "1": {
+    "class_type": "LoadControlFoleyModel",
+    "inputs": {
+      "controlfoley_source_dir": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\ControlFoley_source",
+      "model_weights_dir": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\ControlFoley_weights",
+      "variant": "large_44k",
+      "device": "cuda",
+      "precision": "bf16",
+      "low_vram": false,
+      "compile_encoders": false,
+      "auto_fetch_source": false
+    }
+  },
+  "2": {
+    "class_type": "LoadControlFoleyVideo",
+    "inputs": {
+      "video_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\ControlFoley_comfy\\input\\take02_fhd_picture_lock.mp4",
+      "duration": 8.0
+    }
+  },
+  "3": {
+    "class_type": "ControlFoleyGenerate",
+    "inputs": {
+      "controlfoley_model": [
+        "1",
+        0
+      ],
+      "video": [
+        "2",
+        0
+      ],
+      "prompt": "Close-range live-action martial arts fight in a stone arena: heavy body punches, blocked kicks, elbows, knees, armor and leather impacts, boots scraping sand, cloth movement, strained breathing and distant crowd reactions. Every strike lands exactly when the bodies make contact. Dry brutal realistic Foley, no music and no speech.",
+      "negative_prompt": "music, soundtrack, rhythm, drums, vocals, speech, dialogue, announcer, synthesizer, laser, cartoon, exaggerated whoosh, gunfire",
+      "duration": 8.0,
+      "seed": 2142026,
+      "num_inference_steps": "fixed",
+      "guidance_scale": 5.5,
+      "mask_away_clip": false,
+      "cache_video_features": true,
+      "staged_offload": true,
+      "clip_batch_size_multiplier": "8",
+      "sync_batch_size_multiplier": "8",
+      "reference_audio_path": "",
+      "image_fps": 24.0
+    }
+  },
+  "4": {
+    "class_type": "SaveControlFoleyAudio",
+    "inputs": {
+      "audio": [
+        "3",
+        0
+      ],
+      "filename_prefix": "mortal_kombat_irmaos/take02_foley_pilot_a",
+      "format": "wav"
+    }
+  },
+  "5": {
+    "class_type": "MuxControlFoleyAudioToVideo",
+    "inputs": {
+      "controlfoley_model": [
+        "1",
+        0
+      ],
+      "video": [
+        "2",
+        0
+      ],
+      "audio": [
+        "4",
+        0
+      ],
+      "output_filename": "mortal_kombat_irmaos/take02_foley_pilot_a_review.mp4",
+      "mode": "replace"
+    }
+  }
+}

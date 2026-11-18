@@ -1,0 +1,82 @@
+{
+  "id": "h3_live_action_moving_connector",
+  "label": "H3 Live Action - Moving Connector",
+  "engine": "minimax_h3",
+  "mode": "FL2VA",
+  "fallbackAllowed": false,
+  "useWhen": [
+    "two approved takes must join as one continuous action",
+    "body, object and camera velocity must cross the boundary",
+    "an editorial fade or frozen hold would hide a continuity defect"
+  ],
+  "qualityRoute": {
+    "normal": "h3_production",
+    "high": "h3_hero",
+    "critical": "h3_master"
+  },
+  "durationPolicy": "124 native frames at 24 fps (about 5.17 seconds), the local FL2VA minimum; use only when a direct kinetic cut cannot resolve a recoverable causal mismatch",
+  "handoffPolicy": {
+    "preferred": "DIRECT_KINETIC_CUT_FROM_SHARED_DYNAMIC_BOUNDARY",
+    "connectorAllowedWhen": "both sources pass independently and one causal irreversible action reconciles a recoverable mismatch",
+    "sourceRegenerationRequiredWhen": "body, action phase, camera/geography, identity, weapon/effect ownership or persistent damage resets"
+  },
+  "controlContract": {
+    "required": [
+      "approved start frame sampled inside moving source footage",
+      "approved end frame sampled inside moving destination footage",
+      "entry and exit body, object and camera velocity",
+      "kinetic handoff state for every fighter, camera, object/effect and environment",
+      "per-channel affinity decision with no source-regeneration requirement",
+      "one irreversible material change before the cut"
+    ],
+    "crossfadeFrames": 0,
+    "freezeFrames": 0,
+    "staticHoldFrames": 0,
+    "resetAllowed": false,
+    "exactPoseControl": false
+  },
+  "nodeContract": {
+    "required": [
+      "UNETLoader",
+      "CLIPLoader",
+      "VAELoader",
+      "LoadImage",
+      "MiniMaxH3ImageToVideo",
+      "MiniMaxH3SigmaShift",
+      "BasicGuider",
+      "BasicScheduler",
+      "RandomNoise",
+      "KSamplerSelect",
+      "SamplerCustomAdvanced",
+      "LTXVSeparateAVLatent",
+      "VAEDecodeTiled",
+      "ImageScale",
+      "CreateVideo",
+      "SaveVideo"
+    ],
+    "optional": [
+      "MiniMaxH3AddGuide",
+      "ModelPreviewOverrideKJ"
+    ],
+    "forbidden": [
+      "crossfade or xfade",
+      "freeze frame or duplicated terminal frames",
+      "static first or last pose used as a moving boundary",
+      "pose, direction or geography reset",
+      "first second used to rebuild pose, center actors or recover speed",
+      "smoke, fire, branch, whip-pan, darkness or shake used to hide a swap",
+      "RIFE or upscale before source approval"
+    ]
+  },
+  "promptContract": {
+    "language": "English except original dialogue and visible text",
+    "sections": [
+      "integrated_multimodal_description",
+      "overall_soundscape",
+      "non_diegetic_music"
+    ],
+    "handoffRule": "Continue inherited center-of-mass, support-foot, limb-phase, gaze, object/effect and camera state immediately; execute an irreversible action and leave the frame in motion for the destination take.",
+    "cameraRule": "Preserve shared geography while camera translation creates visible perspective and three-plane parallax."
+  },
+  "outputStatus": "CONNECTOR_CANDIDATE_PENDING_HUMAN_REVIEW"
+}

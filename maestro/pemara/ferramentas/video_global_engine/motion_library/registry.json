@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-07-18",
+  "policy": {
+    "asset_represents": "motion_only",
+    "driver_identity_transfer": "forbidden_by_default",
+    "face_transfer": "disabled_by_default",
+    "minimum_delivery_fps": 24,
+    "default_working_fps": 30,
+    "maximum_corrective_retries": 1
+  },
+  "drivers": [
+    {
+      "id": "judo_mirassol_sensei_usuario_v1",
+      "action": "apresentacao_lateral_com_retorno_neutro",
+      "scope": "project",
+      "project": "judo_mirassol",
+      "status": "user_approved_for_judo_invitation",
+      "source_type": "user_recorded_local",
+      "source": "E:/judo_mirassol/references/motion_drivers/WhatsApp Video 2026-07-18 at 17.13.55 (1).mp4",
+      "normalized_driver": "E:/judo_mirassol/references/motion_drivers/driver_sensei_usuario_v1_149f_720p30.mp4",
+      "pose_preview": "E:/judo_mirassol/references/motion_drivers/driver_sensei_usuario_v1_dwpose.mp4",
+      "metadata": "E:/judo_mirassol/references/motion_drivers/driver_sensei_usuario_v1_149f_720p30.json",
+      "frames": 149,
+      "fps": 30,
+      "resolution": "1280x720",
+      "dwpose": {
+        "body": "passed",
+        "hands": "passed",
+        "face": "disabled"
+      },
+      "limitations": [
+        "driver_head_is_partially_cropped",
+        "not_approved_for_face_or_expression_transfer"
+      ],
+      "approved_at": "2026-07-18",
+      "approved_scope": "judo_mirassol_invitation_sensei_presentation",
+      "project_exclusions": [
+        "judo_throw",
+        "fight",
+        "fall",
+        "simulated_body_contact"
+      ]
+    }
+  ]
+}

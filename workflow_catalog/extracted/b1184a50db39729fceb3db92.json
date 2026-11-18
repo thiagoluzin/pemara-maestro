@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Iron Maiden-inspired, Epic aggressive heavy metal, propulsive gallops, melodic independent bass, bright harmonized distorted leads, high powerful male tenor, hard snare attacks. 158 BPM, F sharp minor. minor-key ascending refrain against a descending bass; rhythmic unison stops before the chorus. Epic heavy metal, galloping 8th-notes, F#m, hard snare, melodic bass, unison stops.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro/Verse 1 0-60s; Chorus 1 60-100s; Verse 2 100-160s; Chorus 2/Bridge 160-220s; Solo/Chorus 3 220-292s; Outro 292-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=158, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nDust on the viewport, the engine’s a scream\nWe signed for the stars, not a hollowed-out dream\nThe captain’s a ghost with a ledger of lies\nCounting the souls like a butcher counts flies\nThe hum of the hull is a ticking clock\nWe’re moving away from the place we got stuck\nBut the charts on the wall have been burned to the floor\nAnd the heat is the only thing we can see anymore\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Verse]\nThe navigator drops his pen on the deck\nSays the star isn’t waiting, it’s coming to fetch\nThe air recyclers are coughing up rust\nAnd the smell of the burning is sweet as dust\nI saw the reflection in the steel of the door\nA thousand red eyes and a hungry core\nWe didn’t buy tickets, we bought our own grave\nNow we’re walking toward the light, step by step, brave\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Bridge]\nHold the line!\nDo not look back!\nThe void is a mouth and it’s hungry for cracks\nHold the line!\nThe metal is thin!\nWe are the fuel and the fire is in\n\n[Solo]\n\n[Chorus]\nPrisoners of the Ninth Sun\nBurning bright where the light is done\nWe flew from the cold to the heat of the blade\nA furnace of gold and a promise we made\n\n[Outro]\nThe glass cracks, the air is gone\nWe belong to the burning dawn\nPrisoners... of the Ninth Sun\nGone",
+      "seed": 202610161002,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

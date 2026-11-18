@@ -1,0 +1,115 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Quero um clone da música ema da tifa do final fantasy 7 com as mesmas notas e melodias porém além dá orquestra com piano, violino e celo, quero instrumentos de heavy metal tudo em harmonia\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Instrumental]",
+      "abc": "X:1\nT:\nM:2/4\nL:1/32\nQ:1/4=82\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:Dm\n% intro\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nz8d8|a16-|a8z4g2a2|b4a4f4e4|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nf4g4e8-|e4c12-|c4A12-|A12d2e2|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nf4d2e2f2e2d2c2|A4c4d4d2e2|f4d2e2f2e2d2c2|A4c4d4d2e2|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nf4d2e2f2e2d2c2|A4c4d8|d16-|d8z8|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nf4d2e2f2e2d2c2|A4c4d4d2e2|f4d2e2f2e2d2c2|A4c4d4d2e2|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nf4d2e2f2e2d2c2|A4c4d8|d16-|d8z8|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nd16-|d8z2c2A2G2|A16-|A8A4G2F2|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nG12F4-|F8D8|G,2A,2C2D2F2D2F2G2|A2c2d2f2e2d2c2d2|\n% interlude\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nd4d4a4d4|b4d4g4d4|a4d4f4d4|g4d4e4c4|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z16|\nV: Ins\nd4d4a4d4|b4d4g4d4|a4d4f4d4|g4d4e8|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nf16-|f8e8|c16-|c8A2c2d2e2|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nf16-|f8e8|c16|A2c2d2e2f2e2d2c2|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nd16-|d8z4d2e2|f4e4d4c4|A4G4F4E4|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nF12E4|D8C8|D16-|D16|\n% verse\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8D2E2F4|\nV: Ins\nD4D4A4D4|B4D4G4D4|A4D4F4D4|G4D4z8|\nV: Vocal\n\"Dm\"A8z8|\"Dm\"z8D2E2F2G2|\"C\"G8z8|\"C\"z8A2A2A2B2-|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"B2A2A2G2G2F2F4-|\"Bb\"F4z12|\"Bb\"z16|\"Bb\"z8D2E2F4|\nV: Ins\nZ|z4d4g4d4|a4d4f4d4|g4d4z8|\nV: Vocal\n\"Dm\"A8z8|\"Dm\"z6D2D2E2F2G2|\"C\"G8z8|\"C\"z8A2A2A2B2-|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"B2A2A2G2G2F2F4-|\"Bb\"F4z12|\"Bb\"z16|\"Bb\"z8d2e2f4|\nV: Ins\nZ|z4d4g4d4|a4d4f4d4|g4d4z8|\nV: Vocal\n\"Dm\"a8z8|\"Dm\"z6d2d2e2f2g2|\"C\"g8z8|\"C\"z8a2a2a2b2-|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"b2a2a2g2g2f2f4-|\"Bb\"f4z12|\"Bb\"z16|\"Bb\"z8d2e2f4|\nV: Ins\nZ4|\nV: Vocal\n\"Dm\"a8z8|\"Dm\"z6d2d2e2f2g2|\"C\"g8z8|\"C\"z8a2a2a2b2-|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"b2a2a2g2g2f2f4-|\"Bb\"f16-|\"Bb\"f16-|\"Bb\"f12z4|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"Dm\"f4f4e4d4|\"Dm\"A4c4d4d2e2|\"Dm\"f4f2e2e4d4|\"Dm\"A8\"C\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"f4f2e2e4d4|\"Bb\"A4c4d4d2e2|\"Gm\"f2f2f2e2e4d4|\"Gm\"A8\"F6\"z8|\nV: Ins\nZ3|z8d8|\n% interlude\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nd16-|d8z4d2e2|f4e4d4c4|A4G4F4E4|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nF12E4|D8C8|D16-|D16|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nD2E2F2G2A2B2c2d2|e2f2g2a2b2a2g2f2|e2d2c2B2A2G2F2E2|F2G2A2B2c8|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nd8c4d4-|d12z4|d8c4d4-|d8d8|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nd2e2f2g2a2b2c'2d'2|e'2f'2g'2a'2b'2a'2g'2f'2|e'2d'2c'2b2a2g2f2e2|f2g2a2b2c'8|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nd8c4d4-|d12z4|d8c4d4-|d12z4|\n% chorus\nV: Vocal\n\"Dm\"f4f4e4d4|\"Dm\"A4c4d4d2e2|\"Dm\"f4f2e2e4d4|\"Dm\"A8\"C\"z8|\nV: Ins\nZ4|\nV: Vocal\n\"Bb\"f4f2e2e4d4|\"Bb\"A4c4d4d2e2|\"Gm\"f2f2f2e2e4d4|\"Gm\"A8\"F6\"z8|\nV: Ins\nZ3|z8d8|\n% interlude\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z8\"C\"z8|\nV: Ins\nA16-|A8z4d2e2|f4e4d4c4|A4G4F4E4|\nV: Vocal\n\"Bb\"z16|\"Bb\"z16|\"Gm\"z16|\"Gm\"z8\"F6\"z8|\nV: Ins\nF12E4|D8C8|D16-|D16|\nV: Vocal\n\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\"Dm\"z16|\nV: Ins\nf4d4a4d4|b4d4g4d4|a4d4f4d4|g4d4e8-|\nV: Vocal\n\"Dm\"z16|\nV: Ins\ne16|",
+      "seed": 725495683,
+      "mode": "full",
+      "max_duration": 900,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 725495683,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_e3936a5168b3",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

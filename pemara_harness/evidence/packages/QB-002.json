@@ -1,0 +1,57 @@
+{
+  "task_id": "QB-002",
+  "objective": "Create the pemara-builder DSH profile (isolated home .runtime/dsh-home-builder, dedicated ledger pemara-builder/ledger.sqlite, same local Qwen route) plus dsh/builder-policy.mjs with profile validation and per-task skill staging, and the builder's own tests.",
+  "allowed_paths": [
+    ".runtime/dsh-home-builder/profiles/pemara-builder/package.json",
+    ".runtime/dsh-home-builder/profiles/pemara-builder/cordis.patch.yml",
+    "dsh/builder-policy.mjs",
+    "test/builder-profile.test.mjs"
+  ],
+  "forbidden_paths": [
+    "RULES.md",
+    "SPEC.md",
+    "evidence/",
+    "tasks/contracts/",
+    "test/builder-contract.test.mjs",
+    "test/doctor.test.mjs",
+    "scripts/check-protected.mjs",
+    "src/index.mjs",
+    "src/doctor.mjs",
+    "src/manifest.mjs",
+    "src/builder-contract.mjs",
+    "dsh/plugin.mjs",
+    ".runtime/dsh-home/",
+    "bin/",
+    "package.json",
+    "MANIFEST_SHA256.csv"
+  ],
+  "acceptance_commands": [
+    "node test/builder-profile.test.mjs",
+    "node test/builder-contract.test.mjs",
+    "node --check dsh/builder-policy.mjs",
+    "node --check test/builder-profile.test.mjs"
+  ],
+  "required_artifacts": [
+    "git diff HEAD of the worktree branch",
+    "builder-profile test output",
+    "final checkpoint with next action"
+  ],
+  "skills": [
+    "test-driven-development",
+    "incremental-implementation",
+    "api-and-interface-design",
+    "observability-and-instrumentation"
+  ],
+  "max_rounds": 6,
+  "max_files_changed": 5,
+  "network": "denied",
+  "service_control": "denied",
+  "gpu_control": "denied",
+  "commit_or_publish": "denied",
+  "stop_conditions": [
+    "protected test or policy changed",
+    "path outside allowed_paths touched",
+    "original pemara profile files changed",
+    "budget exhausted (6 rounds / 5 files)"
+  ]
+}

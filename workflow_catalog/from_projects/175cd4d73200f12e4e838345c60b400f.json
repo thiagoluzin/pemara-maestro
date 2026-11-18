@@ -1,0 +1,316 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T06_MONTANHA_GALICK/T06_full_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "T05_APPROVED_frame239.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T06_MONTANHA_GALICK/T06_mountain_Galick_charge_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "assemble",
+        1
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "integrated_multimodal_description: [Shot 1] Continue IMMEDIATELY from the supplied final frame of the approved preceding shot: Goku stands on the canyon floor at LEFT under his existing crimson Kaioken, while the SAME armored Vegeta is already airborne at RIGHT, recoiling away from Goku toward the rock face. This is a TEN-SECOND continuous cinematic LIVE-ACTION shot, continuing their existing positions and warm dry canyon daylight. The starting frame supplies pose and geography; persistent <Picture 1> fixes the ORIGINAL exact human identities and costumes, never resets the pose. Goku: taller athletic East Asian adult man, original black asymmetrical hair/face, orange heavy cotton gi with Turtle insignia, navy undershirt/sash/wristbands and navy boots. Vegeta: shorter compact adult man, exact original angular face, widow's peak/upright black hair, royal-blue bodysuit, white armor with ochre ribbed panels and raised shoulder/hip guards, white gloves, white/gold boots, brown furry tail around waist. Real human skin, natural facial proportions, original cloth/armor materials; no recasting, blonde hair, scouter, costume replacement or extra fighters.\n\nSTORY: Vegeta's carried recoil ends in a physical MOUNTAIN COLLISION, then he regains support, realizes Goku's power and begins charging a MASSIVE GALICK GUN. Do not restart sparring or repeat Goku's kick.\n\nOpening0-2seconds: Keep Vegeta moving RIGHTWARD out of the existing airborne recovery, body carried by the previous kick. The camera smoothly follows him right and reveals the adjoining upright face of the SAME rocky mountain already beside his flight path. His BACK and shoulder strike that rock surface ONCE. Make the contact readable: the armored body reaches the rock before stone cracks and fragments break outward. His torso compresses, head and forearms jolt forward, dust bursts behind his back. The rock stops the rightward travel; fractured pieces FALL under gravity. He never passes through stone, teleports, hovers in place or changes direction before contact. Goku remains behind to the left, becoming distant/offscreen as the camera follows Vegeta.\n\nAround2-4seconds: Vegeta drops from the broken rock face onto the ground immediately below it. His boots touch, knees bend deeply to absorb his weight; one white-gloved hand catches against the ground. He takes one rough stabilizing step onto the loose stones and rises with effort. Dust settles across his existing armor and boots and remains there. Preserve the original armor silhouette: add collision dust, not a new costume or unexplained major wound. His eyes turn LEFT toward the still-distant Goku. A sharp look of disbelief becomes focused anger: tight jaw, eyes fixed on his opponent, shoulders lowering as he decides to overpower him. No speech, scream or pantomime shouting.\n\nFrom about4seconds: Vegeta plants both boots wide on the broken ground and raises both white-gloved hands together beside/above his head into the GALICK GUN charging stance, palms aligned toward the opponent at LEFT, shoulders and torso braced. This is VEGETA'S two-handed palm energy technique; not Goku's waist-level Kamehameha stance, finger laser, weapon or a floating unrelated orb.\n\nAbout5-10seconds: Dense VIOLET-PURPLE energy condenses from Vegeta's palms. Start with a compact bright core, then build a LARGE THREE-DIMENSIONAL churning purple energy mass in front of his hands, at least shoulder-width, swelling toward torso-width as the charge intensifies. White-hot inner core inside saturated violet plasma, heavy rolling layers, electrical filaments curling around the surface, visibly held and fed by his two hands. Keep his ORIGINAL face, gloves and armored torso readable beside/behind it. The energy is a substantial pressurized volume, not a thin blue beam, small flashlight, flat purple line, diffuse mist or full-screen white flash.\n\nAs the mass grows, its purple light illuminates Vegeta's gloves, cheek, armor edges and the fractured rock around him while warm daylight remains. Loose pebbles shake and lift slightly, dust is pushed outward in expanding ground-level pressure rings, his blue fabric and tail respond to the increasing force. Make each environmental reaction grow AFTER the energy builds. Vegeta leans into the charge through bent knees and loaded boots; he does not drift or levitate. The scar from his impact remains visible behind him and the fallen rubble persists below. Goku never receives purple energy; his existing crimson Kaioken stays his alone if he remains at the far left edge.\n\nCamera purpose: first follow Vegeta from the exact incoming wide composition to the rock contact, keeping his body/rock interaction and landing legible. After he is grounded, a smooth restrained approach reaches a medium three-quarter view with his face, both hands, torso and growing energy volume. Maintain the canyon axis and his LEFTWARD gaze/attack direction. End on the GALICK GUN FULLY CHARGING, poised to fire but not released. Goku's Kamehameha and the beam collision belong to the following take; no beam is fired here.\n\nReal-time compact movement, decisive single collision and prompt recovery, then sustained increasing energy pressure. No slow motion, retiming, long suspended flight, cut, transition, orbit, shaking camera hiding the impact, shattered anatomy, vanishing damage, text or blood. Heavy physical collision and falling rock, persistent dust, identifiable human actor and large readable energy mass.\n\noverall_soundscape: One heavy synchronized body-rock impact, cracking stone, falling rubble, boot landing and cloth. Canyon wind under a growing low violet energy-pressure rumble and electrical crackle while Vegeta charges. No speech, voices, screams, grunts or music.\n\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 10.0,
+      "width": 1536,
+      "height": 864,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611082211,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "DB_T06_MOUNTAIN_GALICK_20261108",
+      "reference_size": "Match Output",
+      "project_id": "DB_T06_MOUNTAIN_GALICK_20261108",
+      "video_reference_size": "Efficient - 0.4 MP",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "reference_image_1": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  }
+}

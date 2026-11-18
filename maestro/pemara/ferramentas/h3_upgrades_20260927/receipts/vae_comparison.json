@@ -1,0 +1,57 @@
+{
+  "input": "synthetic animated color gradients",
+  "width": 1088,
+  "height": 608,
+  "frames": 73,
+  "results": [
+    {
+      "vae": "fp16",
+      "runs": [
+        {
+          "encode_seconds": 3.771366400000261,
+          "decode_seconds": 6.761553100001038,
+          "roundtrip_seconds": 10.532919500001299
+        },
+        {
+          "encode_seconds": 3.2777941999993345,
+          "decode_seconds": 2.9486505999993824,
+          "roundtrip_seconds": 6.226444799998717
+        }
+      ],
+      "finite": true,
+      "output_shape": [
+        1,
+        73,
+        608,
+        1088,
+        3
+      ]
+    },
+    {
+      "vae": "int8_convrot",
+      "runs": [
+        {
+          "encode_seconds": 3.3658873999993375,
+          "decode_seconds": 2.032145199998922,
+          "roundtrip_seconds": 5.39803259999826
+        },
+        {
+          "encode_seconds": 3.445346199998312,
+          "decode_seconds": 1.777419000001828,
+          "roundtrip_seconds": 5.22276520000014
+        }
+      ],
+      "finite": true,
+      "output_shape": [
+        1,
+        73,
+        608,
+        1088,
+        3
+      ]
+    }
+  ],
+  "candidate_vs_baseline_psnr_db": 56.20669678424066,
+  "max_abs_difference": 0.08348703384399414,
+  "artistic_approval": false
+}

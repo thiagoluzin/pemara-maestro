@@ -1,0 +1,67 @@
+{
+  "id": "h3_live_action_physical_action",
+  "label": "H3 Live Action - Physical Action",
+  "engine": "minimax_h3",
+  "mode": "FL2VA",
+  "fallbackAllowed": false,
+  "useWhen": [
+    "bilateral combat",
+    "transformation with fixed entering and leaving states",
+    "iconic pose or effect contact requiring geometry"
+  ],
+  "qualityRoute": {
+    "normal": "h3_production",
+    "high": "h3_hero",
+    "critical": "h3_master"
+  },
+  "controlContract": {
+    "required": [
+      "approved first and last anchors with SHA-256 and approval scope",
+      "identity matrix per character and temporal beat",
+      "three-interval motion with contact, displacement and reaction"
+    ],
+    "intermediateAnchor": "required for high or critical risk",
+    "motion": "prompt guided between locked image states",
+    "exactPoseControl": false
+  },
+  "nodeContract": {
+    "required": [
+      "UNETLoader",
+      "CLIPLoader",
+      "VAELoader",
+      "LoadImage",
+      "MiniMaxH3ImageToVideo",
+      "MiniMaxH3SigmaShift",
+      "BasicGuider",
+      "BasicScheduler",
+      "RandomNoise",
+      "KSamplerSelect",
+      "SamplerCustomAdvanced",
+      "LTXVSeparateAVLatent",
+      "VAEDecodeTiled",
+      "ImageScale",
+      "CreateVideo",
+      "SaveVideo"
+    ],
+    "optional": [
+      "MiniMaxH3AddGuide",
+      "ModelPreviewOverrideKJ"
+    ],
+    "forbidden": [
+      "MiniMaxH3ReferenceToVideo mixed into the FL2VA graph",
+      "one-sided attack without contact consequence",
+      "RIFE or upscale before source approval"
+    ]
+  },
+  "promptContract": {
+    "language": "English except original dialogue and visible text",
+    "sections": [
+      "integrated_multimodal_description",
+      "overall_soundscape",
+      "non_diegetic_music"
+    ],
+    "timelineRule": "Write visible beats for 0-30%, 30-70% and 70-100%, ending in useful motion.",
+    "physicsRule": "Every hit declares anticipation, contact, recoil, displacement, cloth, debris and environmental response."
+  },
+  "outputStatus": "TECHNICAL_CANDIDATE_PENDING_HUMAN_REVIEW"
+}

@@ -1,0 +1,110 @@
+{
+  "8": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "temporal_size": 64,
+      "vae": [
+        "5",
+        0
+      ],
+      "temporal_overlap": 8,
+      "tile_size": 512,
+      "overlap": 64,
+      "samples": [
+        "6",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "PEMARA_H3_DIAG_LEON/roundtrip_int8",
+      "images": [
+        "8",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "RepeatImageBatch",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "amount": 5
+    }
+  },
+  "7": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "temporal_size": 64,
+      "vae": [
+        "4",
+        0
+      ],
+      "temporal_overlap": 8,
+      "tile_size": 512,
+      "overlap": 64,
+      "samples": [
+        "6",
+        0
+      ]
+    }
+  },
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "re2_leon_licker_start_candidate_v1.png"
+    }
+  },
+  "6": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "height": 288,
+      "upscale_method": "lanczos",
+      "image": [
+        "1",
+        0
+      ],
+      "crop": "center",
+      "width": 512
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "PEMARA_H3_DIAG_LEON/roundtrip_fp16",
+      "images": [
+        "7",
+        0
+      ]
+    }
+  }
+}

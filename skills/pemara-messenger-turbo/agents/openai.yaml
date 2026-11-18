@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Messenger Turbo"
+  short_description: "Roteia skills e agentes sem duplicação"
+  default_prompt: "Use $pemara-messenger-turbo para escolher a skill canônica adequada."

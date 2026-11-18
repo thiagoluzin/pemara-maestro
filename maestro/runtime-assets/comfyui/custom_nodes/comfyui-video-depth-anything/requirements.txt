@@ -1,0 +1,11 @@
+opencv-python
+matplotlib
+pillow
+imageio
+imageio-ffmpeg
+einops
+easydict
+tqdm
+huggingface_hub
+Imath
+OpenEXR

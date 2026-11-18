@@ -1,0 +1,15 @@
+{
+  "scope": "Installation checks only; no artistic or canonical-reference approval",
+  "service_operations": "comfyui-local MCP",
+  "tests": [
+    {"workflow": "05_FLUX_Klein_rascunho.json", "prompt_id": "5123f053-8274-4437-9e1d-9105c17df974", "observed_status": "completed", "artifact": "klein_smoke_final/5123f053_000.png", "width": 1024, "height": 1024, "note": "Completion and output fetched before the final lifecycle restart; live server history was subsequently cleared."},
+    {"workflow": "01_HiDream_Full_ancoras.json", "prompt_id": "b33a4c32-5779-45f9-a319-250fdb50afc3", "observed_status": "completed", "artifact": "hidream_smoke/b33a4c32_000.png", "width": 2048, "height": 2048, "steps": 50},
+    {"workflow": "03_LLaDA_base_correcao.json", "prompt_id": "443ae55d-de8f-48b0-8d57-4a539a2fbc79", "observed_status": "completed", "artifact": "llada_base_smoke/443ae55d_000.png", "steps": 50},
+    {"workflow": "12_AuK_Flash_voz.api.json", "prompt_id": "402736d4-547a-4100-92a0-8f7d458df6b7", "observed_status": "completed", "artifact": "auk_smoke/402736d4_000.flac", "seconds": 3, "sample_rate": 24000, "finite": true, "rms": 0.0485466323, "note": "Completion and output fetched before the final lifecycle restart; pronunciation and PT-BR naturalness not approved."},
+    {"workflow": "10a_YuE2_planejar_ABC_sem_audio.json", "prompt_id": "cba34ccb-e8b1-49ab-891e-66557434c276", "observed_status": "completed", "artifact": "yue2_plan_smoke.json", "audio_generated": false},
+    {"workflow": "yue2_smoke.json", "prompt_id": "9ece5666-f07e-4199-8253-8543d5c7bf23", "observed_status": "completed", "artifact": "yue2_audio_smoke/9ece5666_000.flac", "seconds": 6, "sample_rate": 48000, "finite": true, "rms": 0.0427450858, "note": "Bounded technical test of generated ABC; not a human-approved score."},
+    {"workflow": "auk_edit_smoke.api.json", "prompt_id": "db0a69e9-f36c-40b6-bdbd-8619c41a5e4d", "observed_status": "completed", "artifact": "auk_edit_smoke/db0a69e9_000.flac", "input": "PEMARA_EXEMPLO_SUBSTITUIR.wav", "note": "Synthetic one-second input exercises the audio-input branch; not evidence of voice preservation."}
+  ],
+  "audio_cpp": {"version": "0.8.1", "archive_sha256_verified": "aad5dffe4398b325018cf38e58e6555998ef97948a72ac7582de46e91155ca24", "help": "pass", "cuda_device": "RTX 5090", "launcher_plan_only": "pass", "inference_executed": false},
+  "regression": {"H3_existing_graph": "valid", "H3_SageAttention_nodes": "present", "LTX25_UNION_DEPTH": "valid; existing frame_rate type warning", "video_generated": false}
+}

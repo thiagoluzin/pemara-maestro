@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#171717">
+    <title>Pemara</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css?v=codex-font-20260824">
+  </head>
+  <body>
+    <a class="skip-link" href="#task-input">Ir para a mensagem</a>
+
+    <div class="app-shell">
+      <div class="brand-watermark" aria-hidden="true"></div>
+      <aside class="sidebar" id="sidebar" aria-label="Navegação do Pemara">
+        <div class="sidebar-header">
+          <div class="brand" aria-label="Pemara Harness">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" role="img">
+                <path d="M6 8.5 16 3l10 5.5v15L16 29 6 23.5z"></path>
+                <path d="m11 11 5-2.7 5 2.7v5.8l-5 2.7-5-2.7z"></path>
+              </svg>
+            </span>
+            <span>Pemara</span>
+          </div>
+          <button type="button" class="sidebar-icon sidebar-close" id="sidebar-close" aria-label="Fechar barra lateral" title="Fechar barra lateral">×</button>
+        </div>
+
+        <div class="sidebar-actions">
+          <button type="button" class="new-chat-button" id="new-chat">
+            <span class="new-chat-plus" aria-hidden="true">＋</span>
+            <span>Nova conversa</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <label class="chat-search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <span class="sr-only">Buscar conversas</span>
+            <input id="chat-search" type="search" placeholder="Buscar conversas" autocomplete="off">
+          </label>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Conversas e projetos">
+          <section class="sidebar-section" aria-labelledby="chats-heading">
+            <div class="sidebar-section-heading">
+              <h2 id="chats-heading">Conversas</h2>
+              <span id="chat-count" aria-label="Quantidade de conversas">0</span>
+            </div>
+            <div class="chat-list" id="chat-list" role="list"></div>
+          </section>
+
+          <section class="sidebar-section project-section" aria-labelledby="projects-heading">
+            <div class="sidebar-section-heading project-heading">
+              <h2 id="projects-heading">Projetos</h2>
+              <button type="button" class="project-link-button" id="add-project" aria-label="Vincular projeto">Vincular</button>
+            </div>
+            <div class="project-list" id="project-list" role="list"></div>
+          </section>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-status" id="sidebar-footer-status" role="status">Loopback local · histórico preservado</div>
+        </div>
+      </aside>
+      <button type="button" class="sidebar-backdrop" id="sidebar-backdrop" aria-label="Fechar navegação" hidden></button>
+
+      <div class="app-main">
+        <header class="topbar">
+          <div class="topbar-inner">
+            <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir barra lateral" title="Abrir barra lateral">☰</button>
+            <div class="brand topbar-brand" aria-label="Pemara Harness">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" role="img">
+                  <path d="M6 8.5 16 3l10 5.5v15L16 29 6 23.5z"></path>
+                  <path d="m11 11 5-2.7 5 2.7v5.8l-5 2.7-5-2.7z"></path>
+                </svg>
+              </span>
+              <span>Pemara</span>
+            </div>
+            <div class="topbar-context" id="topbar-context">
+              <span class="topbar-context-label">Projeto</span>
+              <strong id="topbar-project">Pemara</strong>
+            </div>
+            <div class="topbar-state">
+              <div class="connection-state" id="connection-health" data-state="connecting" role="status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span id="connection-copy">Conectando</span>
+              </div>
+              <span class="last-update" id="last-update">Aguardando dados</span>
+            </div>
+          </div>
+        </header>
+
+        <main class="main-shell">
+          <section class="timeline-card" aria-labelledby="activity-title">
+            <header class="section-heading">
+              <div>
+                <h1 id="activity-title">Nova conversa</h1>
+                <p id="activity-subtitle">Diga o que você quer fazer.</p>
+              </div>
+              <button type="button" class="conversation-project" id="conversation-project" aria-label="Trocar projeto">
+                <span class="project-dot" aria-hidden="true"></span>
+                <span id="conversation-project-name">Pemara</span>
+                <span class="conversation-project-chevron" aria-hidden="true">⌄</span>
+              </button>
+              <button type="button" class="conversation-project conversation-provider" id="conversation-provider" aria-label="Trocar modelo">
+                <span class="provider-dot" aria-hidden="true"></span>
+                <span id="conversation-provider-name">Qwen local</span>
+                <span class="conversation-project-chevron" aria-hidden="true">⌄</span>
+              </button>
+              <span class="session-state" id="session-state">Pronto</span>
+            </header>
+
+            <div class="activity-feed" id="activity-feed" role="log" aria-label="Conversa com o Pemara" tabindex="0">
+              <div class="empty-state">
+                <span class="empty-mark" aria-hidden="true">
+                  <svg viewBox="0 0 32 32">
+                    <path d="M6 8.5 16 3l10 5.5v15L16 29 6 23.5z"></path>
+                    <path d="m11 11 5-2.7 5 2.7v5.8l-5 2.7-5-2.7z"></path>
+                  </svg>
+                </span>
+                <h2>Como posso ajudar?</h2>
+                <p>Escreva como falaria com o GPT ou com o Codex. O Pemara cuida do modelo, da GPU e do histórico.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="run-card" id="run-status" data-state="idle" aria-labelledby="run-title" aria-live="polite">
+            <div class="run-indicator" aria-hidden="true"><span></span></div>
+            <div class="run-copy">
+              <h2 id="run-title">Pronto para uma nova mensagem</h2>
+              <p id="run-detail">O Qwen pode ficar descarregado sem perder seu histórico.</p>
+            </div>
+            <span class="state-badge" id="run-badge">Pronto</span>
+          </section>
+
+          <details class="technical-details" id="technical-details">
+            <summary>
+              <span class="summary-icon" aria-hidden="true">›</span>
+              <span>
+                <strong>Detalhes da execução</strong>
+                <small>Abra somente se quiser ver plano, sessões, arquivos e logs</small>
+              </span>
+            </summary>
+
+            <div class="technical-grid">
+              <section class="technical-card" aria-labelledby="progress-heading">
+                <div class="technical-heading">
+                  <h3 id="progress-heading">Plano</h3>
+                  <strong id="progress-value">0 / 0</strong>
+                </div>
+                <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+                <p id="progress-next">Lendo o plano…</p>
+                <div id="contract-gate" class="contract-gate" role="status" hidden></div>
+                <div id="todo-list" class="compact-list"></div>
+              </section>
+
+              <section class="technical-card" aria-labelledby="history-heading">
+                <div class="technical-heading">
+                  <h3 id="history-heading">Sessões técnicas</h3>
+                  <span id="session-count">0</span>
+                </div>
+                <div id="session-list" class="session-list"></div>
+              </section>
+
+              <section class="technical-card" aria-labelledby="ledger-heading">
+                <div class="technical-heading">
+                  <h3 id="ledger-heading">Tarefas duráveis</h3>
+                  <span id="task-count">0</span>
+                </div>
+                <div id="task-list" class="compact-list"></div>
+              </section>
+
+              <section class="technical-card" aria-labelledby="files-heading">
+                <div class="technical-heading">
+                  <h3 id="files-heading">Arquivos recentes</h3>
+                  <span id="file-count">0</span>
+                </div>
+                <div id="file-list" class="compact-list"></div>
+              </section>
+
+              <section class="technical-card technical-card-wide" aria-labelledby="system-heading">
+                <div class="technical-heading"><h3 id="system-heading">Sistema</h3></div>
+                <div id="system-details" class="system-details"></div>
+                <details class="raw-log-details">
+                  <summary>Log do executor</summary>
+                  <pre id="runner-log">Nenhuma tarefa iniciada por esta interface.</pre>
+                </details>
+                <details class="raw-log-details">
+                  <summary>Estado do Git</summary>
+                  <pre id="repository-status">Carregando…</pre>
+                </details>
+              </section>
+            </div>
+          </details>
+        </main>
+
+        <div class="composer-dock">
+          <div class="composer-wrap">
+            <p class="form-feedback" id="form-feedback" role="alert" hidden></p>
+            <div class="attachment-tray" id="attachment-tray" role="list" aria-label="Anexos selecionados" hidden></div>
+            <input class="sr-only" id="attachment-input" type="file" accept="image/*,audio/*,video/*" multiple>
+            <form class="composer" id="task-form" novalidate>
+              <div class="composer-actions" aria-label="Adicionar mídia">
+                <button type="button" class="composer-action" id="attach-files" aria-label="Anexar foto, áudio ou vídeo" title="Anexar mídia">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 12.5 14 7a3 3 0 0 1 4.2 4.2l-7.4 7.4a5 5 0 0 1-7.1-7.1l7.8-7.8"></path></svg>
+                </button>
+                <button type="button" class="composer-action" id="record-audio" aria-label="Gravar áudio" title="Gravar áudio">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M9 21h6"></path></svg>
+                </button>
+              </div>
+              <label class="sr-only" for="task-input">Mensagem para o Pemara</label>
+              <textarea id="task-input" name="task" rows="1" maxlength="16000" placeholder="Mensagem para o Pemara" autocomplete="off" spellcheck="true"></textarea>
+              <button type="submit" class="run-button" id="run-task" aria-label="Enviar mensagem">
+                <span class="button-label sr-only">Enviar</span>
+                <span class="send-icon" aria-hidden="true">↑</span>
+              </button>
+            </form>
+
+            <div class="composer-meta">
+              <button type="button" class="composer-project-context" id="composer-project" aria-label="Vincular ou trocar projeto" title="Vincular ou trocar projeto">
+                <span aria-hidden="true">⌂</span>
+                <span>Projeto:</span>
+                <strong id="composer-project-name">Pemara</strong>
+                <span aria-hidden="true">⌄</span>
+              </button>
+              <p id="task-hint">Enter envia · Shift+Enter quebra a linha</p>
+              <div class="health-row" aria-label="Estado local">
+                <div class="health-card" id="qwen-health" data-state="checking">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <span class="health-copy"><small>Qwen</small><strong>Verificando</strong><span>Aguarde</span></span>
+                </div>
+                <div class="health-card" id="comfy-health" data-state="checking">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  <span class="health-copy"><small>GPU</small><strong>Verificando</strong><span>Aguarde</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+      <form id="project-form" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <span class="dialog-eyebrow">Contexto de trabalho</span>
+            <h2 id="project-dialog-title">Vincular projeto</h2>
+          </div>
+          <button type="button" class="sidebar-icon" id="close-project-dialog" aria-label="Fechar diálogo">×</button>
+        </div>
+        <p class="dialog-copy">Escolha uma pasta dentro do workspace Pemara. As tarefas deste chat serão executadas nesse projeto.</p>
+        <label class="dialog-label" for="project-path">Caminho da pasta</label>
+        <input class="dialog-input" id="project-path" name="path" type="text" placeholder="E:\\Pemara\\meu-projeto" required autocomplete="off" spellcheck="false">
+        <label class="dialog-label" for="project-name">Nome curto <span>(opcional)</span></label>
+        <input class="dialog-input" id="project-name" name="name" type="text" placeholder="Meu projeto" maxlength="100" autocomplete="off">
+        <div class="project-suggestions" id="project-suggestions" aria-label="Projetos encontrados"></div>
+        <p class="form-feedback" id="project-feedback" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button type="button" class="dialog-button secondary" id="cancel-project">Cancelar</button>
+          <button type="submit" class="dialog-button primary">Vincular projeto</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="project-dialog provider-dialog" id="provider-dialog" aria-labelledby="provider-dialog-title">
+      <form method="dialog">
+        <div class="dialog-header">
+          <div>
+            <span class="dialog-eyebrow">Rota de IA</span>
+            <h2 id="provider-dialog-title">Modelo deste chat</h2>
+          </div>
+          <button type="button" class="sidebar-icon" id="close-provider-dialog" aria-label="Fechar diálogo">×</button>
+        </div>
+        <p class="dialog-copy">A escolha vale apenas para esta conversa. Credenciais ficam no computador e nunca são digitadas ou expostas nesta tela.</p>
+        <div class="provider-list" id="provider-list" aria-label="Provedores disponíveis"></div>
+        <p class="form-feedback" id="provider-feedback" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button type="button" class="dialog-button secondary" id="close-provider">Fechar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <noscript>O Pemara precisa de JavaScript local para exibir a conversa.</noscript>
+    <script type="module" src="/app.js?v=codex-font-20260824"></script>
+  </body>
+</html>

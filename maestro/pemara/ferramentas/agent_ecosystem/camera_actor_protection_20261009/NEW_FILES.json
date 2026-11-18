@@ -1,0 +1,30 @@
+[
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\actor_protection.py",
+    "sha256": "62f80392305545d7fa1baf7e299efbac9d15657ac0ed2e45aaf6704da471cad3"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\sequence_camera_contract.py",
+    "sha256": "958790a55fe6beec9a7f97b7180aa47024acf514c9367120b96dc9b4b22715b8"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_actor_protection.py",
+    "sha256": "83fb8d94e4bb7a45f892ea3c62f9442eb01a9d568226bdb5becae665db95d5ac"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\services\\studio\\test_sequence_camera_contract.py",
+    "sha256": "7bcf33922c7da221f37a56147da2d906e04bb82e032a74f032b6e42e286aa18b"
+  },
+  {
+    "path": "E:\\Pemara\\.agents\\skills\\pemara-video-production-lead\\references\\camera-evidence-and-actor-protection.md",
+    "sha256": "3d6f8722b70e035a5ef6f637a34c7f7cdb45f5d9253c47691145a2d50c5a6e8c"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\templates\\sequence_camera_contract.template.json",
+    "sha256": "72b435166f2527b6fa3fc4d0e7299168e20f4026ff4182d3ff88b07a8d116696"
+  },
+  {
+    "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\upscaling_obrigatorio\\dlss5_actor_protected_anchor.template.api.json",
+    "sha256": "7dffed7881070ba466098b357092c943c44f38971ddee5784ee874dab2f778f8"
+  }
+]

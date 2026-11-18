@@ -1,0 +1,18 @@
+#section-inspection { max-width: 1380px; }
+.inspection-grid { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.4fr); gap: 20px; }
+#inspection-form { display: grid; gap: 14px; }
+#inspection-form label { display: grid; gap: 6px; }
+#inspection-form input, #inspection-form select, #inspection-form textarea { width: 100%; max-width: 100%; }
+#inspection-form textarea, #inspection-codex-prompt { min-height: 100px; }
+#inspection-video { width: 100%; max-height: 520px; background: #101419; border-radius: 10px; }
+.inspection-track { display: grid; grid-template-columns: 108px minmax(0, 1fr); align-items: center; gap: 10px; margin: 6px 0; font-size: .85rem; }
+.inspection-lane { position: relative; height: 30px; border-radius: 5px; background: #24303e; overflow: hidden; }
+.inspection-marker { position: absolute; top: 3px; bottom: 3px; min-width: 8px; border: 1px solid #e2b35a; background: #c48a2b99; border-radius: 4px; cursor: pointer; }
+.inspection-marker[data-status="observed_defect"] { background: #d55151bb; border-color: #ff7b7b; }
+.inspection-marker[data-status="false_positive"] { background: #4b869077; border-color: #69a1ad; }
+.inspection-marker:focus-visible { outline: 2px solid white; outline-offset: -2px; }
+#inspection-markers, #inspection-history { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+#inspection-marker-detail { background: #17212c; padding: 16px; border-radius: 10px; overflow-wrap: anywhere; }
+#inspection-marker-detail p, #inspection-coverage, #inspection-message { white-space: pre-wrap; overflow-wrap: anywhere; }
+#inspection-error { color: #ff9b9b; }
+@media (max-width: 800px) { .inspection-grid { grid-template-columns: 1fr; } .inspection-track { grid-template-columns: 92px minmax(0, 1fr); } }

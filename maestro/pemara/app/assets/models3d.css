@@ -1,0 +1,21 @@
+#section-models3d [hidden] { display: none; }
+.models3d-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; }
+.models3d-sidebar { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.models3d-form { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.models3d-form h2 { margin: 0 0 4px; }
+.models3d-form label { display: grid; gap: 7px; }
+.models3d-form p, .models3d-intro p { margin: 0; color: var(--muted); line-height: 1.5; overflow-wrap: anywhere; }
+.models3d-form input, .models3d-form select, .models3d-form textarea { width: 100%; min-width: 0; }
+.models3d-form .btn { min-height: 48px; }
+#models3d-image-preview { display: block; width: 100%; height: 200px; object-fit: contain; border-radius: 8px; background: var(--bg); }
+.models3d-engines, .models3d-history { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 12px; }
+.models3d-engines li { display: grid; gap: 4px; }
+.models3d-engines span { color: var(--muted); font-size: 13px; }
+.models3d-job { min-width: 0; padding: 14px; background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 8px; overflow-wrap: anywhere; }
+.models3d-job p { color: var(--muted); font-size: 13px; }
+.models3d-job .btn { min-height: 48px; }
+@media (max-width: 760px) {
+  .models3d-layout { grid-template-columns: minmax(0, 1fr); }
+  .models3d-form input, .models3d-form select, .models3d-form textarea { font-size: 16px; }
+  .models3d-intro .panel-head { flex-wrap: wrap; gap: 12px; }
+}

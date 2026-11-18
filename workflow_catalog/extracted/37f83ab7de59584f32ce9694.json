@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Iron Maiden-inspired, Fast NWOBHM, relentless sixteenth-note galloping bass, cutting harmonized twin guitars, fast melodic runs, forceful soaring male tenor, driving double-kick accents. 168 BPM, E minor. galloping ostinato answered by a rising twin-guitar phrase; a terse four-syllable chorus hook. NWOBHM E minor, galloping ostinato, twin harmonized leads, forceful tenor, double-kick accents.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verse 1 0-85s; Chorus 1 85-125s; Verse 2 & Chorus 2 125-210s; Bridge & Solo 210-265s; Final Chorus & Outro 265-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=168, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nDust on the helm, rust on the blade,\nWe march where the crows have already made their trade.\nThe standard is torn, the colors are grey,\nBut the trumpet still screams at the end of the day.\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Verse]\nThree centuries passed in the silent dark,\nYet the order comes down from the frozen mark.\nNo breath in the lungs, no pulse in the chest,\nBut the decree is cut on the iron test.\nWho is the king? Who holds the line?\nThe rot in the seat makes the victory blind.\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Bridge]\nHe fell in the year of the burning oak,\nBut the law does not die, it is thick as smoke.\nWe bow to the dust, we bow to the stone,\nUntil the weight of the empire breaks us down.\n\n[Solo]\n\n[Chorus]\nHollow crown!\nEmpty throne!\nWe bleed for a ghost,\nWe march on alone!\n\n[Outro]\nThe last sword is buried in the blackened earth,\nThe dead emperor keeps his ancient worth.\nWe sleep in the dirt, the crown stays still,\nWaiting for the next to climb the hill.",
+      "seed": 202610161000,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

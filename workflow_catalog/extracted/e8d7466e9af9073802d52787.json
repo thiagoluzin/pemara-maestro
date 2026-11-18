@@ -1,0 +1,116 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Photograph the EXACT SAME nonfunctional decorative Resident Evil 2 Remake Lightning Hawk display prop from reference image 1, changing ONLY camera viewpoint. Camera directly BEHIND the prop, looking toward its front along its length. Narrow REAR END elevation. Show back of grip, hammer silhouette and rear face of the cylindrical sight above. Preserve the long matte-black upper, silver lower frame, brown wood grip borders with black K-shaped textured inset, compact horizontal black cylindrical optic aligned parallel with the barrel and top turret. Same proportions, all attachments remain identical. One complete object centered, pure white background, soft even lighting, generous margins. No hands, no stand, no labels, no diagrams, no additional objects or loose parts.",
+      "negative_prompt": "multiple objects, collage, short barrel, open reflex sight, detached parts, cropped, extra scope",
+      "resolution": 0,
+      "images": {},
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "10",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "4",
+        2
+      ],
+      "seed": 230936,
+      "steps": 40,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "lightning_hawk_re2/rear"
+    }
+  },
+  "9": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "lh_base.png"
+    },
+    "is_changed": [
+      "84e7ce4f67b133434df2da08366ec70e40e9ad709c495f2b6d2df095f04523e0"
+    ]
+  },
+  "10": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1536,
+      "height": 1024,
+      "crop": "disabled"
+    }
+  }
+}

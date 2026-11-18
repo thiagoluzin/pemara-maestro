@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "lanczos_nvenc_rife_exact60_no_nr_v3_mixed_4k",
+  "pipeline_version": "lanczos_nvenc_rife_exact60_no_nr_v3",
+  "required": true,
+  "target": {
+    "width": 3840,
+    "height": 2160,
+    "fps": 60,
+    "geometry": "contain_then_pad_no_crop",
+    "depth": "8-bit SDR"
+  },
+  "stages": [
+    "Practical-RIFE 4.25 exact60 at source resolution",
+    "Lanczos contain/pad + H.264 NVENC",
+    "original audio stream copy"
+  ],
+  "rife": {
+    "version": "4.25",
+    "model_sha256": "6615790efd627772917205db291f51cd392528a157ecbb2ecaeec3bff8eb6de2",
+    "timestamps": "j/60",
+    "cut_threshold_mean_rgb": 0.35,
+    "endpoint": "clamp_last_frame"
+  },
+  "dlss5": {
+    "allowed_on_video": false,
+    "scope": "anchors_only"
+  },
+  "audio": {
+    "policy": "preserve_existing_stream_copy",
+    "absent": "remain_silent",
+    "new_foley_generation": false
+  },
+  "encode": {
+    "codec": "h264_nvenc",
+    "preset": "p7",
+    "cq": 15,
+    "pix_fmt": "yuv420p"
+  },
+  "fallback_allowed": false,
+  "owner_review_required": true,
+  "visual_qualification": "requires_review_of_new_artifact",
+  "content_kind": "mixed",
+  "policy_version": "upscaling_by_content_anchors_only_20261026_v3",
+  "spatial_upscaling": {
+    "filter": "lanczos",
+    "neural_restoration": false
+  },
+  "actor_protection": {
+    "required": false,
+    "reviewed_mask_per_final_frame": false
+  },
+  "dlss5_coverage_percent": 0
+}

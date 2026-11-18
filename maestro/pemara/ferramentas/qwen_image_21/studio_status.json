@@ -1,0 +1,1765 @@
+{
+  "ok": true,
+  "comfy_online": true,
+  "comfy_url": "http://127.0.0.1:8188",
+  "comfy": {
+    "system": {
+      "os": "win32",
+      "ram_total": 100455010304,
+      "ram_free": 58435108864,
+      "comfyui_version": "0.37.0",
+      "required_frontend_version": "1.52.7",
+      "installed_templates_version": "0.11.66",
+      "required_templates_version": "0.11.66",
+      "comfy_package_versions": [
+        {
+          "name": "comfyui-frontend-package",
+          "installed": "1.52.7",
+          "required": "1.52.7"
+        },
+        {
+          "name": "comfyui-workflow-templates",
+          "installed": "0.11.66",
+          "required": "0.11.66"
+        },
+        {
+          "name": "comfyui-embedded-docs",
+          "installed": "0.5.12",
+          "required": "0.5.12"
+        },
+        {
+          "name": "comfy-kitchen",
+          "installed": "0.2.35",
+          "required": "0.2.35"
+        },
+        {
+          "name": "comfy-aimdo",
+          "installed": "0.5.5",
+          "required": "0.5.5"
+        }
+      ],
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "pytorch_version": "2.14.0+cu130",
+      "embedded_python": false,
+      "deploy_environment": "local-git",
+      "argv": [
+        "D:\\PemaraRuntimes\\ComfyUI-v0.36.0-pemara\\main.py",
+        "--listen",
+        "127.0.0.1",
+        "--port",
+        "8188",
+        "--cuda-device",
+        "0",
+        "--user-directory",
+        "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user",
+        "--input-directory",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\input",
+        "--output-directory",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output",
+        "--temp-directory",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\temp",
+        "--disable-auto-launch",
+        "--enable-manager"
+      ]
+    },
+    "devices": [
+      {
+        "name": "cuda:0 NVIDIA GeForce RTX 5090 : cudaMallocAsync",
+        "type": "cuda",
+        "index": 0,
+        "vram_total": 34162016256,
+        "vram_free": 15508186028,
+        "torch_vram_total": 67108864,
+        "torch_vram_free": 32252844
+      }
+    ]
+  },
+  "pauses": {
+    "video": false,
+    "video_reason": ""
+  },
+  "defaults": {
+    "image_model": "qwen_image_2.1_int8_convrot.safetensors",
+    "qwen_model": "qwen_image_2.1_int8_convrot.safetensors",
+    "qwen_edit_model": "qwen_image_2.1_int8_convrot.safetensors",
+    "marketing_card_model": "qwen_image_2.1_int8_convrot.safetensors",
+    "video_model": null,
+    "video_engine_id": null,
+    "width": 1024,
+    "height": 1024,
+    "marketing_width": 1024,
+    "marketing_height": 1280,
+    "marketing_steps": 40,
+    "marketing_guidance": 1.0,
+    "video_width": 1280,
+    "video_height": 720,
+    "video_frames": 181,
+    "video_fps": 30,
+    "video_duration": 6.0,
+    "video_min_fps": 16,
+    "minimax_h3_min_frames": 124,
+    "minimax_h3_max_frames": 362,
+    "minimax_h3_native_fps": 24,
+    "minimax_h3_max_duration": 15,
+    "minimax_h3_temporal_stride": 17,
+    "minimax_h3_temporal_offset": 5,
+    "minimax_h3_text_to_video": true,
+    "minimax_h3_native_audio_default": false,
+    "minimax_h3_live_preview_default": false,
+    "minimax_h3_prompt_compiler": "official-local-pinned",
+    "video_method_profile": "minimax_h3_take_contract",
+    "audio_duration": 15,
+    "sfx_duration": 4,
+    "audio_provider": "levo2_local",
+    "sfx_provider": "stable_audio"
+  },
+  "videoEngines": {
+    "ok": true,
+    "selection_required": true,
+    "default_engine_id": null,
+    "fallback_allowed": false,
+    "engines": [
+      {
+        "id": "minimax_h3",
+        "display_name": "MiniMax H3",
+        "capabilities": {
+          "t2v": true,
+          "i2v": true,
+          "first_last_frame": true,
+          "reference_images": true,
+          "native_audio": true,
+          "fps": [
+            24
+          ],
+          "duration_seconds": {
+            "min": 4,
+            "max": 15
+          },
+          "delivery": [
+            "1024x576",
+            "1088x608",
+            "1344x768",
+            "576x1024",
+            "608x1088",
+            "768x1344"
+          ],
+          "default_profile": "h3_production"
+        },
+        "readiness": {
+          "state": "READY",
+          "ready": true,
+          "production_ready": true,
+          "message": "MiniMax H3 pronto.",
+          "version_receipt": "maestro-minimax-h3-profiles-fastvertical-sage@2026-09-20",
+          "components": [
+            {
+              "label": "MiniMax H3 FL2VA pruned INT8 ConvRot",
+              "role": "video_generation",
+              "required": true,
+              "present": true,
+              "bytes": 20970379616,
+              "relativePath": "ferramentas/ComfyUI/models/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors"
+            },
+            {
+              "label": "MiniMax H3 Ref2VA pruned INT8 ConvRot",
+              "role": "reference_video_generation",
+              "required": false,
+              "present": true,
+              "bytes": 20970379616,
+              "relativePath": "ferramentas/ComfyUI/models/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+            },
+            {
+              "label": "Qwen3-VL-32B MiniMax H3 NVFP4 AWQ",
+              "role": "text_and_multimodal_encoding",
+              "required": true,
+              "present": true,
+              "bytes": 15687142551,
+              "relativePath": "ferramentas/ComfyUI/models/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors"
+            },
+            {
+              "label": "MiniMax H3 Video VAE FP16",
+              "role": "video_decode",
+              "required": true,
+              "present": true,
+              "bytes": 5207808496,
+              "relativePath": "ferramentas/ComfyUI/models/vae/minimax_h3_video_vae_fp16.safetensors"
+            },
+            {
+              "label": "MiniMax H3 Audio VAE FP32",
+              "role": "native_audio_decode",
+              "required": true,
+              "present": true,
+              "bytes": 605254808,
+              "relativePath": "ferramentas/ComfyUI/models/vae/minimax_h3_audio_vae_fp32.safetensors"
+            },
+            {
+              "label": "Qwen Image 2.1 INT8",
+              "role": "anchor_generation",
+              "required": false,
+              "present": true,
+              "bytes": 7256783064,
+              "relativePath": "ferramentas/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors"
+            },
+            {
+              "label": "Qwen Image 2.1 Edit",
+              "role": "anchor_correction",
+              "required": false,
+              "present": true,
+              "bytes": 7256783064,
+              "relativePath": "ferramentas/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors"
+            },
+            {
+              "label": "RIFE 4.6 NCNN Vulkan",
+              "role": "approved_take_interpolation_60fps",
+              "required": false,
+              "present": true,
+              "bytes": 6974464,
+              "relativePath": "ferramentas/video_global_engine/tools/bin/rife-ncnn-vulkan-20221029-windows/rife-ncnn-vulkan-20221029-windows/rife-ncnn-vulkan.exe"
+            },
+            {
+              "label": "RealESRGAN x2plus",
+              "role": "approved_take_fhd_upscale",
+              "required": false,
+              "present": true,
+              "bytes": 67061725,
+              "relativePath": "ferramentas/ComfyUI/models/upscale_models/RealESRGAN_x2plus.pth"
+            }
+          ],
+          "gates": {
+            "comfy_online": true,
+            "workflow_ok": true
+          }
+        },
+        "selectable": true,
+        "fallback": false
+      },
+      {
+        "id": "ltx_2_5",
+        "display_name": "LTX 2.5",
+        "capabilities": {
+          "t2v": true,
+          "i2v": true,
+          "a2v": true,
+          "t2a": true,
+          "native_audio": true,
+          "two_stage": true,
+          "ic_lora": [
+            "union_control",
+            "v2v",
+            "ingredients",
+            "motion_track",
+            "inpaint",
+            "outpaint"
+          ],
+          "frame_rule": "8n+1",
+          "fps": [
+            24
+          ],
+          "duration_seconds": {
+            "min": 1,
+            "max": 30
+          },
+          "base_delivery": [
+            "960x544",
+            "544x960"
+          ]
+        },
+        "readiness": {
+          "state": "READY_FOR_GPU_SMOKE",
+          "ready": true,
+          "production_ready": false,
+          "gpu_smoke_required": true,
+          "message": "LTX 2.5 completo nos gates sem GPU; smoke real aguarda autorizacao do proprietario.",
+          "version_receipt": "Lightricks/LTX-2.5@5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+          "node": {
+            "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo",
+            "exists": true,
+            "commit": "15d09abb5a187a8dcaea2fc31fe51ee96e6c9d0d",
+            "legacy_workflow_count": 0,
+            "ok": true
+          },
+          "assets": [
+            {
+              "id": "ltx25_distilled_transformer_nvfp4",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\diffusion_models\\ltx-2.5-22b-distilled-transformer-nvfp4.safetensors",
+              "exists": true,
+              "expected_bytes": 18721548408,
+              "actual_bytes": 18721548408,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_distilled_transformer_bf16_reference",
+              "classification": "LTX25_REFERENCE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\diffusion_models\\ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 42018190584,
+              "actual_bytes": 42018190584,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_gemma_int8",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\text_encoders\\gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+              "exists": true,
+              "expected_bytes": 15372969374,
+              "actual_bytes": 15372969374,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_gemma_bf16_reference",
+              "classification": "LTX25_REFERENCE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\text_encoders\\gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 26263858182,
+              "actual_bytes": 26263858182,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_video_vae_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-video-vae-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 1472223346,
+              "actual_bytes": 1472223346,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_video_vae_conv_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-video-vae-conv-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 1452269922,
+              "actual_bytes": 1452269922,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_audio_vae_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-audio-vae-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 364866540,
+              "actual_bytes": 364866540,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_spatial_upscaler_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\latent_upscale_models\\ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+              "exists": true,
+              "expected_bytes": 995778752,
+              "actual_bytes": 995778752,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_temporal_upscaler_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\latent_upscale_models\\ltx-2.5-latent-temporal-upscaler-x2-bf16-1.0.safetensors",
+              "exists": true,
+              "expected_bytes": 261944000,
+              "actual_bytes": 261944000,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_duration_head_bf16",
+              "classification": "LTX25_CORE_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\model_patches\\ltx-2.5-duration-head-bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 3843690,
+              "actual_bytes": 3843690,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_gemma4_e2b_prompt_enhancer",
+              "classification": "LTX25_PROMPT_ENHANCER_ASSET",
+              "required": true,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\text_encoders\\gemma4_e2b_it_bf16.safetensors",
+              "exists": true,
+              "expected_bytes": 10278774160,
+              "actual_bytes": 10278774160,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_compat_ic_lora_deblur",
+              "classification": "LTX25_COMPATIBILITY_ASSET",
+              "required": false,
+              "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-deblur-0.9.safetensors",
+              "exists": false,
+              "expected_bytes": 906071437,
+              "actual_bytes": 0,
+              "size_ok": false,
+              "hash_checked": false,
+              "integrity_resolved": false,
+              "hash_ok": null,
+              "ok": false
+            },
+            {
+              "id": "ltx25_compat_ic_lora_in_outpainting",
+              "classification": "LTX25_COMPATIBILITY_ASSET",
+              "required": false,
+              "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-in-outpainting-0.9.safetensors",
+              "exists": false,
+              "expected_bytes": 1308778338,
+              "actual_bytes": 0,
+              "size_ok": false,
+              "hash_checked": false,
+              "integrity_resolved": false,
+              "hash_ok": null,
+              "ok": false
+            },
+            {
+              "id": "ltx25_compat_ic_lora_ingredients",
+              "classification": "LTX25_COMPATIBILITY_ASSET",
+              "required": false,
+              "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-ingredients-0.9.safetensors",
+              "exists": false,
+              "expected_bytes": 1308778338,
+              "actual_bytes": 0,
+              "size_ok": false,
+              "hash_checked": false,
+              "integrity_resolved": false,
+              "hash_ok": null,
+              "ok": false
+            },
+            {
+              "id": "ltx25_compat_ic_lora_motion_track",
+              "classification": "LTX25_COMPATIBILITY_ASSET",
+              "required": false,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\loras\\ltx-2.3-22b-ic-lora-motion-track-control-ref0.5.safetensors",
+              "exists": true,
+              "expected_bytes": 327309314,
+              "actual_bytes": 327309314,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            },
+            {
+              "id": "ltx25_compat_ic_lora_union_control",
+              "classification": "LTX25_COMPATIBILITY_ASSET",
+              "required": false,
+              "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\loras\\ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+              "exists": true,
+              "expected_bytes": 654465352,
+              "actual_bytes": 654465352,
+              "size_ok": true,
+              "hash_checked": false,
+              "integrity_resolved": true,
+              "hash_ok": null,
+              "ok": true
+            }
+          ],
+          "workflows": [
+            {
+              "id": "LTX-2.5_T2V_I2V_Two_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2V_I2V_Two_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_T2V_I2V_Single_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2V_I2V_Single_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_A2V_Two_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_A2V_Two_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_T2A_Single_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2A_Single_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_ICLoRA_Union_Control_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Union_Control_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_V2V_ICLoRA_Single_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_V2V_ICLoRA_Single_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_ICLoRA_Ingredients_Single_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Ingredients_Single_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_ICLoRA_Motion_Track_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Motion_Track_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_ICLoRA_Inpaint_Two_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Inpaint_Two_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_ICLoRA_Outpaint_Two_Stage_Distilled.json",
+              "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Outpaint_Two_Stage_Distilled.json",
+              "ok": true
+            },
+            {
+              "id": "LTX-2.5_T2V_I2V_Two_Stage_Distilled.api.json",
+              "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\ltx25\\LTX-2.5_T2V_I2V_Two_Stage_Distilled.api.json",
+              "sha256": "01d1d5c4d2a28fe5fef4fef405fcce98e41a68c081d8e65e311a8d55b0b2652c",
+              "ok": true,
+              "kind": "comfy_api_export"
+            }
+          ],
+          "gpu_smoke_receipt": {
+            "ok": false,
+            "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\receipts\\ltx25_gpu_smoke.json",
+            "status": "MISSING"
+          },
+          "compatibility_asset_policy": "allowlisted_ltx23_ic_lora_only"
+        },
+        "selectable": true,
+        "fallback": false
+      }
+    ]
+  },
+  "models": {
+    "image": [
+      "qwen_image_2.1_int8_convrot.safetensors"
+    ],
+    "qwen": [
+      "qwen_image_2.1_int8_convrot.safetensors"
+    ],
+    "qwen_edit": [
+      "qwen_image_2.1_int8_convrot.safetensors"
+    ],
+    "marketing_card": [
+      "qwen_image_2.1_int8_convrot.safetensors"
+    ],
+    "video": [
+      "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "wan2.2_animate_14B_bf16.safetensors"
+    ],
+    "loras": [
+      "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+      "pemara_marketing_card_lora.safetensors",
+      "pemara_marketing_card_lora_20260706_173837.safetensors",
+      "pemara_marketing_card_lora_20260707_020359.safetensors",
+      "pemara_marketing_card_lora_20260708_041456.safetensors",
+      "pemara_marketing_card_lora_20260708_121946.safetensors",
+      "pemara_marketing_card_lora_20260708_133441.safetensors",
+      "pemara_marketing_card_lora_20260708_144918.safetensors",
+      "pemara_marketing_card_lora_20260710_015820.safetensors",
+      "pemara_marketing_card_lora_20260712_015047.safetensors",
+      "pemara_marketing_card_lora_20260713_015607.safetensors",
+      "ritmos_pixel_v1.safetensors",
+      "ritmos_pixel_v2_8k.safetensors",
+      "sprunki_lora.safetensors",
+      "sprunki_lora_lora_20260619_000002.safetensors",
+      "sprunki_lora_lora_20260627_000002.safetensors",
+      "sprunki_lora_lora_20260629_000003.safetensors",
+      "sprunki_lora_sprunki_until_stop_stable_900_d8_20260714_221307.safetensors",
+      "sprunki_lora_sprunki_until_stop_stronger_1200_d8_20260714_224539.safetensors",
+      "sprunki_lora_v1.safetensors"
+    ],
+    "vae": [
+      "ace_1.5_vae.safetensors",
+      "ae.safetensors",
+      "minimax_h3_audio_vae_fp32.safetensors",
+      "minimax_h3_video_vae_fp16.safetensors",
+      "qwen_image_2.1_vae_bf16.safetensors",
+      "qwen_image_vae.safetensors",
+      "wan_2.1_vae.safetensors"
+    ],
+    "clip": [
+      "clip_l.safetensors",
+      "t5xxl_fp16.safetensors"
+    ],
+    "text_encoders": [
+      "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+      "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "qwen3vl_8b_int8_convrot.safetensors",
+      "qwen_0.6b_ace15.safetensors",
+      "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "qwen_4b_ace15.safetensors",
+      "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+    ],
+    "upscale": [
+      "4x-UltraSharp.pth",
+      "4x_NMKD-Superscale-SP_178000_G.pth",
+      "RealESRGAN_x2plus.pth",
+      "RealESRGAN_x4plus.pth",
+      "RealESRNet_x4plus.pth"
+    ],
+    "controlnet": [],
+    "style_models": [],
+    "clip_vision": [
+      "clip_vision_h.safetensors",
+      "sigclip_vision_patch14_384.safetensors"
+    ]
+  },
+  "mova": {
+    "model": "MOVA-720p",
+    "installed": false,
+    "model_complete": false,
+    "runtime_ready": false,
+    "ready": false,
+    "removed": true,
+    "ram_gb": 0.0,
+    "minimum_ram_gb": 0.0,
+    "message": "MOVA desinstalado por decisao do proprietario."
+  },
+  "ltx25": {
+    "state": "READY_FOR_GPU_SMOKE",
+    "ready": true,
+    "production_ready": false,
+    "gpu_smoke_required": true,
+    "message": "LTX 2.5 completo nos gates sem GPU; smoke real aguarda autorizacao do proprietario.",
+    "version_receipt": "Lightricks/LTX-2.5@5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+    "node": {
+      "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo",
+      "exists": true,
+      "commit": "15d09abb5a187a8dcaea2fc31fe51ee96e6c9d0d",
+      "legacy_workflow_count": 0,
+      "ok": true
+    },
+    "assets": [
+      {
+        "id": "ltx25_distilled_transformer_nvfp4",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\diffusion_models\\ltx-2.5-22b-distilled-transformer-nvfp4.safetensors",
+        "exists": true,
+        "expected_bytes": 18721548408,
+        "actual_bytes": 18721548408,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_distilled_transformer_bf16_reference",
+        "classification": "LTX25_REFERENCE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\diffusion_models\\ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 42018190584,
+        "actual_bytes": 42018190584,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_gemma_int8",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\text_encoders\\gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+        "exists": true,
+        "expected_bytes": 15372969374,
+        "actual_bytes": 15372969374,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_gemma_bf16_reference",
+        "classification": "LTX25_REFERENCE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\text_encoders\\gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 26263858182,
+        "actual_bytes": 26263858182,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_video_vae_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-video-vae-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 1472223346,
+        "actual_bytes": 1472223346,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_video_vae_conv_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-video-vae-conv-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 1452269922,
+        "actual_bytes": 1452269922,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_audio_vae_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\vae\\ltx-2.5-audio-vae-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 364866540,
+        "actual_bytes": 364866540,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_spatial_upscaler_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\latent_upscale_models\\ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+        "exists": true,
+        "expected_bytes": 995778752,
+        "actual_bytes": 995778752,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_temporal_upscaler_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\latent_upscale_models\\ltx-2.5-latent-temporal-upscaler-x2-bf16-1.0.safetensors",
+        "exists": true,
+        "expected_bytes": 261944000,
+        "actual_bytes": 261944000,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_duration_head_bf16",
+        "classification": "LTX25_CORE_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\model_patches\\ltx-2.5-duration-head-bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 3843690,
+        "actual_bytes": 3843690,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_gemma4_e2b_prompt_enhancer",
+        "classification": "LTX25_PROMPT_ENHANCER_ASSET",
+        "required": true,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\text_encoders\\gemma4_e2b_it_bf16.safetensors",
+        "exists": true,
+        "expected_bytes": 10278774160,
+        "actual_bytes": 10278774160,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_compat_ic_lora_deblur",
+        "classification": "LTX25_COMPATIBILITY_ASSET",
+        "required": false,
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-deblur-0.9.safetensors",
+        "exists": false,
+        "expected_bytes": 906071437,
+        "actual_bytes": 0,
+        "size_ok": false,
+        "hash_checked": false,
+        "integrity_resolved": false,
+        "hash_ok": null,
+        "ok": false
+      },
+      {
+        "id": "ltx25_compat_ic_lora_in_outpainting",
+        "classification": "LTX25_COMPATIBILITY_ASSET",
+        "required": false,
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-in-outpainting-0.9.safetensors",
+        "exists": false,
+        "expected_bytes": 1308778338,
+        "actual_bytes": 0,
+        "size_ok": false,
+        "hash_checked": false,
+        "integrity_resolved": false,
+        "hash_ok": null,
+        "ok": false
+      },
+      {
+        "id": "ltx25_compat_ic_lora_ingredients",
+        "classification": "LTX25_COMPATIBILITY_ASSET",
+        "required": false,
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\ltx-2.3-22b-ic-lora-ingredients-0.9.safetensors",
+        "exists": false,
+        "expected_bytes": 1308778338,
+        "actual_bytes": 0,
+        "size_ok": false,
+        "hash_checked": false,
+        "integrity_resolved": false,
+        "hash_ok": null,
+        "ok": false
+      },
+      {
+        "id": "ltx25_compat_ic_lora_motion_track",
+        "classification": "LTX25_COMPATIBILITY_ASSET",
+        "required": false,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\loras\\ltx-2.3-22b-ic-lora-motion-track-control-ref0.5.safetensors",
+        "exists": true,
+        "expected_bytes": 327309314,
+        "actual_bytes": 327309314,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      },
+      {
+        "id": "ltx25_compat_ic_lora_union_control",
+        "classification": "LTX25_COMPATIBILITY_ASSET",
+        "required": false,
+        "path": "D:\\PemaraModels\\offloaded\\ComfyUI\\loras\\ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+        "exists": true,
+        "expected_bytes": 654465352,
+        "actual_bytes": 654465352,
+        "size_ok": true,
+        "hash_checked": false,
+        "integrity_resolved": true,
+        "hash_ok": null,
+        "ok": true
+      }
+    ],
+    "workflows": [
+      {
+        "id": "LTX-2.5_T2V_I2V_Two_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2V_I2V_Two_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_T2V_I2V_Single_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2V_I2V_Single_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_A2V_Two_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_A2V_Two_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_T2A_Single_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_T2A_Single_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_ICLoRA_Union_Control_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Union_Control_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_V2V_ICLoRA_Single_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_V2V_ICLoRA_Single_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_ICLoRA_Ingredients_Single_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Ingredients_Single_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_ICLoRA_Motion_Track_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Motion_Track_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_ICLoRA_Inpaint_Two_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Inpaint_Two_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_ICLoRA_Outpaint_Two_Stage_Distilled.json",
+        "path": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2\\custom_nodes\\ComfyUI-LTXVideo\\example_workflows\\2.5\\LTX-2.5_ICLoRA_Outpaint_Two_Stage_Distilled.json",
+        "ok": true
+      },
+      {
+        "id": "LTX-2.5_T2V_I2V_Two_Stage_Distilled.api.json",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\workflows\\ltx25\\LTX-2.5_T2V_I2V_Two_Stage_Distilled.api.json",
+        "sha256": "01d1d5c4d2a28fe5fef4fef405fcce98e41a68c081d8e65e311a8d55b0b2652c",
+        "ok": true,
+        "kind": "comfy_api_export"
+      }
+    ],
+    "gpu_smoke_receipt": {
+      "ok": false,
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\receipts\\ltx25_gpu_smoke.json",
+      "status": "MISSING"
+    },
+    "compatibility_asset_policy": "allowlisted_ltx23_ic_lora_only"
+  },
+  "wan_animate": {
+    "profile": "wan22_animate_dwpose_move_bf16_vertical_v1",
+    "model": "wan2.2_animate_14B_bf16.safetensors",
+    "ready": true,
+    "hashVerified": false,
+    "nativeFps": 30,
+    "moveMode": true,
+    "poseVideoInput": true,
+    "faceTransferDefault": false,
+    "artifacts": [
+      {
+        "id": "wan22_animate_14b_bf16",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\diffusion_models\\wan2.2_animate_14B_bf16.safetensors",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      },
+      {
+        "id": "wan21_vae_for_wan22_animate",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\vae\\wan_2.1_vae.safetensors",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      },
+      {
+        "id": "wan22_animate_umt5_xxl_fp8",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\text_encoders\\umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      },
+      {
+        "id": "wan22_animate_clip_vision_h",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\clip_vision\\clip_vision_h.safetensors",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      },
+      {
+        "id": "dwpose_yolox_l_onnx",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\custom_nodes\\comfyui_controlnet_aux\\ckpts\\yzd-v\\DWPose\\yolox_l.onnx",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      },
+      {
+        "id": "dwpose_ucoco_384_bs5_torchscript",
+        "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\custom_nodes\\comfyui_controlnet_aux\\ckpts\\hr16\\DWPose-TorchScript-BatchSize5\\dw-ll_ucoco_384_bs5.torchscript.pt",
+        "exists": true,
+        "sizeOk": true,
+        "hashOk": null,
+        "ready": true
+      }
+    ]
+  },
+  "wan_reserve": {
+    "model": "wan2.2_i2v_high_noise_14B_fp16.safetensors",
+    "installed": false,
+    "enabled": false,
+    "removed": true,
+    "policy": "removed_by_owner_20260815"
+  },
+  "quality": {
+    "marketing_card": {
+      "engine": "qwen_image_edit",
+      "requires_base_image": true,
+      "final_compositor": "disabled",
+      "aspect": "4:5",
+      "qc": "ocr + product similarity + dimensions"
+    },
+    "image_max_stack": {
+      "upscale_models": 5,
+      "controlnet_models": 0,
+      "style_models": 0,
+      "clip_vision_models": 2
+    },
+    "video_method": {
+      "engine": "Selecao explicita entre MiniMax H3 e LTX 2.5; sem default e sem fallback",
+      "engine_ready": true,
+      "engine_readiness": {
+        "minimax_h3": true,
+        "ltx_2_5": false
+      },
+      "unauthorized_engines": [
+        "HunyuanVideo"
+      ],
+      "reserve_engines": [],
+      "hunyuan_experimental_ready": false,
+      "profile": "owner_selected_no_default_no_fallback",
+      "requires_start_frame": true,
+      "supports_end_frame_contract": true,
+      "requires_variants_before_final": true,
+      "minimum_review_fps": 16,
+      "forbidden_review_fps": [
+        16
+      ],
+      "generation_paused": false
+    }
+  },
+  "providers": {
+    "audio": {
+      "levo2_local": {
+        "label": "LeVo 2 local (RTX 5090)",
+        "configured": true,
+        "installed": true,
+        "runtime_online": false,
+        "role": "music_local_neural_pilot",
+        "modes": [
+          "music"
+        ],
+        "needs": [],
+        "formats": [
+          "flac"
+        ],
+        "min_duration_seconds": 5,
+        "max_duration_seconds": 15,
+        "default_duration_seconds": 15,
+        "pilot_only": true,
+        "requires_human_listening": true,
+        "license_scope": "internal_noncommercial_research_only",
+        "model": "Tencent SongGeneration LeVo 2 v2-large",
+        "message": "Modelo instalado; a GPU esta ocupada e sera verificada novamente ao gerar.",
+        "gpu": {
+          "free_vram_mb": 14662,
+          "minimum_free_vram_mb": 20000,
+          "utilization_percent": 0
+        }
+      },
+      "lyria": {
+        "label": "Google Lyria / Vertex",
+        "configured": false,
+        "role": "music_premium",
+        "needs": [
+          "GOOGLE_CLOUD_PROJECT ou VERTEX_PROJECT_ID",
+          "GOOGLE_OAUTH_ACCESS_TOKEN ou gcloud auth"
+        ],
+        "formats": [
+          "wav"
+        ],
+        "max_duration_seconds": 180,
+        "modes": [
+          "music"
+        ]
+      },
+      "stable_audio": {
+        "label": "Stable Audio SFX/Music",
+        "configured": false,
+        "role": "sfx_preferred",
+        "needs": [
+          "STABLE_AUDIO_LOCAL_URL ou STABILITY_API_KEY"
+        ],
+        "formats": [
+          "wav",
+          "mp3"
+        ],
+        "max_duration_seconds": 360,
+        "modes": [
+          "music",
+          "sfx"
+        ]
+      },
+      "audiogen": {
+        "label": "AudioCraft AudioGen Local",
+        "configured": false,
+        "role": "sfx_local_experimental",
+        "needs": [
+          "AUDIOGEN_LOCAL_URL"
+        ],
+        "formats": [
+          "wav"
+        ],
+        "max_duration_seconds": 30,
+        "modes": [
+          "sfx"
+        ]
+      },
+      "eleven_sfx": {
+        "label": "ElevenLabs SFX",
+        "configured": false,
+        "role": "sfx_fallback",
+        "needs": [
+          "ELEVENLABS_API_KEY"
+        ],
+        "formats": [
+          "mp3"
+        ],
+        "modes": [
+          "sfx"
+        ]
+      },
+      "eleven_music": {
+        "label": "ElevenLabs Music",
+        "configured": false,
+        "role": "music_fallback",
+        "needs": [
+          "ELEVENLABS_API_KEY"
+        ],
+        "formats": [
+          "mp3"
+        ],
+        "modes": [
+          "music"
+        ]
+      }
+    },
+    "llm": {
+      "nvidia_nim": {
+        "label": "NVIDIA NIM / Build API",
+        "configured": true,
+        "needs": [],
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "defaults": {
+          "fast": "meta/llama-3.1-8b-instruct",
+          "reasoning": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+          "vision": "meta/llama-3.2-90b-vision-instruct"
+        },
+        "use_cases": [
+          "planejamento de treinos sem usar GPU local",
+          "geracao e revisao de prompts",
+          "auditoria de arquivos, logs e roteiros",
+          "analise de imagens via modelo vision quando disponivel"
+        ]
+      }
+    },
+    "video_method_profiles": {
+      "minimax_h3_take_contract": {
+        "label": "Workflow MiniMax H3 por takes",
+        "status": "active_production_contract",
+        "requires": [
+          "roteiro aprovado e continuidade entre takes",
+          "start_frame aprovado",
+          "JSON lateral do start_frame",
+          "end_frame quando houver transformacao ou revelacao",
+          "shot_contract com sujeito, acao, cena, camera, luz e motion beats",
+          "prompt compilado pela skill oficial h3-prompt-writing",
+          "acao util em 0-30%, 30-70% e 70-100%",
+          "ffprobe e contact sheet antes de aprovar"
+        ],
+        "forbidden": [
+          "prompt unico longo para producao",
+          "imagem viva sem evento fisico",
+          "crossfade, freeze frame, cauda estatica ou reset de movimento",
+          "upscale, Foley ou montagem final antes da aprovacao visual"
+        ],
+        "pipeline": [
+          "roteiro",
+          "fotos ancora",
+          "prompt H3 oficial",
+          "preflight sem GPU",
+          "MiniMax H3 24 fps",
+          "QC humano",
+          "conectores H3 continuos",
+          "RIFE 4.6 + RealESRGAN + NVENC",
+          "HunyuanVideo-Foley XXL",
+          "master e rollback"
+        ],
+        "docs": [
+          "E:/Pemara/maestro/pemara/docs/MAESTRO_MINIMAX_H3_WORKFLOW.md",
+          "E:/Pemara/maestro/pemara/docs/operacao/RESTAURAR_MAESTRO_MINIMAX_H3_PC_NOVO.md"
+        ]
+      },
+      "veo_kling_shot_contract": {
+        "label": "Metodo historico Veo/Kling",
+        "status": "reference_only_superseded_by_minimax_h3_take_contract",
+        "local_use": "referencia de linguagem de camera; nao e motor nem perfil ativo"
+      },
+      "veo_reference": {
+        "label": "Veo reference workflow",
+        "supports": [
+          "text-to-video",
+          "image-to-video",
+          "first_last_frame",
+          "visual_references"
+        ],
+        "local_use": "referencia de metodo; nao consome GPU local"
+      },
+      "kling_reference": {
+        "label": "Kling reference workflow",
+        "supports": [
+          "image-to-video",
+          "start_end_frame",
+          "camera_control",
+          "negative_prompt"
+        ],
+        "local_use": "referencia de metodo; nao consome GPU local"
+      }
+    }
+  },
+  "h3Workflow": {
+    "ok": true,
+    "version": "maestro-minimax-h3-profiles-fastvertical-sage@2026-09-20",
+    "enginePolicy": "minimax_h3_only",
+    "videoEngine": "MiniMax H3",
+    "comfyOnline": true,
+    "productionReady": true,
+    "qualityPolicy": {
+      "nativeFps": 24,
+      "deliveryFps": 60,
+      "defaultProfile": "h3_production",
+      "guidance": 1.0,
+      "livePreviewOptIn": true,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "renderFocusPreflight": true,
+      "mainTakeDurationPolicy": "story_driven_4_to_15_seconds; five seconds is not mandatory",
+      "postprocess": [
+        "RIFE 60 fps",
+        "RealESRGAN x2",
+        "resize/crop",
+        "H.264 60 fps"
+      ],
+      "sageAttention": {
+        "required": true,
+        "node": "MiniMaxH3MemoryEfficientSageAttentionPatch"
+      }
+    },
+    "qualityProfiles": [
+      {
+        "id": "h3_draft",
+        "label": "H3 Draft",
+        "width": 1024,
+        "height": 576,
+        "verticalWidth": 576,
+        "verticalHeight": 1024,
+        "steps": [
+          6
+        ],
+        "nativeAudio": false,
+        "draftOnly": true
+      },
+      {
+        "id": "h3_production",
+        "label": "H3 Production",
+        "width": 1088,
+        "height": 608,
+        "verticalWidth": 608,
+        "verticalHeight": 1088,
+        "steps": [
+          10
+        ],
+        "nativeAudio": false
+      },
+      {
+        "id": "h3_hero",
+        "label": "H3 Hero",
+        "width": 1344,
+        "height": 768,
+        "verticalWidth": 768,
+        "verticalHeight": 1344,
+        "steps": [
+          12,
+          13,
+          14
+        ],
+        "nativeAudio": false
+      },
+      {
+        "id": "h3_master",
+        "label": "H3 Master",
+        "width": 1344,
+        "height": 768,
+        "verticalWidth": 768,
+        "verticalHeight": 1344,
+        "steps": [
+          20
+        ],
+        "nativeAudio": false
+      },
+      {
+        "id": "h3_approved_action_720p8s",
+        "label": "H3 Approved Action 720p 8s",
+        "width": 1280,
+        "height": 720,
+        "verticalWidth": 720,
+        "verticalHeight": 1280,
+        "steps": [
+          20
+        ],
+        "nativeAudio": false
+      }
+    ],
+    "capabilities": {
+      "fl2vaReady": true,
+      "ref2vaReady": true,
+      "fastH3Ready": true,
+      "fastH3Model": "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors",
+      "fastH3Bytes": 22128378696,
+      "fastH3ExpectedBytes": 22128378696,
+      "sageAttentionRequired": true,
+      "exactPoseControl": false,
+      "referenceVideoIsPoseControl": false,
+      "fastH3FileReady": true,
+      "fastH3NodeListed": true
+    },
+    "continuousActionContract": {
+      "required": true,
+      "crossfadeFrames": 0,
+      "freezeFrames": 0,
+      "staticHoldFrames": 0,
+      "resetAllowed": false
+    },
+    "catalog": {
+      "installedSkills": 307,
+      "installedProfiles": 41,
+      "agentsRoot": "E:\\Pemara\\.agents"
+    },
+    "routedSkills": [
+      {
+        "name": "pemara-live-action-showrunner",
+        "role": "live_action_risk_routing_and_contract",
+        "installed": true
+      },
+      {
+        "name": "pemara-live-action-combat-director",
+        "role": "signature_moves_power_ownership_and_contact_physics",
+        "installed": true
+      },
+      {
+        "name": "pemara-live-action-kinetic-supervisor",
+        "role": "identity_performance_balance_and_kinetic_handoffs",
+        "installed": true
+      },
+      {
+        "name": "pemara-live-action-continuity",
+        "role": "moving_handoff_and_connector_contract",
+        "installed": true
+      },
+      {
+        "name": "pemara-live-action-qc",
+        "role": "human_material_temporal_and_finishing_qc",
+        "installed": true
+      },
+      {
+        "name": "h3-prompt-writing",
+        "role": "official_local_prompt_compiler",
+        "installed": true,
+        "official": true
+      },
+      {
+        "name": "project-planner",
+        "role": "brief_and_schedule",
+        "installed": true
+      },
+      {
+        "name": "creative-director",
+        "role": "screenplay_and_visual_language",
+        "installed": true
+      },
+      {
+        "name": "pemara-cinematic-take-director",
+        "role": "take_story_contract",
+        "installed": true
+      },
+      {
+        "name": "image-production",
+        "role": "anchor_creation_and_qc",
+        "installed": true
+      },
+      {
+        "name": "pemara-video-motion-director",
+        "role": "continuous_motion_contract",
+        "installed": true
+      },
+      {
+        "name": "video-production",
+        "role": "technical_qc_and_master",
+        "installed": true
+      },
+      {
+        "name": "game-audio-designer",
+        "role": "foley_and_mix_direction",
+        "installed": true
+      },
+      {
+        "name": "audio-analysis",
+        "role": "loudness_and_sync_qc",
+        "installed": true
+      },
+      {
+        "name": "debugger",
+        "role": "root_cause_debug",
+        "installed": true
+      },
+      {
+        "name": "test-engineer",
+        "role": "regression_gates",
+        "installed": true
+      },
+      {
+        "name": "performance-optimizer",
+        "role": "quality_preserving_profiling",
+        "installed": true
+      },
+      {
+        "name": "documentation-and-adrs",
+        "role": "traceability_and_restore_docs",
+        "installed": true
+      },
+      {
+        "name": "automation-engineer",
+        "role": "serial_queue_and_backup",
+        "installed": true
+      }
+    ],
+    "components": [
+      {
+        "label": "MiniMax H3 FL2VA pruned INT8 ConvRot",
+        "role": "video_generation",
+        "required": true,
+        "present": true,
+        "bytes": 20970379616,
+        "relativePath": "ferramentas/ComfyUI/models/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors"
+      },
+      {
+        "label": "MiniMax H3 Ref2VA pruned INT8 ConvRot",
+        "role": "reference_video_generation",
+        "required": false,
+        "present": true,
+        "bytes": 20970379616,
+        "relativePath": "ferramentas/ComfyUI/models/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+      },
+      {
+        "label": "Qwen3-VL-32B MiniMax H3 NVFP4 AWQ",
+        "role": "text_and_multimodal_encoding",
+        "required": true,
+        "present": true,
+        "bytes": 15687142551,
+        "relativePath": "ferramentas/ComfyUI/models/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors"
+      },
+      {
+        "label": "MiniMax H3 Video VAE FP16",
+        "role": "video_decode",
+        "required": true,
+        "present": true,
+        "bytes": 5207808496,
+        "relativePath": "ferramentas/ComfyUI/models/vae/minimax_h3_video_vae_fp16.safetensors"
+      },
+      {
+        "label": "MiniMax H3 Audio VAE FP32",
+        "role": "native_audio_decode",
+        "required": true,
+        "present": true,
+        "bytes": 605254808,
+        "relativePath": "ferramentas/ComfyUI/models/vae/minimax_h3_audio_vae_fp32.safetensors"
+      },
+      {
+        "label": "Qwen Image 2.1 INT8",
+        "role": "anchor_generation",
+        "required": false,
+        "present": true,
+        "bytes": 7256783064,
+        "relativePath": "ferramentas/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors"
+      },
+      {
+        "label": "Qwen Image 2.1 Edit",
+        "role": "anchor_correction",
+        "required": false,
+        "present": true,
+        "bytes": 7256783064,
+        "relativePath": "ferramentas/ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors"
+      },
+      {
+        "label": "RIFE 4.6 NCNN Vulkan",
+        "role": "approved_take_interpolation_60fps",
+        "required": false,
+        "present": true,
+        "bytes": 6974464,
+        "relativePath": "ferramentas/video_global_engine/tools/bin/rife-ncnn-vulkan-20221029-windows/rife-ncnn-vulkan-20221029-windows/rife-ncnn-vulkan.exe"
+      },
+      {
+        "label": "RealESRGAN x2plus",
+        "role": "approved_take_fhd_upscale",
+        "required": false,
+        "present": true,
+        "bytes": 67061725,
+        "relativePath": "ferramentas/ComfyUI/models/upscale_models/RealESRGAN_x2plus.pth"
+      }
+    ],
+    "officialPromptSkill": {
+      "ok": true,
+      "repository": "https://github.com/MiniMax-AI/MiniMax-H3",
+      "commit": "d21241f0a4b3acbb34c97dae47fa417b7065e438",
+      "contract_version": "minimax-h3-official-prompt-writing@2026-08-15",
+      "files": {
+        "SKILL.md": {
+          "present": true,
+          "sha256": "95d74fee00e78641fb9e774ab17488516ceece441231519287f0d3128eaa8c54",
+          "expected_sha256": "95d74fee00e78641fb9e774ab17488516ceece441231519287f0d3128eaa8c54",
+          "match": true
+        },
+        "references/base-en.txt": {
+          "present": true,
+          "sha256": "088fb632fa3cbb18c9821024fb689e6f0f356f824c8f2e6b8e43a33239b137c7",
+          "expected_sha256": "088fb632fa3cbb18c9821024fb689e6f0f356f824c8f2e6b8e43a33239b137c7",
+          "match": true
+        },
+        "references/ref-en.txt": {
+          "present": true,
+          "sha256": "b621067b41988c4d92be715b7a98ba48338f4076ab6041d95fcf463ea7c8ccdd",
+          "expected_sha256": "b621067b41988c4d92be715b7a98ba48338f4076ab6041d95fcf463ea7c8ccdd",
+          "match": true
+        }
+      }
+    },
+    "liveActionPack": {
+      "ok": true,
+      "version": "pemara-minimax-h3-live-action@1",
+      "workflowIds": [
+        "h3_live_action_identity_performance",
+        "h3_live_action_physical_action",
+        "h3_live_action_signature_combat",
+        "h3_live_action_continuous_bilateral_combat_8s",
+        "h3_live_action_continuous_bilateral_start_chain_8s",
+        "h3_live_action_moving_connector"
+      ],
+      "eventTypes": [
+        "LIVE_ACTION_STORY_APPROVED",
+        "LIVE_ACTION_ANCHORS_LOCKED",
+        "LIVE_ACTION_PREFLIGHT_PASSED",
+        "LIVE_ACTION_RENDER_AUTHORIZED",
+        "LIVE_ACTION_CANDIDATE_REGISTERED",
+        "LIVE_ACTION_CAUSAL_MOTION_GATE_PASSED",
+        "LIVE_ACTION_TECHNICAL_QC_PASSED",
+        "LIVE_ACTION_TECHNICAL_CANDIDATE_REJECTED",
+        "LIVE_ACTION_INTERMEDIATE_GUIDE_CONFLICT_PROVEN",
+        "LIVE_ACTION_TECHNICAL_REPLACEMENT_ADMITTED",
+        "LIVE_ACTION_OWNER_VISUAL_APPROVED",
+        "LIVE_ACTION_OWNER_TECHNICAL_FINISH_AUTHORIZED",
+        "LIVE_ACTION_TECHNICAL_PICTURE_CANDIDATE_LOCKED",
+        "LIVE_ACTION_CONNECTORS_APPROVED",
+        "LIVE_ACTION_PICTURE_LOCKED",
+        "LIVE_ACTION_FINISH_CANDIDATE_REGISTERED",
+        "LIVE_ACTION_OWNER_MASTER_APPROVED",
+        "LIVE_ACTION_CANDIDATE_REJECTED",
+        "LIVE_ACTION_OWNER_ROUTE_REJECTED",
+        "LIVE_ACTION_SIGNATURE_COMBAT_PLAN_REGISTERED",
+        "LIVE_ACTION_SIGNATURE_COMBAT_PLAN_APPROVED",
+        "LIVE_ACTION_REPLACEMENT_ADMITTED"
+      ],
+      "errors": [],
+      "gpuTouched": false
+    },
+    "stages": [
+      {
+        "id": "01_story_contract",
+        "label": "Roteiro e contrato de takes",
+        "agents": [
+          "pemara-live-action-showrunner",
+          "pemara-live-action-combat-director",
+          "pemara-live-action-kinetic-supervisor",
+          "project-planner",
+          "creative-director",
+          "pemara-cinematic-take-director"
+        ],
+        "models": [
+          "NVIDIA reasoning (optional, text only)"
+        ],
+        "output": "roteiro, take queue, continuidade e beats 0-30/30-70/70-100",
+        "gate": "owner_story_approval"
+      },
+      {
+        "id": "02_anchor_lock",
+        "label": "Fotos ancora perfeitas",
+        "agents": [
+          "image-production",
+          "pemara-cinematic-take-director"
+        ],
+        "models": [
+          "Qwen Image 2.1 INT8",
+          "Qwen Image 2.1 Edit"
+        ],
+        "output": "start frame e end frame quando necessario, com sidecar e elenco conferido nos pixels",
+        "gate": "owner_anchor_approval"
+      },
+      {
+        "id": "03_h3_prompt_compile",
+        "label": "Prompt H3 oficial amarrado",
+        "agents": [
+          "creative-director",
+          "pemara-live-action-combat-director",
+          "pemara-video-motion-director",
+          "h3-prompt-writing"
+        ],
+        "models": [
+          "Qwen3-VL-32B MiniMax H3 NVFP4 AWQ"
+        ],
+        "output": "modo T2VA/I2VA/FL2VA/L2VA/Ref2VA, timeline, keyframes, som e musica",
+        "gate": "official_prompt_contract_pass"
+      },
+      {
+        "id": "04_preflight",
+        "label": "Preflight sem GPU",
+        "agents": [
+          "pemara-live-action-showrunner",
+          "pemara-live-action-qc",
+          "pemara-video-motion-director",
+          "test-engineer"
+        ],
+        "models": [],
+        "output": "identidade, fisica, camera, profundidade, acao interna, progressao e integridade",
+        "gate": "closed_preflight_pass"
+      },
+      {
+        "id": "05_h3_take",
+        "label": "Geracao serial MiniMax H3",
+        "agents": [
+          "automation-engineer",
+          "performance-optimizer"
+        ],
+        "models": [
+          "MiniMax H3 FL2VA pruned INT8 ConvRot",
+          "MiniMax H3 Video VAE FP16",
+          "MiniMax H3 Audio VAE FP32"
+        ],
+        "output": "take nativo 1280x720 ou 720x1280, 24 fps, 20 steps, guidance 1.0",
+        "gate": "technical_candidate_only"
+      },
+      {
+        "id": "06_visual_qc",
+        "label": "QC visual e aprovacao humana",
+        "agents": [
+          "pemara-live-action-qc",
+          "video-production",
+          "pemara-video-motion-director"
+        ],
+        "models": [],
+        "output": "ffprobe, contact sheet, identidade, fisica e movimento integral",
+        "gate": "owner_visual_approval"
+      },
+      {
+        "id": "07_continuous_connectors",
+        "label": "Conectores de acao continua",
+        "agents": [
+          "pemara-live-action-kinetic-supervisor",
+          "pemara-live-action-continuity",
+          "pemara-cinematic-take-director",
+          "pemara-video-motion-director"
+        ],
+        "models": [
+          "MiniMax H3 FL2VA pruned INT8 ConvRot"
+        ],
+        "output": "ponte fisica irreversivel entre takes aprovados",
+        "gate": "no_crossfade_no_freeze_no_reset"
+      },
+      {
+        "id": "08_picture_lock",
+        "label": "Picture lock FHD60",
+        "agents": [
+          "video-production"
+        ],
+        "models": [
+          "RIFE 4.6 NCNN Vulkan",
+          "RealESRGAN x2plus",
+          "FFmpeg H.264 NVENC"
+        ],
+        "output": "master visual FHD60 sem alterar o master nativo aprovado",
+        "gate": "owner_picture_lock"
+      },
+      {
+        "id": "09_foley",
+        "label": "Foley apos picture lock",
+        "agents": [
+          "game-audio-designer",
+          "audio-analysis"
+        ],
+        "models": [
+          "Tencent HunyuanVideo-Foley XXL"
+        ],
+        "output": "candidatos de Foley sincronizados, nunca anexados automaticamente",
+        "gate": "owner_audio_approval"
+      },
+      {
+        "id": "10_final_master",
+        "label": "Master final e rollback",
+        "agents": [
+          "video-production",
+          "test-engineer",
+          "documentation-and-adrs"
+        ],
+        "models": [
+          "FFmpeg",
+          "ffprobe",
+          "EBU R128"
+        ],
+        "output": "FHD60, hashes, loudness, manifesto, backup e rollback",
+        "gate": "technical_pass_plus_owner_approval"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phaser Platformer Architect"
+  short_description: "Dirige arquitetura, game feel e qualidade de jogos Phaser"
+  default_prompt: "Use $phaser-platformer-architect para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

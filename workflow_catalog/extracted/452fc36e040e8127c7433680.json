@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and precise, fast-paced. Features rapid double-bass drumming, complex odd-time signature riffs, galloping rhythm guitar, and a high-pitched, screaming male vocal delivery. Short and punchy.\nShort complete song, target duration 30 seconds. Start singing immediately; no long instrumental intro. Prioritize the verse and chorus.",
+      "lyrics": "[Verse]\nTighten the laces, sharpen the blade\nChasing the thunder, never to fade\nRapid fire rhythm, cutting the air\nPunching the gut, hitting us there\n\n[Chorus]\nIron strings! Cutting deep\nPulling the strings while the city sleeps\nIron strings! Wake the dead\nPuppets dancing on a steel head",
+      "seed": 1762201937,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

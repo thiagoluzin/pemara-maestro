@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pemara Live Action Showrunner"
+  short_description: "Planeja live action humano com rotas H3"
+  default_prompt: "Use $pemara-live-action-showrunner para planejar esta cena humana em microtakes H3 com identidade, âncoras e gates fechados."
+policy:
+  allow_implicit_invocation: true

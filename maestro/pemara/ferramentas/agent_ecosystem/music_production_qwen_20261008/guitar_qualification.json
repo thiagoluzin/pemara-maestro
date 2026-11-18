@@ -1,0 +1,31 @@
+{
+  "technicalFixturePass": true,
+  "artisticApproval": false,
+  "library": "FreePats FSBS Electric Guitar Direct",
+  "license": "CC0-1.0",
+  "source": "https://freepats.zenvoid.org/ElectricGuitar/clean-electric-guitar.html",
+  "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\FreePats-EGuitar-FSBS-direct-20220911\\EGuitarFSBS-direct SFZ+FLAC-20220911\\EGuitarFSBS-direct bridge 20220911.sfz",
+  "patchSha256": "0efc8dba2bcae1e840dd96caabd31f0c160d84753049122c32b382db122b0b9c",
+  "archiveSha256": "7ab2a4551bb8847342d6fd10cc56e0642fcaf43f3be8d665269c4dc9bfbbd599",
+  "processing": "declared_saturation_and_EQ_not_captured_amp",
+  "metrics": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "subtype": "PCM_24",
+    "durationSeconds": 6.0,
+    "samplePeakDbfs": -11.55,
+    "clippingSampleCount": 0,
+    "nonFiniteSampleCount": 0
+  },
+  "fixtureMidiSha256": "0fa1944a51b3e4b4577b4925d10292e3c670b96d91906d4629c9c758b1ed29fd",
+  "commands": [
+    {
+      "returncode": 0,
+      "stderrTail": "Enabling freewheeling\n"
+    },
+    {
+      "returncode": 0,
+      "stderrTail": ""
+    }
+  ]
+}

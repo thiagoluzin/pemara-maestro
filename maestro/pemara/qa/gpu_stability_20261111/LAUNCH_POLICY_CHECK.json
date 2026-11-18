@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-11T17:40:15.523857+00:00",
+  "result": "PASS",
+  "checks": [
+    "syntax",
+    "one launch argument list",
+    "no fast fp16 accumulation",
+    "conservative flags once",
+    "4GB reservation",
+    "ownership and queue guards retained"
+  ]
+}

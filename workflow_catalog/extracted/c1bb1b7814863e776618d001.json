@@ -1,0 +1,42 @@
+{
+  "1": {
+    "inputs": {
+      "image": "comfyui-controlnet-aux-logo (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "is_changed": [
+      "5e564b8171c2cdd6a3056c079dd0e096cfcd877225c318c63962500f13c313c8"
+    ]
+  },
+  "2": {
+    "inputs": {
+      "resolution": 640,
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "ExecuteAllControlNetPreprocessors"
+  },
+  "3": {
+    "inputs": {
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "PreviewImage"
+  },
+  "5": {
+    "inputs": {
+      "filename_prefix": "ExecuteAll",
+      "save_intermediate": false,
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "Save Image Grid (mtb)"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A02_native.png"
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A02_DLSS5"
+    }
+  },
+  "3": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A03_native.png"
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A03_DLSS5"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A04_native.png"
+    }
+  },
+  "6": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A04_DLSS5"
+    }
+  },
+  "7": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A05_native.png"
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A05_DLSS5"
+    }
+  },
+  "9": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A06_native.png"
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A06_DLSS5"
+    }
+  },
+  "11": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A07_native.png"
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A07_DLSS5"
+    }
+  },
+  "13": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A08_native.png"
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A08_DLSS5"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "BD9_20261107_A09_native.png"
+    }
+  },
+  "16": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "15",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/anchors/beatdown_9_v1/A09_DLSS5"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

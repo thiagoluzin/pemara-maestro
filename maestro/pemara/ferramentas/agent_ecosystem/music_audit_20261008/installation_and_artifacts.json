@@ -1,0 +1,629 @@
+{
+  "scope": "Read-only installation and existing-artifact audit",
+  "timestamp_utc": "2026-10-08T11:45:07Z",
+  "audit_python": "C:\\Program Files\\Python311\\python.exe",
+  "new_generation": false,
+  "runtime": {
+    "music_creation": {
+      "ace_step_local": {
+        "label": "ACE-Step 1.5 local",
+        "configured": true,
+        "modes": [
+          "music"
+        ],
+        "min_duration_seconds": 10,
+        "max_duration_seconds": 600,
+        "default_duration_seconds": 30,
+        "models": {
+          "acestep-v15-turbo": "Turbo · 8 passos",
+          "acestep-v15-xl-base": "XL Base · 50 passos"
+        },
+        "requires_human_listening": true,
+        "message": "Criação original com estilo e letra. Turbo ou XL Base, sem serviço pago.",
+        "runtime_commit": "ca1e85fe9430179831e6bc6be790c332190a3866"
+      },
+      "yue2_local": {
+        "label": "YuE2 local · partitura e áudio",
+        "configured": true,
+        "modes": [
+          "music"
+        ],
+        "min_duration_seconds": 6,
+        "max_duration_seconds": 900,
+        "engine_max_duration_seconds": 900,
+        "default_duration_seconds": 30,
+        "requires_human_listening": true,
+        "message": "Descreva a música: letra, composição e áudio são gerados em sequência, com encerramento dentro do tempo. Ajustes e partitura são opcionais."
+      }
+    },
+    "music_ai_production": {
+      "configured": true,
+      "engine": "ace_step_1_5_xl_base",
+      "critic": "muq_eval_a1_plus_muq_mulan",
+      "device": "cuda",
+      "gpuRequired": true,
+      "minimumDurationSeconds": 10,
+      "maximumDurationSeconds": 600,
+      "candidateRange": {
+        "minimum": 2,
+        "maximum": 4,
+        "default": 3
+      },
+      "coverStrengthRange": {
+        "minimum": 0.3,
+        "maximum": 0.9,
+        "default": 0.55
+      },
+      "localOnly": true,
+      "humanReviewRequired": true,
+      "autoApprove": false,
+      "researchOnlyCritic": true,
+      "commercialUseBlockedByCriticWeights": true,
+      "checks": {
+        "aceEnvironment": true,
+        "aceWorker": true,
+        "aceCore": true,
+        "aceXlBase": true,
+        "criticEnvironment": true,
+        "criticWorker": true,
+        "muqEvalSource": true,
+        "criticModels": true,
+        "installationReceipt": true
+      },
+      "modelBytes": {
+        "aceCore": 18518194624,
+        "aceXlBase": 19953375386,
+        "critic": 6439961457
+      },
+      "message": "ACE-Step XL e critico musical prontos; candidatos exigem escuta humana. Critico MuQ restrito a pesquisa/uso nao comercial.",
+      "paths": {
+        "project": {
+          "path": "E:\\Pemara\\maestro\\pemara",
+          "exists": true,
+          "bytes": null
+        },
+        "runtime": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime",
+          "exists": true,
+          "bytes": null
+        },
+        "ace_source": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\sources\\ACE-Step-1.5",
+          "exists": true,
+          "bytes": null
+        },
+        "ace_python": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\sources\\ACE-Step-1.5\\.venv\\Scripts\\python.exe",
+          "exists": true,
+          "bytes": 45568
+        },
+        "ace_cli": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\ace_remix_cli.py",
+          "exists": true,
+          "bytes": 6771
+        },
+        "ace_models": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\models\\ace_step",
+          "exists": true,
+          "bytes": null
+        },
+        "critic_python": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\critic_venv\\Scripts\\python.exe",
+          "exists": true,
+          "bytes": 274712
+        },
+        "critic_cli": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\music_critic_cli.py",
+          "exists": true,
+          "bytes": 15740
+        },
+        "muq_eval_source": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\sources\\MuQ-Eval",
+          "exists": true,
+          "bytes": null
+        },
+        "hf_cache": {
+          "path": "D:\\PemaraAI\\huggingface-home\\hub",
+          "exists": true,
+          "bytes": null
+        },
+        "receipt": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\music_ai_runtime\\installation_receipt.json",
+          "exists": true,
+          "bytes": 6970
+        }
+      }
+    },
+    "music_reinstrument": {
+      "ok": true,
+      "configured": true,
+      "localOnly": true,
+      "device": "cpu",
+      "gpuRequired": false,
+      "humanReviewRequired": true,
+      "autoApprove": false,
+      "maxDurationSeconds": 720,
+      "supportedExtensions": [
+        ".aac",
+        ".flac",
+        ".m4a",
+        ".mp3",
+        ".ogg",
+        ".opus",
+        ".wav"
+      ],
+      "supportedInstruments": [
+        "piano",
+        "violin",
+        "cello",
+        "guitar",
+        "bass",
+        "drums"
+      ],
+      "presets": {
+        "symphonic_heavy_metal": {
+          "label": "Heavy metal sinfonico",
+          "defaultInstruments": [
+            "piano",
+            "violin",
+            "cello",
+            "guitar",
+            "bass",
+            "drums"
+          ],
+          "description": "Piano, violino, cello, guitarra distorcida, baixo e bateria metal."
+        },
+        "traditional_heavy_metal": {
+          "label": "Heavy metal tradicional",
+          "defaultInstruments": [
+            "piano",
+            "violin",
+            "cello",
+            "guitar",
+            "bass",
+            "drums"
+          ],
+          "description": "Guitarra, baixo e bateria de metal tradicional com piano e cordas claramente separados."
+        },
+        "chamber_metal": {
+          "label": "Metal de camara",
+          "defaultInstruments": [
+            "piano",
+            "violin",
+            "cello",
+            "guitar",
+            "bass"
+          ],
+          "description": "Cordas e piano em primeiro plano, com guitarra e baixo controlados."
+        },
+        "piano_strings": {
+          "label": "Piano e cordas",
+          "defaultInstruments": [
+            "piano",
+            "violin",
+            "cello"
+          ],
+          "description": "Reinstrumentacao de camara sem bateria nem guitarra."
+        }
+      },
+      "orchestration": {
+        "engine": "Pemara Maestro de Identidade v4",
+        "neuralListener": "MERT-v1-95M local CPU",
+        "promptMaxChars": 1500,
+        "stemMixing": true,
+        "independentStemQc": true,
+        "productionGate": true,
+        "identityGate": true,
+        "legacyEngine": "Pemara Local Orchestrator v1"
+      },
+      "checks": {
+        "ffmpeg": true,
+        "ffprobe": true,
+        "demucs": true,
+        "demucsCompat": true,
+        "demucsModel": true,
+        "basicPitch": true,
+        "fluidSynth": true,
+        "soundfont": true,
+        "hqSoundfont": true,
+        "stemCritic": true,
+        "identityCritic": true,
+        "scoreProducer": true,
+        "mertModel": true,
+        "mertRuntime": true
+      },
+      "needs": [],
+      "versions": {
+        "demucs": "4.0.1",
+        "basicPitch": "0.4.0",
+        "fluidSynth": "2.4.7",
+        "soundfont": "MuseScore MS Basic",
+        "legacySoundfont": "GeneralUser GS 2.0.3",
+        "mert": "m-a-p/MERT-v1-95M"
+      },
+      "message": "Pipeline local pronto; a RTX 5090 nao e usada.",
+      "paths": {
+        "root": {
+          "path": "E:\\Pemara\\maestro\\pemara",
+          "exists": true,
+          "bytes": null
+        },
+        "runtime": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime",
+          "exists": true,
+          "bytes": null
+        },
+        "python": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\venv\\Scripts\\python.exe",
+          "exists": true,
+          "bytes": 274712
+        },
+        "runner": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\reinstrument_cli.py",
+          "exists": true,
+          "bytes": 109844
+        },
+        "demucs_runner": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\demucs_compat_cli.py",
+          "exists": true,
+          "bytes": 2339
+        },
+        "demucs_model": {
+          "path": "C:\\Users\\admin_remoto\\.cache\\torch\\hub\\checkpoints\\955717e8-8726e21a.th",
+          "exists": true,
+          "bytes": 84141911
+        },
+        "fluidsynth": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\fluidsynth\\bin\\fluidsynth.exe",
+          "exists": true,
+          "bytes": 144896
+        },
+        "soundfont": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\soundfonts\\GeneralUser-GS.sf2",
+          "exists": true,
+          "bytes": 32319396
+        },
+        "soundfont_license": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\soundfonts\\GeneralUser-GS-LICENSE.txt",
+          "exists": true,
+          "bytes": 2317
+        },
+        "hq_soundfont": {
+          "path": "C:\\Program Files\\MuseScore 4\\sound\\MS Basic.sf3",
+          "exists": true,
+          "bytes": 51278610
+        },
+        "hq_soundfont_license": {
+          "path": "C:\\Program Files\\MuseScore 4\\sound\\MS Basic_License.md",
+          "exists": true,
+          "bytes": 3419
+        },
+        "stem_critic": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\stem_mix_critic_cli.py",
+          "exists": true,
+          "bytes": 12581
+        },
+        "identity_critic": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\identity_critic_cli.py",
+          "exists": true,
+          "bytes": 5860
+        }
+      }
+    },
+    "music_score_first": {
+      "ok": true,
+      "configured": true,
+      "scoreImportConfigured": true,
+      "orchestrationConfigured": true,
+      "engine": "score_first_muscriptor",
+      "label": "Partitura Primeiro - MuScriptor Large",
+      "localOnly": true,
+      "device": "cuda",
+      "gpuRequired": false,
+      "gpuOptional": true,
+      "safeCudaFreeMiB": 29909,
+      "minimumCudaFreeMiB": 12288,
+      "scoreApprovalRequired": true,
+      "orchestrationBeforeScoreLock": false,
+      "humanReviewRequired": true,
+      "autoApprove": false,
+      "checks": {
+        "python": true,
+        "muscriptor": true,
+        "beatThis": true,
+        "scoreCli": true,
+        "modelWeights": true,
+        "tempoModel": true,
+        "fluidSynth": true,
+        "soundfont": true,
+        "museScore": true,
+        "sampledRenderer": true,
+        "sampledPiano": true,
+        "sampledViolin": true,
+        "sampledCello": true,
+        "sampledBass": true,
+        "sampledDrums": true
+      },
+      "expressivePerformance": {
+        "profile": "expressive_score_v1",
+        "ready": true,
+        "defaultForLockedScores": true,
+        "noteMutationAllowed": false,
+        "paidLibrariesRequired": false,
+        "gpuRequired": false
+      },
+      "needs": [],
+      "model": {
+        "repo": "MuScriptor/muscriptor-large",
+        "revision": "8809fdfbed2affa7ade94a7059e746e3880720e7",
+        "sha256": "ac4eb6ea87dfc26b6ca6b954c6b967ab87ad4c7d08e078b25214f13ed051f397",
+        "license": "CC BY-NC 4.0",
+        "accessUrl": "https://huggingface.co/MuScriptor/muscriptor-large",
+        "ready": true
+      },
+      "tempoModel": {
+        "version": "1.1.0",
+        "sha256": "8c328b45f59d8dd3dff219253ff6a8d6482be57d0133a29140e2febbf8eb8331",
+        "ready": true
+      },
+      "sampledInstruments": {
+        "renderer": {
+          "name": "sfizz",
+          "version": "1.2.3",
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\tools\\sfizz-1.2.3\\bin\\Release\\sfizz_render.exe",
+          "ready": true
+        },
+        "noGeneralMidiFallback": true,
+        "instruments": {
+          "piano": {
+            "library": "Accurate Salamander Grand Piano 6.1a",
+            "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\AccurateSalamanderGrandPianoV6.1a\\sfz_daw\\Accurate-SalamanderGrandPiano_flat.Recommended.sfz",
+            "ready": true,
+            "strictTuning": false
+          },
+          "violin": {
+            "library": "Virtual Playing Orchestra 3.3 - solo violin tight tuning",
+            "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Virtual-Playing-Orchestra3\\Strings\\Pemara-1st-violin-SOLO-tight-tuning.sfz",
+            "ready": true,
+            "strictTuning": true
+          },
+          "cello": {
+            "library": "Virtual Playing Orchestra 3.3 - solo cello tight tuning",
+            "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Virtual-Playing-Orchestra3\\Strings\\Pemara-cello-SOLO-tight-tuning.sfz",
+            "ready": true,
+            "strictTuning": true
+          },
+          "bass": {
+            "library": "Growlybass 1.002 - sampled Jazz Bass",
+            "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Growlybass-v1.002\\Growlybass\\growlybass_dirty.sfz",
+            "ready": true,
+            "strictTuning": false
+          },
+          "drums": {
+            "library": "SM Drums Sforzando 1.2 - acoustic kit",
+            "patch": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\SMDrums-Sforzando-1.2\\Programs\\Pemara_SM_Drums_GM.sfz",
+            "ready": true,
+            "strictTuning": false
+          }
+        }
+      },
+      "versions": {
+        "muscriptor": "0.3.0",
+        "beatThis": "1.1.0"
+      },
+      "message": "Partitura Primeiro pronto: transcricao multitrack, prova A/B e bloqueio obrigatorio antes da orquestracao.",
+      "paths": {
+        "root": {
+          "path": "E:\\Pemara\\maestro\\pemara",
+          "exists": true,
+          "bytes": null
+        },
+        "runtime": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\muscriptor_runtime",
+          "exists": true,
+          "bytes": null
+        },
+        "python": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\muscriptor_runtime\\venv\\Scripts\\python.exe",
+          "exists": true,
+          "bytes": 274712
+        },
+        "score_cli": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\muscriptor_runtime\\score_first_cli.py",
+          "exists": true,
+          "bytes": 34673
+        },
+        "performance_cli": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\muscriptor_runtime\\expressive_performance.py",
+          "exists": true,
+          "bytes": 17421
+        },
+        "installer": {
+          "path": "E:\\Pemara\\maestro\\pemara\\tools\\install_muscriptor_score_first.ps1",
+          "exists": true,
+          "bytes": 4685
+        },
+        "model": {
+          "path": "D:\\PemaraAI\\huggingface-home\\hub\\models--MuScriptor--muscriptor-large\\snapshots\\8809fdfbed2affa7ade94a7059e746e3880720e7\\model.safetensors",
+          "exists": true,
+          "bytes": 5465642136
+        },
+        "model_config": {
+          "path": "D:\\PemaraAI\\huggingface-home\\hub\\models--MuScriptor--muscriptor-large\\snapshots\\8809fdfbed2affa7ade94a7059e746e3880720e7\\config.json",
+          "exists": true,
+          "bytes": 125
+        },
+        "tempo_model": {
+          "path": "C:\\Users\\admin_remoto\\.cache\\torch\\hub\\checkpoints\\beat_this-final0.ckpt",
+          "exists": true,
+          "bytes": 81058141
+        },
+        "fluidsynth": {
+          "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\reinstrument_runtime\\fluidsynth\\bin\\fluidsynth.exe",
+          "exists": true,
+          "bytes": 144896
+        },
+        "soundfont": {
+          "path": "C:\\Program Files\\MuseScore 4\\sound\\MS Basic.sf3",
+          "exists": true,
+          "bytes": 51278610
+        },
+        "musescore": {
+          "path": "C:\\Program Files\\MuseScore 4\\bin\\MuseScore4.exe",
+          "exists": true,
+          "bytes": 147389952
+        },
+        "sampled_root": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments",
+          "exists": true,
+          "bytes": null
+        },
+        "sfizz": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\tools\\sfizz-1.2.3\\bin\\Release\\sfizz_render.exe",
+          "exists": true,
+          "bytes": 1874432
+        },
+        "sampled_piano": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\AccurateSalamanderGrandPianoV6.1a\\sfz_daw\\Accurate-SalamanderGrandPiano_flat.Recommended.sfz",
+          "exists": true,
+          "bytes": 195319
+        },
+        "sampled_violin": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Virtual-Playing-Orchestra3\\Strings\\Pemara-1st-violin-SOLO-tight-tuning.sfz",
+          "exists": true,
+          "bytes": 5026
+        },
+        "sampled_cello": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Virtual-Playing-Orchestra3\\Strings\\Pemara-cello-SOLO-tight-tuning.sfz",
+          "exists": true,
+          "bytes": 9896
+        },
+        "sampled_bass": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\Growlybass-v1.002\\Growlybass\\growlybass_dirty.sfz",
+          "exists": true,
+          "bytes": 33111
+        },
+        "sampled_drums": {
+          "path": "D:\\PemaraAI\\music-production\\sampled-instruments\\libraries\\SMDrums-Sforzando-1.2\\Programs\\Pemara_SM_Drums_GM.sfz",
+          "exists": true,
+          "bytes": 6819
+        }
+      }
+    }
+  },
+  "errors": [],
+  "reinstrument_existing_folders": [],
+  "album_root_exists": true,
+  "album_files": [
+    {
+      "name": "album.json",
+      "bytes": 60736
+    },
+    {
+      "name": "build_report.py",
+      "bytes": 5032
+    },
+    {
+      "name": "completion_receipt.json",
+      "bytes": 7758
+    },
+    {
+      "name": "package_album.py",
+      "bytes": 2348
+    },
+    {
+      "name": "player.html",
+      "bytes": 35776
+    },
+    {
+      "name": "playlist.m3u8",
+      "bytes": 1783
+    },
+    {
+      "name": "prepare_audio.py",
+      "bytes": 1980
+    },
+    {
+      "name": "production_notes.md",
+      "bytes": 2249
+    },
+    {
+      "name": "progress.json",
+      "bytes": 3809
+    },
+    {
+      "name": "provenance.final.json",
+      "bytes": 25007
+    },
+    {
+      "name": "provenance.json",
+      "bytes": 36244
+    },
+    {
+      "name": "qc_and_export.py",
+      "bytes": 2561
+    },
+    {
+      "name": "README.md",
+      "bytes": 4148
+    },
+    {
+      "name": "score_timing.py",
+      "bytes": 10254
+    },
+    {
+      "name": "score_timing_qualification.json",
+      "bytes": 307
+    },
+    {
+      "name": "sources.md",
+      "bytes": 1791
+    },
+    {
+      "name": "Steel_Legacy_20_MP3_and_Lyrics.zip",
+      "bytes": 252363837
+    }
+  ],
+  "recent_generated_audio": [
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_63240317f2a2_00001.flac",
+      "bytes": 35823309,
+      "mtime": 1791315389.0202718
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_1d113ca939d8_00001.flac",
+      "bytes": 23875371,
+      "mtime": 1791281763.638935
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_809933f7b866_00001.flac",
+      "bytes": 34826899,
+      "mtime": 1791280836.5987659
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_55f2d0192518_00001.flac",
+      "bytes": 35880256,
+      "mtime": 1791278066.849089
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_e3936a5168b3_00001.flac",
+      "bytes": 22375041,
+      "mtime": 1791229296.4501076
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_b3d37dafcb61_00001.flac",
+      "bytes": 31733412,
+      "mtime": 1791228682.8252447
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Rei_das_Antenas_encerramento_teste_00001.flac",
+      "bytes": 20428430,
+      "mtime": 1791226188.9584296
+    },
+    {
+      "path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\audio\\Maestro_YuE2_4f3ded9afd87_00001.flac",
+      "bytes": 22007309,
+      "mtime": 1791225012.5671184
+    }
+  ]
+}

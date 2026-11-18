@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ai Video Intro Pipeline"
+  short_description: "Pipeline para criar, refazer ou finalizar intros/cutscenes de jo"
+  default_prompt: "Use $ai-video-intro-pipeline para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

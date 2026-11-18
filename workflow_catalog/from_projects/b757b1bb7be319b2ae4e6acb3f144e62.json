@@ -1,0 +1,347 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "<Picture 1> is the exact adult man, his full-body costume and original rocky island setting. <Picture 2> is a FACE DETAIL from the owner's approved photograph of THAT SAME MAN exerting himself, not a second person. It is the literal target for his facial shape and modest mouth opening while making the fixed effort sound. The lips form the compact oval shown in Picture 2; keep that ordinary human jaw length, nose, cheek width, chin and natural eyebrow thickness. Keep his head nearly level and chin in its normal position throughout the effort. Photograph the same human actor with real skin pores and individual golden hair strands. Exact orange woven torn gi over navy undershirt, blue sash, wraps and boots, original stains and damage, real physical fabric. One actor only.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted full-body live-action shot lasting 6.58 seconds at normal speed. Head and both boots remain inside the frame with space around them. The actor makes ONE continuous strong physical effort against rising energy pressure, with fully articulated arms, torso, hips and knees. Both boots remain firmly planted in their starting positions throughout, with solid contact shadows, no jump, floating or sliding.\n0-1.5 seconds: he visibly bends both knees, lowers his pelvis by roughly a head's height and leans his chest forward over his grounded legs. At the same time both elbows bend and fists lift from his sides to his lower chest. His head stays level, eyes locked off-camera right. Large readable changes of knee angle, hip height and arm position, not a still portrait.\n1.5-3.5 seconds: his lips part into EXACTLY the compact effort opening in Picture 2 as the fixed recording swells. He does not increase the mouth opening beyond the photographed detail. He begins to stand out of the lowered stance, hips and shoulders rising while he pulls both bent elbows backward and down. His head stays nearly level; chin never stretches down and head never tips back. Emphasize powerful torso and leg work with a restrained human face. No enlarged mouth, long chin, thickened brows, bulging eyes, exposed throat or caricature facial muscles.\n3.5-5.2 seconds: he continues extending the knees and raising the torso, drawing both fists down past his waist until arms are nearly extended. This is a continuous body rise, not a held screaming pose and not repeated fist pumps. Keep the same modest photo-defined mouth opening while the fixed yell continues. Golden hair strands stand more upright and thin sparse blue-white arcs appear outside his body. The loose sash ends swing with inertia and gravel shifts around the grounded soles; translucent warm light never hides his skin or clothing. No solid painted flame columns.\n5.2-6.58 seconds: lips close naturally as the recording releases, he turns his upper body slightly toward the unseen opponent to screen right and raises his right forearm toward his chest, redistributing weight across the grounded legs. Movement continues to the end without a pose reset or frozen tail.\nThe physical camera tracks slowly sideways in a shallow arc while keeping the full body visible. Nearby rocks change their overlap against the water and distant mesas with genuine perspective parallax. Same rocky island, water left, low rock right, far mesas, overcast greenish sky. Photographed live-action skin, cloth and rock throughout. No illustration, anime, cel shading, game render, plastic CGI, extra cast, added damage, new costume, halo, glowing eyes, attack, flight, cut or closeup.\n\noverall_soundscape: The fixed guide is the owner's exact approved male effort yell, breath and electrical transformation effects, original speed, pitch, gain and timing. Follow its onset near 1.5s and release near 5.35s with the compact human mouth opening of Picture 2. The original audio is used directly in output. No newly synthesized voice, words, music, score, melody, choir or instruments.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 158,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "5",
+        0
+      ],
+      "ref_images.ref_image_1": [
+        "face_detail_lanczos",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "approved_audio_guide",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 29102953
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 768,
+      "height": 1344,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "approved_audio",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261029/motion_M03_approved_face_detail",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "approved_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ2_TESTE_GRITO_P01.wav"
+    }
+  },
+  "approved_audio_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "start_guide",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "approved_audio",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "effort_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A03_goku_ssj2_effort_DLSS5_v01.png"
+    }
+  },
+  "start_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "6",
+        0
+      ],
+      "latent": [
+        "6",
+        1
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "image": [
+        "5",
+        0
+      ],
+      "frame_idx": 0
+    }
+  },
+  "face_detail": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "effort_photo",
+        0
+      ],
+      "x": 330,
+      "y": 180,
+      "width": 256,
+      "height": 288
+    }
+  },
+  "face_detail_lanczos": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "face_detail",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 512,
+      "height": 576,
+      "crop": "disabled"
+    }
+  }
+}

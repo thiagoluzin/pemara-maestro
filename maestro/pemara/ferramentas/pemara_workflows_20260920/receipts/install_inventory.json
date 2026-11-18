@@ -1,0 +1,212 @@
+{
+  "checked_at": "2026-09-21T02:16:39.871717+00:00",
+  "models": [
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\checkpoints\\hidream_o1_image_bf16.safetensors",
+      "status": "structurally_complete",
+      "bytes": 16365209824,
+      "expected_bytes": 16365209824,
+      "tensor_count": 758
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\checkpoints\\yue2_3b_int8_convrot.safetensors",
+      "status": "structurally_complete",
+      "bytes": 3960938800,
+      "expected_bytes": 3960938800,
+      "tensor_count": 1355
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\checkpoints\\LLaDA-Image-Base-BF16-AIO.safetensors",
+      "status": "structurally_complete",
+      "bytes": 49259978134,
+      "expected_bytes": 49259978134,
+      "tensor_count": 1439
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\checkpoints\\LLaDA-Image-Turbo-BF16-AIO.safetensors",
+      "status": "structurally_complete",
+      "bytes": 49259978182,
+      "expected_bytes": 49259978182,
+      "tensor_count": 1439
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\text_encoders\\gemma4_e4b_it_fp8_scaled.safetensors",
+      "status": "structurally_complete",
+      "bytes": 9057782194,
+      "expected_bytes": 9057782194,
+      "tensor_count": 2417
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\text_encoders\\qwen_3_4b.safetensors",
+      "status": "structurally_complete",
+      "bytes": 8044982048,
+      "expected_bytes": 8044982048,
+      "tensor_count": 398
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\diffusion_models\\flux-2-klein-4b.safetensors",
+      "status": "structurally_complete",
+      "bytes": 7751105712,
+      "expected_bytes": 7751105712,
+      "tensor_count": 149
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\vae\\flux2-vae.safetensors",
+      "status": "structurally_complete",
+      "bytes": 336213556,
+      "expected_bytes": 336213556,
+      "tensor_count": 251
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\audio_encoders\\sheetsage2_bf16.safetensors",
+      "status": "structurally_complete",
+      "bytes": 1386868122,
+      "expected_bytes": 1386868122,
+      "tensor_count": 1040
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\AuK\\auk_base.safetensors",
+      "status": "structurally_complete",
+      "bytes": 6122209092,
+      "expected_bytes": 6122209092,
+      "tensor_count": 420
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\AuK\\vae.safetensors",
+      "status": "structurally_complete",
+      "bytes": 637322604,
+      "expected_bytes": 637322604,
+      "tensor_count": 1137
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\AuK-Flash\\auk_flash.safetensors",
+      "status": "structurally_complete",
+      "bytes": 6122209092,
+      "expected_bytes": 6122209092,
+      "tensor_count": 420
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\AuK-Flash\\vae.safetensors",
+      "status": "structurally_complete",
+      "bytes": 637322604,
+      "expected_bytes": 637322604,
+      "tensor_count": 1137
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\Qwen2.5-Omni-3B\\model-00001-of-00003.safetensors",
+      "status": "structurally_complete",
+      "bytes": 4994850880,
+      "expected_bytes": 4994850880,
+      "tensor_count": 1148
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\Qwen2.5-Omni-3B\\model-00002-of-00003.safetensors",
+      "status": "structurally_complete",
+      "bytes": 4999787448,
+      "expected_bytes": 4999787448,
+      "tensor_count": 521
+    },
+    {
+      "path": "D:\\PemaraModels\\workflows_20260920\\auk\\Qwen2.5-Omni-3B\\model-00003-of-00003.safetensors",
+      "status": "structurally_complete",
+      "bytes": 1978024880,
+      "expected_bytes": 1978024880,
+      "tensor_count": 875
+    }
+  ],
+  "workflows": [
+    {
+      "name": "01_HiDream_Full_ancoras.json",
+      "sha256": "8f73a99ff2a9a91836496888379ac160e51503ae196763feadf3262a01d1b9b4",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\01_HiDream_Full_ancoras.json",
+      "installed_matches": true
+    },
+    {
+      "name": "02_HiDream_Photoshoot_lote8.json",
+      "sha256": "e7058cb939b82d9da1ea2b8113336dc0ef36f8f03e607a74bd3544595301b65b",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\02_HiDream_Photoshoot_lote8.json",
+      "installed_matches": true
+    },
+    {
+      "name": "03_LLaDA_base_correcao.json",
+      "sha256": "95c05de055d0e28f78e32ee818aa91e568326692b108c0874ce5ef512d490837",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_base_correcao.json",
+      "installed_matches": true
+    },
+    {
+      "name": "03_LLaDA_turbo_correcao.json",
+      "sha256": "234b455e1edd26bdef12bd70434b25e82a9f78a514e6efe0a08691988a0390a8",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_turbo_correcao.json",
+      "installed_matches": true
+    },
+    {
+      "name": "04_Qwen_2512_texto_layout.json",
+      "sha256": "029d366a2cd148e708f8db127559267f6d57f91c588f08d0506e0b12d8d9921a",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\04_Qwen_2512_texto_layout.json",
+      "installed_matches": true
+    },
+    {
+      "name": "05_FLUX_Klein_rascunho.json",
+      "sha256": "5dd16a770bede1c6fafcb37d99d2f9ac948cf78a9f405de2bd20d2501bda48d3",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\05_FLUX_Klein_rascunho.json",
+      "installed_matches": true
+    },
+    {
+      "name": "10_YuE2_composicao_ABC.json",
+      "sha256": "58b58a624ec4d9bcba1dd6e0c4b34b9dde4fa34747b1b7e3e1c11a834e867a5a",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10_YuE2_composicao_ABC.json",
+      "installed_matches": true
+    },
+    {
+      "name": "10a_YuE2_planejar_ABC_sem_audio.json",
+      "sha256": "702cbf4ea21d6ae736af7c341c8afb25756026bf5a107f18a534e52115a91047",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10a_YuE2_planejar_ABC_sem_audio.json",
+      "installed_matches": true
+    },
+    {
+      "name": "10b_YuE2_gerar_com_ABC_revisado.json",
+      "sha256": "d2198d26ca54cf017c5ad552ec49535e6f0c1d9942d2ec8207eced6e7e80d288",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10b_YuE2_gerar_com_ABC_revisado.json",
+      "installed_matches": true
+    },
+    {
+      "name": "11_YuE2_cover_SheetSage.json",
+      "sha256": "ebaf9fc6cc09f7c13ae8fc65d080664c67415fa73c3221ed70a361d40c2c0614",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\11_YuE2_cover_SheetSage.json",
+      "installed_matches": true
+    },
+    {
+      "name": "12_AuK_Base_voz.json",
+      "sha256": "9ca0ff4cbd8fe3bd5edb2f4037464c1abcc3fee0fff82c4cdd1008232b6c1453",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Base_voz.json",
+      "installed_matches": true
+    },
+    {
+      "name": "12_AuK_Flash_voz.json",
+      "sha256": "9e7d438ade77404c650b9fc15ac79fc50f1fdee90f71478191ca52835426a3c9",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Flash_voz.json",
+      "installed_matches": true
+    },
+    {
+      "name": "13_AuK_Base_editar.json",
+      "sha256": "eaeae176a3c75d0c0f1dd365bad52ddf1794069a339f5f4d4e37adc366f2f9d3",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Base_editar.json",
+      "installed_matches": true
+    },
+    {
+      "name": "13_AuK_Flash_editar.json",
+      "sha256": "5cd15a5af449c92525190f4f198b2b4dad2b7c9fbc5577d347d007e51903001c",
+      "installed_path": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.36.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Flash_editar.json",
+      "installed_matches": true
+    }
+  ],
+  "source_commits": {
+    "AuK": "871bf3d4635c5ca0ecb6b85f3c4e29c4682a88c7",
+    "Comfyui-LLaDa-Image-T8": "b86752916f7d81901be6e99cc2c40d559798caba",
+    "ComfyUI-Photoshoot": "c4afc492f73e77266c53c3351cab31052fe46b01",
+    "LLaDA-Image": "e7c861b0aaa00d2f7ed49600a3a6f170e02a9d59",
+    "LLaDa-Image_ComfyUI": "49244674e735acb1a46d8b36a2e26869dc9002f7"
+  },
+  "artistic_approval": false,
+  "note": "Headers and byte counts only; does not prove model execution or quality."
+}

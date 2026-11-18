@@ -1,0 +1,306 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "3": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "5": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "6": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "lora_name": "wan2.2_animate_adapter_model.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "7": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "5",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "8": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "shift": 5.0
+    }
+  },
+  "9": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "10": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Condition_e6121d71774383f3d01f8edb.png"
+    },
+    "is_changed": [
+      "e6121d71774383f3d01f8edb3661dd231c52bda906e1e181622001be2020f28b"
+    ]
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 896,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "The EXACT SAME adult woman Helena from the complete body reference, same mature oval face, nose, jaw, eyes, brown low bun, beige rolled sleeve collared shirt, blue jeans, brown worn boots and brown crossbody satchel on her ANATOMICAL LEFT hip. Preserve her exact head size, body proportions, age, outfit and detailed hand-painted pixel-art shading. No redesign or beautification. One coherent whole-body 2D drawing each moment, never a cutout puppet. Fixed orthographic camera and uniform charcoal background. Whole head, both hands, boots and all equipment always visible with generous margins. Same location, scale and ground baseline. Keep the exact same rigid red-and-silver pipe wrench from the reference, with its original length, jaw shape, dark adjuster and small handle-end opening. Do not enlarge, elongate, duplicate or replace it. Preserve the complete mature Helena, face, low bun, beige shirt, jeans, boots and anatomical-left satchel. Start in the supplied OPPOSITE-facing complete pose and turn once toward screen RIGHT. From supplied moving support phase, plant the support boot, lower weight and pivot the pelvis and shoulders, then push off to travel in destination direction. A genuine full-body moving reversal, not a standing turn or reverse playback. Maintain selected walk/run rhythm and equipment grip. The same gripping hand retains possession of the tool; the other hand may add or release support naturally to match the supplied endpoint. Do not flip the character image or rotate the wrench independently. Follow the supplied actual initial moving pose and visible support contact. Its support-name/quarter is a selection label, not permission to reset the feet. Fixed camera, original proportions and palette, complete head, hands, boots, satchel and wrench inside frame."
+    }
+  },
+  "15": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "9",
+        0
+      ],
+      "text": "different woman, changed face, teenager, anime, 3d, photograph, different clothes, loose hair, ponytail, jacket, missing bag, duplicate bag, mirrored bag, missing boots, extra limbs, extra hands, extra fingers, body cutout, cropped feet, cropped head, cropped weapon, morphing weapon, stretching, shrinking, zoom, camera movement, text, watermark, blur, ghosting"
+    }
+  },
+  "16": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "inputs": {
+      "positive": [
+        "14",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "width": 896,
+      "height": 768,
+      "length": 33,
+      "batch_size": 1,
+      "start_image": [
+        "12",
+        0
+      ],
+      "end_image": [
+        "23",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "16",
+        2
+      ],
+      "add_noise": "enable",
+      "noise_seed": 2910292031,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": 2,
+      "return_with_leftover_noise": "enable"
+    }
+  },
+  "18": {
+    "class_type": "KSamplerAdvanced",
+    "inputs": {
+      "model": [
+        "8",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "16",
+        1
+      ],
+      "latent_image": [
+        "17",
+        0
+      ],
+      "add_noise": "disable",
+      "noise_seed": 2910292031,
+      "steps": 4,
+      "cfg": 1.1,
+      "sampler_name": "ddim",
+      "scheduler": "simple",
+      "start_at_step": 2,
+      "end_at_step": 4,
+      "return_with_leftover_noise": "disable"
+    }
+  },
+  "19": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "fps": 16.0
+    }
+  },
+  "21": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "20",
+        0
+      ],
+      "filename_prefix": "ATD_Unified_Helena_run01/pipe_red_exact_remaining_turn_moving_east_run_left_support_v01",
+      "format": "auto",
+      "format.codec": "auto"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "22": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "23": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ATD_Condition_d356c8695f04734757ac13af.png"
+    },
+    "is_changed": [
+      "d356c8695f04734757ac13af6cf6c1cba14b15704e687c845ece1c394f13dc6f"
+    ]
+  },
+  "24": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "frame_rate": 16.0,
+      "loop_count": 0,
+      "filename_prefix": "ATD_Unified_Helena_run01/native_next/pipe_red_exact_remaining_turn_moving_east_run_left_support_v01",
+      "format": "video/ffv1-mkv",
+      "pingpong": false,
+      "save_output": true,
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "rgba64le",
+      "save_metadata": true,
+      "trim_to_audio": false
+    },
+    "is_changed": [
+      NaN
+    ]
+  }
+}

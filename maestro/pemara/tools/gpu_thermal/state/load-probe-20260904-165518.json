@@ -1,0 +1,203 @@
+{
+  "startedAt": "2026-09-04T16:54:30.941447-03:00",
+  "status": "PASS_SHORT_BOUNDED_LOAD",
+  "childPid": 10860,
+  "samples": [
+    {
+      "temperatureC": 45.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 71.82,
+      "utilizationPercent": 1.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:30.938446-03:00"
+    },
+    {
+      "temperatureC": 45.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 71.82,
+      "utilizationPercent": 1.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:30.984290-03:00"
+    },
+    {
+      "temperatureC": 45.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 73.13,
+      "utilizationPercent": 0.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:33.029382-03:00"
+    },
+    {
+      "temperatureC": 51.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 179.72,
+      "utilizationPercent": 27.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:35.080866-03:00"
+    },
+    {
+      "temperatureC": 52.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 175.82,
+      "utilizationPercent": 27.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:37.131040-03:00"
+    },
+    {
+      "temperatureC": 51.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 179.11,
+      "utilizationPercent": 26.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:39.172828-03:00"
+    },
+    {
+      "temperatureC": 51.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 178.98,
+      "utilizationPercent": 27.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:41.216077-03:00"
+    },
+    {
+      "temperatureC": 55.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 286.69,
+      "utilizationPercent": 48.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:43.254741-03:00"
+    },
+    {
+      "temperatureC": 55.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 307.16,
+      "utilizationPercent": 44.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:45.306887-03:00"
+    },
+    {
+      "temperatureC": 55.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 306.42,
+      "utilizationPercent": 34.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:47.358102-03:00"
+    },
+    {
+      "temperatureC": 57.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 305.4,
+      "utilizationPercent": 49.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:49.399790-03:00"
+    },
+    {
+      "temperatureC": 57.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 306.9,
+      "utilizationPercent": 45.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:51.440310-03:00"
+    },
+    {
+      "temperatureC": 58.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 314.92,
+      "utilizationPercent": 44.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:53.483757-03:00"
+    },
+    {
+      "temperatureC": 56.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 304.74,
+      "utilizationPercent": 49.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:55.535374-03:00"
+    },
+    {
+      "temperatureC": 58.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 300.35,
+      "utilizationPercent": 49.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:57.580973-03:00"
+    },
+    {
+      "temperatureC": 67.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 500.69,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:54:59.622954-03:00"
+    },
+    {
+      "temperatureC": 68.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 499.92,
+      "utilizationPercent": 96.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:01.675578-03:00"
+    },
+    {
+      "temperatureC": 69.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 500.97,
+      "utilizationPercent": 96.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:03.723745-03:00"
+    },
+    {
+      "temperatureC": 69.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 499.64,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:05.774320-03:00"
+    },
+    {
+      "temperatureC": 70.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 499.72,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:07.819741-03:00"
+    },
+    {
+      "temperatureC": 71.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 499.47,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:09.868140-03:00"
+    },
+    {
+      "temperatureC": 71.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 500.17,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:11.918424-03:00"
+    },
+    {
+      "temperatureC": 72.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 500.31,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:13.963323-03:00"
+    },
+    {
+      "temperatureC": 73.0,
+      "powerLimitWatts": 500.0,
+      "powerDrawWatts": 499.63,
+      "utilizationPercent": 95.0,
+      "uuid": "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+      "at": "2026-09-04T16:55:16.010228-03:00"
+    }
+  ],
+  "scope": "Short bounded probe, not long-render stability certification",
+  "elapsedSeconds": 47.06,
+  "maxTemperatureC": 73.0,
+  "maxPowerDrawWatts": 500.97
+}

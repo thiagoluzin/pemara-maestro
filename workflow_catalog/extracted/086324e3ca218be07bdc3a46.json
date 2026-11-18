@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Relentless death thrash metal, fast grinding alternate-picked guitars, pounding double-kick drums, low harsh intelligible male English vocal, raw distorted bass. 184 BPM, E minor. a rapid chromatic guitar figure; a stomping mid-song groove, chaotic solo and sudden ensemble stops. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending.",
+      "lyrics": "[Verse]\nBlack ink on bone, the decree is cold\nA throne built on the stories of the old\nTorn from the jaw of the vanquished king\nThe law is sharp, the silence is the sting\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Verse]\nHe bites the paper, he bites the pen\nThe marrow sings, a jagged hymn\nEvery statute is a molar's weight\nCrushing the necks beneath the gate\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Verse]\nThe incisor grows through the ribcage now\nThe molars grind against the brow\nHe tries to scream but the jaw is locked\nEvery law he made is choked\nThe teeth of the enemies bite back\nTurning his flesh to a jagged track\nThe crown is just a nest of bone\nA hive of pain on a stolen throne\nHe chews the air, he swallows dust\nThe empire rots from the inside out\nThe jaw unhinges, the face splits wide\nThe teeth are the only things that hide\n\n[Bridge]\nStomp it down, crush the stone\nThe root breaks, the spine is lone\n\n[Solo]\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Outro]\nThe crown snaps\nThe jaw drops\nEmpire of Teeth",
+      "abc": "",
+      "seed": 202610166015,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610166015,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/16_empire_of_teeth_direct",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}

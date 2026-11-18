@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "primary_take_orchestration_h3_ltx25_v1",
+  "selection": {
+    "required": true,
+    "default_engine_id": null,
+    "fallback_allowed": false,
+    "allowed_engines": [
+      {
+        "engine_id": "minimax_h3",
+        "generation_profile": "minimax_h3_fl2va_int8_720p24"
+      },
+      {
+        "engine_id": "ltx_2_5",
+        "generation_profile": "ltx25_two_stage_distilled_960x544p24"
+      }
+    ]
+  },
+  "ltx25": {
+    "model_revision": "Lightricks/LTX-2.5@5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+    "official_node_commit": "15d09abb5a187a8dcaea2fc31fe51ee96e6c9d0d",
+    "frame_rule": "8n+1",
+    "gpu_smoke_receipt_required": true,
+    "compatibility_assets": {
+      "policy": "allowlisted_ltx23_ic_lora_only",
+      "allowed_count": 5,
+      "all_other_ltx23_artifacts_forbidden": true
+    }
+  },
+  "gates": [
+    "explicit_engine_selection",
+    "owner_anchor_approval",
+    "engine_readiness",
+    "safe_gpu_admission",
+    "technical_qc",
+    "owner_human_review"
+  ],
+  "promotion": {
+    "technical_qc_is_not_owner_approval": true,
+    "upscale_after_owner_approval_only": true,
+    "preserve_original_and_rejected_candidates": true
+  },
+  "anchor_approval": {
+    "authority": "owner",
+    "external_analysis_required": false,
+    "external_analysis_enabled": false,
+    "preserve_approved_reference": true,
+    "technical_qc_and_video_review_required": true
+  },
+  "updated_at": "2026-09-26"
+}

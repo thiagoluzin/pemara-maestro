@@ -1,0 +1,16 @@
+{
+  "retired_at": "2026-11-15",
+  "policy": "retired_models.py blocks these loader inputs before Maestro submission; graph files retained for history. No automatic engine replacement.",
+  "workflows": [
+    {
+      "path": "workflows/combat_trials/test05_hunyuan15_v1/workflow.api.json",
+      "sha256": "9be4f41e838362a5c6a6f6c07ea7b19a798833c182264fe0278e36a034385868",
+      "status": "REMOVED_BY_OWNER",
+      "runnable": false,
+      "removed_assets": [
+        "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
+        "hunyuanvideo15_vae_fp16.safetensors"
+      ]
+    }
+  ]
+}

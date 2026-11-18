@@ -1,0 +1,5 @@
+{
+  "1": {"class_type": "PemaraLoadLosslessImage", "inputs": {"image": "scorpion_subzero_hunyuan_classic_20261110/A01_internal_v01.png"}},
+  "2": {"class_type": "SaveImage", "inputs": {"images": ["1", 0], "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/A01_anchor_candidate_v01"}},
+  "3": {"class_type": "PemaraDLSS5ContentPolicy", "inputs": {"content_kind": "live_action", "stage": "final"}}
+}

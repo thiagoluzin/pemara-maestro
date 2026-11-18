@@ -1,0 +1,18 @@
+{
+  "id": "43c6372f9b59",
+  "url": "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+  "dest": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\models\\loras\\Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+  "schema": "download-state/1",
+  "pid": 14780,
+  "pid_create_time": 1787626149.6995473,
+  "total_bytes": 849608296,
+  "completed_bytes": 849608296,
+  "status": "completed",
+  "error": null,
+  "started_at": "2026-08-25T02:49:09+00:00",
+  "updated_at": "2026-08-25T02:49:30+00:00",
+  "downloader": "httpx",
+  "kind": "background",
+  "needs_civitai_auth": false,
+  "needs_hf_auth": false
+}

@@ -1,0 +1,202 @@
+{
+  "categoria": "GABINETE",
+  "duracao": 47.6,
+  "produtos": [
+    {
+      "id": 52,
+      "linha_sheets": 53,
+      "tipo": "GABINETE",
+      "fabricante": "GAMDIAS",
+      "soquete": "",
+      "nome": "GABINETE GAMER ATLAS M1 GAMDIAS, BRANCO, VIDRO TEMPERADO",
+      "nome_limpo": "GABINETE GAMER ATLAS M1 GAMDIAS, BRANCO, VIDRO TEMPERADO",
+      "valor": 600.0,
+      "valor_formatado": "600,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/52_atlas_original.webp",
+      "url_card": null,
+      "link_oficial": "https://www.gamdias.com/en/component/case/ATLAS_M1_WH",
+      "criado_em": "2026-05-18 16:31:09.944086",
+      "atualizado_em": "2026-09-22 11:01:14.661970",
+      "ficha": {
+        "Placas-mãe": "ATX, Micro-ATX e Mini-ITX",
+        "Placa de vídeo": "Até 410 mm",
+        "Ventoinhas incluídas": "3 de 120 mm ARGB PWM",
+        "Conexões frontais": "USB-C, USB 3.0 e áudio",
+        "Cor": "Branco"
+      },
+      "ids": [
+        52
+      ]
+    },
+    {
+      "id": 377,
+      "linha_sheets": 378,
+      "tipo": "GABINETE",
+      "fabricante": "COOLER MASTER",
+      "soquete": "",
+      "nome": "COOLER MASTER ELITE 681",
+      "nome_limpo": "COOLER MASTER ELITE 681",
+      "valor": 550.0,
+      "valor_formatado": "R$ 550,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/377_377.png",
+      "url_card": null,
+      "link_oficial": "https://www.coolermaster.com/en-au/products/elite-681.html",
+      "criado_em": "2026-09-21 15:54:35.246665",
+      "atualizado_em": "2026-09-22 10:48:54.497503",
+      "ficha": {
+        "Placas-mãe": "ATX, Micro-ATX e Mini-ITX",
+        "Placa de vídeo": "Até 410 mm",
+        "Cooler do processador": "Até 160 mm",
+        "Ventoinhas incluídas": "4 de 120 mm com iluminação ARGB",
+        "Cor": "Preto"
+      },
+      "ids": [
+        377
+      ]
+    },
+    {
+      "id": 378,
+      "linha_sheets": 379,
+      "tipo": "GABINETE",
+      "fabricante": "COOLER MASTER",
+      "soquete": "",
+      "nome": "COOLER MASTER ELITE 681 BRANCO",
+      "nome_limpo": "COOLER MASTER ELITE 681 BRANCO",
+      "valor": 550.0,
+      "valor_formatado": "R$ 550,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/378_378.png",
+      "url_card": null,
+      "link_oficial": "https://www.coolermaster.com/en-au/products/elite-681.html",
+      "criado_em": "2026-09-21 15:58:27.791550",
+      "atualizado_em": "2026-09-22 10:48:54.538766",
+      "ficha": {
+        "Placas-mãe": "ATX, Micro-ATX e Mini-ITX",
+        "Placa de vídeo": "Até 410 mm",
+        "Cooler do processador": "Até 160 mm",
+        "Ventoinhas incluídas": "4 de 120 mm com iluminação ARGB",
+        "Cor": "Branco"
+      },
+      "ids": [
+        378
+      ]
+    },
+    {
+      "id": 57,
+      "linha_sheets": 58,
+      "tipo": "GABINETE",
+      "fabricante": "ANTEC",
+      "soquete": "",
+      "nome": "GABINETE GAMER MID TOWER ANTEC DF700 FLUX BRANCO 5 FANS VIDRO TEMPERADO",
+      "nome_limpo": "GABINETE GAMER MID TOWER ANTEC DF700 FLUX BRANCO 5 FANS VIDRO TEMPERADO",
+      "valor": 450.0,
+      "valor_formatado": "450,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/57_produto_conferido.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.antec.com/product/case/df700-flux-white",
+      "criado_em": "2026-05-18 16:31:09.945986",
+      "atualizado_em": "2026-09-22 11:00:34.542868",
+      "ficha": {
+        "Placas-mãe": "ATX, Micro-ATX e Mini-ITX",
+        "Placa de vídeo": "Até 405 mm",
+        "Cooler do processador": "Até 175 mm",
+        "Ventoinhas incluídas": "5 de 120 mm",
+        "Lateral": "Vidro temperado de 4 mm"
+      },
+      "ids": [
+        57
+      ]
+    },
+    {
+      "id": 55,
+      "linha_sheets": 56,
+      "tipo": "GABINETE",
+      "fabricante": "COOLER MASTER",
+      "soquete": "",
+      "nome": "GABINETE COOLER MASTER ELITE 301 BRANCO COM 3 FANS 120MM",
+      "nome_limpo": "GABINETE COOLER MASTER ELITE 301 BRANCO COM 3 FANS 120MM",
+      "valor": 400.0,
+      "valor_formatado": "400,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/55_foto_original_95ac1eb30643.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.coolermaster.com/en-global/products/elite-301-white.html",
+      "criado_em": "2026-05-18 16:31:09.944950",
+      "atualizado_em": "2026-07-31T15:55:18+00:00",
+      "ids": [
+        55
+      ]
+    },
+    {
+      "id": 338,
+      "linha_sheets": 339,
+      "tipo": "GABINETE",
+      "fabricante": "G-STORM",
+      "soquete": "",
+      "nome": "GABINETE G-STORM VANGUARD BRANCO, M-ATX/ITX, 3 FANS RAINBOW, GS-VAN-WH-3F",
+      "nome_limpo": "GABINETE G-STORM VANGUARD BRANCO, M-ATX/ITX, 3 FANS RAINBOW, GS-VAN-WH-3F",
+      "valor": 200.0,
+      "valor_formatado": "R$ 200,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/338_foto_original_d5bc3ddedb8d.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.gstorm.com.br/produto/gabinete-gamer-micro-atx-itx-usb-3-0-vidro-temperado-vanguard-aquario-preto-e-branco-gstorm.html",
+      "criado_em": "2026-08-21 20:38:15.727969",
+      "atualizado_em": "2026-09-22 13:39:02.439266",
+      "ids": [
+        338
+      ]
+    },
+    {
+      "id": 337,
+      "linha_sheets": 338,
+      "tipo": "GABINETE",
+      "fabricante": "G-STORM",
+      "soquete": "",
+      "nome": "GABINETE G-STORM VANGUARD PRETO, M-ATX/ITX, 3 FANS RAINBOW, GS-VAN-BK-3F",
+      "nome_limpo": "GABINETE G-STORM VANGUARD PRETO, M-ATX/ITX, 3 FANS RAINBOW, GS-VAN-BK-3F",
+      "valor": 200.0,
+      "valor_formatado": "R$ 200,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/337_foto_original_8ec9af0e60e2.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.gstorm.com.br/produto/gabinete-gamer-micro-atx-itx-usb-3-0-vidro-temperado-vanguard-aquario-preto-e-branco-gstorm.html",
+      "criado_em": "2026-08-21 20:37:49.149419",
+      "atualizado_em": "2026-09-22 13:39:07.036357",
+      "ids": [
+        337
+      ]
+    },
+    {
+      "id": 269,
+      "linha_sheets": 270,
+      "tipo": "GABINETE",
+      "fabricante": "C3TECH",
+      "soquete": "",
+      "nome": "GABINETE C3TECH MT-33BK MICRO-ATX COM FONTE 200W",
+      "nome_limpo": "GABINETE C3TECH MT-33BK MICRO-ATX COM FONTE 200W",
+      "valor": 130.0,
+      "valor_formatado": "R$ 130,00",
+      "quantidade": 3,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/269_foto_original_c4316894d920.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.c3technology.com.br/gabinete-micro-atx-mt-33bk-com-fonte-200w-c3tech/p",
+      "criado_em": "2026-05-27 15:57:13.817292",
+      "atualizado_em": "2026-07-31T15:55:18+00:00",
+      "ids": [
+        269
+      ]
+    }
+  ]
+}

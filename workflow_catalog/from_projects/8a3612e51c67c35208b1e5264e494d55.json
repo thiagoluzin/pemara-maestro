@@ -1,0 +1,392 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "god_photo": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj_deus_DLSS5_v01.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "p03_video": {
+    "class_type": "LoadLatent",
+    "inputs": {
+      "latent": "Goku_SSJ_Deus_P03_W2_video_native_v02.latent"
+    }
+  },
+  "p03_audio": {
+    "class_type": "LoadLatent",
+    "inputs": {
+      "latent": "Goku_SSJ_Deus_P03_W2_audio_native_v02.latent"
+    }
+  },
+  "p03_av": {
+    "class_type": "LTXVConcatAVLatent",
+    "inputs": {
+      "video_latent": [
+        "p03_video",
+        0
+      ],
+      "audio_latent": [
+        "p03_audio",
+        0
+      ]
+    }
+  },
+  "capture_conditioning": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "Picture1 is the approved same adult actor in his completed short crimson-haired God form, damaged orange/navy costume and rocky island. Identity reference only.",
+      "width": 768,
+      "height": 1344,
+      "length": 141,
+      "ref_image_size": "max",
+      "ref_images.ref_image_0": [
+        "god_photo",
+        0
+      ]
+    }
+  },
+  "capture_plan_only": {
+    "class_type": "H3ContinuumJoin",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "capture_conditioning",
+        0
+      ],
+      "latent": [
+        "p03_av",
+        0
+      ],
+      "continuity": "Strong — 39 frames (Experimental)",
+      "extend_seconds": 5.0,
+      "audio_continuity": true,
+      "first_frame_policy": "Use Continuum context; keep visual identity tokens (Recommended)",
+      "preserve_last_frame": false,
+      "strict_compatibility": true,
+      "debug": false
+    }
+  },
+  "capture_decode": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "p03_video",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "capture_original_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ_Deus_P01_window02_exact.wav"
+    }
+  },
+  "capture_p03_state": {
+    "class_type": "H3ContinuumFinish",
+    "inputs": {
+      "samples": [
+        "p03_av",
+        0
+      ],
+      "images": [
+        "capture_decode",
+        0
+      ],
+      "audio": [
+        "capture_original_audio",
+        0
+      ],
+      "plan": [
+        "capture_plan_only",
+        3
+      ]
+    }
+  },
+  "save_p03_state": {
+    "class_type": "H3ContinuumSaveState",
+    "inputs": {
+      "state": [
+        "capture_p03_state",
+        2
+      ],
+      "prefix": "goku_ssj_deus_20261029_P03_W2_native_capture_v02",
+      "slot": 1
+    }
+  },
+  "suffix": {
+    "class_type": "PemaraH3NativeStateReferences",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "Picture1 is the complete head-to-toe identity photograph of the SAME approved photographed adult human Goku actor in his completed Super Saiyan God state: SHORT crimson asymmetric swept tufts and forehead bangs, natural crimson eyebrow hairs, ordinary anatomical eyes with small dark pupils and deep red irises. Preserve human face, jaw, pores, age, scratches, build, damaged orange woven gi over navy undershirt, blue sash/wraps/boots and the same rocky island, water and mesas. It is an identity reference, not a new pose or a face insert.\n\nintegrated_multimodal_description: [Shot 1] Continue the actual inherited moving whole-body guard after the one completed transformation and recorded yell. The exact carried39-frame context owns the incoming pose, forearms, torso, camera and planted boot contacts. Do not replay that context, restart preparation, reproduce the reference stance or transform again. One wide HEAD-TO-TOE live-action shot at constant camera distance and focal perspective, shallow parallel lateral tracking at the same radius/direction as the incoming shot. Keep complete hair, both hands, both knees, BOTH BOOTS and the ground under both soles visible with generous margins through EVERY new frame. No camera approach, zoom, closeup, cut or portrait reset.\n\nFor the first three new seconds, continue the inherited guard and counter residual energy pressure through visible knee flexion, pelvis displacement and a small torso counter-rotation while elbows adjust within that same guard. The following three seconds complete the physical recovery: shift weight over the planted legs and turn chest deliberately toward the same unseen opponent off-camera right; hair and sash react independently. Through the last four seconds, advance the torso slightly over the grounded base, lower the rear forearm modestly toward the waist while keeping the forward guard ready, and continue a controlled knee/hip adjustment. Read the action in the complete body, with no repeated fist pumping, frozen portrait, footstep, sliding, flight or attack. Preserve the completed short crimson God hair, eyebrow hairs, natural non-emissive eyes, real skin and translucent external red aura. No long golden hair, old state, new person, repaired damage, face/jaw distortion or exaggerated glowing eyes.\n\noverall_soundscape: The only delivered sound is the existing approved full30 recording used separately at assembly. This suffix contains recovery only, after the original yell has ended; no new yell, speaking, singing, music, score, words or instruments. Internal H3 audio is not a delivery source.\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 2,
+      "chunk_seconds": 5.0,
+      "width": 768,
+      "height": 1344,
+      "continuity": "Strong — 39 frames (Experimental)",
+      "base_seed": 291030902,
+      "reference_size": "Max Identity",
+      "initial_state": [
+        "capture_p03_state",
+        2
+      ],
+      "save_prefix": "goku_ssj_deus_20261029_suffix_native_v02",
+      "reference_image_1": [
+        "god_photo",
+        0
+      ]
+    }
+  },
+  "suffix_decode_video": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "suffix",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "suffix_decode_audio_internal": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "suffix",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "suffix_new_only": {
+    "class_type": "H3ContinuumAssembleV3",
+    "inputs": {
+      "images": [
+        "suffix_decode_video",
+        0
+      ],
+      "audio": [
+        "suffix_decode_audio_internal",
+        0
+      ],
+      "assembly_plan": [
+        "suffix",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU"
+    }
+  },
+  "suffix_video_no_audio": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "suffix_new_only",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_suffix_video": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "suffix_video_no_audio",
+        0
+      ],
+      "filename_prefix": "goku_ssj_deus_20261029/suffix_native_v02/Goku_SSJ_Deus_SUFFIX_new_ONLY_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "save_suffix_video_latents": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "suffix",
+        0
+      ],
+      "filename_prefix": "goku_ssj_deus_20261029/suffix_native_v02/video"
+    }
+  },
+  "save_suffix_audio_latents_internal": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "suffix",
+        1
+      ],
+      "filename_prefix": "goku_ssj_deus_20261029/suffix_native_v02/audio_INTERNAL_NOT_DELIVERY"
+    }
+  }
+}

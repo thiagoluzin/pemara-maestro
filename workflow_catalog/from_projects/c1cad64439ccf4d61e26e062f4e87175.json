@@ -1,0 +1,261 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "prompt": "subject_definitions:\n<Subject 1> is Hiei, the smaller dark-haired fighter on the LEFT of <Picture 1>; reuse his exact face, Jagan, proportions, damaged dark wardrobe and natural live-action materials.\n<Subject 2> is Zeru, the taller blond fighter on the RIGHT of <Picture 1>; reuse his exact face, navy short-sleeved shirt, ivory trousers and boots.\n<Subject 3> is the physical stadium and tiled ring shown in <Picture 1>, used as the fixed scene and lighting reference.\n\nsummary: [reference generation] Create the eight-second OPENING of the same live-action Hiei versus Zeru scene, BEFORE the dragon has formed or been fired. <Picture 1> supplies identity, costume, set and lighting, not the opening pose, not a mandatory camera composition and not the earlier presence of its already-formed dragon.\n\nretention_analysis:\n<Subject 1> (appears throughout [Shot 1]): fully_preserved - identity, hair, Jagan, body scale and already torn clothing stay fixed; pose and camera develop naturally.\n<Subject 2> (appears behind him in [Shot 1]): fully_preserved - distinct blond identity and outfit; his attention changes from confidence to concern.\n<Subject 3> (throughout [Shot 1]): fully_preserved - fixed arena geometry, materials, weather and motivated light.\n\ndetailed_description: [Shot 1] One continuous EIGHT-SECOND photographed live-action shot, with the SAME two fictional performers. Hiei is the compact athletic young adult fictional Japanese male performer at LEFT: same angular face, spiky jet-black hair with pale front highlight, exactly one vertical violet Jagan eye in his forehead plus two natural eyes, torn sleeveless charcoal-navy cotton top, pale waist sash, loose dark fighting trousers and black boots. His RIGHT arm owns the black fire. Zeru is the taller separate blond adult male at RIGHT: short angular blond hair, square face, navy short-sleeved crewneck T-shirt, ivory loose trousers tucked into dark boots, ordinary orange fire only. Preserve real photographed skin pores, sweat, hair strands, cloth weave, seams and gravity. No actor likeness substitution, anime, cel shading, plastic skin, costume redesign, duplicate people, extra limbs, weapons, writing or subtitles. Use the SAME ring and fixed geometry as the approved picture: pale square-tiled elevated arena, existing cracks and scorch marks, LOW distant concrete perimeter retaining wall, audience seating above it, curved stadium canopy and cloudy sky. Keep the same horizon, overcast cool light and residual orange embers. Hiei stays west/left, Zeru east/right, cameras remain SOUTH of their action axis. No new tall wall, slab, portal, growing platform or changed canopy. The black-fire dragon has a dark core and thin violet flame edges, not solid scales or a bright generic energy beam.\nThis is the beginning, not the attack replay. There is NO dragon overhead and NO large black flame during the opening. Never replay Zeru being burned here. The surviving Hiei and the blond opponent are both present for all eight seconds.\n0.00–2.40 seconds: Begin close to the scorched tiles at knee level, with <Subject 1> in the LEFT foreground finishing a low crouch after the earlier orange fire. His right boot is planted; his LEFT fingertips lightly touch a tile and leave it as he shifts his center of mass over the boot. Small real orange embers die near his torn cotton top. The hand is intact, with five fingers. He draws a measured breath and begins to stand using his legs, without floating, teleporting or turning into another person. In the RIGHT background, <Subject 2> has started to lower his orange-lit fist with apparent confidence.\n2.40–5.70 seconds: The camera smoothly TRACKS physically FORWARD a short distance and rises from knee to sternum height as <Subject 1> completes standing; near tile joints change perspective against the curved seating. His shoulders settle, black spiky hair sways once, and he raises his face toward Zeru with stillness and a controlled hard gaze. His exposed Jagan comes into clear view because the camera reveals his forehead, not because a new headband or eye grows. Keep the forehead eye anatomically integrated, not a gem or second face. Over his shoulder, <Subject 2> notices Hiei is alive, stops lowering his arm, straightens and stares back; the reversal of confidence is legible in his posture.\n5.70–8.00 seconds: Continue a small OBLIQUE PUSH toward Hiei's front three-quarter profile, reaching a head-to-waist framing while retaining a sliver of Zeru over frame right and the same arena behind them. Hiei's gaze stays on Zeru, his RIGHT hand begins to open down near his hip and only a few thin violet-black flame threads flicker around its knuckles. He has not raised the arm or formed the dragon yet. The camera's purpose is to reveal survival, Jagan and decision. Keep tiny right-hand motion, breathing, hair and loose cotton active to the end; no frozen portrait or long held smile. Neither character speaks, attacks, vanishes or changes clothing.\n\noverall_soundscape: Native synchronized diegetic sound only: distant nonverbal stadium ambience, subtle boots and clothing, restrained breathing, embers and evolving flame pressure. No words, dialogue, narration, invented shout, singing, chant, external music or cloned actor voice. Preserve the native H3 soundtrack for review.\n\nnon_diegetic_music: N/A.",
+      "width": 768,
+      "height": 1344,
+      "length": 192,
+      "ref_image_size": "max",
+      "ref_images.ref_image0": [
+        "approved_start",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611091001
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "hiei_zeru_20261109/video/T01_sequence_native_v01",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "approved_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_hiei_zeru_DLSS5_v01.png"
+    }
+  }
+}

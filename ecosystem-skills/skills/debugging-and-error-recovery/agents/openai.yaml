@@ -1,0 +1,4 @@
+interface:
+  display_name: "Debugging and Error Recovery"
+  short_description: "Entrada de recuperação de erros da família debugger: falhas de"
+  default_prompt: "Use $debugging-and-error-recovery para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

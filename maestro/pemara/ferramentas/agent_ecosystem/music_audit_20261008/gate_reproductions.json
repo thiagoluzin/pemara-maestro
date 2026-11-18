@@ -1,0 +1,64 @@
+{
+  "scope": "Synthetic, offline logic probes; no audio was generated.",
+  "all_failed_candidates": [
+    {
+      "index": 1,
+      "qc": {
+        "technicalPass": false
+      },
+      "critic": {
+        "muqMulanPromptSimilarity": 0.5,
+        "muqEvalMusicalImpression": 4.0,
+        "melodySimilarity": 0.9,
+        "rhythmSimilarity": 0.9,
+        "instrumentAudibility": {
+          "bass": 0.2,
+          "drums": 0.2
+        },
+        "orchestralMetalBalance": 0.2
+      },
+      "creativeMixPass": true,
+      "creativeMixIssues": [],
+      "recommendationScore": -0.23528,
+      "rank": 1,
+      "recommended": true
+    },
+    {
+      "index": 2,
+      "qc": {
+        "technicalPass": false
+      },
+      "critic": {
+        "muqMulanPromptSimilarity": 0.5,
+        "muqEvalMusicalImpression": 4.0,
+        "melodySimilarity": 0.9,
+        "rhythmSimilarity": 0.9,
+        "instrumentAudibility": {
+          "bass": 0.2,
+          "drums": 0.2
+        },
+        "orchestralMetalBalance": 0.2
+      },
+      "creativeMixPass": true,
+      "creativeMixIssues": [],
+      "recommendationScore": -0.23528,
+      "rank": 2,
+      "recommended": false
+    }
+  ],
+  "failed_candidate_is_recommended": true,
+  "positive_true_peak_qc": {
+    "durationSeconds": 180.0,
+    "sampleRate": 48000,
+    "channels": 2,
+    "clippingSampleCount": 0,
+    "samplePeakDbfs": -1.0,
+    "integratedLufs": -13.0,
+    "truePeakDbfs": 0.4,
+    "fullDecodePassed": true,
+    "durationMatchesSource": true,
+    "loudnessInReviewRange": true,
+    "technicalPass": true
+  },
+  "positive_true_peak_passes": true
+}

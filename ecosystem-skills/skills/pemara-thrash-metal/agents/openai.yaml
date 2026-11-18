@@ -1,0 +1,6 @@
+interface:
+  display_name: "Thrash metal"
+  short_description: "Riffs rítmicos, ataque e canto de thrash metal"
+  default_prompt: "Use $pemara-thrash-metal para dirigir ou revisar a fase musical solicitada, respeitando o motor, o escopo e as autorizações existentes."
+policy:
+  allow_implicit_invocation: true

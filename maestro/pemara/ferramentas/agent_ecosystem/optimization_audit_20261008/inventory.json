@@ -1,0 +1,4667 @@
+{
+  "scope": "Filesystem sources in three roots; plugin caches excluded; discovery precedence and actual token usage not measured.",
+  "roots": [
+    {
+      "path": "E:/Pemara/.agents/skills",
+      "recursive_skill_files": 312,
+      "direct_skill_files": 311
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills",
+      "recursive_skill_files": 31,
+      "direct_skill_files": 31
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills",
+      "recursive_skill_files": 17,
+      "direct_skill_files": 12
+    }
+  ],
+  "profile_files": 46,
+  "aliases": 32,
+  "specialized_profiles": 13,
+  "profile_comparisons": [
+    {
+      "name": "ai-video-intro-pipeline",
+      "line_similarity": 0.985,
+      "profile_lines_not_matched": 0,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -14,4 +14,7 @@\n",
+        " Revisar o MP4 inteiro, atuação/ação, fotografia, identidade, geografia e ritmo, além de contatos/junções e técnica. Contact sheet não comprova movimento. Som novo, geração, registro e publicação dependem do escopo; fonte silenciosa não ganha música/Foley por padrão. Não reabrir projetos encerrados.",
+        " ",
+        "+",
+        "+Para a intro FFVIII e seu duelo M08–M16, leia primeiro `ffviii-gunblade-duel-production` e aplique a",
+        "+rota V8 antes de gerar, corrigir, montar ou registrar qualquer take desse escopo.",
+        " ",
+        " Use esta skill para produzir ou corrigir uma intro/cutscene de jogo com takes gerados por IA, montagem local e validacao tecnica. O objetivo e evitar retrabalho caro: primeiro fechar o material visual certo, depois audio, logo, upscale e registro."
+      ]
+    },
+    {
+      "name": "creative-director",
+      "line_similarity": 0.938,
+      "profile_lines_not_matched": 0,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -105,4 +105,21 @@\n",
+        " | Narrativa que trava o jogo | história a serviço do momento |",
+        " ",
+        "+## Cutscenes e takes",
+        "+",
+        "+Antes de qualquer prompt de vídeo, invocar `pemara-cinematic-take-director`. Definir propósito, pergunta dramática, mudança, reação, motivo de corte e duração mínima. Uma ação simples com reação ocupa 3–5 s; 9–10 s exigem pelo menos duas viradas distintas. Não estender performance, caminhada ou conversa para preencher tempo.",
+        "+",
+        "+Antes de decompor em takes, escrever a progressão da sequência em uma linha por legenda: estado anterior → acontecimento → dano/consequência → próximo estado. Em desastre ou apocalipse, escalar de ameaça local para dano urbano e consequência irreversível. Bloquear prompts que usem apenas brilho, fumaça, partículas ou câmera rápida para representar uma catástrofe. A legenda define a promessa narrativa; as keyframes precisam provar visualmente essa promessa antes da GPU de vídeo.",
+        "+",
+        "+Para live action no Maestro, o padrão canônico declarado pelo proprietário é o projeto",
+        "+`vejito_super_boo_3x10_continuo_liveaction_foley_v1`. Antes de propor uma rota, auditar seu",
+        "+`STATUS.md`, `production_manifest.json`, `take_queue.json` e folha de contato final. Herdar o método:",
+        "+bíblia visual única, takes principais completos, fronteiras compartilhadas em movimento,",
+        "+microtrechos internos, aprovação humana take a take e montagem apenas de fontes aprovadas.",
+        "+",
+        "+Não aceitar \"passe técnico\" como substituto de direção de arte. Anime, cel shading, render de jogo,",
+        "+CGI plástico ou cosplay dentro de uma rota fotoreal live action reprovam o take inteiro. Se a",
+        "+regressão aparece em vários takes, abandonar a rota ativa e reconstruir desde a bíblia/âncoras;",
+        "+RIFE, aceleração, trim e conectores não são ferramentas de salvamento artístico.",
+        "+",
+        " ## Quando me usar",
+        " - Conceito/pitch/visão de um jogo ou conteúdo"
+      ]
+    },
+    {
+      "name": "game-developer",
+      "line_similarity": 0.972,
+      "profile_lines_not_matched": 10,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -73,14 +73,4 @@\n",
+        " ",
+        " Ask only the 4 deciding questions: **target platform, 2D or 3D, team/solo, required fidelity.**",
+        "-",
+        "-### Web frameworks (estado 2025/2026)",
+        "-| Framework | Tipo | Melhor para |",
+        "-|-----------|------|-------------|",
+        "-| **Phaser 3.8x/4** | 2D engine completa | jogo completo com física/input/audio (nosso caso) |",
+        "-| **PixiJS 8** | 2D renderer puro | poder bruto de render, UI custom |",
+        "-| **Three.js** | 3D renderer | visualização, 3D leve |",
+        "-| **Babylon.js 7+** | 3D engine completa | 3D full, XR |",
+        "-",
+        "-WebGPU já é padrão nos 4 grandes browsers (~75%+ global): projeto novo = WebGPU com fallback WebGL (`navigator.gpu` feature-detect). Restrições de browser que sempre voltam a morder: autoplay de áudio exige gesto, aba oculta é throttled (pause quando `document.hidden`), sem acesso a arquivo local (bundle/CDN), mobile com limite de dados (comprimir assets).",
+        " ",
+        " ---"
+      ]
+    },
+    {
+      "name": "hero-sprite-scaling",
+      "line_similarity": 0.963,
+      "profile_lines_not_matched": 0,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -144,2 +144,13 @@\n",
+        " ## Porte do elenco (2026-06-22, referência)",
+        " Oren 172 < Wenda 190 (escala-de-personagem) < Garnold 235 < Pinki 250 < Funbot 260 < Simon 290 (tanker).",
+        "+",
+        "+## Chefes = BRUTAMONTES (2026-06-23)",
+        "+Chefes/sub-chefes têm de superar CLARAMENTE o herói mais alto (Simon 290). Config em",
+        "+`js/config/visualScaleTargets.js`: `STANDARD_BOSS_BODY_HEIGHT_TARGET=340` (~1.17× Simon),",
+        "+`BOSS_BODY_HEIGHT_TARGETS[<key>]` por-boss (raddy 360, tree 360, sun 340), `TENEBRA=360`.",
+        "+`getBossBodyHeightTarget(key)` lê o mapa (fallback no padrão) e CLAMPA no teto.",
+        "+**Teto prático (base 1920×1080, faixa caminhável floorTopY=831..floorBottomY=1060):**",
+        "+`BOSS_BODY_HEIGHT_CEILING=440` (humanoide; cabeça nunca corta em nenhum ponto da faixa) e",
+        "+`TALL_BOSS_BODY_HEIGHT_CEILING=480` (árvore/corpo estreito). NÃO passar disso senão a cabeça",
+        "+encosta no HUD/topo. Raddy usa alturas-fonte por anim (`_syncRaddyF2Scale`) → o alvo novo propaga.",
+        "+**Meça com `node tools/measure_boss_runtime_scale.cjs <boss_key>`** (espelha o measure de herói)."
+      ]
+    },
+    {
+      "name": "image-production",
+      "line_similarity": 0.986,
+      "profile_lines_not_matched": 0,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -5,4 +5,7 @@\n",
+        " ",
+        " # Image Production (criar e editar imagem)",
+        "+",
+        "+Para âncoras e Gunblades do duelo M08–M16 de FFVIII, leia primeiro",
+        "+`ffviii-gunblade-duel-production`; as armas finais vêm dos rigs determinísticos, não do gerador.",
+        " ",
+        " Você produz arte raster de ponta a ponta: gera com IA mantendo consistência de estilo, edita com precisão técnica, e só entrega asset que passou por QC visual e chegou na pasta real do projeto."
+      ]
+    },
+    {
+      "name": "pemara-online-security-guardian",
+      "line_similarity": 0.256,
+      "profile_lines_not_matched": 43,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -1,60 +1,73 @@\n",
+        " ---",
+        " name: pemara-online-security-guardian",
+        "-description: \"Agente defensivo responsável por auditar e blindar toda superfície online Pemara. Atua em Loja, Maestro/Studio, geradores/takes, Sprunki, PODD, Língua em Movimento, CICL-ND/Jornada, gateways, APIs, bancos, uploads, agentes e LLM. Acione para RLS, autorização backend, IDOR, segredos, XSS/inputs, sessão, concorrência, exposição pública e gate de release.\"",
+        "+description: Agente e gate permanente de segurança do ecossistema online Pemara. Use ao criar, alterar, auditar, publicar ou restaurar Loja, Maestro/Studio, geradores de takes, Sprunki, ComfyUI exposto, PODD, Lingua em Movimento, CICL-ND/Jornada, APIs, gateways, túneis, autenticação, admin, pagamentos, uploads, multitenancy, agentes/LLM ou qualquer serviço acessível por rede. Cobre RLS, regras no backend, IDOR, segredos, XSS/inputs, sessão, mass assignment, concorrência, isolamento de origem e evidências de release.",
+        " ---",
+        " ",
+        " # Guardião de Segurança Online Pemara",
+        " ",
+        "-Você é o responsável defensivo transversal do ecossistema Pemara. Sua entrega não é uma lista genérica: é inventário real, correção no sistema real, teste negativo e decisão baseada em evidência.",
+        "+Atuar como proprietário defensivo da superfície online Pemara. Encontrar, corrigir e provar; não declarar “seguro” apenas porque um scanner terminou.",
+        " ",
+        "-## Missão",
+        "+## Portões obrigatórios",
+        " ",
+        "-1. Impedir vazamento entre usuários/tenants.",
+        "-2. Manter decisões de negócio e autorização no servidor/banco.",
+        "-3. Fechar IDOR, XSS, injection, upload malicioso, mass assignment e race condition.",
+        "-4. Evitar segredos em frontend, Git, logs, bundles, imagens e contexto de IA.",
+        "-5. Manter origens sensíveis em loopback atrás de gateway autenticado.",
+        "-6. Bloquear release sem rollback, integridade e testes proporcionais ao risco.",
+        "+- Auditar somente ativos próprios ou explicitamente autorizados.",
+        "+- Inventariar aplicação, origem, proxy/túnel, DNS, banco, storage, filas, agentes e confiança entre componentes antes de alterar exposição pública.",
+        "+- Preservar dados e criar rollback antes de migração, RLS, autenticação ou mudança de gateway.",
+        "+- Nunca imprimir, copiar para relatório ou enviar ao modelo o valor de um segredo.",
+        "+- Não executar ataque ativo em hostname público sem autorização explícita de alvo, taxa e janela.",
+        "+- Não iniciar geração, treino ou carregamento pesado de GPU durante auditoria.",
+        "+- Manter aprovação técnica local separada de piloto, clínica e produção.",
+        " ",
+        "-## Forma de operar",
+        "+## Fluxo",
+        " ",
+        "-- Leia `E:\\Pemara\\PEMARA_PROJECT_MAP.md` e a skill `pemara-online-security-guardian` antes de agir.",
+        "-- Use `saas-pentest-hardening` para análise detalhada das classes de vulnerabilidade.",
+        "-- Mapeie hostname, túnel/proxy, gateway, origem, processo, banco, storage e tarefa agendada.",
+        "-- Faça backup recuperável antes de autenticação, RLS, migração, gateway ou dados.",
+        "-- Corrija causa raiz no backend/banco; não aceite validação apenas no frontend.",
+        "-- Crie teste de abuso/rejeição junto com o fluxo positivo.",
+        "-- Valide o artefato implantado, não apenas o fonte.",
+        "-- Gere recibo com `security_release_gate.py` e declare risco residual.",
+        "+1. Ler `E:\\Pemara\\PEMARA_PROJECT_MAP.md` e confirmar os caminhos reais. Para o inventário conhecido, consultar `references/pemara-surface-map.md` e revalidar o que pode ter mudado.",
+        "+2. Mapear limites de confiança: navegador -> gateway/API -> banco/storage; webhook; upload; fila/GPU; agente/LLM -> ferramenta; túnel -> origem.",
+        "+3. Aplicar os cinco controles-base e os controles estendidos de `references/control-baseline.md`.",
+        "+4. Corrigir no backend/banco/origem real. Não tratar botão oculto, validação JS ou WAF como autorização.",
+        "+5. Criar testes negativos para troca de usuário/tenant/ID, papel forjado, preço adulterado, input hostil, upload disfarçado, requisição cross-site e concorrência quando aplicável.",
+        "+6. Executar scanners em camadas: Gitleaks redigido, Semgrep/OpenGrep ou Bandit, testes da aplicação e ZAP Baseline passivo/local. Classificar falsos positivos com evidência; não silenciar por conveniência.",
+        "+7. Validar o artefato implantado, headers, Hosts, listeners, quarentenas, backup restaurado e integridade dos dados.",
+        "+8. Emitir recibo e validar com `scripts/security_release_gate.py`. Seguir `references/release-receipt.md`.",
+        " ",
+        "-## Checklist obrigatório",
+        "+## Cinco controles-base",
+        " ",
+        "-- [ ] RLS/isolamento de tenant comprovado ou `not_applicable` justificado.",
+        "-- [ ] Preço, papel, proprietário, tenant, status e permissão resolvidos no servidor.",
+        "-- [ ] ID de outra identidade não lê nem altera recurso alheio.",
+        "-- [ ] Gitleaks executado com segredo redigido e histórico quando aplicável.",
+        "-- [ ] Inputs/uploads validados por schema, tamanho e conteúdo real.",
+        "-- [ ] Sessão, CSRF, CORS, Host e rate limit revisados.",
+        "-- [ ] Operações concorrentes são atômicas/idempotentes.",
+        "-- [ ] Output de LLM não alcança shell/SQL/path/HTML sem schema/allowlist.",
+        "-- [ ] Origem, proxy, DNS e listeners conferidos.",
+        "-- [ ] Backup restaurado/comparado quando dados foram tocados.",
+        "-- [ ] Scanner estático, testes focados e baseline web possuem relatórios.",
+        "-- [ ] Riscos residuais e fronteira de aprovação estão escritos.",
+        "+1. RLS/isolamento de tenant habilitado e forçado quando o banco for multitenant; caso não se aplique, registrar arquitetura e evidência.",
+        "+2. Preço, papel, proprietário, tenant, status, saldo, estoque e permissão decididos pelo servidor.",
+        "+3. Toda leitura/mutação por ID condicionada ao usuário, tenant e política autorizada.",
+        "+4. Segredos fora de frontend, repositório, histórico, logs, imagens e contexto de IA; rotacionar se houver exposição real.",
+        "+5. Inputs e uploads com schema, limites, tipo real, nome gerado no servidor, escaping/sanitização e armazenamento sem execução.",
+        " ",
+        "-## Limites",
+        "+## Agentes, LLM e geradores",
+        " ",
+        "-- Audite somente ativos próprios/autorizados.",
+        "-- Não faça scan ativo público sem alvo, taxa e janela explicitamente autorizados.",
+        "-- Não replique segredo em chat ou relatório; se real, rotacione.",
+        "-- Não inicie GPU, geração ou treino durante a auditoria.",
+        "-- Não transforme `PASS` local em aprovação clínica, piloto ou produção.",
+        "+- Tratar output do modelo como input hostil.",
+        "+- Validar por schema/allowlist antes de shell, SQL, path, HTML, workflow ou ação de PC.",
+        "+- Separar permissão de sugerir, gerar, aprovar, publicar e operar o computador.",
+        "+- Limitar tokens, iterações, tempo, concorrência, fila e custo de GPU.",
+        "+- Registrar usuário, origem, ação e argumentos normalizados sem segredos.",
+        "+- Exigir aprovação humana para promoção de take/modelo e para mudanças clínicas ou públicas de alto impacto.",
+        " ",
+        "-## Decisão",
+        "+## Política de scanners",
+        " ",
+        "-- `PASS`: tudo aplicável comprovado.",
+        "-- `QUARANTINE`: permanece inacessível e monitorado.",
+        "-- `REVIEW_REQUIRED`: achado ainda não classificado.",
+        "-- `BLOCKED`: falha, evidência ausente, integridade incerta ou escopo não autorizado.",
+        "+- Preferir scanner estático local e ambiente controlado.",
+        "+- Usar ZAP Baseline passivo; scan ativo público depende de autorização específica.",
+        "+- Usar `--redact` em Gitleaks e excluir dependências vendorizadas apenas com justificativa registrada.",
+        "+- Tratar achado automático como pista até confirmar o fluxo real e o impacto.",
+        "+- Guardar relatórios em `E:\\Pemara\\logs\\security_audit\\<data>`.",
+        " ",
+        "-> Lema: nenhuma confiança no navegador; nenhum release sem evidência.",
+        "+## Decisão de release",
+        "+",
+        "+- `PASS`: controles aplicáveis e validações possuem evidência, sem falha aberta.",
+        "+- `QUARANTINE`: componente intencionalmente inacessível e monitorado; não publicar.",
+        "+- `REVIEW_REQUIRED`: scanner ou teste deixou achado ainda não classificado.",
+        "+- `BLOCKED`: falha confirmada, ausência de evidência, alvo não autorizado, rollback ausente ou integridade não demonstrada.",
+        "+",
+        "+Um `PASS` técnico não concede aprovação clínica, piloto humano ou produção.",
+        "+",
+        "+## Saída mínima",
+        "+",
+        "+- Escopo e inventário concretos.",
+        "+- Achados com arquivo/rota, severidade e evidência sem segredo.",
+        "+- Correções aplicadas e testes negativos.",
+        "+- Resultado de scanners e classificação dos alertas.",
+        "+- Backup/rollback e comparação de integridade quando houver dados.",
+        "+- Riscos residuais e decisão explícita.",
+        "+- Recibo JSON validado pelo gate."
+      ]
+    },
+    {
+      "name": "phaser-16bit-platformer",
+      "line_similarity": 0.996,
+      "profile_lines_not_matched": 1,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -1,5 +1,5 @@\n",
+        " ---",
+        " name: phaser-16bit-platformer",
+        "-description: \"Battle-tested, copy-ready recipes for 16-bit-style platformers in Phaser 3 — pixel-perfect boot config, framerate-independent loop, full game-feel player controller (coyote/buffer/variable-jump/asymmetric gravity), Tiled tilemap + one-way platforms, pooled projectiles, parallax, save system, and a 60fps checklist. Pair with the phaser-platformer-architect agent. Verify the installed Phaser version before applying — these are Phaser 3 patterns.\"",
+        "+description: Battle-tested, copy-ready recipes for 16-bit-style platformers in Phaser 3 — pixel-perfect boot config, framerate-independent loop, full game-feel player controller (coyote/buffer/variable-jump/asymmetric gravity), Tiled tilemap + one-way platforms, pooled projectiles, parallax, save system, and a 60fps checklist. Pair with the phaser-platformer-architect agent. Verify the installed Phaser version before applying — these are Phaser 3 patterns.",
+        " ---",
+        " "
+      ]
+    },
+    {
+      "name": "phaser-animation-turbo",
+      "line_similarity": 0.27,
+      "profile_lines_not_matched": 53,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -1,50 +1,57 @@\n",
+        " ---",
+        " name: phaser-animation-turbo",
+        "-description: \"Agente turbo para sprites, escala e animacao 2D em Phaser: mede frames, corrige cortes, padroniza porte runtime, define contrato Unity-like de AnimationClip, eventos por frame, hitboxes, dash/run/attack/hurt/jump e valida com gates do projeto.\"",
+        "+description: >",
+        "+  Agente turbo para corrigir sprites, spritesheets, escala, proporcao e animacoes em Ritmos da",
+        "+  Revolta/Phaser. Use quando houver frame cortado, personagem crescendo/encolhendo, idle/run/dash",
+        "+  patinando, ataque ruim, pulo/hurt/esquiva fora de porte, hitbox/evento fora de timing, ou quando",
+        "+  precisar aplicar fluxo Unity-like de Sprite Editor/AnimationClip dentro do pipeline Phaser.",
+        " ---",
+        " ",
+        " # Phaser Animation Turbo",
+        " ",
+        "-Atue como especialista principal de sprites e animacao 2D de Ritmos da Revolta. Use este agente quando o pedido envolver frame cortado, variacao de tamanho, personagem patinando, dash/run ruim, ataque/super/ataque_fuga, idle, hurt, pulo, esquiva, escala, hitbox ou eventos de animacao.",
+        "+Use esta skill como entrada principal para trabalho de sprites e animacao 2D do projeto. Ela combina:",
+        "+`sprite-image-reading`, `hero-sprite-scaling`, `sprite-animation` e `animation-engineer`.",
+        " ",
+        "-## Protocolo",
+        "+## Regra central",
+        " ",
+        "-1. Leia o codigo real antes de mexer:",
+        "-   - `js/scenes/BootScene.js`",
+        "-   - `js/config/index.js`",
+        "-   - `js/config/heroFrameScaleCorrections.json`",
+        "-   - `js/entities/Player.js`",
+        "-   - gates em `tools/check_sprites.py` e `tools/asset_pipeline/`",
+        "+Nao altere sprite ou codigo por impressao visual solta. Primeiro medir, depois corrigir a causa raiz, depois validar no runtime.",
+        " ",
+        "-2. Meça antes de afirmar:",
+        "-   - imagem: `cellW`, `cellH`, `bbox`, `bottomGap`, `centerX`, `topY`, `bodyH`;",
+        "-   - runtime: `scaleX`, `scaleY`, body renderizado, area/largura relativa ao idle;",
+        "-   - timing: frameRate, duracao em ms, fases de startup/active/recovery.",
+        "+REGRA DE OURO: o tamanho real e o do RUNTIME. `npm run audit:size` MENTE (mede com correcoes",
+        "+aplicadas) — nunca decida escala por ele. Use `npm run measure:hero <hero>` (com `npm run serve`) ou um",
+        "+snippet lendo `window.game.scene.getScene('StageScene').player`. E \"body fixo != tamanho consistente\":",
+        "+o porte se trava pela ESCALA-DE-PERSONAGEM (cabeca/proporcao), nao pela altura de corpo unica.",
+        " ",
+        "-   REGRA DE OURO (nao negociavel): a VERDADE do tamanho e o RUNTIME, nao a auditoria.",
+        "-   - `npm run audit:size` MENTE: mede com as correcoes ja aplicadas. Nunca use para decidir escala.",
+        "-   - Meca o que o Player REALMENTE renderiza: `npm run measure:hero <hero>` (precisa do dev server:",
+        "-     `npm run serve`), ou um snippet Playwright lendo `window.game.scene.getScene('StageScene').player`",
+        "-     (body = linhas com >=10% da massa maxima, ignora arma fina erguida; confira `scaleX==scaleY`).",
+        "-   - \"body fixo != tamanho consistente\": normalizar a ALTURA-DE-CORPO a um numero unico deixa poses",
+        "-     eretas/magras pequenas e poses curvadas grandes. O porte consistente se trava pela ESCALA-DE-",
+        "-     PERSONAGEM (cabeca/proporcao), nao pela altura de corpo. Quando o usuario diz \"X esta menor que",
+        "-     Y\", renderize X e Y lado a lado, alinhados pelos pes, e case cabeca/torso (nao o numero de body).",
+        "+## Fluxo obrigatorio",
+        " ",
+        "-3. Aplique o fluxo Unity-like sem migrar engine:",
+        "-   - Sprite Editor mental = medicao e ancoragem;",
+        "-   - AnimationClip contract = textura, tamanho, origin, escala, fases e eventos;",
+        "-   - Animation Events = SFX, hitbox, dust, hitstop, invulnerabilidade e cancel por frame;",
+        "-   - Animator Controller = maquina de estados explicita com retorno garantido.",
+        "+1. **Ler o contrato real**",
+        "+   - `js/scenes/BootScene.js`: como texturas/anims sao carregadas.",
+        "+   - `js/config/index.js`: `CHARACTERS.<hero>.hitbox.animScales`.",
+        "+   - `js/config/heroFrameScaleCorrections.json`: correcoes por frame.",
+        "+   - `tools/check_sprites.py` e `tools/asset_pipeline/*`: gates existentes.",
+        " ",
+        "-4. Corrija a causa raiz:",
+        "-   - corte = canvas/sheet errado;",
+        "-   - tamanho variando = asset/anchor/animScale/correcao;",
+        "-   - patinagem = pe/base/centerX/timing;",
+        "-   - ataque ruim = poses/eventos/frameRate, nao escala visual.",
+        "+2. **Medir como Sprite Editor**",
+        "+   - Para cada frame: `cellW`, `cellH`, `bbox`, `bottomGap`, `centerX`, `topY`, `bodyH`.",
+        "+   - Para personagem: origem padrao no pe, equivalente a Phaser `origin(0.5, 1)`.",
+        "+   - Para armas/sabres/correntes/FX largos: se o frame encosta na borda, dividir a fita em PNGs ou sheets maiores.",
+        " ",
+        "-5. Verifique antes de concluir:",
+        "-   - `npm run check:sprites`        (herois: porte de locomocao vs alvo proprio)",
+        "-   - `npm run check:bosses`         (chefes/sub-chefes: corte/grid/escala)",
+        "+3. **Definir contrato de AnimationClip**",
+        "+   - `key`, `texture`, `frameWidth`, `frameHeight`, `frameRate`, `repeat`, `origin`, `scaleMode`.",
+        "+   - Fases: `startup`, `active`, `recovery`.",
+        "+   - Eventos: SFX, hitbox, dust, invulnerabilidade, hitstop e cancel por frame.",
+        "+",
+        "+4. **Separar visual de mecanica**",
+        "+   - Animacao ilustra o estado; fisica/dash/ataque usam tempo real em ms.",
+        "+   - Hitbox/hurtbox nao devem depender do tamanho visual do frame.",
+        "+   - Nunca usar `displaySize` ou escala X/Y diferente para esconder sprite ruim.",
+        "+",
+        "+5. **Corrigir na raiz**",
+        "+   - Frame cortado: aumentar canvas/reempacotar/dividir sheet; nao encolher o personagem.",
+        "+   - Personagem variando tamanho: corrigir asset/anchor/animScale/correcao uniforme conforme a causa.",
+        "+   - Personagem patinando: corrigir centerX/base/foot lock e timing, nao só velocidade.",
+        "+   - Ataque ruim: remontar poses fortes e eventos; nao colocar recovery como impacto.",
+        "+",
+        "+6. **Validar**",
+        "+   - `npm run check:sprites`   (herois)",
+        "+   - `npm run check:bosses`    (chefes/sub-chefes — escala em `js/config/visualScaleTargets.js`)",
+        "    - `npm run audit:runtime-manifest`",
+        "    - `npm run audit:frame-sizes`",
+        "@@ -52,22 +59,17 @@\n",
+        "    - `npm run audit:escape`",
+        "    - `npm run audit:quality`",
+        "+   - Medir runtime com `npm run measure:hero <hero>` quando o problema for tamanho percebido.",
+        "+   - Chefe: a escala vem de `BOSS_SOURCE_BODY_HEIGHTS[animKey]` (via `_syncRaddyF2Scale`/`_syncVineriaScale`",
+        "+     no preUpdate). Confirme variacao entre formas pela ALTURA-TOTAL, nao so o solido; alguns chefes so",
+        "+     dao pra medir no playtest (anim depende do preUpdate vivo).",
+        " ",
+        "-## Chefes e sub-chefes (nao so herois)",
+        "+## Criterios de aceite",
+        " ",
+        "-O sistema de escala de chefe e SEPARADO do heroi — fica em `js/config/visualScaleTargets.js`:",
+        "-- `BOSS_BODY_HEIGHT_TARGETS` (alvo por chefe) + tetos `BOSS_BODY_HEIGHT_CEILING` (440) / `TALL_*` (480).",
+        "-- `BOSS_SOURCE_BODY_HEIGHTS[animKey]`: altura-FONTE do corpo POR animacao. render = alvo / fonte * solid.",
+        "-  Se a fonte declarada bate com o solid real do frame representativo, a anim renderiza no alvo.",
+        "-- `_syncRaddyF2Scale()` / `_syncVineriaScale()` em `js/entities/Boss.js` (rodam no preUpdate) escolhem a",
+        "-  fonte pela animKey atual — chefes cuja arte desenha o corpo em alturas muito diferentes por acao/forma.",
+        "-- Origin (0.5,1) = pes; `_setFootBodyFromWorld` mantem a body de pes constante dividindo pela escala ativa.",
+        "-",
+        "-Armadilhas reais ja vividas:",
+        "-- \"varia de tamanho entre formas\": normalizar pelo corpo SOLIDO pode deixar a forma curvada (com fogo/",
+        "-  juba acima da cabeca) com ALTURA-TOTAL maior. Quando o solido nao casa a percepcao, normalize a",
+        "-  ALTURA-TOTAL do frame representativo entre as formas.",
+        "-- A arena de boss tem bounds == viewport (nao rola) e a morte da `cam.zoomTo` a partir do CENTRO: chefe",
+        "-  colado na parede e empurrado pra fora (\"frame morto no canto\"). Enquadre puxando-o pra faixa central.",
+        "-- O tool headless nao monta anims que dependem do preUpdate vivo (ex.: Vineria): confirme no playtest.",
+        "-",
+        "-Registre toda correcao em `FIXLOG.md`.",
+        "+- Nenhum frame vivo importante toca a borda do canvas.",
+        "+- `bottomGap` e pe visual estaveis dentro do estado.",
+        "+- `centerX` nao salta sem intencao.",
+        "+- `scaleX` e `scaleY` ficam uniformes, salvo excecao documentada.",
+        "+- Idle tem micro movimento, sem andar para tras.",
+        "+- Run/dash tem leitura de deslocamento, sem parecer dash reciclado em loop.",
+        "+- Ataque tem startup, contato claro, recovery e evento de som/hitbox no frame correto.",
+        "+- O FIXLOG registra problema, causa raiz, correcao e verificacao."
+      ]
+    },
+    {
+      "name": "phaser-platformer-architect",
+      "line_similarity": 0.988,
+      "profile_lines_not_matched": 0,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -224,4 +224,13 @@\n",
+        " ---",
+        " ",
+        "+## 👊 2.5D BEAT 'EM UP DOCTRINE (Golden Rules for Brawlers)",
+        "+When building games with a 2.5D perspective (like Final Fight, Streets of Rage, or Sprunki Beat Up):",
+        "+",
+        "+1. **NEVER use Arcade Physics Colliders for character bodies (Player vs Enemy).** In a 2.5D perspective, the Y-axis represents Z-depth. A physical Arcade collision resolution will push entities along the Y-axis, making them visually \"fly\" into the sky. Use pure mathematical distance checks (cylinder collision) inside `update()` instead of `physics.add.collider`.",
+        "+2. **Strict Visual Floor Mapping.** The walkable area constraints (e.g. `floorTopY`, `floorBottomY`) MUST accurately map to the visual street/ground drawn in the background layers. Never use arbitrary percentages (like `h * 0.65`) without visually confirming it aligns with the background. For a narrow street at the bottom, `0.85` or `0.9` is required. If players hover above the road, you failed the mapping.",
+        "+3. **Cinematic Walk-in Transitions.** Cutscenes (like Boss entrances) must not lazily teleport the player into the scene standing still. The player must physically walk into the scene from out-of-bounds (e.g. `cam.scrollX - 100` with velocity applied) while the screen fades in, only returning control when they reach the fighting area.",
+        "+",
+        "+---",
+        "+",
+        " ## 🏗️ COMPLEX-GAME ARCHITECTURE (this scales past one screen)",
+        " "
+      ]
+    },
+    {
+      "name": "sprite-animation",
+      "line_similarity": 0.959,
+      "profile_lines_not_matched": 4,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -2,8 +2,10 @@\n",
+        " name: sprite-animation",
+        " description: >",
+        "-  Animacao de sprites em Phaser e principios 2D: criar animacoes de atlas/sheet, montar maquina",
+        "-  de estados, corrigir timing, eventos por frame, startup/active/recovery, pivo/origin, escala,",
+        "-  cancels, hitboxes, dash/run/attack/hurt/jump e fluxo Unity-like de AnimationClip para Phaser.",
+        "-  Use ao animar personagens/inimigos ou refatorar spritesheets.",
+        "+  Animação de sprites em Phaser e os princípios de animação aplicados ao 2D — criar animações de",
+        "+  atlas/sheet, máquina de estados de animação com retorno garantido, eventos animationcomplete,",
+        "+  timing independente de framerate, easing/tweens, squash & stretch, antecipação, follow-through",
+        "+  e smear frames. Inclui fluxo Unity-like de AnimationClip para Phaser com contrato de frame,",
+        "+  pivo/origin, eventos por frame, startup/active/recovery, hitbox/som/cancel e validacao.",
+        "+  Use ao animar personagens/inimigos ou montar/refatorar a maquina de animacao.",
+        " ---",
+        " "
+      ]
+    },
+    {
+      "name": "sprite-image-reading",
+      "line_similarity": 0.958,
+      "profile_lines_not_matched": 4,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -2,8 +2,10 @@\n",
+        " name: sprite-image-reading",
+        " description: >",
+        "-  Leitura, analise e visualizacao de imagens/sprites com Pillow/numpy: medir dimensoes,",
+        "-  canais, alpha, bbox, frame grid, bottomGap, centerX, topY, bodyH, paleta, atlas JSON,",
+        "-  contact sheets e auditoria Unity-like de Sprite Editor para detectar corte, pivo errado,",
+        "-  variacao de escala e frame mal ancorado. Use antes de alterar sprites ou spritesheets.",
+        "+  Leitura, análise e visualização de imagens e sprites em Python (Pillow/numpy): inspecionar",
+        "+  dimensões e canais, fatiar spritesheet em frames (grid fixo ou auto-detecção por transparência),",
+        "+  extrair paleta de cores, recortar/trim por bounding box, ler/gerar atlas JSON (formato Phaser),",
+        "+  e montar contact sheet de preview. Use ao trabalhar com sprites, spritesheets, paletas ou",
+        "+  extrair/inspecionar assets de jogo. Inclui auditoria Unity-like de Sprite Editor para medir",
+        "+  cellW/cellH, bbox, bottomGap, centerX, topY, bodyH, pivo/origin, variacao de escala e corte.",
+        " ---",
+        " "
+      ]
+    },
+    {
+      "name": "sprunki-lora-trainer",
+      "line_similarity": 0.312,
+      "profile_lines_not_matched": 44,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -1,66 +1,75 @@\n",
+        " ---",
+        " name: sprunki-lora-trainer",
+        "-description: \"Especialista em treino LoRA Sprunki: curadoria de dataset, ratings.json, captions sprunki_char, FLUX/Krea, daily_lora_cycle, Kohya, avaliacao ComfyUI, pesos 0.15/0.30/0.45 e promocao segura do sprunki_lora.safetensors. Use para gerar sprunkis perfeitos, auditar experimentos lora_*, melhorar qualidade de LoRA, ou decidir se um modelo deve virar ativo.\"",
+        "+description: Specialized workflow for Sprunki LoRA training, dataset curation, FLUX/Krea comparison, ComfyUI evaluation samples, promotion gates, GPU-window-safe automation, and troubleshooting in E:/Pemara/maestro/pemara/ferramentas/gerador_sprunki. Use when the user asks about treinar LoRA Sprunki, gerar sprunkis perfeitos, avaliar/prometer sprunki_lora, daily_lora_cycle, Kohya/FLUX training, ratings.json, experiments/lora_*, or Sprunki model quality.",
+        " ---",
+        " ",
+        " # Sprunki LoRA Trainer",
+        " ",
+        "-Voce e o especialista de treino Sprunki da Pemara. Seu trabalho e melhorar qualidade visual de",
+        "-Sprunkis sem desperdiçar GPU e sem promover LoRA ruim.",
+        "+## Core Rule",
+        " ",
+        "-## Regras centrais",
+        "+Optimize Sprunki quality, not just training frequency. Never promote a LoRA because training finished;",
+        "+promote only after eval samples prove clean character identity, silhouette, expression control, and low",
+        "+artifact rate.",
+        " ",
+        "-1. Use sempre a skill `sprunki-lora-trainer`.",
+        "-2. Projeto canonico: `E:/Pemara/maestro/pemara/ferramentas/gerador_sprunki`.",
+        "-3. Nao iniciar treino ou geracao ComfyUI se o pedido atual nao autorizar GPU.",
+        "-4. Nao promover LoRA so porque o treino terminou.",
+        "-5. FLUX.1-dev e rota principal de treino; Krea e experimento comparativo.",
+        "-6. `sprunki_char` e gatilho fixo e nao deve mudar sem plano de migracao.",
+        "-7. Avaliar primeiro em `0.15,0.30,0.45`; forca alta demais mascara overfit.",
+        "+Protect GPU scheduling. Do not start training or ComfyUI generation unless the current user request",
+        "+explicitly authorizes GPU use now and `E:/Pemara/gpu_window_guard.*` allows it.",
+        " ",
+        "-## Fluxo padrao",
+        "+## Canonical Project",
+        " ",
+        "-1. Ler `TREINO_LORA_DIARIO.md`.",
+        "-2. Verificar ultimos `experiments/lora_*`.",
+        "-3. Conferir dataset e `ratings.json`.",
+        "-4. Rodar dry-run antes de treino quando mexer no preset.",
+        "-5. Treinar somente pela janela/guard aprovado.",
+        "-6. Gerar eval samples e abrir/QC antes de aprovar.",
+        "-7. Registrar decisao: promoted, rejected ou keep-for-review.",
+        "+- Project: `E:/Pemara/maestro/pemara/ferramentas/gerador_sprunki`",
+        "+- Main daily runner: `run_daily_lora_window.ps1`",
+        "+- Daily cycle: `daily_lora_cycle.py`",
+        "+- Trainer: `auto_train.py`",
+        "+- Eval generator: `generate_lora_eval_samples.py`",
+        "+- Current public LoRA names:",
+        "+  - `lora_dataset/model/sprunki_lora_daily_latest.safetensors`",
+        "+  - `E:/Pemara/maestro/pemara/ferramentas/ComfyUI/models/loras/sprunki_lora.safetensors`",
+        " ",
+        "-## Criterio de qualidade",
+        "+Read `references/operational-rules.md` before changing training presets, dataset tiers, or promotion",
+        "+logic.",
+        " ",
+        "-Um bom Sprunki precisa ter corpo inteiro, silhueta limpa, contorno preto, cores chapadas, expressao",
+        "-controlada, fundo simples e nenhum texto/watermark. Se ficar derretido, cortado, duplicado,",
+        "-horror acidental ou fora do estilo, o treino nao evoluiu.",
+        "+## Workflow",
+        " ",
+        "-## Comandos seguros",
+        "+1. Check current state: latest `experiments/lora_*`, latest `summary.json`, dataset counts, and GPU guard.",
+        "+2. Audit dataset before training:",
+        "+   - `ratings.json` if present;",
+        "+   - gold/good/variant counts;",
+        "+   - duplicate, broken, off-style, cropped, text/watermark, bad anatomy.",
+        "+3. Keep the main trigger token stable: `sprunki_char`.",
+        "+4. Train on `FLUX.1-dev` as the main stable route. Treat Krea training as comparative only.",
+        "+5. Generate eval samples at low/medium strengths first: `0.15,0.30,0.45`.",
+        "+6. Reject if samples are overcooked, mushy, scary by accident, off-model, cropped, or inconsistent.",
+        "+7. Promote only with a written reason in experiment `summary.json` or an adjacent QC note.",
+        " ",
+        "-Dry-run:",
+        "+## Preset Policy",
+        " ",
+        "-```powershell",
+        "-python E:\\Pemara\\maestro\\pemara\\ferramentas\\gerador_sprunki\\daily_lora_cycle.py --dry-run",
+        "-```",
+        "+Default stable preset:",
+        " ",
+        "-Rodar dentro da janela:",
+        "+- `Steps`: `900`",
+        "+- `Dim/Alpha`: `8/8`",
+        "+- `LearningRate`: `0.00002`",
+        "+- `BatchSize`: `2`",
+        "+- eval strengths: `0.15,0.30,0.45`",
+        " ",
+        "-```powershell",
+        "-powershell -NoProfile -ExecutionPolicy Bypass -File E:\\Pemara\\maestro\\pemara\\ferramentas\\gerador_sprunki\\run_daily_lora_window.ps1",
+        "-```",
+        "+Escalation order:",
+        " ",
+        "-## Saida esperada",
+        "+1. If clean but weak: increase steps to `1200`.",
+        "+2. If still weak: test `Dim/Alpha 16/16`.",
+        "+3. If overfit or distorted: reduce strength before changing training.",
+        "+4. If Krea looks better only for generation, do not move main training off FLUX until A/B proves it.",
+        " ",
+        "-Sempre responder com:",
+        "+## Exit Checklist",
+        " ",
+        "-- estado do dataset;",
+        "-- ultimo experimento relevante;",
+        "-- preset usado/proposto;",
+        "-- status da avaliacao;",
+        "-- acao segura seguinte.",
+        "+- [ ] Dataset source and counts recorded.",
+        "+- [ ] Training config recorded.",
+        "+- [ ] Eval samples generated or explicitly skipped with reason.",
+        "+- [ ] Best strength identified.",
+        "+- [ ] LoRA promotion/rejection status stated.",
+        "+- [ ] No GPU rule bypassed.",
+        " ",
+        "-## Gate de segurança de dataset e serviço",
+        "+## Dataset and service security gate",
+        " ",
+        "-- Não inclua material pessoal sem autorização nem segredos no dataset.",
+        "-- Mantenha ComfyUI e treino em loopback, com exposição somente pelo gateway autenticado.",
+        "-- Valide mídia enviada/baixada por conteúdo decodificado, tamanho e nome gerado no servidor.",
+        "-- Acione `pemara-online-security-guardian` antes de alterar upload, galeria, avaliação, job ou endpoint público.",
+        "+- Keep datasets free of unauthorized personal material and secrets.",
+        "+- Keep ComfyUI/training origins on loopback; expose only through the authenticated gateway.",
+        "+- Validate uploaded/downloaded media by decoded content, size and server-generated name.",
+        "+- Invoke `pemara-online-security-guardian` before changing any upload, gallery, rating, job or public endpoint."
+      ]
+    },
+    {
+      "name": "video-production",
+      "line_similarity": 0.966,
+      "profile_lines_not_matched": 4,
+      "diff": [
+        "--- profile\n",
+        "+++ skill\n",
+        "@@ -55,6 +55,2 @@\n",
+        " ",
+        " Intro/cutscene de jogo com logo/registro mantém `ai-video-intro-pipeline`. Identidade recorrente, combate, movimento e voz carregam seus gates específicos; não transferir regras de um tipo de vídeo para todos os demais.",
+        "-",
+        "-## Especialização deste perfil: operador de montagem",
+        "-",
+        "-Este perfil especializado recebe a tabela editorial já decidida e cuida de conformidade, concat/encode, legendas, mix autorizado e integridade. Divergência de in/out, referência, geografia ou aprovação volta ao editor/diretor antes de executar. A skill canônica cobre a produção técnica geral; este perfil não assume concepção do filme. Manter registrado como especialização no Messenger Turbo, sem criar agentes adicionais por padrão."
+      ]
+    }
+  ],
+  "same_name_groups": [
+    {
+      "name": "saas-pentest-hardening",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/SKILL.md",
+          "root": "E:/Pemara/.agents/skills",
+          "name": "saas-pentest-hardening",
+          "bytes": 7994,
+          "lines": 147,
+          "sha256": "f76f2c2d02bb1fbe9a84d1bfaaa17b7a48c4067d09a52507b2c07effff3c05ec",
+          "metadata": false,
+          "nested": true
+        },
+        {
+          "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/SKILL.md",
+          "root": "E:/Pemara/.agents/skills",
+          "name": "saas-pentest-hardening",
+          "bytes": 5521,
+          "lines": 162,
+          "sha256": "17999453b80c107fd1039e25262e32b51bdd783173344f923adb1400cc2c0edb",
+          "metadata": true,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "general-video",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/general-video/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "general-video",
+          "bytes": 21541,
+          "lines": 168,
+          "sha256": "6e0aad276db66d31791bdb19abdd12f3650ce03b7f7329d1c2d2c9176d87214c",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/general-video/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "general-video",
+          "bytes": 19961,
+          "lines": 165,
+          "sha256": "23ac61f3fd8d43c00864b6bce0cd8499f7b6742c5acb8c0a18268e35bd8ed73c",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes",
+          "bytes": 21061,
+          "lines": 154,
+          "sha256": "a277e9e46b3b5b8619639a353a4af3f46f8ae4f2e622ba802d5af730d135f410",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes",
+          "bytes": 15560,
+          "lines": 127,
+          "sha256": "3f1e57ac7071e91629133651250bd5d9d60ce8119faa318a5be2cba6d375c793",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-animation",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-animation/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-animation",
+          "bytes": 8471,
+          "lines": 88,
+          "sha256": "b35f1f8eff68e9ff480a5d5d343a1bf5a40ebb7d0d9be20b0b980cfdb36047f3",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-animation",
+          "bytes": 7785,
+          "lines": 84,
+          "sha256": "69a9903796e65c66edbe9ec9621eca8953c7cc2a93a718687306891daf0463d4",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-audio",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-audio/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-audio",
+          "bytes": 25614,
+          "lines": 475,
+          "sha256": "03007db5f0ea61f093c401f681e30d686c4a490f7462c6fd34949722e881b278",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-audio",
+          "bytes": 21491,
+          "lines": 409,
+          "sha256": "78f60bc28fc11ed214248b49f767f9571088fc209cb15c97b1d12abcf4526eac",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-cli",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-cli/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-cli",
+          "bytes": 23844,
+          "lines": 194,
+          "sha256": "f722ee03ba20a3a8c6d2ba200729230e0245827a3178a02ef56e8b4b92c92a4e",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-cli",
+          "bytes": 18291,
+          "lines": 170,
+          "sha256": "1ea0ee445a628d1f7e8308b9b44ffdf9cd6b012d352476443afdbf26f02db093",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-core",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-core/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-core",
+          "bytes": 12643,
+          "lines": 100,
+          "sha256": "18ac7784765cc29af5a4d88f2a63a15deaf5395985009af188b5e3718edcfe3d",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-core",
+          "bytes": 10869,
+          "lines": 90,
+          "sha256": "4ab1e4d7f1ac9111b5a5a1502410a76db3367ecf95cd14bae62429135a28856a",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-creative",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-creative/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-creative",
+          "bytes": 6563,
+          "lines": 73,
+          "sha256": "9da7b7ac84c8d884b54125887ecca1a645a38337013082b96af2fdc0259c945a",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-creative",
+          "bytes": 6354,
+          "lines": 71,
+          "sha256": "488782fc741a43e002b5c6ac0da69cc2b12abaa42b6c0056df2aa53bea553c16",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-keyframes",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-keyframes/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-keyframes",
+          "bytes": 16263,
+          "lines": 263,
+          "sha256": "d6484e8367ed522f2a89af9ec30ae3cd86ae243b5a23c5ab00a7a682e3d1a791",
+          "metadata": true,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-keyframes",
+          "bytes": 15901,
+          "lines": 262,
+          "sha256": "924d038dc7eb20d16e05fa0e9837fa50bdcac0ce131aee80ebd8188cb67110d1",
+          "metadata": true,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "hyperframes-registry",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-registry/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "hyperframes-registry",
+          "bytes": 9933,
+          "lines": 147,
+          "sha256": "f1925b202cabd125b509658b11db593b55340b1926ecb056fc31aa4233a2b4f6",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "hyperframes-registry",
+          "bytes": 9211,
+          "lines": 145,
+          "sha256": "9bb3d0f74b47bf7fe93208228d4bd4431538bff9440d074271a4b413a9f6cc3d",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    },
+    {
+      "name": "media-use",
+      "exact_same_bytes": false,
+      "files": [
+        {
+          "path": "C:/Users/admin_remoto/.agents/skills/media-use/SKILL.md",
+          "root": "C:/Users/admin_remoto/.agents/skills",
+          "name": "media-use",
+          "bytes": 8898,
+          "lines": 102,
+          "sha256": "9622271fb82ad862ee248034833ae19e26cc963962066e824213681527502c07",
+          "metadata": false,
+          "nested": false
+        },
+        {
+          "path": "C:/Users/admin_remoto/.codex/skills/media-use/SKILL.md",
+          "root": "C:/Users/admin_remoto/.codex/skills",
+          "name": "media-use",
+          "bytes": 7982,
+          "lines": 96,
+          "sha256": "1301ea7cb53a0a44f5c7d62c34cba7e00b9e69b31bed57dc8d645417cea0da7c",
+          "metadata": false,
+          "nested": false
+        }
+      ]
+    }
+  ],
+  "exact_duplicate_groups": [],
+  "turbo_blocks": [
+    {
+      "sha256": "c403e26a207a415a403daf887822109ab6ad33fbf76437fa9ed06b634a8d15aa",
+      "copies": 1,
+      "chars_each": 2188,
+      "files": [
+        "E:/Pemara/.agents/skills/animation-engineer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "10d7dae6223ac42e04ca5a1d5cc6e51d823cad34ba28ca7bd9fcd92232496265",
+      "copies": 1,
+      "chars_each": 2275,
+      "files": [
+        "E:/Pemara/.agents/skills/automation-engineer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "1acc2a323d36978178fd21ef7d0ce650fc1302fe9773cf0b772286067e95e13b",
+      "copies": 1,
+      "chars_each": 2106,
+      "files": [
+        "E:/Pemara/.agents/skills/balance-tuner/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "55c96a93909d0f78fa397e481288662da317720aacde4c8504c5401c034dcc84",
+      "copies": 1,
+      "chars_each": 2287,
+      "files": [
+        "E:/Pemara/.agents/skills/beatemup-combat-designer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "f176424a36886a20bf36507694a6c2a8bd983835f95031b4ccd8829545ea64a0",
+      "copies": 6,
+      "chars_each": 3134,
+      "files": [
+        "E:/Pemara/.agents/skills/code-archaeologist/SKILL.md",
+        "E:/Pemara/.agents/skills/debugger/SKILL.md",
+        "E:/Pemara/.agents/skills/performance-optimizer/SKILL.md",
+        "E:/Pemara/.agents/skills/project-planner/SKILL.md",
+        "E:/Pemara/.agents/skills/qa-automation-engineer/SKILL.md",
+        "E:/Pemara/.agents/skills/test-engineer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "0f36f36628328a8b04f982c165b64fe0b1fc738b3d1f30a34b88f74b6654a4a0",
+      "copies": 1,
+      "chars_each": 2180,
+      "files": [
+        "E:/Pemara/.agents/skills/creative-director/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "b3e113785617939b101fe5bf0971525a52f66a823765bb185ebf94ccd27c2c92",
+      "copies": 1,
+      "chars_each": 2324,
+      "files": [
+        "E:/Pemara/.agents/skills/demo-release-engineer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "6f1dd1a1bdb4abf5dc3ac981300fcb15c756c021fd2703a9107b4d46bea09e67",
+      "copies": 1,
+      "chars_each": 2256,
+      "files": [
+        "E:/Pemara/.agents/skills/game-audio-designer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "77e851119026bcf65ea4c7ce824397203a84269a4418804e9b2b521601a81354",
+      "copies": 1,
+      "chars_each": 1908,
+      "files": [
+        "E:/Pemara/.agents/skills/game-build-flow/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "c5a8fcbeec668d751a9e3f6a761fe4df2a5bed507b6c977194ef6965a6098810",
+      "copies": 1,
+      "chars_each": 2603,
+      "files": [
+        "E:/Pemara/.agents/skills/game-developer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "246f81530a9e95db32484c2036e0c7f034bddbbb0d47eb68f4bffcb93339cd47",
+      "copies": 1,
+      "chars_each": 2380,
+      "files": [
+        "E:/Pemara/.agents/skills/gamepad-input-specialist/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "7339f0898edabb6177aeabcf7e5c022c1d0e0239b8dca409bcb9c1e9e37c02d7",
+      "copies": 1,
+      "chars_each": 2403,
+      "files": [
+        "E:/Pemara/.agents/skills/image-production/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "754af8fdd47793762e341e7f7ad61add6c75483bf98ac7c567300e1ce844c8dc",
+      "copies": 1,
+      "chars_each": 2034,
+      "files": [
+        "E:/Pemara/.agents/skills/level-designer/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "4737cf2910fb1ffd3f05449dd8c7072c9265f700130a55506ea86d9549a3334f",
+      "copies": 1,
+      "chars_each": 2241,
+      "files": [
+        "E:/Pemara/.agents/skills/pack-doctor/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "29dd64ae95c3aead754e6e276570091c8afb6573e3de6a5d1b4a25a9bf34b37b",
+      "copies": 1,
+      "chars_each": 3029,
+      "files": [
+        "E:/Pemara/.agents/skills/phaser-platformer-architect/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "79ff3b2a50331f0062f8f80358d91ee50842deac51d32805461bfe05e1b5fad0",
+      "copies": 1,
+      "chars_each": 1641,
+      "files": [
+        "E:/Pemara/.agents/skills/video-production/SKILL.md"
+      ]
+    },
+    {
+      "sha256": "d7b8b1dfdfc7db844c4691100596218701a3bbc5c6f751d39ded4ec544f9ef2e",
+      "copies": 1,
+      "chars_each": 2208,
+      "files": [
+        "E:/Pemara/.agents/skills/web-frontend-vanilla/SKILL.md"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "path": "E:/Pemara/.agents/skills/accelerated-computing-cudf/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "accelerated-computing-cudf",
+      "bytes": 9607,
+      "lines": 203,
+      "sha256": "007670035e685ead2365f494836e121608bb60c37cfd37dbed073a05616ba176",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/ai-video-intro-pipeline/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "ai-video-intro-pipeline",
+      "bytes": 8599,
+      "lines": 102,
+      "sha256": "0d7fa8da69cf600c9412a5f2e75794cededd52a4977cf63c9249c6d93202cc3a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/aiq-deploy/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "aiq-deploy",
+      "bytes": 13672,
+      "lines": 351,
+      "sha256": "438179376ae6f6070df58f14a8cb9d78a5afd0d4095198484fb7fb29de424cf9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/aiq-research/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "aiq-research",
+      "bytes": 16476,
+      "lines": 418,
+      "sha256": "cad80033a2d07ec6b200ab5a5c68d6119f78827337fd9235de5fc3891c86b94a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/amc-run-sample-calibration/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "amc-run-sample-calibration",
+      "bytes": 11155,
+      "lines": 200,
+      "sha256": "5dbc0cd9cbfc380d05cf215c7df97f6971929bb09d4785fae6ec85cb667612aa",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/amc-run-video-calibration/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "amc-run-video-calibration",
+      "bytes": 13533,
+      "lines": 223,
+      "sha256": "638814e0c2c6836474cc0579a659e5c596be274643d2089dd37e056ea8a9ada4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/amc-setup-calibration-stack/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "amc-setup-calibration-stack",
+      "bytes": 19207,
+      "lines": 436,
+      "sha256": "38efbf3800b1a40780f8818d70784a9ab2653b063bf6534d389df3b114729214",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/animation-engineer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "animation-engineer",
+      "bytes": 7357,
+      "lines": 111,
+      "sha256": "c1b8aeba2fe5cd5345cb8c560232c1f1535d9c0ce785c2e36de996960c98856a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/api-and-interface-design/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "api-and-interface-design",
+      "bytes": 10307,
+      "lines": 294,
+      "sha256": "293db2903b41316a5109a1e0ce3e1740eeafae31735bc1f9143dafbfd1187363",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/audio-analysis/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "audio-analysis",
+      "bytes": 3220,
+      "lines": 82,
+      "sha256": "e7cee57e2863efa51b4a72d617fb2ceec11598dcb4e7009252df23877f0bd77b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/automation-engineer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "automation-engineer",
+      "bytes": 6991,
+      "lines": 123,
+      "sha256": "762d07380220d0f3760020bd5384e676e71673bd2bbe138cf91e973b01778cbd",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/balance-tuner/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "balance-tuner",
+      "bytes": 5453,
+      "lines": 81,
+      "sha256": "6eb084dc98a54a6127ce2dde01790729cbdd7f197af644c0c4f6ccaadeec9da6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/beatemup-combat-designer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "beatemup-combat-designer",
+      "bytes": 6272,
+      "lines": 74,
+      "sha256": "1949b6e695a0ddcaab5fa6cafd61f9046679eee22ad889c88501badde2363f28",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/browser-testing-with-devtools/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "browser-testing-with-devtools",
+      "bytes": 14539,
+      "lines": 317,
+      "sha256": "4e3aacd6a380cd25bc6c2d67fdd1c926a9b22535b8a62109ecd33cefd909e3d9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/ci-cd-and-automation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "ci-cd-and-automation",
+      "bytes": 11332,
+      "lines": 390,
+      "sha256": "a6ed8ed56456b01ff8314c44eefc69897d9905ae4e06bb2b7036286efb79b5f0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/claude-context-audit/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "claude-context-audit",
+      "bytes": 6102,
+      "lines": 128,
+      "sha256": "e9b88263a8df184cf815484fd80b5b85a9bc5dcd2c2cfb8d8c4c2d413b86d049",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/code-archaeologist/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "code-archaeologist",
+      "bytes": 7850,
+      "lines": 160,
+      "sha256": "a256af576cfafee81a7e619194ed5362ba930787b929b7c035f59a6e8233c40e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/code-review-and-quality/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "code-review-and-quality",
+      "bytes": 20543,
+      "lines": 396,
+      "sha256": "bec431b759ff389e47b8d2c9d74e1981ff93cf5f3c36b4a3b6a71a75c250be2c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/code-simplification/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "code-simplification",
+      "bytes": 13545,
+      "lines": 331,
+      "sha256": "f0c5ed754057eb0c1e027e2587f59de816651feb5e837242296c43ea21cf621d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/context-engineering/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "context-engineering",
+      "bytes": 11070,
+      "lines": 289,
+      "sha256": "ff9d4e5706bdd2eb7de1bfed569f1f42d28e478979ce6fcc32e617e7861b491d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/creative-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "creative-director",
+      "bytes": 10121,
+      "lines": 146,
+      "sha256": "0fa1bce47e2a4a01f32f69882c5dbfde7dcec1abf38cf89122ba4866a322069b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cudaq-guide/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cudaq-guide",
+      "bytes": 12871,
+      "lines": 321,
+      "sha256": "e1fe421ca8e59de3ff7f1245fb69c73a6377e9cb11e7a01204522c63419a90e0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cufolio/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cufolio",
+      "bytes": 15336,
+      "lines": 210,
+      "sha256": "8f2a42874017e4226419a836d3cec549bacfbced5b915e8413b954ea243eaf68",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-developer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-developer",
+      "bytes": 13266,
+      "lines": 258,
+      "sha256": "f12489ccc6b6daffcfa313b85d6a627326cbc3961c95bde721b9af5ca89c09f3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-install/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-install",
+      "bytes": 4360,
+      "lines": 131,
+      "sha256": "242c4eb7972729a74e8e5aee204f187a64fd925aec6cae0bb818d6b41beac724",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-multi-objective-exploration/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-multi-objective-exploration",
+      "bytes": 11993,
+      "lines": 138,
+      "sha256": "1da7956ba413d133df1aeb71d3840e70bb30abfccc2cff42054a531e6ddf570f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-numerical-optimization-api-c/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-numerical-optimization-api-c",
+      "bytes": 3484,
+      "lines": 64,
+      "sha256": "0cd97a7d14fb58ea35f31efbb1030d4768bfea927174797c519e223594f806bd",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-numerical-optimization-api-cli/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-numerical-optimization-api-cli",
+      "bytes": 5553,
+      "lines": 77,
+      "sha256": "82e5415063284dca9e917e0a280d40a335bf766c6ac1ee5de6e7f8695df1d86f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-numerical-optimization-api-python/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-numerical-optimization-api-python",
+      "bytes": 12527,
+      "lines": 293,
+      "sha256": "95a23cacc1d11a2aaca55ba942f125e452293f34e87f263d6a6cf039af8064de",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-numerical-optimization-formulation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-numerical-optimization-formulation",
+      "bytes": 19859,
+      "lines": 276,
+      "sha256": "b9c128defb4c2814224a90fc67bac373e26f8d82cb86fdcae3402b0c190dbf96",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-routing-api-python/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-routing-api-python",
+      "bytes": 3818,
+      "lines": 121,
+      "sha256": "44db4ac7dc88298f3b69baf3f7a684b70737166a42182c17fa9a826bc044191d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-routing-formulation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-routing-formulation",
+      "bytes": 1460,
+      "lines": 41,
+      "sha256": "33cec828baf5cc2f99f1a6d99442fdcf5adee80089901fc881b2f59f18bfa726",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-server-api-python/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-server-api-python",
+      "bytes": 3545,
+      "lines": 108,
+      "sha256": "9fd227040019e0f4221f31ff05cb8ea1231d65c0ceae0fde0d7ce831f800fc52",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-server-common/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-server-common",
+      "bytes": 1636,
+      "lines": 55,
+      "sha256": "8834106caeb0221d0605f0fb5c09c61a5cbbe8a92a15691e10a683c3f49f6895",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-skill-evolution/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-skill-evolution",
+      "bytes": 15459,
+      "lines": 218,
+      "sha256": "3d55db8ea8f346c00efa1b8e002f572f0fe5e30b8059fd3cd2fb5a71409d9931",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cuopt-user-rules/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cuopt-user-rules",
+      "bytes": 9105,
+      "lines": 232,
+      "sha256": "c84ca345ec096f0752a11e7db2ce610efa1d2b6c162050de5f2fbc23a4699b04",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cupynumeric-hdf5/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cupynumeric-hdf5",
+      "bytes": 12092,
+      "lines": 167,
+      "sha256": "f1355da125f0bf0851606aeafef67a71d53ce83686276c2301e6a37fd0bdc4b8",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cupynumeric-install/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cupynumeric-install",
+      "bytes": 8149,
+      "lines": 198,
+      "sha256": "8d89621eb5d2203d7a67b012ec57ce4c5c3a83717d8b14a24e2c15470c3f8dc0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cupynumeric-migration-readiness/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cupynumeric-migration-readiness",
+      "bytes": 18638,
+      "lines": 192,
+      "sha256": "3b238538eb9a962f74d408917fd1d86a878c03cd6db81483c857f2b9f9d8b785",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/cupynumeric-parallel-data-load/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "cupynumeric-parallel-data-load",
+      "bytes": 18623,
+      "lines": 429,
+      "sha256": "b9a3bb78e870a93d600dd6c359b83c99d657a0d6e6434c36c8cc5841cb397f57",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dali-dynamic-mode/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dali-dynamic-mode",
+      "bytes": 15214,
+      "lines": 293,
+      "sha256": "b2642df2599eef01de1b366bfd7addbcbadd9134e3660b636c34677439ac4aa6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/data-designer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "data-designer",
+      "bytes": 4810,
+      "lines": 94,
+      "sha256": "41619e041bcafb13443cf2ab5ba105e5a81d3cc1f6e2921167415665cda45f1f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/debugger/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "debugger",
+      "bytes": 12528,
+      "lines": 281,
+      "sha256": "37ce989d7a44be7351e7b0e90912df94263fa049ad53205078d0239e49fe57e4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/debugging-and-error-recovery/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "debugging-and-error-recovery",
+      "bytes": 10603,
+      "lines": 300,
+      "sha256": "927ad6917fa2891827351cfa3470cd715423faaa5c5f27fe74534d9324c35eea",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deepstream-dev/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deepstream-dev",
+      "bytes": 11645,
+      "lines": 180,
+      "sha256": "4206ab7bf54f0d7e08edc927e24f806cc965c1fe199ffc362c416571ebd3a40b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deepstream-generate-pipeline/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deepstream-generate-pipeline",
+      "bytes": 17070,
+      "lines": 273,
+      "sha256": "9c7eaf4defe5f76a005172a45e2c13c1be6777cb07e75a92094775fdce751234",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deepstream-import-vision-model/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deepstream-import-vision-model",
+      "bytes": 10496,
+      "lines": 179,
+      "sha256": "b2c90f3cfadc6f5c5a6d2d9ab09ed161e5e345ee42faf3037a8a58ad59bd1d23",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deepstream-profile-pipeline/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deepstream-profile-pipeline",
+      "bytes": 16733,
+      "lines": 347,
+      "sha256": "2755993e64171330d884473b050a6a4c9a7b8efc1eabf459cfc57b833d2ebb11",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deepstream-sop/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deepstream-sop",
+      "bytes": 19862,
+      "lines": 229,
+      "sha256": "3ab220c42f7c4342812eecf5f11a92d89fea6f4b72d19e19105f1f380313ecd0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/demo-release-engineer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "demo-release-engineer",
+      "bytes": 6635,
+      "lines": 87,
+      "sha256": "6c0d4005e94a9e67ae9d9193810ae72d86ea0d77818600121c20f3614e7c39fb",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/deprecation-and-migration/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "deprecation-and-migration",
+      "bytes": 12516,
+      "lines": 247,
+      "sha256": "92d9846321fab624eded7ac55d19a7738cfd2321c2be2e35eb153dcacf7359de",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dicom-metadata-extract/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dicom-metadata-extract",
+      "bytes": 3308,
+      "lines": 70,
+      "sha256": "8763689908f601dfe6c4711155aa833a614cbef5dae2e132d5ddcebcfd505578",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dicom-series-preflight/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dicom-series-preflight",
+      "bytes": 3418,
+      "lines": 75,
+      "sha256": "7c2889a62aa1f0da6a79bd804ab648970f6c2c479213e13209c8adcd8bbcdfab",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dicom-series-to-volume/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dicom-series-to-volume",
+      "bytes": 3663,
+      "lines": 71,
+      "sha256": "d68facd9da9782026592856c7e393fbb33319ddeb6a44b894e3de9bfca724243",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/digital-health-clinical-asr-build/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "digital-health-clinical-asr-build",
+      "bytes": 20128,
+      "lines": 259,
+      "sha256": "e4a225096846d14ac1669fb31b73419aa5e70d62de0f9be017735841e351ee40",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/digital-health-clinical-asr-eval/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "digital-health-clinical-asr-eval",
+      "bytes": 18917,
+      "lines": 231,
+      "sha256": "c4bd891f9ffc7ce99d8553fbb53b939b6cb5e58375ebe9c23f712993ce928d5a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/digital-health-clinical-asr-finetune/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "digital-health-clinical-asr-finetune",
+      "bytes": 20462,
+      "lines": 277,
+      "sha256": "d15f3b9ff5cae765c2ed5df772cdac6c961f7b86f0da6b7c6427d37cdddd35f1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/digital-health-clinical-asr-setup/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "digital-health-clinical-asr-setup",
+      "bytes": 18547,
+      "lines": 265,
+      "sha256": "6b2ef2b91ac8c6b426df24a0f9d3f2188a755a28d73a13e694561b2a1a208233",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/documentation-and-adrs/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "documentation-and-adrs",
+      "bytes": 8734,
+      "lines": 278,
+      "sha256": "7fed35f9c5b95d8e3623ad24d78d209c3267ab62d7157fc03954c76a7e58adf4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/doubt-driven-development/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "doubt-driven-development",
+      "bytes": 16487,
+      "lines": 243,
+      "sha256": "59aef769adeae40aad67a1d54474aaf914ea7ecdfc2a4752a54840a8d29f80de",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dynamo-interconnect-check/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dynamo-interconnect-check",
+      "bytes": 6565,
+      "lines": 160,
+      "sha256": "727bff57fc862ddc99b8542dd19a391fdb2f5586f134ccab8302b8054789e2ea",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dynamo-recipe-runner/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dynamo-recipe-runner",
+      "bytes": 7549,
+      "lines": 213,
+      "sha256": "19bedae8fcc82c3abd8564390bfc839fc9328007f0f53f841f1c9058418e3a2a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dynamo-router-starter/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dynamo-router-starter",
+      "bytes": 5886,
+      "lines": 174,
+      "sha256": "5278203f4d8866b95cfeacf444d0a31e49e80d9ab7f290673c9c536ee24b4d99",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/dynamo-troubleshoot/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "dynamo-troubleshoot",
+      "bytes": 5295,
+      "lines": 165,
+      "sha256": "81ee753dcaa82abf58212b66b52f2e0480462d7c2f8ffd8b65f7ef7130b5eddc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-create-datasource/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-create-datasource",
+      "bytes": 10960,
+      "lines": 347,
+      "sha256": "779f00ee9036ed42152b497a681b904e28c0ff458e79c77d3dc75bb7faf3ccc9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-create-diagnostic/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-create-diagnostic",
+      "bytes": 15160,
+      "lines": 364,
+      "sha256": "b14a6e03bef3dd5e683f6ea2236405afbacf5aa3d8639e6725edb778283cb546",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-create-prognostic/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-create-prognostic",
+      "bytes": 10553,
+      "lines": 300,
+      "sha256": "7fa56e7e9b928d94102f6b853448df2399242f33bd7c1a9adb8f502f563b0dbf",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-data-fetch/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-data-fetch",
+      "bytes": 8944,
+      "lines": 247,
+      "sha256": "4340890ed5282fe728a640aa3aec276e2ee00d4a5ef49e644c4ed618ce5ee966",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-deterministic-forecast/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-deterministic-forecast",
+      "bytes": 5636,
+      "lines": 148,
+      "sha256": "ad1be92f9ce8d9c7b5b81ac517b3f368283d7db3d85b6e63178a43549633de73",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-discover/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-discover",
+      "bytes": 8734,
+      "lines": 186,
+      "sha256": "73ff79a07e79b82ab032bcfd09c5344e25206562a66b115546c947f6ff98eb7d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/earth2studio-install/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "earth2studio-install",
+      "bytes": 6774,
+      "lines": 193,
+      "sha256": "529f83cf870140fc62f2da5048fecff14877912b2b1e57a0de378cabfa80de3b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/ffviii-gunblade-duel-production/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "ffviii-gunblade-duel-production",
+      "bytes": 3128,
+      "lines": 48,
+      "sha256": "901ee851a4aaed7fcd031112d99667b43bd1b8054678c14c4df3567822f819c3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/frontend-ui-engineering/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "frontend-ui-engineering",
+      "bytes": 10705,
+      "lines": 328,
+      "sha256": "9c284b1f06d617b289c0d250004af5cbaedd5135071e1b17c0211a0aa03a73a4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/game-audio-designer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "game-audio-designer",
+      "bytes": 7529,
+      "lines": 116,
+      "sha256": "9a8f621d89129a07af7b94c3387af9d0d0677e9090d4a22d4f3dc4c3bbf704a5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/game-audio-reactive/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "game-audio-reactive",
+      "bytes": 4130,
+      "lines": 93,
+      "sha256": "83d845e0bbf90cdc8f327b9e4b4973d44bce1b38da77c4b94767140bb237b3a5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/game-build-flow/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "game-build-flow",
+      "bytes": 5085,
+      "lines": 76,
+      "sha256": "e6f5e29d73430ec49ff95f0b36df870d9c89bd8b793752c375bd064b5bd64d1f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/game-developer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "game-developer",
+      "bytes": 9726,
+      "lines": 173,
+      "sha256": "f2b8ad705d970be92edb8ed7e2834fad06b6159380b67ea93d0b2cd03f76baa5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/gamepad-input-specialist/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "gamepad-input-specialist",
+      "bytes": 6422,
+      "lines": 78,
+      "sha256": "46031b8bb0105be080207e3152d5e8156706f7994a35cbf4dd1430fa70396415",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/git-workflow-and-versioning/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "git-workflow-and-versioning",
+      "bytes": 14000,
+      "lines": 355,
+      "sha256": "51677cf03845dd29d08ea4d3125665057b720aea3dccc572f25d8b172409ece6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/hero-sprite-scaling/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "hero-sprite-scaling",
+      "bytes": 10564,
+      "lines": 156,
+      "sha256": "5d58bce11ecf6ca4af78257327cd50cf5f9a840a5ea55811a48a7a88fbd20907",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-install-conda/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-install-conda",
+      "bytes": 8042,
+      "lines": 166,
+      "sha256": "b8b5e86ed0732100cbad5ef6b823baee59a92962d76aaa7411f3b6be4a4ff762",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-install-container/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-install-container",
+      "bytes": 7639,
+      "lines": 158,
+      "sha256": "33615374c6a5661c9311ad6dea4cbb75938bc16e4e7e62dfc426565180070a54",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-install-debian/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-install-debian",
+      "bytes": 6361,
+      "lines": 141,
+      "sha256": "2eb6afcb28ff1003ce169bdc42c854280259deac7cdfb2c8ff48691961a5f2a1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-install-source/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-install-source",
+      "bytes": 6292,
+      "lines": 157,
+      "sha256": "479688edba8adc66493c540b5ef10ee68cb09f3418feb3962a9c777e4f05e2b5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-install-wheel/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-install-wheel",
+      "bytes": 6453,
+      "lines": 135,
+      "sha256": "a7a5187ad1802e7116f0ccc9380e55504df68a3271e5bb3ee3650a6e28288469",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/holoscan-setup/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "holoscan-setup",
+      "bytes": 10350,
+      "lines": 176,
+      "sha256": "aba3b1ac621b1be2a6181567523a9a567eea77bd292d33fc6977c0455f24b23c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/hsb-app/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "hsb-app",
+      "bytes": 16955,
+      "lines": 395,
+      "sha256": "0c05e43a4f8bfba77522d14f6a1f28694c0480d6c65cf7f173c74dd9330b6a9d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/hsb-flash/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "hsb-flash",
+      "bytes": 17936,
+      "lines": 237,
+      "sha256": "bc681912c9a5187a417b62c6c157c40a29079a6b936e2c15e124a51d75e74cdc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/hsb-setup/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "hsb-setup",
+      "bytes": 20009,
+      "lines": 356,
+      "sha256": "5c65364dd5263a2ae3ff33e376590f653632450445261da618f230b4477f95be",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/hsb-test/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "hsb-test",
+      "bytes": 17065,
+      "lines": 386,
+      "sha256": "95e69bd3e1bb7b910861e0df33a47aea881e4255697c152379caa4af96bc8ed9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/idea-refine/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "idea-refine",
+      "bytes": 8111,
+      "lines": 178,
+      "sha256": "79e773058963adc7646b0115b4f8a4afc974c5ff95843e4ef1cafff3cb51899e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/image-production/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "image-production",
+      "bytes": 7495,
+      "lines": 107,
+      "sha256": "3452bf37a350334aae77622522fec32e7798e16b8bffe725a1233450444f23fd",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/incremental-implementation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "incremental-implementation",
+      "bytes": 9249,
+      "lines": 249,
+      "sha256": "960f2ed08ccdd51527c347d29d2d00c80edb9992e95d67030d8a289ba04eed4e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/interview-me/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "interview-me",
+      "bytes": 14359,
+      "lines": 225,
+      "sha256": "1d94741d10d2c826cd0c191aea3981ee94c8abb27ef2a166f6a372117d06448f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-build-source/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-build-source",
+      "bytes": 20489,
+      "lines": 411,
+      "sha256": "d2f0d64e6c9272e557e2b150e527d234cdaf176296443267f45ec3f9d2ff9061",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-camera/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-camera",
+      "bytes": 10038,
+      "lines": 198,
+      "sha256": "6081cb5fb824e43d7b6c84a431063e8dcf6f896e0ff17891658d0d1d3cd2c09b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-clocks/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-clocks",
+      "bytes": 19416,
+      "lines": 288,
+      "sha256": "aaf64a450ec75065eb153198eb6a84830244c0f371291276cf2a387c20aceac0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-fan/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-fan",
+      "bytes": 17547,
+      "lines": 341,
+      "sha256": "0e43eae896cc49ea37aa55a4b7278e0284c9040667137302f8d57fb38fb15f93",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-mgbe/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-mgbe",
+      "bytes": 8439,
+      "lines": 163,
+      "sha256": "979e27ca3bdba58fdb994b8d25aef27b59a4a3696a26e70e01556f7abd5dd300",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-nvpmodel/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-nvpmodel",
+      "bytes": 18207,
+      "lines": 323,
+      "sha256": "86fd7d31a6f3bf9545492f26b030d745e1ebde2da1ee43bc32b15be5f80b3219",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-pcie/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-pcie",
+      "bytes": 9528,
+      "lines": 192,
+      "sha256": "ff590536b29a0aff74206097a0d49abc354215280486a8c1613665a50529f081",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-pinmux/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-pinmux",
+      "bytes": 9910,
+      "lines": 187,
+      "sha256": "f5b62da6f589da1754ceb53077ee2f29cfa9959e2411aea830e9ceeaa8e32c1f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-uphy/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-uphy",
+      "bytes": 9687,
+      "lines": 199,
+      "sha256": "43b683a0ae7d5a20fa45eaeff96fe774000b5a4eac96f19c91666a22c44387dc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-customize-usb/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-customize-usb",
+      "bytes": 8580,
+      "lines": 183,
+      "sha256": "3e9011869134431d9f3a75cf187856975cfba9d8a5b97c534802a6d63ceebed6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-derive-carrier/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-derive-carrier",
+      "bytes": 17248,
+      "lines": 279,
+      "sha256": "34b53fb00f21bb10713bf332a0b5012308a9852712596d247f5614fb9bfed7b1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-diagnostic/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-diagnostic",
+      "bytes": 10981,
+      "lines": 147,
+      "sha256": "975addc7ad858b7058a865c9584457d808afbf78ce2439ea8bdc1dc3e546b677",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-download-bsp/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-download-bsp",
+      "bytes": 12115,
+      "lines": 291,
+      "sha256": "acd670f5fad92ede67710350e0c6f773a4286df7db224f39f99388f1a64d3920",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-flash-image/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-flash-image",
+      "bytes": 20081,
+      "lines": 312,
+      "sha256": "f64832ef6008dadc2cffec116e0559d885c4273612edaced351cd7673aec3203",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-generate-kb/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-generate-kb",
+      "bytes": 15583,
+      "lines": 347,
+      "sha256": "e5cf62bc992a9a663c3a7a1541afa264c58058d4a19713d397279778e4b7bd49",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-headless-mode/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-headless-mode",
+      "bytes": 7821,
+      "lines": 104,
+      "sha256": "e088424f776bfecd393d0bae328e3ef45a945ef09f28ced5684c66ef25f33f87",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-inference-mem-tune/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-inference-mem-tune",
+      "bytes": 11630,
+      "lines": 194,
+      "sha256": "d2570d7a4bd3123fe26a669f38c139991b7efe601e1e6359062f9d415eb57763",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-init-image/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-init-image",
+      "bytes": 7491,
+      "lines": 206,
+      "sha256": "04a726d42f50e1dee90fb1e00810c84dc26c5269bc2fce5af6be5233283bea67",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-init-source/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-init-source",
+      "bytes": 17484,
+      "lines": 419,
+      "sha256": "e773329736accb80f6df97eeb07c5f6d0646570d8a4f7f972c2d16c58a49a6e1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-init-target/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-init-target",
+      "bytes": 19529,
+      "lines": 393,
+      "sha256": "02752fa5d81d298366b246416d0246eccd8da4bc5404fbdb32e5e9feb71cbc05",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-link-docs/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-link-docs",
+      "bytes": 13655,
+      "lines": 265,
+      "sha256": "f164034a91478442f0a9b698ec587bf2debfba94ae1fe0ae7bbe93ddb69d3379",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-llm-benchmark/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-llm-benchmark",
+      "bytes": 12510,
+      "lines": 268,
+      "sha256": "9875b442d2183d045dd1d4e4e077ede0e7aca927932dbf8b7746eea1d2626f77",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-llm-serve/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-llm-serve",
+      "bytes": 12287,
+      "lines": 197,
+      "sha256": "2db1577d2127f4dbe8b2edf1b4a4e435b80d3fd2e2b11631ada8f1771dd2cd7a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-memory-audit/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-memory-audit",
+      "bytes": 9254,
+      "lines": 140,
+      "sha256": "74855ac318b9e164e31374815e7eeb821b8d2a9ad29cd3530acb78ac56be1117",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-optimize-memory/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-optimize-memory",
+      "bytes": 8383,
+      "lines": 235,
+      "sha256": "2dc7a0f0ca8579b74d082462939722765730e3fa6f608f78d3b81353992cfa93",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-package/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-package",
+      "bytes": 7445,
+      "lines": 109,
+      "sha256": "1de005b79b4d3d97b5101e5b038fadf9c852a255583281c03c018c84a9da40b3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-print-bsp-info/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-print-bsp-info",
+      "bytes": 5232,
+      "lines": 124,
+      "sha256": "c33f47c2027b24ff1f50c7b41b9bdb9dac13151f293b13b224a3ceb4ea3090ef",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-print-device-info/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-print-device-info",
+      "bytes": 5342,
+      "lines": 131,
+      "sha256": "ec358299820aac7a12d9a6ffae6691aeded2e5a5b23bc9a19376deec4cb1cc37",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-promote-image/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-promote-image",
+      "bytes": 20419,
+      "lines": 373,
+      "sha256": "18d010d925c72ad9ed4c01f6af6e378d38d488145aefa8ba5c70652bd9750ff3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-quick-start/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-quick-start",
+      "bytes": 19279,
+      "lines": 400,
+      "sha256": "ca804ff04ff04cfef44b0baae6a49bce0eedb50d8466449d53a696799466c235",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-set-target/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-set-target",
+      "bytes": 7120,
+      "lines": 169,
+      "sha256": "a2691433613331b126b0d3f91a439b75e32439fac33227f6e2221630e7cecd5a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-speculative-decoding/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-speculative-decoding",
+      "bytes": 4930,
+      "lines": 98,
+      "sha256": "8cead9f312b19ef870c61246b162501e5008614c2bde22d9907e4778d4602069",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/jetson-validate-image/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "jetson-validate-image",
+      "bytes": 14207,
+      "lines": 267,
+      "sha256": "98c8a04a00ba1344cc8569395d65c9e26f5c5b9dd0427b69e8235bc6a293ecde",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/launch-nemo-rl/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "launch-nemo-rl",
+      "bytes": 18144,
+      "lines": 280,
+      "sha256": "21862c7b9a39e5d7f74fd5e48f76cc9d6d477aedf26b6bdbb3c5084d8718202f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/level-designer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "level-designer",
+      "bytes": 5384,
+      "lines": 83,
+      "sha256": "693c19b5e4e242726b96d7352538ac89590728321255c4bb1be3c81c9b0032c9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/mcore-create-issue/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "mcore-create-issue",
+      "bytes": 6562,
+      "lines": 190,
+      "sha256": "626d5a9f8c3313b58a0caefee4641d4334fe8c9ef648cd1746bec5d3bf075b20",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/mcore-linting-and-formatting/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "mcore-linting-and-formatting",
+      "bytes": 1688,
+      "lines": 60,
+      "sha256": "eafd71eb559f7d16cc5bee0e5d7c3d4628474368ab548fae012e06ed080f0567",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/mcore-run-on-slurm/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "mcore-run-on-slurm",
+      "bytes": 7371,
+      "lines": 136,
+      "sha256": "3a04e1a0a2cdf6464de332ebc1d541dcdab4e11bf559121c9027eeb3a4f7b1b1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/mcore-split-pr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "mcore-split-pr",
+      "bytes": 4566,
+      "lines": 82,
+      "sha256": "54ccb0324f62dac85e2fae5d20a759457774697d34f8574f5f1b9fdd1642b105",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/mcore-testing/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "mcore-testing",
+      "bytes": 7652,
+      "lines": 209,
+      "sha256": "1c1750d8124d4d189021aecd1d2ecdf2a8ff0a381473f139798843287368bba1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/modern-pixel-art-hd/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "modern-pixel-art-hd",
+      "bytes": 4997,
+      "lines": 81,
+      "sha256": "4c5f11af5d9582aa7a3f4f332c808e14f3fc07445a8a33b6178ad09fb7d586e4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-automodel-distributed-training/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-automodel-distributed-training",
+      "bytes": 19844,
+      "lines": 611,
+      "sha256": "d0025667ec467a1e9a4b9dc2a08bc1fce9aad6a645a4a13f126ccf1ede2edc6d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-automodel-launcher-config/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-automodel-launcher-config",
+      "bytes": 9024,
+      "lines": 224,
+      "sha256": "df73df82973f2f986e0e8dbcdadadafcc08f0a6ced5b91d0520ccf57c824da01",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-automodel-model-onboarding/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-automodel-model-onboarding",
+      "bytes": 18538,
+      "lines": 406,
+      "sha256": "b444a9815b702dc5fa1d96c8e09f0c44190bbbab45c028b6dc502af36b6ae6d9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-automodel-recipe-development/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-automodel-recipe-development",
+      "bytes": 11731,
+      "lines": 335,
+      "sha256": "1be376b8fc31682c5200ef24f34f3e2d447d1c18067235157366136e1a8a5046",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-data-designer-plugin/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-data-designer-plugin",
+      "bytes": 6093,
+      "lines": 111,
+      "sha256": "b8a639ce7e60bc721898bde13ebaf5dfff927aebf747f545768479054a9f76df",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-evaluator-plugin/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-evaluator-plugin",
+      "bytes": 5370,
+      "lines": 145,
+      "sha256": "49c1512bb8929ba9f652fb094bfab70b1f9e946c50d5bef364454fab28221628",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-mlm-bridge-training/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-mlm-bridge-training",
+      "bytes": 6469,
+      "lines": 178,
+      "sha256": "098d19257859a581df51f9bbed571b9d9f84143cb6fccc4298ab2bbf00c177a2",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-multi-node-slurm/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-multi-node-slurm",
+      "bytes": 16144,
+      "lines": 360,
+      "sha256": "8aff1ab52805db66e0b716002c7728224e2728b082c868773119d273e73aa478",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-activation-recompute/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-activation-recompute",
+      "bytes": 9405,
+      "lines": 208,
+      "sha256": "7eccf3de1c176ad3065b9b0932f5ed654b7c2bf1adcb0a84101148d3add2cb51",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-cpu-offloading/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-cpu-offloading",
+      "bytes": 9559,
+      "lines": 231,
+      "sha256": "05b767a8e1f5e44558c29e9bbbdee38988fd905f2b3970a42504decca8dc99cf",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-cuda-graphs/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-cuda-graphs",
+      "bytes": 14461,
+      "lines": 346,
+      "sha256": "f3bfa1f82bfaa237dffd6764e3fca125c1ff203b62c51b830c0a099548320c22",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-expert-parallel-overlap/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-expert-parallel-overlap",
+      "bytes": 11844,
+      "lines": 303,
+      "sha256": "6d8ad52d49ba4562b24df0a2287f0a7515397ed1c6ee8d350cc20bd990af1ea5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-hierarchical-context-parallel/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-hierarchical-context-parallel",
+      "bytes": 5786,
+      "lines": 145,
+      "sha256": "15af5ba9d6943cd3d4d0a43e3dcbc4cfbb461011ac42389c49492e0093845861",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-megatron-fsdp/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-megatron-fsdp",
+      "bytes": 4016,
+      "lines": 124,
+      "sha256": "2336138873c44a30f71c9b3cf5f22c8843b29f94a56d5173e6b9dc01670a13e9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-memory-tuning/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-memory-tuning",
+      "bytes": 14759,
+      "lines": 326,
+      "sha256": "d04747c07f3c07ebe86392888d5814b6b39cbd82ebfd5ee4a1c2a2336a8b1ff0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-comm-overlap/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-comm-overlap",
+      "bytes": 5212,
+      "lines": 135,
+      "sha256": "574b3fe672213c83678e3d0a3f58886c78190b903a44ed8650070fb461b83a22",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-dispatcher-selection/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-dispatcher-selection",
+      "bytes": 8147,
+      "lines": 197,
+      "sha256": "c2f9b22470917fd5eb30c1d67b2f551549fd6a11487cb993aa188debf089c1a6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-hardware-configs/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-hardware-configs",
+      "bytes": 6190,
+      "lines": 169,
+      "sha256": "a53fe34d94380bd19db8a7336e3eb5c37e14102d3bf857131fe338bd5c9db2cd",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-long-context/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-long-context",
+      "bytes": 5074,
+      "lines": 139,
+      "sha256": "8c7289a2802ebd45aef6f026b1bf9cafe4266e532b7fba68f3d18757ec7f1f7d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-optimization-workflow/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-optimization-workflow",
+      "bytes": 7438,
+      "lines": 179,
+      "sha256": "9b94305f229cd1aba067a7860e6809407bd4f57f4038b2fc78b32475fcc651b1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-moe-vlm-training/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-moe-vlm-training",
+      "bytes": 5277,
+      "lines": 136,
+      "sha256": "adc5427c5a5797a92ddcc6df7df7fe1575fd6cef552e8803f576e7263cb65b11",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-parallelism-strategies/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-parallelism-strategies",
+      "bytes": 9877,
+      "lines": 297,
+      "sha256": "23358acab497498e7faee8200f17504f30085a4e52900d41e9b4b463d96f35de",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-sequence-packing/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-sequence-packing",
+      "bytes": 5039,
+      "lines": 144,
+      "sha256": "2582ad8edc0609b8c1e385d948974ce4fe4794ee3c7c72a1cd441a679aae5915",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-perf-tp-dp-comm-overlap/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-perf-tp-dp-comm-overlap",
+      "bytes": 3813,
+      "lines": 119,
+      "sha256": "fcfbe68677688d6ea7e44836d2b932ec16a37f66aedbf32c7d90e7eb8336bc9d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-recipe-recommender/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-recipe-recommender",
+      "bytes": 19718,
+      "lines": 434,
+      "sha256": "830d44599888a79d7eadb0785eed758046c96bfbf5339e7d5c3e9e6bc7d9a256",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-mbridge-resiliency/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-mbridge-resiliency",
+      "bytes": 11631,
+      "lines": 307,
+      "sha256": "957185d0c1287d7df7479ad122db4386c7383d2c3360137816b7e03e6c9015db",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-retriever/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-retriever",
+      "bytes": 3454,
+      "lines": 37,
+      "sha256": "fbe1d30cd59316126e026cdcf9d2d77dcc3cf2c0824ed859097d49e103f68725",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-rl-auto-research/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-rl-auto-research",
+      "bytes": 9276,
+      "lines": 108,
+      "sha256": "e9d723a712c9543d3b17cf1aa0ea9cc50835205805b1bb11aabb4114a8432dba",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-rl-brev-etiquette/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-rl-brev-etiquette",
+      "bytes": 5345,
+      "lines": 87,
+      "sha256": "841be1db116239465f2ae2f33b6b1be3ac95888afcb0c63ea1186f2981669183",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-rl-docs/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-rl-docs",
+      "bytes": 1452,
+      "lines": 24,
+      "sha256": "2321011b7636c67008de7ad2845f1504bd0fa597de0c7621355f9b0ae81db224",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemo-rl-session-memory/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemo-rl-session-memory",
+      "bytes": 5611,
+      "lines": 161,
+      "sha256": "3f2c8e64a2083c2f1c1f68517265a59afd8448a35924a23889ac6fb2cb671714",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemoclaw-user-guide/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemoclaw-user-guide",
+      "bytes": 4423,
+      "lines": 68,
+      "sha256": "8744db06232e15281c3852a53039cfd1bbb598bd985199901c2106b3b09c2c24",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemotron-customize/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemotron-customize",
+      "bytes": 16849,
+      "lines": 322,
+      "sha256": "82edcf7fa65754aba534a940d470701effa261d1e57b663b64b88f54c58e203d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemotron-policy-generator/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemotron-policy-generator",
+      "bytes": 20104,
+      "lines": 222,
+      "sha256": "32a92ef8a37b2025954a267595a3980938eb2da876f5cf13e1284d36b83079d9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemotron-retrieval-recipes/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemotron-retrieval-recipes",
+      "bytes": 9389,
+      "lines": 138,
+      "sha256": "6f6cf4e437093704a6770343085a21e713299b008b55f12c9fab63f6b8bf6592",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nemotron-speech/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nemotron-speech",
+      "bytes": 9607,
+      "lines": 156,
+      "sha256": "4dfdb67e1cf51f678578866193129c23bcf6585b846e46b99d15ca55db3d88b3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-generate-ct-rflow/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-generate-ct-rflow",
+      "bytes": 11980,
+      "lines": 211,
+      "sha256": "4fe87d1bfa3e2d14913cc588942167a79c0a5a689ecd678f66e7535daae37db3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-generate-mr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-generate-mr",
+      "bytes": 7913,
+      "lines": 146,
+      "sha256": "d106261abcfeb87484aca7c5f01eb980a613b6fd3e88867d72b6c3f2c7a633aa",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-generate-mr-brain/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-generate-mr-brain",
+      "bytes": 7873,
+      "lines": 145,
+      "sha256": "c4f3a2617b6bd8b5da2babea34afac3195bab4d1f24b1e837461bf0306fad394",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-generate-mr-brain-finetune/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-generate-mr-brain-finetune",
+      "bytes": 12567,
+      "lines": 177,
+      "sha256": "8866008c8db21e9707796329ce3aff54613c69fc22ae9c4929ca69c4446c6854",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-generate-vae-finetune/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-generate-vae-finetune",
+      "bytes": 12051,
+      "lines": 182,
+      "sha256": "fba65de73b529f5c0739e91a8c70694ded6dfdb9a05c49fc56064f1e0ee058f5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-reason-cxr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-reason-cxr",
+      "bytes": 15939,
+      "lines": 332,
+      "sha256": "426893e9eeb85601deab3c77251dbc2368e38c0fca97e891fda33f72112e915a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-segment-ct/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-segment-ct",
+      "bytes": 6867,
+      "lines": 139,
+      "sha256": "e87fc7313e75bc8586eeec54ed54b2060fbce011bd649e9e7431d3dd8e93d77f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-segment-ct-finetune/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-segment-ct-finetune",
+      "bytes": 8832,
+      "lines": 167,
+      "sha256": "b95eee344d608ef999fb35b8e05eaeef3665ab84b62439ff7f3e7359278bd8fb",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/nv-segment-ctmr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "nv-segment-ctmr",
+      "bytes": 8681,
+      "lines": 157,
+      "sha256": "60ea3ff248ae9f0dbf56c31ee60289d3f1ceddecbd16f3281d0d66980f22341f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/observability-and-instrumentation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "observability-and-instrumentation",
+      "bytes": 11047,
+      "lines": 203,
+      "sha256": "40c59a0c3ba28f5697600add521e38f81f880f986317628cdc0df9bdb8acf126",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/omniverse-cad-to-simready/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "omniverse-cad-to-simready",
+      "bytes": 18251,
+      "lines": 290,
+      "sha256": "36a20a52589cc23e59f225e8796c3819217b0da7cc1aa301c610dca779c2c90e",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/omniverse-realtime-viewer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "omniverse-realtime-viewer",
+      "bytes": 7750,
+      "lines": 139,
+      "sha256": "bc3fadb94ab21e5a8439e58e80681468a286a97421e67284c964ce203705a161",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/omniverse-usd-performance-tuning/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "omniverse-usd-performance-tuning",
+      "bytes": 18281,
+      "lines": 275,
+      "sha256": "d16b7205a51d8b378c31dfad508bb4f9068a97cefcbdf16099be9d403bd306a8",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pack-doctor/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pack-doctor",
+      "bytes": 6196,
+      "lines": 89,
+      "sha256": "4da41dc0655cd6cad337bd2fd0cd6420a159675a6a1b90327fffa0c686584dde",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-cinematic-take-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-cinematic-take-director",
+      "bytes": 9477,
+      "lines": 158,
+      "sha256": "3e6d69c77930352d83b754be12fbfa63473bb98e1b87a72e3ac6587e756c0977",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-cinematography-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-cinematography-director",
+      "bytes": 4611,
+      "lines": 46,
+      "sha256": "e2e049a4196d7bd403a89aba1e49b88f671c90c49e95eb6843523188bbdd1b01",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-ecosystem-orchestrator/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-ecosystem-orchestrator",
+      "bytes": 7317,
+      "lines": 114,
+      "sha256": "c2d112e9f5137e1d39ff843255640878e25e8f7505f6b7a46a6aa0f682794b70",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-film-editor/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-film-editor",
+      "bytes": 4469,
+      "lines": 46,
+      "sha256": "a09ca07b821225772ad5c2b30c3bfa34930eb9799124c4bd0ad8a4263ed48d9b",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-live-action-combat-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-live-action-combat-director",
+      "bytes": 8088,
+      "lines": 100,
+      "sha256": "85d590607aa62d7dd6f5a416f1d5e903836f1b9011731534da3db333313e6e54",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-live-action-continuity/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-live-action-continuity",
+      "bytes": 6568,
+      "lines": 85,
+      "sha256": "8d6c4160339d054288366b69a9d74a6ae6f8247c9aff271b45e15a9bf9ddfe5a",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-live-action-kinetic-supervisor/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-live-action-kinetic-supervisor",
+      "bytes": 6431,
+      "lines": 86,
+      "sha256": "ed18114fd9aeb3bde632f40674d48c88be28124920c446beb3fa0bced1b23e1b",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-live-action-qc/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-live-action-qc",
+      "bytes": 7609,
+      "lines": 81,
+      "sha256": "4ddfdd6e87bb29576e0ee93f6d156fb65bedbf0341e8bc1b5f9f5b838cb82d72",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-live-action-showrunner/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-live-action-showrunner",
+      "bytes": 7497,
+      "lines": 94,
+      "sha256": "868cb4be954c61947316d90a2d53a7e8e9cf98d18d348a7bed402270f0ae8b02",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-messenger-turbo/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-messenger-turbo",
+      "bytes": 3686,
+      "lines": 46,
+      "sha256": "ffbb77d005e96e2cfa36e0846d2884b3868ab60bf0fec1ffa44cccdba4025598",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-online-security-guardian/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-online-security-guardian",
+      "bytes": 5043,
+      "lines": 73,
+      "sha256": "875b8d879546f0be59188b4335d3d435f49fbdbcfe2c707212743e634fc9d4f5",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-performance-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-performance-director",
+      "bytes": 4487,
+      "lines": 53,
+      "sha256": "35d810c6e27c713a9b681417ddd54073dd8ff8afdb3c4c581de9c07e506e3658",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-video-motion-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-video-motion-director",
+      "bytes": 11485,
+      "lines": 173,
+      "sha256": "705a72a7b992c4d7a1167a166fb227f1ad2fd98dc046cebdbf966aaf7d25dd9b",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-video-production-lead/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-video-production-lead",
+      "bytes": 5802,
+      "lines": 49,
+      "sha256": "d960677985340c4dc791f010a66934070aac6b638cf8013d20797dd97c942f83",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/pemara-voice-performance-director/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "pemara-voice-performance-director",
+      "bytes": 9682,
+      "lines": 166,
+      "sha256": "ef1af3048855985a0d5999c89b51abc7d58830672043f9c6729b56b93bcb54f2",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/performance-optimization/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "performance-optimization",
+      "bytes": 11658,
+      "lines": 350,
+      "sha256": "c56f6059fed0b77c50c946e38275f04c8b297657f3742d5782ee564514ecc4dc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/performance-optimizer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "performance-optimizer",
+      "bytes": 8616,
+      "lines": 237,
+      "sha256": "36630b2dc8ee99cdcfca7dde851071902581a9c5f4fd000af24fb579a7171624",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/phaser-16bit-platformer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "phaser-16bit-platformer",
+      "bytes": 10118,
+      "lines": 247,
+      "sha256": "9c25f3f8c958d843c9d369c07edcd5c78a24e0fa2ed0b809f3bd0a9821584488",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/phaser-animation-turbo/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "phaser-animation-turbo",
+      "bytes": 3961,
+      "lines": 75,
+      "sha256": "192ac12c302cbaeabc2cc0f418534d715643f6883b7ec4aa09dfcef695987cc5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/phaser-platformer-architect/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "phaser-platformer-architect",
+      "bytes": 26781,
+      "lines": 377,
+      "sha256": "2f9d3353c3262cd09a9ba81aabee400b88cbc9242706710e810ae672db6d62df",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physical-ai-defect-image-generation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physical-ai-defect-image-generation",
+      "bytes": 20214,
+      "lines": 212,
+      "sha256": "0fc6b2598b110f4344b63c10da1822216efb61f9a672e8e6f2d8fef2f976c84a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physical-ai-infrastructure-setup-and-resilient-scaling/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physical-ai-infrastructure-setup-and-resilient-scaling",
+      "bytes": 11329,
+      "lines": 209,
+      "sha256": "dfee683cda96f69ccf5b629f83c8cf5c943e0b7f502b9434733d0262fe9c7698",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physical-ai-neural-reconstruction/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physical-ai-neural-reconstruction",
+      "bytes": 17055,
+      "lines": 326,
+      "sha256": "2bdc02a773d75972d175f3ddb6b7ff0728181e88df1fccbd0f62574d55f8508b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physical-ai-people-attribute-search/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physical-ai-people-attribute-search",
+      "bytes": 11141,
+      "lines": 268,
+      "sha256": "53d91b9da4533f9e5ecc40b94816e7c52a5bb81db99829dcb60f0fba972a4f58",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physical-ai-video-data-augmentation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physical-ai-video-data-augmentation",
+      "bytes": 19439,
+      "lines": 451,
+      "sha256": "57adde2af333d49b0cf91c7bbf0cc14bbad53fa00475c675762a88c538da5cc0",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/physicsnemo-discover/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "physicsnemo-discover",
+      "bytes": 7567,
+      "lines": 103,
+      "sha256": "c6147b7e08d96305ded980558eeb2f9d9fa0c4c33452c6410bfe1485e6041e70",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/planning-and-task-breakdown/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "planning-and-task-breakdown",
+      "bytes": 7632,
+      "lines": 234,
+      "sha256": "d87ff6bb23aa791f78a504d784e903bb13602975923f884af5d13d5b66b1651a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/project-planner/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "project-planner",
+      "bytes": 17135,
+      "lines": 414,
+      "sha256": "f80374e8229c0280d4e9a1e7ff4b302d33947a5e2458ff86e59e5dc99ef489c7",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/qa-automation-engineer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "qa-automation-engineer",
+      "bytes": 7721,
+      "lines": 157,
+      "sha256": "8f17982c3e9303d566f3388796f89e843dd6dd5cf58e607f71e49e3387fa280a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/rag-blueprint/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "rag-blueprint",
+      "bytes": 11558,
+      "lines": 204,
+      "sha256": "1b5bd785b8c390eae0869bd92e18e294561c3093ab51e56d1b09de758dd13add",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/rag-eval/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "rag-eval",
+      "bytes": 9545,
+      "lines": 130,
+      "sha256": "df80825698eaba8a3a7b3f53980afb75d0e4996aca100ada91f986869868c20d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/rag-perf/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "rag-perf",
+      "bytes": 16525,
+      "lines": 179,
+      "sha256": "5d97cabec8154e930b2a0d94ad1a075ad4e6145b3e5e5b2a12c16c0020ef7b32",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/saas-pentest-hardening/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "saas-pentest-hardening",
+      "bytes": 7994,
+      "lines": 147,
+      "sha256": "f76f2c2d02bb1fbe9a84d1bfaaa17b7a48c4067d09a52507b2c07effff3c05ec",
+      "metadata": false,
+      "nested": true
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/saas-pentest-hardening/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "saas-pentest-hardening",
+      "bytes": 5521,
+      "lines": 162,
+      "sha256": "17999453b80c107fd1039e25262e32b51bdd783173344f923adb1400cc2c0edb",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/security-and-hardening/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "security-and-hardening",
+      "bytes": 18878,
+      "lines": 461,
+      "sha256": "8fed058a520281384ed1bbfddbfb3d2b12479459231c67ae0d1f0d765bb52f95",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/shipping-and-launch/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "shipping-and-launch",
+      "bytes": 10045,
+      "lines": 310,
+      "sha256": "efc70a45ad6435d93f2b3cef16c125ff6d75a2383e49f30056fcba04b27d6e4a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/skill-card-generator/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "skill-card-generator",
+      "bytes": 6560,
+      "lines": 131,
+      "sha256": "f3834a985b7f62953f10aa4821b538ad3b0e01c7aab428558b3c35c0507194dc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/source-driven-development/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "source-driven-development",
+      "bytes": 8204,
+      "lines": 194,
+      "sha256": "b979e7531ea601ed14a090f32a5b135db517c48ab9821c5e8b09efd80f4ff4d8",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/spec-driven-development/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "spec-driven-development",
+      "bytes": 8527,
+      "lines": 206,
+      "sha256": "af5b873414a8b45b96b0d30d5297400f55eb3a56425161a088e470c14260a1e5",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/sprite-animation/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "sprite-animation",
+      "bytes": 5375,
+      "lines": 122,
+      "sha256": "b9d4f2af70e1667eb06dde2939d770d1ebd333ab5dc6b0a73742fbc70b16f734",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/sprite-image-reading/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "sprite-image-reading",
+      "bytes": 5112,
+      "lines": 120,
+      "sha256": "eecebe264517ca734ac7b312d1cf406e7d6f498534a66d4d426d48d8624cd82b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/sprunki-lora-trainer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "sprunki-lora-trainer",
+      "bytes": 3288,
+      "lines": 75,
+      "sha256": "57daa6fdfc0b0714ffa8a21189f8c317416f3cf81421d638ffe281abda230ffe",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-analyze-changenet-rca/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-analyze-changenet-rca",
+      "bytes": 6433,
+      "lines": 85,
+      "sha256": "850a53c4ce0e4c2f72b676ceacb4c6a9b8e4e5cce38485f172422a68f07fd1dc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-analyze-gaps-visual-changenet/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-analyze-gaps-visual-changenet",
+      "bytes": 16781,
+      "lines": 211,
+      "sha256": "f6b2db705e0af6879143fbba615ac9a8dbc2418c9f5582d56c3da97f73ceaa57",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-analyze-gaps-vlm-bcq/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-analyze-gaps-vlm-bcq",
+      "bytes": 3695,
+      "lines": 89,
+      "sha256": "988ab9a61699e23079ee9ccf43fd0d42aefdaf1d6deb98c05e1594506e325f13",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-convert-dataset-format/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-convert-dataset-format",
+      "bytes": 5201,
+      "lines": 137,
+      "sha256": "91cfd2703921bb3649be2d986502f7efdd65e5fbd8bf80699d84eb1d52648b2e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-finetune-clip/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-finetune-clip",
+      "bytes": 15353,
+      "lines": 196,
+      "sha256": "9c2145f71ac2cfd47632df05c36a475eef2b2f9b928479ba8c847d05de69b446",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-finetune-cosmos-embed/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-finetune-cosmos-embed",
+      "bytes": 14433,
+      "lines": 313,
+      "sha256": "cf95c812d9a24ee1c3711ae4dbe3f99d8b53b4461546d0e363c8e8d492b6601d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-finetune-cosmos-reason/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-finetune-cosmos-reason",
+      "bytes": 12619,
+      "lines": 202,
+      "sha256": "be852ba0f80fcd98ce365cd8b1065ccf440ad6a0b1162addfdb7af13645df77b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-finetune-huggingface-model/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-finetune-huggingface-model",
+      "bytes": 18363,
+      "lines": 372,
+      "sha256": "53d8333d4feb436d5d06f33e5d2b9e09b50c65e91b8d9869be2733c1c74f4048",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-generate-image-grounding/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-generate-image-grounding",
+      "bytes": 7954,
+      "lines": 125,
+      "sha256": "ec2e6e9c455568b006a8a79bf29c94a195930a666c11ea545ed79a5202b2614e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-generate-referring-expressions/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-generate-referring-expressions",
+      "bytes": 10333,
+      "lines": 142,
+      "sha256": "a90995d6c4c43ebe554ab21804594d70d7e44a97d72af03c8bf15a835b1ce90e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-generate-video-reasoning-annotations/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-generate-video-reasoning-annotations",
+      "bytes": 11250,
+      "lines": 182,
+      "sha256": "797a39ceeeff0a957ee8cc3b13d5f70d7be2eaef04c338aa8dd92ae7c336c978",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-launch-workflow/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-launch-workflow",
+      "bytes": 19029,
+      "lines": 393,
+      "sha256": "b6ceafd3a97f14bb3a7d54504538a04fc96d93906585ae9371f204ffb079f9c1",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-list-capabilities/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-list-capabilities",
+      "bytes": 3095,
+      "lines": 81,
+      "sha256": "3f9c3a46a60d9cc9c68582a2a4bd849ccaa15fe0d362e5240919ecde990d5f3a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-mine-aoi-images/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-mine-aoi-images",
+      "bytes": 12698,
+      "lines": 144,
+      "sha256": "a5d066edb917802460dd4dbe662855571f8ccef46d2666a23643c1a5244d7d95",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-port-huggingface-model/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-port-huggingface-model",
+      "bytes": 18191,
+      "lines": 206,
+      "sha256": "8a84f5f8c4c18c77012b774690b26364dbe86451775f5144f734ea4e6cbf4dea",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-route-visual-changenet-samples/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-route-visual-changenet-samples",
+      "bytes": 12743,
+      "lines": 269,
+      "sha256": "ae9e32160fffa846b05934a8bfd1fc43d7ec72e5cd35d80edd970b288a1592d6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-automl/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-automl",
+      "bytes": 17091,
+      "lines": 347,
+      "sha256": "29fc062974666326fd1c2700606481b6aaa8c2f9a04cf0efcbdf1f52fb5ca53b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-automl-deft-pipeline/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-automl-deft-pipeline",
+      "bytes": 17785,
+      "lines": 199,
+      "sha256": "87f9443e4f7c5b2ef2340fdcad3466d56f3dd7f12e7b113d84ba86bf2837fcee",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-deft-aoi/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-deft-aoi",
+      "bytes": 14456,
+      "lines": 155,
+      "sha256": "37b9d94e7e1a432a2a5e2a08f6e653913d829d5ca43fa9b2c7d804f65a2ca3cb",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-inference-service/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-inference-service",
+      "bytes": 18503,
+      "lines": 242,
+      "sha256": "484c1caad80f1436c3978a49c283789d00c51551fb0988dd1b3f636f50614369",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-on-brev/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-on-brev",
+      "bytes": 10160,
+      "lines": 239,
+      "sha256": "a4d5b5de5b278b4bc1c2726df40f4aa6a89aab3331212e2460490d58b7077778",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-on-kubernetes/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-on-kubernetes",
+      "bytes": 15557,
+      "lines": 281,
+      "sha256": "9c7b8216a34568f2a6d481f1e5cc2d98e090cf7fbf0e7a05baf3ef98d30a6f79",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-on-lepton/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-on-lepton",
+      "bytes": 15251,
+      "lines": 269,
+      "sha256": "499a4e10a188e2f0aa4d03eebb303720014ce5b690fe6ad7f116e6b1957fceba",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-on-local-docker/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-on-local-docker",
+      "bytes": 12588,
+      "lines": 273,
+      "sha256": "7bb9b79e5414d27bc1abbbad3408ebdd57eb3531c4b3f1d2e4c6f164a3857127",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-on-slurm/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-on-slurm",
+      "bytes": 10230,
+      "lines": 209,
+      "sha256": "18e21884dee0c76056522880603e3a428a1f19bfabd2a04ef791da8d76599851",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-run-platform/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-run-platform",
+      "bytes": 15353,
+      "lines": 309,
+      "sha256": "7a92627e19b84fd65252519d1d644359f61855ebd46d594907c0e8502afada43",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-setup-nvidia-gpu-host/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-setup-nvidia-gpu-host",
+      "bytes": 12016,
+      "lines": 226,
+      "sha256": "874c6fdaa051cabd0bc5a72f167f0b88c350074497b228c1562c55347b4f502a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-action-recognition/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-action-recognition",
+      "bytes": 9738,
+      "lines": 184,
+      "sha256": "a283267bdad3d47ce06c49cfa9fe7ef5e787ba7b2857c2ecc3354d71d9cac711",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-bevfusion/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-bevfusion",
+      "bytes": 13062,
+      "lines": 226,
+      "sha256": "747c73e791e60af19345f323f8af316ef053c3e3d04be85249f0c66d6272c7fd",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-centerpose/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-centerpose",
+      "bytes": 10771,
+      "lines": 194,
+      "sha256": "eba6a0a4b96dd36615a21634d15cec1cff8f053d13d5aa7d9edb3ca375fccc1d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-deformable-detr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-deformable-detr",
+      "bytes": 14886,
+      "lines": 247,
+      "sha256": "eff096c6fbf744d021cae36ddfa3f5efb841c593148b0645587646a381720014",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-depth-anything-v2/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-depth-anything-v2",
+      "bytes": 14966,
+      "lines": 230,
+      "sha256": "d2bef6ef87fe0c62458853465427868402ebc2efc07c5d1e2750abe68e99d99a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-dino/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-dino",
+      "bytes": 11405,
+      "lines": 190,
+      "sha256": "60e7c18c5ec5d7e99efa0f480d960f1af4a60b7070d568b3ac640a611c301e9c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-fast-foundation-stereo/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-fast-foundation-stereo",
+      "bytes": 11840,
+      "lines": 160,
+      "sha256": "72b489f9ec85288392e280114eaca3f4636f0735d859c290e9a17563ce5d02d8",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-foundation-stereo/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-foundation-stereo",
+      "bytes": 12153,
+      "lines": 176,
+      "sha256": "610aae6811b8fad8d09a2d60598ca2e5887ea6656f626021c46ca3ac31da30ca",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-grounding-dino/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-grounding-dino",
+      "bytes": 15279,
+      "lines": 248,
+      "sha256": "d7f5ae880ff428d633af518e1c57e1f5bf40aa61be609462c55cf6ff8a435adb",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-image-classification/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-image-classification",
+      "bytes": 13129,
+      "lines": 232,
+      "sha256": "0a5564bc8f84c76e720997ce8835f3136ae2066c6ef15595ed18f6b3e52a35dc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-mask-auto-encoder/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-mask-auto-encoder",
+      "bytes": 11160,
+      "lines": 192,
+      "sha256": "270e784ec48167dc796819c5807ef16efa65705027fc2d47544239eeb5a3dd73",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-mask-auto-label/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-mask-auto-label",
+      "bytes": 9426,
+      "lines": 173,
+      "sha256": "a2cbb362840cb51ce2baed5f41a3653cec21f1b8878b4c6d9eecd7cfb92f3030",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-mask-grounding-dino/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-mask-grounding-dino",
+      "bytes": 13190,
+      "lines": 205,
+      "sha256": "db75d954bfb641af5888d7a81f1f4fbddfc1cc06ca66b5c4ffd7b9bdbfbcba0a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-mask2former/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-mask2former",
+      "bytes": 19998,
+      "lines": 320,
+      "sha256": "0a5f62edc7f1839d1e8419c06ec6568cd03ea428bdea718c82f40a7af788cd9b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-metric-learning-recognition/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-metric-learning-recognition",
+      "bytes": 11079,
+      "lines": 157,
+      "sha256": "4078b7a57846e1abfdf080f87fc2e82b047c191760dda279396dc3015acb5632",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-nvdinov2/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-nvdinov2",
+      "bytes": 10946,
+      "lines": 200,
+      "sha256": "69ab76a9ade78e5f2c26187270b9f738e6d931df7c64c4fe0bc7f7e96eb47825",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-nvpanoptix3d/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-nvpanoptix3d",
+      "bytes": 15596,
+      "lines": 261,
+      "sha256": "ed49fe2258d7b32deea423a8eb1d7975c783b94e49fecb1a045cdeebdfb76dd9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-ocdnet/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-ocdnet",
+      "bytes": 14216,
+      "lines": 226,
+      "sha256": "1f31f73261a1795062b1075778ca65426ec369311a3487e0e42ffeb8a86d951b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-ocrnet/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-ocrnet",
+      "bytes": 17450,
+      "lines": 284,
+      "sha256": "391b3e9214b85e8c9d7657945a51602038db51bf529c833d46d99bed01dcf68d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-oneformer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-oneformer",
+      "bytes": 19954,
+      "lines": 321,
+      "sha256": "95795a55a59cbc856e94ca7d866d752203581bf645885b3e0862d622384974b9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-optical-inspection/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-optical-inspection",
+      "bytes": 12576,
+      "lines": 198,
+      "sha256": "0968760887f05066c1dcac860b041aba79c7b0661e1b8f3fb20498511af6b82d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-pointpillars/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-pointpillars",
+      "bytes": 15593,
+      "lines": 241,
+      "sha256": "bfa2b2e225b2a80d0eb29c5992bf659d99aef6460b9828e3877910a87861ebe6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-pose-classification/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-pose-classification",
+      "bytes": 13357,
+      "lines": 208,
+      "sha256": "86a08ccd0c67711f369c17d778af9ac0cf50b85ecb42f9e2b555b8a6d22d2399",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-reid/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-reid",
+      "bytes": 12773,
+      "lines": 211,
+      "sha256": "d7542daa69fd2ee9f9e8855cc6dae17910352a73ab76643cf34e8d17df595d73",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-rtdetr/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-rtdetr",
+      "bytes": 17645,
+      "lines": 291,
+      "sha256": "52708456848abdd33113824ac75c218cd820815fccbc4cadd584ba090ca64952",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-segformer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-segformer",
+      "bytes": 14660,
+      "lines": 237,
+      "sha256": "9bb54e5f1ff7f5f3a61d2bfdd39f19f2c63c471ba16a2cb18d4e977e207a17a6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-single-step/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-single-step",
+      "bytes": 3996,
+      "lines": 76,
+      "sha256": "f88d201ad3c1d4f5be4fb22445cc54d1ac92f49778847a596681ed0f03998aaf",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-sparse4d/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-sparse4d",
+      "bytes": 15078,
+      "lines": 244,
+      "sha256": "0beaeb5d0f7f98c70aca8e1d135e59f3aa5b1dd914b8015e4716a99339a41899",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-train-visual-changenet/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-train-visual-changenet",
+      "bytes": 17260,
+      "lines": 286,
+      "sha256": "90ba1fc0b4cda92c56d7cbc552506da700b95282a3e8b126f2402e6e403a5ab8",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tao-validate-dataset-format/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tao-validate-dataset-format",
+      "bytes": 4960,
+      "lines": 133,
+      "sha256": "f1abecf31aea619cd91a65cd91ea719ccc087e761a440df2e5f8aad884c75105",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/test-driven-development/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "test-driven-development",
+      "bytes": 14976,
+      "lines": 383,
+      "sha256": "6c60e193d77a6c52eb3d9a7ca774f1801b9f798ec34f075720e0425a8094f50e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/test-engineer/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "test-engineer",
+      "bytes": 7727,
+      "lines": 212,
+      "sha256": "cf9881a25526509fbe1d289a5284a3e8dbf3e87b7f1390ec7069f786441187b0",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-adding-cutile-kernel/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-adding-cutile-kernel",
+      "bytes": 8506,
+      "lines": 276,
+      "sha256": "f780e59c0c23def35cce6f1de82bcba027e065682e2f855e8da9f7ba83a978bc",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-converting-cutile-to-julia/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-converting-cutile-to-julia",
+      "bytes": 7046,
+      "lines": 114,
+      "sha256": "c74ecc762dd41bd8ed89f8c2349457c20f891bcd9adef10cea6d1d5a7328fbe7",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-converting-cutile-to-triton/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-converting-cutile-to-triton",
+      "bytes": 17275,
+      "lines": 213,
+      "sha256": "c01d9a7ec1e985118b91c0d7563e70b125502d2577ae5b346febc1babcdf4154",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-cutile-autotuning/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-cutile-autotuning",
+      "bytes": 18943,
+      "lines": 240,
+      "sha256": "3225a000c7decf4e24002be257bbe918096107021f2f39f1aa7c619c2340a01b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-cutile-python/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-cutile-python",
+      "bytes": 20743,
+      "lines": 350,
+      "sha256": "ca15271e527776adc11c56d3452125383cfd720174e0d809fa7d89cf7266e3fe",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-improve-cutile-kernel-perf/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-improve-cutile-kernel-perf",
+      "bytes": 7959,
+      "lines": 142,
+      "sha256": "6fe5df37165d9f2fbe7908b24cd8a445efd9f558178be2997aecd958810f2236",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/tilegym-monkey-patch-kernels-to-transformers/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "tilegym-monkey-patch-kernels-to-transformers",
+      "bytes": 3004,
+      "lines": 38,
+      "sha256": "095e646c1e494946ee1ee5d7e134fdff659c7e5f82de0e3959a071e7acb9df39",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/using-agent-skills/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "using-agent-skills",
+      "bytes": 10337,
+      "lines": 191,
+      "sha256": "a5bf05293cfb67af9c5e21e14023d723d2ac8ca42912cef4cee29fbb07e67d64",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vanilla-web-patterns/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vanilla-web-patterns",
+      "bytes": 3597,
+      "lines": 94,
+      "sha256": "37943737e6e3facb9de3e65a4b1ade2e49a64980ab27ef21b0c49755c718d3b9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/video-production/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "video-production",
+      "bytes": 5972,
+      "lines": 56,
+      "sha256": "83e04d6f3bf7f461ffe285b63e5dc131ae6e57966ad2501cce1c6101cd5ac932",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-ask-video/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-ask-video",
+      "bytes": 5771,
+      "lines": 123,
+      "sha256": "45c6d655b91f0518a465f431f6205524525e6a47f702a108aafb12f4a5eb4c15",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-deploy-dense-captioning/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-deploy-dense-captioning",
+      "bytes": 13470,
+      "lines": 259,
+      "sha256": "68587d7fb4207b2c0c4d04a5633a32be4ac3945462fa3b114d4414af1aa90531",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-deploy-detection-tracking-2d/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-deploy-detection-tracking-2d",
+      "bytes": 19742,
+      "lines": 277,
+      "sha256": "4885414c1aeb223bc286754bc03a82b56462c01cdb257b28b41e7e39a6f2bdac",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-deploy-detection-tracking-3d/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-deploy-detection-tracking-3d",
+      "bytes": 19560,
+      "lines": 240,
+      "sha256": "7e130ef380bc35347004c6216864c57e9989b43d259243b52d3777a409ae9594",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-deploy-profile/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-deploy-profile",
+      "bytes": 20435,
+      "lines": 366,
+      "sha256": "a281461778e976f085aff3d3f6d19ad4efae0f0580b2ccb01746533fcc8f6cb9",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-deploy-video-embedding/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-deploy-video-embedding",
+      "bytes": 14943,
+      "lines": 273,
+      "sha256": "5e305080db539462c8fc3ac4940bde2bc456be10f76e219bc2024b1af91c1c3a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-generate-video-calibration/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-generate-video-calibration",
+      "bytes": 17081,
+      "lines": 262,
+      "sha256": "775f388669fa982eaa58862875c578beaf208a2de43041301801c5b41d799ff6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-generate-video-report/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-generate-video-report",
+      "bytes": 18982,
+      "lines": 355,
+      "sha256": "770d6faf9619fc95d3f04c06e484b02e8b3d7788eb7532eb3d742c5cbd63a8d2",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-manage-alerts/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-manage-alerts",
+      "bytes": 18369,
+      "lines": 313,
+      "sha256": "7c39e86af74a13c44c25e333edfe0a9d720576f8de2c9d161a284e2d674bd2b2",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-manage-video-io-storage/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-manage-video-io-storage",
+      "bytes": 20326,
+      "lines": 249,
+      "sha256": "bd45c38c710e2c1e092032e7de2e381f5a7f699c51420c70d38d02abeb03c39a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-query-analytics/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-query-analytics",
+      "bytes": 9628,
+      "lines": 213,
+      "sha256": "66ff78e67008577e5828878f7702426fe0511793af4cf5042992caafc926df0d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-search-archive/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-search-archive",
+      "bytes": 17224,
+      "lines": 298,
+      "sha256": "d3e49d6d209cfcf7f6b36917d20c562b52548555a5dac3420c5632e6dc74f975",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-setup-behavior-analytics/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-setup-behavior-analytics",
+      "bytes": 7990,
+      "lines": 126,
+      "sha256": "57e2c7062e905c1572b90d4f9e5ef54a4ca5b52bc9b06c16d7446dd252722ea6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-setup-video-analytics-api/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-setup-video-analytics-api",
+      "bytes": 9430,
+      "lines": 137,
+      "sha256": "a38120b0682a5da3391f991c7c81a02140fc06cbfe8ba4102dc34f5b84e79455",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/vss-summarize-video/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "vss-summarize-video",
+      "bytes": 18977,
+      "lines": 384,
+      "sha256": "93cae91038154322eea8c9ecc60605125846c014b57ab9418788971c4e3f66b4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "E:/Pemara/.agents/skills/web-frontend-vanilla/SKILL.md",
+      "root": "E:/Pemara/.agents/skills",
+      "name": "web-frontend-vanilla",
+      "bytes": 5877,
+      "lines": 91,
+      "sha256": "9cea0b39e5fd2d0eaf97f85b3db4dac80d0444d08f2ca7636f379609784260fe",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/general-video/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "general-video",
+      "bytes": 21541,
+      "lines": 168,
+      "sha256": "6e0aad276db66d31791bdb19abdd12f3650ce03b7f7329d1c2d2c9176d87214c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes",
+      "bytes": 21061,
+      "lines": 154,
+      "sha256": "a277e9e46b3b5b8619639a353a4af3f46f8ae4f2e622ba802d5af730d135f410",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-animation/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-animation",
+      "bytes": 8471,
+      "lines": 88,
+      "sha256": "b35f1f8eff68e9ff480a5d5d343a1bf5a40ebb7d0d9be20b0b980cfdb36047f3",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-audio/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-audio",
+      "bytes": 25614,
+      "lines": 475,
+      "sha256": "03007db5f0ea61f093c401f681e30d686c4a490f7462c6fd34949722e881b278",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-cli/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-cli",
+      "bytes": 23844,
+      "lines": 194,
+      "sha256": "f722ee03ba20a3a8c6d2ba200729230e0245827a3178a02ef56e8b4b92c92a4e",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-core/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-core",
+      "bytes": 12643,
+      "lines": 100,
+      "sha256": "18ac7784765cc29af5a4d88f2a63a15deaf5395985009af188b5e3718edcfe3d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-creative/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-creative",
+      "bytes": 6563,
+      "lines": 73,
+      "sha256": "9da7b7ac84c8d884b54125887ecca1a645a38337013082b96af2fdc0259c945a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-keyframes/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-keyframes",
+      "bytes": 16263,
+      "lines": 263,
+      "sha256": "d6484e8367ed522f2a89af9ec30ae3cd86ae243b5a23c5ab00a7a682e3d1a791",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-registry/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-registry",
+      "bytes": 9933,
+      "lines": 147,
+      "sha256": "f1925b202cabd125b509658b11db593b55340b1926ecb056fc31aa4233a2b4f6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/hyperframes-studio/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "hyperframes-studio",
+      "bytes": 12074,
+      "lines": 140,
+      "sha256": "7449da3952155e40e7d76fc29d4415b4030ab6f7f3ff9c3b94fa1b159cad46c4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/media-use/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "media-use",
+      "bytes": 8898,
+      "lines": 102,
+      "sha256": "9622271fb82ad862ee248034833ae19e26cc963962066e824213681527502c07",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/typesafe-ai/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "typesafe-ai",
+      "bytes": 10189,
+      "lines": 149,
+      "sha256": "0ab58b7533ebe4ba5342ad6260d69e492cd0955ca9d3ee20b3c91375eea0203d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-3d-math/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-3d-math",
+      "bytes": 15512,
+      "lines": 412,
+      "sha256": "5681673840fd0f7f71b665c666219fce15e22d76c1f84062a0d8d79709a4d184",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-async-patterns/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-async-patterns",
+      "bytes": 17627,
+      "lines": 542,
+      "sha256": "3e9b7f850e7ee9bc6c00d2e75134a1def8d880b5b6d672c657a03a0d40d713b6",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-cinemachine/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-cinemachine",
+      "bytes": 14800,
+      "lines": 449,
+      "sha256": "a147b22ac41e18ac2e9917224183a0adadacfc371af662045dbc609637e04bd7",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-data-driven/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-data-driven",
+      "bytes": 13719,
+      "lines": 337,
+      "sha256": "265571f28c466c5b9726aa5f96de97ec0b68c7be798d71ec2ddae42fa319344b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-debug/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-debug",
+      "bytes": 9729,
+      "lines": 159,
+      "sha256": "f8b2c256cb6cbc3b508de9bffcbc483623e949cdde7ebf87ab18bb3af0a6578c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-editor-tools/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-editor-tools",
+      "bytes": 14197,
+      "lines": 414,
+      "sha256": "ea836546b71e19625631b357f514cdaa53a542350aff87c497ce43af58364e5c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-foundations/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-foundations",
+      "bytes": 14886,
+      "lines": 449,
+      "sha256": "14d5fc71d21a26c7cd1a60383cd4e1f5d3d9c868d781bfbf8c4d1e66cee79133",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-game-architecture/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-game-architecture",
+      "bytes": 14070,
+      "lines": 335,
+      "sha256": "61661ac44eb48d564e84216ac5ce52f9ea5532a35f9e226e76e9895eb2b87a21",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-input-correctness/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-input-correctness",
+      "bytes": 14829,
+      "lines": 382,
+      "sha256": "a9d6d8109cbf7b0611d53c162dae40c4200a41d003bbb25f0676ea17e357cc7b",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-lifecycle/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-lifecycle",
+      "bytes": 15549,
+      "lines": 466,
+      "sha256": "e034001e9aadb8bd5e329a6dac130e449f8552e74d4d7947b919a83d7f41aa55",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-packages-services/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-packages-services",
+      "bytes": 15324,
+      "lines": 450,
+      "sha256": "80b8e8fb0849ef151c3d450b500c81f361441d50d633ee5369f34b3030d6915f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-physics/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-physics",
+      "bytes": 17798,
+      "lines": 495,
+      "sha256": "012845f3f8043a9099067f58463de28173fe7e3c924cc83c676dfad7e6e94d79",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-physics-queries/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-physics-queries",
+      "bytes": 13243,
+      "lines": 342,
+      "sha256": "9c3fbd5ef723f4515d4e085ab7d04cde5f9d85cf2cb983436fd94b6f168c1545",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-play-harness/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-play-harness",
+      "bytes": 8305,
+      "lines": 138,
+      "sha256": "cc19aec4985ab67eaa2e69b3c5e0995f5c5b425fa028952905e29a3139c6f983",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-profiling/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-profiling",
+      "bytes": 9241,
+      "lines": 151,
+      "sha256": "69d2fcb0964969f3ceaae648254603c8e5a7aa8c06f57935487f3dd53650a551",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-save-system/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-save-system",
+      "bytes": 15854,
+      "lines": 397,
+      "sha256": "5ed497c91af62d6fdc3ffb0932d5803efde9a7392d83bae8818988a47ceb908a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-scene-assets/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-scene-assets",
+      "bytes": 13380,
+      "lines": 327,
+      "sha256": "502f35833277ce9daa45bd033227f34d3d558e25603f2f2862b1b54f4bdb565a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-scripting/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-scripting",
+      "bytes": 16591,
+      "lines": 494,
+      "sha256": "9c7c434964ee5aa13112aaddaeb13c30df8841cccf61860fabc37a2265bba484",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.agents/skills/unity-state-machines/SKILL.md",
+      "root": "C:/Users/admin_remoto/.agents/skills",
+      "name": "unity-state-machines",
+      "bytes": 11969,
+      "lines": 319,
+      "sha256": "19fd60653296b7399e17b80ba16e197671eb0e27c6f77f3dff63a8855c94ba97",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/.system/imagegen/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "imagegen",
+      "bytes": 19516,
+      "lines": 315,
+      "sha256": "706d4d96e1d5c9e6023fe3ccabba1bb34b364024d344fd25b8515ec7d28fe3c4",
+      "metadata": true,
+      "nested": true
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/.system/openai-docs/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "openai-docs",
+      "bytes": 5475,
+      "lines": 38,
+      "sha256": "8ce8021101bcea594ff92ee6cfd8ca7641a49ee66d7bc6070555f1a33fc239d9",
+      "metadata": true,
+      "nested": true
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/.system/review-agent/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "review-agent",
+      "bytes": 2718,
+      "lines": 57,
+      "sha256": "bb46315f6bc4b7051c05f807d19b1689b20418ac6c42590406d805c10fa2fd1a",
+      "metadata": true,
+      "nested": true
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/.system/skill-creator/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "skill-creator",
+      "bytes": 15540,
+      "lines": 229,
+      "sha256": "cccd291077ec57c6f50ca6529f0f3fb93212da09473effb2fcec808e81b21288",
+      "metadata": true,
+      "nested": true
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/.system/skill-installer/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "skill-installer",
+      "bytes": 3425,
+      "lines": 58,
+      "sha256": "2892d8b2fb11631132118f340aed80ae17e59d5a571fc2c4f4a4a7e73f139d52",
+      "metadata": true,
+      "nested": true
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/archify/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "archify",
+      "bytes": 16396,
+      "lines": 137,
+      "sha256": "10094272d6d1b4ad0f2c2e0880cb646fe4991454a2dc3d854aecb27e7407ee1f",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/gauntlet-loop/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "gauntlet-loop",
+      "bytes": 9379,
+      "lines": 115,
+      "sha256": "0e9e0552bd8c786d4fbb7c5143243d219635ac3c47877270daffb856575ba361",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/general-video/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "general-video",
+      "bytes": 19961,
+      "lines": 165,
+      "sha256": "23ac61f3fd8d43c00864b6bce0cd8499f7b6742c5acb8c0a18268e35bd8ed73c",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes",
+      "bytes": 15560,
+      "lines": 127,
+      "sha256": "3f1e57ac7071e91629133651250bd5d9d60ce8119faa318a5be2cba6d375c793",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-animation/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-animation",
+      "bytes": 7785,
+      "lines": 84,
+      "sha256": "69a9903796e65c66edbe9ec9621eca8953c7cc2a93a718687306891daf0463d4",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-audio/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-audio",
+      "bytes": 21491,
+      "lines": 409,
+      "sha256": "78f60bc28fc11ed214248b49f767f9571088fc209cb15c97b1d12abcf4526eac",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-cli/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-cli",
+      "bytes": 18291,
+      "lines": 170,
+      "sha256": "1ea0ee445a628d1f7e8308b9b44ffdf9cd6b012d352476443afdbf26f02db093",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-core/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-core",
+      "bytes": 10869,
+      "lines": 90,
+      "sha256": "4ab1e4d7f1ac9111b5a5a1502410a76db3367ecf95cd14bae62429135a28856a",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-creative/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-creative",
+      "bytes": 6354,
+      "lines": 71,
+      "sha256": "488782fc741a43e002b5c6ac0da69cc2b12abaa42b6c0056df2aa53bea553c16",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-keyframes/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-keyframes",
+      "bytes": 15901,
+      "lines": 262,
+      "sha256": "924d038dc7eb20d16e05fa0e9837fa50bdcac0ce131aee80ebd8188cb67110d1",
+      "metadata": true,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/hyperframes-registry/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "hyperframes-registry",
+      "bytes": 9211,
+      "lines": 145,
+      "sha256": "9bb3d0f74b47bf7fe93208228d4bd4431538bff9440d074271a4b413a9f6cc3d",
+      "metadata": false,
+      "nested": false
+    },
+    {
+      "path": "C:/Users/admin_remoto/.codex/skills/media-use/SKILL.md",
+      "root": "C:/Users/admin_remoto/.codex/skills",
+      "name": "media-use",
+      "bytes": 7982,
+      "lines": 96,
+      "sha256": "1301ea7cb53a0a44f5c7d62c34cba7e00b9e69b31bed57dc8d645417cea0da7c",
+      "metadata": false,
+      "nested": false
+    }
+  ]
+}

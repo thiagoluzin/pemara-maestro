@@ -1,0 +1,44 @@
+{
+  "load": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P18v7_timed_generation_mask.png"
+    }
+  },
+  "size": {
+    "class_type": "GetImageSize",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ]
+    }
+  },
+  "width": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "size",
+        0
+      ]
+    }
+  },
+  "height": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "size",
+        1
+      ]
+    }
+  },
+  "count": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "size",
+        2
+      ]
+    }
+  }
+}

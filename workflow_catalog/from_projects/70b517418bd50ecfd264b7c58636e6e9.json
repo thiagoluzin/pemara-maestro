@@ -1,0 +1,256 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] One continuous EIGHT-second cinematic live-action acrobatic Cerberus showcase, same Dante, same exact face, red coat and harness, same frozen Gothic chamber as the approved photograph. One performer only. The Cerberus is exactly THREE separate SHORT icy-cyan batons with silver pointed ferrules, connected by THREE short dark chains to ONE central ring. Fixed rod length and fixed chain length. Preserve this three-branch construction; do not merge the rods into one club or staff, duplicate a rod, detach a chain, redesign the tips or change the actor. Real photographed materials and normal quick athletic speed. No other weapon, person, text, voice or music.\n\nPhysical camera pulls substantially BACKWARD during the first TWO seconds while Dante takes one visible small backward step toward the gate. Create a wide full-body shot with clear air above, floor below and free room around the performer. Then camera trucks slightly left, showing the icy pillar shift against the carved gate. Keep the entire body, both boots, head and all weapon ends inside the image through the trick. No approach, zoom, roll, full camera orbit, cut, whip, flash or smoke concealment. Dante actually performs the rotations, not the camera.\n\n0.00–2.10seconds: Begin moving immediately from the photograph. Dante takes one small clear BACKWARD STEP, eyes following the hanging rods. His free left hand visibly gathers the two hanging batons next to the rod in his right hand. Hold all THREE distinct short batons together as a compact PARALLEL BUNDLE in the RIGHT hand, showing three pointed ferrules and the loosely gathered chains/ring below. All original pieces stay present. A slight knee bend and hip wind-up prepare the acrobatics. No held hero portrait.\n2.10–3.60seconds: With the three connected rods bundled firmly near his RIGHT hip, perform ONE quick FULL360DEGREE GROUNDED BODY TURN, driven by a boot push, hip rotation and visible support-foot pivot. The back of the coat becomes visible and he turns to face front again. LEFT arm counterbalances. The compact bundle stays in his right hand, coat and hair trailing his momentum. No loose rods during this turn.\n3.60–5.80seconds: Bend both knees, push powerfully off the frosted stone, make ONE actual AIRBORNE360DEGREE BODY SPIN with bent knees, and LAND back on the boots. Both boots clearly leave the floor in a short rising/falling arc. Show the back then front of his turning body. Keep the THREE SHORT rods securely BUNDLED near the right hip throughout the jump. No airborne free-chain flourish, thrown weapon, hovering or stretched limbs. Boot touchdown follows the flight; knees and hips absorb weight into a low stance, with a small frost scrape after contact. Finish landing before changing grip.\n5.80–8.00seconds: While grounded, LEFT hand takes ONE of the three rods from the bundle. RIGHT hand retains ONE rod. Release only the THIRD rod downward, still connected through the same three chains and single ring. Now one short baton is held in EACH hand, hands separated by about shoulder width in front of his waist, and the THIRD short baton hangs/sways IN THE SMALL CENTRAL SPACE BETWEEN HIS HANDS. Make two quick alternating upward wrist pulls to send that single free middle rod through a small vertical pendulum, below his hands and in front of his thighs. The two held batons remain firmly gripped; the central ring and third branch stay visible. Never release a second free rod. No wide sideways sweep, overhead spin, figure-eight, long staff or rod moving outside shoulder width. At the same time make a low grounded torso swivel and one clear support-foot pivot. Continue the compact hand-to-hand weapon rhythm and body recovery through the ending, without a held final pose. End with TWO rods visibly held and the THIRD moving between the hands, ready for the next acrobatic phrase.\n\noverall_soundscape: Native synchronized chain rattles, compact weapon swishes, leather following the turns, boot push and pivots, air rush in the spinning jump, firm boot landing and restrained frost scrape with stone-chamber reverberation. No speech, singing, guitar, music, crowd, applause or copied game soundtrack. Preserve native H3 sound.\n\nnon_diegetic_music: N/A.\n\n[FIXED CHARACTER IDENTITY]\ndante: Exactly one adult Dante with the exact approved A01 angular youthful face, fair skin, silver-white layered fringe, lean athletic build and clean-shaven jaw.; Same worn long dark-red leather coat, shoulder seams, raised collar, brown chest harness on bare chest, dark trousers, black fingerless gloves and buckled boots.; Exactly ONE original DMC3 Cerberus: THREE short icy-cyan faceted rigid batons with silver ornate collars and pointed flared ferrules.; The topology is one central dark ring with THREE separate dark angular-link chain branches, each branch connecting to ONE baton base; never a serial staff, two-rod nunchaku, six rods, rope or duplicated ring.; All three rods remain connected during a hand transfer or body rotation. Hands deliberately grip and release; the free rods swing under tension, gravity and inertia, never teleport or pass through the body.; Same frozen Gothic stone chamber, carved gate behind Dante, icy left pillar, blue side light, subtle warm skin edge, solid frost-covered floor; no enemy, audience, new set, guitar, sword, gun, fire, lightning, text or logo.; Real human skin, weighted leather, hair strands and metal/ice surfaces. No cartoon, game render, plastic body, altered body scale, unexplained new damage or wardrobe change.\nPersistent state: {\"entry\": {\"damage\": [\"Existing scuffed leather; no new body injury or weapon damage.\"], \"dirt\": 1, \"wetness\": 0}, \"exit\": {\"damage\": [\"Existing scuffed leather; no new body injury or weapon damage.\"], \"dirt\": 1, \"wetness\": 0}}",
+      "width": 768,
+      "height": 1344,
+      "length": 192,
+      "first_frame": [
+        "approved_start",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611020903
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dmc3_cerberus_20261102/video/T01_acrobatic_two_hand_containment_native_v03",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "approved_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_APPROVED_contain_768x1344.png"
+    }
+  }
+}

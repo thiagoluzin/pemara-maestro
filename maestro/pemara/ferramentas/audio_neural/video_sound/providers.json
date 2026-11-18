@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "providers": [
+    {
+      "id": "external_model_example",
+      "label": "Modelo externo de exemplo",
+      "enabled": false,
+      "model": "vendor/model-name",
+      "outputExtension": ".wav",
+      "minDurationSeconds": 0.5,
+      "maxDurationSeconds": 15,
+      "argvTemplate": [
+        "video-sound-runner.exe",
+        "--video",
+        "{input_video}",
+        "--output",
+        "{output_audio}",
+        "--prompt",
+        "{prompt}",
+        "--negative-prompt",
+        "{negative_prompt}",
+        "--duration",
+        "{duration_seconds}",
+        "--seed",
+        "{seed}"
+      ]
+    },
+    {
+      "requiredPaths": [
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\weights\\mmaudio_large_44k_v2.pth",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\v1-44.pth",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\ext_weights\\synchformer_state_dict.pth",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\mmaudio_weights_verified.json"
+      ],
+      "label": "ZICO · MMAudio",
+      "id": "zico_mmaudio",
+      "model": "MMAudio large_44k_v2",
+      "minDurationSeconds": 0.5,
+      "argvTemplate": [
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\engines\\mmaudio\\repo\\.venv\\Scripts\\python.exe",
+        "E:\\Pemara\\maestro\\pemara\\ferramentas\\audio_neural\\zico_audio_studio\\scripts\\mmaudio_runner.py",
+        "--video",
+        "{input_video}",
+        "--output",
+        "{output_audio}",
+        "--prompt",
+        "{prompt}",
+        "--negative-prompt",
+        "{negative_prompt}",
+        "--duration",
+        "{duration_seconds}",
+        "--seed",
+        "{seed}"
+      ],
+      "maxDurationSeconds": 15,
+      "outputExtension": ".wav",
+      "enabled": true
+    }
+  ]
+}

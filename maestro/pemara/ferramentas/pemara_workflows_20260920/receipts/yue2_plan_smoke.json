@@ -1,0 +1,16 @@
+{
+  "prompt_id": "cba34ccb-e8b1-49ab-891e-66557434c276",
+  "status": "completed",
+  "workflow_size": null,
+  "outputs": [],
+  "outputs_by_node": {},
+  "outputs_by_item": {},
+  "text_outputs": {
+    "14": [
+      "X:1\nT:\nM:4/4\nL:1/16\nQ:1/4=87\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D\n% intro\nV: Vocal\nz12\"D\"z4|\"D\"z16|\"Bm7\"z16|\"G\"z16|\nV: Ins\nZ|D,2A,D2A,2E3D2C2D2|B,2A,D2A,2E3D2C2D2|G,2A,D2A,2E3D2C2D2|\nV: Vocal\n\"A\"z16|\nV: Ins\nA,3A,3E8z2|\n% verse\nV: Vocal\n\"D\"z4FA2A3FA3FB-|\"Bm7\"B3z12z|\"G\"z4Bd2d3cB3AA-|\"A\"A3z12z|\nV: Ins\nZ4|\nV: Vocal\n\"D\"z4FA2A3FA3FB-|\"Bm7\"B3z12z|\"G\"z4Bd2d3cB3AA-|\"A\"A3z12z|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"G\"z4Bd2d3Bd3Be-|\"A\"e3z12z|\"F#m7\"z4ce2e3ce2f3|\"Bm\"d4c4B4A4|\nV: Ins\nZ4|\nV: Vocal\n\"G\"G4z12|\"G\"z16|\nV: Ins\nZ2|\n"
+    ]
+  },
+  "error": null,
+  "host": "127.0.0.1",
+  "port": 8188
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "D:\\PemaraRuntimes\\maestro-game-ai\\models\\TripoSG\\image_encoder_dinov2\\model.safetensors",
+    "bytes": 1217522888,
+    "sha256": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23",
+    "officialHashMatched": true,
+    "revision": "2c1c516d22d58db486a058d98d31bb6177344e06"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\maestro-game-ai\\models\\TripoSG\\transformer\\diffusion_pytorch_model.safetensors",
+    "bytes": 5758280104,
+    "sha256": "9192b5923f7b605b394192809aa2ceb73bf0f4009674d8e3b999b45bb97d4bf2",
+    "officialHashMatched": true,
+    "revision": "2c1c516d22d58db486a058d98d31bb6177344e06"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\maestro-game-ai\\models\\TripoSG\\vae\\diffusion_pytorch_model.safetensors",
+    "bytes": 970685468,
+    "sha256": "a2e667c24927a5a35e5f19fcb4c75890e9399aa966b6db8131d7df733a750c8b",
+    "officialHashMatched": true,
+    "revision": "2c1c516d22d58db486a058d98d31bb6177344e06"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\maestro-game-ai\\models\\Hunyuan3D-2.1\\hunyuan3d-dit-v2-1\\model.fp16.ckpt",
+    "bytes": 7366389768,
+    "sha256": "6b519fc7242f78e9b5f47ea4d55668fe3d944a2d27332f4ca68d29a6ff603f5e",
+    "officialHashMatched": true,
+    "revision": "0b94677654c57bb9a6b6845cd7b704ccf551d327"
+  },
+  {
+    "path": "D:\\PemaraRuntimes\\maestro-game-ai\\models\\Hunyuan3D-2.1\\hunyuan3d-vae-v2-1\\model.fp16.ckpt",
+    "bytes": 655648152,
+    "sha256": "5cbe97f25e6e7abd4bccc80ab07524ec0c86d24118486a9ba49bb5dfb070288a",
+    "officialHashMatched": true,
+    "revision": "0b94677654c57bb9a6b6845cd7b704ccf551d327"
+  }
+]

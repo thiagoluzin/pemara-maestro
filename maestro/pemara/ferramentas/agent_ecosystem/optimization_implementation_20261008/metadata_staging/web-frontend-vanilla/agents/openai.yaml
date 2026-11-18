@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Frontend Vanilla"
+  short_description: "Especialista em frontend SEM framework — HTML semântico, CSS mod"
+  default_prompt: "Use $web-frontend-vanilla para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

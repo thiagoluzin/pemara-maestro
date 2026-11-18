@@ -1,0 +1,428 @@
+[
+  {
+    "id": 108,
+    "type": "SamplerCustom",
+    "mode": 0,
+    "values": [
+      true,
+      493576922569549,
+      "randomize",
+      5
+    ],
+    "inputs": [
+      {
+        "name": "model",
+        "link": 356
+      },
+      {
+        "name": "positive",
+        "link": 323
+      },
+      {
+        "name": "negative",
+        "link": 324
+      },
+      {
+        "name": "sampler",
+        "link": 351
+      },
+      {
+        "name": "sigmas",
+        "link": 139
+      },
+      {
+        "name": "latent_image",
+        "link": 321
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "type": "BasicScheduler",
+    "mode": 0,
+    "values": [
+      "normal",
+      40,
+      1
+    ],
+    "inputs": {
+      "name": "model",
+      "link": 182
+    }
+  },
+  {
+    "id": 6,
+    "type": "CheckpointLoaderSimple",
+    "mode": 0,
+    "values": [
+      "hidream_o1_image_bf16.safetensors"
+    ],
+    "inputs": null
+  },
+  {
+    "id": 124,
+    "type": "ModelNoiseScale",
+    "mode": 0,
+    "values": [
+      8
+    ],
+    "inputs": {
+      "name": "model",
+      "link": 192
+    }
+  },
+  {
+    "id": 104,
+    "type": "HiDreamO1ReferenceImages",
+    "mode": 0,
+    "values": [],
+    "inputs": [
+      {
+        "name": "positive",
+        "link": 141
+      },
+      {
+        "name": "negative",
+        "link": 275
+      },
+      {
+        "name": "images.image_1",
+        "link": 362
+      },
+      {
+        "name": "images.image_2",
+        "link": null
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "type": "CLIPTextEncode",
+    "mode": 0,
+    "values": [
+      ""
+    ],
+    "inputs": [
+      {
+        "name": "clip",
+        "link": 146
+      },
+      {
+        "name": "text",
+        "link": 327
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "type": "VAEDecode",
+    "mode": 0,
+    "values": [],
+    "inputs": [
+      {
+        "name": "samples",
+        "link": 322
+      },
+      {
+        "name": "vae",
+        "link": 147
+      }
+    ]
+  },
+  {
+    "id": 152,
+    "type": "ComfySwitchNode",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": [
+      {
+        "name": "on_false",
+        "link": 217
+      },
+      {
+        "name": "on_true",
+        "link": 218
+      },
+      {
+        "name": "switch",
+        "link": 224
+      }
+    ]
+  },
+  {
+    "id": 153,
+    "type": "ComfySwitchNode",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": [
+      {
+        "name": "on_false",
+        "link": 276
+      },
+      {
+        "name": "on_true",
+        "link": 220
+      },
+      {
+        "name": "switch",
+        "link": 225
+      }
+    ]
+  },
+  {
+    "id": 155,
+    "type": "ComfySwitchNode",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": [
+      {
+        "name": "on_false",
+        "link": 233
+      },
+      {
+        "name": "on_true",
+        "link": 350
+      },
+      {
+        "name": "switch",
+        "link": 235
+      }
+    ]
+  },
+  {
+    "id": 157,
+    "type": "GetImageSize",
+    "mode": 0,
+    "values": [],
+    "inputs": {
+      "name": "image",
+      "link": 318
+    }
+  },
+  {
+    "id": 154,
+    "type": "PrimitiveBoolean",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": null
+  },
+  {
+    "id": 175,
+    "type": "fa7296b5-c974-4466-bfe3-a1f05f43b880",
+    "mode": 0,
+    "values": [],
+    "inputs": [
+      {
+        "name": "replace",
+        "link": 260
+      },
+      {
+        "name": "image",
+        "link": 363
+      }
+    ]
+  },
+  {
+    "id": 176,
+    "type": "ComfySwitchNode",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": [
+      {
+        "name": "on_false",
+        "link": 267
+      },
+      {
+        "name": "on_true",
+        "link": 266
+      },
+      {
+        "name": "switch",
+        "link": 265
+      }
+    ]
+  },
+  {
+    "id": 177,
+    "type": "PrimitiveBoolean",
+    "mode": 0,
+    "values": [
+      false
+    ],
+    "inputs": null
+  },
+  {
+    "id": 188,
+    "type": "CLIPTextEncode",
+    "mode": 0,
+    "values": [
+      ""
+    ],
+    "inputs": {
+      "name": "clip",
+      "link": 274
+    }
+  },
+  {
+    "id": 196,
+    "type": "ImageScaleToTotalPixels",
+    "mode": 4,
+    "values": [
+      "lanczos",
+      4,
+      1
+    ],
+    "inputs": {
+      "name": "image",
+      "link": 364
+    }
+  },
+  {
+    "id": 213,
+    "type": "LoadImage",
+    "mode": 0,
+    "values": [
+      "noir_portrait.png",
+      "image"
+    ],
+    "inputs": null
+  },
+  {
+    "id": 218,
+    "type": "ComfyMathExpression",
+    "mode": 0,
+    "values": [
+      "floor(a/32)*32"
+    ],
+    "inputs": [
+      {
+        "name": "values.a",
+        "link": 319
+      },
+      {
+        "name": "values.b",
+        "link": null
+      }
+    ]
+  },
+  {
+    "id": 219,
+    "type": "ComfyMathExpression",
+    "mode": 0,
+    "values": [
+      "floor(a/32)*32"
+    ],
+    "inputs": [
+      {
+        "name": "values.a",
+        "link": 320
+      },
+      {
+        "name": "values.b",
+        "link": null
+      }
+    ]
+  },
+  {
+    "id": 221,
+    "type": "PreviewAny",
+    "mode": 0,
+    "values": [
+      null,
+      null,
+      null
+    ],
+    "inputs": {
+      "name": "source",
+      "link": 326
+    }
+  },
+  {
+    "id": 156,
+    "type": "EmptyHiDreamO1LatentImage",
+    "mode": 0,
+    "values": [
+      2048,
+      2048,
+      1
+    ],
+    "inputs": null
+  },
+  {
+    "id": 172,
+    "type": "EmptyHiDreamO1LatentImage",
+    "mode": 0,
+    "values": [
+      2048,
+      2048,
+      1
+    ],
+    "inputs": [
+      {
+        "name": "width",
+        "link": 310
+      },
+      {
+        "name": "height",
+        "link": 311
+      }
+    ]
+  },
+  {
+    "id": 171,
+    "type": "PrimitiveStringMultiline",
+    "mode": 0,
+    "values": [
+      "Graceful female skincare shot, light nude makeup, holding essence bottle, warm ivory backdrop, soft diffused light"
+    ],
+    "inputs": null
+  },
+  {
+    "id": 227,
+    "type": "SaveImage",
+    "mode": 0,
+    "values": [
+      "hidream_o1"
+    ],
+    "inputs": {
+      "name": "images",
+      "link": 347
+    }
+  },
+  {
+    "id": 230,
+    "type": "KSamplerSelect",
+    "mode": 0,
+    "values": [
+      "dpmpp_2m_sde_gpu"
+    ],
+    "inputs": null
+  },
+  {
+    "id": 232,
+    "type": "HiDreamO1PatchSeamSmoothing",
+    "mode": 0,
+    "values": [
+      0.8,
+      1,
+      "single_shift",
+      "ramp_2_4",
+      "median",
+      1
+    ],
+    "inputs": {
+      "name": "model",
+      "link": 355
+    }
+  }
+]

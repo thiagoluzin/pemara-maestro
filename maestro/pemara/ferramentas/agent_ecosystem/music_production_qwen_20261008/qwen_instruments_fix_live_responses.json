@@ -1,0 +1,340 @@
+[
+  {
+    "response": {
+      "title": "Iron Vein",
+      "caption": "1980s British Heavy Metal. Driving gallop groove, thunderous drums, aggressive bass, soaring twin guitar harmonies, and raw, raspy vocals. High energy and anthemic.",
+      "lyrics": "[Verse 1]\nThe fog rolls in from the northern shore\nThe iron gates are open once more\nShadows dance where the light once shone\nWe are the children of the unknown\n\n[Pre-Chorus]\nFeel the ground shake beneath your feet\nThe rhythm is loud, the rhythm is sweet\nNo mercy for the weak, no rest for the bold\nThe story of the brave is never old\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Verse 2]\nSwords of steel against the sky\nThe eagle flies, it will not die\nEvery scar is a map to home\nWe carry the weight, we bear the load\n\n[Pre-Chorus]\nFeel the ground shake beneath your feet\nThe rhythm is loud, the rhythm is sweet\nNo mercy for the weak, no rest for the bold\nThe story of the brave is never old\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Bridge]\n[Guitar Solo]\nHigh notes screaming in the night\nChasing the fading light\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Outro]\nIron Vein\n(Fade out)\nIron Vein",
+      "vocal_language": "en",
+      "instrumental": false,
+      "production_plan": {
+        "duration_seconds": 300,
+        "bpm": 128,
+        "style": "1980s British Heavy Metal",
+        "sections": [
+          {
+            "name": "Intro",
+            "start": 0,
+            "end": 20,
+            "energy": 0.6,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar"
+            ]
+          },
+          {
+            "name": "Verse 1",
+            "start": 20,
+            "end": 55,
+            "energy": 0.7,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Pre-Chorus",
+            "start": 55,
+            "end": 75,
+            "energy": 0.8,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Chorus",
+            "start": 75,
+            "end": 105,
+            "energy": 0.95,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Verse 2",
+            "start": 105,
+            "end": 140,
+            "energy": 0.75,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Pre-Chorus",
+            "start": 140,
+            "end": 160,
+            "energy": 0.8,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Chorus",
+            "start": 160,
+            "end": 190,
+            "energy": 0.95,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Guitar Solo",
+            "start": 190,
+            "end": 230,
+            "energy": 0.9,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar"
+            ]
+          },
+          {
+            "name": "Final Chorus",
+            "start": 230,
+            "end": 265,
+            "energy": 1.0,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Outro",
+            "start": 265,
+            "end": 300,
+            "energy": 0.5,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          }
+        ],
+        "tracks": {
+          "drums": {
+            "gainDb": 2,
+            "density": 1.0,
+            "velocityScale": 1.2,
+            "role": "Powerful double bass and gallop patterns"
+          },
+          "percussion": {
+            "gainDb": -3,
+            "density": 0.4,
+            "velocityScale": 0.9,
+            "role": "Tom fills and crashes"
+          },
+          "vocals": {
+            "gainDb": 3,
+            "density": 0.6,
+            "velocityScale": 1.1,
+            "role": "Raspy, high-pitched lead vocals"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "writer_model": "qwen3.8-27b-uncensored-yarn-524k:latest",
+      "writer_vram_bytes": 19321229145,
+      "writer_unloaded": true
+    }
+  },
+  {
+    "response": {
+      "title": "Iron Vein",
+      "caption": "1980s British Heavy Metal. Driving gallop groove, thunderous drums, aggressive bass, soaring twin guitar harmonies, and raw, raspy vocals. High energy and anthemic.",
+      "lyrics": "[Verse 1]\nThe fog rolls in from the northern shore\nThe iron gates are open once more\nShadows dance where the light once shone\nWe are the children of the unknown\n\n[Pre-Chorus]\nFeel the ground shake beneath your feet\nThe rhythm is loud, the rhythm is sweet\nNo mercy for the weak, no rest for the bold\nThe story of the brave is never old\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Verse 2]\nSwords of steel against the sky\nThe eagle flies, it will not die\nEvery scar is a map to home\nWe carry the weight, we bear the load\n\n[Pre-Chorus]\nFeel the ground shake beneath your feet\nThe rhythm is loud, the rhythm is sweet\nNo mercy for the weak, no rest for the bold\nThe story of the brave is never old\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Bridge]\n[Guitar Solo]\nHigh notes screaming in the night\nChasing the fading light\n\n[Chorus]\nDrink deep from the Iron Vein\nBreak the chains, break the pain\nRise up from the ash and dust\nTrust the fire, trust the rust\nIron Vein, Iron Vein\nKeep the beast from driving you insane\n\n[Outro]\nIron Vein\n(Fade out)\nIron Vein",
+      "vocal_language": "en",
+      "instrumental": false,
+      "production_plan": {
+        "duration_seconds": 300,
+        "bpm": 128,
+        "style": "1980s British Heavy Metal",
+        "sections": [
+          {
+            "name": "Intro",
+            "start": 0,
+            "end": 20,
+            "energy": 0.6,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar"
+            ]
+          },
+          {
+            "name": "Verse 1",
+            "start": 20,
+            "end": 55,
+            "energy": 0.7,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Pre-Chorus",
+            "start": 55,
+            "end": 75,
+            "energy": 0.8,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Chorus",
+            "start": 75,
+            "end": 105,
+            "energy": 0.95,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Verse 2",
+            "start": 105,
+            "end": 140,
+            "energy": 0.75,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Pre-Chorus",
+            "start": 140,
+            "end": 160,
+            "energy": 0.8,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Chorus",
+            "start": 160,
+            "end": 190,
+            "energy": 0.95,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Guitar Solo",
+            "start": 190,
+            "end": 230,
+            "energy": 0.9,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar"
+            ]
+          },
+          {
+            "name": "Final Chorus",
+            "start": 230,
+            "end": 265,
+            "energy": 1.0,
+            "lead": "vocals",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          },
+          {
+            "name": "Outro",
+            "start": 265,
+            "end": 300,
+            "energy": 0.5,
+            "lead": "guitar",
+            "instruments": [
+              "drums",
+              "bass",
+              "guitar",
+              "vocals"
+            ]
+          }
+        ],
+        "tracks": {
+          "drums": {
+            "gainDb": 2,
+            "density": 1.0,
+            "velocityScale": 1.2,
+            "role": "Powerful double bass and gallop patterns"
+          },
+          "percussion": {
+            "gainDb": -3,
+            "density": 0.4,
+            "velocityScale": 0.9,
+            "role": "Tom fills and crashes"
+          },
+          "vocals": {
+            "gainDb": 3,
+            "density": 0.6,
+            "velocityScale": 1.1,
+            "role": "Raspy, high-pitched lead vocals"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "writer_model": "qwen3.8-27b-uncensored-yarn-524k:latest",
+      "writer_vram_bytes": 19321229145,
+      "writer_unloaded": true
+    }
+  }
+]

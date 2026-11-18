@@ -1,0 +1,316 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "pemara_scene_realism",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "20": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_6",
+        0
+      ],
+      "conditioning": [
+        "17",
+        0
+      ]
+    }
+  },
+  "21": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_6",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "22": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "23": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110707
+    }
+  },
+  "24": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "23",
+        0
+      ],
+      "guider": [
+        "20",
+        0
+      ],
+      "sampler": [
+        "22",
+        0
+      ],
+      "sigmas": [
+        "21",
+        0
+      ],
+      "latent_image": [
+        "17",
+        1
+      ]
+    }
+  },
+  "25": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "24",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "27": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "25",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none"
+    }
+  },
+  "28": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "27",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/pilots/T01_contact_B_sage",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "90": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "50": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "c7ef96ea_000.png"
+    }
+  },
+  "17": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "prompt": "r34l1sm\nOne continuous shot and exactly ONE exchange: Vegeta, the shorter armored man on the RIGHT, closes the existing gap toward Goku on the LEFT with two quick grounded steps. Vegeta plants his front foot, rotates hips and torso and drives ONE straight right punch into Goku's upper abdomen. Show fist-to-cloth contact visibly. Goku braces, exhales silently, folds around the contact and steps backward LEFT as the force passes through his torso; the reaction begins AFTER contact. Vegeta retracts the fist and recovers his stance while Goku regains his footing. No counterattack, second punch, kick, aura, beam, flight, cuts or music. Keep both faces and all hands and feet visible throughout. Clothes and skin remain photorealistic and identities distinct. An economical lateral camera drift follows the approach without crossing the established axis; do not hide the contact.\n\n[Human realism direction]\nPreserve the reference identity, age, facial proportions, skin tone, costume and lighting. Natural skin microtexture, subtle pores, varied roughness and realistic highlights; natural eyes, muscle tension and expressions. Avoid waxy or plastic skin, beauty smoothing and airbrushed faces. Preserve the requested camera behavior; realism does not require camera shake.\n\n[Combat physical direction]\nExecute only the specified choreography, attacks, defenses, powers and outcome. Preserve each actor's identity, weapon ownership, geography and accumulated damage. Physical chain for every exchange: anticipation, ground-supported propulsion through legs and hips, trajectory, visible contact or evasion, momentum transfer, displacement, reaction, recovery. A block redirects momentum; a miss carries inertia. Balance, friction, traction, gravity and center of mass govern motion. Reactions caused by impacts start after contact; anticipatory defenses remain allowed. Feet step, pivot, skid or drag visibly, never slide rigidly. Grapples require grip, tension and leverage; jumps require compression, takeoff, ballistic travel and landing. Cloth, hair and loose material follow bodies with delayed secondary motion; environmental response follows the impact. Keep attack lines, contact and body displacement readable in the requested camera. Continue motion between actions without automatic guard resets, freeze poses, teleporting, limb fusion or interpenetration. No artificial slow motion or speed ramps unless requested. No flashes, cuts or camera shake to conceal missing contact. Finish requested attacks before any subsequent dialogue, preserving the exact dialogue and requested audio. Do not invent extra opponents, injuries, dialogue or soundtracks. Follow the requested intensity and the character's established abilities.",
+      "width": 1344,
+      "height": 768,
+      "length": 124,
+      "first_frame": [
+        "50",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "PERSONAGENS / DIREÇÃO — H3",
+      "pemara_combat": {
+        "version": "1.0",
+        "preset": "qualidade",
+        "control": "none",
+        "seed": 2026110707,
+        "steps": 20,
+        "frames": 124,
+        "attention_policy": "sage_spectrum",
+        "content_kind": "live_action",
+        "face_refine": false,
+        "turbo": false,
+        "physical_simulation_claim": false,
+        "owner_approval": "PENDING"
+      },
+      "saiyan_showdown": {
+        "stage": "single_contact_diagnostic",
+        "not_final_T01": true,
+        "new_identity_anchor_sha256": "a73791ead3e4e7f99621ee96ed897d30f60605817d6260a820362ef9a3b260fa",
+        "owner_approval": "PENDING_VIDEO_REVIEW",
+        "comparison_variants": [
+          "native",
+          "sage",
+          "sage_spectrum"
+        ],
+        "acceleration_variant": "B_sage",
+        "acceleration_exception": "Owner requested isolated A/B/C comparison; normal Maestro policy unchanged",
+        "physical_quality": "PENDING_REVIEW"
+      },
+      "sceneProfiles": {
+        "version": "human_realism_combat_local_v2",
+        "profile": "combat_full_v1",
+        "roles": [
+          "combat",
+          "physics",
+          "realism"
+        ],
+        "humanRealismApplied": true,
+        "detection": {
+          "people": true,
+          "provider": "local_comfy",
+          "model": "gemma4_e2b_it_bf16.safetensors",
+          "evidence": "The scene description explicitly mentions two human characters, Vegeta and Goku, with their faces and hands visible.",
+          "externalDataTransfer": false,
+          "evidence_sha256": "be10eb03f4628c5addfb9797690f600ad10dbd99ef5476df17dd97a3c2a0e58f"
+        },
+        "adapters": [
+          {
+            "role": "combat",
+            "file": "H3_Combat_V2.safetensors",
+            "strength": 0.8,
+            "bytes": 155110280,
+            "sha256": "5b3edb09e9d6029439badf9bc9db4ba4a355ae679b0810888de82c4793c0bac8",
+            "repo": "JOKER141/MiniMax-H3-Combat-Base-V2",
+            "revision": "7b3c5b7157d66517f5bd8f5d3fa8fd2c66bc4d11"
+          },
+          {
+            "role": "physics",
+            "file": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+            "strength": 0.3,
+            "bytes": 155109672,
+            "sha256": "7d14f3701560068e7004159c8b2a7278bd2dbfc9e5e3b60d0bc9aef6c049919d",
+            "repo": "Jojocodex/minimax-h3-spatial-physics-lora",
+            "revision": "476b24df28b9b7cc5481b750469698f5cc4b0558"
+          },
+          {
+            "role": "realism",
+            "file": "h3-realism-people-t2v-i2v-r2v.safetensors",
+            "strength": 0.7,
+            "bytes": 131229656,
+            "sha256": "acc529601d2da117fb81179e76c56e488a3beab1171659d305f04fa3655b787e",
+            "repo": "fal/MiniMax-H3-Realism-People-LoRA",
+            "revision": "039cc8579d7aa357a882d7f4111b25da4f72dccc"
+          }
+        ],
+        "physicalChain": [
+          "anticipation",
+          "propulsion",
+          "contact_or_evasion",
+          "displacement",
+          "reaction",
+          "recovery"
+        ],
+        "engineChanged": false,
+        "samplerChanged": false,
+        "frameRestoration": false,
+        "qualityApproval": "PENDING_OWNER_REVIEW"
+      }
+    }
+  },
+  "pemara_h3_sage_6": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_6": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_6",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_scene_combat": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "H3_Combat_V2.safetensors",
+      "strength_model": 0.8
+    }
+  },
+  "pemara_scene_physics": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_combat",
+        0
+      ],
+      "lora_name": "wushu_spatial_physics_clean_3000_pruned.safetensors",
+      "strength_model": 0.3
+    }
+  },
+  "pemara_scene_realism": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "pemara_scene_physics",
+        0
+      ],
+      "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
+      "strength_model": 0.7
+    }
+  }
+}

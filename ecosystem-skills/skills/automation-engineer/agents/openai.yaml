@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automation Engineer"
+  short_description: "Especialista em automação de propósito geral, Python-first e"
+  default_prompt: "Use $automation-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

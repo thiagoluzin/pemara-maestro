@@ -1,0 +1,6 @@
+interface:
+  display_name: "Death metal"
+  short_description: "Riffs extremos, articulação e canto gutural"
+  default_prompt: "Use $pemara-death-metal para dirigir ou revisar a fase musical solicitada, respeitando o motor, o escopo e as autorizações existentes."
+policy:
+  allow_implicit_invocation: true

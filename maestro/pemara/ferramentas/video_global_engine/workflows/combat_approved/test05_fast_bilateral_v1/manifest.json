@@ -1,0 +1,89 @@
+{
+  "id": "pemara_combat_test05_approved_v1",
+  "approval": {
+    "at": "2026-11-08T21:38:28.314637+00:00",
+    "candidate": "TEST05",
+    "decision": "APPROVED_BY_OWNER",
+    "owner_quote": "Agora? Sim, ficou algo decente, ficou uma luta boa, salva isso, pelo amor de Deus. Salva e processa pra fazer coisa de luta, coloca no maestro, coloca em qualquer lugar, mas salva isso que agora ficou bom esse esquema. Vamos continuar fazendo vídeo usando o continuum",
+    "approved_video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\TEST05\\TEST05_H3_Ritmo_Continuo_10s_720p.mp4",
+    "approved_video_sha256": "c2d529c43dc62e5db2716096603bcf978a709eabf0f54f59faf1a2eacbd5a9cc",
+    "scope": "Exact TEST05240frame video and its combat/rhythm scheme approved. Preserve original audiovisual bitstream. This is not a claim of isolated audio listening or independent approval of every native source/frame.",
+    "workflow": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\workflows\\TEST05_H3_fast_continuous_combinations.api.json",
+    "workflow_sha256": "8f43f0a5bba26ff59482b2a41ad145244aab526e225b4dfa4a9f3d64751992a2",
+    "anchor": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\base_images\\takeT01_take_t01_anchor_b3fe68a2e62d.png",
+    "anchor_sha256": "6e0e11e2f4a314dcbfeaa88c6055756681458246e7f2bfc7e27476459f551e2c",
+    "continuation_authorized": true,
+    "requested_next_take": "Vegeta versus Goku, Vegeta offensive focus, preserve both identities",
+    "new_anchor_authorized": false,
+    "global_training_authorized": false
+  },
+  "files": [
+    {
+      "file": "TEST05_APROVADO_10s_720p.mp4",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\TEST05\\TEST05_H3_Ritmo_Continuo_10s_720p.mp4",
+      "bytes": 14941770,
+      "sha256": "c2d529c43dc62e5db2716096603bcf978a709eabf0f54f59faf1a2eacbd5a9cc"
+    },
+    {
+      "file": "TEST05_FONTE_10s_864p.mp4",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\TEST05\\TEST05_H3_Ritmo_Continuo_10s_native.mp4",
+      "bytes": 22035006,
+      "sha256": "291591943122983e75936b839893fb7c3542ea3e5bbeb40d7efe9a00691acad3"
+    },
+    {
+      "file": "TEST05_FONTE_COMPLETA_243f.mp4",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\TEST05\\TEST05_full_native_243f.mp4",
+      "bytes": 22291606,
+      "sha256": "d526f20fd0d59cec5d9a06ed5ef08017a5021f6ad73e2389c5dd80bab6970cd9"
+    },
+    {
+      "file": "ancora_aprovada.png",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\base_images\\takeT01_take_t01_anchor_b3fe68a2e62d.png",
+      "bytes": 3134336,
+      "sha256": "6e0e11e2f4a314dcbfeaa88c6055756681458246e7f2bfc7e27476459f551e2c"
+    },
+    {
+      "file": "workflow_aprovado.api.json",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\workflows\\TEST05_H3_fast_continuous_combinations.api.json",
+      "bytes": 9917,
+      "sha256": "8f43f0a5bba26ff59482b2a41ad145244aab526e225b4dfa4a9f3d64751992a2"
+    },
+    {
+      "file": "prompt_aprovado.txt",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\prompts\\TEST05_fast_continuous_combinations.txt",
+      "bytes": 3560,
+      "sha256": "d6333b10cde1e7070c52a1d095fdd608eb47153407030b67cd2103acf80a102c"
+    },
+    {
+      "file": "owner_approval.json",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\receipts\\TEST05_owner_approval.json",
+      "bytes": 1674,
+      "sha256": "9aee40a06b2b1c4b600287250e637d4cedfe8d267ddc9109c71668a2e6181e2b"
+    },
+    {
+      "file": "plan.json",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\receipts\\TEST05_plan.json",
+      "bytes": 5514,
+      "sha256": "a74357772ba00b6a5efa43ca378abac5e8c20cfe531c0fade8b278daa0125be7"
+    },
+    {
+      "file": "delivery.json",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\receipts\\TEST05_delivery.json",
+      "bytes": 4868,
+      "sha256": "c711c58b8fc67bf525f54db9ac016dadeffa24cd36bad773fdc07ba470a1e505"
+    },
+    {
+      "file": "agent_visual_review_before_owner_approval.json",
+      "source": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\reviews\\TEST05\\agent_visual_review.json",
+      "bytes": 5595,
+      "sha256": "5bae544ae007b633a4cf665f1623b4af0eff8095a2e28931ec07e75999573415"
+    }
+  ],
+  "roles": {
+    "exact_replay_graph": "workflow_aprovado.api.json",
+    "exact_prompt": "prompt_aprovado.txt",
+    "approved_preview": "TEST05_APROVADO_10s_720p.mp4",
+    "canonical_identity": "ancora_aprovada.png"
+  },
+  "reuse_scope": "Tested baseline for fast bilateral unarmed live-action combat. New characters/weapons/continuations require their own direction and review; no universal fight training claim."
+}

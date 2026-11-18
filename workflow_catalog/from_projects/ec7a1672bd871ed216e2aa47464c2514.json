@@ -1,0 +1,282 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P20_pixaroma_master20_v2_stable_stage",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P20_P19_approved_endpoint.png"
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P20_native15_362f.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 23102002
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] One continuous live-action opera shot starting in this exact first-frame pose. A fixed audience camera keeps this original framing for the whole fifteen seconds. Three adult actors occupy the SAME level stage plane at the SAME depth and retain their original body heights, proportions and relative scale. LEFT: Draco, young clean-shaven curly dark-haired man, NAVY BLUE cape, BLUE brocade tunic and trousers, SILVER breastplate, brown boots. CENTRE: Maria/Celes, blonde ponytail and blue bow, IVORY satin gown with BLUE sash and trim, both hands EMPTY. RIGHT: Ralse, bearded man, RED tunic, GOLD breastplate, BURGUNDY cape, black boots and sheathed sword. Preserve the exact three identities and clothing materials from the first frame.\nThe established stage is continuously illuminated: the blue cyc remains visibly DEEP BLUE throughout all fifteen seconds, the same partially framed moon stays visible at the upper edge, the right red curtain/ornate column and the foreground blue parapet stay fixed. Soft steady neutral-white key lights skin and costumes at constant exposure. Bodies and set remain fully visible throughout; illumination, framing and stage height are stable.\n0-3s: Draco on the LEFT (S1), the adult male tenor in BLUE and SILVER, begins the long defiant original male reply. His eyes find Ralse, then his head and shoulders turn toward him, his breath and jaw articulate the supplied recording. He shifts onto his supporting leg and takes ONE small lateral half-step SCREEN RIGHT, no more than a quarter of his torso width, maintaining the same stage depth and body size. His free EMPTY palm opens low toward Ralse. The blue cape follows his torso and settles. Maria turns her eyes and head from Ralse toward Draco AFTER his entry; her EMPTY hand stays near her own bodice. She remains standing upright on her ORIGINAL floor mark and at her ORIGINAL height. Ralse lowers his preceding low palm and listens with resting lips, his other hand near his own sheathed sword.\n3-10.6s: ONLY Draco (S1) continues visibly singing the long original male response. He sustains an open low palm through the phrase, then lets it descend naturally below his waist as he completes it. The gesture is carried by his elbow and shoulder, fingers relaxed. Maria listens silently, transferring weight between planted legs without travelling backward, bending down or lowering her body; her face turns toward the current speaker while her hand relaxes from the bodice toward the waist. Ralse's gaze stays on Draco, chest breathing and posture firm, lips resting. Each actor has independent natural breathing, eye movement and cloth recovery. Their three bodies stay clearly separated on the same stage plane.\n10.6-12.3s: Ralse on the RIGHT (S2), the bearded male baritone in RED and GOLD, visibly sings his short original challenge. His jaw opens with the actual recorded phrase and his free hand opens firmly toward Draco. Draco closes his lips to listen and keeps his gaze on Ralse. Maria remains SILENT, lips resting, turning her head toward Ralse after his vocal entrance. Her body remains upright at its original height. The blades remain completely SHEATHED and attached to the men's belts.\n12.3-15.08s: During the original orchestra, both men close their lips and recover from the exchange. Ralse lowers his free palm; Draco settles his shoulders and relaxed hand near his own sword hilt. Maria lowers her empty hand gently toward her waist and looks between them, her original standing height and floor mark unchanged. Breathing, recovering fingers and settling cloth continue to the final moving frame. This is the challenge and preparation; three distinct human silhouettes, sheathed swords, separated bodies and steadily lit blue stage remain visible at the end.\n\noverall_soundscape: Exact supplied original English Pixel Remaster recording, unchanged timing, gain and orchestra. Draco LEFT in BLUE (S1) owns the long male reply from the opening through about10.6s. Ralse RIGHT in RED (S2) owns the short male challenge about10.6-12.3s. Maria remains silent throughout. Final orchestral interval has resting lips. Perform only the original supplied words, without new dialogue, vocals, music or Foley.\n\nnon_diegetic_music: N/A; the existing orchestra belongs to the staged performance.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "first_frame": [
+        "anchor",
+        0
+      ]
+    }
+  }
+}

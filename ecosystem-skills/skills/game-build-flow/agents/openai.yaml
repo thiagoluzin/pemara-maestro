@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Build Flow"
+  short_description: "Fluxo orquestrado para construir um jogo (especialmente"
+  default_prompt: "Use $game-build-flow para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

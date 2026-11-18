@@ -1,0 +1,21 @@
+{
+  "httpStatus": 200,
+  "productionContract": "pemara.qwen-music-production.v1",
+  "coordinator": {
+    "model": "qwen3.8-27b-uncensored-yarn-524k:latest",
+    "defaultEnabled": true,
+    "localOnly": true,
+    "planValidationRequired": true,
+    "musicalIdentityMutationAllowed": false,
+    "approvalIsAutomatic": false
+  },
+  "defaultEngine": "score_first_muscriptor",
+  "enginesConfigured": {
+    "score_first_muscriptor": true,
+    "stem_producer_v2": true,
+    "ace_step_xl": true,
+    "legacy_midi": true
+  },
+  "sampledGuitarReady": true,
+  "availabilityIsInferenceProof": false
+}

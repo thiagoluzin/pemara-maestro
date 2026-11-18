@@ -1,0 +1,108 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A 2D side-scrolling platformer foreground ground road asset, matching the exact visual style, colors, ink linework, and textures of the reference image (Brazilian Colonial Mata Atlantica rainforest). A perfectly straight, flat, level horizontal wooden timber bridge deck spanning across the river, connecting seamlessly with the dirt trail. Sturdy rustic wood planks, timber railings, solid support pilings extending down into the water and riverbed stones below. Strictly horizontal walking surface, perfectly flat floor line across the entire width. Empty environment, no people, no characters, no human figures, clean game asset.",
+      "negative_prompt": "character, person, human, boy, man, woman, runner, player, sprite, figure, crowd, desert, saloon, cacti, modern, asphalt, car, steep ramp, slanted road, broken bridge, hole, 3d render, photorealistic, blurry, watermark, text",
+      "resolution": 1024,
+      "images": {
+        "image_1": [
+          "20",
+          0
+        ]
+      }
+    }
+  },
+  "5": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 20266003,
+      "steps": 24,
+      "cfg": 3.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "bandeirantes/ground_v2_z3_20266003"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "bandeirantes/ref_zone3_clean.png"
+    },
+    "is_changed": [
+      "f8c851167dc480449f8e8aa4c349489612513d2850fdb1411d9f3ae3f2968e5c"
+    ]
+  }
+}

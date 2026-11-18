@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "class_type": "PemaraH3SageStrideDiagnostic",
+    "inputs": {
+      "sequence": 256,
+      "test_forward": true
+    }
+  }
+}

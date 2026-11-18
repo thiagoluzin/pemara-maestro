@@ -1,0 +1,85 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "re2_leon_licker_start_candidate_v1.png"
+    },
+    "is_changed": [
+      "9400abf15c8df052b829c8a387272f1bd758471a44f0762f13750928ecb6d586"
+    ]
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1088,
+      "height": 608,
+      "crop": "center"
+    }
+  },
+  "5": {
+    "class_type": "RepeatImageBatch",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "amount": 5
+    }
+  },
+  "6": {
+    "class_type": "PemaraH3FaceRefine",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "source_prompt": "technical adapter diagnostic only",
+      "fps": 24.0,
+      "seed": 329847,
+      "filename_prefix": "PEMARA_FACE_DIAGNOSTIC/face_5frames",
+      "enabled": true,
+      "steps": 12,
+      "denoise": 0.45,
+      "canvas_size": 512,
+      "detector": "human",
+      "confidence": 0.5
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "PEMARA_FACE_DIAGNOSTIC/refined"
+    }
+  }
+}

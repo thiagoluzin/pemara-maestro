@@ -1,0 +1,191 @@
+{
+  "76": {
+    "class_type": "PrimitiveStringMultiline",
+    "inputs": {
+      "value": "Studio photograph of one old wooden carpenter workbench, thick long rectangular plank top, four stout square legs and one low wooden shelf connecting the legs, heavy front apron, natural worn wood grain, tool marks, sturdy coherent joinery. Empty tabletop and empty shelf. Entire furniture isolated centered on an uninterrupted plain light grey background, elevated three-quarter view, soft diffuse light, photographic material detail. Absolutely blank background and blank corners, no graphics, no writing, no branding, no signage."
+    },
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "78": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "ATerraDevolve/LoteCasarao01/BancadaDeposito_v02",
+      "images": [
+        "82",
+        0
+      ]
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "80": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "81": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "86",
+        0
+      ],
+      "guider": [
+        "90",
+        0
+      ],
+      "sampler": [
+        "80",
+        0
+      ],
+      "sigmas": [
+        "93",
+        0
+      ],
+      "latent_image": [
+        "83",
+        0
+      ]
+    }
+  },
+  "82": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "81",
+        0
+      ],
+      "vae": [
+        "89",
+        0
+      ]
+    }
+  },
+  "83": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": [
+        "84",
+        0
+      ],
+      "height": [
+        "85",
+        0
+      ],
+      "batch_size": 1
+    }
+  },
+  "84": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1024
+    },
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "85": {
+    "class_type": "PrimitiveInt",
+    "inputs": {
+      "value": 1024
+    },
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "86": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 13102806
+    }
+  },
+  "87": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "88": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "89": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "90": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "cfg": 1.0,
+      "model": [
+        "87",
+        0
+      ],
+      "positive": [
+        "92",
+        0
+      ],
+      "negative": [
+        "91",
+        0
+      ]
+    }
+  },
+  "91": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "92",
+        0
+      ]
+    }
+  },
+  "92": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": [
+        "76",
+        0
+      ],
+      "clip": [
+        "88",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "93": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "84",
+        0
+      ],
+      "height": [
+        "85",
+        0
+      ]
+    }
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

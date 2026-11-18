@@ -1,0 +1,934 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "A01": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_goku_ssj1_APPROVED.png"
+    }
+  },
+  "A02": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A02_goku_ssj2_DLSS5_v01.png"
+    }
+  },
+  "content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "encode_1": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 is the literal human photograph at 0 seconds, Picture 2 the same actor at 10.7917 seconds. Preserve photographs, not an illustration inspired by them.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted photographed human performance with the EXACT same adult man as the two literal photographic references. Keep his original facial bone structure, ordinary human brow and teeth, natural pores, small scratches, original neck length and body proportions. Keep the exact same torn orange woven outfit over dark navy cloth, blue sash, wrist wraps and boots, with every existing tear, dust and stain. Golden individual hair strands remain real hair. The island has teal water on the left, a low rock on the right, distant mesas and unchanged overcast light. Hold the same head-to-toe reference framing, gentle natural operator drift and grounded boots with contact shadows. Do not insert closeups or cuts. Human eyes have ordinary irises and pupils. The energy is translucent atmospheric light OUTSIDE his skin, never opaque painted flames, never cartoon outlines. No halo, extra person, text, face redesign or costume change. The same already golden-haired human gathers himself before an electrical power increase. 0–3 seconds: two deliberate abdominal breaths lift and release his shoulders as his gaze stays off-camera right. 3–7 seconds: he lowers his shoulders and hips slightly, firms his abdomen and closes both hands into controlled fists, keeping real facial proportions. 7–10.83 seconds: wind lifts the loose blue sash and individual golden strands, dust and gravel begin to stir while he remains on the same rock. He does not shout or complete the transformation yet. Preserve the same human face and ordinary expression; pressure is expressed through breathing and grounded weight, not caricature.\n\noverall_soundscape: Natural wind, close controlled breathing, cloth movement and quiet gravel. A low nonmusical pressure rumble slowly rises. No yell yet. No speech, music, song, melody, score, singing, choir, instruments or percussion.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 260,
+      "first_frame": [
+        "A01",
+        0
+      ],
+      "last_frame": [
+        "A01",
+        0
+      ],
+      "last_frame_index": 259
+    }
+  },
+  "end_guide_1": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode_1",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "encode_1",
+        1
+      ],
+      "image": [
+        "A01",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "continue_1": {
+    "class_type": "MiniMaxH3FiniteLatentContinuation",
+    "inputs": {
+      "positive": [
+        "end_guide_1",
+        0
+      ],
+      "target_latent": [
+        "encode_1",
+        1
+      ],
+      "iteration": 0,
+      "overlap_frames": 22,
+      "continue_audio_latent": true,
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ]
+    }
+  },
+  "noise_1": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810284
+    }
+  },
+  "guider_1": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "continue_1",
+        3
+      ],
+      "conditioning": [
+        "continue_1",
+        0
+      ]
+    }
+  },
+  "sample_1": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise_1",
+        0
+      ],
+      "guider": [
+        "guider_1",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "continue_1",
+        1
+      ]
+    }
+  },
+  "separate_1": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample_1",
+        0
+      ]
+    }
+  },
+  "save_video_latent_1": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk1_video"
+    }
+  },
+  "save_audio_latent_1": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        1
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk1_audio"
+    }
+  },
+  "decode_1": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "audio_1": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "separate_1",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "chunk_video_1": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode_1",
+        0
+      ],
+      "audio": [
+        "audio_1",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_chunk_1": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "chunk_video_1",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk1",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "finalize_1": {
+    "class_type": "MiniMaxH3FiniteSegmentFinalize",
+    "inputs": {
+      "sampled_latent": [
+        "sample_1",
+        0
+      ],
+      "images": [
+        "decode_1",
+        0
+      ],
+      "audio": [
+        "audio_1",
+        0
+      ],
+      "iteration": 0,
+      "overlap_frames": 22,
+      "trim_audio_head": false
+    }
+  },
+  "encode_2": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 is the literal human photograph at 0 seconds, Picture 2 the same actor at 10.7917 seconds. Preserve photographs, not an illustration inspired by them.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted photographed human performance with the EXACT same adult man as the two literal photographic references. Keep his original facial bone structure, ordinary human brow and teeth, natural pores, small scratches, original neck length and body proportions. Keep the exact same torn orange woven outfit over dark navy cloth, blue sash, wrist wraps and boots, with every existing tear, dust and stain. Golden individual hair strands remain real hair. The island has teal water on the left, a low rock on the right, distant mesas and unchanged overcast light. Hold the same head-to-toe reference framing, gentle natural operator drift and grounded boots with contact shadows. Do not insert closeups or cuts. Human eyes have ordinary irises and pupils. The energy is translucent atmospheric light OUTSIDE his skin, never opaque painted flames, never cartoon outlines. No halo, extra person, text, face redesign or costume change. Continue the inherited body, wind, geography and camera movement from the previous native AV context. The attached AUDIO GUIDE at local 1.4167 seconds is the exact approved performance: follow its real timing, not an invented second yell. Before that guide, he braces with a closed jaw and breathes. During the first quiet 1.5 seconds of the guide, one deliberate inhalation and eyelids closing prepare the effort. At local 2.9167 seconds the human mouth opens within ordinary anatomy and follows the forceful approved nonverbal exertion sound until roughly local 6.8 seconds; chin rises only slightly, no face stretching, no oversized eyebrows or solid sculpted hair. The already golden strands lift gradually toward Picture 2, with thin irregular blue-white arcs OUTSIDE his face and body. Translucent energy pushes dust outward and lifts a few little stones without hiding skin, outfit or landscape. Follow the remaining guide through the release; close the jaw during exhalation and reopen natural eyes only when the effort settles. By local 8.1–10.83 seconds he has reached the controlled human stance and more upright hair of Picture 2, with breathing, transparent energy, electrical arcs, cloth and dust still moving. No replay of transformation or new scream.\n\noverall_soundscape: The exact approved adult male nonverbal yell and effects are supplied as a fixed audio guide at 1.4167 seconds. Preserve their timing and vocal identity; never invent words, a different voice or another scream. Match mouth and effort to that guide. Outside it, only the same outdoor wind, breath, gravel and low nonmusical energy pressure. No music, singing or score.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 260,
+      "first_frame": [
+        "A01",
+        0
+      ],
+      "last_frame": [
+        "A02",
+        0
+      ],
+      "last_frame_index": 259
+    }
+  },
+  "end_guide_2": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode_2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "encode_2",
+        1
+      ],
+      "image": [
+        "A01",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "continue_2": {
+    "class_type": "MiniMaxH3FiniteLatentContinuation",
+    "inputs": {
+      "positive": [
+        "approved_audio_guide",
+        0
+      ],
+      "target_latent": [
+        "encode_2",
+        1
+      ],
+      "iteration": 1,
+      "overlap_frames": 22,
+      "continue_audio_latent": true,
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "previous_latent": [
+        "sample_1",
+        0
+      ]
+    }
+  },
+  "noise_2": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810284
+    }
+  },
+  "guider_2": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "continue_2",
+        3
+      ],
+      "conditioning": [
+        "continue_2",
+        0
+      ]
+    }
+  },
+  "sample_2": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise_2",
+        0
+      ],
+      "guider": [
+        "guider_2",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "continue_2",
+        1
+      ]
+    }
+  },
+  "separate_2": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample_2",
+        0
+      ]
+    }
+  },
+  "save_video_latent_2": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk2_video"
+    }
+  },
+  "save_audio_latent_2": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        1
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk2_audio"
+    }
+  },
+  "decode_2": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "audio_2": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "separate_2",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "chunk_video_2": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode_2",
+        0
+      ],
+      "audio": [
+        "audio_2",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_chunk_2": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "chunk_video_2",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk2",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "finalize_2": {
+    "class_type": "MiniMaxH3FiniteSegmentFinalize",
+    "inputs": {
+      "sampled_latent": [
+        "sample_2",
+        0
+      ],
+      "images": [
+        "decode_2",
+        0
+      ],
+      "audio": [
+        "audio_2",
+        0
+      ],
+      "iteration": 1,
+      "overlap_frames": 22,
+      "trim_audio_head": false
+    }
+  },
+  "join_images_2": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "finalize_1",
+        1
+      ],
+      "image2": [
+        "finalize_2",
+        1
+      ]
+    }
+  },
+  "trim_audio_2": {
+    "class_type": "MiniMaxH3FiniteAudioTrimTail",
+    "inputs": {
+      "audio": [
+        "finalize_1",
+        2
+      ],
+      "overlap_frames": 22
+    }
+  },
+  "join_audio_2": {
+    "class_type": "AudioConcat",
+    "inputs": {
+      "audio1": [
+        "trim_audio_2",
+        0
+      ],
+      "audio2": [
+        "finalize_2",
+        2
+      ],
+      "direction": "after"
+    }
+  },
+  "encode_3": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 is the literal human photograph at 0 seconds, Picture 2 the same actor at 10.1250 seconds. Preserve photographs, not an illustration inspired by them.\n\nintegrated_multimodal_description: [Shot 1] One uninterrupted photographed human performance with the EXACT same adult man as the two literal photographic references. Keep his original facial bone structure, ordinary human brow and teeth, natural pores, small scratches, original neck length and body proportions. Keep the exact same torn orange woven outfit over dark navy cloth, blue sash, wrist wraps and boots, with every existing tear, dust and stain. Golden individual hair strands remain real hair. The island has teal water on the left, a low rock on the right, distant mesas and unchanged overcast light. Hold the same head-to-toe reference framing, gentle natural operator drift and grounded boots with contact shadows. Do not insert closeups or cuts. Human eyes have ordinary irises and pupils. The energy is translucent atmospheric light OUTSIDE his skin, never opaque painted flames, never cartoon outlines. No halo, extra person, text, face redesign or costume change. Start in the inherited completed electrical state of Picture 1; keep the exact same natural human face and damaged woven outfit. The transformation is already finished and must not repeat. 0–3 seconds: the exhalation resolves and shoulders release slightly; sparse dust finishes moving outward. 3–7 seconds: steady human breathing, a controlled gaze off-camera right, fingers ease subtly then form relaxed fists; real golden hair and the blue sash respond to the energy updraft while tiny stones slowly turn. 7–10.83 seconds: maintain alert readiness with a living body, ordinary natural eyes, skin pores, cloth weave, transparent golden energy and sparse blue-white arcs. The exact face, clothes, geography and photographic perspective are retained at the target last-frame guide, with no frozen tail.\n\noverall_soundscape: Same outdoor wind, easing breath, moving cloth, a few dry electrical snaps and a restrained nonmusical energy rush. No further yell, words, singing, melody or musical score.\n\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 260,
+      "first_frame": [
+        "A02",
+        0
+      ],
+      "last_frame": [
+        "A02",
+        0
+      ],
+      "last_frame_index": 243
+    }
+  },
+  "end_guide_3": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "encode_3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "latent": [
+        "encode_3",
+        1
+      ],
+      "image": [
+        "A02",
+        0
+      ],
+      "frame_idx": 17
+    }
+  },
+  "continue_3": {
+    "class_type": "MiniMaxH3FiniteLatentContinuation",
+    "inputs": {
+      "positive": [
+        "end_guide_3",
+        0
+      ],
+      "target_latent": [
+        "encode_3",
+        1
+      ],
+      "iteration": 2,
+      "overlap_frames": 22,
+      "continue_audio_latent": true,
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "previous_latent": [
+        "sample_2",
+        0
+      ]
+    }
+  },
+  "noise_3": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2810284
+    }
+  },
+  "guider_3": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "continue_3",
+        3
+      ],
+      "conditioning": [
+        "continue_3",
+        0
+      ]
+    }
+  },
+  "sample_3": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise_3",
+        0
+      ],
+      "guider": [
+        "guider_3",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "continue_3",
+        1
+      ]
+    }
+  },
+  "separate_3": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample_3",
+        0
+      ]
+    }
+  },
+  "save_video_latent_3": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_3",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk3_video"
+    }
+  },
+  "save_audio_latent_3": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "separate_3",
+        1
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk3_audio"
+    }
+  },
+  "decode_3": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate_3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "audio_3": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "separate_3",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "chunk_video_3": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "decode_3",
+        0
+      ],
+      "audio": [
+        "audio_3",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_chunk_3": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "chunk_video_3",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/chunk3",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "finalize_3": {
+    "class_type": "MiniMaxH3FiniteSegmentFinalize",
+    "inputs": {
+      "sampled_latent": [
+        "sample_3",
+        0
+      ],
+      "images": [
+        "decode_3",
+        0
+      ],
+      "audio": [
+        "audio_3",
+        0
+      ],
+      "iteration": 2,
+      "overlap_frames": 22,
+      "trim_audio_head": false
+    }
+  },
+  "join_images_3": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "join_images_2",
+        0
+      ],
+      "image2": [
+        "finalize_3",
+        1
+      ]
+    }
+  },
+  "trim_audio_3": {
+    "class_type": "MiniMaxH3FiniteAudioTrimTail",
+    "inputs": {
+      "audio": [
+        "join_audio_2",
+        0
+      ],
+      "overlap_frames": 22
+    }
+  },
+  "join_audio_3": {
+    "class_type": "AudioConcat",
+    "inputs": {
+      "audio1": [
+        "trim_audio_3",
+        0
+      ],
+      "audio2": [
+        "finalize_3",
+        2
+      ],
+      "direction": "after"
+    }
+  },
+  "full_video": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "join_images_3",
+        0
+      ],
+      "audio": [
+        "join_audio_3",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "save_full": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "full_video",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261028/continuous_audio_locked_v01/Goku_SSJ2_native_full",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "approved_audio": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "Goku_SSJ2_TESTE_GRITO_P01.wav"
+    }
+  },
+  "approved_audio_guide": {
+    "class_type": "MiniMaxH3AddGuide",
+    "inputs": {
+      "positive": [
+        "end_guide_2",
+        0
+      ],
+      "latent": [
+        "encode_2",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "audio": [
+        "approved_audio",
+        0
+      ],
+      "frame_idx": 34
+    }
+  }
+}

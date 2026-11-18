@@ -1,0 +1,256 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A continuous EIGHT SECOND live-action shot of Dante skilfully working the THREE-BRANCH CERBERUS NUNCHAKU in a clear open lane BESIDE his body. The heavy free rods circle visibly through empty air, always well clear of his face, shoulders, coat, torso and legs. This is a real physical weapon performance, one held baton and TWO moving free batons, with chain tension, inertia, deceleration and a deliberate reversal. Same approved youthful adult white-haired Dante, angular face, red leather coat, brown chest harness, black gloves, dark trousers and boots, same frozen Gothic chamber. Photoreal live-action actor and solid crystal-and-metal props. Normal action speed, one unbroken shot.\n\nPHYSICAL STAGING AND CAMERA: Begin in the exact approved anchor pose. During the first1.3seconds Dante takes TWO visible steps backward toward the carved gate, while the camera dollies BACKWARD into a WIDE full-figure view. Show the feet stepping and bearing weight. By1.3seconds he is a small full figure, about HALF the picture height, slightly on the RIGHT side of the image, with a broad EMPTY FLOOR AND AIR CORRIDOR on the LEFT side of the image. Retain this wide scale throughout the performance. Camera then settles into a steady front three-quarter view, no orbit or close-up. Dante extends his RIGHT arm diagonally OUT to his own right, the LEFT side of the image. His right hand and the weapon are well outside the outline of his body. His LEFT hand rests against his left hip, away from the moving weapon. Keep the entire body and ALL THREE RODS AND THEIR COMPLETE ORBIT inside the image with margins. The camera shows the empty gap separating the spinning free batons from his body. The orbit stays on the OUTSIDE of the right glove, away from the torso, never in front of his chest, never across his waist, never behind a shoulder or under an arm. The solid weapon occupies the empty space beside Dante, clearly separate from him.\n\nCERBERUS CONSTRUCTION: Exactly THREE short icy-cyan crystalline batons with solid silver flared pointed ferrules. Each baton has its own short dark metal chain connecting its base to ONE central ring: three branches, a radial Y weapon, not a serial staff. RIGHT glove firmly grips the same ONE baton throughout this take. The held baton extends outward toward the exterior corridor. Its chain and the central ring follow its tip; the OTHER TWO solid batons swing freely on their own chain branches. Keep their rigid lengths and original chain lengths constant. The two free rods pull outward with real mass while spinning, sag below the hand during deceleration, then pull taut again. Visible metal links, continuous attachments, natural short motion blur, no light ribbons, detached pieces, extra rods, stretchable batons or chains. The three rods remain separate and attached at all times.\n\n0.00–1.30seconds: From the exact photograph, Dante makes the two backward steps as the camera retreats. He brings the held right-hand baton outward into the EMPTY exterior lane. The two free rods swing DOWN under gravity beside his right side as he extends his arm. He turns his chest a little away from the weapon lane, keeping boots grounded and watching the free rods. This deliberate opening clears room before the fast flourish.\n\n1.30–4.30seconds: With his right arm still extended away from his body, Dante drives TWO complete vertical forward circles of the open nunchaku. The two free rods travel around an orbit entirely in the empty air beyond his right glove, to the LEFT of his body in the image. His right wrist and forearm generate the rotation. The free rods trail under tension; chain links and central ring turn continuously. Each circle has a clearly visible upper, outer, lower and returning section. Keep a visible air gap from every rod and chain to Dante's torso, coat, face, arm and legs. The weapon never passes through his silhouette. Knees flex and planted feet make a small supporting pivot, showing control and weight; the arm does not sweep across his body.\n\n4.30–5.70seconds: Show a real CONTROLLED REVERSAL, not an instantaneous change of direction. Dante lowers the right hand slightly and reduces his wrist drive. The two free rods lose speed, descend beneath the central ring in the exterior lane, then swing outward. His right wrist follows and redirects their momentum with a short curved movement. Gravity, slack chain, then renewed chain tension are visible. The grip stays on the same baton. LEFT hand stays by the far hip. No catch under an arm, hand swap, shoulder wrap or release into flight.\n\n5.70–8.00seconds: Dante resumes a brisk reverse vertical wheel in that SAME empty exterior lane. Show a complete reverse circle and continue into the next one through the final frame. The two free batons move independently on their original branches, trailing under tension. His elbow and wrist steer them outside his body while his knees dip and coat responds with delayed motion. The face remains confidently focused on the weapon. Keep full rod paths visible, well away from his body and all image edges. End with moving nunchaku, not a static hanging prop, gathered bundle, jump or body spin.\n\noverall_soundscape: Native synchronized metallic chain chatter and fast air swishes following the visible free-rod circles, a quieter deceleration followed by renewed swish as rotation reverses, leather movement and visible boot steps on ice with chamber reverberation. No speech, singing, guitar, crowd, applause, music or copied game soundtrack. Preserve the generated native audio.\n\nnon_diegetic_music: N/A.\n\n[FIXED CHARACTER IDENTITY]\ndante: Exactly one adult Dante with the exact approved A01 angular youthful face, fair skin, silver-white layered fringe, lean athletic build and clean-shaven jaw.; Same worn long dark-red leather coat, shoulder seams, raised collar, brown chest harness on bare chest, dark trousers, black fingerless gloves and buckled boots.; Exactly ONE original DMC3 Cerberus: THREE short icy-cyan faceted rigid batons with silver ornate collars and pointed flared ferrules.; The topology is one central dark ring with THREE separate dark angular-link chain branches, each branch connecting to ONE baton base; never a serial staff, two-rod nunchaku, six rods, rope or duplicated ring.; All three rods remain connected during a hand transfer or body rotation. Hands deliberately grip and release; the free rods swing under tension, gravity and inertia, never teleport or pass through the body.; Same frozen Gothic stone chamber, carved gate behind Dante, icy left pillar, blue side light, subtle warm skin edge, solid frost-covered floor; no enemy, audience, new set, guitar, sword, gun, fire, lightning, text or logo.; Real human skin, weighted leather, hair strands and metal/ice surfaces. No cartoon, game render, plastic body, altered body scale, unexplained new damage or wardrobe change.\nPersistent state: {\"entry\": {\"damage\": [\"Existing scuffed leather; no new body injury or weapon damage.\"], \"dirt\": 1, \"wetness\": 0}, \"exit\": {\"damage\": [\"Existing scuffed leather; no new body injury or weapon damage.\"], \"dirt\": 1, \"wetness\": 0}}",
+      "width": 768,
+      "height": 1344,
+      "length": 192,
+      "first_frame": [
+        "approved_start",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611020905
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dmc3_cerberus_20261102/video/T01_physical_clearance_native_v05",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "approved_start": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_APPROVED_contain_768x1344.png"
+    }
+  }
+}

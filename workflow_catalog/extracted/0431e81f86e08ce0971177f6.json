@@ -1,0 +1,97 @@
+{
+  "id": "h3_live_action_signature_combat",
+  "label": "H3 Live Action - Signature Combat",
+  "engine": "minimax_h3",
+  "mode": "FL2VA",
+  "fallbackAllowed": false,
+  "useWhen": [
+    "named characters must fight with recognizable move ownership",
+    "powers or weapons must drive choreography instead of decorate it",
+    "contact, mass and reaction must be readable in live action"
+  ],
+  "qualityRoute": {
+    "normal": "h3_production",
+    "high": "h3_hero",
+    "critical": "h3_master"
+  },
+  "durationContract": {
+    "nativeFrames": 124,
+    "nativeFps": 24,
+    "effectiveDurationSeconds": 5.1667,
+    "dominantExchanges": 1,
+    "rule": "one named move or counter and its complete physical reaction; no filler exchange"
+  },
+  "controlContract": {
+    "required": [
+      "approved first, contact and last anchors with SHA-256 and approval scope",
+      "identity matrix and combat identity matrix for every fighter",
+      "one named signature move with fixed owner and forbidden substitutions",
+      "anticipation, propulsion, contact, displacement, reaction and recovery",
+      "effect or weapon lifecycle attached to the correct body, object and character"
+    ],
+    "intermediateAnchor": "always required at the signature contact or technical pose",
+    "motion": "prompt guided between locked action states; model freedom is limited to connective micro-movement",
+    "exactPoseControl": false,
+    "modelMayChooseDifferentMoves": false
+  },
+  "nodeContract": {
+    "required": [
+      "UNETLoader",
+      "CLIPLoader",
+      "VAELoader",
+      "LoadImage",
+      "MiniMaxH3ImageToVideo",
+      "MiniMaxH3SigmaShift",
+      "BasicGuider",
+      "BasicScheduler",
+      "RandomNoise",
+      "KSamplerSelect",
+      "SamplerCustomAdvanced",
+      "LTXVSeparateAVLatent",
+      "VAEDecodeTiled",
+      "ImageScale",
+      "CreateVideo",
+      "SaveVideo",
+      "PemaraH3FaceRefine"
+    ],
+    "optional": [
+      "MiniMaxH3AddGuide",
+      "ModelPreviewOverrideKJ"
+    ],
+    "forbidden": [
+      "MiniMaxH3ReferenceToVideo mixed into the FL2VA graph",
+      "model-selected generic strikes",
+      "power transferred to the wrong fighter",
+      "detached decorative aura, beam, fire or particles without physical cause",
+      "camera shake, RIFE or Foley used to counterfeit impact",
+      "RIFE or upscale before source approval"
+    ]
+  },
+  "promptContract": {
+    "language": "English except original dialogue and visible text",
+    "sections": [
+      "integrated_multimodal_description",
+      "overall_soundscape",
+      "non_diegetic_music"
+    ],
+    "timelineRule": "Write one exact named exchange over 0-30%, 30-70% and 70-100%; useful body and camera motion continues through the last interval.",
+    "moveRule": "The declared move owner, mechanism, silhouette and outcome are immutable. H3 may solve only connective micro-movement.",
+    "physicsRule": "Show anticipation, planted force or airborne propulsion, visible contact or evasion, center-of-mass displacement, opponent reaction and active recovery.",
+    "effectRule": "Declare source, body/object attachment, onset, trajectory, contact response, decay and environmental consequence. The effect may not jump owners or replace body mechanics.",
+    "readabilityRule": "The camera must show the attack line and consequence; no cutaway, occlusion or shake may hide the contact beat."
+  },
+  "outputStatus": "TECHNICAL_CANDIDATE_PENDING_HUMAN_REVIEW",
+  "faceRefine": {
+    "enabled": true,
+    "default": true,
+    "node": "PemaraH3FaceRefine",
+    "steps": 12,
+    "denoise": 0.45,
+    "canvasSize": 512,
+    "scope": "all_new_local_h3_video_workflows",
+    "audioPreserved": true,
+    "rawVideoPreserved": true,
+    "identityVerified": false,
+    "ownerApproval": "PENDING"
+  }
+}

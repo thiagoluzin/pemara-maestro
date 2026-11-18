@@ -1,0 +1,6 @@
+interface:
+  display_name: "Engenharia de mix"
+  short_description: "Equilibra pistas e verifica áudio e entrega final"
+  default_prompt: "Use $pemara-music-mix-engineer para melhorar a produção musical do Maestro com o Qwen 3.8."
+policy:
+  allow_implicit_invocation: true

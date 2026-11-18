@@ -1,0 +1,36 @@
+{
+  "approved_baseline": "TEST05",
+  "approved_baseline_changed": false,
+  "trials": [
+    {
+      "id": "T02_CONTINUUM",
+      "method": "NativeMasked bootstrap, first frame + persistent canonical reference",
+      "status": "PENDING_OWNER_REVIEW_WITH_CONTACT_LIMITATIONS",
+      "observation": "Torso kicks held around0.6s, shallow displacement.",
+      "evidence": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\reviews\\T02_CONTINUUM\\agent_visual_review.json",
+      "owner_video_approved": false
+    },
+    {
+      "id": "T03_CONTINUUM",
+      "method": "NativeMasked39 actual AV state + persistent canonical reference",
+      "status": "REJECTED_BY_OWNER_SLOW",
+      "owner_quote": "Reprovento muito lento.",
+      "evidence": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\receipts\\T03_CONTINUUM_owner_rejection.json",
+      "source_for_future_takes_allowed": false,
+      "owner_video_approved": false
+    },
+    {
+      "id": "T03_R2_GUIDE5",
+      "method": "Guide/MotionContext5 + I2VA original canonical Qwen identity tokens, spatial pose pin removed",
+      "status": "COMPLETED_PENDING_OWNER_REVIEW",
+      "workflow": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\workflows\\T03_R2_CONTINUUM_Guide5_fast_flurries.api.json",
+      "evidence": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\reviews\\T03_R2_GUIDE5\\agent_visual_review.json",
+      "retime": false,
+      "owner_video_approved": false,
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\dragon_ball_nova_ancora_humana_20261108\\output\\T03_R2_GUIDE5\\T03_R2_Guide5_Vegeta_10s_720p.mp4",
+      "sha256": "81e4c3498bf84fa5035429efeab53524e7b7938d9cf92ce828945b7f97d22d0b",
+      "agent_assessment": "PUNCH_DENSITY_INCREASED_BUT_KICK_HOLD_AND_GOKU_FACE_DRIFT"
+    }
+  ],
+  "reuse_rule": "Do not replace the exact approved TEST05 recipe with a Continuum trial. Native39 slow attempt is rejected. R2 is a method change, not an approved new standard."
+}

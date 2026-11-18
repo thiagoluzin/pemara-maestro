@@ -1,0 +1,306 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/L12_v2_stage_retreat",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "subject_definitions:\n<Picture 1>: Locke: the exact adult man with brown hair, blue bandana, short dark jacket, cream embroidered shirt, blue trousers and tan boots.\n<Picture 2>: Ultros: the exact single physical purple octopus with broad mantle, yellow eyes and thick suckered arms.\n<Picture 3>: The Impresario: the exact older man with greying hair, prominent curled grey moustache, dark blue tailcoat, ivory waistcoat and white cravat.\n\nsummary:\nA single continuous fifteen-second cinematic live-action opera scene with real actors and the approved practical character designs.\n\nretention_analysis:\nRetain the exact referenced faces, hairstyles, costumes, proportions and materials. Images define identity; directed blocking determines the scene. No unlisted actors or face replacements.\n\ndetailed_description:\n[Shot 1] (0-15 seconds) At the foot of the wooden service stair in the left wing of the opera stage. A folded canvas lies beside the stair, undisturbed. Locke has descended the service stair between shots; he has not fallen or acquired new injuries. The causal journey from the upper gantry is a separate pending connector, not shown as an internal cut here. The counterweight remains secured on the gantry above; the fallen crossbar remains above. Steady work light and stage spill. One uninterrupted wide shot at stage-floor level, with all feet and arm contacts visible. The broad open service doorway is screen left, wider than Ultros's mantle. The wooden service stair is at the back. Locke stands centre-right with empty hands, facing Ultros centre-left. One round wooden theatre shield leans against the stair within Locke's reach. The Impresario is initially outside the frame, on the stage side at screen right. Warm steady matte work lighting matches the preceding gantry. No flashing practicals or luminous decorations. 0-3 seconds: Ultros draws one front arm back; Locke notices it and shifts his weight onto his rear foot, eyes tracking its tip. 3-6 seconds: the arm sweeps once low across the planks. Locke takes one clear backward step, evading the tip before it reaches his boots. 6-9 seconds: Locke bends his knees, takes the single shield from the stair with both hands, straightens and raises it in front of his torso. The shield remains rigid and separate from his hands. 9-12 seconds: Locke advances two purposeful short steps behind the shield. Ultros withdraws, moving its whole mantle backward toward the open left doorway by successive visible arm grips on the floor. 12-15 seconds: Ultros clears that doorway completely, its last arm following. Locke stops advancing and lowers the shield slightly while watching the exit. The Impresario then enters from screen right, sees the empty exit, exhales and raises one calming palm toward the audience. The camera moves gently sideways just enough to keep the retreat and the later entrance legible, preserving the theatre axis. No fall, sudden new dirt, wounds, duplicate shield, new counterweight, loose falling timber or repeated ankle capture. No character transforms into another. Natural skin and fabric texture; grounded body weight; consistent scale. No internal cut or transition.\n\noverall_soundscape:\nDiegetic sounds only: one heavy arm brushing wood, suction cups releasing, clear boot steps, shield being lifted and exertion breathing. Soft off-screen audience applause begins only after Ultros clears the doorway. No intelligible speech in any language, no narration, no singing. Both men remain silent.\n\nnon_diegetic_music:\nNo added music except the original theatrical performance explicitly described in the sound direction.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 22106212,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "ffvi_master_L12_stage_retreat_v2_20261022",
+      "reference_size": "Max Identity",
+      "project_id": "ffvi_opera_h3_master_liveaction_20261022",
+      "video_reference_size": "Match Output",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "reference_image_1": [
+        "cast_locke",
+        0
+      ],
+      "reference_image_2": [
+        "cast_ultros",
+        0
+      ],
+      "reference_image_3": [
+        "cast_impresario",
+        0
+      ]
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  },
+  "cast_locke": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_locke_approved_2aa5a3486b.png"
+    }
+  },
+  "cast_ultros": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_ultros_approved_f4683db130.png"
+    }
+  },
+  "cast_impresario": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_impresario_approved_3c582bc9bf.png"
+    }
+  }
+}

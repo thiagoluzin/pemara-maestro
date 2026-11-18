@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Dante_Nevan_Apresentacao_Completa_Horizontal_PikaFlex_v03.mp4"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLanczosUpscaleRequiredSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1920,
+      "height": 1080,
+      "filename_prefix": "dmc3_nevan_horizontal_20261102/final/Dante_Nevan_Apresentacao_Completa_FHD60_v01",
+      "profile_id": "lanczos_nvenc_rife_exact60_no_nr_v3_1080p",
+      "content_kind": "live_action",
+      "protection_manifest": ""
+    }
+  }
+}

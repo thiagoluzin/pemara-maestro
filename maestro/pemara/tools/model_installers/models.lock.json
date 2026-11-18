@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-16",
+  "python_dependency": "huggingface_hub[hf_xet]==1.24.0",
+  "allowed_hf_repositories": [
+    "Comfy-Org/MiniMax-H3",
+    "tencent/HunyuanVideo-Foley",
+    "google/siglip2-base-patch16-512",
+    "laion/larger_clap_general",
+    "Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
+    "Comfy-Org/Wan_2.1_ComfyUI_repackaged",
+    "yzd-v/DWPose",
+    "hr16/DWPose-TorchScript-BatchSize5",
+    "Comfy-Org/gemma-4"
+  ],
+  "allowed_http_hosts": [
+    "github.com",
+    "objects.githubusercontent.com",
+    "release-assets.githubusercontent.com"
+  ],
+  "artifacts": [
+    {
+      "id": "shared_gemma4_e2b_semantic_critic",
+      "component": "shared",
+      "classification": "SHARED_SEMANTIC_CRITIC_ASSET",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/gemma-4",
+      "revision": "63d0f7c476756b88910170c1df75e2384ea1af31",
+      "filename": "text_encoders/gemma4_e2b_it_bf16.safetensors",
+      "destination_root": "comfy_offloaded_models",
+      "expected_bytes": 10278774160,
+      "sha256": "dcc3c8d27be2db2ef38b78d564ebfa1e92eb24665ed2751f2983275f03a067c8",
+      "consumers": [
+        "creative_os.semantic_critic"
+      ]
+    },
+    {
+      "id": "wan22_animate_14b_bf16",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
+      "revision": "229712f1802576fd9040782c51a881a501090a19",
+      "filename": "split_files/diffusion_models/wan2.2_animate_14B_bf16.safetensors",
+      "destination_filename": "diffusion_models/wan2.2_animate_14B_bf16.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 34549787368,
+      "sha256": "7d37cb0120488dec2a061135aa3018426925318a60838c3de935c829abc88667"
+    },
+    {
+      "id": "wan21_vae_for_wan22_animate",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
+      "revision": "229712f1802576fd9040782c51a881a501090a19",
+      "filename": "split_files/vae/wan_2.1_vae.safetensors",
+      "destination_filename": "vae/wan_2.1_vae.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 253815318,
+      "sha256": "2fc39d31359a4b0a64f55876d8ff7fa8d780956ae2cb13463b0223e15148976b"
+    },
+    {
+      "id": "wan22_animate_umt5_xxl_fp8",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
+      "revision": "229712f1802576fd9040782c51a881a501090a19",
+      "filename": "split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "destination_filename": "text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 6735906897,
+      "sha256": "c3355d30191f1f066b26d93fba017ae9809dce6c627dda5f6a66eaa651204f68"
+    },
+    {
+      "id": "wan22_animate_clip_vision_h",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/Wan_2.1_ComfyUI_repackaged",
+      "revision": "e2956b53f2960d7126035ee4baeb2e26c7ce8f07",
+      "filename": "split_files/clip_vision/clip_vision_h.safetensors",
+      "destination_filename": "clip_vision/clip_vision_h.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 1264219396,
+      "sha256": "64a7ef761bfccbadbaa3da77366aac4185a6c58fa5de5f589b42a65bcc21f161"
+    },
+    {
+      "id": "dwpose_yolox_l_onnx",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "yzd-v/DWPose",
+      "revision": "1a7144101628d69ee7a3768d1ee3a094070dc388",
+      "filename": "yolox_l.onnx",
+      "destination_filename": "yzd-v/DWPose/yolox_l.onnx",
+      "destination_root": "dwpose_ckpts",
+      "expected_bytes": 216746733,
+      "sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411"
+    },
+    {
+      "id": "dwpose_ucoco_384_bs5_torchscript",
+      "component": "wan_animate",
+      "kind": "hf_file",
+      "repo_id": "hr16/DWPose-TorchScript-BatchSize5",
+      "revision": "359d662a9b33b73f6d0f21732baf8845f17bb4be",
+      "filename": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "destination_filename": "hr16/DWPose-TorchScript-BatchSize5/dw-ll_ucoco_384_bs5.torchscript.pt",
+      "destination_root": "dwpose_ckpts",
+      "expected_bytes": 135059124,
+      "sha256": "d86a0b2b59fddc0901a7076e9f59c9f8602602133ed72511c693fd11eea23d91"
+    },
+    {
+      "id": "minimax_h3_fl2va_pruned_int8_convrot",
+      "component": "h3",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 20970379616,
+      "sha256": "e889202c41dafb67b10d67b97f0d8541508036a6090af23425a5c2615d03c47a"
+    },
+    {
+      "id": "minimax_h3_ref2va_pruned_int8_convrot",
+      "component": "h3",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 20970379616,
+      "sha256": "9255f52b6677845ad238f20dfaafa94727053694127ab7f255c048f0f9365779"
+    },
+    {
+      "id": "minimax_h3_video_vae_fp16",
+      "component": "h3",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "vae/minimax_h3_video_vae_fp16.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 5207808496,
+      "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522"
+    },
+    {
+      "id": "minimax_h3_audio_vae_fp32",
+      "component": "h3",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "vae/minimax_h3_audio_vae_fp32.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 605254808,
+      "sha256": "8e505d95dd1561d47abd43d4238fd40d9bb1ae9e147ed0a4cba778d76ae4db48"
+    },
+    {
+      "id": "qwen3vl_32b_minimax_h3_nvfp4_awq",
+      "component": "qwen",
+      "kind": "hf_file",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "destination_root": "comfy_models",
+      "expected_bytes": 15687142551,
+      "sha256": "35a88d51044231fe332301d7a62aa81e3f2cba62febeb446e2c1e3e0ef76f2c6"
+    },
+    {
+      "id": "rife_ncnn_vulkan_20221029_windows",
+      "component": "rife",
+      "kind": "http_archive",
+      "url": "https://github.com/nihui/rife-ncnn-vulkan/releases/download/20221029/rife-ncnn-vulkan-20221029-windows.zip",
+      "destination_root": "video_tools_bin",
+      "filename": "rife-ncnn-vulkan-20221029-windows.zip",
+      "extract_relative": "rife-ncnn-vulkan-20221029-windows",
+      "required_after_extract": "rife-ncnn-vulkan-20221029-windows/rife-ncnn-vulkan.exe",
+      "expected_bytes": 431540241,
+      "sha256": "d8e4d772d26cd8006ef0ad0bc82eb191b53c68677d1ae2f42506d74cbbbea606"
+    },
+    {
+      "id": "realesrgan_x2plus",
+      "component": "rife",
+      "kind": "http_file",
+      "url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth",
+      "destination_root": "comfy_models",
+      "filename": "upscale_models/RealESRGAN_x2plus.pth",
+      "expected_bytes": 67061725,
+      "sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb"
+    },
+    {
+      "id": "hunyuanvideo_foley_xxl",
+      "component": "foley",
+      "kind": "hf_file",
+      "repo_id": "tencent/HunyuanVideo-Foley",
+      "revision": "3abd4e833b95b8db0fc9c687afc52483a48e9a97",
+      "filename": "hunyuanvideo_foley.pth",
+      "destination_root": "foley_models",
+      "expected_bytes": 10301204679,
+      "sha256": "2900021f8ee562a8175b2f1a3fafb06b9e9e848f11f4c6d4d5d72e126f7c0475"
+    },
+    {
+      "id": "hunyuanvideo_foley_vae_48k",
+      "component": "foley",
+      "kind": "hf_file",
+      "repo_id": "tencent/HunyuanVideo-Foley",
+      "revision": "3abd4e833b95b8db0fc9c687afc52483a48e9a97",
+      "filename": "vae_128d_48k.pth",
+      "destination_root": "foley_models",
+      "expected_bytes": 1486465965,
+      "sha256": "07e6139ff33bd21ba8a7a7f40ed24aab13ac0d100cd686f8a9f3e03dc5251cb1"
+    },
+    {
+      "id": "hunyuanvideo_foley_synchformer",
+      "component": "foley",
+      "kind": "hf_file",
+      "repo_id": "tencent/HunyuanVideo-Foley",
+      "revision": "3abd4e833b95b8db0fc9c687afc52483a48e9a97",
+      "filename": "synchformer_state_dict.pth",
+      "destination_root": "foley_models",
+      "expected_bytes": 950058171,
+      "sha256": "8aff082f2df5c3bc52759db0c865c7ee772ae6400b860d1b7e90413f2defb67c"
+    },
+    {
+      "id": "hunyuanvideo_foley_config",
+      "component": "foley",
+      "kind": "hf_file",
+      "repo_id": "tencent/HunyuanVideo-Foley",
+      "revision": "3abd4e833b95b8db0fc9c687afc52483a48e9a97",
+      "filename": "config.yaml",
+      "destination_root": "foley_models",
+      "expected_bytes": 1313,
+      "sha256": "557c4cdffebcffe7f33c4ae14be84d854afbeb769dcb3e3c3833787d1a34dc75"
+    },
+    {
+      "id": "foley_siglip2_runtime",
+      "component": "foley",
+      "kind": "hf_snapshot",
+      "repo_id": "google/siglip2-base-patch16-512",
+      "revision": "a89f5c5093f902bf39d3cd4d81d2c09867f0724b",
+      "destination_root": "foley_hf_cache",
+      "allow_patterns": [
+        "*.json",
+        "*.model",
+        "*.safetensors",
+        "README.md"
+      ],
+      "required_snapshot_file": "model.safetensors",
+      "estimated_bytes": 1543000000
+    },
+    {
+      "id": "foley_clap_runtime",
+      "component": "foley",
+      "kind": "hf_snapshot",
+      "repo_id": "laion/larger_clap_general",
+      "revision": "ada0c23a36c4e8582805bb38fec3905903f18b41",
+      "destination_root": "foley_hf_cache",
+      "allow_patterns": [
+        "*.json",
+        "*.txt",
+        "*.bin",
+        "README.md"
+      ],
+      "required_snapshot_file": "pytorch_model.bin",
+      "estimated_bytes": 782000000
+    }
+  ]
+}

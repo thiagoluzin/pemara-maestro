@@ -1,0 +1,280 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "hiei_zeru_20261109/video/T04_aftermath_Continuum_native_v01",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "P01_v02_f191_KINETIC_ONLY.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A01_hiei_zeru_DLSS5_v01.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] One continuous EIGHT-SECOND photographed live-action AFTERMATH shot, beginning exactly from the actual final moving frame of the OWNER-APPROVED Hiei attack. This is the same physical world and the next moment, not another attack or a return to the charging photograph. Exactly ONE living fighter, Hiei, occupies the LEFT foreground. Zeru has already been destroyed and never reappears. No blond man, no intact corpse, no substitute fighter, no new silhouette or magical resurrection. Preserve Hiei's same compact athletic proportions, black spiky hair, torn charcoal-navy sleeveless cotton top with its existing holes, pale waist sash, loose dark trousers and boots. His face, if briefly seen in profile, stays the same youthful angular fictional Japanese face with one Jagan, not a new actor. Use the SAME ring and fixed geometry as the approved picture: pale square-tiled elevated arena, existing cracks and scorch marks, LOW distant concrete perimeter retaining wall, audience seating above it, curved stadium canopy and cloudy sky. Keep the same horizon, overcast cool light and residual orange embers. Hiei stays west/left, Zeru east/right, cameras remain SOUTH of their action axis. No new tall wall, slab, portal, growing platform or changed canopy. The black-fire dragon has a dark core and thin violet flame edges, not solid scales or a bright generic energy beam.\nThe source frame is a KINETIC continuation reference from the approved video, not a new canonical identity image. Respect the exact body pose, right-arm lowering direction, fading ash and camera geography inherited from it. The original approved master photograph remains the standard for identity and damaged wardrobe. There is no remaining airborne dragon and no new energy attack.\n0.00–2.40 seconds: Continue Hiei's lowering RIGHT hand and measured breathing immediately. The existing ash plume at Zeru's former position thins further, leaving EMPTY open air and small scorched patches on the SAME floor tiles. The distant low arena wall, spectators and curved canopy remain fixed. Hiei finishes a small grounded recovery step, plants his boot and releases his shoulder tension; do not slide his feet, levitate or move the target location.\n2.40–5.70 seconds: The camera begins a short smooth PHYSICAL ARC along the SOUTH side toward Hiei's RIGHT-hand side, only enough to reveal the side plane of his right forearm and hand while remaining in the same front-side hemisphere of the arena axis. Move closer from the inherited full-body distance into a waist-to-head-and-hand composition; the nearby floor cracks change position against distant seating. His RIGHT fingertips tremble slightly, the last violet ember on his knuckles goes out and he turns his eyes down to that hand. His LEFT hand rises once to steady the RIGHT wrist, with natural finger contact and unchanged anatomy. He contains a pained breath rather than shouting or performing a victory pose. Existing soot stays; no graphic burn wound, exposed tissue, new tattoo or healed cloth.\n5.70–8.00 seconds: Keep the same coherent camera approach, arriving at a readable close detail of RIGHT wrist, forearm and lower three-quarter face. Hiei gently releases the supporting LEFT fingers, flexes the exhausted RIGHT hand once and lets it relax downward, his gaze returning toward the empty space where Zeru stood. Finish while the wrist and cloth are still settling and a few ash motes fall; maintain natural skin pores and real fabric. The emotion is the cost of an imperfectly controlled technique. No new event, smiling for camera, sword, restored shirt, dragon revival, extra arm, written text, slow motion, freeze or repeated attack. The background stays physically continuous and empty of Zeru.\n\noverall_soundscape: Native synchronized diegetic sound only: distant nonverbal stadium ambience, subtle boots and clothing, restrained breathing, embers and evolving flame pressure. No words, dialogue, narration, invented shout, singing, chant, external music or cloned actor voice. Preserve the native H3 soundtrack for review. The previous fire roar is already over: only falling grit, wind, quiet cloth and Hiei's restrained nonverbal breath remain. Do not invent a second impact or spoken line.\n\nnon_diegetic_music: N/A.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 8.0,
+      "width": 768,
+      "height": 1344,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611091104,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "HIEI_T04_CONTINUUM_20261109_v01",
+      "reference_size": "Max Identity",
+      "project_id": "HIEI_ZERU_20261109",
+      "video_reference_size": "Match Output",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "reference_image_1": [
+        "identity_hiei_crop",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  },
+  "identity_hiei_crop": {
+    "class_type": "ImageCrop",
+    "inputs": {
+      "image": [
+        "identity",
+        0
+      ],
+      "x": 0,
+      "y": 430,
+      "width": 500,
+      "height": 1242
+    }
+  }
+}

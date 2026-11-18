@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Metallica-inspired, Fast epic thrash metal, heavy downpicked distorted guitars, forceful male baritone, huge live drums, clear powerful bass, fierce harmonized lead guitars. 176 BPM, F sharp minor. a descending chromatic riff against a steady pulse; a shouted four-word breakdown and accelerating-feeling climax. Epic thrash metal, F sharp minor, descending chromatic riffs, rhythmic contrast, heavy ending.. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verse  0-90s; Verse 2 & Brid 90-180s; Solo & Choru 180-270s; Outro 270-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=176, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nGrit under the fingernails, coal in the throat\nThe whistle screams a warning I cannot ignore\nI pull the lever down, the iron groans\nEvery carriage holds a stolen season, a stolen bone\n\n[Chorus]\nFlip the switch! Burn the track!\nTime is bleeding through the cracks!\n\n[Verse]\nPlatform four is empty, but the shadows breathe\nThey count the seconds missing from my hand\nThe conductor looks, his clock face cracks\nI shatter it against the rails, the silence snaps\n\n[Bridge]\nSLOW. DOWN. STOP. NOW.\n\n[Solo]\n\n[Chorus]\nFlip the switch! Burn the track!\nTime is bleeding through the cracks!\n\n[Outro]\nLast train halts. Years return. The switchman walks.",
+      "seed": 202610161017,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "scene": "frame-12-outro",
+  "duration_s": 3,
+  "duration": 3,
+  "rules": [
+    "waterfall-entry",
+    "ambient-glow-bloom"
+  ],
+  "exit": {
+    "vector": "stationary 0 px/s",
+    "still_moving": false
+  },
+  "entry": {
+    "vector": "down 152 px/s",
+    "from_rest": false
+  },
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#frame-12-outro-logo",
+      "bySec": 0.5
+    },
+    {
+      "kind": "before",
+      "a": "#frame-12-outro-logo",
+      "b": "#frame-12-outro-site"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#frame-12-outro-site"
+    }
+  ]
+}

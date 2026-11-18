@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "realesrgan_x2_balanced_75_25_nvenc_v2",
+  "pipeline_version": "maestro_ultrasharp_review_candidate_v2",
+  "description": "Maestro FHD60 review candidate: official RealESRGAN x2 at 75% blended with 25% Lanczos and encoded by NVIDIA NVENC HQ.",
+  "target": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "yuv420p",
+    "color_range": "limited",
+    "color_space": "bt709"
+  },
+  "cadence": {
+    "policy": "preserve_native_fps_and_frame_count",
+    "fps_mode": "cfr"
+  },
+  "audio": {
+    "policy": "stream_copy_all",
+    "optional": true
+  },
+  "upscale": {
+    "engine": "ComfyUI",
+    "model": "RealESRGAN_x2plus.pth",
+    "model_relative_path": "models/upscale_models/RealESRGAN_x2plus.pth",
+    "model_sha256": "49FAFD45F8FD7AA8D31AB2A22D14D91B536C34494A5CFE31EB5D89C2FA266ABB",
+    "model_scale": 2,
+    "neural_blend": 0.75,
+    "source_lanczos_blend": 0.25,
+    "downscale_method": "lanczos",
+    "precision": "float16"
+  },
+  "comfy": {
+    "required_nodes": [
+      "UpscaleModelLoader",
+      "LoadImagesFromFolderKJ",
+      "ImageUpscaleWithModelBatched",
+      "SaveImage"
+    ],
+    "chunk_size": 24,
+    "chunk_size_min": 1,
+    "chunk_size_max": 24,
+    "per_batch": 4,
+    "per_batch_min": 1,
+    "per_batch_max": 4
+  },
+  "http": {
+    "attempts": 4,
+    "initial_backoff_seconds": 1.0,
+    "max_backoff_seconds": 8.0,
+    "request_timeout_seconds": 30.0,
+    "download_timeout_seconds": 120.0,
+    "prompt_timeout_seconds": 7200.0,
+    "poll_interval_seconds": 1.0
+  },
+  "encode": {
+    "codec": "h264_nvenc",
+    "preset": "p7",
+    "tune": "hq",
+    "rate_control": "vbr",
+    "cq": 15,
+    "bitrate": "0",
+    "maxrate": "32M",
+    "bufsize": "64M",
+    "gop": 120,
+    "bf": 2,
+    "profile": "high",
+    "pixel_format": "yuv420p",
+    "color_range": "limited",
+    "color_space": "bt709",
+    "movflags": "+faststart"
+  },
+  "disk": {
+    "headroom_bytes": 4294967296,
+    "png_working_bytes_per_pixel": 4.0,
+    "output_reserve_bytes": 536870912
+  }
+}

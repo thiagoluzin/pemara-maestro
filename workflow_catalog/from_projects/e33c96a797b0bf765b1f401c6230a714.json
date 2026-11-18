@@ -1,0 +1,306 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T04_R2_CHUTES/T04_R2_full_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T04_R2_CHUTES/T04_R2_Kaioken_punch_kick_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "assemble",
+        1
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "integrated_multimodal_description: [Shot 1] One continuous TEN-SECOND cinematic LIVE-ACTION shot of the EXACT two adult human actors in the opening image. Preserve their original faces, facial bones, ages, black hairlines and hair, skin, body builds, costumes, insignia and photographic materials throughout. Taller Goku LEFT wears the same heavy orange cotton gi, navy undershirt, sash, wristbands and navy boots. Shorter compact Vegeta RIGHT has the same angular face, widow's peak, upright black hair, royal-blue bodysuit, white armor with ochre ribbed panels and raised shoulder/hip guards, white gloves and white/gold boots; his brown furry tail stays around his waist. Same warm rocky canyon, shared dry ground and daylight. No face replacement, costume change, new damage, scouter or extra people.\n\nTHIS SHOT IS THE STORY TURN: Vegeta's domination ends when Goku activates KAIOKEN and starts overwhelming him. Do not produce another neutral back-and-forth sparring loop.\n\nOpening, roughly0-1.5seconds: Vegeta drives forward with a sharp RIGHT straight into Goku's guard and an immediate LEFT body hook. His fists touch and whip clear. Goku folds at the ribs, loses ground and takes a hurried catching step. Vegeta believes he is in control and follows aggressively. Goku is defending, not winning yet.\n\nAround1.5-2.5seconds: Goku catches his balance, plants his boots and commits. A compact CRIMSON-RED KAIOKEN aura ignites tightly around Goku's existing human body. It is transparent energy pressure, NOT literal fire, a skin recolor or a body transformation. It stirs dust outward from his boots, moves his gi and hair and gives a restrained red rim light on his costume and the nearby ground. Goku's ORIGINAL face, eyes, black hair, skin and orange/navy clothes remain clearly readable inside the aura. Vegeta stays unpowered. The activation lasts under a second; Goku launches straight out of it, without a pose hold, scream or long charging pause.\n\nFrom about2.5seconds Goku SEIZES THE INITIATIVE with FAST PUNCH-KICK COMBINATIONS. First he steps inside with a compact RIGHT cross and LEFT body hook. Vegeta tries to catch the cross with his high guard but is driven backward, then folds at the ribs from the hook. Each fist touches and immediately whips completely clear while the next attack starts.\n\nAround4seconds, Goku follows the hook with a sharp RIGHT LOW ROUNDHOUSE KICK to the outside of Vegeta's forward thigh: Goku's LEFT support boot is loaded and pivots on the ground, his right hip turns and the bent leg whips out. The shin makes a single brief contact, then Goku IMMEDIATELY bends the right knee, brings the leg back and puts the boot down. Vegeta's struck knee buckles and his hips shift sideways AFTER contact, forcing a hurried catching step. The kicking leg is already withdrawn while Vegeta is still losing balance. No pause between the hook, kick and recovery.\n\nGoku follows Vegeta's stumbling step with a quick LEFT-RIGHT punch combination. Vegeta's late parry is knocked aside; his head and shoulders recoil and his boots make a distinct backward catching step. He keeps trying to close his guard but Goku maintains the initiative under the SAME transparent crimson Kaioken.\n\nAround7seconds Goku lands a second distinct kick: a compact LEFT FRONT SNAP KICK to Vegeta's midsection armor. Goku balances on his grounded RIGHT boot, lifts the LEFT knee, snaps the foot forward for an instant, then immediately refolds the knee and sets the foot down. Vegeta's abdomen and hips are shoved backward AFTER the foot hits, his torso folds and he must take TWO quick recovery steps. Show the foot already separating while Vegeta is still being driven backward. This is one explosive strike and recoil, never a planted foot pushing continuously against the opponent.\n\nGoku pursues immediately with a short RIGHT cross and LEFT body hook while Vegeta scrambles backward to regain his guard. Finish during pursuit and recovery, Goku still glowing crimson. Vegeta tries and fails to defend throughout the comeback. Keep both kicks visually distinct, with a clear lift, brief hit, knee retraction and boot landing; mix them into the punches at full fight speed. Do not launch Vegeta into the mountain yet; that is the next story beat.\n\nNormal human fight speed with FAST, compact combinations and immediate retractions. The receiver's body keeps recoiling AFTER the striking fist has separated. Strong hits force actual displaced hips and catching steps, not rocking in place. Mobile defenses and asymmetric reactions. No idle bouncing, waiting turns, prolonged fist-to-guard contact, held limbs, sliding feet, floating boots or drunken swaying. No kick held against a torso. Neither character looks at the camera.\n\nThe camera has a purpose: medium-wide three-quarter side view keeps both full bodies, contact points and support boots readable; a restrained brief move toward Goku registers the Kaioken ignition, then smooth lateral tracking follows Goku's advance and Vegeta's retreat. Preserve the axis and canyon geography; do not hide contacts or faces with camera shake, flare or aura. Preserve real skin, cloth, hair and armor detail. No cuts, slow motion, retiming, orbit, full-screen red wash, opaque flames, energy beams, blonde hair, enlarged muscles, blood or text.\n\noverall_soundscape: Compact synchronized impacts, clear forced recovery footfalls, cloth and canyon wind. A low rising energy-pressure hum accompanies Goku's Kaioken ignition and remains under the impacts. No speech, voices, screams, grunts or music.\n\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 10.0,
+      "width": 1536,
+      "height": 864,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611082208,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "DB_T04_R2_KAIOKEN_KICKS_20261108",
+      "reference_size": "Match Output",
+      "project_id": "DB_T04_R2_KAIOKEN_KICKS_20261108",
+      "video_reference_size": "Efficient - 0.4 MP",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  }
+}

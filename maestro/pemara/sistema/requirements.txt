@@ -1,0 +1,52 @@
+# Pemara Universal v3.1 - Dependências completas
+
+# ── Core ──
+streamlit>=1.32.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+httpx>=0.27.0
+requests>=2.31.0
+pydantic>=2.6.0
+
+# ── Pemara Documental ──
+PyMuPDF>=1.23.0
+pdf2docx>=0.5.8
+python-docx>=1.1.0
+
+# ── Studio Pro: Áudio ──
+faster-whisper>=1.0.0
+pydub>=0.25.1
+soundfile>=0.12.1
+scipy>=1.12.0
+numpy>=1.26.0
+
+# ── Studio Pro: Imagem/Vídeo ──
+Pillow>=10.2.0
+realesrgan>=0.3.0
+basicsr>=1.4.2
+facexlib>=0.3.0
+gfpgan>=1.3.8
+rembg[gpu]>=2.0.50
+onnxruntime-gpu>=1.17.0
+
+# ── Áudio separação ──
+demucs>=4.0.0
+
+# ── GPU Monitor ──
+nvidia-ml-py>=12.535.0
+
+# ── FFmpeg embutido (fallback) ──
+imageio-ffmpeg>=0.4.9
+
+# ── Organizador IA ──
+easyocr>=1.7.1
+pandas>=2.2.0
+openpyxl>=3.1.2
+google-generativeai>=0.5.0
+python-dotenv>=1.0.1
+ollama>=0.2.0
+
+# ── Gerador Sprunki ──
+flask>=3.0.0
+flask-cors>=4.0.0
+websocket-client>=1.6.0

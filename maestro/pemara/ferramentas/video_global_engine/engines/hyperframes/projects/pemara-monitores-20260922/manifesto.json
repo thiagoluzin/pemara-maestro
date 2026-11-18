@@ -1,0 +1,189 @@
+{
+  "categoria": "MONITOR",
+  "duracao": 47.6,
+  "produtos": [
+    {
+      "id": 289,
+      "linha_sheets": 290,
+      "tipo": "MONITOR",
+      "fabricante": "ASUS",
+      "soquete": "",
+      "nome": "MONITOR ASUS TUF QHD 27\" 210HZ",
+      "nome_limpo": "MONITOR ASUS TUF QHD 27\" 210HZ",
+      "valor": 1700.0,
+      "valor_formatado": "R$ 1.700,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/catalogo_oficial/289_produto_conferido.png",
+      "url_card": null,
+      "link_oficial": "https://www.asus.com/br/displays-desktops/monitors/tuf-gaming/tuf-gaming-vg27aq5a/",
+      "criado_em": "2026-06-10 02:06:22.220419",
+      "atualizado_em": "2026-09-22 11:00:34.523030",
+      "ficha": {
+        "Tela": "27 polegadas, Fast IPS",
+        "Resolução": "2560 × 1440 (QHD)",
+        "Atualização": "Até 210 Hz com overclock",
+        "Resposta mínima": "0,3 ms GTG",
+        "Sincronização": "FreeSync Premium e ELMB Sync"
+      },
+      "ids": [
+        289
+      ]
+    },
+    {
+      "id": 1,
+      "linha_sheets": 2,
+      "tipo": "MONITOR",
+      "fabricante": "DUEX",
+      "soquete": "NAN",
+      "nome": "MONITOR DUEX 31,5\" LACRADO  - FULLHD - IPS - 100HZ - FLICKER FREE",
+      "nome_limpo": "MONITOR DUEX 31,5\" LACRADO - FULLHD - IPS - 100HZ - FLICKER FREE",
+      "valor": 900.0,
+      "valor_formatado": "900,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/1_foto_original_a1f65efb570a.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.duex.com.br/produtos/monitor/monitor-dxmo315f100s-315-eled-ips-full-hd-1920%C3%971080",
+      "criado_em": "2026-05-18 16:31:09.924426",
+      "atualizado_em": "2026-07-26 10:38:41",
+      "ids": [
+        1
+      ]
+    },
+    {
+      "id": 303,
+      "linha_sheets": 304,
+      "tipo": "MONITOR",
+      "fabricante": "ACER",
+      "soquete": "",
+      "nome": "MONITOR ACER NITRO 27\" FHD - 144HZ - 1MS",
+      "nome_limpo": "MONITOR ACER NITRO 27\" FHD - 144HZ - 1MS",
+      "valor": 800.0,
+      "valor_formatado": "R$ 800,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/303_foto_original_ed9a8984b4b7.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.acer.com/de-de/monitors/gaming/nitro-ed3/pdp/UM.HE3EE.005",
+      "criado_em": "2026-06-27 16:58:54.450955",
+      "atualizado_em": "2026-07-31T15:55:18+00:00",
+      "ids": [
+        303
+      ]
+    },
+    {
+      "id": 112,
+      "linha_sheets": 113,
+      "tipo": "MONITOR",
+      "fabricante": "GIGABYTE",
+      "soquete": "NAN",
+      "nome": "MONITOR GAMER GIGABYTE 24.5 GS25F14 SS IPS 144HZ 1MS HDR10 PRETO 220V",
+      "nome_limpo": "MONITOR GAMER GIGABYTE 24.5 GS25F14 SS IPS 144HZ 1MS HDR10 PRETO 220V",
+      "valor": 650.0,
+      "valor_formatado": "R$ 650,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/112_foto_original_76ba924384fd.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.gigabyte.com/Monitor/GS25F14",
+      "criado_em": "2026-05-18 16:31:09.965325",
+      "atualizado_em": "2026-09-17 02:00:14.282510",
+      "ids": [
+        112,
+        370
+      ]
+    },
+    {
+      "id": 302,
+      "linha_sheets": 303,
+      "tipo": "MONITOR",
+      "fabricante": "ACER",
+      "soquete": "",
+      "nome": "MONITOR ACER EK241Y GBI 23,8\" - FHD - IPS - 120HZ - 1MS",
+      "nome_limpo": "MONITOR ACER EK241Y GBI 23,8\" - FHD - IPS - 120HZ - 1MS",
+      "valor": 630.0,
+      "valor_formatado": "R$ 630,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/302_foto_original_fd928f718282.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.acer.com/gb-en/monitors/essential/ek1/pdp/UM.QE1EE.G07",
+      "criado_em": "2026-06-27 16:48:51.946763",
+      "atualizado_em": "2026-07-26 10:42:38",
+      "ids": [
+        302
+      ]
+    },
+    {
+      "id": 369,
+      "linha_sheets": 370,
+      "tipo": "MONITOR",
+      "fabricante": "PHILIPS",
+      "soquete": "",
+      "nome": "MONITOR GAMER PHILIPS 24 EVNIA IPS 144HZ 0.5MS",
+      "nome_limpo": "MONITOR GAMER PHILIPS 24 EVNIA IPS 144HZ 0.5MS",
+      "valor": 600.0,
+      "valor_formatado": "R$ 600,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/369_philips_evnia_24m2n2100nf_original.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.documents.philips.com/assets/20260127/bebc86d3a0054b228b0cb3df00ae7b1d.pdf",
+      "criado_em": "2026-09-17 01:59:34.559665",
+      "atualizado_em": "2026-09-20 23:39:31.093255",
+      "ficha": {
+        "Tela": "23,8 polegadas, IPS",
+        "Resolução": "1920 × 1080 (Full HD)",
+        "Atualização": "Até 144 Hz",
+        "Conexões": "HDMI 1.4 e saída de áudio",
+        "Fixação": "VESA 100 × 100 mm"
+      },
+      "ids": [
+        369
+      ]
+    },
+    {
+      "id": 323,
+      "linha_sheets": 324,
+      "tipo": "MONITOR",
+      "fabricante": "VX PRO",
+      "soquete": "",
+      "nome": "MONITOR VXPRO LED 21.5\" - HDMI - HD",
+      "nome_limpo": "MONITOR VXPRO LED 21.5\" - HDMI - HD",
+      "valor": 300.0,
+      "valor_formatado": "R$ 300,00",
+      "quantidade": 2,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/323_foto_original_003a2feaace1.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.kabum.com.br/produto/624539/monitor-vx-pro-led-21-5-vga-hdmi-vx215x",
+      "criado_em": "2026-07-28 18:44:54.006887",
+      "atualizado_em": "2026-07-30 03:45:38",
+      "ids": [
+        323
+      ]
+    },
+    {
+      "id": 322,
+      "linha_sheets": 323,
+      "tipo": "MONITOR",
+      "fabricante": "VX PRO",
+      "soquete": "",
+      "nome": "MONITOR VXPRO LED 19\" - HD - HDMI",
+      "nome_limpo": "MONITOR VXPRO LED 19\" - HD - HDMI",
+      "valor": 250.0,
+      "valor_formatado": "R$ 250,00",
+      "quantidade": 1,
+      "status": "Ativo",
+      "url_imagem": "img/produtos/originais/322_foto_original_5cea3d5e3b07.jpg",
+      "url_card": null,
+      "link_oficial": "https://www.kabum.com.br/produto/531294/monitor-vx-pro-19-pol-60hz-5ms-hdmi-vga-vx190x",
+      "criado_em": "2026-07-28 18:43:16.749800",
+      "atualizado_em": "2026-08-28 18:45:38.006764",
+      "ids": [
+        322
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611152001
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "REBELIAO_EP20_PIKA_20261115/T01_v01",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot 1] An expressive original 3D CG animated Brazilian street-news comedy at a peaceful protest by adult PC gamers. 768x1344 portrait,15seconds,normal speed. One fixed continuous shot. Exactly two huge pale ivory BLANK paper boards high above all heads. Boards lie within y130to490; heads remain below y650, faces and chests visible below. All paper corners visible, no occlusion. Paper is matte, completely blank without ANY letters, numbers, marks, symbols or drawings; precise typography will be composited later. Plain warm red-brick facade and plain navy awning, no additional white rectangles, signs or logos. Natural warm afternoon light. Reporter left, gamer right, small asynchronous adult crowd behind. Unbranded clothes, microphone and mouse. No subtitle or overlay. No cut, zoom, pan or moving camera. No existing character, real person likeness, violence, fire, damage or numerical price claim.\n\nOne uninterrupted static eye-level medium-wide waist-up portrait interview. Exactly two enormous pale ivory BLANK rectangular protest placards, one left and one right, remain fully visible high above all heads. Left board approximately x28to356 and right board x412to740; boards occupy y130to490. All four paper corners visible; large clear air gap between paper and hair, hands and microphone; every head below y650. Supporters hold separate wooden poles far below the paper. Boards remain nearly motionless during the entire performance. Plain red-brick storefront and plain navy awning with no writing, windows, logos, extra signs, white rectangles or symbols. Warm afternoon light from screen-left. Fixed camera and plain background preserve exact later typography. No cut or zoom.\n\nFresh original fictional adult characters, not recurring identities. Reporter screen-left: brown-skinned adult woman, short black curls, plain navy jacket over cream blouse. Gamer screen-right: medium-brown adult man, short black hair, clean-shaven, plain teal shirt. Distinct adult supporters; no children, real person likeness or existing franchise character.\n\nOne small unbranded matte dark computer mouse, no wire, no RGB lights, no lettering. The gamer steadily supports the mouse in his left palm at chest height, with fingers naturally below it. His right hand makes only one modest explanatory gesture, never covers his face or a paper board. No laptop, keyboard, bank document, phone, money or second mouse. Feet planted; no falls, handoff or touching another actor. Reporter holds one plain microphone.\n\nHe wants to justify his expensive purchase and begins with proud technical dignity. Listen intently to the question, then say Pelo preço with restrained indignation. He opens his right palm toward the mouse on jogar sozinho, pauses briefly, then reveals the absurd demand e ainda me pagar um salário. Reporter stays attentively serious until salário. Only after that final word she recognizes the absurdity, tries to hold a smile, lowers the microphone and breaks into a clearly audible warm uneven voiced laugh. Gamer watches her, holds mock wounded pride for a beat, then joins with a shorter rueful laugh. Supporters react later at distinct times; never anticipatory or synchronized.\n\nACTING: attentive listening and closed lips during the partner speech. One meaningful supported hand gesture per reply. No permanent grins or repeated swaying. Reporter recognizes the joke only AFTER its last word, tries to suppress a smile, lowers microphone below mouth, then audible warm uneven voiced laughter: eyes squeeze, brief head tilt, small forward lean, two unequal shoulder bounces and natural breath recovery. Gamer joins later with a shorter laugh while keeping his mouse securely supported. Nearby adults react at different later instants, not synchronized. No extra words, babble, canned laugh track, narrator or music.\n\nExactly TWO verbal turns in native Brazilian Portuguese. Reporter(S1), an adult female voice, asks once at 0.2 to 2.4 seconds, curious and attentive: <d>[Portuguese] Esse mouse é bom pra jogar?</d> Reporter then listens with closed lips. Gamer(S2), an adult male voice, answers once at 2.8 to 8.4 seconds, with clear ordinary conversational Brazilian Portuguese diction, mock seriousness and a brief pause between sentences: <d>[Portuguese] Pelo preço, tinha que jogar sozinho e ainda me pagar um salário!</d> No repeated words or additional utterances. Reporter reacts only after the last word, with a short recognition beat, an unsuccessful attempt to hold a smile, microphone lowered below the mouth, then a clear AUDIBLE warm voiced belly laugh. Eyes close, shoulders bounce twice unevenly, body leans forward briefly and recovers. Gamer joins later with a shorter clearly audible spontaneous laugh. The crowd reacts after the two leads, with different timing, never synchronized swaying. Laughing is nonverbal: no invented words, babble or extra syllables. Let the uneven voiced laughing reaction play from 8.8 to 13.4 seconds, followed by a natural breath and recovery through 15 seconds. No words during laughter or recovery.\n\noverall_soundscape: Clear on-screen native Brazilian Portuguese dialogue and in-scene nonverbal voiced laughter, soft street ambience. non_diegetic_music: N/A",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

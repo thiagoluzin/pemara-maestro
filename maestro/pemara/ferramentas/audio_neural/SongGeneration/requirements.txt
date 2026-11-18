@@ -1,0 +1,33 @@
+# Notes:
+#   The base image `vllm/vllm-openai:v0.8.5` already ships:
+#     - torch 2.6 / torchaudio / torchvision (CUDA 12.4 build)
+#     - vllm 0.8.5
+#     - transformers (compatible with vllm 0.8.5)
+#     - flash_attn 2.7.x (used by vllm's flash-attn backend)
+#   Re-installing any of them here triggers a full source build of flash_attn
+#   (no PyPI wheel available), which OOM-kills the HF Space *build*
+#   container. Keep this list to lightweight, app-only dependencies.
+#
+# IMPORTANT version pin:
+#   The transformers shipped in vllm 0.8.5 requires huggingface-hub<1.0.
+#   Without an explicit upper bound here, pip happily upgrades
+#   huggingface-hub to 1.x (released 2025-Q4), which then makes
+#   `import transformers` -> `import vllm` fail at container start with:
+#     ImportError: huggingface-hub>=0.30.0,<1.0 is required ...
+huggingface-hub>=0.30.0,<1.0
+librosa>=0.11.0
+nnAudio>=0.3.3
+gradio>=4.44
+wheel>=0.45.1
+
+# Required by megatron/tokenizer.py (OmegaConf.load on the vocab file).
+# Pure-Python, no native deps -> safe for the locked transformers/torch tree.
+omegaconf>=2.3,<3.0
+
+# Required by:
+#   - mucodec/descript_quantize3.py
+#   - mucodec/.../musicfm/model/musicfm_25hz.py
+#   - mucodec/.../musicfm/modules/{conv,random_quantizer}.py
+# Pure-Python, zero deps. The vllm base image often already bundles it,
+# but listing it explicitly removes the guesswork.
+einops>=0.7

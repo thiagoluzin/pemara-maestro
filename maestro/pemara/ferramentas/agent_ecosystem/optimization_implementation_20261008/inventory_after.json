@@ -1,0 +1,488 @@
+[
+  {
+    "Skill": "hero-sprite-scaling",
+    "Lines": 137,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-voice-performance-director",
+    "Lines": 134,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-video-motion-director",
+    "Lines": 125,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "game-developer",
+    "Lines": 124,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "saas-pentest-hardening",
+    "Lines": 119,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "test-engineer",
+    "Lines": 116,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "creative-director",
+    "Lines": 107,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "sprite-animation",
+    "Lines": 106,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "sprite-image-reading",
+    "Lines": 106,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-cinematic-take-director",
+    "Lines": 104,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "claude-context-audit",
+    "Lines": 102,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "automation-engineer",
+    "Lines": 94,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "game-audio-designer",
+    "Lines": 88,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "animation-engineer",
+    "Lines": 85,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "image-production",
+    "Lines": 85,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "game-audio-reactive",
+    "Lines": 82,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "code-archaeologist",
+    "Lines": 78,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "qa-automation-engineer",
+    "Lines": 76,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "audio-analysis",
+    "Lines": 71,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "ai-video-intro-pipeline",
+    "Lines": 69,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "modern-pixel-art-hd",
+    "Lines": 67,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pack-doctor",
+    "Lines": 67,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-live-action-showrunner",
+    "Lines": 67,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "demo-release-engineer",
+    "Lines": 65,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-live-action-combat-director",
+    "Lines": 64,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "level-designer",
+    "Lines": 62,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "balance-tuner",
+    "Lines": 61,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-live-action-continuity",
+    "Lines": 61,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "phaser-animation-turbo",
+    "Lines": 61,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "gamepad-input-specialist",
+    "Lines": 58,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-online-security-guardian",
+    "Lines": 58,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "sprunki-lora-trainer",
+    "Lines": 57,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-live-action-kinetic-supervisor",
+    "Lines": 56,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "beatemup-combat-designer",
+    "Lines": 55,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-live-action-qc",
+    "Lines": 55,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "game-build-flow",
+    "Lines": 54,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "web-frontend-vanilla",
+    "Lines": 49,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "video-production",
+    "Lines": 38,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-video-production-lead",
+    "Lines": 35,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-performance-director",
+    "Lines": 31,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "phaser-platformer-architect",
+    "Lines": 31,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-cinematography-director",
+    "Lines": 28,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-ecosystem-orchestrator",
+    "Lines": 27,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-film-editor",
+    "Lines": 27,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-messenger-turbo",
+    "Lines": 25,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": true,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "project-planner",
+    "Lines": 24,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "phaser-16bit-platformer",
+    "Lines": 23,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "debugger",
+    "Lines": 13,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "performance-optimizer",
+    "Lines": 12,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-music-arranger",
+    "Lines": 9,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-music-listening-qc",
+    "Lines": 9,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-music-mix-engineer",
+    "Lines": 9,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "pemara-music-production-lead",
+    "Lines": 9,
+    "HasOpenAIYaml": true,
+    "HasReferences": true,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  },
+  {
+    "Skill": "vanilla-web-patterns",
+    "Lines": 6,
+    "HasOpenAIYaml": true,
+    "HasReferences": false,
+    "HasScripts": false,
+    "NeedsSplit": false,
+    "Status": "valid"
+  }
+]

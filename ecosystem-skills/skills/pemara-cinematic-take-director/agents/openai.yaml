@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Cinematic Take Director"
+  short_description: "Direção cinematográfica com ritmo e virada"
+  default_prompt: "Use $pemara-cinematic-take-director para dirigir takes com duração justificada, progressão, reação e motivo de corte."

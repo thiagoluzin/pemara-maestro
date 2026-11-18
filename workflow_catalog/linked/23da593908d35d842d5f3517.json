@@ -1,0 +1,101 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A real photograph from a live action period fantasy film, a real human actor on a practical set, physically believable skin pores, natural eyes, individually visible hair, hand sewn fabric, worn natural materials, restrained movie lighting, no illustration, no animation, no video game render, no plastic skin, no cosplay snapshot, no text or watermark. One older male theater impresario as seen in the original Final Fantasy VI opera scene, adapted as a real human actor. Full-length three-quarter casting portrait. Portly elderly man, receding gray hair, thick curved gray mustache, worried expressive face. Dark navy-blue formal frock coat, ivory waistcoat, white cravat, dark trousers, old leather shoes. Holds a folded handwritten threat letter, no legible writing needed. Warm candlelit opera backstage with a dark red velvet curtain, wood rigging, period furnishings. Hands and complete figure visible. This is a theater manager, not a king or a magician.",
+      "negative_prompt": "illustration, anime, cartoon, 3D game character, glossy plastic skin, text, watermark, extra fingers, duplicate person",
+      "resolution": 0,
+      "images": {}
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 22102604,
+      "steps": 28,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_fasth3_omni_20261022/casting/impresario"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

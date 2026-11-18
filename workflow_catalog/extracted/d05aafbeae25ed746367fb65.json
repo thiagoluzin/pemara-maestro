@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "British Heavy Metal, epic and aggressive, driven by galloping double-bass drums, palm-muted 8-string guitar riffs, and a soaring, powerful vocal performance with deep baritone lows and high tenor screams. The mood is mystical and ominous, building to a triumphant, chaotic climax.\nChoose the complete song's natural length and structure yourself. There is no required target duration. The safety ceiling is 900 seconds, not a goal to fill. Compose a coherent intro, verses, chorus and resolved final outro with final chord decay and silence. Finish all sung words and then end the song naturally. No endless loop or unfinished solo. Write explicit measures, no repeat signs.",
+      "lyrics": "[Verse]\nBeneath the ancient stars,\nWhere the shadows dance and tear.\nA symbol carved in stone,\nUpon the mountain's throne.\n\nThe winds begin to howl,\nThey make the very walls recoil.\nWe walk the path of fire,\nTo see if we can endure the ire.\n\n[Pre-Chorus]\nCan you hear the drums begin?\nCan you feel the pulse within?\nA rhythm that shakes the ground,\nBefore the final sound.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Verse]\nThrough the valley of the kings,\nWhere the silence starts to sting.\nA mask of gold and rust,\nA moment of absolute trust.\n\nThe lightning strikes the gate,\nIt seals our destiny's fate.\nWith a roar that splits the sky,\nWe look the demon in the eye.\n\n[Pre-Chorus]\nCan you hear the drums begin?\nCan you feel the pulse within?\nA rhythm that shakes the ground,\nBefore the final sound.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Bridge]\n(Heavy instrumental break)\n\n[Verse]\nNow the circle is complete,\nWe stand upon the street.\nThe number is revealed,\nThe secret finally healed.\n\nNo more fear, no more pain,\nThe beast breaks out again.\nWith the fire in our veins,\nWe conquer all our pains.\n\n[Chorus]\nThe Cipher of the Sun,\nBurning bright, never done.\nSix, nine, three, in the air,\nThe beast is waiting there.\n\nThe Cipher of the Sun,\nOur journey has just begun.\nWith the power of the blade,\nWe will not be afraid.\n\n[Outro]\nThe Cipher of the Sun.\nBurning bright.\nNever done.\nSix, nine, three.\nIn the air.\nThe beast is there.\n[Final Chord]",
+      "seed": 2460548284,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

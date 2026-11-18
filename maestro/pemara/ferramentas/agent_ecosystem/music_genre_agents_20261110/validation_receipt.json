@@ -1,0 +1,196 @@
+{
+  "agents_configured": [
+    "pemara-heavy-metal",
+    "pemara-thrash-metal",
+    "pemara-punk-rock",
+    "pemara-death-metal"
+  ],
+  "new_skills": [
+    "pemara-heavy-metal",
+    "pemara-thrash-metal",
+    "pemara-punk-rock",
+    "pemara-death-metal",
+    "pemara-music-vocal-director",
+    "pemara-music-album-diversity"
+  ],
+  "updated_shared_skills": 5,
+  "regression_tests_passed": 15,
+  "new_registry_errors": [],
+  "preexisting_registry_errors": [
+    "missing alias profile: E:\\Pemara\\.agents\\profiles\\pemara-combate-aprovado.md"
+  ],
+  "registry_before": {
+    "schema_version": 1,
+    "aliases": 43,
+    "specialized_profiles": 8,
+    "dispatcher": "E:\\Pemara\\.agents\\profiles\\agents-turbo.md",
+    "errors": [
+      "missing alias profile: E:\\Pemara\\.agents\\profiles\\pemara-combate-aprovado.md"
+    ],
+    "ok": false
+  },
+  "registry_after": {
+    "schema_version": 1,
+    "aliases": 49,
+    "specialized_profiles": 8,
+    "dispatcher": "E:\\Pemara\\.agents\\profiles\\agents-turbo.md",
+    "errors": [
+      "missing alias profile: E:\\Pemara\\.agents\\profiles\\pemara-combate-aprovado.md"
+    ],
+    "ok": false
+  },
+  "activation": "Standalone agent TOML files installed in personal Codex agents directory. Current-session role discovery not reloaded or exercised; a new session may be required.",
+  "sources": [
+    "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+    "https://docs.typesafe.ai/llms.txt"
+  ],
+  "no_music_generated": true,
+  "no_gpu_job_submitted": true,
+  "no_publication": true,
+  "no_runtime_change": true,
+  "no_api_cost": true,
+  "rejected_album_reopened": false,
+  "artistic_quality_verified": false,
+  "files": [
+    {
+      "path": "E:\\Pemara\\AGENTS.md",
+      "sha256": "271191b8b73c8d83d28154446e38d83bf77a5391e0181279d2a3102999394383"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-messenger-turbo\\references\\turbo_registry.json",
+      "sha256": "97fff7e6151de10b3969a73169fba630eb70c7725e4344addc5f7fe773401a77"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-messenger-turbo\\references\\routing-map.md",
+      "sha256": "1f68149706b96bce8333cb5a8a1774f811d7bc961a264370785fd111ef2d7edf"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-ecosystem-orchestrator\\scripts\\skill_inventory.ps1",
+      "sha256": "d0a63598362c2cfca4dbb419ce23e7fa6db40bd3118d871118693e4194d34fb4"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\SKILL.md",
+      "sha256": "103337fa904c94eb8b3bec1129f5d97e2c93900d7b04cb8d87b40d633b37ed88"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-songwriter\\SKILL.md",
+      "sha256": "52475ed64ba99c44bc3da94b058ccbc74f8a18d92800641c2640091234c8ebb3"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-arranger\\SKILL.md",
+      "sha256": "b5cc2a5bae7f750307a69c202e8e520d35345472254d1ab3375635db56839c6d"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-mix-engineer\\SKILL.md",
+      "sha256": "e8b8d260c4e6a747dd05b6fd75162df77103377be67270f188de076391679ce5"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\SKILL.md",
+      "sha256": "7ac32c511e8e1380b1972378aa4b0d301b5ae464aa833bda2c5f36569fe3a8a7"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\creation-workflow.md",
+      "sha256": "eebc2f8f91952b623b3144c480d9afe06036f14d2c8a50e2fe9551f9fee253d9"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-production-lead\\references\\music-production-contract.md",
+      "sha256": "79fabb374d1587541fa1562b81c5224da8d551bbd66253ce7da9152f8b6aa458"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-heavy-metal\\SKILL.md",
+      "sha256": "ff612e4c9266af52e24e896b6ff9b1f3efd0d63370dc1a116445cbeb11256d92"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-heavy-metal\\agents\\openai.yaml",
+      "sha256": "f58e227b90964790b229c5aca5e194f27475b7ef9383bc44fcb00d75eda39afc"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-thrash-metal\\SKILL.md",
+      "sha256": "f127a1dfd981e67e48655a3b56576667e0aad77a01d2b408025b75c1c709d9fb"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-thrash-metal\\agents\\openai.yaml",
+      "sha256": "7aa3ba4c71d5fb320a4f3afef931b4ba98095b56aa56b6de8d3b0c5265c7dc75"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-punk-rock\\SKILL.md",
+      "sha256": "5147ad6d2bb7d4fc37269a59c6a23d62891f91418872fb071188c9aeafe78751"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-punk-rock\\agents\\openai.yaml",
+      "sha256": "f8d0b5b9c5cd6bd8b130f2e73d70886b2bd89ba36a3ec447e2e03de2a7fcb716"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-death-metal\\SKILL.md",
+      "sha256": "633debc6100fe16844442c05efab187c6fb93af9039b5d0d644e4e48634b778e"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-death-metal\\agents\\openai.yaml",
+      "sha256": "3e3338fdfce4a8cf4f962184c880e7089bdb65ac71354bd167d797e55dcc0e14"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-vocal-director\\SKILL.md",
+      "sha256": "a934329fc6fa28ba299b5bce1d8ffeda185b7f3c02ea034874e150cf7e064479"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-vocal-director\\agents\\openai.yaml",
+      "sha256": "7ce4626fa01ac30b1eb5baee895201c3e89402c82763e0a9701dd9107b84d001"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-album-diversity\\SKILL.md",
+      "sha256": "f4d4b903da450924892d19a2b15eb2de4ca2be903f0fe1565120aa053b667483"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-album-diversity\\agents\\openai.yaml",
+      "sha256": "b931e840971f60c384ff9bdcc73e4485cde47f7b73dba7bb9015d3e0c76f5c4c"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-album-diversity\\scripts\\audit_album.py",
+      "sha256": "40dc911754e6e570da2ee6d3645fa770eac76fc0de3bc91035d25f6dc3bf5ada"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-heavy-metal.md",
+      "sha256": "1bf3e79c7374ec6e2cde64c93df97ce38ccea72a81e7157e4f193936a5c220d3"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-thrash-metal.md",
+      "sha256": "7fd76e0a0dcb5d73e88615bde0d12855987d5def0fcc3be12d915270807a787b"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-punk-rock.md",
+      "sha256": "0ffeb9981dad2825af496fd3b006229d8c1daeeb43bc56862a12b93aff8ef398"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-death-metal.md",
+      "sha256": "469c11c0df56d912edba573f3f429570640a2faceb4ba06bc1c8c082d7ab0f35"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-music-vocal-director.md",
+      "sha256": "2e9886ff67b79237675de2c397189ef56125126ee232f10b0b661fc1a0afbce1"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\profiles\\pemara-music-album-diversity.md",
+      "sha256": "3da39d0f9b495d796b17cdcef84cbb39145f1c046bc54cf3f2e94d1f2c3461dc"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\.codex\\agents\\pemara-heavy-metal.toml",
+      "sha256": "0346af85b231eaceb31ab8a210cecd854cbff5a3fcc0136931f81a5b2be59818"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\.codex\\agents\\pemara-thrash-metal.toml",
+      "sha256": "2c8936057c96a20421cd3735a558fe709a69dafdd3ef08fd6c71cf721cdc585a"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\.codex\\agents\\pemara-punk-rock.toml",
+      "sha256": "2093694e84b5abe17ad08940c9818f02c259bc8589d4610d782b0b7a3d408012"
+    },
+    {
+      "path": "C:\\Users\\admin_remoto\\.codex\\agents\\pemara-death-metal.toml",
+      "sha256": "bed23597c524c2cbb76d98c0bbecce733cb843e02ce8a1f1ac2a5f6cc623e3ef"
+    },
+    {
+      "path": "E:\\Pemara\\.agents\\skills\\pemara-music-listening-qc\\scripts\\screen_audio.py",
+      "sha256": "789513d7490c7d8b52f504c18b5f2faf7e411ec8d555d584d1a602eca7d7c5e3"
+    }
+  ]
+}

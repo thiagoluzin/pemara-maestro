@@ -1,0 +1,29 @@
+﻿{
+    "createdAt":  "2026-11-15T15:49:29.5374529-03:00",
+    "action":  "Apply",
+    "status":  "PASS_DRIVER_READBACK",
+    "gpuUuid":  "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+    "before":  {
+                   "uuid":  "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+                   "name":  "NVIDIA GeForce RTX 5090",
+                   "powerLimitWatts":  575,
+                   "defaultPowerLimitWatts":  575,
+                   "minPowerLimitWatts":  400,
+                   "maxPowerLimitWatts":  575,
+                   "temperatureC":  39
+               },
+    "driverOutput":  "Power limit for GPU 00000000:01:00.0 was set to 500.00 W from 575.00 W.\nAll done.",
+    "after":  {
+                  "uuid":  "GPU-25c376f3-5fba-6bc9-2847-02f99f953eb8",
+                  "name":  "NVIDIA GeForce RTX 5090",
+                  "powerLimitWatts":  500,
+                  "defaultPowerLimitWatts":  575,
+                  "minPowerLimitWatts":  400,
+                  "maxPowerLimitWatts":  575,
+                  "temperatureC":  39
+              },
+    "voltageChanged":  false,
+    "clocksChanged":  false,
+    "fanPolicyChanged":  false,
+    "temperatureTarget":  "Hardware target unsupported; R17 software guard warns at 80 C and requests cancellation at 85 C, not a physical temperature clamp."
+}

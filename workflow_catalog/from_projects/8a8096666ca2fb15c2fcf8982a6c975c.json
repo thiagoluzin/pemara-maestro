@@ -1,0 +1,259 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] ONE UNINTERRUPTED TEN-SECOND live-action fight, fast and forceful at normal speed. The exact two adult human actors from the photograph: tall Goku LEFT in orange gi, shorter Vegeta RIGHT in ivory-and-ochre armor and navy suit. Preserve both faces, black hair, physiques, costumes, white gloves and boots, wrapped tail, canyon and daylight. Keep the same restrained lateral full-body tracking shot.\n\nThey rush together. Vegeta plants and throws a short hard right cross that connects with Goku's jaw. His fist instantly recoils clear. Goku's head snaps sideways from the contact, his shoulders follow and he takes a stumbling backward step to catch himself. He immediately fights back.\n\nGoku slips Vegeta's next punch, plants his rear foot and drives a compact right cross into Vegeta's cheek. The bare fist hits and instantly pulls away; Vegeta's head whips sideways, his torso turns involuntarily and two quick retreating steps stop him toppling. Goku advances after him. Vegeta regains his feet, pivots and counters with a sharp hook to Goku's ribs; Goku's trunk buckles sideways after the brief impact, his boot stepping wide to regain balance.\n\nVegeta aggressively presses forward with a left-right combination. Goku parries the left, but the right drives cleanly into his exposed abdomen. The glove rebounds immediately from the contact while Goku folds forward and recoils backward, forced to take two urgent catching steps. He stays hunched, grimacing and protecting his stomach as he pivots away. Vegeta follows in quick grounded footwork. Finish during that pursuit and recovery.\n\nThese are decisive blows that interrupt the opponent's balance. Every impact lasts an instant: the striking hand is already back at guard while the recipient's head, shoulders and hips continue recoiling. Distinct explosive strikes and forceful reactions, not hands lingering on bodies. Leg drive and hip rotation power each attack; contact comes before the involuntary reaction. Recover balance through real steps, with modest dirt kicked up after footfalls. Solid anatomical arms, natural skin and cloth, practical live-action bodily violence. No slow motion, hovering, glow, impact flashes, bloody injuries or knockouts.\n\noverall_soundscape: Silent visual-only output.\n\nnon_diegetic_music: None.",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "R17 — retorno ao combate contínuo;10s autorizados",
+      "saiyan_showdown": {
+        "stage": "H2P_impact_open_line_staging_repair",
+        "not_final_T01": true,
+        "owner_approval": "PENDING",
+        "owner_direction": "Return to successful Mortal Kombat workflow, preserve approved anchors, no experimental controls;10-second takes, silent allowed",
+        "source_method": "h3_live_action_continuous_bilateral_start_chain_8s; existing Maestro native builder",
+        "duration_adaptation": "243 native frames/24fps; preserve original, select reviewed first240frames for exact10s",
+        "anchor_sha256": "a73791ead3e4e7f99621ee96ed897d30f60605817d6260a820362ef9a3b260fa",
+        "identityContinuityRequired": true
+      }
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110707
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1280,
+      "height": 720,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "saiyan_showdown_20261107/pilots/H2P_R17_impulse_10s_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "c7ef96ea_000.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  }
+}

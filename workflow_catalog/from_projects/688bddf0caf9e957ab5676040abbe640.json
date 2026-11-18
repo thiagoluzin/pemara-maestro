@@ -1,0 +1,316 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "continuum",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "assemble",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T06R2_GALICK_POSE/T06R2_full_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "VEGETA_GALICK_PREP_R2_finished_DLSS5.png"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "pemara_dlss5_content": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "trim240": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "batch_index": 0,
+      "length": 240
+    }
+  },
+  "video240": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "trim240",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "audio_10s",
+        0
+      ]
+    }
+  },
+  "save240": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "video240",
+        0
+      ],
+      "filename_prefix": "dragon_ball_nova_ancora_humana_20261108/T06R2_GALICK_POSE/T06R2_Galick_preparation_10s",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "audio_vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "audio_decode": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "audio_vae",
+        0
+      ]
+    }
+  },
+  "audio_10s": {
+    "class_type": "TrimAudioDuration",
+    "inputs": {
+      "audio": [
+        "assemble",
+        1
+      ],
+      "start_index": 0.0,
+      "duration": 10.0
+    }
+  },
+  "identity": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "DB_TEST04_APPROVED_6e0e11e2.png"
+    }
+  },
+  "continuum": {
+    "class_type": "H3ContinuumSamplerV34",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "sequence_prompt": "integrated_multimodal_description: [Shot 1] One continuous TEN-SECOND cinematic LIVE-ACTION shot. Begin from the supplied exact approved Vegeta preparation image: the SAME real human Vegeta in a wide grounded stance in the same dry rocky canyon, looking LEFT toward his offscreen enemy. Both elbows are deeply bent and drawn back; both white-gloved hands are gathered beside and slightly ABOVE his RIGHT temple, behind the shoulder line, cupping the small violet energy already between them. Preserve this technical GALICK GUN CHARGING arrangement. His palms face each other around the compact charge; arms stay bent beside his head throughout the preparation, never extended into a two-handed forward push. Do not move the hands to the waist. The scene is the charge, not the firing.\n\nIDENTITY: the original exact human Vegeta from persistent <Picture 1> is the only on-screen fighter. This original reference fixes his angular face, compact athletic proportions, pronounced widow peak and upright BLACK hair, royal-blue woven bodysuit, white practical armor with ochre ribbed panels and raised shoulder and hip guards, white gloves, white-and-gold boots and brown furry tail wrapped around his waist. The starting image fixes the approved preparation pose and current canyon staging. Preserve his real skin texture, natural face proportions, grounded weight, daylight and dusty practical costume. No new actor, extra fighters, Goku appearing in frame, blond hair, scouter, missing armor guards, toy materials or anime/cartoon rendering.\n\n0-3 seconds: Begin acting immediately from the approved pose. Vegeta keeps his LEFTWARD target gaze, clenches his jaw and lowers his pelvis slightly as his bent legs load against the ground. His hands tighten around the existing tiny violet glow beside his head, forearms tense without changing the arm arrangement. The charge condenses into a dense white-violet core between his cupped palms. Small electrical filaments curl around the gloves. His feet remain planted with weight; no hovering, sliding or dance steps. Fine grit begins to vibrate only after the core strengthens.\n\n3-7 seconds: He presses both boots into the earth and braces his torso against the increasing force. The violet charge expands beside/above the right shoulder into a thick three-dimensional churning mass, growing from head-size toward shoulder-width, fed continuously by BOTH hands. Keep the two hands and his face visibly separate and anatomically intact. The core stays at the hands, with layered rolling violet plasma surrounding it and bright electrical arcs along its surface; not a thin flashlight, laser, flat disc or unrelated floating orb. Purple light grows across his cheek, gloves and armor, retaining the warm canyon daylight. This pressure pushes the loose blue cloth and dust AWAY from the hands. Loose gravel rises a little around his boots while heavier stones stay down. The ground reaction follows the energy growth, never precedes it.\n\n7-10 seconds: The pressure intensifies again: he sinks a few centimeters through his knees and drives against the floor, keeping his center of mass between the planted boots. A sharper energy surge rolls through the large dense violet mass, throwing one low ring of grit outward along the ground. His tail and fabric whip in the outward energy wind, individual pebbles tumble independently. Keep his original face visible beside the energy volume, brow tightened, eye fixed on the distant LEFTWARD opponent. Both elbows are STILL bent and both hands STILL gathered beside his head at the end, preparing to launch the Galick Gun. End while the energized surface, cloth, grit and his braced physical effort are still active. No beam release, no Kamehameha, no energy collision in this take.\n\nCAMERA: Start at the exact incoming full-body three-quarter composition. One restrained physical dolly approaches and slides a little toward his front through the whole take, revealing changing perspective between nearby foreground stones, Vegeta and the far canyon wall. Keep on the same side of his LEFTWARD attack axis. By the end reach a generous knees-up three-quarter view with both hands, original face and the entire violet charge readable. Do not orbit behind him, cross the axis, cut, shake to hide anatomy, crop the hands or fill the lens with flare. The movement reveals his effort and the growing volume, never substitutes for it. Real-time motion, decisive developing pressure without slow motion, still-photo hold or frozen tail. Physical dust, moving cloth, independently tumbling gravel, natural skin and practical materials.\n\noverall_soundscape: Canyon air and grounded boot-grit creak under a growing low energy-pressure rumble; electrical crackles grow with the visible violet charge and one heavy low pressure pulse accompanies the late outward ring of grit. Sound effects only, no speech, words, voices, grunts, cries, screams or singing.\nnon_diegetic_music: None.",
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 10.0,
+      "width": 1536,
+      "height": 864,
+      "continuity": "Strong — 39 frames",
+      "base_seed": 202611082357,
+      "audio_continuity": true,
+      "diagnostics": "Detailed Report",
+      "reroll_from_chunk": "Auto",
+      "reroll_nonce": 0,
+      "strict_compatibility": true,
+      "debug": false,
+      "show_preview": true,
+      "run_storage": "Save + Auto Resume",
+      "run_name": "DB_T06R2_GALICK_POSE_20261108",
+      "reference_size": "Match Output",
+      "project_id": "DB_T06R2_GALICK_POSE_20261108",
+      "video_reference_size": "Efficient - 0.4 MP",
+      "continuation_method": "Native Masked — exact continuation (Recommended)",
+      "emit_refine_conditioning": false,
+      "conditioning_lookahead": true,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "reference_image_1": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "audio_decode",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": false,
+      "audio_seam": "Off",
+      "video_seam": "Off",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Natural retained timeline (Refinement)"
+    }
+  }
+}

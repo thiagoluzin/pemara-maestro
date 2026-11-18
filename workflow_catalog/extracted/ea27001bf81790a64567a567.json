@@ -1,0 +1,155 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "LLaDA-Image-Turbo-INT8-ConvRot-Mixed-AIO.safetensors"
+    },
+    "class_type": "T8LLaDAImageCheckpointLoader",
+    "_meta": {
+      "title": "LLaDA-Image AIO Loader (T8)"
+    }
+  },
+  "2": {
+    "inputs": {
+      "text": "A red fox sleeping beneath a glass tree.",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "3": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "4": {
+    "inputs": {
+      "cfg": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "5": {
+    "inputs": {},
+    "class_type": "T8SamplerLLaDAImageTurbo",
+    "_meta": {
+      "title": "Sampler LLaDA-Image Turbo"
+    }
+  },
+  "6": {
+    "inputs": {
+      "steps": 0,
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "T8LLaDAImageScheduler",
+    "_meta": {
+      "title": "LLaDA-Image Scheduler"
+    }
+  },
+  "7": {
+    "inputs": {
+      "noise_seed": 42
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "8": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "空Latent图像（Flux2）"
+    }
+  },
+  "9": {
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "5",
+        0
+      ],
+      "sigmas": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "10": {
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "INT8-Standalone/turbo-text",
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  }
+}

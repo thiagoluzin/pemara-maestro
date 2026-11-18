@@ -1,0 +1,30 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Goku_Ultra_Instinto_30s_v01_REVISAO.mp4"
+    }
+  },
+  "2": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1080,
+      "height": 1920,
+      "filename_prefix": "goku_ultra_instinto_20261030/full30_v01_fhd60/Goku_Ultra_Instinto_30s_FHD_60FPS_v01",
+      "content_kind": "live_action",
+      "expected_sha256": "7dacbb9cdd0c839fb416d4619e30619edb56817d10a90b115ca59295df8513ba",
+      "known_cut_frames_json": "[260,520]"
+    }
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

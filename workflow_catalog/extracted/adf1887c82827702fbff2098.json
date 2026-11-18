@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Ozzy Osbourne-inspired, Heavy 1980s metal, thick crunchy distorted rhythm guitars, fluid virtuoso lead, forceful characterful male rock singing, thundering drums and bass. 148 BPM, B minor. a swaggering chromatic riff; call-and-answer solo passages and a huge minor-key chorus. Heavy 1980s metal, B minor, crunchy distorted rhythm guitars, virtuoso lead, forceful male vocals, thundering drums and . English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verses 0-90s; Chorus & Verse 90-180s; Bridge & Solo 180-240s; Final Chorus & 240-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=148, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nCrown of iron, heavy on my head\nBuilt my throne on words the dead never said\nGold and glass, the windows start to crack\nI hear the whisper, I hear the attack\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Verse]\nTowers rise, the mountains fall\nI signed the treaties, I broke them all\nThe tapestries are torn and red\nThe hollow halls are filled with dead\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Bridge]\nScreaming through the stone walls\nThe price of power, the loss of all\nMy hands are stained, my eyes are blind\nLeaving all the living behind\n\n[Solo]\n\n[Chorus]\nKing of empty rooms\nShadows where the sun has gone\nEvery breath I take\nIs a debt that I can't pay\n\n[Outro]\nThe doors are locked\nThe echoes stop\nKing of nothing\nOn the edge of the rope",
+      "seed": 202610161011,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

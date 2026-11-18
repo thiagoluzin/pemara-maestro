@@ -1,0 +1,352 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/L14B_v1_gate_physics",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "continuum": {
+    "class_type": "PemaraH3NativeStateReferences",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "base_seed": 22106414,
+      "reference_size": "Max Identity",
+      "reference_image_1": [
+        "cast_celes",
+        0
+      ],
+      "reference_image_2": [
+        "cast_setzer",
+        0
+      ],
+      "reference_image_3": [
+        "cast_locke",
+        0
+      ],
+      "sequence_prompt": "subject_definitions:\n<Picture 1>: Celes, exact blonde real woman in ivory puff-sleeved gown with blue waist sash, blue ribbon and blue trim.\n<Picture 2>: Setzer, exact mature real man with silver hair, black coat, blue collar, gold waistcoat, ivory cravat and black gloves.\n<Picture 3>: Locke, exact adult real man with blue bandana, brown hair, short black jacket, cream shirt, blue trousers, tan boots and sheathed belt weapon.\n\nsummary:\nFifteen-second continuous live-action continuation from the incoming video. One clear physical event: Celes opens a solid hinged gate, then Locke walks through the empty doorway onto the ship deck. Quiet practical acting, no dialogue.\n\nretention_analysis:\nThe incoming motion context defines the exact current stone theatre facade, bridge, brass railing, wooden gate, deck, cabin, light and actor positions. Keep these unchanged. Cast images define faces and clothes only. Preserve the round wooden shield currently carried low in Locke's left hand and the playing cards already held in Setzer's right glove. Do not reset either prop. The incoming gate is CLOSED ACROSS LOCKE'S PATH: it is not an open passage yet.\n\ndetailed_description:\n[Shot 1] (0-15 seconds) Fixed wide camera from the existing deck. Celes stands on the deck on the right of the gate with her right hand on its free upper corner. Locke stands on the bridge behind the gate. Setzer occupies the foreground right, looking away. The rectangular wooden gate has one rigid X-braced panel, fixed brass hinges at its LEFT edge on the existing railing post and a free right edge near Celes. Its solid wood is a real obstacle. The panel must swing out of the walking route before Locke moves through.\n0-5 seconds: Locke stops one step behind the CLOSED gate and waits with both boots on the bridge. Celes grips the free upper corner with her right hand, takes a small backward step on the deck and PULLS the panel toward the camera, rotating the whole rigid panel on its fixed left brass hinges. Its free right edge visibly travels in a wide arc toward the foreground and left, until the panel is fully swung aside beside the left railing. Show the full swing and the now EMPTY rectangular passage. The hinge post stays fixed and the X braces stay rigid. Celes adjusts her grip and holds the leaf fully aside. Setzer takes only one small step to the right to clear the view. He keeps his cards and remains on the deck.\n5-11 seconds: Only after the panel is completely outside the opening, Locke walks through the EMPTY SPACE between the stationary hinge post and the opposite jamb. He turns his LEFT forearm so the shield is edge-on and keeps it close to his left thigh. He looks down at the threshold, plants his right boot on the deck beyond the threshold, transfers his weight onto that boot, then lifts and brings his left boot and shield completely through the empty opening. His hips, legs and shield clear both jambs with visible space. His right palm briefly steadies against the fixed right jamb. The panel remains still, held by Celes, well outside his path. No jump, climb or passing through the wooden panel. Camera keeps the open gap, his boots and shield visible throughout the crossing.\n11-15 seconds: After his trailing boot and shield have cleared the threshold, Locke takes one short settling step on the deck and turns his head toward Setzer. Celes keeps the gate open behind him; she does not close it. Setzer turns his head toward the two, keeping his body mostly in place. End with all three supported on the same deck. Continuous real-time motion, physical weight and restrained breathing. No disappearance, morph, replacement panel, missing rail, new character, camera edit or scene change. Steady blue-hour sky and warm lanterns. Resting mouths.\n\noverall_soundscape:\nContinue quiet evening wind, cloth rustle, a wooden hinge creak during the visible gate swing, and separate dry boot contacts on wood during Locke's steps. No human vocal track, words, whispers, singing or score.\n\nnon_diegetic_music:\nNone.\n",
+      "continuity": "Strong — 39 frames (Experimental)",
+      "initial_state": [
+        "approved_context",
+        0
+      ],
+      "save_prefix": "ffvi_master_L14B_gate_v1"
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  },
+  "cast_celes": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_celes_approved_bc7d4ba5e3.png"
+    }
+  },
+  "cast_setzer": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_setzer_approved_e2c345da23.png"
+    }
+  },
+  "cast_locke": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_locke_approved_2aa5a3486b.png"
+    }
+  },
+  "approved_tail": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\input\\L14_approved_tail39_0_9s.mkv",
+      "force_rate": 24,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 39,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "encode_video": {
+    "class_type": "VAEEncodeTiled",
+    "inputs": {
+      "pixels": [
+        "approved_tail",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "encode_audio": {
+    "class_type": "VAEEncodeAudio",
+    "inputs": {
+      "audio": [
+        "approved_tail",
+        2
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "approved_context": {
+    "class_type": "PemaraFFVIApprovedContext",
+    "inputs": {
+      "video_latent": [
+        "encode_video",
+        0
+      ],
+      "audio_latent": [
+        "encode_audio",
+        0
+      ],
+      "source_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\takes\\L14_v3_approved_0_9s\\L14_0_9s.mp4",
+      "source_sha256": "e064051096badf1328d120d7f4115ee514f715df144dcd1fd683bf35a9901409"
+    }
+  }
+}

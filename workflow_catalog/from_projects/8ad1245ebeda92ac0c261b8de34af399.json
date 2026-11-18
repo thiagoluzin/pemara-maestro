@@ -1,0 +1,352 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "decode_context",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "assemble",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "disabled"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "assemble",
+        1
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/L15_v2_negotiation",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "continuum",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "continuum": {
+    "class_type": "PemaraH3NativeStateReferences",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "clip": [
+        "3",
+        0
+      ],
+      "video_vae": [
+        "4",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "prompt_mode": "Fixed",
+      "chunks": 1,
+      "chunk_seconds": 15,
+      "width": 1344,
+      "height": 768,
+      "base_seed": 22106215,
+      "reference_size": "Max Identity",
+      "reference_image_1": [
+        "cast_celes",
+        0
+      ],
+      "reference_image_2": [
+        "cast_setzer",
+        0
+      ],
+      "reference_image_3": [
+        "cast_locke",
+        0
+      ],
+      "sequence_prompt": "subject_definitions:\n<Picture 1>: Celes, exact blonde real woman in ivory puff-sleeved gown, blue waist sash and blue ribbon.\n<Picture 2>: Setzer, exact mature silver-haired real man, black coat, blue collar, gold waistcoat, ivory cravat and black gloves.\n<Picture 3>: Locke, exact real man with blue bandana, brown hair, short black jacket, cream shirt, blue trousers and tan boots.\n\nsummary:\nContinuous fifteen-second live-action negotiation on the existing airship deck. Celes proposes her wager in Brazilian Portuguese, tosses one coin and reveals the result. Setzer accepts with a knowing smile. Real actors, purposeful restrained movement.\n\nretention_analysis:\nContinue the exact incoming moving video: Setzer foreground right with playing cards in his right glove; Locke foreground left with one round wooden shield in his left hand; Celes behind them at center. Preserve the open gate swung aside on the left, fixed railing, stone theatre behind the left side, wooden cabin and stairs on the right, steady warm lanterns and blue-hour sky. All three have already boarded and stand on the same wooden deck. No one crosses the gate again. Cast references define identity and clothes, while the incoming video defines geometry, placement and props. Keep Locke's weapon sheathed and his shield low.\n\ndetailed_description:\n[Shot 1] (0-15 seconds) Start in the precise incoming composition. One uninterrupted camera view at normal speed, gently moving closer only enough to read Celes's face and hands, keeping all three actors and deck geography readable.\n0-3 seconds: Setzer turns his head and shoulders toward Celes and takes a small quarter-step to his right, clearing her view. He keeps his cards in his right glove. Celes releases the already open gate, which remains stationary at its stop, and takes one grounded pace forward into the space between the men. Locke watches her, shield held close to his left thigh.\n3-8 seconds: Celes takes one small brass coin from the fold of her blue waist sash with her right hand and raises it to chest height between thumb and index finger. She looks directly at Setzer, confident but composed. Celes alone speaks in natural Brazilian Portuguese, a clear feminine voice with synchronized lip movement: <d>[Portuguese] Se eu ganhar, você nos leva ao Império.</d> The men listen silently. She finishes speaking before tossing the coin.\n8-11 seconds: Celes lowers her right hand slightly, positions the single coin on her thumb and makes ONE short upward toss. The coin travels on a small visible arc above her right hand, then falls under gravity. Her open LEFT palm waits below the arc and catches the same coin once. Her right hand remains separate. No repeated toss, extra coin, hand swap, finger fusion or disappearing prop.\n11-15 seconds: Celes extends her open left palm toward Setzer at waist height, showing the coin resting on it. Setzer looks down at the result, then back to her face; a knowing smile develops and he gives one small accepting nod. Locke exhales, eases his shoulders and turns his gaze toward Setzer. End with Celes still holding the single coin in her open left palm, Setzer facing her with cards in his right glove, and Locke on her left. No ship departure yet. Natural weight shifts, visible foot support and cloth motion. Stable solid scenery and light; no new actor, conductor, instrument, railing, internal cut or scene reset.\n\noverall_soundscape:\nContinue low evening wind and soft clothing movement, brief wooden foot contacts, Celes's single spoken Brazilian Portuguese sentence, then a delicate metallic coin landing sound. No English, male dialogue, whispered extra words, narration or singing. Preserve the established quiet sound character.\n\nnon_diegetic_music:\nNone.\n",
+      "continuity": "Strong — 39 frames (Experimental)",
+      "initial_state": [
+        "approved_context",
+        0
+      ],
+      "save_prefix": "ffvi_master_L15_negotiation_v2"
+    }
+  },
+  "decode_context": {
+    "class_type": "H3ContinuumDecodeContext",
+    "inputs": {
+      "video_latents": [
+        "continuum",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ]
+    }
+  },
+  "assemble": {
+    "class_type": "H3ContinuumAssembleSeamV34",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "assembly_plan": [
+        "continuum",
+        2
+      ],
+      "exact_total_duration": true,
+      "audio_seam": "Off",
+      "video_seam": "Analyze Only",
+      "diagnostics": "Detailed Report",
+      "image_output_device": "CPU",
+      "timeline_mode": "Exact requested duration (Recommended)"
+    }
+  },
+  "cast_celes": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_celes_approved_bc7d4ba5e3.png"
+    }
+  },
+  "cast_setzer": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_setzer_approved_e2c345da23.png"
+    }
+  },
+  "cast_locke": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "ffvi_locke_approved_2aa5a3486b.png"
+    }
+  },
+  "approved_tail": {
+    "class_type": "VHS_LoadVideoPath",
+    "inputs": {
+      "video": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\input\\L14B_approved_tail39.mkv",
+      "force_rate": 24,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 39,
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "format": "None"
+    }
+  },
+  "encode_video": {
+    "class_type": "VAEEncodeTiled",
+    "inputs": {
+      "pixels": [
+        "approved_tail",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "encode_audio": {
+    "class_type": "VAEEncodeAudio",
+    "inputs": {
+      "audio": [
+        "approved_tail",
+        2
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "approved_context": {
+    "class_type": "PemaraFFVIApprovedContext",
+    "inputs": {
+      "video_latent": [
+        "encode_video",
+        0
+      ],
+      "audio_latent": [
+        "encode_audio",
+        0
+      ],
+      "source_path": "E:\\Pemara\\maestro\\pemara\\ferramentas\\video_global_engine\\projetos\\ffvi_opera_h3_master_liveaction_20261022\\takes\\L14B_v1_gate_physics\\292ead1d_000.mp4",
+      "source_sha256": "3591cef0bbf78e47883099d5c81ef6f1f02085f42f02a1d968a86e8790ed50ee"
+    }
+  }
+}

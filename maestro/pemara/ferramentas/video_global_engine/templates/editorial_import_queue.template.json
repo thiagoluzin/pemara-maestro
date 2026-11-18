@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.5",
+  "project_id": "__PROJECT_ID__",
+  "methodology": "unimedia_editorial_to_maestro_takes_v1",
+  "status": "draft",
+  "primary_orchestration_policy": "policies/primary_take_orchestration_h3_ltx25.json",
+  "engine_policy": {
+    "primary_take_orchestration": {
+      "status": "OWNER_SELECTION_REQUIRED",
+      "version": "primary_take_orchestration_h3_ltx25_v1",
+      "generation_profile": null,
+      "allowed_generation_profiles": [
+        "minimax_h3_fl2va_int8_720p24",
+        "ltx25_two_stage_distilled_960x544p24"
+      ],
+      "fallback_allowed": false,
+      "conditioning_profile": "identity_locked"
+    },
+    "review_motion_pipeline": {
+      "enabled": true,
+      "status": "LOCKED_APPROVED",
+      "version": "h3_ltx25_rife425_midpoint48_retime60_v1",
+      "applies_to_engines": [
+        "minimax_h3",
+        "ltx_2_5"
+      ],
+      "source_fps": 24,
+      "source_resolution": {
+        "width": 1280,
+        "height": 720
+      },
+      "source_resolutions": {
+        "minimax_h3": {"width": 1280, "height": 720},
+        "ltx_2_5": {"width": 960, "height": 544}
+      },
+      "interpolation": {
+        "engine": "Practical-RIFE",
+        "model": "4.25",
+        "revision": "17d8c7a1005b37f4c97bfee04e316aaec7fdc536",
+        "model_sha256": "6615790efd627772917205db291f51cd392528a157ecbb2ecaeec3bff8eb6de2",
+        "factor": 2,
+        "output_fps": 48,
+        "mode": "single_midpoint_between_adjacent_source_frames",
+        "working_format": "png",
+        "preserve_all_source_frames": true,
+        "forbid_direct_factor5": true
+      },
+      "delivery": {
+        "fps": 60,
+        "encoder": "h264_nvenc",
+        "preset": "p7",
+        "tune": "hq",
+        "cq": 15,
+        "frame_completion": "clone_terminal_frame_once",
+        "retime_method": "setpts_preserve_every_frame",
+        "speed_factor_from_midpoint_48fps": 1.25,
+        "audio_policy": "forbidden_without_owner_directive",
+        "upscale": false
+      },
+      "qc": {
+        "require_exact_frame_count": true,
+        "expected_delivery_frames_formula": "source_frames_x2",
+        "require_constant_timestamps": true,
+        "require_final_motion_gate": true,
+        "require_human_visual_review": true,
+        "reject_black_frames": true,
+        "reject_long_freeze": true
+      },
+      "upscale_allowed_before_human_approval": false,
+      "failure_policy": "fail_closed_never_publish_native24_as_review_fallback"
+    },
+    "audio_directive": {
+      "authority": "owner_only",
+      "default_without_explicit_directive": "visual_only",
+      "inherit_from_previous_take": false,
+      "inherit_from_previous_project": false,
+      "native_generation_without_directive": "forbidden",
+      "mix_without_directive": "forbidden"
+    }
+  },
+  "universal_transition_motion_gate": {
+    "required": true,
+    "policy_version": "2.0",
+    "pillars": [
+      "evident_camera",
+      "real_depth",
+      "internal_action",
+      "clear_progression"
+    ],
+    "contract_gate": "python tools/transition_motion_gate.py production_manifest.json --stage contract",
+    "approval_gate": "python tools/transition_motion_gate.py production_manifest.json --stage approval"
+  },
+  "continuous_action_contract": {
+    "required": true,
+    "generated_connector_required_between_takes": true,
+    "crossfade_forbidden": true,
+    "freeze_frame_forbidden": true,
+    "static_tail_forbidden": true,
+    "motion_handoff_required": true,
+    "full_duration_motion_required": true,
+    "three_interval_motion_required": true,
+    "moving_transition_anchors_required": true
+  },
+  "assembly": {
+    "preview": {
+      "width": 1280,
+      "height": 720,
+      "fps": 60,
+      "format": "mp4"
+    },
+    "final": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "format": "mp4",
+      "encoder": "h264_nvenc",
+      "fps_rule": "interpolate_only_after_take_is_approved"
+    },
+    "rule": "never_render_full_movie_as_one_prompt"
+  },
+  "global_negative_rules": [
+    "no generated text",
+    "no watermark",
+    "no native audio",
+    "no extra characters",
+    "no identity drift",
+    "no face morphing",
+    "no slideshow",
+    "no living photo",
+    "no static tail",
+    "no crossfade",
+    "no freeze frame",
+    "no motion reset between takes"
+  ],
+  "takes": []
+}

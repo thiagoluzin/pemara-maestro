@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Heavy theatrical rock, dramatic and intense mood, driven by loud electric guitar riffs and pounding drums, powerful male vocal delivery in Portuguese, aggressive groove.\nShort complete song, target duration 30 seconds. Start singing immediately; no long instrumental intro. Prioritize the verse and chorus.",
+      "lyrics": "[Chorus]\nQuebre o medo, cante o terror!\nNoite de ferro, eu vou!\nQuebre o medo, cante o terror!\nSangue e fogo, eu vou!",
+      "seed": 2026100516,
+      "mode": "full",
+      "max_abc_tokens": 8192,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "9": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "8",
+        0
+      ]
+    }
+  }
+}

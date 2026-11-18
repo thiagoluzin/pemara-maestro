@@ -1,0 +1,151 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "5": {
+    "class_type": "ETN_LoadImageBase64",
+    "inputs": {
+      "image": ""
+    }
+  },
+  "6": {
+    "class_type": "ETN_LoadMaskBase64",
+    "inputs": {
+      "mask": ""
+    }
+  },
+  "7": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "Image 1 is a registered 4 by 4 animation sprite sheet: sixteen complete drawings of the SAME woman walking, RIGHT profile, different consecutive walking phases. Image 2 is a STYLE BOARD: finished upper body and enlarged boot and hand details, not a pose to copy. Completely finish all sixteen flat geometric placeholder legs, boots, exposed forearms and circular hands in image 1 in the SAME detailed hand drawn anime pixel art style as image 2. Detailed shaded DARK TEAL denim, identical trouser color in every cell, natural folds. The SAME brown lace-up leather ankle boots with black soles and SAME boot size in all sixteen cells. Slender shaded forearms and anatomically natural relaxed hands instead of circles. Preserve the individual pose and exact joint and foot positions in EACH cell: do not repeat one stance. In row 1 the near leg leads forward; in row 3 it trails backwards behind the far leg. Opposing arm swing: near arm forward when near leg trails, far arm backwards hidden behind the shoulder bag. Keep every cell separated, keep all original heads hair jackets shirts belts and asymmetric shoulder bags untouched. Sixteen figures, full bodies with margins, same cell positions, uniform pale gray background. No letters, labels, borders, extra boots, extra limbs or 3D.",
+      "negative_prompt": "extra feet, extra legs, deformed hands, photorealistic, 3D render, text, flat polygons, circles instead of hands, flat unshaded boots",
+      "resolution": 0,
+      "vae": [
+        "3",
+        0
+      ],
+      "images.image_1": [
+        "5",
+        0
+      ],
+      "images.image_2": [
+        "4",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "5",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "SetLatentNoiseMask",
+    "inputs": {
+      "samples": [
+        "11",
+        0
+      ],
+      "mask": [
+        "6",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "seed": 23102630,
+      "steps": 25,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "7",
+        1
+      ],
+      "latent_image": [
+        "12",
+        0
+      ],
+      "denoise": 0.82
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "filename_prefix": "ATerraDevolve/HelenaWalk/Qwen5_Atlas_direita"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "100": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  }
+}

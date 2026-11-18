@@ -1,0 +1,30 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "ffvi_opera_finishing_sample_4s.mp4"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1920,
+      "height": 1080,
+      "filename_prefix": "ffvi_opera_complete/1080p60_sample",
+      "content_kind": "live_action",
+      "expected_sha256": "506daf30f080cddb3fc37bf1f135396479f3dac43c2aa1111f6911834795247c",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

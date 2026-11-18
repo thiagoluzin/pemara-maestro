@@ -1,0 +1,76 @@
+{
+  "controlnet": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"prompt_id\": \"941fc8bc-530f-452b-9eb6-381b54137d44\",\n  \"status\": \"completed\",\n  \"workflow_size\": null,\n  \"outputs\": [\n    \"http://127.0.0.1:8188/view?filename=h3_upgrade_dancer_pose.mp4&subfolder=&type=input\",\n    \"http://127.0.0.1:8188/view?filename=controlnet2_pose_00001_.mp4&subfolder=PEMARA_H3_UPGRADES_20260927&type=output\"\n  ],\n  \"outputs_by_node\": {\n    \"19\": [\n      \"http://127.0.0.1:8188/view?filename=h3_upgrade_dancer_pose.mp4&subfolder=&type=input\"\n    ],\n    \"14\": [\n      \"http://127.0.0.1:8188/view?filename=controlnet2_pose_00001_.mp4&subfolder=PEMARA_H3_UPGRADES_20260927&type=output\"\n    ]\n  },\n  \"outputs_by_item\": {},\n  \"text_outputs\": {},\n  \"error\": null,\n  \"host\": \"127.0.0.1\",\n  \"port\": 8188\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "queue": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"host\": \"127.0.0.1\",\n  \"port\": 8188,\n  \"where\": \"local\",\n  \"scope\": \"local\",\n  \"count\": 10,\n  \"jobs\": [\n    {\n      \"prompt_id\": \"c3fd2dc9-9a6b-4b30-aae3-e40d1878cb51\",\n      \"status\": \"queued\",\n      \"queue_position\": null,\n      \"workflow_size\": null,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\video_global_engine\\\\projetos\\\\ccf_group_matriculas_2027_2x15\\\\work\\\\v4\\\\T03_robotica_A01.api.json\",\n      \"updated_at\": \"2026-09-27T00:15:08+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"134dbbc6-b538-4ffb-8b8c-9718f879a95c\",\n      \"status\": \"queued\",\n      \"queue_position\": null,\n      \"workflow_size\": null,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\video_global_engine\\\\projetos\\\\ccf_group_matriculas_2027_2x15\\\\work\\\\v4\\\\T04_JK_IMG5_A01.api.json\",\n      \"updated_at\": \"2026-09-27T00:57:15+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"a9cdb8d6-db81-4926-9ad7-fc0076460d6b\",\n      \"status\": \"queued\",\n      \"queue_position\": null,\n      \"workflow_size\": null,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\video_global_engine\\\\projetos\\\\ccf_group_matriculas_2027_2x15\\\\work\\\\v4\\\\T05_PRIME_BUILDING_A01.api.json\",\n      \"updated_at\": \"2026-09-27T10:01:32+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"bef1a6f9-4378-4d97-b2d7-18b6655ae731\",\n      \"status\": \"queued\",\n      \"queue_position\": null,\n      \"workflow_size\": null,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\video_global_engine\\\\projetos\\\\ccf_group_matriculas_2027_2x15\\\\work\\\\v4\\\\T06_JK_PARQUE_A01.api.json\",\n      \"updated_at\": \"2026-09-27T10:08:59+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"941fc8bc-530f-452b-9eb6-381b54137d44\",\n      \"status\": \"completed\",\n      \"queue_position\": null,\n      \"workflow_size\": 18,\n      \"outputs\": 2,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\04_H3_CONTROLNET2_POSE.api.json\",\n      \"updated_at\": \"2026-09-27T18:02:35+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"f79641ff-9ef2-40c6-a8d5-ece73e7ed2a0\",\n      \"status\": \"completed\",\n      \"queue_position\": null,\n      \"workflow_size\": 16,\n      \"outputs\": 1,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\03_H3_PDD_REF2VA_8STEP_smoke.api.json\",\n      \"updated_at\": \"2026-09-27T18:02:17+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"485e3eed-63c6-40b8-9c5c-286a9281b344\",\n      \"status\": \"completed\",\n      \"queue_position\": null,\n      \"workflow_size\": 15,\n      \"outputs\": 1,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\01_H3_BASE_INT8_VAE_smoke.api.json\",\n      \"updated_at\": \"2026-09-27T18:01:42+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"86ede68a-eb2f-4cc4-addd-6ed8be264c0e\",\n      \"status\": \"error\",\n      \"queue_position\": null,\n      \"workflow_size\": 16,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\03_H3_PDD_REF2VA_8STEP_smoke.api.json\",\n      \"updated_at\": \"2026-09-27T18:01:19+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"11a37fd8-8bd0-4bfd-8883-e1d8f538f675\",\n      \"status\": \"completed\",\n      \"queue_position\": null,\n      \"workflow_size\": 16,\n      \"outputs\": 1,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\02_H3_PDD_FL2VA_8STEP_smoke.api.json\",\n      \"updated_at\": \"2026-09-27T18:00:05+00:00\",\n      \"error_code\": null\n    },\n    {\n      \"prompt_id\": \"1acd690f-35a9-4051-a5e0-5efe23312573\",\n      \"status\": \"completed\",\n      \"queue_position\": null,\n      \"workflow_size\": 3,\n      \"outputs\": 0,\n      \"where\": \"local\",\n      \"workflow_path\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\00_VAE_compare.api.json\",\n      \"updated_at\": \"2026-09-27T17:58:06+00:00\",\n      \"error_code\": null\n    }\n  ],\n  \"live_queue\": {\n    \"verified\": true,\n    \"running_ids\": [],\n    \"pending_ids\": []\n  }\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "frontend_validation": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\01_H3_BASE_INT8_VAE.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  },\n  \"converted_from_ui\": true,\n  \"converted_node_count\": 15\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\02_H3_PDD_FL2VA_8STEP.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  },\n  \"converted_from_ui\": true,\n  \"converted_node_count\": 16\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\03_H3_PDD_REF2VA_8STEP.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  },\n  \"converted_from_ui\": true,\n  \"converted_node_count\": 16\n}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"workflow\": \"E:\\\\Pemara\\\\maestro\\\\pemara\\\\ferramentas\\\\h3_upgrades_20260927\\\\workflows\\\\04_H3_CONTROLNET2_POSE.json\",\n  \"valid\": true,\n  \"error_count\": 0,\n  \"warning_count\": 0,\n  \"errors\": [],\n  \"warnings\": [],\n  \"partner_nodes\": [],\n  \"spends_credits\": false,\n  \"object_info_source\": {\n    \"mode\": \"local\",\n    \"host\": \"127.0.0.1\",\n    \"port\": 8188\n  },\n  \"converted_from_ui\": true,\n  \"converted_node_count\": 18\n}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ]
+}

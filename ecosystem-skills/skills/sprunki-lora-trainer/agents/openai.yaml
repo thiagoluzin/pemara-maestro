@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sprunki LoRA Trainer"
+  short_description: "Treino e QC de LoRA Sprunki"
+  default_prompt: "Use $sprunki-lora-trainer para auditar dataset, rodar ciclo seguro e avaliar LoRAs Sprunki."

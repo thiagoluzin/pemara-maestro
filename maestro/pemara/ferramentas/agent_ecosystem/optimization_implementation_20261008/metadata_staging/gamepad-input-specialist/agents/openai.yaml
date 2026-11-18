@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gamepad Input Specialist"
+  short_description: "Especialista em input do jogo — InputManager (teclado+gamepad),"
+  default_prompt: "Use $gamepad-input-specialist para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

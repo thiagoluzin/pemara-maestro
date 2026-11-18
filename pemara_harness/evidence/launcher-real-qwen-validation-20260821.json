@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-08-21T12:04:00-03:00",
+  "change": "idle-comfy-cache-release-and-real-qwen-readiness",
+  "root_causes": [
+    "ComfyUI and other GPU allocations could leave less than 12000 MiB free after work completed.",
+    "The Qwen starter can exit after the port opens while /v1/models still returns 503 Loading model.",
+    "A manual VRAM hold must be consumed in the real admin_remoto context rather than bypassed by the Codex sandbox."
+  ],
+  "safety_contract": {
+    "minimum_free_gpu_mib": 12000,
+    "maximum_idle_gpu_utilization_percent": 5,
+    "idle_gpu_samples": 5,
+    "queue_checked_before_and_after_idle_samples": true,
+    "comfy_free_payload": {
+      "unload_models": true,
+      "free_memory": true
+    },
+    "kills_processes": false,
+    "uses_force": false,
+    "changes_acl": false
+  },
+  "automated_validation": {
+    "npm_test_passed": 23,
+    "npm_test_failed": 0,
+    "launcher_tests_passed": 7,
+    "idle_cache_release_flow": "PASS",
+    "active_comfy_queue_protection": "PASS",
+    "starter_exit_while_model_loading": "PASS",
+    "powershell_parser": "PASS"
+  },
+  "real_validation": {
+    "manual_vram_hold_exists_after_resume": false,
+    "comfy_pid": 32352,
+    "comfy_listener_alive": true,
+    "comfy_queue_running": 0,
+    "comfy_queue_pending": 0,
+    "qwen_pid": 53204,
+    "qwen_listener_alive": true,
+    "qwen_model_id": "qwen3.8-27b-uncensored-yarn-524k",
+    "qwen_context": 524288,
+    "chat_completion_content": "PEMARA_QWEN_OK",
+    "chat_completion_finish_reason": "stop",
+    "prompt_tokens": 64,
+    "completion_tokens": 42
+  },
+  "result": "REAL_QWEN_READY"
+}

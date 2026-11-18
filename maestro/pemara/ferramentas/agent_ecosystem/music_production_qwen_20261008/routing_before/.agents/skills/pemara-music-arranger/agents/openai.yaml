@@ -1,0 +1,6 @@
+interface:
+  display_name: "Arranjo musical"
+  short_description: "Dirige forma, instrumentação e identidade do cover"
+  default_prompt: "Use $pemara-music-arranger para melhorar a produção musical do Maestro com o Qwen 3.8."
+policy:
+  allow_implicit_invocation: true

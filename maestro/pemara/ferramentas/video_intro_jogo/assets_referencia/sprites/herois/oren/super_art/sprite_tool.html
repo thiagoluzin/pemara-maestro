@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprite Positioner Tool - Ritmos da Revolta</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2e;
+            color: #cdd6f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #89b4fa;
+        }
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .controls {
+            background-color: #313244;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .controls button, .controls label {
+            background-color: #89b4fa;
+            color: #11111b;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .controls button:hover, .controls label:hover {
+            background-color: #74c7ec;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .canvas-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: #313244;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        canvas {
+            background: repeating-conic-gradient(#45475a 0% 25%, #313244 0% 50%) 50% / 20px 20px;
+            border: 2px solid #585b70;
+            cursor: grab;
+        }
+        canvas:active {
+            cursor: grabbing;
+        }
+        .instructions {
+            background-color: #45475a;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f9e2af;
+        }
+        .properties {
+            background-color: #313244;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        input[type="range"], input[type="number"] {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            border: 1px solid #585b70;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sprite Positioner Tool</h1>
+        
+        <div class="instructions">
+            <p><strong>Como usar:</strong></p>
+            <ol>
+                <li>Clique em "Carregar Sprites Limpos" e selecione as tiras cortadas (na pasta <code>assets/sprites/herois/oren/super_art/pieces/</code>).</li>
+                <li>Clique em qualquer sprite na lista abaixo para adicioná-lo ao quadro.</li>
+                <li>Arraste os sprites dentro do canvas para posicioná-los onde quiser nos 5 frames (cada frame tem 880x350).</li>
+                <li>Use as propriedades embaixo para escalar ou rotacionar o sprite selecionado.</li>
+                <li>Clique em "Exportar Spritesheet" quando estiver perfeito.</li>
+            </ol>
+        </div>
+
+        <div class="controls">
+            <label for="fileInput">📁 Carregar Sprites Limpos</label>
+            <input type="file" id="fileInput" multiple accept="image/png, image/jpeg">
+            <button id="exportBtn">💾 Exportar Spritesheet (4400x350)</button>
+            <button id="clearBtn" style="background-color: #f38ba8;">🗑️ Limpar Canvas</button>
+        </div>
+
+        <div id="library" class="controls" style="min-height: 80px;">
+            <span style="color: #a6adc8;">Sprites carregados aparecerão aqui. Clique para adicionar.</span>
+        </div>
+
+        <div class="properties" id="props" style="opacity: 0.5; pointer-events: none;">
+            <span><strong>Sprite Selecionado:</strong></span>
+            <label>Scale: <input type="number" id="scaleInput" value="1" step="0.1" style="width: 60px;"></label>
+            <label>X: <input type="number" id="xInput" style="width: 60px;"></label>
+            <label>Y: <input type="number" id="yInput" style="width: 60px;"></label>
+            <button id="deleteSpriteBtn" style="background-color: #f38ba8;">Remover do Canvas</button>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="canvas" width="4400" height="350"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const fileInput = document.getElementById('fileInput');
+        const library = document.getElementById('library');
+        const propsDiv = document.getElementById('props');
+        const scaleInput = document.getElementById('scaleInput');
+        const xInput = document.getElementById('xInput');
+        const yInput = document.getElementById('yInput');
+
+        const frameW = 880;
+        const frameH = 350;
+        const totalFrames = 5;
+
+        let loadedImages = [];
+        let canvasSprites = [];
+        let selectedSprite = null;
+
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid guides
+            ctx.strokeStyle = '#f38ba8';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            for(let i = 1; i < totalFrames; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * frameW, 0);
+                ctx.lineTo(i * frameW, frameH);
+                ctx.stroke();
+            }
+            ctx.setLineDash([]);
+
+            // Draw frame numbers
+            ctx.fillStyle = '#f38ba8';
+            ctx.font = '20px Arial';
+            for(let i = 0; i < totalFrames; i++) {
+                ctx.fillText(`Frame ${i+1}`, i * frameW + 10, 25);
+            }
+
+            // Draw sprites
+            canvasSprites.forEach(s => {
+                const w = s.img.width * s.scale;
+                const h = s.img.height * s.scale;
+                ctx.drawImage(s.img, s.x, s.y, w, h);
+                
+                if (s === selectedSprite) {
+                    ctx.strokeStyle = '#a6e3a1';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(s.x, s.y, w, h);
+                }
+            });
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            if(files.length > 0) library.innerHTML = '';
+            
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        loadedImages.push(img);
+                        
+                        const thumb = document.createElement('img');
+                        thumb.src = img.src;
+                        thumb.style.height = '60px';
+                        thumb.style.cursor = 'pointer';
+                        thumb.style.border = '2px solid transparent';
+                        thumb.onmouseover = () => thumb.style.borderColor = '#89b4fa';
+                        thumb.onmouseout = () => thumb.style.borderColor = 'transparent';
+                        
+                        thumb.onclick = () => {
+                            canvasSprites.push({
+                                img: img,
+                                x: 100,
+                                y: 100,
+                                scale: 1
+                            });
+                            render();
+                        };
+                        library.appendChild(thumb);
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // Interactions
+        function getMousePos(evt) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (evt.clientX - rect.left) * scaleX,
+                y: (evt.clientY - rect.top) * scaleY
+            };
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            const pos = getMousePos(e);
+            selectedSprite = null;
+            
+            // Check from top to bottom (last drawn is on top)
+            for (let i = canvasSprites.length - 1; i >= 0; i--) {
+                const s = canvasSprites[i];
+                const w = s.img.width * s.scale;
+                const h = s.img.height * s.scale;
+                
+                if (pos.x >= s.x && pos.x <= s.x + w && pos.y >= s.y && pos.y <= s.y + h) {
+                    selectedSprite = s;
+                    isDragging = true;
+                    dragOffsetX = pos.x - s.x;
+                    dragOffsetY = pos.y - s.y;
+                    
+                    // Bring to front
+                    canvasSprites.splice(i, 1);
+                    canvasSprites.push(s);
+                    break;
+                }
+            }
+            
+            updatePropsUI();
+            render();
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging && selectedSprite) {
+                const pos = getMousePos(e);
+                selectedSprite.x = pos.x - dragOffsetX;
+                selectedSprite.y = pos.y - dragOffsetY;
+                updatePropsUI();
+                render();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => { isDragging = false; });
+        canvas.addEventListener('mouseleave', () => { isDragging = false; });
+
+        function updatePropsUI() {
+            if (selectedSprite) {
+                propsDiv.style.opacity = '1';
+                propsDiv.style.pointerEvents = 'auto';
+                scaleInput.value = selectedSprite.scale;
+                xInput.value = Math.round(selectedSprite.x);
+                yInput.value = Math.round(selectedSprite.y);
+            } else {
+                propsDiv.style.opacity = '0.5';
+                propsDiv.style.pointerEvents = 'none';
+            }
+        }
+
+        scaleInput.addEventListener('input', (e) => {
+            if(selectedSprite) {
+                selectedSprite.scale = parseFloat(e.target.value);
+                render();
+            }
+        });
+        
+        xInput.addEventListener('input', (e) => {
+            if(selectedSprite) {
+                selectedSprite.x = parseFloat(e.target.value);
+                render();
+            }
+        });
+        
+        yInput.addEventListener('input', (e) => {
+            if(selectedSprite) {
+                selectedSprite.y = parseFloat(e.target.value);
+                render();
+            }
+        });
+
+        document.getElementById('deleteSpriteBtn').addEventListener('click', () => {
+            if (selectedSprite) {
+                canvasSprites = canvasSprites.filter(s => s !== selectedSprite);
+                selectedSprite = null;
+                updatePropsUI();
+                render();
+            }
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            canvasSprites = [];
+            selectedSprite = null;
+            updatePropsUI();
+            render();
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            // Temporary remove selection box and grid for export
+            const tempSelected = selectedSprite;
+            selectedSprite = null;
+            
+            // Draw clean version without grid
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvasSprites.forEach(s => {
+                ctx.drawImage(s.img, s.x, s.y, s.img.width * s.scale, s.img.height * s.scale);
+            });
+            
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'oren_super_blast.png';
+            link.href = dataURL;
+            link.click();
+            
+            selectedSprite = tempSelected;
+            render();
+        });
+
+        render();
+    </script>
+</body>
+</html>

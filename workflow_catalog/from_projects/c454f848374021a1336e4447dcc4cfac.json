@@ -1,0 +1,293 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "separate",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "audio": [
+        "track",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_h3_master_20261022/P27_pixaroma_master20_v1_draco_entrance",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": true,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "pixaroma": {
+    "class_type": "PemaraPixaromaSpectrumLongVideo",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "window_seconds": 15.0,
+      "overlap_seconds": 1.5,
+      "window_reference_states": false
+    }
+  },
+  "track": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "ffvi_P27_overture.wav"
+    }
+  },
+  "audio_sync": {
+    "class_type": "PixaromaH3AudioSync",
+    "inputs": {
+      "model": [
+        "pixaroma",
+        0
+      ],
+      "latent": [
+        "identity",
+        1
+      ],
+      "audio_vae": [
+        "17",
+        0
+      ],
+      "track": [
+        "track",
+        0
+      ]
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "audio_sync",
+        0
+      ],
+      "conditioning": [
+        "identity",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 27102501
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "audio_sync",
+        1
+      ]
+    }
+  },
+  "separate": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "sample",
+        0
+      ]
+    }
+  },
+  "identity": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "For the target video, <Picture 1> is the exact approved THEATRE SET and camera reference. <Picture 2> is the approved CAST identity reference: use ONLY the young man standing on its LEFT in BLUE, named Draco. The older bearded RED actor on the right is Ralse and must NOT appear. These are separate visual references, not two shots and not a collage. Output ONE continuous fifteen-second live-action shot.\n\nintegrated_multimodal_description: [Shot 1] The opening battlefield scene of a practical opera performance with ONE real adult actor, Draco, entering the existing empty stage from screen RIGHT. Preserve the actual theatre in Picture1: fixed full-stage camera from the same downstage viewing position, wooden stage floor, two burgundy velvet curtain panels already gathered at both sides, narrow side timber rigging with hanging ropes, candle table and chair at left, stationary right-side furniture. Inside the opening keep the same flat painted GOLDEN SUNSET CLOUD canvas, red ochre rocky side flats at left and right, the low centre scenic rock and clear wooden acting path behind it. This is a real indoor theatre with physical painted scenery, not an outdoor desert, game render or cartoon. No moon, castle, blue parapet, balcony, daylight exterior, new wall or second curtain. Do NOT reopen or move the gathered curtain, replace the rocks or move the painted clouds. The same set remains fixed from start to finish, without scenic morphing. No new lighting cue or bright aperture.\n\nDRACO is exclusively the approved young BLUE man at the LEFT in Picture2: same clean-shaven oval face, prominent straight nose, short dark curly hair, lean adult proportions, fair natural skin, high-collared textured cobalt/steel-blue tunic, plain worn SILVER breastplate with its simple raised edges, dark NAVY BLUE long cloak attached at shoulders, blue fitted trousers and worn brown leather knee boots. Preserve this exact blue/silver palette and face, no red tunic, gold armour, beige cape, yellow fabric or beard. His one sword stays SHEATHED at his left hip, same scabbard and hilt; it moves with his belt, never drawn or duplicated. Two empty natural hands, five fingers each. His dark blue cloak stays attached and weighted, trailing a small natural distance behind his legs. Use real skin pores, curly hair strands, matte wool, stitched textile, worn leather and subdued practical silver metal, not glossy CGI or costume changing. No flowers, bouquet, crown or new object.\n\nAt0s the camera sees the same open EMPTY stage of Picture1. From0.4-4.5s Draco physically enters from the dark RIGHT wing beside the right rocky flat and gathered curtain. First the near boot and shoulder become visible across that actual edge, then the full body follows with alternating normal walking steps. He never materializes in the middle, dissolves into view, passes through curtain, furniture or a rock, slides over the floor or walks backward. His path runs from screen right toward screen left along the clear central wooden acting lane, UPSTAGE of the small centre rock; remain safely in front of the painted backdrop and behind the side furniture. Start fully occluded offscreen to the right, then gradually reveal him by normal physical entry. Only Draco is present; no Celes, Ralse, impresario, chorus, stagehands, audience bodies or silhouettes enter.\n\nFrom4.5-10.5s he continues crossing toward the centre with supported unhurried steps. Each boot lifts, swings forward, contacts heel then sole and accepts his body weight; hips and knees flex, opposite arm counter-swings subtly. His gaze searches the deserted battlefield toward LEFT and slightly upstage before his head follows. He wants to find someone who is absent; he is attentive and concerned, not smiling at the camera or posing. His shoulders remain gently braced under his silver breastplate. His cloak follows the body's acceleration with soft delayed folds; the attached sword stays sheathed and swings only slightly at the belt. The body passes BEHIND the low centre rock in correct depth and steps through the clear lane, never over or through the rock. The scenery does not move to simulate walking.\n\nFrom10.5-15.08s he has reached just left of centre. His eyes notice the empty left-hand route, his head turns slightly left, his body follows with a shallow change of walking direction and one measured step farther left. He draws a restrained breath, frees his right hand from its walking swing and opens it slightly at waist height in an incipient appeal to the absent lover, then allows it to settle as he continues to move. No repeated nodding, swaying, exaggerated distress or hand waving. Keep physical walking and weight transfer alive until the last frame, without stopping for a prolonged hero pose. End with Draco still grounded in this same leftward acting lane, ready for his later vocal entrance. Mouth is naturally CLOSED or softly at rest throughout this orchestral passage; no articulated syllables, speaking, singing or fake lip sync. No Celes singing a male part, no red actor and no new performer. No combat or soldiers yet.\n\nCamera remains ABSOLUTELY FIXED in the same full-stage framing as Picture1, no zoom, pan, dolly, crop, recentering or cut. Draco's whole head, body and boot contacts remain visible against the sunset set throughout his path. Warm theatrical key light gives natural neutral skin, dark blue cloth and silver breastplate; maintain the exact comfortable GOLD sunset exposure of Picture1 with no pink/magenta tint, flicker, white flash, bloom or pulsing lights. Floor shadows follow his boots and body consistently. Preserve painted canvas as painted canvas, stationary rocks as supported scenic objects, and unchanged side rigging/furniture. Never transition into the brick wall or two-man composition of Picture2, which supplies Draco identity only. Do not split the frame, show reference pictures, add text, fade, freeze, reset, change stage or cut to another camera.\n\noverall_soundscape: Preserve ONLY the supplied exact next contiguous interval of the original English Pixel Remaster opera recording, same stereo, fixed gain, timing and duration. It is the sole sound source. Do not generate voice, narration, lyrics, dialogue, singing, applause, footsteps, sword noise, Foley or replacement music. Draco enters and searches silently during the existing orchestral passage; no phonetic mouth movements.\n\nnon_diegetic_music: N/A; original opera recording only.",
+      "width": 1344,
+      "height": 768,
+      "length": 362,
+      "ref_image_size": "match",
+      "ref_images.ref_image_1": [
+        "anchor",
+        0
+      ],
+      "ref_images.ref_image_2": [
+        "cast",
+        0
+      ]
+    }
+  },
+  "anchor": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P27_P26_approved_stage.png"
+    }
+  },
+  "cast": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "ffvi_P27_approved_draco_ralse.png"
+    }
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "integrated_multimodal_description: [Shot1] An original expressive stylized3D animated Brazilian street-news comedy at a peaceful gamers protest. Fictional ADULT humans only, rounded appealing faces, matte colorful clothes, grounded feet, coherent five-finger hands, independent acting. Not live action and no real person imitation. Warm afternoon light from screen-left, soft shadows. A fictional unbranded red-brick electronics storefront on one Brazilian square. No weapons, violence, fire, smoke, logos, price tags, news graphics, subtitles, watermarks or music.\nVertical768x1344. One uninterrupted eye-level medium-wide interview, reporter screen-left and interviewee screen-right, large readable faces and clear hands. A small slow physical dolly to camera-right changes perspective: nearby wooden sign poles shift relative to the speakers and the distant brick doorway. Three real depth layers, stable axis, no zoom, orbit, spin, cuts or shake. Speakers stay planted, with natural weight shifts. Clothing follows their separate gestures.\nEXACTLY TWO very large rectangular pale warm-ivory BLANK protest placards face camera in the upper part of the portrait frame. One board at upper-left and one upper-right; each wide landscape rectangle approximately320pixels wide and230pixels high. All four corners and the COMPLETE paper surfaces remain visible with at least24pixels outer margin. Their lower edges stay above every person's hair with a visible gap. Two adults behind the interview hold only the wooden sticks below the boards. Never wave a board across a face. Slow tiny independent board sway, neither sign leaves the frame. NO other signs. Both surfaces are completely BLANK with no drawn image, generated letter, number, logo, symbol or pseudowriting; LARGE EXACT typography will be added later as deterministic graphics. Keep all of both clean paper interiors clear throughout the shot.\nOnly the indicated adult speaks at each moment. Intelligible natural Brazilian Portuguese, normal cadence, original fictional adult voices. Listen with mouth closed, look toward the current speaker. No added words, overlapping dialogue or anticipatory laughter. Crowd stays quiet under speech and reacts only after the punchline. Physical action and independent eye/hand/cloth motion continue through the final frame, with a deliberate recovery rather than repeating gestures or holding a frozen pose.\nSECOND independent interview, another pair of fictional adults at the same protest. Do NOT morph or reuse the first interview pair. Reporter: fictional Black Brazilian adult man with shaved head, plain beige jacket over a burgundy T-shirt and charcoal jeans. His right hand holds ONE black microphone. Gamer: fictional adult Brazilian woman with medium-brown skin, long dark ponytail, plain teal cardigan over cream T-shirt and blue jeans. Both her hands stay empty. One open-palm gesture below chest is enough; no written will, phone, RAM stick, bill or child appears.\nShe tries to explain her practical inheritance plan with calm conviction. The comedy is treating a small amount of RAM as the family fortune. He must hear the whole reply before reacting.\n0.0-3.0s: Reporter turns toward her and asks exactly <d>[Portuguese] E a memória RAM?</d>. She listens with mouth closed. He offers the microphone toward her after his last word.\n3.0-5.9s: Woman replies matter-of-factly exactly <d>[Portuguese] Já coloquei no testamento:</d>. A single small eyebrow lift underlines testamento. Reporter remains attentive and silent.\n5.9-6.5s: Short deliberate pause. She raises one open hand near her waist, not near her face or the microphone; the other hand stays relaxed.\n6.5-9.7s: Woman completes her one answer exactly <d>[Portuguese] oito giga pra cada filho!</d>. Say oito giga clearly, no alternative number. She makes ONE gentle open-palm distributing gesture and ends with a restrained wry smile.\n9.7-11.2s: Reporter understands the tiny-RAM inheritance, gives ONE amused grin and looks back to her hand. The group laughs briefly after filho. She notices their reaction and turns slightly toward the blank protest placards.\n11.2-14.6s: Reporter angles his microphone outward toward the group. Woman and crowd finish with ONE clear chant exactly <d>[Portuguese] Mais FPS! Menos boleto!</d>. Normal intelligible syllables, not repeated. Both blank signs rise only a few centimeters, stay fully visible and never touch heads.\n14.6-15.083s: Last syllables are over; the woman lowers her open hand, reporter returns his microphone slightly, protesters settle their feet and signs with continuing natural motion. No new words, repeated chant, fast shaking, cut or frozen ending.\noverall_soundscape: Original adult male reporter and original adult female reply in clear native Brazilian Portuguese, short pause after testamento, late brief laugh only after filho, final intelligible group chant before14.6s. Quiet street and cardboard sounds, no background music or voice cloning.\nnon_diegetic_music: None.",
+      "width": 768,
+      "height": 1344,
+      "length": 362
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 2026110402
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "17": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "18": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "12",
+        1
+      ],
+      "vae": [
+        "17",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "audio": [
+        "18",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/rebeliao_gamer_ep04_heranca_vertical_30s_20261103/take02_v01_blank_native",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "animation",
+      "stage": "native_preview"
+    }
+  },
+  "pemara_h3_sage_2": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "pemara_h3_sage_2",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "pemara_h3_spectrum_pemara_spectrum_guard_pemara_h3_sage_2": {
+    "class_type": "SpectrumApplyMiniMaxH3",
+    "inputs": {
+      "model": [
+        "pemara_spectrum_guard_pemara_h3_sage_2",
+        0
+      ],
+      "enabled": true,
+      "blend_weight": 0.5,
+      "degree": 1,
+      "ridge_lambda": 0.1,
+      "window_size": 2.0,
+      "flex_window": 0.75,
+      "warmup_steps": 1,
+      "tail_actual_steps": 1,
+      "max_history": 8,
+      "debug": false,
+      "history_storage": "system_ram",
+      "bootstrap_first_forecast": true,
+      "anchor_residual_feedback": false,
+      "selective_rollback_correction": false,
+      "offline_smoothing_replay": true,
+      "audio_blend_weight": 0.0,
+      "offline_archive_storage": "system_ram",
+      "model_aware_mode": "off",
+      "model_aware_risk_threshold": 0.65,
+      "model_aware_trust_shrinkage": false,
+      "model_aware_replay_generic_correction": false,
+      "generic_correction_mode": "coordinate_rls",
+      "generic_correction_limiter": "hard_clip",
+      "generic_correction_limit": 0.4,
+      "generic_correction_attenuation": "no_attenuation",
+      "sa_pece_forecast_policy": "balanced"
+    }
+  }
+}

@@ -1,0 +1,3034 @@
+{
+  "note": "Referencias textuais de workflows ativos e historicos; nao sao pesos, fontes de download ou autorizacao de instalacao/render.",
+  "models": {
+    "'qwen_image_2512_fp8_e4m3fn.safetensors' not in 12 known options for unet_name — closest: qwen_image_2.1_int8_convrot.safetensors, wan2.2_animate_14B_bf16.safetensors, trellis_2_bf16.safetensors, trellis_2_int8_convrot.safetensors, minimax_h3_fl2va_pruned_int8_convrot.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "80000.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_multiple_inputs_workflow.json"
+      ]
+    },
+    "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_advanced.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_combine_embeds.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_noise_injection.json"
+      ]
+    },
+    "FastH3-VSA\\vsa-datafree\\adapter_model.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/10-speed/2026-08-30_H3_FastH3_VSA_T2VA_4Step_0p4MP_Advanced_EXP.json"
+      ]
+    },
+    "FireRed-Image-Edit-1.0-Lightning-8steps-v1.0.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json"
+      ]
+    },
+    "FireRed-Image-Edit-1.1-transformer.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json"
+      ]
+    },
+    "Flux_2-Turbo-LoRA_comfyui.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "IPAdapter_image_encoder_sd15.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_negative_image.json"
+      ]
+    },
+    "LLaDA-Image-Base-BF16-AIO.safetensors": {
+      "count": 29,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/5c6623e5adf0_03_LLaDA_base_correcao.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/5c6623e5adf0_03_LLaDA_base_correcao.json",
+        "workflow_catalog/extracted/ede10304d22ab6fc96332395.json"
+      ]
+    },
+    "LLaDA-Image-Base-INT8-ConvRot-Mixed-AIO.safetensors": {
+      "count": 15,
+      "examples": [
+        "workflow_catalog/extracted/bddecae5eccb697b6d0cbd59.json",
+        "workflow_catalog/extracted/bddecae5eccb697b6d0cbd59.json",
+        "workflow_catalog/extracted/d57c3c19159b27008c7aca05.json"
+      ]
+    },
+    "LLaDA-Image-Turbo-BF16-AIO.safetensors": {
+      "count": 31,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/614f9740b1af_03_LLaDA_turbo_correcao.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/614f9740b1af_03_LLaDA_turbo_correcao.json",
+        "workflow_catalog/extracted/a9e974c0b1399aaa2db90e9c.json"
+      ]
+    },
+    "LLaDA-Image-Turbo-INT8-ConvRot-Mixed-AIO.safetensors": {
+      "count": 17,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/Comfyui-LLaDa-Image-T8/docs/core-review/workflows/turbo_text_int8.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/Comfyui-LLaDa-Image-T8/docs/core-review/workflows/turbo_text_int8.json",
+        "workflow_catalog/extracted/369cd73ab4ca9e668eed6b27.json"
+      ]
+    },
+    "LLaDA-Image-Turbo-INT8.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDa-Image-Turbo.json"
+      ]
+    },
+    "LLaDA-Image-Turbo-text_encoder-Q4_K_M-v3.gguf": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDa-Image-Turbo.json"
+      ]
+    },
+    "LLaDa_VAE.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDA-Image-Turbo-EDIT.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/LLaDa-Image_ComfyUI/LLaDa-Image-Turbo.json"
+      ]
+    },
+    "MiniMax-H3-FL2VA-Acc-8Step.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/54f59b68c433_02_H3_PDD_FL2VA_8STEP_smoke.api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/9c6bf7ef50bd_02_H3_PDD_FL2VA_8STEP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/a82b3279833c_02_H3_PDD_FL2VA_8STEP.api.json"
+      ]
+    },
+    "MiniMax-H3-FL2VA-Acc-8Step_comfyui_pdd.safetensors": {
+      "count": 199,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/13-latent-upscale/2026-08-30_H3_Chunked_TwoPass_Global_Noise_v2_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/19-pdd-acceleration/2026-08-27_H3_PDD_FL2VA_8Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/19-pdd-acceleration/2026-08-27_H3_PDD_FL2VA_Learned_Latent_TwoPass_4Plus4_Advanced_EXP.json"
+      ]
+    },
+    "MiniMax-H3-Ref2VA-Acc-8Step.safetensors": {
+      "count": 16,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/3fca98ec3856_03_H3_PDD_REF2VA_8STEP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/82aac5f1d0e4_03_H3_PDD_REF2VA_8STEP.api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/894564b049aa_03_H3_PDD_REF2VA_8STEP_smoke.api.json"
+      ]
+    },
+    "MiniMax-H3-Ref2VA-Acc-8Step_comfyui_pdd.safetensors": {
+      "count": 9,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/18-audio-refine/2026-08-29_H3_Audio_Refine_PDD_Ref2VA8_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/18-audio-refine/2026-08-29_H3_Audio_Refine_PDD_Ref2VA_4Plus4_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/19-pdd-acceleration/2026-08-27_H3_PDD_Ref2VA_8Step_Advanced_EXP.json"
+      ]
+    },
+    "NetaYumev35_pretrained_all_in_one.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (NetaYume Lumina).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (NetaYume Lumina).json"
+      ]
+    },
+    "PEMARA_20260920\\flux-2-klein-4b.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "Places_512_FullData_G.pth": {
+      "count": 10,
+      "examples": [
+        "workflow_catalog/extracted/f8cbf38dbb06af7f9fbaaa6e.json",
+        "workflow_catalog/extracted/4a07e32225ff2c17782b41e7.json",
+        "workflow_catalog/extracted/59b1b550cc59e84eaec51e25.json"
+      ]
+    },
+    "Qwen-Image-2512-Lightning-4steps-V1.0-fp32.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_qwen_Image_2512.json"
+      ]
+    },
+    "Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json"
+      ]
+    },
+    "Qwen-Image-InstantX-ControlNet-Inpainting.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json"
+      ]
+    },
+    "Qwen-Image-Lightning-4steps-V1.0.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Outpainting (Qwen-Image).json"
+      ]
+    },
+    "Qwen-Image-Lightning-8steps-V1.0.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image).json"
+      ]
+    },
+    "REPLACE_WITH_SAVED_HIGH_PATH/progressive-high.safetensors": {
+      "count": 90,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_both_Legacy6plus2_Load_Completed_HIGH_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_both_Load_Completed_HIGH_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_high_Legacy6plus2_Load_Completed_HIGH_EXP.json"
+      ]
+    },
+    "REPLACE_WITH_SAVED_LOW_PATH/progressive-low.safetensors": {
+      "count": 90,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_both_Cold_HIGH_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_both_Legacy6plus2_Cold_HIGH_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/44-progressive-split/Progressive_S10_i2va_combined_high_Cold_HIGH_EXP.json"
+      ]
+    },
+    "RealESRGAN_x4plus.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Upscale(Z-image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Upscale(Z-image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Upscale(Z-image-Turbo).json"
+      ]
+    },
+    "SELECT_COMPLETED_CURVE_TAIL/curve-tail.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/70-radar-model-compatibility/Lms_T8_Compatibility_baseline_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/70-radar-model-compatibility/Lms_T8_Compatibility_candidate_EXP.json"
+      ]
+    },
+    "SELECT_SAVED_HEAD/curve-head.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/68-radar-hyperflow-curves/HyperFlow_Curve_4plus4_cold_tail_EXP.json"
+      ]
+    },
+    "SELECT_SAVED_HEAD/hyperflow-head.safetensors": {
+      "count": 30,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_both_Cold_TAIL_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_head_Cold_TAIL_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_tail_Cold_TAIL_EXP.json"
+      ]
+    },
+    "SELECT_SAVED_TAIL/curve-tail.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/68-radar-hyperflow-curves/HyperFlow_Curve_4plus4_cold_delivery_EXP.json"
+      ]
+    },
+    "SELECT_SAVED_TAIL/hyperflow-tail.safetensors": {
+      "count": 30,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_both_Load_Completed_TAIL_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_head_Load_Completed_TAIL_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_tail_Load_Completed_TAIL_EXP.json"
+      ]
+    },
+    "SongGeneration-v2-large-Q6_K.gguf": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "Wan2_1_VAE_bf16.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "WanAnimate_relight_lora_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "Z-Image-Turbo-Fun-Controlnet-Union.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "ace_1.5_vae.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "acestep_v1.5_turbo.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "ae.safetensors": {
+      "count": 218,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "anima-base-v1.0.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima).json"
+      ]
+    },
+    "anime_lora.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_workflow.json"
+      ]
+    },
+    "autoencoder_music_1320k.ckpt": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json",
+        "workflow_catalog/extracted/c3a7b3cdc4592ec0feb49c1d.json"
+      ]
+    },
+    "big-lama.pt": {
+      "count": 6,
+      "examples": [
+        "workflow_catalog/extracted/c943e951a385527aa23855f5.json",
+        "workflow_catalog/extracted/3058ce5187e3695f827658e1.json",
+        "workflow_catalog/extracted/6ed5e99319e6e13a1b47092d.json"
+      ]
+    },
+    "birefnet.safetensors": {
+      "count": 136,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Remove Background (BiRefNet).json"
+      ]
+    },
+    "chatglm3-8bit.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/IPAdapter_FaceIDv2_Kolors.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_kolors.json"
+      ]
+    },
+    "ckpt\\model_1rvq\\model_2_fixed.safetensors": {
+      "count": 4,
+      "examples": [
+        "workflow_catalog/extracted/c3a7b3cdc4592ec0feb49c1d.json",
+        "workflow_catalog/extracted/3ab8fc74cbd464f45fbf7e37.json",
+        "workflow_catalog/extracted/549f233c175fb7f40b07399c.json"
+      ]
+    },
+    "ckpt\\model_septoken\\model_2.safetensors": {
+      "count": 4,
+      "examples": [
+        "workflow_catalog/extracted/c3a7b3cdc4592ec0feb49c1d.json",
+        "workflow_catalog/extracted/3ab8fc74cbd464f45fbf7e37.json",
+        "workflow_catalog/extracted/549f233c175fb7f40b07399c.json"
+      ]
+    },
+    "ckpts/AuK/auk_base.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/AuK/comfyui/workflows/auk.json"
+      ]
+    },
+    "clip_l.safetensors": {
+      "count": 194,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json"
+      ]
+    },
+    "clip_vision_h.safetensors": {
+      "count": 504,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "cogvideox_vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "cosxl/cosxl_edit.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_cosxl_edit.json"
+      ]
+    },
+    "depth_anything_3_mono_large.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (Depth Anything 3).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (Depth Anything 3).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Depth Estimation (Depth Anything 3).json"
+      ]
+    },
+    "depth_anything_v2_vitl.pth": {
+      "count": 1,
+      "examples": [
+        "workflow_catalog/extracted/c19b4c4db2f875158ca40196.json"
+      ]
+    },
+    "diffusion_pytorch_model.fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/IPAdapter_FaceIDv2_Kolors.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_kolors.json"
+      ]
+    },
+    "dino_v3_L_naf_fp32.safetensors": {
+      "count": 132,
+      "examples": [
+        "workflow_catalog/extracted/a694e9002047a02ff493e1ea.json",
+        "workflow_catalog/extracted/0882f5b46aadd7d098b470de.json",
+        "workflow_catalog/extracted/9fbc7d6900707c3af123945f.json"
+      ]
+    },
+    "dino_v3_vit_h.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "disneyPixarCartoon_v10.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/runtime-assets/comfyui/custom_nodes/comfyui-tooling-nodes/workflows/region_attention_mask.json"
+      ]
+    },
+    "dw-ll_ucoco_384_bs5.torchscript.pt": {
+      "count": 414,
+      "examples": [
+        "workflow_catalog/extracted/8587b82cc1fa9364678a8735.json",
+        "workflow_catalog/extracted/9383a08302dba99f4a5c5f97.json",
+        "workflow_catalog/extracted/1789d3abca94b7b16eb7f6f3.json"
+      ]
+    },
+    "ernie-image-prompt-enhancer.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "ernie-image-turbo.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json"
+      ]
+    },
+    "ernie-image.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "face_detection/anime_face_detect_v1.4_n.onnx": {
+      "count": 20,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-08-16_H3_Face_Refine_Anime_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/56-face-refine-split/S24_Face_anime_combined_cold_delivery_Separate_Stage_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/56-face-refine-split/S24_Face_anime_combined_full_save_Separate_Stage_EXP.json"
+      ]
+    },
+    "face_detection/face_detection_yunet_2023mar.onnx": {
+      "count": 21,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-08-16_H3_Face_Refine_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/17-skin-finish/2026-08-24_H3_Skin_Finish_Semantic_Mask_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/56-face-refine-split/S24_Face_standard_combined_cold_delivery_Separate_Stage_EXP.json"
+      ]
+    },
+    "fasth3_omniref_8step_pruned_int8_convrot.safetensors": {
+      "count": 3,
+      "examples": [
+        "workflow_catalog/extracted/ba0d7673361f3305d5ab87d4.json",
+        "maestro/pemara/dados/validation/fasth3_omni_20261021/omni_smoke.api.json",
+        "maestro/pemara/dados/validation/fasth3_omni_20261021/omni_smoke.initial_missing_kind.api.json"
+      ]
+    },
+    "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors": {
+      "count": 28,
+      "examples": [
+        "workflow_catalog/extracted/9ceff9d0413ae94181952ca4.json",
+        "workflow_catalog/extracted/d1ce02f32f1191eec090a028.json",
+        "workflow_catalog/extracted/2d1a7afdd8fc892663d4e990.json"
+      ]
+    },
+    "film_net_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Frame Interpolation.json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Frame Interpolation.json"
+      ]
+    },
+    "flux-2-klein-4b.safetensors": {
+      "count": 148,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/e5941dd37c340b00a938e4d4.json"
+      ]
+    },
+    "flux-2-klein-base-4b-fp8.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json"
+      ]
+    },
+    "flux-2-klein-base-4b.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/05_FLUX_Klein_rascunho.json"
+      ]
+    },
+    "flux-canny-controlnet-v3.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/flux-controlnet-canny-v3-workflow.json"
+      ]
+    },
+    "flux-canny-controlnet.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/canny_workflow.json"
+      ]
+    },
+    "flux-depth-controlnet-v3.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/flux-controlnet-depth-v3-workflow.json"
+      ]
+    },
+    "flux-depth-controlnet.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/depth_workflow.json"
+      ]
+    },
+    "flux-hed-controlnet-v3.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/flux-controlnet-hed-v3-workflow.json"
+      ]
+    },
+    "flux-hed-controlnet.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/hed_workflow.json"
+      ]
+    },
+    "flux-ip-adapter.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_workflow.json"
+      ]
+    },
+    "flux/clip_l.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_multiple_inputs_workflow.json"
+      ]
+    },
+    "flux/clip_vision_l.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_multiple_inputs_workflow.json"
+      ]
+    },
+    "flux/t5xxl_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_multiple_inputs_workflow.json"
+      ]
+    },
+    "flux1-dev-fp8.safetensors": {
+      "count": 9,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/canny_workflow.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/depth_workflow.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/flux-controlnet-canny-v3-workflow.json"
+      ]
+    },
+    "flux1-dev.safetensors": {
+      "count": 173,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json",
+        "maestro/pemara/ferramentas/gerador_sprunki/workflow_api.json"
+      ]
+    },
+    "flux1-fill-dev.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json"
+      ]
+    },
+    "flux1-krea-dev_fp8_scaled.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json",
+        "maestro/pemara/ferramentas/gerador_sprunki/workflow_krea_fp8_api.json"
+      ]
+    },
+    "flux2-vae.safetensors": {
+      "count": 196,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json"
+      ]
+    },
+    "flux2_dev_fp8mixed.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "flux3-image-klein-base-int8-convrot.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json"
+      ]
+    },
+    "flux3-image-klein-int8-convrot.safetensors": {
+      "count": 30,
+      "examples": [
+        "workflow_catalog/extracted/6f0639238d2cf1b991308f1a.json",
+        "workflow_catalog/extracted/d1660286ef09fbf701477f9d.json",
+        "workflow_catalog/extracted/aede779f3c1097e1396a55ce.json"
+      ]
+    },
+    "fooocus_inpaint_head.pth": {
+      "count": 19,
+      "examples": [
+        "workflow_catalog/extracted/c943e951a385527aa23855f5.json",
+        "workflow_catalog/extracted/3058ce5187e3695f827658e1.json",
+        "workflow_catalog/extracted/6ed5e99319e6e13a1b47092d.json"
+      ]
+    },
+    "full_encoder_small_decoder.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "furry_lora.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/lora_workflow.json"
+      ]
+    },
+    "gemma-3-12b-it-qat-q4_0-unquantized_readout_proj/model/model.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "gemma4-12b-with-proj-ltx-2.5-bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json"
+      ]
+    },
+    "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors": {
+      "count": 29,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/ltx_reference.json",
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json",
+        "workflow_catalog/extracted/102e70025027bf63e036212d.json"
+      ]
+    },
+    "gemma4_e2b_it_bf16.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/semantic_contact_sheet_workflow.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/semantic_contact_sheet_workflow_attempt02.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/semantic_probe.json"
+      ]
+    },
+    "gemma4_e2b_it_int8_convrot.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "gemma4_e4b_it_fp8_scaled.safetensors": {
+      "count": 14,
+      "examples": [
+        "workflow_catalog/extracted/f2f8e80cb3cf3b2e626a1b61.json",
+        "workflow_catalog/extracted/f875df0fe86471f8c51c4b36.json",
+        "workflow_catalog/extracted/678a3702c952109ad386cfdd.json"
+      ]
+    },
+    "hidream_o1_image_bf16.safetensors": {
+      "count": 14,
+      "examples": [
+        "workflow_catalog/extracted/f2f8e80cb3cf3b2e626a1b61.json",
+        "workflow_catalog/extracted/f875df0fe86471f8c51c4b36.json",
+        "workflow_catalog/extracted/678a3702c952109ad386cfdd.json"
+      ]
+    },
+    "htdemucs.pth": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "https://huggingface.co/ByteZSzn/Flux.2-Turbo-ComfyUI/resolve/main/Flux_2-Turbo-LoRA_comfyui.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Bernini-R/resolve/main/diffusion_models/wan2.2_bernini_r_high_noise_fp8_scaled.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Edit (Bernini-R).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Bernini-R/resolve/main/diffusion_models/wan2.2_bernini_r_low_noise_fp8_scaled.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Edit (Bernini-R).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/BiRefNet/resolve/main/background_removal/birefnet.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Remove Background (BiRefNet).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_mono_large.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (Depth Anything 3).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Depth Estimation (Depth Anything 3).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/diffusion_models/ernie-image-turbo.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/diffusion_models/ernie-image.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/text_encoders/ernie-image-prompt-enhancer.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/text_encoders/ministral-3-3b.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ERNIE-Image/resolve/main/vae/flux2-vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/FLUX.1-Krea-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-krea-dev_fp8_scaled.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/HiDream-O1-Image/resolve/main/checkpoints/hidream_o1_image_bf16.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/780429dc1fca_01_HiDream_Full_ancoras.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/b75cd3652149_02_HiDream_Photoshoot_lote8.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_hidream_o1.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Ideogram-4/resolve/main/diffusion_models/ideogram4_fp8_scaled.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Ideogram-4/resolve/main/diffusion_models/ideogram4_unconditional_fp8_scaled.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_int8_convrot.safetensors": {
+      "count": 3,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/93e2d7bf721f5c61141ed36b.json",
+        "workflow_catalog/extracted/80d7ca2861f49b9dac84982e.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_darkbrush.safetensors": {
+      "count": 3,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/93e2d7bf721f5c61141ed36b.json",
+        "workflow_catalog/extracted/80d7ca2861f49b9dac84982e.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors": {
+      "count": 3,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/93e2d7bf721f5c61141ed36b.json",
+        "workflow_catalog/extracted/80d7ca2861f49b9dac84982e.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors": {
+      "count": 3,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/93e2d7bf721f5c61141ed36b.json",
+        "workflow_catalog/extracted/80d7ca2861f49b9dac84982e.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/9fd4e1516736_official_i2v.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/workflows/official_i2v.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors": {
+      "count": 15,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/109e062edaf0_T01_v04_master20_continuous_walk.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/111c49d52cf2_T02_v01_master20_owner_voice_vertical.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/loras/minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors": {
+      "count": 15,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/109e062edaf0_T01_v04_master20_continuous_walk.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/111c49d52cf2_T02_v01_master20_owner_voice_vertical.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors": {
+      "count": 17,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/109e062edaf0_T01_v04_master20_continuous_walk.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/111c49d52cf2_T02_v01_master20_owner_voice_vertical.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors": {
+      "count": 17,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/109e062edaf0_T01_v04_master20_continuous_walk.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/111c49d52cf2_T02_v01_master20_owner_voice_vertical.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_int8_convrot.safetensors": {
+      "count": 17,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/109e062edaf0_T01_v04_master20_continuous_walk.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/111c49d52cf2_T02_v01_master20_owner_voice_vertical.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/MoGe/resolve/main/geometry_estimation/moge_2_vitl_normal_fp16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Geometry Estimation (MoGe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (MoGe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Depth Estimation (MoGe).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/qwen_image_21/official_t2i.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/qwen_image_21/official_t2i.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/qwen_image_21/official_t2i.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-InstantX-ControlNets/resolve/main/split_files/controlnet/Qwen-Image-InstantX-ControlNet-Inpainting.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Outpainting (Qwen-Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-Layered_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_layered_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image-Layered_ComfyUI/resolve/main/split_files/vae/qwen_image_layered_vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_2512_fp8_e4m3fn.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_qwen_Image_2512.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Outpainting (Qwen-Image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (LongCat Image Edit).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen3-VL/resolve/main/text_encoders/qwen3vl_8b_fp8_scaled.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Qwen3.5/resolve/main/text_encoders/qwen3.5_2b_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Real-ESRGAN_repackaged/resolve/main/RealESRGAN_x4plus.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Upscale(Z-image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Upscale(GAN x4).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/SCAIL-2/resolve/main/diffusion_models/wan2.1_14B_SCAIL_2_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/SCAIL-2/resolve/main/loras/wan2.1_SCAIL_2_DPO_lora_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/SDPose/resolve/main/checkpoints/sdpose_wholebody_fp16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose-OOD).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video to Pose Map (SDPose Multi-Person).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/SDPose/resolve/main/diffusion_models/rt_detr_v4-x-hgnet_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video to Pose Map (SDPose Multi-Person).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/YuE2/resolve/main/audio_encoders/sheetsage2_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_music_cover.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/11_YuE2_cover_SheetSage.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/YuE2/resolve/main/checkpoints/yue2_3b_int8_convrot.safetensors": {
+      "count": 7,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/receipts/yue2_smoke.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_music_cover.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_text2music.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/diffusion_models/acestep_v1.5_turbo.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_0.6b_ace15.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_4b_ace15.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/vae/ace_1.5_vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/split_files/diffusion_models/flux1-fill-dev.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/diffusion_models/flux2_dev_fp8mixed.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-klein/resolve/main/split_files/diffusion_models/flux-2-klein-4b.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/05_FLUX_Klein_rascunho.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base_flux.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-klein/resolve/main/split_files/diffusion_models/flux-2-klein-base-4b.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/05_FLUX_Klein_rascunho.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base_flux.template.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/flux2-klein/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_flux2_klein_text_to_image.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/05_FLUX_Klein_rascunho.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/frame_interpolation/resolve/main/frame_interpolation/film_net_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Frame Interpolation.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/gemma-4/resolve/main/text_encoders/gemma4_e2b_it_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/gemma-4/resolve/main/text_encoders/gemma4_e4b_it_fp8_scaled.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/780429dc1fca_01_HiDream_Full_ancoras.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/b75cd3652149_02_HiDream_Photoshoot_lote8.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_hidream_o1.json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/hunyuan3D_2.1_repackaged/resolve/main/hunyuan_3d_v2.1.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Model (Hunyuan3d 2.1).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/lotus/resolve/main/lotus-depth-d-v1-1.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (Lotus Depth).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/mediapipe/resolve/main/detection/mediapipe_face_fp32.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Face Detection (Mediapipe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Face Detection (Mediapipe).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/sam3.1/resolve/main/checkpoints/sam3.1_multiplex_fp16.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Segmentation (SAM3).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/stable-audio-3/resolve/main/checkpoints/stable_audio_3_medium.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/stable-audio-3/resolve/main/checkpoints/stable_audio_3_medium_base.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/stable-audio-3/resolve/main/text_encoders/t5gemma_b_b_ul2.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/void-model/resolve/main/diffusion_models/void_pass1.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/void-model/resolve/main/diffusion_models/void_pass2.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/void-model/resolve/main/optical_flow/raft_large_C_T_SKHT_V2-ff5fadd5.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/void-model/resolve/main/vae/cogvideox_vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/z_image/resolve/main/split_files/diffusion_models/z_image_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Z-Image-Base).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/ControlNet (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/ControlNet (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/ControlNet (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0-ComfyUI/resolve/main/FireRed-Image-Edit-1.0-Lightning-8steps-v1.0.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json"
+      ]
+    },
+    "https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0-ComfyUI/resolve/main/qwen_image_vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json"
+      ]
+    },
+    "https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.1-ComfyUI/resolve/main/FireRed-Image-Edit-1.1-transformer.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json"
+      ]
+    },
+    "https://huggingface.co/Kijai/Leapfusion-image2vid-comfy/blob/main/leapfusion_img2vid544p_comfy.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-KJNodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json"
+      ]
+    },
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22_relight/WanAnimate_relight_lora_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-dev-transformer-comfy-int8-convrot.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/60-ltx-rgb-stage-split/S27_2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP_StageBound_Separate_EXP.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors": {
+      "count": 7,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/loras/ltx-2.5-22b-distilled-lora-450-bf16.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/60-ltx-rgb-stage-split/S27_2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP_StageBound_Separate_EXP.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-audio-vae-bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-video-vae-bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-video-vae-conv-bf16.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/60-ltx-rgb-stage-split/S27_2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP_StageBound_Separate_EXP.json"
+      ]
+    },
+    "https://huggingface.co/TalmajM/LongCat-Image-Edit_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/longcat_image_edit_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (LongCat Image Edit).json"
+      ]
+    },
+    "https://huggingface.co/VAST-AI/TripoSplat/resolve/main/clip_vision/dino_v3_vit_h.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "https://huggingface.co/VAST-AI/TripoSplat/resolve/main/diffusion_models/triposplat_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "https://huggingface.co/VAST-AI/TripoSplat/resolve/main/vae/flux2-vae.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "https://huggingface.co/VAST-AI/TripoSplat/resolve/main/vae/triposplat_vae_decoder_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/ControlNet (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-4b-fp8/resolve/main/flux-2-klein-base-4b-fp8.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Klein 4B).json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/resolve/main/full_encoder_small_decoder.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-base-int8-convrot.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/diffusion_models/flux3-image-klein-int8-convrot.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_distilled_reference_edit.template.json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_distilled_reference_edit.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_distilled_reference_edit.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json"
+      ]
+    },
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy/resolve/main/vae/flux2-vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_distilled_reference_edit.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/dmc3_nevan_live_action_vertical_30s_20261102/workflows/flux3_reference_edit.template.json"
+      ]
+    },
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-base-v1.0.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima).json"
+      ]
+    },
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima).json"
+      ]
+    },
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima).json"
+      ]
+    },
+    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json"
+      ]
+    },
+    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Krea Dev).json"
+      ]
+    },
+    "https://huggingface.co/duongve/NetaYume-Lumina-Image-2.0/resolve/main/NetaYumev35_pretrained_all_in_one.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (NetaYume Lumina).json"
+      ]
+    },
+    "https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/9fd4e1516736_official_i2v.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/workflows/official_i2v.json"
+      ]
+    },
+    "https://huggingface.co/lightx2v/Qwen-Image-2512-Lightning/resolve/main/Qwen-Image-2512-Lightning-4steps-V1.0-fp32.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/image_qwen_Image_2512.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/workflows/04_Qwen_2512_texto_layout.json"
+      ]
+    },
+    "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json"
+      ]
+    },
+    "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-4steps-V1.0.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Outpainting (Qwen-Image).json"
+      ]
+    },
+    "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V1.0.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image).json"
+      ]
+    },
+    "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (Lotus Depth).json"
+      ]
+    },
+    "https://raw.githubusercontent.com/madebyollin/taehv/32ac0146b11007cda5a57b60a3b35653361fb8a4/taeltx2_3_wide.pth": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/60-ltx-rgb-stage-split/S27_2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP_StageBound_Separate_EXP.json"
+      ]
+    },
+    "hunyuan_3d_v2.1.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Model (Hunyuan3d 2.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Model (Hunyuan3d 2.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Model (Hunyuan3d 2.1).json"
+      ]
+    },
+    "hyperVAEKrea2Minimax_v20MinimaxX2Upscale.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/58-hypervae-2x/2026-09-27_H3_HyperVAE_2x_Same_Latent_5s_Compare_EXP.json"
+      ]
+    },
+    "hyperflow/minimax_h3_hyperflow_8step_v1.0.safetensors": {
+      "count": 363,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-22_H3_HyperFlow_Native_Single8_0p6MP_8s_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-22_H3_HyperFlow_P7_Dual_0p6MP_8s_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/47-hyperflow-continuous-split/HyperFlow_S13_Continuous_1plus7_combined_both_Cold_TAIL_EXP.json"
+      ]
+    },
+    "hyvid\\hunyuan_video_vae_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-KJNodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json"
+      ]
+    },
+    "hyvid\\musubi-tuner\\img2vid544p.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-KJNodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json"
+      ]
+    },
+    "hyvideo\\hunyuan_video_720_fp8_e4m3fn.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-KJNodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json"
+      ]
+    },
+    "ideogram4_fp8_scaled.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json"
+      ]
+    },
+    "ideogram4_unconditional_fp8_scaled.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json"
+      ]
+    },
+    "ip-adapter-plus_sd15.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_advanced.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_combine_embeds.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_negative_image.json"
+      ]
+    },
+    "juggernautXL_version6Rundiffusion.safetensors": {
+      "count": 19,
+      "examples": [
+        "workflow_catalog/extracted/c943e951a385527aa23855f5.json",
+        "workflow_catalog/extracted/3058ce5187e3695f827658e1.json",
+        "workflow_catalog/extracted/6ed5e99319e6e13a1b47092d.json"
+      ]
+    },
+    "krea2_4step_lora.safetensors": {
+      "count": 2,
+      "examples": [
+        "workflow_catalog/extracted/93e2d7bf721f5c61141ed36b.json",
+        "workflow_catalog/extracted/ca8bb5a7426c5eaa8ee29374.json"
+      ]
+    },
+    "krea2_darkbrush.safetensors": {
+      "count": 8,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json"
+      ]
+    },
+    "krea2_turbo_fp8_scaled.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/ComfyUI-Photoshoot/example_workflows/photoshoot-anchor-set.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/ComfyUI-Photoshoot/example_workflows/photoshoot-series.json"
+      ]
+    },
+    "krea2_turbo_int8_convrot.safetensors": {
+      "count": 12,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json"
+      ]
+    },
+    "large_model_v2.pt": {
+      "count": 4,
+      "examples": [
+        "workflow_catalog/extracted/c3a7b3cdc4592ec0feb49c1d.json",
+        "workflow_catalog/extracted/3ab8fc74cbd464f45fbf7e37.json",
+        "workflow_catalog/extracted/549f233c175fb7f40b07399c.json"
+      ]
+    },
+    "large_v2_model.pt": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json"
+      ]
+    },
+    "llava_llama3_fp16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-KJNodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json"
+      ]
+    },
+    "longcat_image_edit_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (LongCat Image Edit).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (LongCat Image Edit).json"
+      ]
+    },
+    "lotus-depth-d-v1-1.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "ltx-2.5-22b-dev-transformer-comfy-int8-convrot.safetensors": {
+      "count": 16,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json"
+      ]
+    },
+    "ltx-2.5-22b-distilled-lora-450-bf16.safetensors": {
+      "count": 16,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json"
+      ]
+    },
+    "ltx-2.5-22b-distilled-transformer-bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json"
+      ]
+    },
+    "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "ltx-2.5-22b-distilled-transformer-int8.safetensors": {
+      "count": 2,
+      "examples": [
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json",
+        "workflow_catalog/extracted/102e70025027bf63e036212d.json"
+      ]
+    },
+    "ltx-2.5-22b-distilled-transformer-nvfp4.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/ltx_reference.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/61eaced21ba0_PEMARA_LTX25_FIRST_LAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "ltx-2.5-audio-vae-bf16.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/ltx_reference.json",
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json",
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json"
+      ]
+    },
+    "ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors": {
+      "count": 16,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/ltx_reference.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "ltx-2.5-video-vae-bf16.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/ltx_reference.json",
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json",
+        "workflow_catalog/extracted/40167ba20cea4e771d474b33.json"
+      ]
+    },
+    "ltx-2.5-video-vae-conv-bf16.safetensors": {
+      "count": 12,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json"
+      ]
+    },
+    "ltx-av-step-1751000_vocoder_24K.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/bf51ac92edf8_PEMARA_LTX25_I2V_FAST.json"
+      ]
+    },
+    "mediapipe_face_fp32.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Face Detection (Mediapipe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Face Detection (Mediapipe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Face Detection (Mediapipe).json"
+      ]
+    },
+    "minimax\\H3-World\\step-10000.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/26-h3-world/2026-09-04_H3_World_I2VA_832x480_124f_50step_Advanced.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/h3_world_i2va_832x480_124f_api.json"
+      ]
+    },
+    "minimax_h3_audio_vae_fp32.safetensors": {
+      "count": 2313,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_t2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/motion_h3_grid124.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/motion_selective_sh02.json"
+      ]
+    },
+    "minimax_h3_five_view_512_s1500.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/03-image-video-edit/2026-09-21_H3_Five_View_Character_Sheet_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/five_view_sheet_api.json"
+      ]
+    },
+    "minimax_h3_fl2v_turbo_4step_v0.1_768p_sla_comfyui_bf16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/15-sla-attention/2026-08-22_H3_LightX2V_SLA_FL2VA_4Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/15-sla-attention/2026-08-22_H3_LightX2V_SLA_KJ_Sage_Composer_FL2VA_4Step_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/15-sla-attention/2026-08-26_H3_Turbo_SLA_Profile_Router_FL2VA_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_fl2v_turbo_4step_v0.1_comfyui_alpha8-T8-convert.safetensors": {
+      "count": 96,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-08-20_H3_Prompt_Relay_Long_Video_Turbo8_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-08-09_H3_Face_Refine_Parity_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-08-17_H3_SAM31_2Person_Face_Refine_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_fl2v_turbo_4step_v0.1_comfyui_alpha8.safetensors": {
+      "count": 687,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/13-latent-upscale/2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Lock_Source_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/13-latent-upscale/2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Reference_Only_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/13-latent-upscale/2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Remix_Source_020_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/9fd4e1516736_official_i2v.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/9fd4e1516736_official_i2v.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/9fd4e1516736_official_i2v.json"
+      ]
+    },
+    "minimax_h3_fl2va_bf16.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/16-raven-streaming/2026-08-23_H3_RAVEN_Streaming_T2VA_Guarded_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_fl2va_int8_convrot.safetensors": {
+      "count": 2392,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_EXP_4V10A.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_EXP_4V8A.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_Stable_4V4A.json"
+      ]
+    },
+    "minimax_h3_fl2va_pruned_fp8_scaled.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/15-sla-attention/2026-09-02_H3_SLA_Precision_V2_FL2VA_FP8_8Step_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_fl2va_pruned_int8_convrot.safetensors": {
+      "count": 414,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_i2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_t2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_factory_validation.json"
+      ]
+    },
+    "minimax_h3_fun_controlnet_union2_full_2688.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/69-radar-native-recipes/Union2_Native40_Full_Save_EXP.json"
+      ]
+    },
+    "minimax_h3_fun_controlnet_union_2.0_pruned_int8_convrot.safetensors": {
+      "count": 8,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/6ce6c563332c_04_H3_CONTROLNET2_POSE.api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/c163eda86857_04_H3_CONTROLNET2_POSE.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/fba3443b53e3_04_H3_CONTROLNET2_POSE.json"
+      ]
+    },
+    "minimax_h3_fun_controlnet_union_pruned_bf16.safetensors": {
+      "count": 15,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_factory_validation.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_strength0.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_strength1.json"
+      ]
+    },
+    "minimax_h3_fun_controlnet_union_pruned_int8_convrot.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/21-community-advanced/2026-08-28_H3_Fun_Control_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_latent_upscaler_3d_bf16.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/h3_latent_refine_1536.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/h3_learned_latent_1536.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/h3_refine_factory_validation.json"
+      ]
+    },
+    "minimax_h3_latent_upscaler_3d_fp16.safetensors": {
+      "count": 1162,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-11_H3_Dual_Model_Long_Video_4plus4_Plain_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-11_H3_Dual_Model_Long_Video_4plus4_Relay_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-12_H3_Dual_Model_4plus4_Dialogue_External_LoRA_KJ_Sage_EXP.json"
+      ]
+    },
+    "minimax_h3_latent_upscaler_3d_fp32.pth": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_video_upscale_long.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_video_upscale_long.json"
+      ]
+    },
+    "minimax_h3_raven_streaming_lora_4nfe_preview.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/16-raven-streaming/2026-08-23_H3_RAVEN_Streaming_T2VA_Guarded_Advanced_EXP.json"
+      ]
+    },
+    "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors": {
+      "count": 52,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/rollback/owner_removal_20261004/008e4ec7937c_T03_v05_master20_continuous_walk_clean_shirt.json"
+      ]
+    },
+    "minimax_h3_ref2va_bf16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_basic.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_latent_upscale.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_warmup_split.json"
+      ]
+    },
+    "minimax_h3_ref2va_int8_convrot.safetensors": {
+      "count": 39,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/03-image-video-edit/2026-08-10_H3_Ref2VA_Visual_Reference_Strength_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/03-image-video-edit/2026-08-28_H3_CADS_Visual_Reference_Annealing_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-13_H3_Dance_4plus4_Accepted_Picture_KJ.json"
+      ]
+    },
+    "minimax_h3_ref2va_pruned_int8_convrot.safetensors": {
+      "count": 238,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/h3_sage_spectrum_required_20261004/production_ref2va.api.json"
+      ]
+    },
+    "minimax_h3_t2va_veda_8nfe_600step_preview_fp8_9a1fd3a.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/63-veda-t2va/H3_Veda_8NFE_9a1fd3a_apply_exp_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/63-veda-t2va/H3_Veda_8NFE_9a1fd3a_apply_exp_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/63-veda-t2va/H3_Veda_8NFE_9a1fd3a_report_only_EXP.json"
+      ]
+    },
+    "minimax_h3_taomate_fl2va_3step_ema_comfyui.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/33-selflift-taomate/2026-09-14_H3_TaoMate_T2VA_3step_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/33-selflift-taomate/2026-09-14_H3_TaoMate_T2VA_4step_EXP.json"
+      ]
+    },
+    "minimax_h3_turbo_4step_comfyui.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/dual_clock_4step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/motion_quality_advanced_8step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/motion_quality_dynamic_guidance_8step_api.json"
+      ]
+    },
+    "minimax_h3_turbo_4步加速_comfyui.safetensors": {
+      "count": 19,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-13_H3_Dual_4plus4_Accepted_Picture_KJ.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-13_H3_Dual_4plus4_Accepted_Picture_KJ.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-15_H3_Dual_4plus4_Accepted_Picture_T8_LowVRAM_EXP.json"
+      ]
+    },
+    "minimax_h3_turbo_4步加速ema_comfyui.safetensors": {
+      "count": 52,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_EXP_4V10A.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_EXP_4V8A.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/01-basic-generation/2026-08-06_H3_Turbo_Stable_4V4A.json"
+      ]
+    },
+    "minimax_h3_turbo_v4_step600_ema_comfyui_B.safetensors": {
+      "count": 294,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-02_H3_Native_Masked_Video_Context_Plan_B_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-02_H3_Native_Masked_Video_Context_Plan_B_Segment0_Starter_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-09-11_H3_Dual_Model_Long_Video_4plus4_Plain_EXP.json"
+      ]
+    },
+    "minimax_h3_video_vae_fp16.safetensors": {
+      "count": 2113,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_i2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_t2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_factory_validation.json"
+      ]
+    },
+    "minimax_h3_video_vae_int8_convrot.safetensors": {
+      "count": 351,
+      "examples": [
+        "workflow_catalog/extracted/9ceff9d0413ae94181952ca4.json",
+        "workflow_catalog/extracted/287135e1db52a522728949b4.json",
+        "workflow_catalog/extracted/e0e25793f31415a9b09a4c51.json"
+      ]
+    },
+    "ministral-3-3b.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ernie Image).json"
+      ]
+    },
+    "mistral_3_small_flux2_bf16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Flux.2 Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.2 Dev).json"
+      ]
+    },
+    "mmh3-4b-ClipProj-v3.1.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-23_H3_ClipProj_4B_T2VA_Bridge_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-23_H3_ClipProj_4B_T2VA_Bridge_Advanced_EXP.json"
+      ]
+    },
+    "mmh3-8b-ClipProj-v3.1.safetensors": {
+      "count": 48,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-22_H3_ClipProj_8B_FL2VA_Bridge_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-22_H3_ClipProj_8B_FL2VA_Bridge_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-22_H3_ClipProj_8B_I2VA_Bridge_Advanced_EXP.json"
+      ]
+    },
+    "model.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/x-flux-comfyui/workflows/ip_adapter_workflow.json"
+      ]
+    },
+    "model_2.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "model_2_fixed.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "moge_2_vitl_normal_fp16.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Geometry Estimation (MoGe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Geometry Estimation (MoGe).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Depth Estimation (MoGe).json"
+      ]
+    },
+    "new_auto_prompt.pt": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_SongGeneration_adapter/example_workflows/SongGeneration.json"
+      ]
+    },
+    "new_prompt.pt": {
+      "count": 4,
+      "examples": [
+        "workflow_catalog/extracted/c3a7b3cdc4592ec0feb49c1d.json",
+        "workflow_catalog/extracted/3ab8fc74cbd464f45fbf7e37.json",
+        "workflow_catalog/extracted/549f233c175fb7f40b07399c.json"
+      ]
+    },
+    "pemara_marketing_card_lora.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260706_173837.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260707_020359.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260708_041456.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260708_121946.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260708_133441.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260708_144918.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260710_015820.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260712_015047.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pemara_marketing_card_lora_20260713_015607.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "pika_h3_flex_fl2va_v1_bf16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/workflows/pika_flex_experimental_20261101/PEMARA_Pika_Flex_FL2VA.api.json",
+        "maestro/pemara/ferramentas/video_global_engine/workflows/pika_flex_experimental_20261101/PEMARA_Pika_Flex_FL2VA.json",
+        "maestro/pemara/ferramentas/video_global_engine/workflows/pika_flex_experimental_20261101/PEMARA_Pika_Flex_T2V.api.json"
+      ]
+    },
+    "pika_h3_flex_ref2va_v1_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/workflows/pika_flex_experimental_20261101/PEMARA_Pika_Flex_REF2VA.api.json",
+        "maestro/pemara/ferramentas/video_global_engine/workflows/pika_flex_experimental_20261101/PEMARA_Pika_Flex_REF2VA.json"
+      ]
+    },
+    "qwen2.1-detail-fix-2.0.safetensors": {
+      "count": 2,
+      "examples": [
+        "workflow_catalog/extracted/d5c882f9562b9a933795a48d.json",
+        "workflow_catalog/extracted/e3076410ab54c1b6eae905c7.json"
+      ]
+    },
+    "qwen3.5_2b_bf16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "qwen3.5_9b_flux3_prompt_upsampler_w4a8.safetensors": {
+      "count": 14,
+      "examples": [
+        "workflow_catalog/extracted/6f0639238d2cf1b991308f1a.json",
+        "workflow_catalog/extracted/d1660286ef09fbf701477f9d.json",
+        "workflow_catalog/extracted/e3ed74db72d46539823f55e1.json"
+      ]
+    },
+    "qwen3.5_9b_qwen_image_2.1_pe_t2i.int8_convrot.safetensors": {
+      "count": 5,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/goku_ssj_live_action_vertical_30s_20261027/workflows/goku_base.template.json"
+      ]
+    },
+    "qwen3vl_32b_minimax_h3_bf16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_basic.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_latent_upscale.json",
+        "maestro/pemara/ferramentas/h3_upgrades_20260927/pdd_source/example_workflows/pdd_acc_t2v_warmup_split.json"
+      ]
+    },
+    "qwen3vl_32b_minimax_h3_int8_convrot.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/27-video-outpaint/2026-09-07_H3_Video_Outpaint_01_Generate_Candidate_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/27-video-outpaint/2026-09-07_H3_Video_Outpaint_01_Generate_Candidate_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/27-video-outpaint/2026-09-07_H3_Video_Outpaint_06_Generate_Guided_Candidate_EXP.json"
+      ]
+    },
+    "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors": {
+      "count": 2261,
+      "examples": [
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_i2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/all_in_one_t2v.json",
+        "maestro/pemara/dados/creative_os/benchmarks/20260907/fun_control_factory_validation.json"
+      ]
+    },
+    "qwen3vl_4b_fp8_scaled.safetensors": {
+      "count": 15,
+      "examples": [
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json",
+        "workflow_catalog/extracted/4e16f48c97f6252773669771.json"
+      ]
+    },
+    "qwen3vl_4b_int8_convrot.safetensors": {
+      "count": 33,
+      "examples": [
+        "workflow_catalog/extracted/6f0639238d2cf1b991308f1a.json",
+        "workflow_catalog/extracted/d1660286ef09fbf701477f9d.json",
+        "workflow_catalog/extracted/aede779f3c1097e1396a55ce.json"
+      ]
+    },
+    "qwen3vl_8b_fp8_scaled.safetensors": {
+      "count": 26,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Ideogram v4).json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/12-system-memory/2026-08-22_H3_ClipProj_8B_FL2VA_Bridge_Advanced_EXP.json"
+      ]
+    },
+    "qwen3vl_8b_int8_convrot.safetensors": {
+      "count": 580,
+      "examples": [
+        "workflow_catalog/extracted/bd463baf88b44c527a00e351.json",
+        "workflow_catalog/extracted/a004a6ccbf141d78b368c98e.json",
+        "workflow_catalog/extracted/14f1df85ae0e2923e75a2d70.json"
+      ]
+    },
+    "qwen_0.6b_ace15.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "qwen_2.5_vl_7b_fp8_scaled.safetensors": {
+      "count": 39,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (LongCat Image Edit).json"
+      ]
+    },
+    "qwen_3_06b_base.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima Base 1.0).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Anima).json"
+      ]
+    },
+    "qwen_3_4b.safetensors": {
+      "count": 177,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "qwen_4b_ace15.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Audio (ACE-Step 1.5).json"
+      ]
+    },
+    "qwen_image_2.1_int8_convrot.safetensors": {
+      "count": 582,
+      "examples": [
+        "workflow_catalog/extracted/bd463baf88b44c527a00e351.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "qwen_image_2.1_vae_bf16.safetensors": {
+      "count": 580,
+      "examples": [
+        "workflow_catalog/extracted/bd463baf88b44c527a00e351.json",
+        "workflow_catalog/extracted/a004a6ccbf141d78b368c98e.json",
+        "workflow_catalog/extracted/14f1df85ae0e2923e75a2d70.json"
+      ]
+    },
+    "qwen_image_2512_fp8_e4m3fn.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Qwen-Image 2512).json"
+      ]
+    },
+    "qwen_image_edit_2509_fp8_e4m3fn.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json"
+      ]
+    },
+    "qwen_image_edit_2511_bf16.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2511).json"
+      ]
+    },
+    "qwen_image_edit_2511_fp8mixed.safetensors": {
+      "count": 10,
+      "examples": [
+        "workflow_catalog/extracted/f5ebc6e98b1190448eb6e0c6.json",
+        "workflow_catalog/extracted/1d0644f1a701c059edfa1c68.json",
+        "workflow_catalog/extracted/5460cd58a16d5a147517d4c0.json"
+      ]
+    },
+    "qwen_image_fp8_e4m3fn.safetensors": {
+      "count": 7,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Qwen-image).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Outpainting (Qwen-Image).json"
+      ]
+    },
+    "qwen_image_layered_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json"
+      ]
+    },
+    "qwen_image_layered_vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Layers(Qwen-Image-Layered).json"
+      ]
+    },
+    "qwen_image_vae.safetensors": {
+      "count": 53,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (FireRed Image Edit 1.1).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Qwen 2509).json"
+      ]
+    },
+    "raft_large_C_T_SKHT_V2-ff5fadd5.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "raft_small_C_T_V2-01064c6d.pth": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/07-motion-detail/2026-08-28_H3_RAFT_Motion_Audit_and_Mask_Propagation_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/07-motion-detail/2026-08-28_H3_RAFT_Motion_Audit_and_Mask_Propagation_Advanced_EXP.json"
+      ]
+    },
+    "realbasicvsr_wogan_c64b20_300k.pth": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/07-motion-detail/2026-08-28_H3_RealBasicVSR_Temporal_Restore_Advanced_EXP.json"
+      ]
+    },
+    "render_001.h3nfe.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/04-long-video/2026-08-23_H3_Dual_Clock_NFE_Checkpoint_Resume_Advanced_EXP.json"
+      ]
+    },
+    "replace_with_minimax_h3_audio_vae.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/audio_lock_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/dual_clock_4step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_auto_resume_api.json"
+      ]
+    },
+    "replace_with_minimax_h3_turbo_4step_comfyui.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_auto_resume_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_background_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_candidate_accept_api.json"
+      ]
+    },
+    "replace_with_minimax_h3_video_vae.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/audio_lock_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/dual_clock_4step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_auto_resume_api.json"
+      ]
+    },
+    "replace_with_native_minimax_h3_diffusion_model.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/audio_lock_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/dual_clock_4step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_auto_resume_api.json"
+      ]
+    },
+    "replace_with_qwen3vl_minimax_h3.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/audio_lock_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/dual_clock_4step_api.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/tests/fixtures/api/long_video_auto_resume_api.json"
+      ]
+    },
+    "ritmos_pixel_v1.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "ritmos_pixel_v2_8k.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "rt_detr_v4-x-hgnet_fp16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video to Pose Map (SDPose Multi-Person).json"
+      ]
+    },
+    "sam2.1_hiera_base_plus.safetensors": {
+      "count": 6,
+      "examples": [
+        "workflow_catalog/extracted/cfe75ba8b3c9ae7cd9f80cd6.json",
+        "workflow_catalog/extracted/40059cf1c43d8542ffb16f85.json",
+        "workflow_catalog/extracted/a7156f2c062fc57df4bf7d52.json"
+      ]
+    },
+    "sam2_hiera_base_plus.safetensors": {
+      "count": 3,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-segment-anything-2/example_workflows/image_batch_bbox_segment.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-segment-anything-2/example_workflows/points_segment_video_example.json",
+        "maestro/pemara/tools/official_workflows/video_wan2_2_14B_animate.json"
+      ]
+    },
+    "sam2_hiera_small.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/ComfyUI-segment-anything-2/example_workflows/florence_segment_2.json"
+      ]
+    },
+    "sam3.1_multiplex_fp16.safetensors": {
+      "count": 48,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "sd15/Realistic_Vision_V5.1_fp16-no-ema.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_faceid_batch.json"
+      ]
+    },
+    "sd15/juggernaut_reborn.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_regional_conditioning.json"
+      ]
+    },
+    "sd15/realisticVisionV51_v51VAE.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_advanced.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_combine_embeds.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_faceid.json"
+      ]
+    },
+    "sd_xl_base_1.0.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/tests/inference/graphs/default_graph_sdxl1_0.json"
+      ]
+    },
+    "sd_xl_refiner_1.0.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/tests/inference/graphs/default_graph_sdxl1_0.json"
+      ]
+    },
+    "sdpose_wholebody_fp16.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose Multi-Person).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Pose Map (SDPose-OOD).json"
+      ]
+    },
+    "sdxl/AlbedoBaseXL.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_style_composition.json"
+      ]
+    },
+    "sdxl/ProteusV0.3.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_precise_composition.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_precise_weight_type.json"
+      ]
+    },
+    "sdxl/RealVisXL_V4.0.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_clipvision_enhancer.json"
+      ]
+    },
+    "sdxl/juggernautXL_version8Rundiffusion.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_portrait.json"
+      ]
+    },
+    "sdxl_vae.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/IPAdapter_FaceIDv2_Kolors.json",
+        "maestro/pemara/ferramentas/ComfyUI/custom_nodes/comfyui-ipadapter/examples/ipadapter_kolors.json"
+      ]
+    },
+    "seedvr2_3b_int8_convrot.safetensors": {
+      "count": 15,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/rebeliao_gamer_ep02_gpu_financiada_vertical_30s_20261102/workflows/T01_blank_seed3b_rife60_v01.api.json"
+      ]
+    },
+    "seedvr2_7b_int8_convrot.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json"
+      ]
+    },
+    "seedvr2_ema_vae_fp16.safetensors": {
+      "count": 13,
+      "examples": [
+        "maestro/pemara/ferramentas/video_global_engine/projetos/rebeliao_gamer_ep02_gpu_financiada_vertical_30s_20261102/workflows/T01_blank_seed3b_rife60_v01.api.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/rebeliao_gamer_ep02_gpu_financiada_vertical_30s_20261102/workflows/T02_blank_seed3b_rife60_v01.api.json",
+        "maestro/pemara/ferramentas/video_global_engine/projetos/rebeliao_gpu_ram_animation_vertical_30s_20261031/workflows/T01_blank_seed3b_rife60_v01.api.json"
+      ]
+    },
+    "sheetsage2_bf16.safetensors": {
+      "count": 10,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_music_cover.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_music_cover.json",
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/upstream/audio_yue2_music_cover.json"
+      ]
+    },
+    "sprunki_lora.safetensors": {
+      "count": 11,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/abc909476e318c1057c24a09.json"
+      ]
+    },
+    "sprunki_lora_lora_20260619_000002.safetensors": {
+      "count": 14,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/207170b62d4b23ee973f6c2e.json"
+      ]
+    },
+    "sprunki_lora_lora_20260627_000002.safetensors": {
+      "count": 14,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/59e42a6d883357bc1d6d98a6.json"
+      ]
+    },
+    "sprunki_lora_lora_20260629_000003.safetensors": {
+      "count": 14,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/2750998ab1a6d7fd38ddb4ef.json"
+      ]
+    },
+    "sprunki_lora_sprunki_until_stop_stable_900_d8_20260714_221307.safetensors": {
+      "count": 14,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/aa8457cecfa333a7ac03b103.json"
+      ]
+    },
+    "sprunki_lora_sprunki_until_stop_stronger_1200_d8_20260714_224539.safetensors": {
+      "count": 14,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/2017466177b7ef83e16cd6de.json"
+      ]
+    },
+    "sprunki_lora_v1.safetensors": {
+      "count": 38,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/ferramentas/gerador_sprunki/workflow_api.json"
+      ]
+    },
+    "stable_audio_3_medium.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "stable_audio_3_medium_base.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json"
+      ]
+    },
+    "t5gemma_b_b_ul2.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Audio Generation (Stable Audio 3 Medium).json"
+      ]
+    },
+    "t5xxl_fp16.safetensors": {
+      "count": 195,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Inpainting (Flux.1 Fill Dev).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Flux.1 Dev).json"
+      ]
+    },
+    "t8_compat/BUNNY_H3_ActionLogic_Bridge_V1_T8_Compat.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/34-semantic-bridge/2026-09-17_H3_BUNNY_External_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/34-semantic-bridge/2026-09-17_H3_SemanticBridge_DualIndependent_8s_Advanced.json"
+      ]
+    },
+    "t8_compat/MiniMaxH3_SemanticBridge_v1_T8_Compat.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/34-semantic-bridge/2026-09-17_H3_SemanticBridge_DualIndependent_8s_Advanced.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/34-semantic-bridge/2026-09-17_H3_SemanticBridge_Internal_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/34-semantic-bridge/2026-09-17_H3_SemanticBridge_Relay_EXP.json"
+      ]
+    },
+    "taeh3.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/36-avatar-voice/2026-09-18_T8_avatar_preview_EXP.json"
+      ]
+    },
+    "taeltx2_3_wide.pth": {
+      "count": 16,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/22-sol-engine-h3-super/2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json"
+      ]
+    },
+    "trellis_2_bf16.safetensors": {
+      "count": 62,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/a694e9002047a02ff493e1ea.json"
+      ]
+    },
+    "trellis_2_int8_convrot.safetensors": {
+      "count": 74,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/4399debdf75f19918836b019.json"
+      ]
+    },
+    "trellis_2_shape_vae_bf16.safetensors": {
+      "count": 132,
+      "examples": [
+        "workflow_catalog/extracted/a694e9002047a02ff493e1ea.json",
+        "workflow_catalog/extracted/0882f5b46aadd7d098b470de.json",
+        "workflow_catalog/extracted/9fbc7d6900707c3af123945f.json"
+      ]
+    },
+    "trellis_2_texture_vae_bf16.safetensors": {
+      "count": 132,
+      "examples": [
+        "workflow_catalog/extracted/a694e9002047a02ff493e1ea.json",
+        "workflow_catalog/extracted/0882f5b46aadd7d098b470de.json",
+        "workflow_catalog/extracted/9fbc7d6900707c3af123945f.json"
+      ]
+    },
+    "triposplat_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "triposplat_vae_decoder_fp16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image to Gaussian Splat (TripoSplat).json"
+      ]
+    },
+    "ultralytics/bbox/face_yolov8m.pt": {
+      "count": 51,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-08-09_H3_Face_Refine_Parity_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-09-05_H3_Face_Refine_Window_Manual_Review_Advanced_EXP.json",
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/06-face-refine/2026-09-05_H3_Face_Refine_Window_Studio_Serial_Advanced_EXP.json"
+      ]
+    },
+    "umt5_xxl_fp8_e4m3fn_scaled.safetensors": {
+      "count": 8158,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "vae-ft-mse-840000-ema-pruned.safetensors": {
+      "count": 6,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Depth to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "video_depth_anything_vitl.pth": {
+      "count": 1,
+      "examples": [
+        "maestro/runtime-assets/comfyui/custom_nodes/comfyui-video-depth-anything/workflows/video_depth_anything.json"
+      ]
+    },
+    "void_pass1.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "void_pass2.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Inpaint (VOID).json"
+      ]
+    },
+    "wan2.1_14B_SCAIL_2_fp16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "wan2.1_SCAIL_2_DPO_lora_bf16.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Character Replacement (SCAIL-2 Extend).json"
+      ]
+    },
+    "wan2.2_animate_14B_bf16.safetensors": {
+      "count": 500,
+      "examples": [
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "maestro/pemara/dados/validation/comfyui_040_upgrade_20261014/installed_workflows_validation.json",
+        "workflow_catalog/extracted/8dfe5af0279a044312e78bbc.json"
+      ]
+    },
+    "wan2.2_animate_adapter_model.safetensors": {
+      "count": 15300,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json"
+      ]
+    },
+    "wan2.2_bernini_r_high_noise_fp8_scaled.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Edit (Bernini-R).json"
+      ]
+    },
+    "wan2.2_bernini_r_low_noise_fp8_scaled.safetensors": {
+      "count": 4,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Image Edit (Bernini-R).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Video Edit (Bernini-R).json"
+      ]
+    },
+    "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors": {
+      "count": 7650,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json",
+        "workflow_catalog/extracted/14d48daa09cb2319e17cf061.json"
+      ]
+    },
+    "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors": {
+      "count": 7648,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json",
+        "workflow_catalog/extracted/14d48daa09cb2319e17cf061.json"
+      ]
+    },
+    "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors": {
+      "count": 7648,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json",
+        "workflow_catalog/extracted/14d48daa09cb2319e17cf061.json"
+      ]
+    },
+    "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors": {
+      "count": 7650,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json",
+        "workflow_catalog/extracted/14d48daa09cb2319e17cf061.json"
+      ]
+    },
+    "wan_2.1_vae.safetensors": {
+      "count": 8150,
+      "examples": [
+        "workflow_catalog/extracted/373344ff0a96bc89c25788c7.json",
+        "workflow_catalog/extracted/7c9afc43c52568d9716be398.json",
+        "workflow_catalog/extracted/14d48daa09cb2319e17cf061.json"
+      ]
+    },
+    "yolox_l.onnx": {
+      "count": 414,
+      "examples": [
+        "workflow_catalog/extracted/8587b82cc1fa9364678a8735.json",
+        "workflow_catalog/extracted/9383a08302dba99f4a5c5f97.json",
+        "workflow_catalog/extracted/1789d3abca94b7b16eb7f6f3.json"
+      ]
+    },
+    "your-character-lora.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/pemara_workflows_20260920/sources/ComfyUI-Photoshoot/example_workflows/photoshoot-anchor-set.json"
+      ]
+    },
+    "yue2_3b_int8_convrot.safetensors": {
+      "count": 115,
+      "examples": [
+        "workflow_catalog/extracted/80405f1b55e0fad25be5b70c.json",
+        "workflow_catalog/extracted/acc4c51eec8828686211354d.json",
+        "workflow_catalog/extracted/452fc36e040e8127c7433680.json"
+      ]
+    },
+    "z_image_bf16.safetensors": {
+      "count": 2,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Z-Image-Base).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Text to Image (Z-Image-Base).json"
+      ]
+    },
+    "z_image_turbo_bf16.safetensors": {
+      "count": 20,
+      "examples": [
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json",
+        "maestro/pemara/ferramentas/audio_neural/ComfyUI_official/blueprints/Canny to Image (Z-Image-Turbo).json"
+      ]
+    },
+    "zz_radar\\h3_upscaler_lms_v0.1.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/70-radar-model-compatibility/Lms_T8_Compatibility_candidate_EXP.json"
+      ]
+    },
+    "zz_radar\\minimax_h3_flf2v_lora_v1.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/70-radar-model-compatibility/Orbit_T8_Compatibility_candidate_EXP.json"
+      ]
+    },
+    "zz_radar\\minimax_h3_live_wallpaper_v1.0_ref2va_r32.safetensors": {
+      "count": 1,
+      "examples": [
+        "maestro/pemara/ferramentas/h3_face_refine_20261003/t8_source/examples/workflows/70-radar-model-compatibility/Wallpaper_T8_Compatibility_candidate_EXP.json"
+      ]
+    }
+  }
+}

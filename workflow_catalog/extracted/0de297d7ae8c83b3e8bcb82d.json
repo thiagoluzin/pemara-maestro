@@ -1,0 +1,97 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Thrash Metal, aggressive and precise, fast-paced. Features rapid double-bass drumming, complex odd-time signature riffs, galloping rhythm guitar, and a high-pitched, screaming male vocal delivery. Short and punchy.",
+      "lyrics": "[Verse]\nTighten the laces, sharpen the blade\nChasing the thunder, never to fade\nRapid fire rhythm, cutting the air\nPunching the gut, hitting us there\n\n[Chorus]\nIron strings! Cutting deep\nPulling the strings while the city sleeps\nIron strings! Wake the dead\nPuppets dancing on a steel head",
+      "abc": "X:1\nT:\nM:4/4\nL:1/16\nQ:1/4=150\nV: Vocal clef=treble name=\"Vocal Melody\" snm=\"Vocal\"\nV: Ins clef=treble name=\"Ins Melody\" snm=\"Inst.\"\nK:D#m\n% verse\nV: Vocal\n\"D#m\"d2d2d2f4f4z2|\"D#m\"z16|\"D#m\"d2d2d2f6z4|\"D#m\"z16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2d2f4g6-|\"D#m\"g2z12z2|\"D#m\"a2g2f2d8z2|\"D#m\"z16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"a2g4g4f4g2-|\"D#m\"g2a8z6|\"D#m\"a2g2f2a8z2|\"D#m\"z16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"d2d2d2f6z4|\"D#m\"z16|\"D#m\"a2g2f2d6z4|\"D#m\"z16|\nV: Ins\nZ4|\n% chorus\nV: Vocal\n\"B\"a8g6b2-|\"G#m\"b6z2\"F#\"a4g2a2-|\"D#m\"a4z12|\"D#m\"z16|\nV: Ins\nZ2|z6a2z4g2z2|b2z4a2z4g2a2|\nV: Vocal\n\"B\"a8g4f2b2-|\"G#m\"b4b2b2\"F#\"a4g2a2-|\"D#m\"a4z12|\"D#m\"z16|\nV: Ins\nZ2|z6a2z4g2z2|b2z4a2z4g2a2|\nV: Vocal\n\"B\"a8g6b2-|\"G#m\"b6z2\"F#\"a4g2a2-|\"D#m\"a4z12|\"D#m\"z16|\nV: Ins\nZ2|z6a2z4g2z2|b2z4a2z4g2a2|\nV: Vocal\n\"B\"f8g6a2-|\"G#m\"a2g2g2f2\"F#\"f4e4|\"D#m\"d16-|\"D#m\"d16|\nV: Ins\nZ4|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\"D#m\"z16|\nV: Ins\nD,D,D,D,ED,D,DD,D,F2DED,D,|CD,D,B,D,D,A,B,G,A,F,G,E,F,C,E,|D,D,D,D,ED,D,DD,D,FD,DED,D,|GD,D,FD,D,ED,D,DD,D,CDE2|\nV: Vocal\n\"D#m\"z16|\"D#m\"z16|\"D#m\"z8z8|Z|\nV: Ins\nD,D,D,D,ED,D,DD,D,F2DED,D,|CD,D,B,D,D,A,B,G,A,F,G,E,F,C,E,|D,D,D,D,z12|Z|",
+      "seed": 1762201937,
+      "mode": "full",
+      "max_duration": 30.0,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 1762201937,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "filename_prefix": "audio/Maestro_YuE2_5f78c68c1a60",
+      "format": "flac"
+    }
+  }
+}

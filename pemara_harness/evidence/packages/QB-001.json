@@ -1,0 +1,56 @@
+{
+  "task_id": "QB-001",
+  "objective": "Implement the read-only `doctor` command: stable JSON diagnosis of node, sqlite, repo, ledger database, manifest, pemara profile and Qwen endpoint without modifying any state.",
+  "allowed_paths": [
+    "src/doctor.mjs",
+    "src/manifest.mjs",
+    "scripts/generate-manifest.mjs",
+    "bin/pemara-harness.mjs"
+  ],
+  "forbidden_paths": [
+    "RULES.md",
+    "SPEC.md",
+    "evidence/",
+    "tasks/contracts/",
+    "test/builder-contract.test.mjs",
+    "scripts/check-protected.mjs",
+    "src/index.mjs",
+    "src/builder-contract.mjs",
+    "dsh/plugin.mjs",
+    "test/doctor.test.mjs",
+    "package.json",
+    "MANIFEST_SHA256.csv"
+  ],
+  "acceptance_commands": [
+    "node test/doctor.test.mjs",
+    "node test/durable-task-store.test.mjs",
+    "node test/builder-contract.test.mjs",
+    "node --check src/doctor.mjs",
+    "node --check src/manifest.mjs",
+    "node --check bin/pemara-harness.mjs",
+    "node --check scripts/generate-manifest.mjs"
+  ],
+  "required_artifacts": [
+    "git diff HEAD of the worktree branch",
+    "protected test output (test/doctor.test.mjs)",
+    "final checkpoint with next action"
+  ],
+  "skills": [
+    "test-driven-development",
+    "incremental-implementation",
+    "observability-and-instrumentation",
+    "debugging-and-error-recovery"
+  ],
+  "max_rounds": 6,
+  "max_files_changed": 5,
+  "network": "denied",
+  "service_control": "denied",
+  "gpu_control": "denied",
+  "commit_or_publish": "denied",
+  "stop_conditions": [
+    "protected test test/doctor.test.mjs changed or failed without host amendment",
+    "path outside allowed_paths touched",
+    "ledger hash changed after a doctor run",
+    "budget exhausted (6 rounds / 5 files)"
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pemara Live Action Continuity"
+  short_description: "Conectores físicos sem freeze nem crossfade"
+  default_prompt: "Use $pemara-live-action-continuity para unir estes takes por movimento contínuo, preservando velocidade, geografia e estado físico."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "map": {
+    "path": "",
+    "sha256": ""
+  },
+  "spaces": [
+    "hall"
+  ],
+  "cameras": [
+    {
+      "id": "A",
+      "space": "hall",
+      "axis": "Jill_zombie",
+      "landmarks": [
+        "door"
+      ],
+      "purpose": "show pursuit and exit",
+      "trajectory": "motivated tracking or directed locked position"
+    }
+  ],
+  "takes": [
+    {
+      "id": "T07",
+      "camera_id": "A",
+      "purpose": "describe new information",
+      "method_id": "blocking_A_v1",
+      "initial_state": {
+        "space": "hall",
+        "body_ids": [
+          "Kenneth"
+        ],
+        "characters": [
+          {
+            "id": "Jill",
+            "position": "near_door",
+            "screen_direction": "right",
+            "gaze": "zombie",
+            "action_phase": "retreat",
+            "support": "left_foot",
+            "props": [
+              "pistol"
+            ]
+          }
+        ]
+      },
+      "final_state": {
+        "space": "hall",
+        "body_ids": [
+          "Kenneth"
+        ],
+        "characters": [
+          {
+            "id": "Jill",
+            "position": "near_door",
+            "screen_direction": "right",
+            "gaze": "zombie",
+            "action_phase": "retreat",
+            "support": "left_foot",
+            "props": [
+              "pistol"
+            ]
+          }
+        ]
+      },
+      "attempts": [],
+      "review": {
+        "status": "PENDING",
+        "reviewer": "",
+        "note": "",
+        "observation_mode": "frames_only",
+        "artifact": {
+          "path": "",
+          "sha256": ""
+        },
+        "interval_seconds": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "T08",
+      "camera_id": "A",
+      "purpose": "describe new information",
+      "method_id": "blocking_A_v1",
+      "initial_state": {
+        "space": "hall",
+        "body_ids": [
+          "Kenneth"
+        ],
+        "characters": [
+          {
+            "id": "Jill",
+            "position": "near_door",
+            "screen_direction": "right",
+            "gaze": "zombie",
+            "action_phase": "retreat",
+            "support": "left_foot",
+            "props": [
+              "pistol"
+            ]
+          }
+        ]
+      },
+      "final_state": {
+        "space": "hall",
+        "body_ids": [
+          "Kenneth"
+        ],
+        "characters": [
+          {
+            "id": "Jill",
+            "position": "near_door",
+            "screen_direction": "right",
+            "gaze": "zombie",
+            "action_phase": "retreat",
+            "support": "left_foot",
+            "props": [
+              "pistol"
+            ]
+          }
+        ]
+      },
+      "attempts": [],
+      "review": {
+        "status": "PENDING",
+        "reviewer": "",
+        "note": "",
+        "observation_mode": "frames_only",
+        "artifact": {
+          "path": "",
+          "sha256": ""
+        },
+        "interval_seconds": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "joins": [
+    {
+      "from": "T07",
+      "to": "T08",
+      "decision": "DIRECT_KINETIC_CUT",
+      "reason": "continue the same movement after checking intervals",
+      "review": {
+        "status": "PENDING",
+        "reviewer": "",
+        "note": "",
+        "observation_mode": "frames_only",
+        "artifact": {
+          "path": "",
+          "sha256": ""
+        },
+        "interval_seconds": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "pilot_take_ids": [
+    "T07",
+    "T08"
+  ],
+  "pilot_review": {
+    "status": "PENDING",
+    "reviewer": "",
+    "note": "",
+    "observation_mode": "frames_only",
+    "artifact": {
+      "path": "",
+      "sha256": ""
+    },
+    "interval_seconds": [
+      0,
+      1
+    ]
+  },
+  "sequence_review": {
+    "status": "PENDING",
+    "reviewer": "",
+    "note": "",
+    "observation_mode": "frames_only",
+    "artifact": {
+      "path": "",
+      "sha256": ""
+    },
+    "interval_seconds": [
+      0,
+      1
+    ]
+  },
+  "generatedConnectorAllowed": false
+}

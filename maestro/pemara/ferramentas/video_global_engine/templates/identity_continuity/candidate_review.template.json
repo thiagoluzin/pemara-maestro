@@ -1,0 +1,38 @@
+{
+  "candidate": {
+    "path": "",
+    "sha256": ""
+  },
+  "bibleSha256": "",
+  "reviewer": "",
+  "observations": [
+    {
+      "phase": "start",
+      "timestampSeconds": 0,
+      "notes": ""
+    },
+    {
+      "phase": "middle",
+      "timestampSeconds": 0,
+      "notes": ""
+    },
+    {
+      "phase": "end",
+      "timestampSeconds": 0,
+      "notes": ""
+    }
+  ],
+  "dimensions": {
+    "identity": "PENDING",
+    "combat": "PENDING",
+    "physics": "PENDING",
+    "lighting": "PENDING",
+    "water": "PENDING",
+    "realism": "PENDING"
+  },
+  "ownerApproval": {
+    "status": "PENDING",
+    "evidence": ""
+  },
+  "fullPlaybackAndContactsReviewed": false
+}

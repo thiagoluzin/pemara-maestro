@@ -1,0 +1,31 @@
+{
+  "1": {
+    "class_type": "PemaraLoadLosslessImage",
+    "inputs": {
+      "image": "A03_goku_ssj2_effort_native_v01.png"
+    },
+    "is_changed": [
+      "aed4300ef8d5aa0460e29ed4147e1baa0d6953352287510a43c1811c0580fea3"
+    ]
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "goku_ssj2_20261029/anchors/A03_goku_ssj2_effort_v01"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

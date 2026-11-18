@@ -1,0 +1,205 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "shift_video": 12.0,
+      "shift_audio": 3.0
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "prompt": "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 10.08-second mark of the target video.\n\nintegrated_multimodal_description: [Shot 1] Create a hyper-realistic live-action cinematic sequence using the provided FIRST FRAME as the opening reference and the provided LAST FRAME as the exact visual destination. FORMAT: vertical 9:16, cinematic Shorts/Reels, realistic human actors, premium live-action fantasy film, no anime appearance, no videogame look, no stylized CGI characters. Maintain strict identity and costume continuity throughout the entire shot. SHIRYU: Young East Asian male warrior, athletic body, long black hair, same face, same proportions and same Dragon Bronze Cloth V3 / Final Cloth from the reference images. Preserve every armor detail, color, metallic texture, dragon motifs and the Dragon Shield attached to his LEFT arm. GORDON: Same massive muscular warrior wearing dark purple-black Minotaur Surplice armor, same horned helmet, same proportions and the exact same enormous Crusher Axe from the first frame. QUEEN: Remain wounded in the background exactly as established in the reference frame. He must NOT suddenly recover, attack or move into the foreground. SCENE CONTINUITY: Ancient ruined underworld battlefield, broken stone columns, rubble, smoke, drifting dust, distant structures, dark storm clouds and supernatural atmosphere. Maintain the same environment, camera axis, lighting direction and color grading from the reference images. ACTION: The sequence begins EXACTLY from the first frame. Gordon is already completing a brutally powerful downward attack with his enormous Crusher Axe. Shiryu has no physical sword. Excalibur is Shiryu's RIGHT ARM itself. A thin, extremely concentrated golden energy edge extends naturally along the outer edge of Shiryu's right forearm and hand, giving the arm the appearance of a supernatural cutting blade without creating a separate weapon. Shiryu violently swings and raises his RIGHT ARM into Gordon's descending axe, attempting to cut directly through the Crusher Axe with Excalibur. The two attacks collide. Show an extremely heavy, believable impact. For a fraction of a second it appears Shiryu may be able to stop the axe. The energy edge of Excalibur grinds against the dark metal surface of Gordon's axe. Bright sparks explode from the contact point. Metal vibrates. Tiny pieces of stone and armor dust scatter through the air. Shiryu's hair and cloth react naturally to the shockwave. His muscles tense visibly. His expression changes from determination to strain. Gordon continues forcing the weapon downward. He does NOT get pushed backward. He does NOT lose control of the axe. The Crusher Axe proves stronger than Shiryu expected. Show the balance of force progressively shifting toward Gordon. The golden energy edge along Shiryu's right arm begins flickering and destabilizing. Shiryu realizes the axe is overpowering Excalibur. His right arm starts being violently forced backward under the pressure. Then Gordon delivers the final overpowering force. The Crusher Axe violently breaks through Shiryu's defense. At the exact moment of failure, Shiryu's RIGHT wrist/forearm is severely fractured by the impact. The injury must be communicated through realistic body mechanics: the right wrist suddenly bends out of alignment, the right forearm armor cracks and breaks apart, small metallic fragments explode away, the Excalibur energy instantly destabilizes and fades, and Shiryu's entire upper body recoils from the shock. Do NOT amputate the arm. Do NOT sever the hand. Do NOT show excessive gore. The injury must look severe and painful but anatomically believable. Shiryu gives a short involuntary cry of pain and recoils backward while still remaining on his feet. His face shows immediate shock and intense pain. His fingers instinctively open as control of the injured arm is lost. Gordon remains dominant in the composition, still gripping the massive axe with both hands after overpowering Shiryu. Transition naturally into the provided LAST FRAME. The final pose, character positions, damaged armor, injured right arm, axe orientation, lighting and environment must visually converge toward the supplied LAST FRAME. CAMERA: Begin with a medium-low angle framing both Shiryu and Gordon. Very subtle handheld cinematic movement. Slow controlled push-in toward the collision. At the instant the axe and Excalibur collide, add a tiny physical camera jolt caused by the impact. Do NOT perform fast camera spins. Do NOT orbit around the characters. Do NOT use impossible drone movements. Keep the action readable. During the fracture moment, slightly increase the push-in toward Shiryu's upper body and injured right arm. Finish close to the composition of the supplied last frame. PHYSICS: Real human weight. Realistic inertia. Real weapon momentum. The enormous axe must feel extremely heavy. Shiryu must physically struggle against the downward pressure. No floating characters. No teleportation. No exaggerated anime acceleration. No impossible body deformation. No rubber arms. No duplicated limbs. No disappearing weapons. No character morphing. VISUAL STYLE: Photorealistic live-action. Real human skin. Real pores. Real hair strands. Realistic sweat, dirt and minor facial injuries. Physically accurate metallic reflections. Weathered armor. Volumetric fog. Subtle atmospheric particles. Natural motion blur. Real depth of field. High dynamic range. Dark fantasy cinematic lighting. High-budget film production. Epic but grounded. Think a serious mythological live-action feature film rather than an anime adaptation. IMPORTANT CONTINUITY RULES: Shiryu must never hold a sword. Excalibur must remain an energy cutting edge generated from his RIGHT ARM. The Dragon Shield remains on the LEFT arm. Gordon's Crusher Axe must remain exactly the same weapon throughout the entire shot. Gordon must overpower Shiryu during this specific exchange. Shiryu must NOT defeat Gordon in this shot. Shiryu must NOT cut the axe. The axe must NOT break. The final outcome is Shiryu suffering a severe fracture to his RIGHT wrist/forearm after Excalibur fails to overcome the Crusher Axe. Queen remains wounded in the background. No additional attacks. No energy explosions filling the entire screen. No giant magical beam. No transformation. No new characters. No dialogue required. SOUND DESIGN: Deep metallic impact when Excalibur meets the Crusher Axe. Sharp metal grinding under pressure. Heavy low-frequency impact bass. Armor creaking. Stone debris hitting the ground. Short energy crackle from Excalibur. At the fracture moment, a restrained but disturbing armor-crack and bone-impact sound. Shiryu gives one brief cry of pain. Gordon emits a low aggressive exertion grunt. Strong atmospheric wind. Distant low thunder. No music required unless added later in editing. ENDING: End precisely on the defeated exchange shown in the supplied LAST FRAME: Shiryu recoiling in pain with his RIGHT wrist/forearm severely injured, broken armor fragments in the air, Excalibur fading, while Gordon remains dominant with the Crusher Axe after overpowering him.\n\noverall_soundscape: N/A\n\nnon_diegetic_music: N/A",
+      "width": 1344,
+      "height": 768,
+      "length": 243,
+      "first_frame": [
+        "5",
+        0
+      ],
+      "last_frame": [
+        "19",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1.0
+    }
+  },
+  "9": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 254663136134882459
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    }
+  },
+  "11": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "9",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "8",
+        0
+      ],
+      "latent_image": [
+        "6",
+        1
+      ]
+    }
+  },
+  "12": {
+    "class_type": "LTXVSeparateAVLatent",
+    "inputs": {
+      "av_latent": [
+        "11",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecodeTiled",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "14": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "13",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1344,
+      "height": 768,
+      "crop": "center"
+    }
+  },
+  "15": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va",
+      "format": "mp4",
+      "format.codec": "h264"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/ChatGPT_Image_16_de_set__de_2026__17_04_53_d9f9ccc51f.png"
+    }
+  },
+  "19": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "maestro_uploads/ChatGPT_Image_16_de_set__de_2026__17_05_15_c0bb0c0c3c.png"
+    }
+  },
+  "creative_os_video_latent_12": {
+    "class_type": "SaveLatent",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "filename_prefix": "maestro_generative/video/minimax_h3_fl2va_video_latent"
+    }
+  }
+}

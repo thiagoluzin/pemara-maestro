@@ -1,0 +1,42 @@
+{
+  "tracked_files": 114,
+  "registry": {
+    "schema_version": 1,
+    "aliases": 41,
+    "specialized_profiles": 8,
+    "dispatcher": "E:\\Pemara\\.agents\\profiles\\agents-turbo.md",
+    "errors": [],
+    "ok": true
+  },
+  "curated_skills": 54,
+  "curated_valid": 54,
+  "curated_metadata": 54,
+  "broken_markdown_links": [],
+  "disabled_duplicate_entries": 11,
+  "duplicate_archive_crc_ok": true,
+  "duplicate_archive_member_hashes_ok": true,
+  "validated_skill_directories": 59,
+  "entrypoint_bytes": {
+    "project-planner": {
+      "before": 17135,
+      "after": 3372
+    },
+    "debugger": {
+      "before": 12528,
+      "after": 1786
+    },
+    "performance-optimizer": {
+      "before": 8616,
+      "after": 1522
+    },
+    "phaser-platformer-architect": {
+      "before": 26781,
+      "after": 3633
+    },
+    "phaser-16bit-platformer": {
+      "before": 10118,
+      "after": 2541
+    }
+  },
+  "errors": []
+}

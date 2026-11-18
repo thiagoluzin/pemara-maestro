@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Ecosystem Orchestrator"
+  short_description: "Audita e mantém o catálogo de skills Pemara"
+  default_prompt: "Use $pemara-ecosystem-orchestrator para auditar o catálogo, referências e aliases Pemara, preservando requisitos e registrando evidências."

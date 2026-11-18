@@ -1,0 +1,104 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "TextEncodeQwenImage21",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "prompt": "A real photograph from a live action period fantasy film, a real human actor on a practical set, physically believable skin pores, natural eyes, individually visible hair, hand sewn fabric, worn natural materials, restrained movie lighting, no illustration, no animation, no video game render, no plastic skin, no cosplay snapshot, no text or watermark. One young adult blonde actress playing Celes Chere disguised as the opera heroine Maria from Final Fantasy VI (1994). Three-quarter full-length view, both hands visible. Long blonde hair pulled into a high ponytail with a small blue ribbon, blue eyes, fair skin, serious composed face. A floor-length ivory-white silk opera gown, puffed short sleeves, fitted bodice with modest neckline, blue waist ribbon, restrained blue trim, full softly gathered skirt. No armor, no crown, no wings, no yellow adventuring outfit. She holds a small bouquet of red roses at waist height, looking beyond the left edge of frame with quiet longing. She stands on a solid theatrical castle balcony with low blue-violet stone battlements. A painted midnight-blue moonlit sky backdrop behind her, a carved theater proscenium barely visible at the far right, dark red velvet side curtain. Believable theatrical stage, not an outdoor castle. Cool blue overhead stage lighting and a soft warm front spotlight give a realistic face and embroidered cloth. Camera at eye level, normal perspective, foreground stone parapet out of focus, face in sharp focus. Widescreen landscape composition.",
+      "negative_prompt": "illustration, anime, cartoon, 3D game character, glossy plastic skin, text, watermark, extra fingers, duplicate person",
+      "resolution": 0,
+      "images": {}
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "4",
+        1
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "seed": 22102601,
+      "steps": 28,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "ffvi_opera_fasth3_omni_20261022/casting/celes_maria"
+    },
+    "is_changed": [
+      NaN
+    ]
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

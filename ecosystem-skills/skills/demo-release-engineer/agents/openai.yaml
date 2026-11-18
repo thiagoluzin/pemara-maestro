@@ -1,0 +1,4 @@
+interface:
+  display_name: "Demo Release Engineer"
+  short_description: "Especialista no empacotamento e release da demo — Vite build,"
+  default_prompt: "Use $demo-release-engineer para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

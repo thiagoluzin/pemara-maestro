@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Scorpion_SubZero_COMPLETE_HunyuanFoley_v01.mp4"
+    }
+  },
+  "15": {
+    "class_type": "PemaraLanczosUpscaleRequiredSave",
+    "inputs": {
+      "source_video": [
+        "1",
+        0
+      ],
+      "width": 1920,
+      "height": 1080,
+      "filename_prefix": "scorpion_subzero_hunyuan_classic_20261110/FHD60/Scorpion_SubZero_HunyuanFoley_FHD60_v02",
+      "profile_id": "lanczos_nvenc_rife_exact60_no_nr_v3_1080p",
+      "content_kind": "live_action",
+      "protection_manifest": ""
+    }
+  }
+}

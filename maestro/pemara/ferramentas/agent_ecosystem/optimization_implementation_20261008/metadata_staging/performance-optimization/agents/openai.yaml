@@ -1,0 +1,4 @@
+interface:
+  display_name: "Performance Optimization"
+  short_description: "Entrada de performance da família performance-optimizer para web"
+  default_prompt: "Use $performance-optimization para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

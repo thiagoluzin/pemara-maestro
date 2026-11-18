@@ -1,0 +1,5 @@
+{
+  "default_workspace": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2",
+  "recent_workspace": "E:\\Pemara\\maestro\\runtimes\\ComfyUI-v0.34.2",
+  "default_launch_extras": "--listen 127.0.0.1 --port 8188 --cuda-device 0 --user-directory E:/Pemara/maestro/runtimes/state/ComfyUI-v0.34.2/user --input-directory E:/Pemara/maestro/pemara/ferramentas/ComfyUI/input --output-directory E:/Pemara/maestro/pemara/ferramentas/ComfyUI/output --temp-directory E:/Pemara/maestro/pemara/ferramentas/ComfyUI/temp --disable-auto-launch"
+}

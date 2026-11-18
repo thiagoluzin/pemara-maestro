@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modern Pixel Art Hd"
+  short_description: "Pixel art moderno / HD-2D (\"HD remix\", estilo Octopath/Sea of St"
+  default_prompt: "Use $modern-pixel-art-hd para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

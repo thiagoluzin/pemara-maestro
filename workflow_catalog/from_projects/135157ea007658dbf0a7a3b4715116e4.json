@@ -1,0 +1,204 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "3": {
+    "class_type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "PemaraH3SageLongSequencePatch",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "head_chunks": 4
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
+    }
+  },
+  "7": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "9": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "conditioning": [
+        "8",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "11": {
+    "class_type": "ManualSigmas",
+    "inputs": {
+      "sigmas": "1.0, 0.972973, 0.923077, 0.8, 0.571429, 0.333333, 0.0"
+    }
+  },
+  "12": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 202611030303
+    }
+  },
+  "13": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "12",
+        0
+      ],
+      "guider": [
+        "9",
+        0
+      ],
+      "sampler": [
+        "10",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "8",
+        1
+      ]
+    }
+  },
+  "14": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ],
+      "fps": 24.0,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "audio": [
+        "15",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "16",
+        0
+      ],
+      "filename_prefix": "dmc3_nevan_pika_full_horizontal_20261102/video/T02_front_visible_nevan_final_v02",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "20": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "native_preview"
+    }
+  },
+  "18": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "K01_T01_v01_frame361_motion_proposal.png"
+    }
+  },
+  "8": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "prompt": "HORIZONTAL16:9 cinematic LIVE ACTION, one continuous15-second continuation of the SAME DMC3 Dante performing with the SAME Nevan on the SAME opera stage. Use the initial frame as the exact incoming body, hands, prop and camera state. Continue the existing guitar phrase immediately, with fingers, coat, weight transfer and camera already moving. No new establishing shot, pause, pose reset or repeating the behind-head phrase.\n\nIDENTITY LOCK: Exact same adult Dante from the initial frame: youthful angular clean-shaven face, fair real human skin, shaggy silver-white fringe, lean athletic build, open worn red leather coat, brown harness and buckles, dark trousers, black fingerless gloves and boots. Same carved pillars, violet curtains, opera balconies, warm practical lamps and stage floor. One actor and one solid guitar, real skin/hair/leather/metal, same appearance throughout.\n\nNEVAN IS A RIGID CUSTOM BLADE PROP, NOT AN ORDINARY GUITAR. Keep the exact small proportions and silhouette visible in the initial frame: broad flat dark VIOLET-BLUE asymmetric body, THREE UNEQUAL wing/blade tips, small upper teardrop apertures, COMPACT STRING BED and a VERY SHORT, THICK, TWISTED PURPLE NECK ending in the compact spear headpiece. The neck stays short and thick: it must not grow into a long thin straight fretted neck. The dark string area, apertures and blade tips stay fixed in their original places; do not add rectangular gold pickups, new chrome bridge blocks, new fretboard, knobs, extra holes, extra blades, pale pink panels or white/silver body. Keep the original dark violet material under the SAME light, without brightening or transforming it. The body remains broad compared with its short neck. No stretching, bending, scaling, morphing or second instrument during motion. Every angle is the SAME solid object. RIGHT glove stays at the exact existing compact string bed; LEFT glove grips the exact short thick neck, never slides onto an invented extension. Five fingers per hand.\n\nSTAGING AND CAMERA: Preserve the incoming low front-three-quarter camera angle and the same screen direction. One WIDE whole-body shot; keep the full head, both boots and every prop tip visible. The camera gently travels laterally along the existing stage-front rail while keeping its distance, and retreats modestly BEFORE the guitar rises. Leave substantial empty air above the head and free floor below the boots. No push-in, close-up, zoom, camera orbit, tilted close shot, cut or slow motion. The lens never crowds the guitar. Keep the STRING-BED FACE of Nevan readable to camera throughout; Dante turns only a quarter toward the side then returns front, never presents a prolonged back view. This protects the exact prop, hand ownership and action in one continuous performance.\n\n00:00-00:02: Continue the incoming right-hand string stroke straight into the next quick picked phrase. Complete the initial small grounded step with left boot forward, then widen the stance with one planted step. Right wrist does clear small alternating strokes, left fingers change fingering only on the very short neck. Dante glances from the strings toward the rising spear tip with a restrained confident grin. Coat follows the actual step.\n00:02-00:06: Execute ONE broad energetic overhead guitar flourish. Both hands lift the entire unchanged rigid Nevan out IN FRONT of the chest and ABOVE the crown through visible empty air, then sweep it back down IN FRONT to waist height. The flat face remains angled toward camera so the same compact string bed and short thick neck can be seen. Blades travel OUTSIDE head, hair, upper arms, torso and coat; no passage through the body, release or hidden repositioning. Knees counterbalance the arc. As it comes down Dante makes a genuine quarter pivot with a planted boot, coat trailing after his shoulder, then returns to the incoming front-three-quarter direction. No full spin, jump, throw, behind-head rest or new prop face invented by the model.\n00:06-00:10: Nevan is again across the waist, still short-necked and dark violet. Play the last fast phrase with real RIGHT wrist strokes on the same string bed and LEFT fingers on the same compact neck. Dante supports a distinct back lean through hips, bent knees and rear boot, then brings his chest forward to prepare the finale. This is an active musician with confident attitude, not an idle sway or static pose. Both boots remain grounded.\n00:10-00:13: Bend hips and BOTH knees continuously, lower onto BOTH knees on the stage, with both lower legs behind the body and NO planted foot or raised knee remaining in front. A short controlled knee slide decelerates on floor contact. Strike the final ringing chord as the knees meet the floor. Guitar remains outside thighs/chest, left glove supports the short neck and right glove strikes the compact string bed. Both knees are visible at floor level; do not substitute a one-knee lunge. Cloth settles after impact.\n00:13-00:15: Recover upright on BOTH knees, chest lifted. Keep the one solid Nevan diagonally along the left side, supported by left glove and beside the left thigh. After the final string stroke the RIGHT arm opens outward in the theatrical finishing flourish; left arm continues to support the guitar. Dante looks forward with playful satisfaction as the chord rings. Small breathing, hair, fabric and camera settling continue through the last frame, without frozen hold, guitar disappearance or another riff.\n\nNATIVE SOUND: Continue the incoming original crunchy E-minor electric-guitar solo around140BPM, already mid-phrase at frame one, no fresh intro or count-in. Match the incoming intimate guitar level and same opera-room reverb: no sudden volume boost, new instrument or different song. String attacks follow the visible right-wrist strokes, with quiet leather, boot and knee-contact sounds. Restrained electric crackle occurs AFTER struck strings, never conceals contacts. One final sustained distorted chord decays with natural room reflections. No copied game recording, added score, drums, bass backing band, applause, voice, singing, crowd, extra actor, microphone, logo, text or subtitles. No artificial fade, silence at the beginning or abrupt silence before the final frame.",
+      "width": 1536,
+      "height": 864,
+      "length": 362,
+      "first_frame": [
+        "18",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "7",
+        0
+      ]
+    }
+  }
+}

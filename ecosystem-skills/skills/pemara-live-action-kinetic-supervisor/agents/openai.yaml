@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pemara Live Action Kinetic Supervisor"
+  short_description: "Equilibra identidade, física e junções naturais"
+  default_prompt: "Use $pemara-live-action-kinetic-supervisor para manter os personagens reais e ligar os takes por continuidade de corpo, câmera, objeto, efeito e ambiente."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Montagem de filme Pemara"
+  short_description: "Construa ritmo, continuidade e cortes com intenção"
+  default_prompt: "Use $pemara-film-editor para melhorar esta produção de vídeo com decisões concretas e evidências."

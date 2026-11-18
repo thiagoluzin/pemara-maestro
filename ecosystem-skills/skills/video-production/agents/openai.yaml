@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video Production"
+  short_description: "Executa produção e edição técnica de vídeo: inspeção"
+  default_prompt: "Use $video-production para atender este pedido no projeto e na stack existentes, com evidências e escopo preservados."

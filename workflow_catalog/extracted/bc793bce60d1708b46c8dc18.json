@@ -1,0 +1,397 @@
+[
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_H3_UPGRADES\\01_H3_BASE_INT8_VAE.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 16
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_H3_UPGRADES\\02_H3_PDD_FL2VA_8STEP.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 17
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_H3_UPGRADES\\03_H3_PDD_REF2VA_8STEP.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 17
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_H3_UPGRADES\\04_H3_CONTROLNET2_POSE.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 19
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\01_HiDream_Full_ancoras.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 33
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\02_HiDream_Photoshoot_lote8.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 35
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_base_correcao.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 10
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\03_LLaDA_turbo_correcao.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 10
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\04_Qwen_2512_texto_layout.json",
+    "valid": false,
+    "error_count": 2,
+    "warning_count": 0,
+    "errors": [
+      {
+        "node_id": "238/226",
+        "field": "unet_name",
+        "code": "unknown_enum_value",
+        "message": "'qwen_image_2512_fp8_e4m3fn.safetensors' not in 12 known options for unet_name \u2014 closest: qwen_image_2.1_int8_convrot.safetensors, wan2.2_animate_14B_bf16.safetensors, trellis_2_bf16.safetensors, trellis_2_int8_convrot.safetensors, minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "hint": "valid options include: PEMARA_20260920\\flux-2-klein-4b.safetensors, acestep_v1.5_turbo.safetensors, fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors, flux-2-klein-4b.safetensors, minimax_h3_fl2va_pruned_int8_convrot.safetensors, minimax_h3_ref2va_pruned_int8_convrot.safetensors, qwen_image_2.1_int8_convrot.safetensors, seedvr2_3b_int8_convrot.safetensors (and 4 more \u2014 see valid_options)",
+        "suggestions": [
+          "PEMARA_20260920\\flux-2-klein-4b.safetensors",
+          "acestep_v1.5_turbo.safetensors",
+          "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors",
+          "flux-2-klein-4b.safetensors",
+          "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+          "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+          "qwen_image_2.1_int8_convrot.safetensors",
+          "seedvr2_3b_int8_convrot.safetensors",
+          "seedvr2_7b_int8_convrot.safetensors",
+          "trellis_2_bf16.safetensors",
+          "trellis_2_int8_convrot.safetensors",
+          "wan2.2_animate_14B_bf16.safetensors"
+        ],
+        "valid_options": [
+          "PEMARA_20260920\\flux-2-klein-4b.safetensors",
+          "acestep_v1.5_turbo.safetensors",
+          "fastvideo_fasth3_8step_v2_pruned_int8_convrot.safetensors",
+          "flux-2-klein-4b.safetensors",
+          "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+          "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+          "qwen_image_2.1_int8_convrot.safetensors",
+          "seedvr2_3b_int8_convrot.safetensors",
+          "seedvr2_7b_int8_convrot.safetensors",
+          "trellis_2_bf16.safetensors",
+          "trellis_2_int8_convrot.safetensors",
+          "wan2.2_animate_14B_bf16.safetensors"
+        ],
+        "api_node_id": "238:226"
+      },
+      {
+        "node_id": "238/221",
+        "field": "lora_name",
+        "code": "unknown_enum_value",
+        "message": "'Qwen-Image-2512-Lightning-4steps-V1.0-fp32.safetensors' not in 20 known options for lora_name",
+        "hint": "valid options include: minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors, pemara_marketing_card_lora.safetensors, pemara_marketing_card_lora_20260706_173837.safetensors, pemara_marketing_card_lora_20260707_020359.safetensors, pemara_marketing_card_lora_20260708_041456.safetensors, pemara_marketing_card_lora_20260708_121946.safetensors, pemara_marketing_card_lora_20260708_133441.safetensors, pemara_marketing_card_lora_20260708_144918.safetensors (and 12 more \u2014 see valid_options)",
+        "suggestions": [
+          "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+          "pemara_marketing_card_lora.safetensors",
+          "pemara_marketing_card_lora_20260706_173837.safetensors",
+          "pemara_marketing_card_lora_20260707_020359.safetensors",
+          "pemara_marketing_card_lora_20260708_041456.safetensors",
+          "pemara_marketing_card_lora_20260708_121946.safetensors",
+          "pemara_marketing_card_lora_20260708_133441.safetensors",
+          "pemara_marketing_card_lora_20260708_144918.safetensors",
+          "pemara_marketing_card_lora_20260710_015820.safetensors",
+          "pemara_marketing_card_lora_20260712_015047.safetensors",
+          "pemara_marketing_card_lora_20260713_015607.safetensors",
+          "ritmos_pixel_v1.safetensors",
+          "ritmos_pixel_v2_8k.safetensors",
+          "sprunki_lora.safetensors",
+          "sprunki_lora_lora_20260619_000002.safetensors",
+          "sprunki_lora_lora_20260627_000002.safetensors",
+          "sprunki_lora_lora_20260629_000003.safetensors",
+          "sprunki_lora_sprunki_until_stop_stable_900_d8_20260714_221307.safetensors",
+          "sprunki_lora_sprunki_until_stop_stronger_1200_d8_20260714_224539.safetensors",
+          "sprunki_lora_v1.safetensors"
+        ],
+        "valid_options": [
+          "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+          "pemara_marketing_card_lora.safetensors",
+          "pemara_marketing_card_lora_20260706_173837.safetensors",
+          "pemara_marketing_card_lora_20260707_020359.safetensors",
+          "pemara_marketing_card_lora_20260708_041456.safetensors",
+          "pemara_marketing_card_lora_20260708_121946.safetensors",
+          "pemara_marketing_card_lora_20260708_133441.safetensors",
+          "pemara_marketing_card_lora_20260708_144918.safetensors",
+          "pemara_marketing_card_lora_20260710_015820.safetensors",
+          "pemara_marketing_card_lora_20260712_015047.safetensors",
+          "pemara_marketing_card_lora_20260713_015607.safetensors",
+          "ritmos_pixel_v1.safetensors",
+          "ritmos_pixel_v2_8k.safetensors",
+          "sprunki_lora.safetensors",
+          "sprunki_lora_lora_20260619_000002.safetensors",
+          "sprunki_lora_lora_20260627_000002.safetensors",
+          "sprunki_lora_lora_20260629_000003.safetensors",
+          "sprunki_lora_sprunki_until_stop_stable_900_d8_20260714_221307.safetensors",
+          "sprunki_lora_sprunki_until_stop_stronger_1200_d8_20260714_224539.safetensors",
+          "sprunki_lora_v1.safetensors"
+        ],
+        "api_node_id": "238:221"
+      }
+    ],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 19
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\05_FLUX_Klein_rascunho.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 16
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10_YuE2_composicao_ABC.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 16
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10a_YuE2_planejar_ABC_sem_audio.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 3
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\10b_YuE2_gerar_com_ABC_revisado.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 7
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\11_YuE2_cover_SheetSage.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 13
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Base_voz.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 2
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\12_AuK_Flash_voz.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 2
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Base_editar.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 3
+  },
+  {
+    "workflow": "D:\\PemaraRuntimes\\state\\ComfyUI-v0.40.0-pemara\\user\\default\\workflows\\PEMARA_IMAGE_AUDIO\\13_AuK_Flash_editar.json",
+    "valid": true,
+    "error_count": 0,
+    "warning_count": 0,
+    "errors": [],
+    "warnings": [],
+    "partner_nodes": [],
+    "spends_credits": false,
+    "object_info_source": {
+      "mode": "local",
+      "host": "127.0.0.1",
+      "port": 8188
+    },
+    "converted_from_ui": true,
+    "converted_node_count": 3
+  }
+]

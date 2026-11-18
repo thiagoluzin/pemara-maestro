@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Metallica-inspired, Stomping extremely heavy groove metal, huge dry snare and kick, thick downtuned distorted guitars, tight bass, snarling forceful low male voice, savage blues-inflected guitar solo. 112 BPM, D minor. an enormous staggered low riff with deliberate silences; dominant bass, crushing chorus and threatening half-time bridge. Groove Metal, D Minor, Heavy. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Riff Intro & V 0-115s; Chorus & V2 115-220s; Bridge & Solo 220-270s; Final Chorus 270-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=112, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nDust on the velvet, cold on the stone\nI took the weight that no man has known\nThe ledger’s thick with the names of the dead\nEvery year I rule is a promise unpaid\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Verse]\nThe jewels are eyes of the servants below\nWatching me from the hall, watching me go\nI wear their patience, I wear their pain\nA king made of rust and a crown of rain\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Bridge]\nHold the silence, let the riff drop deep\nThe hammer falls, while the kings sleep\nOne final strike on the iron gate\nThe debt is collected, the soul is late\n\n[Solo]\n\n[Chorus]\nCrown of debts, heavy on my skull\nChoking on the gold, choking on the full\nCrown of debts, I can’t pay it back\nThe throne is a grave and the dark is thick\n\n[Outro]\nThe debt is paid\nThe stone stays cold\nNo more gold",
+      "seed": 202610161018,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

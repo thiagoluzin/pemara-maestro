@@ -1,0 +1,374 @@
+{
+  "f5ca2326-53da-4260-b5fc-91921472521e": {
+    "prompt": [
+      0,
+      "f5ca2326-53da-4260-b5fc-91921472521e",
+      {
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "3": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "4": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "2",
+              0
+            ],
+            "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "5": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "3",
+              0
+            ],
+            "lora_name": "wan2.2_animate_adapter_model.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "6": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "4",
+              0
+            ],
+            "lora_name": "wan2.2_animate_adapter_model.safetensors",
+            "strength_model": 1.0
+          }
+        },
+        "7": {
+          "class_type": "ModelSamplingSD3",
+          "inputs": {
+            "model": [
+              "5",
+              0
+            ],
+            "shift": 5.0
+          }
+        },
+        "8": {
+          "class_type": "ModelSamplingSD3",
+          "inputs": {
+            "model": [
+              "6",
+              0
+            ],
+            "shift": 5.0
+          }
+        },
+        "9": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+            "type": "wan",
+            "device": "default"
+          }
+        },
+        "10": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "wan_2.1_vae.safetensors"
+          }
+        },
+        "11": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "ATD_Rossi_20261111_reg_low_west_v01_wide.png"
+          }
+        },
+        "12": {
+          "class_type": "ImageScale",
+          "inputs": {
+            "image": [
+              "11",
+              0
+            ],
+            "upscale_method": "nearest-exact",
+            "width": 896,
+            "height": 768,
+            "crop": "disabled"
+          }
+        },
+        "13": {
+          "class_type": "GetImageSize",
+          "inputs": {
+            "image": [
+              "12",
+              0
+            ]
+          }
+        },
+        "14": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "9",
+              0
+            ],
+            "text": "Detailed crisp hand-drawn PIXEL ART animation of the EXACT SAME adult Helena from input. Same facial identity, age, eyes, nose profile, mouth, jaw, LOW brown bun, exact body/head proportions, beige rolled-sleeve ONE-left-breast-pocket shirt, denim jeans and brown lace-up boots. Brown leather satchel stays on anatomical LEFT hip, original diagonal strap, never switches side. ONE classic reference-faithful wooden-stock Rossi Puma, slim steel receiver, wooden fore-end, long straight barrel and parallel magazine tube, connected oval lever. Two anatomical arms and hands. The receiver is matte DARK blued steel throughout the motion, identical dark gray to input. Only thin small gray edge highlights, never white/chrome/silver panels. Exactly ONE anatomical LEFT breast pocket; anatomical RIGHT chest remains PLAIN beige fabric, no near-right rectangular pocket outline, flap or seam. Maintain LEFT side profile throughout. One-way collapse from supplied standing low-carry pose to a still fully lying-on-side final pose. Knees yield, one knee touches floor, pelvis lowers to hip, then torso and head gently settle onto side. Arms cushion descent and lower the ONE rifle to floor. Never stand back up or bounce. Keep complete head, bun, both arms, both boots, bag and entire rifle visible and coherent in every frame. No gore. Whole intact woman from bun to soles and entire rifle within frame at all times. Fixed orthographic camera, constant scale, same precise pixel clusters and drawn shading. Plain uniform dark gray background, no cast shadow or floor stripe. No motion blur. Every frame is a complete independent coherent character drawing, no cutout rig or 3D."
+          }
+        },
+        "15": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "9",
+              0
+            ],
+            "text": "different person, new face, rejuvenation, beautification, loose hair, bun changing, outfit changing, satchel switching sides, mirrored body, extra limbs, fused hands, floating hands, detached rifle, duplicate rifle, modern rifle, missing tube, bent barrel, changing stock, elastic gun, motion blur, smeared boots, painterly soft style, photorealism, 3D, vector art, camera movement, zoom, scale changes, cropped head, cropped boots, cropped weapon, glowing background, ground shadow, neon colors, text, watermark, muzzle flash, smoke, gas cloud, sparks, white receiver, chrome receiver, silver receiver"
+          }
+        },
+        "16": {
+          "class_type": "WanImageToVideo",
+          "inputs": {
+            "positive": [
+              "14",
+              0
+            ],
+            "negative": [
+              "15",
+              0
+            ],
+            "vae": [
+              "10",
+              0
+            ],
+            "start_image": [
+              "12",
+              0
+            ],
+            "width": [
+              "13",
+              0
+            ],
+            "height": [
+              "13",
+              1
+            ],
+            "length": 65,
+            "batch_size": 1
+          }
+        },
+        "17": {
+          "class_type": "KSamplerAdvanced",
+          "inputs": {
+            "model": [
+              "7",
+              0
+            ],
+            "positive": [
+              "16",
+              0
+            ],
+            "negative": [
+              "16",
+              1
+            ],
+            "latent_image": [
+              "16",
+              2
+            ],
+            "add_noise": "enable",
+            "noise_seed": 6111119796,
+            "steps": 12,
+            "cfg": 2.5,
+            "sampler_name": "ddim",
+            "scheduler": "simple",
+            "start_at_step": 0,
+            "end_at_step": 6,
+            "return_with_leftover_noise": "enable"
+          }
+        },
+        "18": {
+          "class_type": "KSamplerAdvanced",
+          "inputs": {
+            "model": [
+              "8",
+              0
+            ],
+            "positive": [
+              "16",
+              0
+            ],
+            "negative": [
+              "16",
+              1
+            ],
+            "latent_image": [
+              "17",
+              0
+            ],
+            "add_noise": "disable",
+            "noise_seed": 6111119796,
+            "steps": 12,
+            "cfg": 2.5,
+            "sampler_name": "ddim",
+            "scheduler": "simple",
+            "start_at_step": 6,
+            "end_at_step": 12,
+            "return_with_leftover_noise": "disable"
+          }
+        },
+        "19": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "18",
+              0
+            ],
+            "vae": [
+              "10",
+              0
+            ]
+          }
+        },
+        "22": {
+          "class_type": "PemaraDLSS5ContentPolicy",
+          "inputs": {
+            "content_kind": "animation",
+            "stage": "native_preview"
+          }
+        },
+        "30": {
+          "class_type": "VHS_VideoCombine",
+          "inputs": {
+            "images": [
+              "19",
+              0
+            ],
+            "frame_rate": 16.0,
+            "loop_count": 0,
+            "filename_prefix": "ATD_Rossi_Sem_Krita_20261111/death_west_v04/native",
+            "format": "video/ffv1-mkv",
+            "pingpong": false,
+            "save_output": true,
+            "level": "3",
+            "coder": "1",
+            "context": "1",
+            "gop_size": 1,
+            "slices": "16",
+            "slicecrc": "1",
+            "pix_fmt": "rgba64le",
+            "save_metadata": true,
+            "trim_to_audio": false,
+            "input_color_depth": "16bit"
+          }
+        }
+      },
+      {
+        "comfy_usage_source": "comfy-cli/comfy-mcp",
+        "pemara_dlss5": {
+          "policy": "dlss5_anchors_only_20261011_v1",
+          "anchors_required": true,
+          "video_dlss5_allowed": false,
+          "content_kind": "animation"
+        },
+        "client_id": "e75cc76d-8e12-4b61-afa5-c9fa5559cbb1",
+        "create_time": 1794418796129
+      },
+      [
+        "22",
+        "30"
+      ]
+    ],
+    "outputs": {
+      "22": {
+        "text": [
+          "{\"version\": \"dlss5_anchors_only_20261022_v2\", \"selection\": \"explicit_workflow_or_source_contract\", \"live_action\": \"full_frame_required\", \"mixed\": \"full_frame_required\", \"animation\": \"full_frame_required\", \"anchors\": \"full_frame_required\", \"video_dlss5_allowed\": false, \"videos\": \"forbidden_by_owner\", \"scope\": \"anchors_only\", \"actor_masks_required\": false, \"automatic_masks\": false, \"unknown\": \"blocked_before_render\", \"automatic_visual_classification\": false, \"historical_media_auto_migration\": false, \"content_kind\": \"animation\", \"stage\": \"final\", \"requested_stage\": \"native_preview\"}"
+        ]
+      },
+      "30": {
+        "gifs": [
+          {
+            "filename": "native_00001.mkv",
+            "subfolder": "ATD_Rossi_Sem_Krita_20261111\\death_west_v04",
+            "type": "output",
+            "format": "video/ffv1-mkv",
+            "frame_rate": 16.0,
+            "workflow": "native_00001.png",
+            "fullpath": "E:\\Pemara\\maestro\\pemara\\ferramentas\\ComfyUI\\output\\ATD_Rossi_Sem_Krita_20261111\\death_west_v04\\native_00001.mkv",
+            "finishing_policy": {
+              "dlss5_applied": false,
+              "policy": "dlss5_anchors_only_20261011_v1"
+            },
+            "metadata": {
+              "kind": "video",
+              "width": 896,
+              "height": 768,
+              "duration": 4.063,
+              "fps": 16.0
+            }
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+            "timestamp": 1794418796131
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+            "timestamp": 1794418796280
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "f5ca2326-53da-4260-b5fc-91921472521e",
+            "timestamp": 1794419165114
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "22": {
+        "node_id": "22",
+        "display_node": "22",
+        "parent_node": null,
+        "real_node_id": "22"
+      },
+      "30": {
+        "node_id": "30",
+        "display_node": "30",
+        "parent_node": null,
+        "real_node_id": "30"
+      }
+    }
+  }
+}

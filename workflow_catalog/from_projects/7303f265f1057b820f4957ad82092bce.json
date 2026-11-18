@@ -1,0 +1,114 @@
+{
+  "load_T01": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Hiei_vs_Zeru_T01_08s_v01.mp4"
+    }
+  },
+  "finish_T01": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "load_T01",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "hiei_zeru_20261109/QHD60_v01/T01_QHD60",
+      "content_kind": "live_action",
+      "expected_sha256": "7c211442c214da6f035d43be231d6647c1b7c98dd0abbd7c3fc3e17a0ace9229",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "load_T02": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Hiei_vs_Zeru_T02_08s_v01.mp4"
+    }
+  },
+  "finish_T02": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "load_T02",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "hiei_zeru_20261109/QHD60_v01/T02_QHD60",
+      "content_kind": "live_action",
+      "expected_sha256": "85189f8d96836206cee1430ef54978cb0c1f1162672a66381ce1bb6ba75cd915",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "load_P01": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Hiei_vs_Zeru_Piloto_08s_v02.mp4"
+    }
+  },
+  "finish_P01": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "load_P01",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "hiei_zeru_20261109/QHD60_v01/P01_QHD60",
+      "content_kind": "live_action",
+      "expected_sha256": "52d1cfdb242fa7e62e759ded03cfd864d61f6df35272ca40be1a745af35eb4c9",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "load_T04": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Hiei_vs_Zeru_T04_08s_v01.mp4"
+    }
+  },
+  "finish_T04": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "load_T04",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "hiei_zeru_20261109/QHD60_v01/T04_QHD60",
+      "content_kind": "live_action",
+      "expected_sha256": "be3d180af7c22f456a5efd04c0f022aa40ef76e4bf72a1c636afaee878fa0550",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "load_T05": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "Hiei_vs_Zeru_T05_Final_Continuum_v02.mp4"
+    }
+  },
+  "finish_T05": {
+    "class_type": "PemaraLanczosRife60NoNRSave",
+    "inputs": {
+      "source_video": [
+        "load_T05",
+        0
+      ],
+      "width": 1440,
+      "height": 2560,
+      "filename_prefix": "hiei_zeru_20261109/QHD60_v01/T05_QHD60",
+      "content_kind": "live_action",
+      "expected_sha256": "821d273414fd10f8d3aee68259369395094f39ba9f38261681425056fe93cfab",
+      "known_cut_frames_json": "[]"
+    }
+  },
+  "content_policy": {
+    "class_type": "PemaraDLSS5ContentPolicy",
+    "inputs": {
+      "content_kind": "live_action",
+      "stage": "final"
+    }
+  }
+}

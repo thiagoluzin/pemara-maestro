@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateABC",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Sepultura-inspired, Relentless death thrash metal, fast grinding alternate-picked guitars, pounding double-kick drums, low harsh intelligible male English vocal, raw distorted bass. 184 BPM, E minor. a rapid chromatic guitar figure; a stomping mid-song groove, chaotic solo and sudden ensemble stops. Death thrash metal, E minor, fast alternate picking, double-kick, raw distorted bass, harsh intelligible male vocal, Sep. English male vocals, raw heavy metal studio performance. Complete 280-330 second song. Qwen form: Intro & Verse  0-80s; Chorus & Verse 80-160s; Bridge & Solo 160-240s; Final Chorus & 240-300s. Heavy guitar riff intro under 8 seconds, verses, choruses, solo, final heavy cadence. Use constant M:4/4, L:1/16, Q:1/4=184, explicit bars, no repeat marks, no tempo changes.",
+      "lyrics": "[Verse]\nBlack ink on bone, the decree is cold\nA throne built on the stories of the old\nTorn from the jaw of the vanquished king\nThe law is sharp, the silence is the sting\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Verse]\nHe bites the paper, he bites the pen\nThe marrow sings, a jagged hymn\nEvery statute is a molar's weight\nCrushing the necks beneath the gate\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Bridge]\nStomp it down, crush the stone\nThe root breaks, the spine is lone\n\n[Solo]\n\n[Chorus]\nEmpire of Teeth\nChewing the breath\nSwallow the crown\nBurn the ground\n\n[Outro]\nThe crown snaps\nThe jaw drops\nEmpire of Teeth",
+      "seed": 202610161015,
+      "mode": "full",
+      "max_abc_tokens": 12000,
+      "temperature": 0.8,
+      "top_p": 0.9,
+      "top_k": 30,
+      "repetition_penalty": 1.005,
+      "penalty_window": 100
+    }
+  },
+  "3": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  }
+}

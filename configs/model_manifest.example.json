@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "weights_included": false,
+  "installation_mode": "operator_initiated_only",
+  "artifacts": [
+    {
+      "id": "ltx25_distilled_transformer_nvfp4",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "diffusion_models/ltx-2.5-22b-distilled-transformer-nvfp4.safetensors",
+      "expected_bytes": 18721548408,
+      "sha256": "4b94231e734c1950f8f6826cb8bd8715d94be5b3e04f8256ee060c5bc3886c30"
+    },
+    {
+      "id": "ltx25_distilled_transformer_bf16_reference",
+      "component": "ltx25",
+      "classification": "LTX25_REFERENCE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+      "expected_bytes": 42018190584,
+      "integrity_source": "hf_lfs_oid"
+    },
+    {
+      "id": "ltx25_gemma_int8",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+      "expected_bytes": 15372969374,
+      "sha256": "6ce688a0aa98a5fa36a9f1e6c3f42152a498cc2b53ee8c15674c64244f91487f"
+    },
+    {
+      "id": "ltx25_gemma_bf16_reference",
+      "component": "ltx25",
+      "classification": "LTX25_REFERENCE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+      "expected_bytes": 26263858182,
+      "integrity_source": "hf_lfs_oid"
+    },
+    {
+      "id": "ltx25_video_vae_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "vae/ltx-2.5-video-vae-bf16.safetensors",
+      "expected_bytes": 1472223346,
+      "sha256": "847e14ca7f3355debca0cea4eaa24ac0fbcdf0061da054ac89ca638a869ddba3"
+    },
+    {
+      "id": "ltx25_video_vae_conv_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "vae/ltx-2.5-video-vae-conv-bf16.safetensors",
+      "expected_bytes": 1452269922,
+      "sha256": "685b06ee3d9b2039647698fc4ea33175112462fc374e2777312c907897dfce8d"
+    },
+    {
+      "id": "ltx25_audio_vae_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "vae/ltx-2.5-audio-vae-bf16.safetensors",
+      "expected_bytes": 364866540,
+      "sha256": "c52733d37f6a7fb7949c3dc0fb468c6cb2169e4d836983a73babb9f0d54837a5"
+    },
+    {
+      "id": "ltx25_spatial_upscaler_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+      "expected_bytes": 995778752,
+      "sha256": "eb5a71fe4068ee87ccdb1c3aa635e547ca76bd2d30ae20ae889f2c325c0677e8"
+    },
+    {
+      "id": "ltx25_temporal_upscaler_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "latent_upscale_models/ltx-2.5-latent-temporal-upscaler-x2-bf16-1.0.safetensors",
+      "expected_bytes": 261944000,
+      "sha256": "2bc3300f2b3c3c1834d72164fbf13a3b9fd73e5a741e8a2c3f4035f89a75c3fe"
+    },
+    {
+      "id": "ltx25_duration_head_bf16",
+      "component": "ltx25",
+      "classification": "LTX25_CORE_ASSET",
+      "repo_id": "Lightricks/LTX-2.5",
+      "revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "filename": "model_patches/ltx-2.5-duration-head-bf16.safetensors",
+      "expected_bytes": 3843690,
+      "sha256": "2ec71e4206ed365d015f00c05a48caccfb0ee862986809d06ae376c09f5d9190"
+    },
+    {
+      "id": "ltx25_gemma4_e2b_prompt_enhancer",
+      "component": "ltx25",
+      "classification": "LTX25_PROMPT_ENHANCER_ASSET",
+      "repo_id": "Comfy-Org/gemma-4",
+      "revision": "63d0f7c476756b88910170c1df75e2384ea1af31",
+      "filename": "text_encoders/gemma4_e2b_it_bf16.safetensors",
+      "expected_bytes": 10278774160,
+      "sha256": "dcc3c8d27be2db2ef38b78d564ebfa1e92eb24665ed2751f2983275f03a067c8",
+      "primary_workflow_enabled": false
+    },
+    {
+      "id": "ltx25_compat_ic_lora_deblur",
+      "component": "ltx25",
+      "classification": "LTX25_COMPATIBILITY_ASSET",
+      "required": false,
+      "repo_id": "Lightricks/LTX-2.3-22b-IC-LoRA-Deblur",
+      "revision": "4b10fd3b154ae0119936e9d3f922d32a2f0a9422",
+      "filename": "ltx-2.3-22b-ic-lora-deblur-0.9.safetensors",
+      "expected_bytes": 906071437,
+      "integrity_source": "hf_lfs_oid"
+    },
+    {
+      "id": "ltx25_compat_ic_lora_in_outpainting",
+      "component": "ltx25",
+      "classification": "LTX25_COMPATIBILITY_ASSET",
+      "required": false,
+      "repo_id": "Lightricks/LTX-2.3-22b-IC-LoRA-In-Outpainting",
+      "revision": "554060ba18950e5fd5e91e6a9ab2f55852fd05a4",
+      "filename": "ltx-2.3-22b-ic-lora-in-outpainting-0.9.safetensors",
+      "expected_bytes": 1308778338,
+      "integrity_source": "hf_lfs_oid"
+    },
+    {
+      "id": "ltx25_compat_ic_lora_ingredients",
+      "component": "ltx25",
+      "classification": "LTX25_COMPATIBILITY_ASSET",
+      "required": false,
+      "repo_id": "Lightricks/LTX-2.3-22b-IC-LoRA-Ingredients",
+      "revision": "dcc403d92aa0f5a983c5dbc7282503ca52f73a08",
+      "filename": "ltx-2.3-22b-ic-lora-ingredients-0.9.safetensors",
+      "expected_bytes": 1308778338,
+      "integrity_source": "hf_lfs_oid"
+    },
+    {
+      "id": "ltx25_compat_ic_lora_motion_track",
+      "component": "ltx25",
+      "classification": "LTX25_COMPATIBILITY_ASSET",
+      "required": false,
+      "repo_id": "Lightricks/LTX-2.3-22b-IC-LoRA-Motion-Track-Control",
+      "revision": "572bb9c9a1ba3d8e8724cce69783ffc2422386db",
+      "filename": "ltx-2.3-22b-ic-lora-motion-track-control-ref0.5.safetensors",
+      "expected_bytes": 327309314,
+      "sha256": "e279807ee3aa3db1ce60188d665ff83342860367dcd6bac19f8bd5a99a9e1dca"
+    },
+    {
+      "id": "ltx25_compat_ic_lora_union_control",
+      "component": "ltx25",
+      "classification": "LTX25_COMPATIBILITY_ASSET",
+      "required": false,
+      "repo_id": "Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control",
+      "revision": "b4d1c4d8c9e544e9bbbd6811bb4363708b6093ff",
+      "filename": "ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+      "expected_bytes": 654465352,
+      "sha256": "a1b888a87f661d27f08b394ae559e8e1050be33900bcc36a5cdf659e48f88d18"
+    },
+    {
+      "id": "minimax_h3_fl2va_pruned_int8_convrot",
+      "component": "h3",
+      "classification": "H3_CORE_ASSET",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "expected_bytes": 20970379616,
+      "sha256": "e889202c41dafb67b10d67b97f0d8541508036a6090af23425a5c2615d03c47a"
+    },
+    {
+      "id": "minimax_h3_ref2va_pruned_int8_convrot",
+      "component": "h3",
+      "classification": "H3_OPTIONAL_REFERENCE_ASSET",
+      "required": false,
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "expected_bytes": 20970379616,
+      "sha256": "9255f52b6677845ad238f20dfaafa94727053694127ab7f255c048f0f9365779"
+    },
+    {
+      "id": "qwen3vl_32b_minimax_h3_nvfp4_awq",
+      "component": "h3",
+      "classification": "H3_CORE_ASSET",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "expected_bytes": 15687142551,
+      "sha256": "35a88d51044231fe332301d7a62aa81e3f2cba62febeb446e2c1e3e0ef76f2c6"
+    },
+    {
+      "id": "minimax_h3_video_vae_fp16",
+      "component": "h3",
+      "classification": "H3_CORE_ASSET",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "vae/minimax_h3_video_vae_fp16.safetensors",
+      "expected_bytes": 5207808496,
+      "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522"
+    },
+    {
+      "id": "minimax_h3_audio_vae_fp32",
+      "component": "h3",
+      "classification": "H3_CORE_ASSET",
+      "repo_id": "Comfy-Org/MiniMax-H3",
+      "revision": "3f57e8291d2ef846f9a074b1b76d2767db434abe",
+      "filename": "vae/minimax_h3_audio_vae_fp32.safetensors",
+      "expected_bytes": 605254808,
+      "sha256": "8e505d95dd1561d47abd43d4238fd40d9bb1ae9e147ed0a4cba778d76ae4db48"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "yue2_3b_int8_convrot.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "YuE2GenerateMusic",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "style": "Dark theatrical heavy metal, heavy distorted riffs, brief sinister organ accents, harmonic-minor guitar lines, expressive forceful male rock voice, powerful acoustic drums. 138 BPM, D minor. a baroque guitar motif contrasted with a brutal low riff; a long expressive neoclassical solo. Raw heavily overdriven rhythm guitar amplifiers, forceful male English vocals. Complete 280-330 second song, extended developed guitar solo, riff variations, final chorus and decisive heavy ending. Extended instrumental development followed by two emphatic final chorus reprises.",
+      "lyrics": "[Verse]\nBlackout curtain, dust in the beam\nWearing the mask, wearing the dream\nThe script is wet, the ink is red\nA face that’s dead is sitting in my bed\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Verse]\nSpotlight burns the stage to bone\nThe seats are full of faces known\nThey whisper names I never spoke\nThe applause is a heavy yoke\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Bridge]\nThe strings are sharp, the rhythm breaks\nI look for an exit, but the light decays\nThe glass is cracked, the smile is wide\nNowhere left to run, nowhere to hide\n\n[Solo]\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Chorus]\nThirteenth mirror, cold and glass\nYou watch me drown, you watch me pass\nNo curtain call, no final bow\nThe audience is stealing the show\n\n[Outro]\nThe glass is gone, the light is out\nThe mirror holds me, no doubt\nThe show is over, the trap is set\nThe thirteenth face is the one I met",
+      "abc": "",
+      "seed": 202610186009,
+      "mode": "full",
+      "max_duration": 360,
+      "temperature": 0.95,
+      "top_p": 0.95,
+      "top_k": 100,
+      "repetition_penalty": 1.2,
+      "cfg_scale": 1.6
+    }
+  },
+  "3": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "2",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "EmptyYuE2LatentAudio",
+    "inputs": {
+      "seconds": [
+        "2",
+        1
+      ],
+      "batch_size": 1
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 202610186009,
+      "steps": 32,
+      "cfg": 1.0,
+      "sampler_name": "dpm_2",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    }
+  },
+  "6": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "12": {
+    "class_type": "AudioAdjustVolume",
+    "inputs": {
+      "audio": [
+        "6",
+        0
+      ],
+      "volume": -6
+    }
+  },
+  "7": {
+    "class_type": "SaveAudioAdvanced",
+    "inputs": {
+      "audio": [
+        "12",
+        0
+      ],
+      "filename_prefix": "audio/Steel_Reborn_20261016/10_the_thirteenth_mirror_attempt02_length",
+      "format": "flac"
+    }
+  },
+  "10": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "2",
+        1
+      ]
+    }
+  }
+}
