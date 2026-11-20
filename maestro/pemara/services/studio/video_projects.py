@@ -3041,6 +3041,7 @@ def project_view(project_dir: Path) -> dict[str, Any]:
         "projectId": project_dir.name,
         "name": str(manifest.get("title") or manifest.get("name") or project_dir.name.replace("_", " ").title()),
         "productionPreset": str(manifest.get("production_preset") or ""),
+        "episodeWorkflow": manifest.get("episode_workflow") or [],
         "productionStage": str(manifest.get("preset_stage") or ""),
         "productionAssets": __import__('production_presets').asset_records(project_dir),
         "productionComparison": _read_json(project_dir / 'qc/pilot_comparison.json'),
@@ -5803,6 +5804,10 @@ def get_take_generation_spec(root: Path, project_id: str, take_id: str) -> dict[
             prompt = ref2va_override
     if not prompt:
         raise ValueError("Take sem animation_prompt.")
+    from cinema_direction import prompt_direction
+    cinematography = prompt_direction(project_dir, take_id, minimax_anchor_control)
+    if cinematography:
+        prompt = f"{prompt}\n{cinematography}"
     internet_direction = internet_publication.generation_direction(
         project_dir, take_id,
         [str(item.get("id") or "") for item in queue.get("takes", [])

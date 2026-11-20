@@ -1,6 +1,6 @@
 # Maestro PEMARA
 
-Cópia pública de 17 de novembro de 2026. Inclui o aplicativo Windows, o gateway,
+Base pública de 17 de novembro de 2026, atualizada em 20 de novembro com o Cinema Studio `20261120-cinema4`. Inclui o aplicativo Windows, o gateway,
 os serviços do Studio, a interface e o aplicativo Android do Maestro, as
 ferramentas de mídia, o catálogo de workflows e os scripts de instalação.
 

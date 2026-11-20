@@ -48,6 +48,15 @@ class StudioProxyHeadersTest(unittest.TestCase):
         self.assertEqual(dictation, 16 * 1024 * 1024)
         self.assertEqual(generative, 8 * 1024 * 1024 * 1024)
 
+    def test_cinema_proxy_uses_the_form_and_message_limits(self):
+        cinema = "http://127.0.0.1:8029/api/video-projects/piloto/cinema/"
+        with patch.dict(os.environ, {"MAESTRO_MAX_PROXY_BYTES":"10000000"}):
+            for route in ("chat","direction","chat/abc/apply/photography","chat/abc/cancel"):
+                self.assertEqual(MASTER._proxy_body_limit(cinema+route),64*1024)
+            self.assertEqual(MASTER._proxy_body_limit(cinema+"elements"),8*1024**2+64*1024)
+        with patch.dict(os.environ, {"MAESTRO_MAX_PROXY_BYTES":"500"}):
+            self.assertEqual(MASTER._proxy_body_limit(cinema+"elements"),500)
+
     def test_tool_proxy_strips_maestro_cookie_but_keeps_tool_cookie(self):
         headers = MASTER._tool_proxy_headers(
             {

@@ -13,8 +13,8 @@ const API = {
   localAi: "/api/local-ai",
 };
 
-const MAESTRO_FRONTEND_BUILD = "20261113-decision-inspection-v1";
-const MAESTRO_FRONTEND_REVISION = "20261113-decision-inspection-v1";
+const MAESTRO_FRONTEND_BUILD = "20261120-cinema4";
+const MAESTRO_FRONTEND_REVISION = "20261120-cinema4";
 const MAESTRO_BUILD_MANIFEST = "/assets/maestro-build.json";
 
 const $ = (selector) => document.querySelector(selector);
@@ -215,6 +215,16 @@ async function fetchFilmMetadata(url) {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+async function fetchEpisodeTakes(projectId) {
+  const url = API.studio + "/api/video-projects/" + encodeURIComponent(projectId) + "/takes?page=1&pageSize=100";
+  const result = await fetchFilmMetadata(url);
+  for (let page = 2; page <= (result.pagination?.totalPages || 1); page++) {
+    const next = await fetchFilmMetadata(url.replace("page=1&", "page=" + page + "&"));
+    result.data.push(...next.data);
+  }
+  return result;
 }
 
 async function fetchFilmDirectorRequest(url, options = {}, timeoutMs = 20000) {
@@ -3298,6 +3308,8 @@ function syncFilmBatchActions() {
   const anchorCopy = $("#film-anchor-batch-copy");
   if (!production || !upscale || !help) return;
   const hasProject = Boolean(state.films.activeProjectId);
+  const cinemaButton = $("#scene-workspace-open");
+  if (cinemaButton) cinemaButton.disabled = !hasProject || state.films.projectDataLoading || Boolean(state.films.projectDataError);
   const activeProject = state.films.projects.find((item) => item.projectId === state.films.activeProjectId) || {};
   const contentKind = $("#film-content-kind");
   if (contentKind) {
@@ -4264,7 +4276,7 @@ async function refreshFilmProjectData(projectId = state.films.activeProjectId, {
   const previousActive = state.films.takes.find((take) => take.takeId === state.films.activeTakeId);
   const [project, takes] = await Promise.all([
     fetchFilmMetadata(`${API.studio}/api/video-projects/${encodeURIComponent(projectId)}`),
-    fetchFilmMetadata(`${API.studio}/api/video-projects/${encodeURIComponent(projectId)}/takes?page=1&pageSize=100`),
+    fetchEpisodeTakes(projectId),
   ]);
   if (state.films.activeProjectId !== projectId || state.films.takeUpdateSequence !== updateSequence) return;
   const currentProject = state.films.projects.find((entry) => entry.projectId === projectId) || null;
@@ -4681,7 +4693,7 @@ async function loadFilmProject(projectId) {
   try {
     const [project, takes] = await Promise.all([
       fetchFilmMetadata(`${API.studio}/api/video-projects/${encodeURIComponent(projectId)}`),
-      fetchFilmMetadata(`${API.studio}/api/video-projects/${encodeURIComponent(projectId)}/takes?page=1&pageSize=100`),
+      fetchEpisodeTakes(projectId),
       loadVideoSoundProviders().catch(() => null),
     ]);
     if (state.films.projectLoadSequence !== loadSequence || state.films.activeProjectId !== projectId) return;

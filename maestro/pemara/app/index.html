@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/modern-studio.css?v=20261102-ui1">
   <link rel="stylesheet" href="assets/video-inspection.css?v=20261113-v1">
   <link rel="stylesheet" href="assets/voice-studio.css?v=20261106-v2">
+  <link rel="stylesheet" href="assets/scene-workspace.css?v=20261120-cinema4">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir para o conte&uacute;do</a>
@@ -220,6 +221,7 @@
             <p>Imagem, v&iacute;deo, m&uacute;sica e 3D. Crie, acompanhe suas produ&ccedil;&otilde;es e encontre seus arquivos em um s&oacute; lugar.</p>
           </div>
           <div class="studio-welcome-actions">
+            <button class="btn primary" type="button" id="scene-resume" hidden>Continuar episódio</button>
             <button class="btn primary" type="button" data-section-jump="gen">Come&ccedil;ar a criar <span aria-hidden="true">&nbsp;↗</span></button>
             <button class="btn secondary" type="button" data-section-jump="assets">Explorar arquivos</button>
           </div>
@@ -329,7 +331,7 @@
             </div>
             <div class="quick-grid">
               <button class="quick-action" data-section-jump="gen">Criar</button>
-              <button class="quick-action" data-section-jump="films">Projetos</button>
+              <button class="quick-action" data-section-jump="films">Cinema Studio</button>
               <button class="quick-action" data-section-jump="assets">Arquivos</button>
               <button class="quick-action" data-section-jump="models3d">Modelos 3D</button>
               <button class="quick-action" data-section-jump="hyperframes">HyperFrames</button>
@@ -633,6 +635,10 @@
                 <p id="film-soundtrack-status" role="status">Nenhuma trilha fornecida.</p>
                 <audio id="film-soundtrack-preview" controls preload="none" class="hidden"></audio>
               </details>
+              <div class="film-player-actions">
+                <button class="btn primary" type="button" id="scene-workspace-open" disabled>Abrir Cinema Studio</button>
+                <button class="btn secondary" type="button" id="episode-templates-open">Modelos de episódio</button>
+              </div>
               <nav class="film-workflow-tabs" aria-label="Etapa do projeto">
                 <button class="film-workflow-tab active" type="button" data-film-view="review" aria-pressed="true">
                   <span>Para decidir</span><strong id="film-view-review-count">0</strong>
@@ -1168,9 +1174,66 @@
     </form>
   </dialog>
 
+  <dialog id="scene-desk" class="scene-dialog" aria-labelledby="scene-heading">
+    <header><div><small id="scene-project"></small><h2 id="scene-heading">Cinema Studio</h2></div><button class="btn secondary" data-close-dialog type="button">Fechar</button></header>
+    <nav id="scene-strip" aria-label="Cenas do episódio"></nav>
+    <h3 id="scene-title"></h3>
+    <div class="cinema-layout"><div>
+    <div class="scene-media">
+      <div><video id="scene-player" controls playsinline preload="metadata"></video><label>Versão em exibição<select id="scene-version"></select></label></div>
+      <div><video id="scene-compare-player" muted playsinline preload="metadata" hidden></video><label>Comparar no mesmo instante<select id="scene-compare"></select></label></div>
+    </div>
+    <div class="scene-controls">
+      <button class="btn secondary" type="button" id="scene-context">Assistir à passagem anterior</button>
+      <button class="btn secondary" type="button" id="scene-mark">Marcar quadro</button>
+      <button class="btn secondary" type="button" id="scene-frame">Usar quadro em Animar foto</button>
+      <button class="btn primary" type="button" id="scene-correct">Pedir correção</button>
+    </div>
+    <p id="scene-feedback" role="status"></p>
+    <div class="scene-controls" id="scene-marks" aria-label="Quadros marcados desta versão"></div>
+    </div>
+    <aside id="cinema-panel" aria-label="Direção do Cinema Studio">
+      <nav aria-label="Ferramentas de direção">
+        <button class="btn secondary small" data-cinema-tab="chat" type="button">Codex</button>
+        <button class="btn secondary small" data-cinema-tab="look" type="button">Fotografia</button>
+        <button class="btn secondary small" data-cinema-tab="refs" type="button">Referências</button>
+      </nav>
+      <section id="cinema-chat">
+        <h3>Conversa do episódio</h3>
+        <button id="cinema-older" class="btn secondary small" type="button" hidden>Mensagens anteriores</button>
+        <div id="cinema-messages" aria-label="Histórico de conversa"></div>
+        <form id="cinema-send"><label>Mensagem para o Codex<textarea name="message" required maxlength="5000" rows="3" placeholder="O que você quer fazer nesta cena?"></textarea></label>
+          <small>O Codex recebe o texto e o contexto da cena. O Gemini Decision confere propostas de correção e roteiro.</small>
+          <button class="btn primary">Enviar</button>
+        </form>
+      </section>
+      <section id="cinema-look" hidden><h3>Fotografia</h3>
+        <form id="cinema-look-form"><label>Aplicar a<select name="scope"><option value="episode">Episódio inteiro</option><option value="take">Take selecionado</option></select></label>
+        <div id="cinema-fields"></div><fieldset id="cinema-pick"><legend>Referências do take</legend></fieldset>
+        <button class="btn primary">Salvar direção</button></form>
+      </section>
+      <section id="cinema-refs" hidden><h3>Biblioteca do projeto</h3><div id="cinema-gallery"></div>
+        <form id="cinema-add"><label>Nome<input name="name" maxlength="100" required></label><label>Categoria<select name="role"><option>personagem</option><option>cenário</option><option>objeto</option><option>figurino</option></select></label>
+        <label>Imagem de referência<input type="file" name="file" accept="image/jpeg,image/png,image/webp" required></label>
+        <label><input type="checkbox" name="reviewed" value="true" required> Revisei esta imagem para uso como referência.</label>
+        <button class="btn primary">Adicionar à biblioteca</button></form>
+      </section>
+      <p id="cinema-notice" role="status"></p>
+    </aside></div>
+    <details id="scene-ref"><summary>Referência aprovada deste take</summary><img alt="Referência aprovada do take" id="scene-anchor"></details>
+    <details><summary>Etapas do episódio</summary><div class="scene-controls" id="scene-stages"></div></details>
+  </dialog>
+  <dialog id="episode-models" class="scene-dialog" aria-labelledby="episode-models-title">
+    <header><h2 id="episode-models-title">Modelos de episódio</h2><button class="btn secondary" type="button" data-close-dialog>Fechar</button></header>
+    <form id="episode-save"><label>Salvar a sequência e a direção do projeto atual<input name="name" required minlength="3" maxlength="120" placeholder="Nome do modelo"></label><button class="btn secondary">Salvar modelo</button></form>
+    <form id="episode-create"><label>Modelo<select name="template" required></select></label><label>Novo episódio<input name="name" required minlength="3" maxlength="120" placeholder="Nome do episódio"></label><button class="btn primary">Criar episódio</button></form>
+    <p id="episode-feedback" role="status"></p>
+  </dialog>
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="assets/frontend-resilience.js?v=20261019-h3-finishing-errors-v1"></script>
-<script src="assets/maestro.js?v=20261115-model-retirement-v1"></script>
+<script src="assets/maestro.js?v=20261120-cinema4"></script>
+  <script src="assets/scene-workspace.js?v=20261120-cinema4"></script>
+  <script src="assets/cinema-panel.js?v=20261120-cinema4"></script>
   <script src="assets/models3d.js?v=20261019-h3-finishing-errors-v1"></script>
   <script src="assets/internet-publication.js?v=20260902-ltx25-anchor1"></script>
   <script src="assets/creative-os.js?v=20260907-v7"></script>

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "maestro": {
+      "type": "stdio",
+      "command": "${LOCALAPPDATA}\\Pemara\\maestro-mcp\\venv\\Scripts\\python.exe",
+      "args": [
+        "maestro/pemara/tools/maestro_mcp/server.py"
+      ]
+    }
+  }
+}

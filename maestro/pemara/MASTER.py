@@ -9,6 +9,7 @@ servidor.py  Inicia TODOS os serviaos do Pemara v4.0
 """
 import sys, os, subprocess, threading, time, shutil, platform, psutil, io, json, base64, urllib.request, urllib.parse, urllib.error, socket, select, hmac, html, posixpath, hashlib, secrets, http.client
 import ipaddress
+import re
 from http.cookies import SimpleCookie
 from pathlib import Path
 
@@ -602,7 +603,12 @@ def _proxy_headers(api_path, incoming_headers):
 
 def _proxy_body_limit(target):
     default_limit = int(_env_value("MAESTRO_MAX_PROXY_BYTES", str(8 * 1024 * 1024 * 1024)))
-    if urllib.parse.urlsplit(target).path == "/api/dictation/transcriptions":
+    path = urllib.parse.unquote(urllib.parse.urlsplit(target).path).rstrip("/")
+    if re.fullmatch(r"/api/video-projects/[^/]+/cinema/elements", path):
+        return min(default_limit, 8 * 1024**2 + 64 * 1024)
+    if re.fullmatch(r"/api/video-projects/[^/]+/cinema/(?:direction|chat(?:/.*)?)", path):
+        return min(default_limit, 64 * 1024)
+    if path == "/api/dictation/transcriptions":
         dictation_limit = int(_env_value("MAESTRO_DICTATION_MAX_BYTES", str(16 * 1024 * 1024)))
         return min(default_limit, max(1024 * 1024, dictation_limit))
     return default_limit

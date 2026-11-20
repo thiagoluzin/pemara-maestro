@@ -1,0 +1,31 @@
+.scene-dialog { width:min(1000px,94vw); max-height:90dvh; overflow:auto; padding:clamp(14px,3vw,30px); color:var(--text,#ebf1fa); background:var(--panel,#18202e); border:1px solid #65768e; border-radius:14px; margin:auto; }
+.scene-dialog::backdrop { background:rgb(5 10 16 / 80%); }
+.scene-dialog header,.scene-controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.scene-dialog header { justify-content:space-between; }
+.scene-dialog nav { display:flex; gap:8px; overflow-x:auto; padding:12px 2px; }
+.scene-dialog nav button { flex:0 0 auto; }
+.scene-dialog nav [aria-current=true] { outline:2px solid currentColor; outline-offset:-2px; }
+.scene-media { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:12px; }
+.scene-media:has(#scene-compare-player[hidden]) { grid-template-columns:1fr; }
+.scene-media video { width:100%; height:clamp(160px,34vh,380px); background:#080b10; object-fit:contain; }
+.scene-dialog [hidden] { display:none!important; }
+.scene-dialog label { display:grid; gap:6px; margin:8px 0; }
+.scene-dialog form,.scene-controls { margin-top:16px; }
+.scene-dialog img { max-height:240px; max-width:100%; }
+#scene-desk { width:min(1360px,96vw); }
+.cinema-layout { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(290px,1fr); gap:clamp(12px,2vw,26px); align-items:start; }
+#cinema-panel { border-inline-start:1px solid #637082; padding-inline-start:16px; min-width:0; }
+#cinema-panel nav { flex-wrap:wrap; }
+#cinema-panel [aria-pressed=true] { outline:2px solid currentColor; outline-offset:-2px; }
+#cinema-messages { max-height:38vh; overflow:auto; overflow-wrap:anywhere; }
+#cinema-messages article { border-bottom:1px solid #637082; padding:8px 0; }
+#cinema-messages p { white-space:pre-wrap; margin:8px 0; }
+#cinema-messages small,#cinema-send small { display:block; margin:6px 0; }
+.cinema-request { font-weight:650; }
+.cinema-proposal { padding-inline-start:10px; border-inline-start:2px solid #95aecd; }
+#cinema-fields,#cinema-gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr)); gap:6px; }
+#cinema-panel input,#cinema-panel textarea { max-width:100%; min-width:0; }
+#cinema-gallery figure { margin:0; } #cinema-gallery img { width:100%; height:95px; object-fit:contain; }
+#cinema-panel label:has(input[type=checkbox]) { display:flex; align-items:center; gap:8px; }
+@media(max-width:780px){ .cinema-layout { grid-template-columns:minmax(0,1fr); } #cinema-panel { border-inline-start:0; border-top:1px solid #637082; padding:8px 0; } }
+

@@ -7060,6 +7060,13 @@ async def _internet_publication_body(request: Request) -> Dict[str, Any]:
     return payload
 
 
+from scene_routes import router as scene_workspace_router
+app.include_router(scene_workspace_router(VIDEO_PROJECTS_ROOT, _is_internal_request, _internet_publication_body))
+from cinema_routes import router as cinema_router
+app.include_router(cinema_router(VIDEO_PROJECTS_ROOT, _is_internal_request, _internet_publication_body,
+                                lambda project, take, seed: _start_video_take_job(project, take, seed)))
+
+
 @app.post("/api/video-projects/briefing-preview")
 async def video_internet_briefing_preview(request: Request):
     if not _is_internal_request(request):
